@@ -270,13 +270,19 @@ button.trow:active{transform:scale(.99)}
 .legend{display:flex;align-items:center;gap:5px;justify-content:flex-end;margin-top:9px;font-size:11.5px;color:var(--dim2)}
 .legend i{width:11px;height:11px;border-radius:3px;display:block;background:var(--heat0)}
 
-.setrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+/* Beschriftung und Bedienelement teilen sich die erste Zeile, die Erlaeuterung
+   laeuft darunter ueber die volle Breite. Vorher quetschte das Auswahlfeld die
+   Beschriftung so ein, dass "Reihenfolge neuer Karten" zweizeilig umbrach und
+   die Erlaeuterung dreizeilig - vier Einstellungen fuellten den Bildschirm. */
+.setrow{display:grid;grid-template-columns:1fr auto;align-items:center;
+  column-gap:14px;row-gap:4px;padding:12px 0;border-bottom:1px solid var(--line)}
 .setrow:last-child{border-bottom:0}
-.setrow label{font-weight:600;font-size:15px}
-.setrow .tiny{margin-top:3px}
+.setrow > div{display:contents}
+.setrow label{grid-column:1;grid-row:1;font-weight:600;font-size:15px}
+.setrow .tiny{grid-column:1/-1;grid-row:2;margin-top:0}
+.setrow select,.setrow .switch{grid-column:2;grid-row:1;justify-self:end}
 select,input[type=number]{background:var(--bg2);border:1px solid var(--line2);border-radius:12px;padding:9px 11px;font-size:16px;min-height:44px}
-.setrow > div{flex:1;min-width:0}
-.setrow select{flex:none;max-width:62%;padding-left:10px;padding-right:6px}
+.setrow select{max-width:52vw;padding-left:11px;padding-right:6px}
 /* Das eingebaute Loeschkreuz der Suche kommt vom System in Systemblau –
    der einzige Fremdkoerper in der Palette. Wir zeichnen die Suche selbst. */
 input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
