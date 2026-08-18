@@ -5,7 +5,7 @@ import * as store from './store.js';
 import { S, settings, setSetting, save, cardState, putCard, today, todayNum, dayKey,
          numToKey, liveStreak, touchStreak, isFlagged, toggleFlag, setSaveErrorHandler,
          installFlush } from './store.js';
-import { schedule, strength, preview, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
+import { schedule, strength, preview, isLeech, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
 import { options, similarity, normalize, shuffle } from './quiz.js';
 import * as sess from './session.js';
 
@@ -265,6 +265,29 @@ function renderStats() {
   const names = ['heute', 'morgen', '+2', '+3', '+4', '+5', '+6'];
   const weak = sess.weakSubs();
 
+  /* Trefferquote der letzten acht Wochen: zeigt, ob das Lernen greift.
+     Steigende Quote bei wachsendem Bestand heisst, die Wiederholungen wirken. */
+  const wochen = [];
+  for (let w = 7; w >= 0; w--) {
+    let done = 0, correct = 0;
+    for (let d = 0; d < 7; d++) {
+      const rec = st.days[numToKey(t - (w * 7 + d))];
+      if (rec) { done += rec.done || 0; correct += rec.correct || 0; }
+    }
+    if (done >= 10) wochen.push({ label: w === 0 ? 'jetzt' : `−${w}`, done, pct: Math.round((correct / done) * 100) });
+  }
+  const trendText = wochen.length >= 3
+    ? (() => {
+        const alt = wochen.slice(0, Math.ceil(wochen.length / 2));
+        const neu = wochen.slice(-Math.ceil(wochen.length / 2));
+        const m = (a) => a.reduce((x, y) => x + y.pct, 0) / a.length;
+        const diff = Math.round(m(neu) - m(alt));
+        return diff >= 3 ? `Aufwärtstrend: ${diff} Prozentpunkte besser als zu Beginn dieses Zeitraums.`
+          : diff <= -3 ? `Zuletzt ${Math.abs(diff)} Prozentpunkte schwächer – oft ein Zeichen, dass viele neue Karten dazugekommen sind.`
+          : 'Stabil. Bei wachsendem Bestand ist das ein gutes Zeichen.';
+      })()
+    : 'Wochen mit mindestens zehn Antworten.';
+
   app.innerHTML = `
     <h1 class="vh">Statistik</h1>
     <div class="kpis" style="margin-top:14px">
@@ -307,6 +330,18 @@ function renderStats() {
         </span>
         <span class="pct">üben</span>
       </button>`).join('')}
+    </div>` : ''}
+
+    ${wochen.length >= 2 ? `
+    <div class="sec">Trefferquote je Woche</div>
+    <div class="card">
+      <div class="fc">${wochen.map(w => `
+        <div class="fc-col" title="${w.label}: ${w.done} Antworten">
+          <span class="fc-n">${w.pct}%</span>
+          <i class="quote" style="height:${Math.max(4, (w.pct / 100) * 72).toFixed(0)}px"></i>
+          <span class="fc-l">${w.label}</span>
+        </div>`).join('')}</div>
+      <p class="tiny" style="margin-top:10px">${trendText}</p>
     </div>` : ''}
 
     <div class="sec">Wissensstand</div>
@@ -663,10 +698,12 @@ function shell(inner, foot) {
 
 function head(card, isFresh) {
   const cat = CAT_BY_ID[card.cat];
+  const zaeh = isLeech(cardState(card.id));
   return `<div class="qmeta">
       <span class="qcat">${cat.icon} ${esc(cat.name)}</span>
       <span class="pill">${esc(card.sub)}</span>
       ${isFresh ? '<span class="pill new">neu</span>' : '<span class="pill rep">Wiederholung</span>'}
+      ${zaeh ? '<span class="pill zaeh" title="Diese Karte kippt immer wieder um">🔁 hartnäckig</span>' : ''}
       ${LEVELS[card.d].name === card.sub ? '' : `<span class="pill">${LEVELS[card.d].name}</span>`}
     </div>
     <h2 class="q">${esc(card.q)}</h2>`;
@@ -770,11 +807,23 @@ function lockUndo() {
   if (b) b.disabled = true;
 }
 
+const KNACK_TIPPS = [
+  'Baue eine eigene Eselsbrücke – selbst erfundene halten am besten.',
+  'Verknüpfe die Karte mit etwas, das du schon sicher weißt.',
+  'Sag die Antwort einmal laut. Der zusätzliche Kanal hilft messbar.',
+  'Stell dir ein Bild dazu vor, je absurder desto haltbarer.',
+  'Frag dich: Warum ist das so? Erklären schlägt Auswendiglernen.',
+];
+
 function answerBlock(card) {
+  const cs = cardState(card.id);
+  const zaeh = isLeech(cs);
   return `<div class="answer">
       <div class="lab">Antwort</div>
       <div class="val">${esc(card.a)}</div>
       ${card.t ? `<p class="expl">${esc(card.t)}</p>` : ''}
+      ${zaeh ? `<p class="knack">Diese Karte ist dir schon ${cs.lapses}-mal entfallen.
+        ${esc(KNACK_TIPPS[cs.lapses % KNACK_TIPPS.length])}</p>` : ''}
     </div>`;
 }
 

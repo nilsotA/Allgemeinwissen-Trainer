@@ -275,3 +275,11 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
 .hinweis{margin-top:12px;padding:12px 14px;border-radius:var(--r-s);font-size:14px;line-height:1.5;
   background:rgba(255,180,84,.12);border:1px solid rgba(255,180,84,.35);color:var(--txt)}
 .hinweis b{color:var(--warn)}
+
+/* Karten, die immer wieder umkippen */
+.pill.zaeh{color:var(--warn);border-color:rgba(255,180,84,.4)}
+.knack{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);
+  font-size:13.5px;line-height:1.5;color:var(--warn)}
+/* Balken der Wochen-Trefferquote heben sich vom Prognose-Diagramm ab */
+.fc-col > i.quote{background:linear-gradient(180deg,var(--ok),#2a9d76)}
+.fc-col:last-child > i.quote{background:linear-gradient(180deg,var(--grad1),var(--grad2))}
