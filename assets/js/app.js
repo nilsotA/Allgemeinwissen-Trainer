@@ -14,6 +14,9 @@ const topbar = document.getElementById('topbar');
 const live = document.getElementById('live');
 const esc = (s) => String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
 
+/* Grobe Umrechnung: etwa acht Karten je Minute */
+const SHORT = [{ n: 20, label: '~3 Min' }, { n: 40, label: '~5 Min' }, { n: 80, label: '~10 Min' }];
+
 let view = 'home';
 let run = null;          // laufende Lerneinheit
 let onKey = null;        // Tastaturbelegung des aktuellen Bildschirms
@@ -139,6 +142,10 @@ function renderHome() {
 
   <div class="btn-stack" style="margin-top:14px">
     <button class="btn primary" data-go="daily">${plan ? '▶︎ Tagestraining starten' : '✓ Extra-Runde üben'}</button>
+    ${plan > SHORT[0].n ? `<div class="row wrap" style="gap:8px;justify-content:center">
+      <span class="tiny" style="width:100%;text-align:center;margin-bottom:2px">Wenig Zeit? Kürzere Runde:</span>
+      ${SHORT.map(o => `<button class="chip" data-short="${o.n}">${o.label}</button>`).join('')}
+    </div>` : ''}
     <div class="row" style="gap:10px">
       <button class="btn" data-go="weak" style="flex:1">Wackelkandidaten</button>
       ${flags ? `<button class="btn" data-go="flag" style="flex:1">★ Markierte (${flags})</button>` : ''}
@@ -162,6 +169,9 @@ function renderHome() {
     const q = sess.buildDaily();
     startRun(q.length ? q : sess.buildWeak(15), 'daily');
   };
+  app.querySelectorAll('[data-short]').forEach(b => b.onclick = () => {
+    startRun(sess.buildDaily().slice(0, Number(b.dataset.short)), 'daily');
+  });
   app.querySelector('[data-go="weak"]').onclick = () => {
     const q = sess.buildWeak(20);
     q.length ? startRun(q, 'weak') : toast('Erst ein paar Karten lernen 🙂');
@@ -311,6 +321,16 @@ function renderStats() {
 
 /* ---- Nachschlagen: suchen, lesen, markieren ---- */
 let lookupQuery = '';
+
+/* Suchindex einmal aufbauen statt bei jedem Tastendruck über alle Karten zu normalisieren.
+   Bei über tausend Karten macht das den Unterschied zwischen ruckelnder und flüssiger Eingabe. */
+let SEARCH_INDEX = null;
+function searchIndex() {
+  if (!SEARCH_INDEX) {
+    SEARCH_INDEX = CARDS.map(c => normalize(`${c.q} ${c.a} ${c.sub} ${CAT_BY_ID[c.cat].name} ${c.t}`));
+  }
+  return SEARCH_INDEX;
+}
 function renderLookup() {
   app.innerHTML = `
     <h1 class="vh">Nachschlagen</h1>
@@ -329,10 +349,8 @@ function renderLookup() {
       list = CARDS.filter(c => isFlagged(c.id));
       if (!list.length) list = shuffle(CARDS).slice(0, 20);
     } else {
-      list = CARDS.filter(c => {
-        const hay = normalize(`${c.q} ${c.a} ${c.sub} ${CAT_BY_ID[c.cat].name} ${c.t}`);
-        return terms.every(t => hay.includes(t));
-      });
+      const idx = searchIndex();
+      list = CARDS.filter((c, i) => terms.every(t => idx[i].includes(t)));
     }
     const shown = list.slice(0, 60);
     res.innerHTML = `
