@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Wissenswerk – Allgemeinwissen trainieren</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Täglich 10 Minuten Allgemeinwissen mit Spaced Repetition – für Quizduelle und den Alltag.">
+<meta name="theme-color" content="#0e1116">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wissenswerk">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-180.png">
+<link rel="icon" href="./icons/icon-192.png" type="image/png">
+<link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body>
+
+<div id="boot" class="boot">
+  <div class="boot-logo">W</div>
+  <p>Wissenswerk wird geladen …</p>
+</div>
+
+<header id="topbar" class="topbar" hidden>
+  <div class="topbar-in">
+    <div class="brand"><span class="brand-mark">W</span><span class="brand-name">Wissenswerk</span></div>
+    <div class="streak" id="streakBadge" title="Tage in Folge">🔥 <span id="streakNum">0</span></div>
+  </div>
+</header>
+
+<main id="app" class="app" hidden></main>
+
+<nav id="nav" class="nav" hidden>
+  <button class="nav-btn" data-view="home"  type="button"><span class="ico">◎</span><span>Heute</span></button>
+  <button class="nav-btn" data-view="topics" type="button"><span class="ico">▦</span><span>Themen</span></button>
+  <button class="nav-btn" data-view="duel"  type="button"><span class="ico">⚡</span><span>Duell</span></button>
+  <button class="nav-btn" data-view="stats" type="button"><span class="ico">▤</span><span>Statistik</span></button>
+  <button class="nav-btn" data-view="settings" type="button"><span class="ico">⚙</span><span>Mehr</span></button>
+</nav>
+
+<script type="module" src="./assets/js/app.js"></script>
+<noscript><p style="padding:2rem;color:#fff">Diese App braucht JavaScript.</p></noscript>
+</body>
+</html>

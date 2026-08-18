@@ -1,0 +1,13 @@
+{
+  "name": "wissenswerk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Allgemeinwissen-Trainer als PWA – Spaced Repetition, offline nutzbar.",
+  "scripts": {
+    "build": "node scripts/make-icons.mjs && node scripts/make-sw.mjs",
+    "check": "node scripts/check-content.mjs",
+    "dev": "python3 -m http.server 8080",
+    "simulate": "node scripts/simulate.mjs"
+  }
+}
