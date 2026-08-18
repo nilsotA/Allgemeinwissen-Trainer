@@ -46,7 +46,12 @@ export function schedule(cs, grade, opts) {
   if (s.reps === 0) {
     s.iv = grade === EASY ? 3 : 1;
   } else if (s.reps === 1) {
-    s.iv = grade === HARD ? 2 : grade === EASY ? 7 : 4;
+    // Die feste Leiter 2/4/7 kann unter dem ersten Intervall liegen – nach „leicht"
+    // (3 Tage) haette „schwer" sonst auf 2 Tage verkuerzt, obwohl richtig geantwortet
+    // wurde. Deshalb ein Mindestabstand zum Vorwert, der die drei Stufen trennt.
+    const leiter = grade === HARD ? 2 : grade === EASY ? 7 : 4;
+    const mindest = prev + (grade === HARD ? 1 : grade === EASY ? 4 : 2);
+    s.iv = Math.max(leiter, mindest);
   } else {
     const mult = grade === HARD ? 1.25 : grade === EASY ? s.ef * 1.35 : s.ef;
     s.iv = Math.max(s.iv + 1, Math.round(s.iv * mult));

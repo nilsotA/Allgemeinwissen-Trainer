@@ -295,3 +295,51 @@ test('eine Antwort wird auch mit anderer Groß- und Kleinschreibung erkannt', ()
     assert.ok(similarity(c.a.toUpperCase(), c.a) >= 0.95, `${c.id}: ${c.a}`);
   }
 });
+
+test('eine richtige Antwort verkürzt das Intervall nie', () => {
+  // „leicht" ergibt 3 Tage; ein anschließendes „schwer" darf nicht auf 2 zurückfallen
+  for (const erst of [HARD, GOOD, EASY]) {
+    const nach1 = schedule(fresh(), erst);
+    for (const zweit of [HARD, GOOD, EASY]) {
+      for (let run = 0; run < 30; run++) {
+        const nach2 = schedule({ ...nach1 }, zweit);
+        assert.ok(nach2.iv > nach1.iv,
+          `${nach1.iv} Tage → ${nach2.iv} Tage bei Bewertung ${zweit}: Rückschritt trotz richtiger Antwort`);
+      }
+    }
+  }
+});
+
+test('die Bewertungsknöpfe versprechen unterschiedliche Intervalle', () => {
+  for (const erst of [HARD, GOOD, EASY]) {
+    const cs = schedule(fresh(), erst);
+    const gezeigt = [HARD, GOOD, EASY].map(g => preview(cs, g));
+    assert.equal(new Set(gezeigt).size, 3,
+      `nach „${erst}" zeigen die Knöpfe ${gezeigt.join(' / ')}`);
+  }
+});
+
+test('eine falsche Zahl macht die Antwort falsch', () => {
+  const faelle = [
+    ['5 Liter', '1,5 Liter'],
+    ['3 Stunden', '7 Stunden'],
+    ['12 Bundesländer', '16 Bundesländer'],
+    ['3,20 Meter', '2,44 Meter'],
+  ];
+  for (const [eingabe, loesung] of faelle) {
+    const v = similarity(eingabe, loesung);
+    assert.ok(v < 0.8, `„${eingabe}" gegen „${loesung}" wurde mit ${v.toFixed(2)} akzeptiert`);
+  }
+});
+
+test('eine unvollständige Antwort gilt nicht als richtig', () => {
+  const faelle = [
+    ['Länge mal Breite', 'Länge mal Breite mal Höhe'],
+    ['Grundseite mal Höhe', 'Grundseite mal Höhe geteilt durch 2'],
+    ['Kapital mal Zinssatz', 'Kapital mal Zinssatz geteilt durch 100'],
+  ];
+  for (const [eingabe, loesung] of faelle) {
+    const v = similarity(eingabe, loesung);
+    assert.ok(v < 0.8, `„${eingabe}" gegen „${loesung}" wurde mit ${v.toFixed(2)} akzeptiert`);
+  }
+});

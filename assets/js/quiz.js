@@ -100,6 +100,30 @@ function levenshtein(a, b) {
   return prev[b.length];
 }
 
+/* Wörter, die eine Antwort nur einordnen und deshalb weggelassen werden dürfen:
+   „Pythagoras" statt „Satz des Pythagoras" ist eine richtige Antwort. */
+const KLASSIFIKATOREN = new Set([
+  'satz', 'regel', 'gesetz', 'prinzip', 'theorem', 'formel', 'begriff',
+  'verfahren', 'methode', 'lehre', 'effekt',
+]);
+const RECHENWORT = new Set(['mal', 'pro', 'je', 'hoch', 'plus', 'ab', 'bis']);
+
+/* Alles Übrige trägt Bedeutung – vor allem Zahlen und Rechenwörter.
+   Ohne diese Prüfung galt „Grundseite mal Höhe" als richtige Antwort auf die
+   Dreiecksfläche, obwohl genau das fehlende „geteilt durch 2" der Fehler ist. */
+const traegtBedeutung = (t) => /\d/.test(t) || t.length > 3 || RECHENWORT.has(t);
+
+/** Welche bedeutungstragenden Wörter der Lösung fehlen in der Eingabe? */
+function fehlendeWoerter(eingabe, loesung) {
+  const vorhanden = new Set(eingabe.split(' ').filter(Boolean));
+  return loesung.split(' ').filter(w => w && traegtBedeutung(w) && !vorhanden.has(w));
+}
+
+/* Bei Antworten, deren Sinn an einer Zahl haengt, ist der Editierabstand
+   ein schlechtes Mass: „3 Stunden" und „7 Stunden" unterscheiden sich nur in
+   einem von neun Zeichen und kaemen sonst auf 0,89. */
+const zahlen = (t) => t.split(' ').filter(w => /\d/.test(w)).sort().join(' ');
+
 /** 0..1 – wie nah kommt die Eingabe der Lösung? */
 export function similarity(input, answer) {
   const a = normalize(input), b = normalize(answer);
@@ -110,16 +134,20 @@ export function similarity(input, answer) {
   const verneint = VERNEINUNG.test(a) && !VERNEINUNG.test(b);
 
   // Wer viel mehr schreibt als die Lösung lang ist, hat nicht dieselbe Antwort gegeben,
-  // sondern drumherum geredet – sonst würde „Bayern ist es nicht, sondern Hessen" durchgehen.
+  // sondern drumherum geredet – sonst ginge „Bayern ist es nicht, sondern Hessen" durch.
   const zuLang = a.length > b.length * 1.7 + 10;
 
   if (!verneint && !zuLang) {
-    // Kernbegriff getroffen (z. B. „Pythagoras“ statt „Satz des Pythagoras“)
-    const bw = b.split(' ').filter(w => w.length > 3);
-    if (bw.length && bw.every(w => a.includes(w))) return 0.95;
-    if (b.includes(a) && a.length >= Math.max(4, b.length * 0.5)) return 0.88;
+    // Eine kürzere Eingabe zählt nur, wenn sie nichts Bedeutungstragendes auslässt.
+    // Einordnende Wörter wie „Satz" dürfen fehlen, Zahlen und Rechenwörter nicht.
+    const fehlt = fehlendeWoerter(a, b);
+    if (fehlt.every(w => KLASSIFIKATOREN.has(w))) {
+      if (fehlt.length === 0) return 0.95;
+      if (b.includes(a) || a.length >= Math.max(4, b.length * 0.4)) return 0.9;
+    }
   }
   const dist = levenshtein(a, b);
   const roh = Math.max(0, 1 - dist / Math.max(a.length, b.length));
-  return verneint ? Math.min(roh, 0.5) : roh;
+  const zahlFalsch = zahlen(b) !== zahlen(a);
+  return (verneint || zahlFalsch) ? Math.min(roh, 0.5) : roh;
 }
