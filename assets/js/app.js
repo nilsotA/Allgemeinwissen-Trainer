@@ -155,14 +155,21 @@ function renderHome() {
   const flags = sess.flaggedCount();
   const hour = new Date().getHours();
   const greet = hour < 11 ? 'Guten Morgen' : hour < 18 ? 'Servus' : 'Guten Abend';
+  const datum = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
 
   const streak = liveStreak();
+  // Die Ueberschrift traegt die Auskunft, nicht die Begruessung: Wer die App
+  // oeffnet, will wissen, was ansteht - „Guten Abend" sagt darueber nichts.
   app.innerHTML = `
   <section class="hero fade">
-    <h1>${greet}</h1>
+    <p class="tag-zeile">${greet} · ${esc(datum)}</p>
+    <h1>${plan
+      ? `${plan} Karten stehen an`
+      : 'Heute ist alles erledigt'}</h1>
     <p class="muted">${plan
-      ? `${plan} Karten stehen an – etwa ${Math.max(2, Math.round(plan * 0.13))} Minuten.`
-      : 'Heute ist alles erledigt. Stark.'}</p>
+      ? `Etwa ${Math.max(2, Math.round(plan * 0.13))} Minuten${
+          Math.max(0, plan - o.due) ? ` · ${Math.max(0, plan - o.due)} davon neu` : ''}`
+      : 'Stark. Eine Extra-Runde geht trotzdem.'}</p>
     ${stau ? `<div class="hinweis">
       <b>Erst mal aufholen.</b> ${o.due} Wiederholungen warten – neue Karten pausieren,
       bis der Rückstand kleiner ist. So wächst der Berg nicht weiter.

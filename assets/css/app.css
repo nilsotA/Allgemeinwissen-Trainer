@@ -46,6 +46,10 @@ h1,h2,h3,h4{margin:0;line-height:1.24;font-weight:700}
 p{margin:0}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 svg{display:block;flex:none}
+/* Ziffern laufen gleich breit. Sonst springen Zahlen beim Hochzaehlen in der
+   Breite, und in der Statistik stehen Spalten nicht untereinander. */
+.kpi b,.pct,.stat b,.tiny,.sess-top .zaehler,.trow .tiny,.fc-col b,.wk b,
+.legend,.heat-days,.grades small{font-variant-numeric:tabular-nums}
 .ic{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ic.s{width:17px;height:17px;stroke-width:1.9}
 .ic.fill{fill:currentColor;stroke:none}
@@ -127,8 +131,11 @@ svg{display:block;flex:none}
 /* ---------- Heute ---------- */
 .hero{background:linear-gradient(158deg,var(--hero1),var(--hero2));border:1px solid var(--line);
   border-radius:var(--r-l);padding:18px 17px 17px;box-shadow:var(--sh2)}
-.hero h1{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:-.2px}
-.hero .muted{margin-top:5px}
+.hero h1{font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:-.3px;margin-top:2px}
+.hero .muted{margin-top:5px;text-wrap:balance}
+/* Begruessung und Datum stehen ueber der Ueberschrift, klein und ruhig -
+   sie ordnen ein, sie sind nicht die Nachricht. */
+.tag-zeile{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dim2)}
 
 /* Tagesbogen: der Fortschritt als Reihe von Marken, nicht als Zahl. */
 .seg{display:flex;gap:3px;margin:15px 0 8px;height:14px}
@@ -139,11 +146,13 @@ svg{display:block;flex:none}
 .seg-lab b{font-size:14px;font-weight:700}
 
 .week{display:flex;gap:6px;justify-content:space-between;margin-top:2px}
-.wd{flex:1;display:grid;justify-items:center;gap:5px}
+.wd{flex:1;display:grid;justify-items:center;gap:4px}
 .wd span{font-size:10.5px;color:var(--dim2);font-weight:700;letter-spacing:.02em}
-.wd i{width:100%;max-width:30px;aspect-ratio:1;border-radius:10px;background:var(--bg2);display:grid;place-content:center}
+/* Die Marken sind Auskunft, kein Schaubild - klein genug, dass die Woche eine
+   Zeile bleibt und nicht einen Viertelbildschirm einnimmt. */
+.wd i{width:100%;max-width:24px;aspect-ratio:1;border-radius:8px;background:var(--bg2);display:grid;place-content:center}
 .wd i.done{background:linear-gradient(158deg,var(--grad1),var(--grad2))}
-.wd i.done::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--on-acc)}
+.wd i.done::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--on-acc)}
 .wd.today i{box-shadow:0 0 0 2px var(--acc)}
 .wd.fut i{background:transparent;border:1px dashed var(--line2)}
 
@@ -231,17 +240,19 @@ svg{display:block;flex:none}
 .recall-in:focus{outline:2px solid var(--acc);outline-offset:1px;background:var(--card)}
 
 /* ---------- Themen / Statistik ---------- */
-.tlist{display:grid;gap:9px}
-.trow{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);
-  border-radius:var(--r);padding:13px 14px;width:100%;text-align:left;box-shadow:var(--sh1);color:var(--txt);
+.tlist{display:grid;gap:7px}
+/* Enger gesetzt als die uebrigen Karten: neun Themen sollen sich ueberblicken
+   lassen, ohne dass man dreimal wischt. */
+.trow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r-s);padding:10px 13px;width:100%;text-align:left;box-shadow:var(--sh1);color:var(--txt);
   transition:transform .1s}
 button.trow:active{transform:scale(.99)}
-.tico{width:42px;height:42px;flex:none;border-radius:13px;display:grid;place-content:center;
+.tico{width:36px;height:36px;flex:none;border-radius:11px;display:grid;place-content:center;
   background:var(--acc-soft);color:var(--acc2)}
-.tico .ic{width:23px;height:23px}
-.trow h3{font-size:15.5px}
-.trow .tiny{display:block;margin-top:2px}
-.trow .bar{margin-top:8px;height:7px}
+.tico .ic{width:20px;height:20px}
+.trow h3{font-size:15px}
+.trow .tiny{display:block;margin-top:1px}
+.trow .bar{margin-top:6px;height:5px}
 .pct{font-size:13.5px;font-weight:700;color:var(--dim);flex:none;min-width:38px;text-align:right}
 
 .heat{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:3px}

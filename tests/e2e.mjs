@@ -105,7 +105,9 @@ try {
   await page.goto(`${URL_BASE}/index.html`, { waitUntil: 'networkidle' });
   await page.waitForSelector('.hero', { timeout: 10000 });
   check('Startseite erscheint', await page.locator('.hero h1').count() === 1);
-  check('Tagesplan wird angekündigt', /Karten stehen an|alles erledigt/.test(await page.locator('.hero .muted').first().innerText()));
+  // Die Auskunft steht in der Ueberschrift, nicht mehr in der Nebenzeile - deshalb
+  // wird der ganze Block geprueft statt eines einzelnen Elements.
+  check('Tagesplan wird angekündigt', /Karten stehen an|alles erledigt/.test(await page.locator('.hero').first().innerText()));
 
   await page.click('[data-go="daily"]');
   await page.waitForSelector('.opt, #reveal');
