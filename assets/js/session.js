@@ -15,13 +15,15 @@ function inScope(c) {
   return !a || a.has(c.cat);
 }
 
-/** Fällige Karten, dringendste zuerst. */
+/** Fällige Karten, dringendste zuerst.
+    seen > 0 ist wichtig: eine Karte mit Zustand, aber ohne Abfrage gilt als neu –
+    ohne diese Bedingung stünde sie gleichzeitig in beiden Listen und käme doppelt dran. */
 export function dueCards(pool = CARDS) {
   const t = todayNum();
   return pool
     .filter(c => inScope(c))
     .map(c => ({ c, s: cardState(c.id) }))
-    .filter(x => x.s && isDue(x.s, t))
+    .filter(x => x.s && x.s.seen > 0 && isDue(x.s, t))
     .sort((a, b) => (a.s.due - b.s.due) || (strength(a.s) - strength(b.s)))
     .map(x => x.c);
 }
@@ -82,7 +84,7 @@ function interleave(rev, fresh) {
 export function buildTopic(cat, limit = 20) {
   const pool = catCards(cat);
   const t = todayNum();
-  const due = pool.filter(c => { const s = cardState(c.id); return s && isDue(s, t); });
+  const due = pool.filter(c => { const s = cardState(c.id); return s && s.seen > 0 && isDue(s, t); });
   const fresh = pool.filter(c => isNew(cardState(c.id)));
   const rest = shuffle(pool.filter(c => !due.includes(c) && !fresh.includes(c)));
   const ladder = fresh.sort((a, b) => a.d - b.d);
@@ -188,7 +190,7 @@ export function weakSubs(minSeen = 3, limit = 6) {
 export function buildSub(cat, sub, limit = 20) {
   const pool = CARDS.filter(c => c.cat === cat && c.sub === sub);
   const t = todayNum();
-  const due = pool.filter(c => { const s = cardState(c.id); return s && isDue(s, t); });
+  const due = pool.filter(c => { const s = cardState(c.id); return s && s.seen > 0 && isDue(s, t); });
   const rest = shuffle(pool.filter(c => !due.includes(c)));
   return [...due, ...rest].slice(0, limit).map(c => ({ card: c, fresh: isNew(cardState(c.id)) }));
 }

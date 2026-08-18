@@ -37,6 +37,7 @@ function show(v) {
   view = v;
   run = null;
   onKey = null;
+  stopDuelTimer();
   app.classList.remove('full');
   app.hidden = false; topbar.hidden = false; nav.hidden = false;
   render();
@@ -525,8 +526,14 @@ function renderSettings() {
 }
 
 /* ================= Lerneinheit ================= */
+/* Laufender Zeitgeber der Duellfrage – muss beim Verlassen der Ansicht enden,
+   sonst feuert er weiter und ruft finish() auf einem längst ersetzten Bildschirm auf. */
+let duelTimer = null;
+function stopDuelTimer() { if (duelTimer) { clearInterval(duelTimer); duelTimer = null; } }
+
 function startRun(queue, mode) {
   if (!queue.length) return toast('Nichts zu üben');
+  stopDuelTimer();
   run = {
     queue: queue.slice(), i: 0, mode,
     done: 0, correct: 0, start: Date.now(),
@@ -539,6 +546,7 @@ function startRun(queue, mode) {
 }
 
 function endRun() {
+  stopDuelTimer();
   const r = run;
   const secs = Math.round((Date.now() - r.start) / 1000);
   today().sec = (today().sec || 0) + secs;
@@ -727,12 +735,20 @@ function revealRecall(card, typed, sim, cs, isFresh) {
        ${g(AGAIN, 'Nochmal', 'g0')}${g(HARD, 'Schwer', 'g1')}${g(GOOD, 'Gut', 'g2')}${g(EASY, 'Leicht', 'g3')}
      </div>`
   );
+  lockUndo();
   const grade = (n) => commit(card, n, n !== AGAIN, isFresh);
   app.querySelectorAll('[data-g]').forEach(b => b.onclick = () => grade(Number(b.dataset.g)));
   onKey = (e) => {
     const idx = '1234'.indexOf(e.key);
     if (idx >= 0) { e.preventDefault(); grade(idx); }
   };
+}
+
+/* Solange die Lösung der aktuellen Karte steht, würde „Rückgängig" die
+   VORHERIGE Antwort zurücknehmen – das versteht niemand. Also sperren. */
+function lockUndo() {
+  const b = document.getElementById('undo');
+  if (b) b.disabled = true;
 }
 
 function answerBlock(card) {
@@ -752,6 +768,7 @@ function showFeedback(card, ok, grade, isFresh) {
   body.appendChild(div);
   body.scrollTop = body.scrollHeight;
   app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
+  lockUndo();
   const next = () => commit(card, grade, ok, isFresh);
   document.getElementById('next').onclick = next;
   onKey = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); } };
@@ -833,7 +850,9 @@ function askDuel(card) {
   document.getElementById('undo').disabled = true;   // im Duell zählt die Zeit
   const bar = app.querySelector('#clock i');
   let finished = false;
-  const tick = setInterval(() => {
+  stopDuelTimer();
+  duelTimer = setInterval(() => {
+    if (!run || !document.getElementById('clock')) return stopDuelTimer();
     const left = Math.max(0, 1 - (Date.now() - t0) / LIMIT);
     bar.style.width = (left * 100).toFixed(1) + '%';
     bar.style.background = left < 0.3 ? 'linear-gradient(90deg,#ff6b6b,#ffb454)' : '';
@@ -841,9 +860,9 @@ function askDuel(card) {
   }, 100);
 
   function finish(chosen) {
-    if (finished) return;
+    if (finished || !run) return;
     finished = true;
-    clearInterval(tick);
+    stopDuelTimer();
     const ok = chosen === card.a;
     app.querySelectorAll('.opt').forEach(x => {
       x.disabled = true;
@@ -868,10 +887,11 @@ function askDuel(card) {
       touchStreak();
       if (!ok) {
         run.wrong.push(card);
-        // Fehler im Duell holt das Tagestraining sofort nach
-        const cs = { ...(cardState(card.id) || freshState()) };
-        cs.due = todayNum();
-        putCard(card.id, cs);
+        // Fehler im Duell holt das Tagestraining sofort nach. Nur bei bereits
+        // gelernten Karten – eine unberührte Karte steht ohnehin in der Neu-Liste,
+        // und ein Zustand mit seen=0 würde sie in beide Listen bringen.
+        const cs = cardState(card.id);
+        if (cs && cs.seen > 0) putCard(card.id, { ...cs, due: todayNum() });
       }
       save();
       run.done++; if (ok) run.correct++;
