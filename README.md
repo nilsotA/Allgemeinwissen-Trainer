@@ -22,9 +22,9 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Sofortige Rückmeldung** | Richtig/falsch plus Erklärung direkt nach der Antwort. |
 | **Kleine tägliche Dosis** | Standard: 12 neue Karten pro Tag. Das sind rund 9 Minuten – dauerhaft durchhaltbar. |
 
-Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt 79 Karten pro Tag,
-Spitzenlast 102, nach einem halben Jahr sitzen rund 980 Karten fest. Der Deckel für
-Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem Kartenbestand mitwächst.
+Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt 89 Karten pro Tag,
+Spitzenlast 102, nach einem halben Jahr sitzen rund 1.160 der 1.347 Karten fest. Der Deckel
+für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem Kartenbestand mitwächst.
 
 ### Was bewusst *nicht* drin ist
 
@@ -103,12 +103,17 @@ darauf, ob sich eine richtige Antwort schon an ihrer **Form** verrät:
 
 Solche Karten lassen sich ohne Wissen lösen. Wer immer die längste Option wählt, traf in
 einer frühen Fassung in 47 % der Fälle richtig statt in 25 % wie beim Raten – das verfälscht
-die Trefferquote und lässt den Scheduler zu optimistisch planen.
+die Trefferquote und lässt den Scheduler zu optimistisch planen. Nach der Überarbeitung von
+287 Kartensätzen liegt der Wert bei 23,8 %; `npm run check` gibt ihn bei jedem Lauf aus und
+schlägt oberhalb von 32 % fehl.
 
-Die Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
-die Warteschlangen (keine Dubletten, Budget, Themenfilter) und den Vergleich freier
-Eingaben ab – inklusive zweier Invarianten über den gesamten Bestand: keine Antwort darf
-zu einem leeren Text normalisieren, und jede Antwort muss mit sich selbst übereinstimmen.
+Die 52 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
+den Vergleich freier Eingaben ab. Beim freien Abrufen zählt insbesondere, dass eine falsche
+Formel nicht als richtig durchgeht: „a² − b² = c²" ist keine Antwort auf den Satz des
+Pythagoras, und „Grundseite mal Höhe" keine auf die Dreiecksfläche. Zwei Invarianten laufen
+über den gesamten Bestand: keine Antwort darf zu einem leeren Text normalisieren, und jede
+Antwort muss mit sich selbst übereinstimmen.
 
 ### Karten ergänzen
 

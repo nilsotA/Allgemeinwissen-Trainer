@@ -343,3 +343,37 @@ test('eine unvollständige Antwort gilt nicht als richtig', () => {
     assert.ok(v < 0.8, `„${eingabe}" gegen „${loesung}" wurde mit ${v.toFixed(2)} akzeptiert`);
   }
 });
+
+test('eine falsche Formel gilt nicht als richtige Antwort', () => {
+  const faelle = [
+    ['a² − b² = c²', 'a² + b² = c²'],
+    ['(a + b)² = a² − 2ab + b²', '(a + b)² = a² + 2ab + b²'],
+    ['−cos(x)', 'cos(x)'],
+    ['sin(x)', 'cos(x)'],
+    ['A = 2 · π · r', 'A = π · r²'],
+    ['U = R + I', 'U = R · I'],
+  ];
+  for (const [eingabe, loesung] of faelle) {
+    const v = similarity(eingabe, loesung);
+    assert.ok(v < 0.8, `„${eingabe}" gegen „${loesung}" wurde mit ${v.toFixed(2)} akzeptiert`);
+  }
+});
+
+test('Formeln gelten unabhängig von der Schreibweise der Zeichen', () => {
+  const faelle = [
+    ['a2+b2=c2', 'a² + b² = c²'],
+    ['E=mc2', 'E = mc²'],
+    ['-273,15 °C', '−273,15 °C'],
+    ['U = R * I', 'U = R · I'],
+  ];
+  for (const [eingabe, loesung] of faelle) {
+    const v = similarity(eingabe, loesung);
+    assert.ok(v >= 0.8, `„${eingabe}" gegen „${loesung}" ergab nur ${v.toFixed(2)}`);
+  }
+});
+
+test('Bindestrichnamen bleiben unversehrt', () => {
+  for (const name of ['Marie-Antoinette', 'Hitler-Stalin-Pakt', 'D-Day, 6. Juni 1944', 'Der Zwei-plus-Vier-Vertrag']) {
+    assert.equal(similarity(name, name), 1, `„${name}" stimmt nicht mit sich selbst überein`);
+  }
+});

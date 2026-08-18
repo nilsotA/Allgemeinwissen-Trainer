@@ -33,6 +33,19 @@ const words = (s) => s.replace(/[0-9]+/g, '#')
   .replace(/[^A-Za-zÄÖÜäöüß#]+/g, ' ').trim().toLowerCase()
   .split(' ').filter(w => w && w !== '#').join(' ');
 
+/* Ist die richtige Antwort deutlich laenger als alle Ablenker, laesst sich die
+   Karte ohne Wissen loesen: „nimm die laengste Option". In einer fruehen Fassung
+   traf diese Strategie in 47 Prozent der Faelle statt in 25 wie beim Raten. */
+let laengenAusreisser = 0;
+for (const c of CARDS) {
+  if (!c.w || c.w.length < 3) continue;
+  const laengsterAblenker = Math.max(...c.w.map(w => w.length));
+  if (c.a.length - laengsterAblenker >= 12 && c.a.length >= laengsterAblenker * 1.45) {
+    laengenAusreisser++;
+    warn(`${c.id}: Antwort ${c.a.length} Zeichen, laengster Ablenker nur ${laengsterAblenker} – „${c.a.slice(0, 50)}"`);
+  }
+}
+
 for (const c of CARDS) {
   if (!c.w || c.w.length < 3) continue;
   if (hasAside(c.a) && !c.w.some(hasAside)) {
@@ -62,5 +75,18 @@ console.log('Je Kategorie :', CATS.map(c => `${c.id}=${byCat[c.id] || 0}`).join(
 console.log('Je Stufe     :', `Grundlagen=${byLvl[1] || 0}  Solide=${byLvl[2] || 0}  Profi=${byLvl[3] || 0}`);
 const subs = new Set(CARDS.map(c => c.cat + '/' + c.sub));
 console.log('Teilgebiete  :', subs.size);
+
+/* Wie gut funktioniert „nimm die laengste Option"? Sollte bei 25 Prozent liegen. */
+let laengsteGewinnt = 0, mitAblenkern = 0;
+for (const c of CARDS) {
+  if (!c.w || c.w.length < 3) continue;
+  mitAblenkern++;
+  const alle = [c.a, ...c.w];
+  const max = Math.max(...alle.map(x => x.length));
+  if (c.a.length === max && alle.filter(x => x.length === max).length === 1) laengsteGewinnt++;
+}
+const quote = (laengsteGewinnt / mitAblenkern) * 100;
+console.log(`Ratequote    : ${quote.toFixed(1)} % mit „nimm die laengste Option" (Zufall waere 25 %)`);
+if (quote > 32) fail(`Die Laenge verraet die Antwort zu oft: ${quote.toFixed(1)} % statt hoechstens 32 %`);
 console.log(`\n${errors} Fehler, ${warnings} Hinweise`);
 process.exit(errors ? 1 : 0);

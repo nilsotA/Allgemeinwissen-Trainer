@@ -65,7 +65,11 @@ const ZEICHEN = [
   [/[⁵₅]/g, '5'], [/[⁶₆]/g, '6'], [/[⁷₇]/g, '7'], [/[⁸₈]/g, '8'], [/[⁹₉]/g, '9'],
   [/π/g, ' pi '], [/[αΑ]/g, ' alpha '], [/[βΒ]/g, ' beta '], [/[γΓ]/g, ' gamma '],
   [/[δΔ]/g, ' delta '], [/[λΛ]/g, ' lambda '], [/[σΣ]/g, ' sigma '], [/[ωΩ]/g, ' omega '],
-  [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '], [/[·×]/g, ' mal '],
+  [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '], [/[·×*]/g, ' mal '],
+  // Rechenzeichen tragen Bedeutung: ohne sie waere „a² − b² = c²" nicht von
+  // „a² + b² = c²" zu unterscheiden – die falsche Formel galte als richtig.
+  [/=/g, ' gleich '], [/\+/g, ' plus '], [/−/g, ' minus '], [/\^/g, ' hoch '],
+  [/(^|\s)-(?=\s|$|\d)/g, ' minus '],
   [/ℕ/g, ' n '], [/ℤ/g, ' z '], [/ℚ/g, ' q '], [/ℝ/g, ' r '], [/ℂ/g, ' c '],
   [/±/g, ' plusminus '], [/[≈~]/g, ' rund '], [/≤/g, ' hoechstens '], [/≥/g, ' mindestens '],
   [/∞/g, ' unendlich '], [/€/g, ' euro '], [/%/g, ' prozent '], [/&/g, ' und '],
@@ -111,7 +115,9 @@ const RECHENWORT = new Set(['mal', 'pro', 'je', 'hoch', 'plus', 'ab', 'bis']);
 /* Alles Übrige trägt Bedeutung – vor allem Zahlen und Rechenwörter.
    Ohne diese Prüfung galt „Grundseite mal Höhe" als richtige Antwort auf die
    Dreiecksfläche, obwohl genau das fehlende „geteilt durch 2" der Fehler ist. */
-const traegtBedeutung = (t) => /\d/.test(t) || t.length > 3 || RECHENWORT.has(t);
+// Schwelle bewusst bei drei Zeichen: „sin", „cos", „Nil", „Rom" tragen die ganze
+// Bedeutung. Fuellwoerter wie „der" oder „und" sind zu diesem Zeitpunkt schon weg.
+const traegtBedeutung = (t) => /\d/.test(t) || t.length >= 3 || RECHENWORT.has(t);
 
 /** Welche bedeutungstragenden Wörter der Lösung fehlen in der Eingabe? */
 function fehlendeWoerter(eingabe, loesung) {
@@ -120,9 +126,11 @@ function fehlendeWoerter(eingabe, loesung) {
 }
 
 /* Bei Antworten, deren Sinn an einer Zahl haengt, ist der Editierabstand
-   ein schlechtes Mass: „3 Stunden" und „7 Stunden" unterscheiden sich nur in
-   einem von neun Zeichen und kaemen sonst auf 0,89. */
-const zahlen = (t) => t.split(' ').filter(w => /\d/.test(w)).sort().join(' ');
+   ein schlechtes Mass: „3 Stunden" und „7 Stunden" unterscheiden sich in einem
+   von neun Zeichen, „a2 plus b2" und „a2 minus b2" in vieren von elf. */
+const OPERATOR = new Set(['plus', 'minus', 'gleich', 'mal', 'geteilt', 'durch', 'hoch', 'wurzel']);
+const kennwoerter = (t) =>
+  t.split(' ').filter(w => /\d/.test(w) || OPERATOR.has(w)).sort().join(' ');
 
 /** 0..1 – wie nah kommt die Eingabe der Lösung? */
 export function similarity(input, answer) {
@@ -137,7 +145,11 @@ export function similarity(input, answer) {
   // sondern drumherum geredet – sonst ginge „Bayern ist es nicht, sondern Hessen" durch.
   const zuLang = a.length > b.length * 1.7 + 10;
 
-  if (!verneint && !zuLang) {
+  // Zahlen und Rechenzeichen muessen auf beiden Seiten uebereinstimmen – fehlende
+  // wie ueberzaehlige. Sonst galte „−cos(x)" als Antwort auf „cos(x)".
+  const kernFalsch = kennwoerter(b) !== kennwoerter(a);
+
+  if (!verneint && !zuLang && !kernFalsch) {
     // Eine kürzere Eingabe zählt nur, wenn sie nichts Bedeutungstragendes auslässt.
     // Einordnende Wörter wie „Satz" dürfen fehlen, Zahlen und Rechenwörter nicht.
     const fehlt = fehlendeWoerter(a, b);
@@ -148,6 +160,5 @@ export function similarity(input, answer) {
   }
   const dist = levenshtein(a, b);
   const roh = Math.max(0, 1 - dist / Math.max(a.length, b.length));
-  const zahlFalsch = zahlen(b) !== zahlen(a);
-  return (verneint || zahlFalsch) ? Math.min(roh, 0.5) : roh;
+  return (verneint || kernFalsch) ? Math.min(roh, 0.5) : roh;
 }
