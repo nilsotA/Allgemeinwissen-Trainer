@@ -2,3 +2,7 @@ node_modules/
 .DS_Store
 .netlify/
 *.log
+
+# Arbeitskopien, die parallel laufende Agenten anlegen (git worktrees).
+# Das sind Auscheckungen dieses Repositorys selbst und gehoeren nicht hinein.
+.claude/worktrees/
