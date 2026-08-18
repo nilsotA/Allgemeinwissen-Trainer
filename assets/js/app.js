@@ -284,6 +284,38 @@ function renderDuelStart() {
   document.getElementById('duelGo').onclick = () => startRun(sess.buildDuel(10), 'duel');
 }
 
+/* Trefferquoten liegen fast immer zwischen 60 und 85 Prozent. Als Balken ab
+   null gezeichnet sehen acht solche Wochen identisch aus - das Bild sagte
+   nichts. Ein Linienzug ueber dem beobachteten Bereich zeigt die Bewegung, und
+   weil die Achse nicht bei null steht, sind es bewusst Punkte und keine Balken:
+   Balken mit abgeschnittener Achse wuerden Unterschiede uebertreiben. */
+function verlaufKarte(wochen, trendText) {
+  const werte = wochen.map(w => w.pct);
+  const lo = Math.max(0, Math.min(...werte) - 4);
+  const hi = Math.min(100, Math.max(...werte) + 4);
+  const spanne = Math.max(1, hi - lo);
+  const SCHRITT = 40, OBEN = 16, HOEHE = 52;
+  const breite = wochen.length * SCHRITT;
+  const x = (i) => i * SCHRITT + SCHRITT / 2;
+  const y = (v) => OBEN + HOEHE - ((v - lo) / spanne) * HOEHE;
+  const schnitt = werte.reduce((a, b) => a + b, 0) / werte.length;
+  const punkte = wochen.map((w, i) => `${x(i)},${y(w.pct).toFixed(1)}`).join(' ');
+  return `
+    <div class="sec">Trefferquote je Woche</div>
+    <div class="card">
+      <svg class="spark" viewBox="0 0 ${breite} 96" width="100%" height="96"
+           role="img" aria-label="Trefferquote der letzten ${wochen.length} Wochen: ${werte.join(', ')} Prozent">
+        <line class="mittel" x1="0" y1="${y(schnitt).toFixed(1)}" x2="${breite}" y2="${y(schnitt).toFixed(1)}"/>
+        <polyline class="zug" points="${punkte}"/>
+        ${wochen.map((w, i) => `
+          <circle class="pkt ${i === wochen.length - 1 ? 'jetzt' : ''}" cx="${x(i)}" cy="${y(w.pct).toFixed(1)}" r="4"/>
+          <text class="wert" x="${x(i)}" y="${(y(w.pct) - 10).toFixed(1)}">${w.pct}%</text>
+          <text class="marke" x="${x(i)}" y="92">${esc(w.label)}</text>`).join('')}
+      </svg>
+      <p class="tiny" style="margin-top:8px">${trendText}</p>
+    </div>`;
+}
+
 function renderStats() {
   const st = S();
   const o = sess.overview();
@@ -386,17 +418,7 @@ function renderStats() {
       </button>`).join('')}
     </div>` : ''}
 
-    ${wochen.length >= 2 ? `
-    <div class="sec">Trefferquote je Woche</div>
-    <div class="card">
-      <div class="fc">${wochen.map(w => `
-        <div class="fc-col" title="${w.label}: ${w.done} Antworten">
-          <span class="fc-n">${w.pct}%</span>
-          <i class="quote" style="height:${Math.max(4, (w.pct / 100) * 72).toFixed(0)}px"></i>
-          <span class="fc-l">${w.label}</span>
-        </div>`).join('')}</div>
-      <p class="tiny" style="margin-top:10px">${trendText}</p>
-    </div>` : ''}
+    ${wochen.length >= 2 ? verlaufKarte(wochen, trendText) : ''}
 
     <div class="sec">Wissensstand</div>
     <div class="card">
