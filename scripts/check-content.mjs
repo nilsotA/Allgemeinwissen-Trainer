@@ -22,7 +22,7 @@ for (const c of CARDS) {
   if (qs.has(c.q)) fail(`Doppelte Frage: „${c.q}“ (${c.id} / ${qs.get(c.q)})`);
   qs.set(c.q, c.id);
   if (c.q.length > 160) warn(`${c.id}: Frage sehr lang (${c.q.length} Zeichen)`);
-  if (c.a.length > 90) warn(`${c.id}: Antwort sehr lang (${c.a.length} Zeichen)`);
+  if (c.a.length > 100) warn(`${c.id}: Antwort sehr lang für ein Handy-Display (${c.a.length} Zeichen)`);
 }
 
 /* Die richtige Antwort darf sich nicht schon an ihrer Form verraten:

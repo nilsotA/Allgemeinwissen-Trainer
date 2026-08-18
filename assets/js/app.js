@@ -2,18 +2,27 @@
 import { CATS, CAT_BY_ID, CARDS, LEVELS } from '../../data/index.js';
 import FACTS from '../../data/facts.js';
 import * as store from './store.js';
-import { S, settings, setSetting, save, cardState, putCard, today, todayNum, dayKey, numToKey, liveStreak, touchStreak } from './store.js';
-import { schedule, strength, preview, fresh as freshState, AGAIN, HARD, GOOD, EASY, isDue } from './srs.js';
-import { options, similarity, shuffle } from './quiz.js';
+import { S, settings, setSetting, save, cardState, putCard, today, todayNum, dayKey,
+         numToKey, liveStreak, touchStreak, isFlagged, toggleFlag, setSaveErrorHandler } from './store.js';
+import { schedule, strength, preview, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
+import { options, similarity, normalize, shuffle } from './quiz.js';
 import * as sess from './session.js';
 
 const app = document.getElementById('app');
 const nav = document.getElementById('nav');
 const topbar = document.getElementById('topbar');
+const live = document.getElementById('live');
 const esc = (s) => String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
 
 let view = 'home';
 let run = null;          // laufende Lerneinheit
+let onKey = null;        // Tastaturbelegung des aktuellen Bildschirms
+
+document.addEventListener('keydown', (e) => {
+  if (!onKey) return;
+  if (e.target.matches('input, textarea, select')) return;
+  onKey(e);
+});
 
 /* ================= Chrome ================= */
 function paintChrome() {
@@ -24,6 +33,7 @@ function paintChrome() {
 function show(v) {
   view = v;
   run = null;
+  onKey = null;
   app.classList.remove('full');
   app.hidden = false; topbar.hidden = false; nav.hidden = false;
   render();
@@ -33,24 +43,25 @@ nav.addEventListener('click', e => {
   const b = e.target.closest('.nav-btn');
   if (b) show(b.dataset.view);
 });
+document.getElementById('searchBtn').onclick = () => show('lookup');
 
-function toast(msg) {
+function toast(msg, ms = 2200) {
   document.querySelector('.toast')?.remove();
   const d = document.createElement('div');
   d.className = 'toast';
   d.textContent = msg;
   document.body.appendChild(d);
-  setTimeout(() => d.remove(), 2200);
+  setTimeout(() => d.remove(), ms);
 }
+function announce(msg) { if (live) live.textContent = msg; }
+
+setSaveErrorHandler(() => toast('Speicher voll – Fortschritt sichern und Platz schaffen', 5000));
 
 /* ================= Views ================= */
 function render() {
   paintChrome();
-  if (view === 'home') return renderHome();
-  if (view === 'topics') return renderTopics();
-  if (view === 'duel') return renderDuelStart();
-  if (view === 'stats') return renderStats();
-  if (view === 'settings') return renderSettings();
+  ({ home: renderHome, topics: renderTopics, duel: renderDuelStart,
+     stats: renderStats, settings: renderSettings, lookup: renderLookup }[view] || renderHome)();
 }
 
 function ring(pct) {
@@ -81,22 +92,24 @@ function dailyFact() {
 function renderHome() {
   const o = sess.overview();
   const d = today();
-  const goal = settings().newPerDay + Math.min(o.due, settings().maxReviews);
-  const pct = goal ? Math.min(1, d.done / goal) : 1;
-  const f = dailyFact();
   const plan = sess.buildDaily().length;
+  const pct = Math.min(1, d.done / (d.done + plan || 1));
+  const f = dailyFact();
+  const flags = sess.flaggedCount();
   const hour = new Date().getHours();
   const greet = hour < 11 ? 'Guten Morgen' : hour < 18 ? 'Servus' : 'Guten Abend';
 
   app.innerHTML = `
   <section class="hero fade">
     <h1>${greet}!</h1>
-    <p class="muted">${plan ? `${plan} Karten stehen heute an – etwa ${Math.max(2, Math.round(plan * 0.35))} Minuten.` : 'Heute ist alles erledigt. Stark.'}</p>
+    <p class="muted">${plan
+      ? `${plan} Karten stehen an – etwa ${Math.max(2, Math.round(plan * 0.13))} Minuten.`
+      : 'Heute ist alles erledigt. Stark.'}</p>
     <div class="dial">
       ${ring(pct)}
       <div class="grow">
         <div class="row between"><span class="tiny">Heute beantwortet</span><b>${d.done}</b></div>
-        <div class="bar ${pct >= 1 ? 'ok' : ''}" style="margin:8px 0 10px"><i style="width:${(pct * 100).toFixed(0)}%"></i></div>
+        <div class="bar ${plan === 0 ? 'ok' : ''}" style="margin:8px 0 10px"><i style="width:${(pct * 100).toFixed(0)}%"></i></div>
         <span class="tiny">${d.done ? `${Math.round((d.correct / Math.max(1, d.done)) * 100)} % richtig` : 'Noch nichts gelernt heute'}</span>
       </div>
     </div>
@@ -109,7 +122,10 @@ function renderHome() {
 
   <div class="btn-stack" style="margin-top:14px">
     <button class="btn primary" data-go="daily">${plan ? '▶︎ Tagestraining starten' : '✓ Extra-Runde üben'}</button>
-    <button class="btn" data-go="weak">Wackelkandidaten üben</button>
+    <div class="row" style="gap:10px">
+      <button class="btn" data-go="weak" style="flex:1">Wackelkandidaten</button>
+      ${flags ? `<button class="btn" data-go="flag" style="flex:1">★ Markierte (${flags})</button>` : ''}
+    </div>
   </div>
 
   <div class="sec">Wissen des Tages</div>
@@ -131,16 +147,18 @@ function renderHome() {
   };
   app.querySelector('[data-go="weak"]').onclick = () => {
     const q = sess.buildWeak(20);
-    if (!q.length) return toast('Erst ein paar Karten lernen 🙂');
-    startRun(q, 'weak');
+    q.length ? startRun(q, 'weak') : toast('Erst ein paar Karten lernen 🙂');
   };
+  app.querySelector('[data-go="flag"]')?.addEventListener('click', () => {
+    startRun(sess.buildFlagged(20), 'flag');
+  });
 }
 
 function renderTopics() {
   const p = sess.catProgress();
   const active = settings().cats;
   app.innerHTML = `
-    <h1 style="font-size:22px;margin-bottom:4px">Themen</h1>
+    <h1 class="vh">Themen</h1>
     <p class="muted">Gezielt ein Gebiet üben – oder in den Einstellungen ganze Themen abschalten.</p>
     <div class="tlist" style="margin-top:16px">
       ${CATS.map(c => {
@@ -160,8 +178,7 @@ function renderTopics() {
   app.querySelectorAll('[data-cat]').forEach(b => {
     b.onclick = () => {
       const q = sess.buildTopic(b.dataset.cat, 20);
-      if (!q.length) return toast('Keine Karten in diesem Thema');
-      startRun(q, 'topic');
+      q.length ? startRun(q, 'topic') : toast('Keine Karten in diesem Thema');
     };
   });
 }
@@ -169,7 +186,7 @@ function renderTopics() {
 function renderDuelStart() {
   const st = S();
   app.innerHTML = `
-    <h1 style="font-size:22px;margin-bottom:4px">Duell-Modus</h1>
+    <h1 class="vh">Duell-Modus</h1>
     <p class="muted">Zehn Fragen, 15 Sekunden pro Frage. Trainiert genau das, was im Quizduell zählt: schnelles Erkennen unter Druck.</p>
     <div class="card" style="margin-top:16px">
       <div class="row between"><span>Bestleistung</span><b>${st.duelBest || 0} / 10</b></div>
@@ -188,9 +205,8 @@ function renderStats() {
   const o = sess.overview();
   const WEEKS = 12;
   const t = todayNum();
-  // Montag = 0; der 1.1.1970 war ein Donnerstag
-  const dowMon = (d) => ((d + 3) % 7 + 7) % 7;
-  const start = t + (6 - dowMon(t)) - (WEEKS * 7 - 1);   // erste Spalte beginnt an einem Montag
+  const dowMon = (d) => ((d + 3) % 7 + 7) % 7;      // Montag = 0; der 1.1.1970 war ein Donnerstag
+  const start = t + (6 - dowMon(t)) - (WEEKS * 7 - 1);
   let cells = '';
   for (let i = 0; i < WEEKS * 7; i++) {
     const day = start + i;
@@ -202,14 +218,19 @@ function renderStats() {
   }
   const p = sess.catProgress();
   const totalDone = Object.values(st.days).reduce((a, d) => a + (d.done || 0), 0);
+  const fc = sess.forecast(7);
+  const fcMax = Math.max(1, ...fc);
+  const names = ['heute', 'morgen', '+2', '+3', '+4', '+5', '+6'];
+  const weak = sess.weakSubs();
 
   app.innerHTML = `
-    <h1 style="font-size:22px;margin-bottom:4px">Statistik</h1>
+    <h1 class="vh">Statistik</h1>
     <div class="kpis" style="margin-top:14px">
       <div class="kpi"><b>${liveStreak()}</b><span>Tage in Folge</span></div>
       <div class="kpi"><b>${st.best || 0}</b><span>Rekord</span></div>
       <div class="kpi"><b>${totalDone}</b><span>Antworten</span></div>
     </div>
+
     <div class="sec">Letzte 12 Wochen</div>
     <div class="card">
       <div class="heat-wrap">
@@ -218,12 +239,41 @@ function renderStats() {
       </div>
       <div class="legend">wenig <i style="background:#1b222c"></i><i data-l="1" style="background:#1e4d3c"></i><i data-l="2" style="background:#2a7a5c"></i><i data-l="3" style="background:#37b17f"></i><i data-l="4" style="background:#3ddc97"></i> viel</div>
     </div>
+
+    <div class="sec">Was kommt auf dich zu</div>
+    <div class="card">
+      ${fc.some(n => n > 0) ? `
+      <div class="fc">${fc.map((n, i) => `
+        <div class="fc-col" title="${n} Wiederholungen">
+          <span class="fc-n">${n || ''}</span>
+          <i style="height:${Math.max(3, (n / fcMax) * 72).toFixed(0)}px"></i>
+          <span class="fc-l">${names[i]}</span>
+        </div>`).join('')}</div>
+      <p class="tiny" style="margin-top:10px">Fällige Wiederholungen der nächsten sieben Tage – neue Karten kommen noch dazu.</p>`
+      : `<p class="muted">Noch nichts eingeplant. Sobald du Karten gelernt hast, siehst du hier, wie viele Wiederholungen an den nächsten Tagen anstehen.</p>`}
+    </div>
+
+    ${weak.length ? `
+    <div class="sec">Deine Schwachstellen</div>
+    <div class="tlist">
+      ${weak.map(w => `<button class="trow" data-sub="${esc(w.cat)}|${esc(w.sub)}">
+        <span class="tico">${CAT_BY_ID[w.cat].icon}</span>
+        <span class="grow">
+          <h3>${esc(w.sub)}</h3>
+          <span class="tiny">${esc(CAT_BY_ID[w.cat].name)} · ${Math.round(w.rate * 100)} % richtig bei ${w.seen} Abfragen</span>
+          <span class="bar"><i style="width:${(w.rate * 100).toFixed(0)}%"></i></span>
+        </span>
+        <span class="pct">üben</span>
+      </button>`).join('')}
+    </div>` : ''}
+
     <div class="sec">Wissensstand</div>
     <div class="card">
       <div class="row between"><span>Trefferquote gesamt</span><b>${Math.round(o.accuracy * 100)} %</b></div>
       <div class="row between" style="margin-top:9px"><span>Karten gefestigt</span><b>${o.mature} / ${o.total}</b></div>
       <div class="row between" style="margin-top:9px"><span>Noch nie gesehen</span><b>${o.total - o.seen}</b></div>
     </div>
+
     <div class="sec">Nach Thema</div>
     <div class="tlist">
       ${CATS.map(c => {
@@ -234,13 +284,97 @@ function renderStats() {
           <span class="pct">${Math.round(s.pct * 100)}%</span></div>`;
       }).join('')}
     </div>`;
+
+  app.querySelectorAll('[data-sub]').forEach(b => b.onclick = () => {
+    const [cat, sub] = b.dataset.sub.split('|');
+    const q = sess.buildSub(cat, sub, 20);
+    q.length ? startRun(q, 'sub') : toast('Keine Karten gefunden');
+  });
+}
+
+/* ---- Nachschlagen: suchen, lesen, markieren ---- */
+let lookupQuery = '';
+function renderLookup() {
+  app.innerHTML = `
+    <h1 class="vh">Nachschlagen</h1>
+    <input class="recall-in" id="q" type="search" inputmode="search" autocomplete="off"
+           aria-label="Karten durchsuchen" placeholder="Suchen – Frage, Antwort oder Thema" value="${esc(lookupQuery)}">
+    <p class="tiny" style="margin:8px 2px 0">Tippe auf eine Karte, um Antwort und Kontext zu sehen. Mit ★ markierst du sie fürs gezielte Üben.</p>
+    <div id="res"></div>`;
+  const input = document.getElementById('q');
+  const res = document.getElementById('res');
+
+  const paint = () => {
+    const q = normalize(lookupQuery);
+    const terms = q.split(' ').filter(Boolean);
+    let list;
+    if (!terms.length) {
+      list = CARDS.filter(c => isFlagged(c.id));
+      if (!list.length) list = shuffle(CARDS).slice(0, 20);
+    } else {
+      list = CARDS.filter(c => {
+        const hay = normalize(`${c.q} ${c.a} ${c.sub} ${CAT_BY_ID[c.cat].name} ${c.t}`);
+        return terms.every(t => hay.includes(t));
+      });
+    }
+    const shown = list.slice(0, 60);
+    res.innerHTML = `
+      <p class="tiny" style="margin:14px 2px 8px">${
+        !terms.length && list.some(c => isFlagged(c.id)) ? 'Deine markierten Karten'
+        : !terms.length ? 'Zufällige Auswahl – tippe etwas ein zum Suchen'
+        : `${list.length} Treffer${list.length > 60 ? ', die ersten 60' : ''}`}</p>
+      ${shown.map(c => {
+        const cs = cardState(c.id);
+        const st = cs ? Math.round(strength(cs) * 100) : 0;
+        return `<div class="lk" data-id="${c.id}">
+          <div class="lk-head">
+            <span class="grow">
+              <span class="qcat">${CAT_BY_ID[c.cat].icon} ${esc(c.sub)}</span>
+              <span class="lk-q">${esc(c.q)}</span>
+            </span>
+            <button class="star ${isFlagged(c.id) ? 'on' : ''}" data-flag="${c.id}" aria-label="Markieren">★</button>
+          </div>
+          <div class="lk-body" hidden>
+            <div class="answer">
+              <div class="lab">Antwort</div>
+              <div class="val">${esc(c.a)}</div>
+              ${c.t ? `<p class="expl">${esc(c.t)}</p>` : ''}
+            </div>
+            <p class="tiny" style="margin-top:8px">${cs && cs.seen ? `${st} % gefestigt · ${cs.seen}× abgefragt` : 'Noch nicht gelernt'} · Stufe ${LEVELS[c.d].name}</p>
+          </div>
+        </div>`;
+      }).join('') || '<p class="empty">Nichts gefunden. Andere Wörter probieren?</p>'}`;
+
+    res.querySelectorAll('.lk').forEach(el => {
+      el.querySelector('.lk-head').onclick = (e) => {
+        if (e.target.closest('[data-flag]')) return;
+        const b = el.querySelector('.lk-body');
+        b.hidden = !b.hidden;
+        el.classList.toggle('open', !b.hidden);
+      };
+    });
+    res.querySelectorAll('[data-flag]').forEach(b => b.onclick = () => {
+      const on = toggleFlag(b.dataset.flag);
+      b.classList.toggle('on', on);
+      toast(on ? 'Markiert' : 'Markierung entfernt', 1200);
+    });
+  };
+
+  let timer;
+  input.addEventListener('input', () => {
+    lookupQuery = input.value;
+    clearTimeout(timer);
+    timer = setTimeout(paint, 120);
+  });
+  paint();
 }
 
 function renderSettings() {
   const s = settings();
   const sel = s.cats && s.cats.length ? s.cats : CATS.map(c => c.id);
+  const flags = sess.flaggedCount();
   app.innerHTML = `
-    <h1 style="font-size:22px;margin-bottom:4px">Einstellungen</h1>
+    <h1 class="vh">Einstellungen</h1>
     <div class="sec">Tagespensum</div>
     <div class="card">
       <div class="setrow">
@@ -291,14 +425,15 @@ function renderSettings() {
         <button class="btn" id="exp">Fortschritt sichern (Datei)</button>
         <button class="btn" id="imp">Fortschritt einlesen</button>
         <input type="file" id="impFile" accept="application/json" hidden>
+        ${flags ? `<button class="btn" id="clrFlags">Alle ${flags} Markierungen löschen</button>` : ''}
         <button class="btn danger" id="rst">Alles zurücksetzen</button>
       </div>
-      <p class="tiny" style="margin-top:10px">Alles liegt nur auf diesem Gerät – kein Konto, kein Server.</p>
+      <p class="tiny" style="margin-top:10px">Alles liegt nur auf diesem Gerät – kein Konto, kein Server. Löschst du in Safari die Website-Daten, ist der Fortschritt weg. Sichere ihn gelegentlich.</p>
     </div>
     <p class="tiny center" style="margin-top:18px">${CARDS.length} Karten · Wissenswerk</p>`;
 
   const bind = (id, key, cast = v => v) => {
-    document.getElementById(id).onchange = e => { setSetting(key, cast(e.target.value)); };
+    document.getElementById(id).onchange = e => setSetting(key, cast(e.target.value));
   };
   bind('npd', 'newPerDay', Number);
   bind('mrv', 'maxReviews', Number);
@@ -307,7 +442,7 @@ function renderSettings() {
   document.getElementById('snd').onchange = e => setSetting('sound', e.target.checked);
 
   app.querySelectorAll('[data-tog]').forEach(b => b.onclick = () => {
-    let cur = new Set(settings().cats && settings().cats.length ? settings().cats : CATS.map(c => c.id));
+    const cur = new Set(settings().cats && settings().cats.length ? settings().cats : CATS.map(c => c.id));
     const id = b.dataset.tog;
     cur.has(id) ? cur.delete(id) : cur.add(id);
     if (!cur.size) return toast('Mindestens ein Thema muss aktiv bleiben');
@@ -335,6 +470,9 @@ function renderSettings() {
     };
     r.readAsText(f);
   };
+  document.getElementById('clrFlags')?.addEventListener('click', () => {
+    S().flags = {}; save(true); toast('Markierungen gelöscht'); renderSettings();
+  });
   document.getElementById('rst').onclick = () => {
     if (confirm('Wirklich den gesamten Lernfortschritt löschen?')) {
       store.resetAll(); toast('Zurückgesetzt'); show('home');
@@ -348,7 +486,8 @@ function startRun(queue, mode) {
   run = {
     queue: queue.slice(), i: 0, mode,
     done: 0, correct: 0, start: Date.now(),
-    total: queue.length, added: 0
+    total: queue.length, added: 0,
+    wrong: [], undo: null
   };
   topbar.hidden = true; nav.hidden = true;
   app.classList.add('full');
@@ -359,16 +498,18 @@ function endRun() {
   const r = run;
   const secs = Math.round((Date.now() - r.start) / 1000);
   today().sec = (today().sec || 0) + secs;
-  if (r.mode === 'duel') {
-    const st = S();
-    st.duelBest = Math.max(st.duelBest || 0, r.correct);
-  }
+  if (r.mode === 'duel') S().duelBest = Math.max(S().duelBest || 0, r.correct);
   save(true);
+
   const pctv = r.done ? Math.round(r.correct / r.done * 100) : 0;
   const min = Math.max(1, Math.round(secs / 60));
   topbar.hidden = false; nav.hidden = false;
   app.classList.remove('full');
+  onKey = null;
   const praise = pctv >= 90 ? 'Stark!' : pctv >= 70 ? 'Solide Runde.' : 'Genau dafür ist Üben da.';
+  // Doppelte entfernen: dieselbe Karte kann mehrfach falsch gewesen sein
+  const missed = [...new Map(r.wrong.map(c => [c.id, c])).values()];
+
   app.innerHTML = `
     <div class="done-wrap fade">
       <div class="done-emoji">${pctv >= 90 ? '🏅' : pctv >= 70 ? '💪' : '🌱'}</div>
@@ -380,6 +521,17 @@ function endRun() {
       <div class="kpi"><b>${liveStreak()}</b><span>Tage in Folge</span></div>
       <div class="kpi"><b>${sess.overview().due}</b><span>noch fällig</span></div>
     </div>
+    ${missed.length ? `
+      <div class="sec">Das saß noch nicht (${missed.length})</div>
+      <div class="tlist">
+        ${missed.slice(0, 12).map(c => `<div class="card" style="padding:13px 14px">
+          <span class="qcat">${CAT_BY_ID[c.cat].icon} ${esc(c.sub)}</span>
+          <p style="font-weight:650;margin:5px 0 4px;font-size:15px">${esc(c.q)}</p>
+          <p class="muted" style="color:var(--ok);font-weight:650">${esc(c.a)}</p>
+          ${c.t ? `<p class="tiny" style="margin-top:5px">${esc(c.t)}</p>` : ''}
+        </div>`).join('')}
+      </div>
+      <p class="tiny center" style="margin-top:10px">Diese Karten kommen morgen wieder – sie sind schon eingeplant.</p>` : ''}
     <div class="btn-stack" style="margin-top:18px">
       <button class="btn primary" id="again">Weitermachen</button>
       <button class="btn ghost" id="home">Zur Übersicht</button>
@@ -391,6 +543,7 @@ function endRun() {
   };
   document.getElementById('home').onclick = () => show('home');
   run = null;
+  paintChrome();
 }
 
 function beep(ok) {
@@ -420,18 +573,21 @@ function useRecall(card, cs) {
 
 function shell(inner, foot) {
   const r = run;
-  const pct = (r.done / Math.max(1, r.total + r.added)) * 100;
+  const total = r.total + r.added;
+  const pct = (r.done / Math.max(1, total)) * 100;
   app.innerHTML = `
     <div class="sess">
       <div class="sess-top">
-        <button class="icon-btn" id="quit" aria-label="Beenden">✕</button>
+        <button class="icon-btn" id="quit" aria-label="Einheit beenden">✕</button>
         <div class="bar"><i style="width:${Math.min(100, pct).toFixed(0)}%"></i></div>
-        <span class="tiny" style="min-width:44px;text-align:right">${r.done}/${r.total + r.added}</span>
+        <span class="tiny" style="min-width:42px;text-align:right">${r.done}/${total}</span>
+        <button class="icon-btn" id="undo" aria-label="Letzte Antwort zurücknehmen" ${r.undo ? '' : 'disabled'}>↶</button>
       </div>
       <div class="sess-body fade">${inner}</div>
       <div class="sess-foot">${foot}</div>
     </div>`;
   document.getElementById('quit').onclick = () => (run.done ? endRun() : show('home'));
+  document.getElementById('undo').onclick = undoLast;
 }
 
 function head(card, isFresh) {
@@ -467,23 +623,29 @@ function askChoice(card, isFresh, cs) {
     }</div>`,
     isFresh ? `<p class="tiny center">Neue Karte – rate ruhig, der Versuch selbst hilft beim Behalten.</p>` : ''
   );
-  app.querySelectorAll('.opt').forEach(b => {
-    b.onclick = () => {
-      const ok = b.dataset.v === card.a;
-      const dt = Date.now() - t0;
-      app.querySelectorAll('.opt').forEach(x => {
-        x.disabled = true;
-        if (x.dataset.v === card.a) x.classList.add('right');
-        else if (x === b) x.classList.add('wrong');
-        else x.classList.add('dim');
-      });
-      beep(ok);
-      const grade = !ok ? AGAIN
-        : (cs && cs.reps >= 2 && dt < 4000) ? EASY
-        : dt > 14000 ? HARD : GOOD;
-      showFeedback(card, ok, grade, isFresh);
-    };
-  });
+  const pick = (b) => {
+    const ok = b.dataset.v === card.a;
+    const dt = Date.now() - t0;
+    app.querySelectorAll('.opt').forEach(x => {
+      x.disabled = true;
+      if (x.dataset.v === card.a) x.classList.add('right');
+      else if (x === b) x.classList.add('wrong');
+      else x.classList.add('dim');
+    });
+    beep(ok);
+    const grade = !ok ? AGAIN
+      : (cs && cs.reps >= 2 && dt < 4000) ? EASY
+      : dt > 14000 ? HARD : GOOD;
+    showFeedback(card, ok, grade, isFresh);
+  };
+  app.querySelectorAll('.opt').forEach(b => b.onclick = () => pick(b));
+  onKey = (e) => {
+    const n = '1234'.indexOf(e.key);
+    const l = 'abcd'.indexOf(e.key.toLowerCase());
+    const idx = n >= 0 ? n : l;
+    const btns = app.querySelectorAll('.opt:not([disabled])');
+    if (idx >= 0 && btns[idx]) { e.preventDefault(); pick(btns[idx]); }
+  };
 }
 
 /* ---- Freies Abrufen mit Selbstbewertung ---- */
@@ -498,34 +660,35 @@ function askRecall(card, isFresh, cs) {
   const input = document.getElementById('rin');
   const go = () => {
     const typed = input.value.trim();
-    const sim = typed ? similarity(typed, card.a) : 0;
-    revealRecall(card, typed, sim, cs, isFresh);
+    revealRecall(card, typed, typed ? similarity(typed, card.a) : 0, cs, isFresh);
   };
   document.getElementById('reveal').onclick = go;
   input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+  onKey = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
 }
 
 function revealRecall(card, typed, sim, cs, isFresh) {
   const near = sim >= 0.8;
   if (typed) beep(near);
+  announce(near ? 'Deine Eingabe passt.' : `Die Antwort lautet: ${card.a}`);
   const hint = !typed ? '' : near
     ? `<p class="verdict good">✓ Deine Eingabe passt: „${esc(typed)}“</p>`
     : `<p class="verdict bad">✕ Du hattest: „${esc(typed)}“</p>`;
-  const g = (grade, label, sub, cls) =>
+  const g = (grade, label, cls) =>
     `<button class="btn ${cls}" data-g="${grade}"><span>${label}</span><small>${preview(cs, grade)}</small></button>`;
   shell(
     head(card, isFresh) + hint + answerBlock(card),
     `<p class="tiny center" style="margin-bottom:2px">Wie gut saß die Antwort?</p>
      <div class="grades">
-       ${g(AGAIN, 'Nochmal', '', 'g0')}
-       ${g(HARD, 'Schwer', '', 'g1')}
-       ${g(GOOD, 'Gut', '', 'g2')}
-       ${g(EASY, 'Leicht', '', 'g3')}
+       ${g(AGAIN, 'Nochmal', 'g0')}${g(HARD, 'Schwer', 'g1')}${g(GOOD, 'Gut', 'g2')}${g(EASY, 'Leicht', 'g3')}
      </div>`
   );
-  app.querySelectorAll('[data-g]').forEach(b => {
-    b.onclick = () => commit(card, Number(b.dataset.g), Number(b.dataset.g) !== AGAIN, isFresh);
-  });
+  const grade = (n) => commit(card, n, n !== AGAIN, isFresh);
+  app.querySelectorAll('[data-g]').forEach(b => b.onclick = () => grade(Number(b.dataset.g)));
+  onKey = (e) => {
+    const idx = '1234'.indexOf(e.key);
+    if (idx >= 0) { e.preventDefault(); grade(idx); }
+  };
 }
 
 function answerBlock(card) {
@@ -537,25 +700,57 @@ function answerBlock(card) {
 }
 
 function showFeedback(card, ok, grade, isFresh) {
+  announce(ok ? 'Richtig.' : `Falsch. Die Antwort lautet: ${card.a}`);
   const body = app.querySelector('.sess-body');
   const div = document.createElement('div');
   div.className = 'fade';
   div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ok ? '✓ Richtig' : '✕ Leider falsch'}</p>${answerBlock(card)}`;
   body.appendChild(div);
   body.scrollTop = body.scrollHeight;
-  const foot = app.querySelector('.sess-foot');
-  foot.innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
+  app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
   const next = () => commit(card, grade, ok, isFresh);
   document.getElementById('next').onclick = next;
-  document.addEventListener('keydown', function onKey(e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); document.removeEventListener('keydown', onKey); next(); }
-  }, { once: true });
+  onKey = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); } };
+}
+
+/* Zustand vor der Antwort festhalten, damit ein Fehlgriff rückgängig gemacht werden kann. */
+function snapshot(card) {
+  const st = S();
+  const k = dayKey();
+  return {
+    id: card.id,
+    cs: cardState(card.id) ? { ...cardState(card.id) } : null,
+    dayKey: k,
+    day: { ...today() },
+    totalAnswers: st.totalAnswers, totalCorrect: st.totalCorrect,
+    streak: st.streak, best: st.best, lastDay: st.lastDay,
+    i: run.i, done: run.done, correct: run.correct,
+    added: run.added, wrongLen: run.wrong.length,
+    insertedAt: -1
+  };
+}
+
+function undoLast() {
+  const u = run?.undo;
+  if (!u) return;
+  const st = S();
+  if (u.cs) st.cards[u.id] = u.cs; else delete st.cards[u.id];
+  st.days[u.dayKey] = u.day;
+  st.totalAnswers = u.totalAnswers; st.totalCorrect = u.totalCorrect;
+  st.streak = u.streak; st.best = u.best; st.lastDay = u.lastDay;
+  if (u.insertedAt >= 0) run.queue.splice(u.insertedAt, 1);
+  run.i = u.i; run.done = u.done; run.correct = u.correct;
+  run.added = u.added; run.wrong.length = u.wrongLen;
+  run.undo = null;
+  save(true);
+  toast('Antwort zurückgenommen', 1400);
+  step();
 }
 
 function commit(card, grade, ok, isFresh) {
-  const before = cardState(card.id);
-  const after = schedule(before || freshState(), grade);
-  putCard(card.id, after);
+  const undo = snapshot(card);
+
+  putCard(card.id, schedule(cardState(card.id) || freshState(), grade));
 
   const st = S();
   const d = today();
@@ -563,9 +758,8 @@ function commit(card, grade, ok, isFresh) {
   if (isFresh) d.newC = (d.newC || 0) + 1;
   st.totalAnswers++; if (ok) st.totalCorrect++;
   touchStreak();
-  save();
 
-  run.done++; if (ok) run.correct++;
+  run.done++; if (ok) run.correct++; else run.wrong.push(card);
   run.i++;
 
   // Falsch beantwortete Karten kommen innerhalb der Einheit noch einmal dran
@@ -573,7 +767,10 @@ function commit(card, grade, ok, isFresh) {
     const pos = Math.min(run.queue.length, run.i + 4);
     run.queue.splice(pos, 0, { card, fresh: false });
     run.added++;
+    undo.insertedAt = pos;
   }
+  run.undo = undo;
+  save();
   step();
 }
 
@@ -589,6 +786,7 @@ function askDuel(card) {
     }</div>`,
     `<div class="bar" id="clock"><i style="width:100%;transition:width .1s linear"></i></div>`
   );
+  document.getElementById('undo').disabled = true;   // im Duell zählt die Zeit
   const bar = app.querySelector('#clock i');
   let finished = false;
   const tick = setInterval(() => {
@@ -610,21 +808,24 @@ function askDuel(card) {
       else x.classList.add('dim');
     });
     beep(ok);
+    announce(ok ? 'Richtig.' : `Falsch. Die Antwort lautet: ${card.a}`);
     const body = app.querySelector('.sess-body');
     const div = document.createElement('div');
     div.className = 'fade';
-    div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ok ? '✓ Richtig' : chosen === null ? '⏱ Zeit abgelaufen' : '✕ Leider falsch'}</p>${answerBlock(card)}`;
+    div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${
+      ok ? '✓ Richtig' : chosen === null ? '⏱ Zeit abgelaufen' : '✕ Leider falsch'}</p>${answerBlock(card)}`;
     body.appendChild(div);
     body.scrollTop = body.scrollHeight;
     app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
-    document.getElementById('next').onclick = () => {
-      const st = S(); const d = today();
+    const next = () => {
+      const st = S(), d = today();
       d.done++; if (ok) d.correct++;
       st.totalAnswers++; if (ok) st.totalCorrect++;
       touchStreak();
-      // Fehler im Duell holt das Tagestraining sofort nach
       if (!ok) {
-        const cs = cardState(card.id) || freshState();
+        run.wrong.push(card);
+        // Fehler im Duell holt das Tagestraining sofort nach
+        const cs = { ...(cardState(card.id) || freshState()) };
         cs.due = todayNum();
         putCard(card.id, cs);
       }
@@ -633,8 +834,15 @@ function askDuel(card) {
       run.i++;
       step();
     };
+    document.getElementById('next').onclick = next;
+    onKey = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); } };
   }
   app.querySelectorAll('.opt').forEach(b => b.onclick = () => finish(b.dataset.v));
+  onKey = (e) => {
+    const n = '1234'.indexOf(e.key);
+    const btns = app.querySelectorAll('.opt:not([disabled])');
+    if (n >= 0 && btns[n]) { e.preventDefault(); finish(btns[n].dataset.v); }
+  };
 }
 
 /* ================= Start ================= */

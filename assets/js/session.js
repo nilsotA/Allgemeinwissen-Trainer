@@ -1,7 +1,7 @@
 /* Stellt die Lernwarteschlange zusammen: fällige Wiederholungen + neue Karten,
    verschränkt über die Kategorien (Interleaving). */
 import { CARDS, catCards } from '../../data/index.js';
-import { S, settings, cardState, today, todayNum } from './store.js';
+import { S, settings, cardState, today, todayNum, isFlagged } from './store.js';
 import { isDue, isNew, strength, isLeech } from './srs.js';
 import { shuffle } from './quiz.js';
 
@@ -144,4 +144,51 @@ export function catProgress() {
   }
   for (const k of Object.keys(out)) out[k].pct = out[k].n ? out[k].sum / out[k].n : 0;
   return out;
+}
+
+/** Markierte Karten üben – was du beim Nachschlagen angehakt hast. */
+export function buildFlagged(limit = 20) {
+  const pool = CARDS.filter(c => isFlagged(c.id));
+  return shuffle(pool).slice(0, limit).map(c => ({ card: c, fresh: isNew(cardState(c.id)) }));
+}
+export const flaggedCount = () => CARDS.reduce((n, c) => n + (isFlagged(c.id) ? 1 : 0), 0);
+
+/** Wie viele Wiederholungen stehen an den nächsten Tagen an? */
+export function forecast(days = 7) {
+  const t = todayNum();
+  const out = Array.from({ length: days }, () => 0);
+  for (const c of CARDS) {
+    if (!inScope(c)) continue;
+    const s = cardState(c.id);
+    if (!s || !s.seen) continue;
+    const idx = Math.max(0, s.due - t);
+    if (idx < days) out[idx]++;
+  }
+  return out;
+}
+
+/** Schwächste Teilgebiete – Grundlage für gezieltes Nacharbeiten. */
+export function weakSubs(minSeen = 3, limit = 6) {
+  const acc = {};
+  for (const c of CARDS) {
+    const s = cardState(c.id);
+    if (!s || !s.seen) continue;
+    const key = c.cat + '/' + c.sub;
+    const o = (acc[key] ||= { cat: c.cat, sub: c.sub, n: 0, seen: 0, ok: 0, sum: 0 });
+    o.n++; o.seen += s.seen; o.ok += (s.ok || 0); o.sum += strength(s);
+  }
+  return Object.values(acc)
+    .filter(o => o.seen >= minSeen)
+    .map(o => ({ ...o, rate: o.seen ? o.ok / o.seen : 0, pct: o.sum / o.n }))
+    .sort((a, b) => a.rate - b.rate || a.pct - b.pct)
+    .slice(0, limit);
+}
+
+/** Übung für ein einzelnes Teilgebiet. */
+export function buildSub(cat, sub, limit = 20) {
+  const pool = CARDS.filter(c => c.cat === cat && c.sub === sub);
+  const t = todayNum();
+  const due = pool.filter(c => { const s = cardState(c.id); return s && isDue(s, t); });
+  const rest = shuffle(pool.filter(c => !due.includes(c)));
+  return [...due, ...rest].slice(0, limit).map(c => ({ card: c, fresh: isNew(cardState(c.id)) }));
 }

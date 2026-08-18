@@ -12,6 +12,7 @@ const DEFAULTS = {
     cats: null            // null = alle Kategorien aktiv, sonst Array von IDs
   },
   cards: {},              // id -> { ef, iv, due, reps, lapses, seen, ok, last }
+  flags: {},              // id -> true, wenn beim Nachschlagen markiert
   days: {},               // 'YYYY-MM-DD' -> { done, correct, newC, min }
   streak: 0,
   best: 0,
@@ -50,10 +51,21 @@ function load() {
 }
 
 let saveTimer = null;
+let quotaWarned = false;
+
+/** Wird gerufen, wenn der Browser den Speicher verweigert – die App soll dann nicht still Daten verlieren. */
+export let onSaveError = () => {};
+export const setSaveErrorHandler = (fn) => { onSaveError = fn; };
+
 export function save(now = false) {
   const write = () => {
-    try { localStorage.setItem(KEY, JSON.stringify(state)); }
-    catch (e) { console.warn('Speichern fehlgeschlagen', e); }
+    try {
+      localStorage.setItem(KEY, JSON.stringify(state));
+      quotaWarned = false;
+    } catch (e) {
+      console.warn('Speichern fehlgeschlagen', e);
+      if (!quotaWarned) { quotaWarned = true; onSaveError(e); }
+    }
   };
   if (now) { clearTimeout(saveTimer); write(); return; }
   clearTimeout(saveTimer);
@@ -110,6 +122,14 @@ export function liveStreak() {
 
 export function cardState(id) {
   return state.cards[id] || null;
+}
+
+export const isFlagged = (id) => !!state.flags[id];
+export function toggleFlag(id) {
+  if (state.flags[id]) delete state.flags[id];
+  else state.flags[id] = true;
+  save();
+  return !!state.flags[id];
 }
 export function putCard(id, cs) {
   state.cards[id] = cs;

@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**627 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.083 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (inkl. Trainingslehre und Sportmedizin) und
 **Mathematik** (Grundlagen, Schulmathematik, Mathematikgeschichte).
@@ -22,8 +22,9 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Sofortige Rückmeldung** | Richtig/falsch plus Erklärung direkt nach der Antwort. |
 | **Kleine tägliche Dosis** | Standard: 12 neue Karten pro Tag. Das sind rund 7–12 Minuten – dauerhaft durchhaltbar. |
 
-Eine Simulation über 120 Tage (`npm run simulate`) ergibt: im Schnitt 57 Karten pro Tag,
-Spitzenlast 102, nach vier Monaten sitzen rund 560 der 627 Karten fest.
+Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt 79 Karten pro Tag,
+Spitzenlast 102, nach einem halben Jahr sitzen rund 960 der 1.083 Karten fest.
+Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem Kartenbestand mitwächst.
 
 ## Modi
 
@@ -32,6 +33,20 @@ Spitzenlast 102, nach vier Monaten sitzen rund 560 der 627 Karten fest.
 - **Themen** – ein Gebiet am Stück üben.
 - **Duell** – zehn Fragen, 15 Sekunden pro Frage. Trainiert Tempo für Quizduelle.
   Fehler landen automatisch im nächsten Tagestraining.
+- **Markierte Karten** – was du beim Nachschlagen mit ★ versiehst, lässt sich gezielt üben.
+- **Schwachstellen** – die Statistik zeigt die Teilgebiete mit der schlechtesten Trefferquote;
+  ein Tipp darauf startet eine Runde genau dazu.
+
+## Weitere Funktionen
+
+- **Verklickt? Zurücknehmen.** Ein Tipp auf ↶ macht die letzte Antwort samt Terminplanung
+  rückgängig – auf dem Handy passiert ein Fehlgriff schnell, und er soll den Verlauf nicht verfälschen.
+- **Nachschlagen** über die Lupe oben rechts: alle 1.083 Karten durchsuchbar nach Frage,
+  Antwort, Thema und Kontext. Antippen klappt die Lösung auf, ★ markiert für später.
+- **Wiederholungs-Vorschau** für die nächsten sieben Tage in der Statistik.
+- **Rückblick nach jeder Runde**: Welche Karten saßen noch nicht – mit Antwort und Kontext zum Nachlesen.
+- **Tastatur** auf dem Mac oder iPad mit Tastatur: `1`–`4` wählt Antwort oder Bewertung,
+  `Enter`/`Leertaste` blättert weiter.
 
 ## Auf dem iPhone installieren
 
@@ -79,6 +94,11 @@ Die Inhalte liegen als reine Datenlisten in `data/<kategorie>.js`:
 Ohne `w` erzeugt die App die falschen Antworten selbst – aus dem Antwortpool desselben
 Teilgebiets, bei Jahreszahlen und Zahlen als knappe Beinahe-Treffer.
 IDs entstehen aus dem Fragetext, deshalb bleibt der Lernfortschritt beim Ergänzen erhalten.
+`npm run check` prüft dabei nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
+darauf, ob sich eine richtige Antwort schon an ihrer **Form** verrät – etwa als einzige Option
+mit Klammerzusatz oder als einzige mit ausgeschriebener Einheit. Solche Karten lassen sich
+ohne Wissen lösen und sind damit wertlos.
+
 Nach Änderungen `npm run check` und `npm run build` laufen lassen.
 
 ## Aufbau

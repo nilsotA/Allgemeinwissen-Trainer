@@ -27,10 +27,14 @@
 <header id="topbar" class="topbar" hidden>
   <div class="topbar-in">
     <div class="brand"><span class="brand-mark">W</span><span class="brand-name">Wissenswerk</span></div>
-    <div class="streak" id="streakBadge" title="Tage in Folge">🔥 <span id="streakNum">0</span></div>
+    <div class="row" style="gap:8px">
+      <button class="icon-btn sm" id="searchBtn" type="button" aria-label="Nachschlagen und suchen">🔍</button>
+      <div class="streak" id="streakBadge" title="Tage in Folge">🔥 <span id="streakNum">0</span></div>
+    </div>
   </div>
 </header>
 
+<p id="live" class="sr-only" aria-live="polite" role="status"></p>
 <main id="app" class="app" hidden></main>
 
 <nav id="nav" class="nav" hidden>

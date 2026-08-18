@@ -25,5 +25,20 @@ export default [
   { t: "Warum Pausen Teil des Trainings sind", x: "Superkompensation heißt: Der Körper baut in der Erholung über das Ausgangsniveau hinaus auf. Ohne Pause trainierst du dich schwächer, nicht stärker." },
   { t: "Die vier Fälle im Griff", x: "Wer? Wessen? Wem? Wen? – In dieser Reihenfolge geht die deutsche Deklination. Ein Merksatz, der bei jedem Sprachvergleich hilft." },
   { t: "Zwei Sorten Unendlich", x: "Es gibt gleich viele gerade Zahlen wie natürliche Zahlen – beide abzählbar unendlich. Die reellen Zahlen sind dagegen echt „mehr“. Cantor bewies das 1874." },
-  { t: "Der günstigste Lernmoment", x: "Kurz vor dem Vergessen. Genau deshalb wachsen hier die Abstände: 1 Tag, 3 Tage, eine Woche, ein Monat – jede Wiederholung an der Kippe wirkt am stärksten." }
+  { t: "Der günstigste Lernmoment", x: "Kurz vor dem Vergessen. Genau deshalb wachsen hier die Abstände: 1 Tag, 3 Tage, eine Woche, ein Monat – jede Wiederholung an der Kippe wirkt am stärksten." },
+  { t: "Warum Interleaving anstrengt", x: "Themen zu mischen fühlt sich schlechter an als Blockpauken – und wirkt trotzdem besser. Der Nachteil im Moment ist genau der Grund für den Vorteil auf Dauer." },
+  { t: "Die 20-Prozent-Regel bei Sprachen", x: "Die 1.000 häufigsten Wörter decken in fast jeder Sprache rund 80 Prozent alltäglicher Texte ab. Häufigkeit schlägt Vollständigkeit." },
+  { t: "Zwei Zahlen für den Körper", x: "Der Ruhepuls sagt etwas über die Ausdauer, der Blutdruck über die Gefäße. Beide misst man morgens im Liegen – dann sind sie vergleichbar." },
+  { t: "Warum Karten mit Kontext haften", x: "Eine nackte Jahreszahl ist ein isolierter Datenpunkt. Mit einer Ursache daneben wird sie Teil eines Netzes – und Netze reißen langsamer als Fäden." },
+  { t: "Der Trick mit den Zehnerpotenzen", x: "Erdumfang 40.000 km, Erdradius 6.400 km, Entfernung zum Mond 384.000 km, zur Sonne 150 Millionen km. Vier Zahlen, mit denen du fast jede Astronomiefrage abschätzen kannst." },
+  { t: "Warum Prüfungen nervös machen", x: "Adrenalin verengt die Aufmerksamkeit. Genau deshalb hilft es, unter ähnlichen Bedingungen zu üben, wie geprüft wird – im Quizduell also unter Zeitdruck." },
+  { t: "Das Wort „Quiz“", x: "Sein Ursprung ist ungeklärt. Die hübsche Geschichte von einer Dubliner Wette, ein Fantasiewort in der Stadt zu verbreiten, ist vermutlich erfunden – aber gut erfunden." },
+  { t: "Wie Sportler Technik lernen", x: "Erst Grobform, dann Feinform, dann Feinstform unter Druck. Dasselbe Muster funktioniert beim Wissen: erst grob einordnen, dann präzisieren, dann abrufen können, wenn es zählt." },
+  { t: "Drei Zahlen zu Deutschland", x: "84 Millionen Einwohner, 357.000 km² Fläche, 16 Bundesländer. Mit diesen drei Werten lassen sich erstaunlich viele Schätzfragen plausibel beantworten." },
+  { t: "Die Reihenfolge der Erdzeitalter", x: "Erdaltertum, Erdmittelalter, Erdneuzeit. Die Dinosaurier lebten im Erdmittelalter, der Mensch erscheint erst in den letzten 0,05 Prozent der Erdgeschichte." },
+  { t: "Warum Wiederholen langweilt", x: "Vertrautheit fühlt sich wie Können an. Der Selbsttest entlarvt den Unterschied – deshalb ist er unbequem und gerade deshalb wirksam." },
+  { t: "Vier Zahlen aus der Musik", x: "Oktave 12 Halbtöne, Dur-Tonleiter 7 Töne, Klavier 88 Tasten, Streichquartett 4 Instrumente. Kleine Anker, an denen viele Musikfragen hängen." },
+  { t: "Was „Grundgesetz“ bedeutet", x: "Der Name war 1949 Absicht: keine „Verfassung“, weil sie nur für den Westen galt und ein Provisorium bis zur Einheit sein sollte. 1990 blieb sie – und heißt bis heute so." },
+  { t: "Der schnellste Weg zu besseren Schätzungen", x: "Immer zuerst eine Größenordnung festlegen: Tausend, Million oder Milliarde? Wer die Zehnerpotenz trifft, liegt selten peinlich daneben." },
+  { t: "Was Sport und Mathe teilen", x: "Beides sind Könnensfächer: Verstehen reicht nicht, es braucht Ausführung. Deshalb funktioniert in beiden dasselbe Rezept – kurze, häufige, verteilte Übung." }
 ];

@@ -12,7 +12,7 @@ const { schedule, strength, AGAIN, HARD, GOOD, EASY, fresh } = await import('../
 const { CARDS } = await import('../data/index.js');
 const { todayNum } = await import('../assets/js/store.js');
 
-const NEW_PER_DAY = 12, MAX_REVIEWS = 90, DAYS = 120;
+const NEW_PER_DAY = 12, MAX_REVIEWS = 90, DAYS = 180;
 const state = new Map();
 let pool = CARDS.slice();
 let rows = [];
@@ -51,7 +51,7 @@ for (let day = 0; day < DAYS; day++) {
 
 const at = (d) => rows[d - 1];
 console.log('Tag | Wdh. | Antworten | Trefferquote | angefangen | gefestigt');
-for (const d of [1, 7, 14, 30, 60, 90, 120]) {
+for (const d of [1, 7, 14, 30, 60, 90, 120, 150, 180]) {
   const r = at(d);
   console.log(String(r.day).padStart(3), '|', String(r.reviews).padStart(4), '|',
     String(r.answers).padStart(9), '|', (r.acc * 100).toFixed(0).padStart(11) + '%', '|',
