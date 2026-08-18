@@ -180,7 +180,7 @@ function renderHome() {
       <span class="tiny">${d.done
         ? `${d.done} heute geschafft · ${Math.round((d.correct / Math.max(1, d.done)) * 100)} % richtig`
         : 'Noch nichts gelernt heute – die erste Karte ist die leichteste.'}</span>
-      <b>${Math.round(pct * 100)} %</b>
+      ${d.done ? `<b>${Math.round(pct * 100)} %</b>` : ''}
     </div>
     <div class="btn-stack" style="margin-top:15px">
       <button class="btn primary" data-go="daily">${ico('play')}${plan ? 'Tagestraining starten' : 'Extra-Runde üben'}</button>
