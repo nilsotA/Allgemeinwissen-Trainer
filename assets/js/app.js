@@ -25,6 +25,8 @@ let onKey = null;        // Tastaturbelegung des aktuellen Bildschirms
 document.addEventListener('keydown', (e) => {
   if (!onKey) return;
   if (e.target.matches('input, textarea, select')) return;
+  // Cmd+1 wechselt den Browser-Tab, Alt+2 springt im Verlauf – solche Kürzel gehören nicht uns
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
   onKey(e);
 });
 

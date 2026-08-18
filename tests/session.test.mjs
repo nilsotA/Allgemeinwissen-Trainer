@@ -133,3 +133,54 @@ test('die Verschränkung behält alle Karten und keine doppelt', () => {
     assert.equal(q.filter(x => !x.fresh).length, nRev, `${nRev}/${nNeu}: falsche Zahl an Wiederholungen`);
   }
 });
+
+test('ein manipuliertes Backup schmuggelt keine Zeichenketten in Zahlenfelder', () => {
+  const boesartig = JSON.stringify({
+    cards: { 'x': { ef: '<img src=x onerror=alert(1)>', iv: 'viel', due: {}, seen: [1], reps: null } },
+    days: { '2026-01-01': { done: '<script>', correct: 'nein' }, 'kein-datum': { done: 5 } },
+    streak: '<b>99</b>', best: Infinity, totalAnswers: 'tausend',
+    settings: { newPerDay: 'alle', recallMode: 'boeser-modus', theme: 'javascript:', cats: [1, 2, {}] },
+    flags: { gut: true, 7: true },
+  });
+  store.importJSON(boesartig);
+  const s = store.S();
+  for (const [k, v] of Object.entries(s.cards.x)) {
+    assert.equal(typeof v, 'number', `cards.x.${k} ist ${typeof v}`);
+    assert.ok(Number.isFinite(v));
+  }
+  for (const [k, v] of Object.entries(s.days['2026-01-01'])) {
+    assert.equal(typeof v, 'number', `days.${k} ist ${typeof v}`);
+  }
+  assert.ok(!('kein-datum' in s.days), 'ungültiger Datumsschlüssel wurde übernommen');
+  assert.equal(typeof s.streak, 'number');
+  assert.ok(Number.isFinite(s.best));
+  assert.equal(typeof s.totalAnswers, 'number');
+  assert.equal(s.settings.newPerDay, 12, 'unbrauchbarer Wert muss auf die Voreinstellung zurückfallen');
+  assert.equal(s.settings.recallMode, 'auto');
+  assert.equal(s.settings.theme, 'system');
+  assert.deepEqual(s.settings.cats, [], 'nur Zeichenketten dürfen als Kategorien überleben');
+});
+
+test('ein echtes Backup übersteht Export und Import unverändert', () => {
+  store.resetAll();
+  store.setSetting('newPerDay', 20);
+  store.setSetting('theme', 'light');
+  const id = CARDS[5].id;
+  store.putCard(id, schedule(fresh(), GOOD));
+  store.touchStreak();
+  const gesichert = store.exportJSON();
+  const vorher = JSON.parse(gesichert);
+  store.resetAll();
+  store.importJSON(gesichert);
+  const s = store.S();
+  assert.equal(s.settings.newPerDay, 20);
+  assert.equal(s.settings.theme, 'light');
+  assert.equal(s.streak, vorher.streak);
+  assert.deepEqual(s.cards[id], vorher.cards[id]);
+});
+
+test('offensichtlicher Unsinn wird beim Einlesen abgewiesen', () => {
+  for (const txt of ['null', '[]', '"text"', '{}', '{"cards":"nein"}', '42']) {
+    assert.throws(() => store.importJSON(txt), undefined, `„${txt}" wurde angenommen`);
+  }
+});

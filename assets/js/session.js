@@ -119,8 +119,11 @@ export function buildDuel(n = 10) {
 /** Kennzahlen für Startseite und Statistik. */
 export function overview() {
   const t = todayNum();
+  // Alle Kennzahlen auf denselben Ausschnitt beziehen: sonst zeigte die Startseite
+  // „3 faellig" (gefiltert) neben „400 sitzt fest" (ungefiltert).
+  const pool = CARDS.filter(c => inScope(c));
   let learned = 0, mature = 0, seenTotal = 0;
-  for (const c of CARDS) {
+  for (const c of pool) {
     const s = cardState(c.id);
     if (!s || !s.seen) continue;
     seenTotal++;
@@ -130,7 +133,7 @@ export function overview() {
   const due = dueCards().length;
   const st = S();
   return {
-    total: CARDS.length, seen: seenTotal, learned, mature, due,
+    total: pool.length, seen: seenTotal, learned, mature, due,
     newLeft: newBudget(),
     accuracy: st.totalAnswers ? st.totalCorrect / st.totalAnswers : 0,
     t

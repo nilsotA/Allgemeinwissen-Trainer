@@ -31,10 +31,19 @@ self.addEventListener('install', (e) => {
     const cache = await caches.open(VERSION);
     // Bewusst nicht cache.addAll: das laeuft durch den HTTP-Cache und koennte
     // veraltete Module dauerhaft in den Offline-Bestand uebernehmen.
-    await Promise.all(ASSETS.map(async (url) => {
-      const res = await fetch(url, { cache: 'reload' });
-      if (res.ok) await cache.put(url, res);
+    // Einzelne Ausfaelle duerfen die Installation nicht kippen - was fehlt, holt
+    // der fetch-Handler spaeter nach. Ein Totalausfall wird gemeldet.
+    const ergebnisse = await Promise.all(ASSETS.map(async (url) => {
+      try {
+        const res = await fetch(url, { cache: 'reload' });
+        if (!res.ok) return false;
+        await cache.put(url, res);
+        return true;
+      } catch (e) { return false; }
     }));
+    const fehlend = ergebnisse.filter(x => !x).length;
+    if (fehlend) console.warn('[sw] ' + fehlend + ' von ' + ASSETS.length + ' Dateien nicht vorgeladen');
+    if (fehlend === ASSETS.length) throw new Error('Vorladen vollstaendig fehlgeschlagen');
     self.skipWaiting();
   })());
 });
@@ -60,8 +69,12 @@ self.addEventListener('fetch', (e) => {
     e.respondWith((async () => {
       try {
         const net = await fetch(req);
-        const cache = await caches.open(VERSION);
-        cache.put(req, net.clone());
+        // Nur gueltige Antworten als Offline-Rueckfall speichern, sonst wuerde
+        // eine 404-Seite dauerhaft die App ersetzen.
+        if (net.ok) {
+          const cache = await caches.open(VERSION);
+          cache.put(req, net.clone());
+        }
         return net;
       } catch (err) {
         return (await caches.match(req)) || (await caches.match('./index.html'));

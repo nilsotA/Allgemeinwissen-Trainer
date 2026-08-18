@@ -21,7 +21,8 @@ const DEFAULTS = {
   factDay: null,
   factIdx: 0,
   totalAnswers: 0,
-  totalCorrect: 0
+  totalCorrect: 0,
+  duelBest: 0
 };
 
 function deepMerge(base, add) {
@@ -156,9 +157,59 @@ export function resetAll() {
 export function exportJSON() {
   return JSON.stringify(state);
 }
+/* Ein eingelesenes Backup ist Fremdinhalt. Zahlenfelder landen unformatiert in der
+   Oberfläche, deshalb wird hier auf Typen geprüft statt nur auf Vorhandensein. */
+const zahl = (v, min, max, standard) => {
+  const n = Number(v);
+  return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : standard;
+};
+
+function saeubern(roh) {
+  const rein = structuredClone(DEFAULTS);
+  if (roh.settings && typeof roh.settings === 'object') {
+    const s = roh.settings;
+    rein.settings.newPerDay = zahl(s.newPerDay, 1, 200, 12);
+    rein.settings.maxReviews = zahl(s.maxReviews, 5, 1000, 90);
+    rein.settings.recallMode = ['auto', 'mc', 'recall'].includes(s.recallMode) ? s.recallMode : 'auto';
+    rein.settings.level = ['ladder', 'mixed'].includes(s.level) ? s.level : 'ladder';
+    rein.settings.theme = ['system', 'dark', 'light'].includes(s.theme) ? s.theme : 'system';
+    rein.settings.sound = !!s.sound;
+    rein.settings.cats = Array.isArray(s.cats) ? s.cats.filter(x => typeof x === 'string').slice(0, 50) : null;
+  }
+  for (const [id, c] of Object.entries(roh.cards || {})) {
+    if (typeof id !== 'string' || !c || typeof c !== 'object') continue;
+    rein.cards[id] = {
+      ef: zahl(c.ef, 1.3, 2.9, 2.5), iv: zahl(c.iv, 0, 365, 0),
+      due: zahl(c.due, 0, 1e6, 0), reps: zahl(c.reps, 0, 1e5, 0),
+      lapses: zahl(c.lapses, 0, 1e5, 0), seen: zahl(c.seen, 0, 1e6, 0),
+      ok: zahl(c.ok, 0, 1e6, 0), last: zahl(c.last, 0, 1e15, 0),
+    };
+  }
+  for (const [tag, d] of Object.entries(roh.days || {})) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(tag) || !d || typeof d !== 'object') continue;
+    rein.days[tag] = {
+      done: zahl(d.done, 0, 1e6, 0), correct: zahl(d.correct, 0, 1e6, 0),
+      newC: zahl(d.newC, 0, 1e6, 0), sec: zahl(d.sec, 0, 1e8, 0),
+    };
+  }
+  for (const id of Object.keys(roh.flags || {})) if (typeof id === 'string') rein.flags[id] = true;
+  rein.streak = zahl(roh.streak, 0, 1e5, 0);
+  rein.best = zahl(roh.best, 0, 1e5, 0);
+  rein.duelBest = zahl(roh.duelBest, 0, 100, 0);
+  rein.totalAnswers = zahl(roh.totalAnswers, 0, 1e8, 0);
+  rein.totalCorrect = zahl(roh.totalCorrect, 0, 1e8, 0);
+  rein.factIdx = zahl(roh.factIdx, 0, 1e5, 0);
+  rein.lastDay = /^\d{4}-\d{2}-\d{2}$/.test(roh.lastDay) ? roh.lastDay : null;
+  rein.factDay = /^\d{4}-\d{2}-\d{2}$/.test(roh.factDay) ? roh.factDay : null;
+  return rein;
+}
+
 export function importJSON(txt) {
   const parsed = JSON.parse(txt);
-  if (!parsed || typeof parsed !== 'object' || !parsed.cards) throw new Error('Kein gültiges Wissenswerk-Backup');
-  state = deepMerge(structuredClone(DEFAULTS), parsed);
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed) ||
+      !parsed.cards || typeof parsed.cards !== 'object') {
+    throw new Error('Kein gültiges Wissenswerk-Backup');
+  }
+  state = saeubern(parsed);
   save(true);
 }
