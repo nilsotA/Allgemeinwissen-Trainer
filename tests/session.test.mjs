@@ -184,3 +184,45 @@ test('offensichtlicher Unsinn wird beim Einlesen abgewiesen', () => {
     assert.throws(() => store.importJSON(txt), undefined, `„${txt}" wurde angenommen`);
   }
 });
+
+test('bei grossem Rückstand pausieren neue Karten', () => {
+  store.setSetting('maxReviews', 90);
+  store.setSetting('newPerDay', 12);
+  assert.equal(sess.newBudget(), 12, 'ohne Rückstand läuft das Budget normal');
+
+  // 85 fällige Karten anlegen – das sind mehr als 90 Prozent des Deckels
+  CARDS.slice(0, 85).forEach(c => {
+    const cs = schedule(fresh(), GOOD);
+    cs.due = store.todayNum();
+    store.putCard(c.id, cs);
+  });
+  assert.ok(sess.imRueckstau(), 'Rückstand müsste erkannt sein');
+  assert.equal(sess.newBudget(), 0, 'neue Karten müssten pausieren');
+  const q = sess.buildDaily();
+  assert.equal(q.filter(x => x.fresh).length, 0, 'keine neue Karte im Plan');
+  assert.ok(q.length > 0, 'Wiederholungen laufen weiter');
+});
+
+test('die Bremse lässt sich übersteuern', () => {
+  store.setSetting('maxReviews', 90);
+  CARDS.slice(0, 85).forEach(c => {
+    const cs = schedule(fresh(), GOOD);
+    cs.due = store.todayNum();
+    store.putCard(c.id, cs);
+  });
+  assert.equal(sess.newBudget(), 0);
+  store.setSetting('trotzdemNeu', true);
+  assert.equal(sess.newBudget(), 12, 'übersteuert müsste das Budget wieder greifen');
+  assert.ok(sess.buildDaily().some(x => x.fresh));
+});
+
+test('knapp unter der Schwelle laufen neue Karten weiter', () => {
+  store.setSetting('maxReviews', 90);
+  CARDS.slice(0, 60).forEach(c => {
+    const cs = schedule(fresh(), GOOD);
+    cs.due = store.todayNum();
+    store.putCard(c.id, cs);
+  });
+  assert.equal(sess.imRueckstau(), false);
+  assert.equal(sess.newBudget(), 12);
+});

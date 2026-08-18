@@ -53,8 +53,17 @@ export function newCards(pool = CARDS) {
   return out;
 }
 
+/* Ab wann der Rueckstand so gross ist, dass neue Karten nur schaden.
+   Ohne diese Bremse staut sich der Rueckstand in der Simulation auf ueber 300
+   Karten auf, nach zwei Wochen Abwesenheit auf ueber 800 - und genau daran
+   geben Lernende auf. Mit Bremse bleibt die Spitze bei rund 18, ohne dass am
+   Ende weniger Karten sitzen. */
+export const rueckstauSchwelle = () => Math.round(settings().maxReviews * 0.9);
+export const imRueckstau = () => dueCards().length >= rueckstauSchwelle();
+
 /** Wie viele neue Karten sind heute noch frei? */
 export function newBudget() {
+  if (imRueckstau() && !settings().trotzdemNeu) return 0;
   return Math.max(0, settings().newPerDay - (today().newC || 0));
 }
 

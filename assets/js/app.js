@@ -117,6 +117,7 @@ function renderHome() {
   const o = sess.overview();
   const d = today();
   const plan = sess.buildDaily().length;
+  const stau = sess.imRueckstau() && !settings().trotzdemNeu;
   const pct = Math.min(1, d.done / (d.done + plan || 1));
   const f = dailyFact();
   const flags = sess.flaggedCount();
@@ -129,6 +130,11 @@ function renderHome() {
     <p class="muted">${plan
       ? `${plan} Karten stehen an – etwa ${Math.max(2, Math.round(plan * 0.13))} Minuten.`
       : 'Heute ist alles erledigt. Stark.'}</p>
+    ${stau ? `<div class="hinweis">
+      <b>Erst mal aufholen.</b> ${o.due} Wiederholungen warten – neue Karten pausieren,
+      bis der Rückstand kleiner ist. So wächst der Berg nicht weiter.
+      <button class="btn sm ghost" id="trotzdem" style="margin-top:9px">Trotzdem neue Karten</button>
+    </div>` : ''}
     <div class="dial">
       ${ring(pct)}
       <div class="grow">
@@ -173,6 +179,11 @@ function renderHome() {
     const q = sess.buildDaily();
     startRun(q.length ? q : sess.buildWeak(15), 'daily');
   };
+  document.getElementById('trotzdem')?.addEventListener('click', () => {
+    setSetting('trotzdemNeu', true);
+    toast('Neue Karten laufen weiter – abschaltbar unter Mehr');
+    renderHome();
+  });
   app.querySelectorAll('[data-short]').forEach(b => b.onclick = () => {
     startRun(sess.buildDaily().slice(0, Number(b.dataset.short)), 'daily');
   });
@@ -444,6 +455,10 @@ function renderSettings() {
         <span class="switch"><input type="checkbox" id="snd" ${s.sound ? 'checked' : ''}><i></i></span>
       </div>
       <div class="setrow">
+        <div><label for="tnk">Neue Karten trotz Rückstand</label><p class="tiny">Aus: Bei vielen offenen Wiederholungen pausieren neue Karten, damit der Berg nicht wächst.</p></div>
+        <span class="switch"><input type="checkbox" id="tnk" ${s.trotzdemNeu ? 'checked' : ''}><i></i></span>
+      </div>
+      <div class="setrow">
         <div><label for="thm">Farbschema</label><p class="tiny">Hell ist draußen bei Sonne besser lesbar.</p></div>
         <select id="thm">
           <option value="system" ${(s.theme || 'system') === 'system' ? 'selected' : ''}>Wie das System</option>
@@ -488,6 +503,7 @@ function renderSettings() {
   bind('lvl', 'level');
   document.getElementById('snd').onchange = e => setSetting('sound', e.target.checked);
   document.getElementById('thm').onchange = e => { setSetting('theme', e.target.value); applyTheme(); };
+  document.getElementById('tnk').onchange = e => setSetting('trotzdemNeu', e.target.checked);
 
   app.querySelectorAll('[data-tog]').forEach(b => b.onclick = () => {
     const cur = new Set(settings().cats && settings().cats.length ? settings().cats : CATS.map(c => c.id));
@@ -781,8 +797,10 @@ function showFeedback(card, ok, grade, isFresh) {
 function snapshot(card) {
   const st = S();
   const k = dayKey();
+  const tagVorhanden = !!st.days[k];        // today() legt den Eintrag sonst nebenbei an
   return {
     id: card.id,
+    tagVorhanden,
     cs: cardState(card.id) ? { ...cardState(card.id) } : null,
     dayKey: k,
     day: { ...today() },
@@ -799,7 +817,8 @@ function undoLast() {
   if (!u) return;
   const st = S();
   if (u.cs) st.cards[u.id] = u.cs; else delete st.cards[u.id];
-  st.days[u.dayKey] = u.day;
+  if (u.tagVorhanden) st.days[u.dayKey] = u.day;
+  else delete st.days[u.dayKey];            // der Tag hatte vorher keinen Eintrag
   st.totalAnswers = u.totalAnswers; st.totalCorrect = u.totalCorrect;
   st.streak = u.streak; st.best = u.best; st.lastDay = u.lastDay;
   if (u.insertedAt >= 0) run.queue.splice(u.insertedAt, 1);

@@ -10,6 +10,7 @@ const DEFAULTS = {
     sound: true,
     level: 'ladder',      // ladder = leicht zuerst | mixed
     theme: 'system',      // system | dark | light
+    trotzdemNeu: false,   // neue Karten auch bei grossem Rueckstand einfuehren
     cats: null            // null = alle Kategorien aktiv, sonst Array von IDs
   },
   cards: {},              // id -> { ef, iv, due, reps, lapses, seen, ok, last }
@@ -174,6 +175,7 @@ function saeubern(roh) {
     rein.settings.level = ['ladder', 'mixed'].includes(s.level) ? s.level : 'ladder';
     rein.settings.theme = ['system', 'dark', 'light'].includes(s.theme) ? s.theme : 'system';
     rein.settings.sound = !!s.sound;
+    rein.settings.trotzdemNeu = !!s.trotzdemNeu;
     rein.settings.cats = Array.isArray(s.cats) ? s.cats.filter(x => typeof x === 'string').slice(0, 50) : null;
   }
   for (const [id, c] of Object.entries(roh.cards || {})) {

@@ -11,7 +11,10 @@ export function shuffle(arr) {
 }
 
 const YEAR = /^(\d{3,4})(\s*(v\.\s*Chr\.|n\.\s*Chr\.))?$/;
-const NUM = /^-?\d{1,3}([.,]\d+)?$/;
+// Deutsche Schreibweise: Punkt trennt Tausender, Komma die Nachkommastellen.
+// Ohne diese Unterscheidung wurde „3.600" als 3,6 gelesen und erzeugte Ablenker wie „1,8".
+const NUM = /^-?\d{1,3}(\.\d{3})*(,\d+)?$/;
+const zuZahl = (s) => parseFloat(s.replace(/\./g, '').replace(',', '.'));
 
 /* Für Jahreszahlen und reine Zahlen erzeugen wir knappe Beinahe-Treffer –
    das trainiert echtes Wissen statt Ausschlussverfahren. */
@@ -25,10 +28,14 @@ function numericDistractors(answer) {
   }
   const n = answer.match(NUM);
   if (n) {
-    const base = parseFloat(answer.replace(',', '.'));
+    const base = zuZahl(answer);
     if (!isFinite(base) || base === 0) return null;
     const facs = shuffle([0.5, 0.75, 1.5, 2, 1.25, 0.25]).slice(0, 3);
-    const fmt = v => (Number.isInteger(base) ? String(Math.round(v)) : v.toFixed(1).replace('.', ','));
+    const fmt = (v) => {
+      const gerundet = Number.isInteger(base) ? String(Math.round(v)) : v.toFixed(1).replace('.', ',');
+      // Tausenderpunkte wieder einsetzen, damit die Ablenker aussehen wie die Antwort
+      return answer.includes('.') ? gerundet.replace(/\B(?=(\d{3})+(?!\d))/g, '.') : gerundet;
+    };
     const out = [...new Set(facs.map(f => fmt(base * f)))].filter(v => v !== answer);
     return out.length >= 3 ? out.slice(0, 3) : null;
   }
