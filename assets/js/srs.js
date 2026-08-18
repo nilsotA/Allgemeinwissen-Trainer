@@ -8,14 +8,22 @@ export function fresh() {
   return { ef: 2.5, iv: 0, due: todayNum(), reps: 0, lapses: 0, seen: 0, ok: 0, last: 0 };
 }
 
-function fuzz(days) {
-  if (days < 3) return days;
-  const spread = Math.max(1, Math.round(days * 0.06));
-  return days + (Math.floor(Math.random() * (2 * spread + 1)) - spread);
+/* Streuung gegen Klumpenbildung. Bewusst OHNE Mindestbreite: bei kurzen
+   Intervallen waere ein Tag Streuung schon ein Drittel des Intervalls, und die
+   Streuung koennte das garantierte Wachstum wieder aufheben. Deshalb wird erst
+   ab etwa neun Tagen gestreut, und nie unter den Ausgangswert. */
+function fuzz(days, floor) {
+  const spread = Math.round(days * 0.06);
+  if (spread < 1) return days;
+  const shifted = days + (Math.floor(Math.random() * (2 * spread + 1)) - spread);
+  return Math.max(floor, shifted);
 }
 
-/** Neuen Zustand aus altem Zustand + Bewertung berechnen. */
-export function schedule(cs, grade) {
+/** Neuen Zustand aus altem Zustand + Bewertung berechnen.
+    Mit opts.jitter = false bleibt die Streuung aus – so kann die Oberflaeche
+    dasselbe Intervall anzeigen, das anschliessend auch gesetzt wird. */
+export function schedule(cs, grade, opts) {
+  const jitter = !opts || opts.jitter !== false;
   const s = { ...(cs || fresh()) };
   const t = todayNum();
   s.seen = (s.seen || 0) + 1;
@@ -34,6 +42,7 @@ export function schedule(cs, grade) {
   const bump = grade === HARD ? -0.15 : grade === EASY ? 0.15 : 0;
   s.ef = Math.min(2.9, Math.max(1.3, s.ef + bump));
 
+  const prev = s.iv;
   if (s.reps === 0) {
     s.iv = grade === EASY ? 3 : 1;
   } else if (s.reps === 1) {
@@ -42,7 +51,9 @@ export function schedule(cs, grade) {
     const mult = grade === HARD ? 1.25 : grade === EASY ? s.ef * 1.35 : s.ef;
     s.iv = Math.max(s.iv + 1, Math.round(s.iv * mult));
   }
-  s.iv = Math.min(365, Math.max(1, fuzz(Math.round(s.iv))));
+  const nominal = Math.max(1, Math.round(s.iv));
+  // Untergrenze: nie kuerzer als vorher, sonst hebt die Streuung das Wachstum auf
+  s.iv = Math.min(365, jitter ? fuzz(nominal, Math.max(1, Math.min(nominal, prev + 1))) : nominal);
   s.reps += 1;
   s.due = t + s.iv;
   return s;
@@ -70,9 +81,10 @@ export function retention(cs, t = todayNum()) {
   return Math.exp(-elapsed / (stability * 2.4));
 }
 
-/** Menschenlesbares Intervall für die Bewertungsknöpfe. */
+/** Menschenlesbares Intervall für die Bewertungsknöpfe.
+    Ohne Streuung, damit der Knopf nicht bei jedem Antippen etwas anderes verspricht. */
 export function preview(cs, grade) {
-  const iv = schedule({ ...(cs || fresh()) }, grade).iv;
+  const iv = schedule({ ...(cs || fresh()) }, grade, { jitter: false }).iv;
   if (grade === AGAIN) return 'gleich';
   if (iv <= 1) return '1 Tag';
   if (iv < 31) return `${iv} Tage`;

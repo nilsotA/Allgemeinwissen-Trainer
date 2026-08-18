@@ -1,7 +1,7 @@
 /* Wissenswerk – mobile-first, iPhone-optimiert */
 :root{
   --bg:#0e1116; --bg2:#151a22; --card:#1a2029; --card2:#212936;
-  --line:#2a3340; --txt:#e8edf4; --dim:#9aa7b8; --dim2:#6f7d90;
+  --line:#2a3340; --txt:#e8edf4; --dim:#9aa7b8; --dim2:#8b97a8;
   --acc:#4f8cff; --acc2:#7aa8ff;
   --ok:#3ddc97; --warn:#ffb454; --bad:#ff6b6b; --gold:#ffd166;
   --r:16px; --r-s:11px;
@@ -37,7 +37,7 @@ p{margin:0}
 .topbar{position:sticky;top:0;z-index:20;background:rgba(14,17,22,.86);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);padding-top:var(--safe-t)}
 .topbar-in{display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:10px max(14px,var(--safe-r)) 10px max(14px,var(--safe-l));min-height:48px}
+  padding:8px max(14px,var(--safe-r)) 8px max(14px,var(--safe-l));min-height:52px}
 .brand{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.2px}
 .brand-mark{width:28px;height:28px;border-radius:9px;background:linear-gradient(140deg,var(--acc),#8b5cf6);
   display:grid;place-content:center;font-size:15px;color:#fff}
@@ -80,8 +80,8 @@ p{margin:0}
 .btn[disabled]{opacity:.45}
 .btn-stack{display:grid;gap:10px}
 
-.chip{border:1px solid var(--line);background:var(--bg2);border-radius:999px;padding:6px 12px;font-size:13px;
-  color:var(--dim);font-weight:600;white-space:nowrap}
+.chip{border:1px solid var(--line);background:var(--bg2);border-radius:999px;padding:10px 14px;font-size:13px;
+  color:var(--dim);font-weight:600;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
 .chip.on{background:rgba(79,140,255,.16);border-color:rgba(79,140,255,.5);color:var(--acc2)}
 
 .bar{display:block;height:9px;border-radius:99px;background:#222b37;overflow:hidden}
@@ -106,9 +106,9 @@ p{margin:0}
 
 /* ---------- Session ---------- */
 .sess{display:flex;flex-direction:column;min-height:calc(100dvh - var(--safe-t) - var(--safe-b));padding-top:var(--safe-t)}
-.sess-top{display:flex;align-items:center;gap:12px;padding:10px 14px 12px}
+.sess-top{display:flex;align-items:center;gap:10px;padding:8px 12px 10px}
 .sess-top .bar{flex:1}
-.icon-btn{background:var(--card);border:1px solid var(--line);border-radius:11px;width:38px;height:38px;
+.icon-btn{background:var(--card);border:1px solid var(--line);border-radius:12px;width:44px;height:44px;
   display:grid;place-content:center;font-size:17px;flex:none;color:var(--dim)}
 .sess-body{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 14px 12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .sess-foot{padding:8px 14px calc(12px + var(--safe-b));display:grid;gap:9px}
@@ -185,7 +185,7 @@ p{margin:0}
 .setrow .tiny{margin-top:2px}
 select,input[type=number]{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:16px;min-height:42px}
 .switch{position:relative;width:50px;height:30px;flex:none}
-.switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;z-index:2}
+.switch input{position:absolute;opacity:0;margin:0;z-index:2;left:-4px;right:-4px;top:-7px;bottom:-7px;width:auto;height:auto}
 .switch i{position:absolute;inset:0;background:#333d4c;border-radius:99px;transition:background .2s}
 .switch i::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s}
 .switch input:checked + i{background:var(--acc)}
@@ -209,7 +209,7 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
 /* Sichtbare Überschrift einer Ansicht */
 .vh{font-size:22px;margin-bottom:4px}
 
-.icon-btn.sm{width:34px;height:34px;font-size:15px;border-radius:10px}
+.icon-btn.sm{width:44px;height:44px;font-size:16px;border-radius:12px}
 
 /* ---------- Prognose der nächsten Tage ---------- */
 .fc{display:flex;align-items:flex-end;gap:6px;height:104px}
