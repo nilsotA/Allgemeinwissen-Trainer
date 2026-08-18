@@ -226,3 +226,43 @@ test('knapp unter der Schwelle laufen neue Karten weiter', () => {
   assert.equal(sess.imRueckstau(), false);
   assert.equal(sess.newBudget(), 12);
 });
+
+/* Die Leiter sortierte innerhalb einer Stufe alphabetisch nach dem Fragetext.
+   Dadurch standen gleich anfangende Fragen beieinander – in der allerersten
+   Einheit zweimal „Ab welchem Alter darf man in Deutschland …". Das arbeitet
+   gegen das Verschränken, das der ganze Sinn der Kategorierotation ist. */
+test('die Leiter reiht neue Karten nicht alphabetisch auf', () => {
+  const neu = sess.newCards();
+  const proKat = {};
+  for (const c of neu) (proKat[c.cat] ||= []).push(c);
+  let alphabetisch = 0, geprueft = 0;
+  for (const liste of Object.values(proKat)) {
+    const stufe1 = liste.filter(c => c.d === 1).slice(0, 25);
+    if (stufe1.length < 10) continue;
+    geprueft++;
+    const sortiert = stufe1.every((c, i) => i === 0 || stufe1[i - 1].q.localeCompare(c.q) <= 0);
+    if (sortiert) alphabetisch++;
+  }
+  assert.ok(geprueft >= 5, `nur ${geprueft} Kategorien geprüft`);
+  assert.equal(alphabetisch, 0, `${alphabetisch} Kategorien liefern ihre neuen Karten alphabetisch`);
+});
+
+/* Welche Kategorie die Runde eröffnet, wird absichtlich gewürfelt. Innerhalb
+   einer Kategorie muss die Reihenfolge dagegen feststehen – sonst hinge es vom
+   Zufall ab, welche Grundlagen zuerst drankommen. */
+test('innerhalb einer Kategorie ist die Reihenfolge neuer Karten reproduzierbar', () => {
+  const proKat = (liste) => {
+    const o = {};
+    for (const c of liste) (o[c.cat] ||= []).push(c.id);
+    return o;
+  };
+  const a = proKat(sess.newCards()), b = proKat(sess.newCards());
+  assert.deepEqual(Object.keys(a).sort(), Object.keys(b).sort());
+  for (const k of Object.keys(a)) assert.deepEqual(a[k], b[k], `Reihenfolge in ${k} schwankt`);
+});
+
+/* Die Leiter soll Grundlagen zuerst bringen – das darf die Streuung nicht aufheben. */
+test('die Leiter bringt weiterhin die leichten Karten zuerst', () => {
+  const erste = sess.newCards().slice(0, 60);
+  assert.ok(erste.every(c => c.d === 1), 'in den ersten 60 neuen Karten steckt eine schwerere');
+});

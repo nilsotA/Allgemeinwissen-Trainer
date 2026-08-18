@@ -21,7 +21,7 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Aktives Abrufen** (retrieval practice) | Erst Multiple Choice zum Erkennen, ab der dritten Wiederholung freies Abrufen mit Selbstbewertung – Abrufen prägt stärker ein als Wiederlesen. |
 | **Verschränken** (interleaving) | Das Tagestraining mischt Themen, statt ein Gebiet am Stück zu pauken, und verteilt neue Karten gleichmäßig über die Einheit. |
 | **Elaboration** | Jede Karte liefert nach der Antwort einen Kontext, eine Eselsbrücke oder eine Einordnung – Wissen hält, wenn es andocken kann. |
-| **Schwierigkeits-Leiter** | Neue Karten kommen standardmäßig leicht zuerst, damit Grundlagenlücken zuerst schließen. |
+| **Schwierigkeits-Leiter** | Neue Karten kommen standardmäßig leicht zuerst, damit Grundlagenlücken zuerst schließen – innerhalb einer Stufe gestreut, damit nicht ähnlich formulierte Fragen beieinanderstehen. |
 | **Sofortige Rückmeldung** | Richtig/falsch plus Erklärung direkt nach der Antwort. |
 | **Kleine tägliche Dosis** | Standard: 12 neue Karten pro Tag. Das sind rund 9 Minuten – dauerhaft durchhaltbar. |
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
@@ -95,7 +95,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 58 Einheitentests plus Inhaltsprüfung
+npm test           # 61 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 33 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:all   # beides
 npm run check      # nur die Inhaltsprüfung
@@ -127,7 +127,7 @@ Struktur (Notrufnummern, Zweierpotenzen, Chromosomenzahlen), bei denen ein versc
 Ablenker sinnlos würde. Betroffen sind 152 der 1.477 Karten, der Effekt auf die Gesamt-
 Ratequote liegt bei rund drei Prozentpunkten.
 
-Die 58 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 61 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 

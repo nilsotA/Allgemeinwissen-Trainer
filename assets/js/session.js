@@ -35,8 +35,14 @@ export function newCards(pool = CARDS) {
   const byCat = {};
   for (const c of list) (byCat[c.cat] ||= []).push(c);
   for (const k of Object.keys(byCat)) {
+    // Zweitkriterium ist die ID, nicht der Fragetext. Alphabetisch sortiert kamen
+    // gleich anfangende Fragen hintereinander – in der allerersten Einheit etwa
+    // zweimal „Ab welchem Alter darf man in Deutschland …". Das arbeitet gegen das
+    // Verschränken. Die ID ist ein Hash der Frage: streut wie Zufall, liegt aber
+    // fest, sodass die Reihenfolge innerhalb einer Kategorie reproduzierbar bleibt.
+    // (Welche Kategorie beginnt, wird weiter unten bewusst gewürfelt.)
     byCat[k] = ladder
-      ? byCat[k].sort((a, b) => a.d - b.d || a.q.localeCompare(b.q))
+      ? byCat[k].sort((a, b) => a.d - b.d || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
       : shuffle(byCat[k]);
   }
   // Reihum durch die Kategorien: gemischte Themen prägen sich besser ein
