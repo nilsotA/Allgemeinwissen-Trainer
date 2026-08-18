@@ -19,6 +19,7 @@ const vorhanden = new Set(CARDS.map(c => c.q.trim()));
 
 const esc = (s) => String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 const zeile = (c) => `{q:"${esc(c.q)}",a:"${esc(c.a)}",s:"${esc(c.s)}",d:${c.d},`
+  + (c.mc ? 'mc:true,' : '')
   + `t:"${esc(c.t)}",w:[${c.w.map(w => `"${esc(w)}"`).join(',')}]},`;
 
 const proDatei = new Map();

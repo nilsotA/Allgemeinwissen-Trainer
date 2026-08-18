@@ -80,7 +80,10 @@ const ZEICHEN = [
   [/ℕ/g, ' n '], [/ℤ/g, ' z '], [/ℚ/g, ' q '], [/ℝ/g, ' r '], [/ℂ/g, ' c '],
   [/±/g, ' plusminus '], [/[≈~]/g, ' rund '], [/≤/g, ' hoechstens '], [/≥/g, ' mindestens '],
   [/∞/g, ' unendlich '], [/€/g, ' euro '], [/%/g, ' prozent '], [/&/g, ' und '],
-  [/[–—]/g, ' '], [/[’´`]/g, "'"], [/[éèê]/g, 'e'], [/[àâá]/g, 'a'], [/[ç]/g, 'c'], [/[ñ]/g, 'n'],
+  [/[–—]/g, ' '],
+  // Der Ableitungsstrich traegt Bedeutung: ohne ihn waere die Produktregel
+  // „u' · v + u · v'" nicht von „u · v + u' · v'" zu unterscheiden.
+  [/[’´`']/g, ' strich '], [/[éèê]/g, 'e'], [/[àâá]/g, 'a'], [/[ç]/g, 'c'], [/[ñ]/g, 'n'],
 ];
 const FUELLWOERTER = /\b(der|die|das|ein|eine|einen|einem|im|in|von|vom|zu|zum|zur|und|des|dem)\b/g;
 
@@ -213,7 +216,10 @@ export function similarity(input, answer) {
 
   // Fehlt ein tragendes Wort der Lösung, ist die Eingabe inhaltlich eine andere
   // Antwort – auch wenn sich die Zeichenketten stark ähneln: „Ludwig XIV." und
-  // „Ludwig XVI." unterscheiden nur zwei von zehn Zeichen.
-  const luecke = bindungGetauscht || fehlt.some(w => !KLASSIFIKATOREN.has(w));
+  // „Ludwig XVI." unterscheiden nur zwei von zehn Zeichen. Ein zusätzliches Wort
+  // wiegt genauso schwer: „zwei Drittel" ist nicht „ein Drittel", und „A oder B"
+  // ist nicht „A und B" – gemessen an den Zeichen fehlen dort nur fünf von 29.
+  const luecke = bindungGetauscht || extra.length
+              || fehlt.some(w => !KLASSIFIKATOREN.has(w));
   return luecke ? Math.min(roh, 0.6) : roh;
 }

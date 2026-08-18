@@ -3,10 +3,13 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.347 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.477 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (inkl. Trainingslehre, Anatomie und Sportpsychologie) und
-**Mathematik** (Grundlagen, Schulmathematik, Mathematikgeschichte).
+Schwerpunkte liegen auf **Sport** (Trainingslehre, Anatomie, Sportbiologie, Biomechanik,
+Sportpsychologie) und **Mathematik** (Grundlagen, Schulmathematik, Mathematikgeschichte) –
+in beiden Fächern reicht die Sammlung bewusst über das hinaus, was als Allgemeinwissen
+durchgeht: Energiebereitstellung und Muskelfasertypen ebenso wie Kongruenzsätze, p-q-Formel,
+Logarithmusgesetze und vollständige Induktion.
 
 ## Warum die App so gebaut ist
 
@@ -23,9 +26,10 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Kleine tägliche Dosis** | Standard: 12 neue Karten pro Tag. Das sind rund 9 Minuten – dauerhaft durchhaltbar. |
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
-Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt 89 Karten pro Tag,
-Spitzenlast 102, nach einem halben Jahr sitzen rund 1.160 der 1.347 Karten fest. Der Deckel
-für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem Kartenbestand mitwächst.
+Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt 91 Karten pro Tag,
+Spitzenlast 102, rund 11 Minuten täglich. Nach einem halben Jahr sitzen etwa 1.160 der 1.477
+Karten fest. Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
+Kartenbestand mitwächst.
 
 ### Was bewusst *nicht* drin ist
 
@@ -119,7 +123,7 @@ streicht, rät dann mit 50 statt 25 Prozent. Bei Jahreszahlen ist das behoben �
 liegen jetzt teils komplett vor, teils komplett nach dem gesuchten Jahr, bei gleichem Abstand
 und damit gleicher Plausibilität. Der Wert liegt bei 76,6 %; der Rest sind Zahlen mit eigener
 Struktur (Notrufnummern, Zweierpotenzen, Chromosomenzahlen), bei denen ein verschobener
-Ablenker sinnlos würde. Betroffen sind 145 der 1.347 Karten, der Effekt auf die Gesamt-
+Ablenker sinnlos würde. Betroffen sind 152 der 1.477 Karten, der Effekt auf die Gesamt-
 Ratequote liegt bei rund drei Prozentpunkten.
 
 Die 58 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
