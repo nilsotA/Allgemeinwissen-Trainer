@@ -217,6 +217,49 @@ try {
   check('App startet ohne Netz', offline);
   await ctx.setOffline(false);
 
+  group('Bedienbarkeit auf dem Handy');
+  /* Apple nennt 44 x 44 Punkt als kleinste sichere Flaeche fuer einen Finger.
+     Der Stern zum Markieren war 32 px gross und traf sich entsprechend schlecht. */
+  {
+    const MESSEN = () => {
+      const zuKlein = [];
+      for (const el of document.querySelectorAll('button, a[href], input, select, [role="button"]')) {
+        const st = getComputedStyle(el);
+        if (st.display === 'none' || st.visibility === 'hidden') continue;
+        const r = el.getBoundingClientRect();
+        if (r.width < 1 || r.height < 1) continue;
+        if (r.width < 44 || r.height < 44) zuKlein.push({
+          klasse: (el.className || '').toString().slice(0, 24) || el.tagName.toLowerCase(),
+          w: Math.round(r.width), h: Math.round(r.height) });
+      }
+      const namenlos = [...document.querySelectorAll('button, [role="button"]')].filter(el =>
+        el.getBoundingClientRect().width >= 1 && !(el.textContent || '').trim()
+        && !el.getAttribute('aria-label') && !el.getAttribute('title'))
+        .map(el => (el.className || '').toString().slice(0, 24));
+      return { zuKlein, namenlos };
+    };
+    const klein = new Map(); const ohneNamen = new Set();
+    const wege = [
+      async () => page.locator('.nav-btn[data-view="home"]').click(),
+      async () => page.locator('.nav-btn[data-view="topics"]').click(),
+      async () => page.locator('.nav-btn[data-view="duel"]').click(),
+      async () => page.locator('.nav-btn[data-view="stats"]').click(),
+      async () => page.locator('.nav-btn[data-view="settings"]').click(),
+      async () => page.locator('#searchBtn').click(),
+    ];
+    for (const gehe of wege) {
+      await gehe(); await page.waitForTimeout(280);
+      const { zuKlein, namenlos } = await page.evaluate(MESSEN);
+      for (const t of zuKlein) klein.set(t.klasse, t);
+      namenlos.forEach(x => ohneNamen.add(x));
+    }
+    check('alle Tippziele sind mindestens 44 px gross', klein.size === 0,
+      [...klein.values()].slice(0, 4).map(t => `.${t.klasse} ${t.w}x${t.h}`).join(' | '));
+    check('jeder Knopf hat einen zugaenglichen Namen', ohneNamen.size === 0, [...ohneNamen].join(' | '));
+    await page.locator('.nav-btn[data-view="home"]').click();
+    await page.waitForTimeout(250);
+  }
+
   group('Farbkontrast');
   /* Beide Paletten gegen WCAG AA pruefen (4,5:1, bei grosser Schrift 3:1). Eine feste
      Farbe im Blatt faellt im jeweils anderen Schema sofort auf: der Verlauf des

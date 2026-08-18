@@ -96,7 +96,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 58 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 31 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 33 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:all   # beides
 npm run check      # nur die Inhaltsprüfung
 npm run simulate   # simuliert 180 Tage Lernverlauf
@@ -153,6 +153,10 @@ Nötig war das, weil sich feste Farben im Stylesheet erst im jeweils anderen Sch
 Der Verlauf des Startblocks blieb dunkel, während die Schrift auf dunkel umschlug, sodass
 die Begrüßung bei 1,15:1 stand. Und „Nochmal", „Schwer" und „Leicht" waren helle Pastelltöne
 auf weißem Grund – 1,3:1 auf Knöpfen, die bei jeder Karte gedrückt werden.
+
+Ebenfalls gemessen statt behauptet: Jedes Tippziel muss die von Apple genannten 44 × 44
+Punkt erreichen, und jeder Knopf braucht einen Namen für die Sprachausgabe. Der Stern zum
+Markieren war 32 px groß und ließ sich mit dem Daumen kaum treffen.
 
 ### Karten ergänzen
 

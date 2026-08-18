@@ -203,7 +203,7 @@ p{margin:0}
 .setrow:last-child{border-bottom:0}
 .setrow label{font-weight:600;font-size:15px}
 .setrow .tiny{margin-top:2px}
-select,input[type=number]{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:16px;min-height:42px}
+select,input[type=number]{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:16px;min-height:44px}
 .switch{position:relative;width:50px;height:30px;flex:none}
 .switch input{position:absolute;opacity:0;margin:0;z-index:2;left:-4px;right:-4px;top:-7px;bottom:-7px;width:auto;height:auto}
 .switch i{position:absolute;inset:0;background:var(--track);border-radius:99px;transition:background .2s}
@@ -246,8 +246,10 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
 .lk-head{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;cursor:pointer}
 .lk-q{display:block;font-weight:650;font-size:15px;line-height:1.35;margin-top:3px}
 .lk-body{padding:0 14px 14px}
-.star{background:none;border:0;font-size:19px;line-height:1;color:var(--dim3);padding:2px 4px;flex:none;
-  min-width:32px;min-height:32px}
+/* Die Flaeche muss 44 px erreichen, sonst trifft man den Stern auf dem Handy
+   nur mit Glueck. Das Zeichen selbst bleibt klein. */
+.star{background:none;border:0;font-size:19px;line-height:1;color:var(--dim3);flex:none;
+  min-width:44px;min-height:44px;display:grid;place-content:center;padding:0}
 .star.on{color:var(--gold)}
 
 /* Auf breiten Bildschirmen zwei Spalten für Listen */
