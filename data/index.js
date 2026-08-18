@@ -42,7 +42,10 @@ for (const [cat, list] of Object.entries(SOURCES)) {
       a: c.a,
       w: c.w || null,
       t: c.t || '',
-      d: c.d || 2
+      d: c.d || 2,
+      // Karten, deren Antwort sich getippt nicht von einem Ablenker unterscheiden
+      // laesst (etwa „ss" gegen „ss"), duerfen nur als Auswahlfrage laufen.
+      mc: !!c.mc
     });
   });
 }

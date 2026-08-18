@@ -377,3 +377,53 @@ test('Bindestrichnamen bleiben unversehrt', () => {
     assert.equal(similarity(name, name), 1, `„${name}" stimmt nicht mit sich selbst überein`);
   }
 });
+
+/* Der schlimmste denkbare Fehler dieser App: eine falsche Eingabe als richtig
+   abnicken. Wer beim freien Abrufen den Ablenker tippt, bekommt sonst ein Häkchen
+   auf eine Falschantwort und lernt sie als richtig. Eine frühere Fassung des
+   Vergleichs tat das bei 148 Karten – „Ag" galt als Symbol für Gold. */
+test('kein Ablenker im Bestand wird als richtige Eingabe durchgewunken', () => {
+  const durchgerutscht = [];
+  for (const c of CARDS) {
+    if (!c.w || c.mc) continue;
+    for (const w of c.w) {
+      if (similarity(w, c.a) >= 0.8) durchgerutscht.push(`„${w}" galt als „${c.a}" (${c.id})`);
+    }
+  }
+  assert.deepEqual(durchgerutscht, [], durchgerutscht.join('\n'));
+});
+
+/* Umgekehrt darf die Strenge nicht dazu führen, dass richtige Antworten mit
+   einem Tippfehler reihenweise abgelehnt werden. */
+test('ein Tippfehler in der Antwort wird weit überwiegend verziehen', () => {
+  let erkannt = 0, abgelehnt = 0;
+  for (const c of CARDS) {
+    const laengstes = c.a.split(' ').sort((x, y) => y.length - x.length)[0] || '';
+    if (laengstes.length < 8) continue;
+    const i = Math.floor(laengstes.length * 0.75);
+    const vertippt = c.a.replace(laengstes,
+      laengstes.slice(0, i) + (laengstes[i] === 'e' ? 'a' : 'e') + laengstes.slice(i + 1));
+    similarity(vertippt, c.a) >= 0.8 ? erkannt++ : abgelehnt++;
+  }
+  const quote = erkannt / (erkannt + abgelehnt);
+  assert.ok(quote >= 0.9, `nur ${(quote * 100).toFixed(1)} % der Tippfehler wurden verziehen`);
+});
+
+/* Vertauschte Aussagen sind der häufigste Ablenkertyp der Sammlung. Sie stimmen
+   zeichenweise zu über 90 Prozent mit der Lösung überein und meinen das Gegenteil. */
+test('vertauschte Aussagen gelten nicht als richtig', () => {
+  const faelle = [
+    ['Masse ist eine Kraft, Gewicht ist ortsunabhängig', 'Masse ist ortsunabhängig, Gewicht ist eine Kraft'],
+    ['kW ist Energie, kWh ist Leistung', 'kW ist Leistung, kWh ist Energie'],
+    ['Ag', 'Au'],
+    ['Ludwig XVI.', 'Ludwig XIV.'],
+    ['Kupfer und Zink', 'Kupfer und Zinn'],
+    ['Das Training der intermuskulären Koordination', 'Das Training der intramuskulären Koordination'],
+    ['Den Expressionismus', 'Den Impressionismus'],
+    ['4 geteilt durch 3', '3 geteilt durch 4'],
+  ];
+  for (const [eingabe, loesung] of faelle) {
+    const v = similarity(eingabe, loesung);
+    assert.ok(v < 0.8, `„${eingabe}" ging als „${loesung}" durch (${v.toFixed(2)})`);
+  }
+});

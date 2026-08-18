@@ -147,6 +147,7 @@ p{margin:0}
 .expl b{color:var(--txt)}
 .verdict{font-size:15px;font-weight:700;display:flex;gap:8px;align-items:center}
 .verdict.good{color:var(--ok)} .verdict.bad{color:var(--bad)}
+.verdict.fast{color:var(--warn)}
 
 .grades{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
 .grades .btn{flex-direction:column;gap:2px;min-height:62px;font-size:13.5px;padding:8px 4px}

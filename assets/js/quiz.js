@@ -117,19 +117,46 @@ const KLASSIFIKATOREN = new Set([
   'satz', 'regel', 'gesetz', 'prinzip', 'theorem', 'formel', 'begriff',
   'verfahren', 'methode', 'lehre', 'effekt',
 ]);
-const RECHENWORT = new Set(['mal', 'pro', 'je', 'hoch', 'plus', 'ab', 'bis']);
 
-/* Alles Übrige trägt Bedeutung – vor allem Zahlen und Rechenwörter.
-   Ohne diese Prüfung galt „Grundseite mal Höhe" als richtige Antwort auf die
-   Dreiecksfläche, obwohl genau das fehlende „geteilt durch 2" der Fehler ist. */
-// Schwelle bewusst bei drei Zeichen: „sin", „cos", „Nil", „Rom" tragen die ganze
-// Bedeutung. Fuellwoerter wie „der" oder „und" sind zu diesem Zeitpunkt schon weg.
-const traegtBedeutung = (t) => /\d/.test(t) || t.length >= 3 || RECHENWORT.has(t);
+/* Grammatisches Bindegewebe: darf in einer knappen Eingabe fehlen, ohne dass sich
+   die Aussage ändert. Alles andere trägt Bedeutung – auch „Au", „r" oder „XIV",
+   die nur ein bis drei Zeichen lang sind und trotzdem die ganze Antwort ausmachen.
+   Eine frühere Fassung hielt alles unter drei Zeichen für bedeutungslos; dadurch
+   galt „Ag" als richtige Antwort auf die Frage nach dem Symbol für Gold. */
+const WEGLASSBAR = new Set([
+  'ist', 'sind', 'war', 'waren', 'wird', 'werden', 'hat', 'haben',
+  'man', 'sich', 'sie', 'es', 'auch', 'noch', 'schon', 'nur', 'sehr',
+  'etwa', 'rund', 'also', 'dann', 'dass', 'sowie', 'bzw',
+]);
+const traegtBedeutung = (t) => !WEGLASSBAR.has(t);
 
-/** Welche bedeutungstragenden Wörter der Lösung fehlen in der Eingabe? */
-function fehlendeWoerter(eingabe, loesung) {
-  const vorhanden = new Set(eingabe.split(' ').filter(Boolean));
-  return loesung.split(' ').filter(w => w && traegtBedeutung(w) && !vorhanden.has(w));
+/* Zwei Wörter meinen dasselbe, wenn sie sich nur wie ein Tippfehler unterscheiden.
+   Kurze Wörter müssen exakt stimmen – „Zinn"/„Zink", „XIV"/„XVI", „Au"/„Ag" liegen
+   einen Buchstaben auseinander und meinen etwas völlig anderes. Bei längeren Wörtern
+   muss die vordere Hälfte stimmen: im Deutschen sitzt die Unterscheidung vorn
+   (intra-/inter-, Impressionismus/Expressionismus, Bundesrats-/Bundestags-). */
+function gleichesWort(x, y) {
+  if (x === y) return true;
+  const lang = Math.max(x.length, y.length);
+  if (lang < 5) return false;
+  const kopf = Math.max(4, Math.ceil(lang / 2));
+  if (x.slice(0, kopf) !== y.slice(0, kopf)) return false;
+  return 1 - levenshtein(x, y) / lang >= 0.8;
+}
+
+const woerter = (t) => t.split(' ').filter(Boolean);
+
+/* Ordnet jedem Wort der Lösung höchstens ein Wort der Eingabe zu. Die Vielfachheit
+   zählt mit: „Knochen mit Knochen" ist nicht „Knochen mit Knorpel", auch wenn
+   „Knochen" irgendwo vorkommt. */
+function zuordnen(eingabe, loesung) {
+  const frei = woerter(eingabe);
+  const fehlend = [];
+  for (const w of woerter(loesung)) {
+    const i = frei.findIndex(v => gleichesWort(v, w));
+    if (i >= 0) frei.splice(i, 1); else fehlend.push(w);
+  }
+  return { fehlend, ueberzaehlig: frei };
 }
 
 /* Bei Antworten, deren Sinn an einer Zahl haengt, ist der Editierabstand
@@ -137,7 +164,7 @@ function fehlendeWoerter(eingabe, loesung) {
    von neun Zeichen, „a2 plus b2" und „a2 minus b2" in vieren von elf. */
 const OPERATOR = new Set(['plus', 'minus', 'gleich', 'mal', 'geteilt', 'durch', 'hoch', 'wurzel']);
 const kennwoerter = (t) =>
-  t.split(' ').filter(w => /\d/.test(w) || OPERATOR.has(w)).sort().join(' ');
+  woerter(t).filter(w => /\d/.test(w) || OPERATOR.has(w)).sort().join(' ');
 
 /** 0..1 – wie nah kommt die Eingabe der Lösung? */
 export function similarity(input, answer) {
@@ -145,27 +172,48 @@ export function similarity(input, answer) {
   if (!a || !b) return 0;
   if (a === b) return 1;
 
-  // Eine Verneinung, die in der Lösung nicht vorkommt, dreht die Aussage um
-  const verneint = VERNEINUNG.test(a) && !VERNEINUNG.test(b);
+  const dist = levenshtein(a, b);
+  const roh = Math.max(0, 1 - dist / Math.max(a.length, b.length));
 
+  // Eine Verneinung, die in der Lösung nicht vorkommt, dreht die Aussage um.
+  const verneint = VERNEINUNG.test(a) && !VERNEINUNG.test(b);
+  // Zahlen und Rechenzeichen muessen auf beiden Seiten uebereinstimmen – fehlende
+  // wie ueberzaehlige. Sonst galte „−cos(x)" als Antwort auf „cos(x)".
+  const kernFalsch = kennwoerter(b) !== kennwoerter(a);
+  if (verneint || kernFalsch) return Math.min(roh, 0.5);
+
+  const { fehlend, ueberzaehlig } = zuordnen(a, b);
+
+  // Stehen dieselben Wörter in anderer Reihenfolge, ist es fast immer die
+  // vertauschte Aussage: „Upcycling führt Material zurück, Recycling schafft
+  // daraus etwas Höherwertiges". Zeichenweise sind das über 90 Prozent
+  // Übereinstimmung – inhaltlich das Gegenteil.
+  if (!fehlend.length && !ueberzaehlig.length) {
+    const wa = woerter(a), wb = woerter(b);
+    const gleicheReihenfolge = wa.length === wb.length && wa.every((w, i) => gleichesWort(w, wb[i]));
+    return gleicheReihenfolge ? roh : Math.min(roh, 0.6);
+  }
+
+  const fehlt = fehlend.filter(traegtBedeutung);
+  const extra = ueberzaehlig.filter(w => traegtBedeutung(w) && !KLASSIFIKATOREN.has(w));
+  // Bindewörter dürfen fehlen, aber nicht ausgetauscht werden: „mit haben" und
+  // „mit werden" unterscheiden sich genau in so einem Wort.
+  const bindungGetauscht = fehlend.some(w => !traegtBedeutung(w))
+                        && ueberzaehlig.some(w => !traegtBedeutung(w));
   // Wer viel mehr schreibt als die Lösung lang ist, hat nicht dieselbe Antwort gegeben,
   // sondern drumherum geredet – sonst ginge „Bayern ist es nicht, sondern Hessen" durch.
   const zuLang = a.length > b.length * 1.7 + 10;
 
-  // Zahlen und Rechenzeichen muessen auf beiden Seiten uebereinstimmen – fehlende
-  // wie ueberzaehlige. Sonst galte „−cos(x)" als Antwort auf „cos(x)".
-  const kernFalsch = kennwoerter(b) !== kennwoerter(a);
-
-  if (!verneint && !zuLang && !kernFalsch) {
-    // Eine kürzere Eingabe zählt nur, wenn sie nichts Bedeutungstragendes auslässt.
-    // Einordnende Wörter wie „Satz" dürfen fehlen, Zahlen und Rechenwörter nicht.
-    const fehlt = fehlendeWoerter(a, b);
-    if (fehlt.every(w => KLASSIFIKATOREN.has(w))) {
-      if (fehlt.length === 0) return 0.95;
-      if (b.includes(a) || a.length >= Math.max(4, b.length * 0.4)) return 0.9;
-    }
+  // Eine kürzere Eingabe zählt nur, wenn sie nichts Bedeutungstragendes auslässt
+  // und nichts Fremdes hinzufügt. Einordnende Wörter wie „Satz" dürfen fehlen.
+  if (!zuLang && !extra.length && !bindungGetauscht && fehlt.every(w => KLASSIFIKATOREN.has(w))) {
+    if (fehlt.length === 0) return 0.95;
+    if (b.includes(a) || a.length >= Math.max(4, b.length * 0.4)) return 0.9;
   }
-  const dist = levenshtein(a, b);
-  const roh = Math.max(0, 1 - dist / Math.max(a.length, b.length));
-  return (verneint || kernFalsch) ? Math.min(roh, 0.5) : roh;
+
+  // Fehlt ein tragendes Wort der Lösung, ist die Eingabe inhaltlich eine andere
+  // Antwort – auch wenn sich die Zeichenketten stark ähneln: „Ludwig XIV." und
+  // „Ludwig XVI." unterscheiden nur zwei von zehn Zeichen.
+  const luecke = bindungGetauscht || fehlt.some(w => !KLASSIFIKATOREN.has(w));
+  return luecke ? Math.min(roh, 0.6) : roh;
 }

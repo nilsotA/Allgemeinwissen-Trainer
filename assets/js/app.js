@@ -672,6 +672,9 @@ function beep(ok) {
 
 function useRecall(card, cs) {
   const m = settings().recallMode;
+  // Manche Antworten lassen sich getippt nicht von ihrem Ablenker trennen
+  // („ss" gegen „ß"). Solche Karten laufen nur als Auswahlfrage.
+  if (card.mc) return false;
   if (m === 'mc') return false;
   if (m === 'recall') return true;
   return !!cs && cs.reps >= 2;              // erst erkennen, dann frei abrufen
@@ -777,11 +780,17 @@ function askRecall(card, isFresh, cs) {
 
 function revealRecall(card, typed, sim, cs, isFresh) {
   const near = sim >= 0.8;
+  // Dazwischen liegt das Feld, in dem der Vergleich bewusst streng ist: ein
+  // vertauschter Wortanfang oder ein fehlendes tragendes Wort. Das als glatt
+  // falsch abzustempeln wäre unfair – als richtig durchzuwinken schädlich.
+  const knapp = !near && sim >= 0.6;
   if (typed) beep(near);
   announce(near ? 'Deine Eingabe passt.' : `Die Antwort lautet: ${card.a}`);
   const hint = !typed ? '' : near
     ? `<p class="verdict good">✓ Deine Eingabe passt: „${esc(typed)}“</p>`
-    : `<p class="verdict bad">✕ Du hattest: „${esc(typed)}“</p>`;
+    : knapp
+      ? `<p class="verdict fast">≈ Knapp daneben: „${esc(typed)}“ – vergleich genau.</p>`
+      : `<p class="verdict bad">✕ Du hattest: „${esc(typed)}“</p>`;
   const g = (grade, label, cls) =>
     `<button class="btn ${cls}" data-g="${grade}"><span>${label}</span><small>${preview(cs, grade)}</small></button>`;
   shell(
