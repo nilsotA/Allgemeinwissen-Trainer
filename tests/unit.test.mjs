@@ -229,3 +229,69 @@ test('shuffle behält alle Elemente und verändert das Original nicht', () => {
   assert.deepEqual([...out].sort((a, b) => a - b), src);
   assert.deepEqual(src, Array.from({ length: 50 }, (_, i) => i));
 });
+
+test('normalize übersetzt Hoch-, Tiefstellungen und griechische Zeichen', () => {
+  assert.equal(normalize('H₂O'), normalize('H2O'));
+  assert.equal(normalize('a² + b² = c²'), normalize('a2 + b2 = c2'));
+  assert.equal(normalize('E = mc²'), normalize('E = mc2'));
+  assert.equal(normalize('π'), 'pi');
+  assert.equal(normalize('90°'), '90 grad');
+});
+
+test('normalize liefert für sinnhafte Eingaben nie einen leeren Text', () => {
+  for (const s of ['π', '²', '±', '√2', '10 °C', 'µ']) {
+    assert.notEqual(normalize(s), '', `„${s}" normalisiert zu einem leeren Text`);
+  }
+});
+
+test('Formeleingaben in Alltagsschreibweise werden als richtig erkannt', () => {
+  const paare = [['H2O', 'H₂O'], ['a2+b2=c2', 'a² + b² = c²'], ['E=mc2', 'E = mc²'], ['pi', 'π']];
+  for (const [eingabe, loesung] of paare) {
+    assert.ok(similarity(eingabe, loesung) >= 0.8,
+      `„${eingabe}" gegen „${loesung}" ergab nur ${similarity(eingabe, loesung).toFixed(2)}`);
+  }
+});
+
+test('Verneinungen und Zusätze werden nicht als richtig durchgewinkt', () => {
+  const faelle = [
+    ['Nicht die Zugspitze', 'Die Zugspitze'],
+    ['Bayern ist es nicht, sondern Hessen', 'Bayern'],
+    ['Der Satz des Pythagoras ist hier völlig falsch und gilt gar nicht', 'Satz des Pythagoras'],
+    ['keine Ahnung, vielleicht Berlin', 'Berlin'],
+  ];
+  for (const [eingabe, loesung] of faelle) {
+    const v = similarity(eingabe, loesung);
+    assert.ok(v < 0.8, `„${eingabe}" gegen „${loesung}" wurde mit ${v.toFixed(2)} akzeptiert`);
+  }
+});
+
+test('knappe richtige Eingaben gelten weiterhin', () => {
+  const paare = [
+    ['Pythagoras', 'Satz des Pythagoras'],
+    ['Zugspitze', 'Die Zugspitze'],
+    ['Bayern', 'Bayern'],
+    ['die zugspitze', 'Zugspitze'],
+    ['Karl der Grosse', 'Karl der Große'],
+  ];
+  for (const [eingabe, loesung] of paare) {
+    const v = similarity(eingabe, loesung);
+    assert.ok(v >= 0.8, `„${eingabe}" gegen „${loesung}" ergab nur ${v.toFixed(2)}`);
+  }
+});
+
+test('keine Antwort im Bestand normalisiert zu einem leeren Text', () => {
+  const leer = CARDS.filter(c => normalize(c.a) === '');
+  assert.deepEqual(leer.map(c => c.a), [],
+    'diese Antworten könnten bei freier Eingabe nie als richtig erkannt werden');
+});
+
+test('jede Antwort im Bestand stimmt mit sich selbst überein', () => {
+  const schlecht = CARDS.filter(c => similarity(c.a, c.a) < 1);
+  assert.deepEqual(schlecht.map(c => c.a), []);
+});
+
+test('eine Antwort wird auch mit anderer Groß- und Kleinschreibung erkannt', () => {
+  for (const c of CARDS.slice(0, 300)) {
+    assert.ok(similarity(c.a.toUpperCase(), c.a) >= 0.95, `${c.id}: ${c.a}`);
+  }
+});

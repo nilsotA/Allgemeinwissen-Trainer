@@ -57,14 +57,34 @@ export function options(card) {
 }
 
 /* ---------- Freies Abrufen: Eingabe mit der Lösung vergleichen ---------- */
+
+/* Zeichen, die beim reinen Wegwerfen von Nicht-ASCII verloren gingen und dann
+   „H₂O" zu „h o" oder „π" zu einer leeren Zeichenkette gemacht haben. */
+const ZEICHEN = [
+  [/[⁰₀]/g, '0'], [/[¹₁]/g, '1'], [/[²₂]/g, '2'], [/[³₃]/g, '3'], [/[⁴₄]/g, '4'],
+  [/[⁵₅]/g, '5'], [/[⁶₆]/g, '6'], [/[⁷₇]/g, '7'], [/[⁸₈]/g, '8'], [/[⁹₉]/g, '9'],
+  [/π/g, ' pi '], [/[αΑ]/g, ' alpha '], [/[βΒ]/g, ' beta '], [/[γΓ]/g, ' gamma '],
+  [/[δΔ]/g, ' delta '], [/[λΛ]/g, ' lambda '], [/[σΣ]/g, ' sigma '], [/[ωΩ]/g, ' omega '],
+  [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '], [/[·×]/g, ' mal '],
+  [/ℕ/g, ' n '], [/ℤ/g, ' z '], [/ℚ/g, ' q '], [/ℝ/g, ' r '], [/ℂ/g, ' c '],
+  [/±/g, ' plusminus '], [/[≈~]/g, ' rund '], [/≤/g, ' hoechstens '], [/≥/g, ' mindestens '],
+  [/∞/g, ' unendlich '], [/€/g, ' euro '], [/%/g, ' prozent '], [/&/g, ' und '],
+  [/[–—]/g, ' '], [/[’´`]/g, "'"], [/[éèê]/g, 'e'], [/[àâá]/g, 'a'], [/[ç]/g, 'c'], [/[ñ]/g, 'n'],
+];
+const FUELLWOERTER = /\b(der|die|das|ein|eine|einen|einem|im|in|von|vom|zu|zum|zur|und|des|dem)\b/g;
+
 export function normalize(s) {
-  return String(s)
-    .toLowerCase()
-    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
-    .replace(/[^a-z0-9]+/g, ' ')
-    .replace(/\b(der|die|das|ein|eine|einen|einem|im|in|von|vom|zu|zum|zur|und|des|dem)\b/g, ' ')
-    .trim().replace(/\s+/g, ' ');
+  let t = String(s).toLowerCase();
+  for (const [re, ersatz] of ZEICHEN) t = t.replace(re, ersatz);
+  t = t.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+       .replace(/[^a-z0-9]+/g, ' ');
+  const ohneFuell = t.replace(FUELLWOERTER, ' ').trim().replace(/\s+/g, ' ');
+  // Besteht die Eingabe nur aus Füllwörtern, ist der ungefilterte Text die bessere Grundlage
+  return ohneFuell || t.trim().replace(/\s+/g, ' ');
 }
+
+/* Verneinungen kehren die Aussage um – wer sie tippt, meint etwas anderes. */
+const VERNEINUNG = /\b(nicht|kein|keine|keinen|keiner|nie|niemals|falsch|weiss nicht|ahnung)\b/;
 
 function levenshtein(a, b) {
   if (a === b) return 0;
@@ -83,12 +103,23 @@ function levenshtein(a, b) {
 /** 0..1 – wie nah kommt die Eingabe der Lösung? */
 export function similarity(input, answer) {
   const a = normalize(input), b = normalize(answer);
-  if (!a) return 0;
+  if (!a || !b) return 0;
   if (a === b) return 1;
-  // Kernbegriff getroffen (z. B. „Pythagoras“ statt „Satz des Pythagoras“)
-  const bw = b.split(' ').filter(w => w.length > 3);
-  if (bw.length && bw.every(w => a.includes(w))) return 0.95;
-  if (b.includes(a) && a.length >= Math.max(4, b.length * 0.5)) return 0.88;
+
+  // Eine Verneinung, die in der Lösung nicht vorkommt, dreht die Aussage um
+  const verneint = VERNEINUNG.test(a) && !VERNEINUNG.test(b);
+
+  // Wer viel mehr schreibt als die Lösung lang ist, hat nicht dieselbe Antwort gegeben,
+  // sondern drumherum geredet – sonst würde „Bayern ist es nicht, sondern Hessen" durchgehen.
+  const zuLang = a.length > b.length * 1.7 + 10;
+
+  if (!verneint && !zuLang) {
+    // Kernbegriff getroffen (z. B. „Pythagoras“ statt „Satz des Pythagoras“)
+    const bw = b.split(' ').filter(w => w.length > 3);
+    if (bw.length && bw.every(w => a.includes(w))) return 0.95;
+    if (b.includes(a) && a.length >= Math.max(4, b.length * 0.5)) return 0.88;
+  }
   const dist = levenshtein(a, b);
-  return Math.max(0, 1 - dist / Math.max(a.length, b.length));
+  const roh = Math.max(0, 1 - dist / Math.max(a.length, b.length));
+  return verneint ? Math.min(roh, 0.5) : roh;
 }
