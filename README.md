@@ -100,7 +100,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 61 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 33 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 34 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:all   # beides
 npm run check      # nur die Inhaltsprüfung
 npm run simulate   # simuliert 180 Tage Lernverlauf
@@ -161,6 +161,11 @@ auf weißem Grund – 1,3:1 auf Knöpfen, die bei jeder Karte gedrückt werden.
 Ebenfalls gemessen statt behauptet: Jedes Tippziel muss die von Apple genannten 44 × 44
 Punkt erreichen, und jeder Knopf braucht einen Namen für die Sprachausgabe. Der Stern zum
 Markieren war 32 px groß und ließ sich mit dem Daumen kaum treffen.
+
+Dazu zwei Satzfehler, die man auf einem kleinen Bildschirm leicht übersieht: waagerecht
+abgeschnittener Inhalt und ein einzelnes Bruchstück auf der letzten Zeile. Der Schalter in
+den Einstellungen ragte 4 px aus seiner Zeile heraus, und am ersten Tag standen „0" und „%"
+untereinander, weil der Text daneben die Spalte zu schmal machte.
 
 ### Karten ergänzen
 

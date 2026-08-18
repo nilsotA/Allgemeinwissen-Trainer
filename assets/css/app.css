@@ -94,6 +94,9 @@ svg{display:block;flex:none}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--sh1)}
 .card + .card{margin-top:11px}
 .sec{margin:22px 0 9px;font-size:13px;letter-spacing:.02em;color:var(--dim);font-weight:700}
+/* Kein einzelnes Wort auf der letzten Zeile - gilt fuer alle Textbloecke,
+   die ueber mehrere Zeilen laufen koennen. */
+p,.muted,.tiny,.val,.expl,.lk-q,.q{text-wrap:pretty}
 .muted{color:var(--dim);font-size:14.5px}
 .tiny{color:var(--dim2);font-size:12.5px;line-height:1.45}
 .row{display:flex;align-items:center;gap:10px}
@@ -292,7 +295,10 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line2);bo
    der einzige Fremdkoerper in der Palette. Wir zeichnen die Suche selbst. */
 input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
 .switch{position:relative;width:52px;height:32px;flex:none}
-.switch input{position:absolute;opacity:0;margin:0;z-index:2;left:-4px;right:-4px;top:-6px;bottom:-6px;width:auto;height:auto}
+/* Die unsichtbare Flaeche wird nur nach oben und unten vergroessert: der
+   Schalter ist mit 52 px schon breiter als die geforderten 44, waagerecht
+   ragte sie dagegen 4 px aus der Zeile heraus und wurde abgeschnitten. */
+.switch input{position:absolute;opacity:0;margin:0;z-index:2;left:0;right:0;top:-6px;bottom:-6px;width:auto;height:auto}
 .switch i{position:absolute;inset:0;background:var(--track);border-radius:99px;transition:background .2s}
 .switch i::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:var(--card);
   box-shadow:var(--sh1);transition:transform .2s}

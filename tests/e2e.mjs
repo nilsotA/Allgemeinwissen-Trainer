@@ -308,6 +308,66 @@ try {
     await kctx.close();
   }
 
+  group('Satz und Umbruch');
+  /* Zwei Fehlerbilder, die man auf dem Handy leicht uebersieht und die sich
+     zuverlaessig messen lassen: waagerecht abgeschnittener Inhalt (der Schalter
+     in den Einstellungen ragte 4 px aus seiner Zeile) und ein einzelnes
+     Bruchstueck auf der letzten Zeile ("0" und "%" standen untereinander). */
+  {
+    const SATZ = () => {
+      const raus = [];
+      for (const el of document.querySelectorAll('body *')) {
+        const st = getComputedStyle(el);
+        if (st.display === 'none' || st.visibility === 'hidden') continue;
+        const r = el.getBoundingClientRect();
+        if (r.width < 2 || r.height < 2) continue;
+        const txt = [...el.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent.trim()).join(' ').trim();
+        const kl = (el.className || '').toString().slice(0, 24) || el.tagName.toLowerCase();
+        if (el.scrollWidth - el.clientWidth > 2 && st.overflowX !== 'auto' && st.overflowX !== 'scroll') {
+          raus.push({ art: 'abgeschnitten', kl, txt: txt.slice(0, 30), n: el.scrollWidth - el.clientWidth });
+        }
+        if (!txt || txt.length <= 12) continue;
+        const zeilen = Math.round(r.height / (parseFloat(st.lineHeight) || parseFloat(st.fontSize) * 1.5));
+        if (zeilen < 2) continue;
+        const rng = document.createRange();
+        rng.selectNodeContents(el);
+        const kisten = [...rng.getClientRects()];
+        if (kisten.length < 2) continue;
+        const letzte = kisten[kisten.length - 1];
+        const breiteste = Math.max(...kisten.map(k => k.width));
+        if (letzte.width > 0 && letzte.width < breiteste * 0.13) {
+          raus.push({ art: 'Bruchstueck', kl, txt: txt.slice(0, 30), n: Math.round(letzte.width) });
+        }
+      }
+      return raus;
+    };
+    const funde = new Map();
+    for (const schema of ['light', 'dark']) {
+      const sctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', colorScheme: schema });
+      const spage = await sctx.newPage();
+      await spage.goto(URL_BASE, { waitUntil: 'networkidle' });
+      const wege = [
+        async () => {},
+        async () => spage.locator('.nav-btn[data-view="topics"]').click(),
+        async () => spage.locator('.nav-btn[data-view="duel"]').click(),
+        async () => spage.locator('.nav-btn[data-view="stats"]').click(),
+        async () => spage.locator('.nav-btn[data-view="settings"]').click(),
+        async () => spage.locator('#searchBtn').click(),
+        async () => { await spage.locator('.nav-btn[data-view="home"]').click(); await spage.waitForTimeout(200);
+          await spage.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click(); },
+        async () => { if (await spage.locator('.opt').count()) await spage.locator('.opt').first().click();
+          else await spage.locator('.sess-foot button').first().click(); },
+      ];
+      for (const gehe of wege) {
+        await gehe(); await spage.waitForTimeout(280);
+        for (const t of await spage.evaluate(SATZ)) funde.set(schema + t.art + t.kl + t.txt, t);
+      }
+      await sctx.close();
+    }
+    check('nichts abgeschnitten, keine Bruchstuecke am Zeilenende', funde.size === 0,
+      [...funde.values()].slice(0, 4).map(t => `${t.art} .${t.kl} (${t.n}px)`).join(' | '));
+  }
+
   group('Layout');
   check('kein waagerechter Überlauf',
     (await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)) === 0);
