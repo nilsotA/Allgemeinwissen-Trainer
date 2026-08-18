@@ -39,6 +39,12 @@ function deepMerge(base, add) {
   return out;
 }
 
+/* Vollstaendiger Kartenzustand. Fehlt eines dieser Felder, rechnet sich das
+   undefined stillschweigend zu NaN weiter: strength() liefert dann NaN, jeder
+   Vergleich damit ist falsch, und Anzeigen wie „sitzt fest" stehen ohne
+   Fehlermeldung auf null. Deshalb wird beim Laden aufgefuellt. */
+const KARTE_LEER = { ef: 2.5, iv: 0, due: 0, reps: 0, lapses: 0, seen: 0, ok: 0, last: 0 };
+
 let state = load();
 
 function load() {
@@ -46,9 +52,18 @@ function load() {
     const raw = localStorage.getItem(KEY);
     if (!raw) return structuredClone(DEFAULTS);
     const parsed = JSON.parse(raw);
-    return deepMerge(structuredClone(DEFAULTS), parsed);
+    const zustand = deepMerge(structuredClone(DEFAULTS), parsed);
+    for (const [id, c] of Object.entries(zustand.cards)) {
+      if (!c || typeof c !== 'object') { delete zustand.cards[id]; continue; }
+      for (const feld of Object.keys(KARTE_LEER)) {
+        if (typeof c[feld] !== 'number' || !Number.isFinite(c[feld])) c[feld] = KARTE_LEER[feld];
+      }
+    }
+    return zustand;
   } catch (e) {
-    console.warn('Speicher unlesbar, starte neu', e);
+    // Bewusst console.error: hier landet auch ein Programmierfehler, und der
+    // wuerde sonst den gesamten Fortschritt still auf die Standardwerte setzen.
+    console.error('Speicher unlesbar, starte neu', e);
     return structuredClone(DEFAULTS);
   }
 }
