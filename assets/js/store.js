@@ -9,6 +9,7 @@ const DEFAULTS = {
     recallMode: 'auto',   // auto | mc | recall  (auto = freies Abrufen ab Reifegrad)
     sound: true,
     level: 'ladder',      // ladder = leicht zuerst | mixed
+    theme: 'system',      // system | dark | light
     cats: null            // null = alle Kategorien aktiv, sonst Array von IDs
   },
   cards: {},              // id -> { ef, iv, due, reps, lapses, seen, ok, last }

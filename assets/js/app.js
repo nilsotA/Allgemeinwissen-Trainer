@@ -45,6 +45,23 @@ nav.addEventListener('click', e => {
 });
 document.getElementById('searchBtn').onclick = () => show('lookup');
 
+/* Farbschema anwenden: leerer Wert = Systemeinstellung folgen.
+   Die Leiste oben faerbt iOS nach theme-color, deshalb wird auch die mitgezogen. */
+function applyTheme() {
+  const t = settings().theme || 'system';
+  const root = document.documentElement;
+  if (t === 'system') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', t);
+  const dark = t === 'dark' || (t === 'system' && !window.matchMedia('(prefers-color-scheme: light)').matches);
+  for (const m of document.querySelectorAll('meta[name="theme-color"]')) {
+    m.setAttribute('content', dark ? '#0e1116' : '#f5f7fa');
+  }
+  root.style.colorScheme = t === 'system' ? 'light dark' : t;
+}
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+  if ((settings().theme || 'system') === 'system') applyTheme();
+});
+
 function toast(msg, ms = 2200) {
   document.querySelector('.toast')?.remove();
   const d = document.createElement('div');
@@ -69,11 +86,11 @@ function ring(pct) {
   const off = c * (1 - Math.max(0, Math.min(1, pct)));
   return `<div class="dial-ring">
     <svg viewBox="0 0 88 88" width="88" height="88" aria-hidden="true">
-      <circle cx="44" cy="44" r="${r}" fill="none" stroke="#222b37" stroke-width="8"/>
+      <circle cx="44" cy="44" r="${r}" fill="none" stroke="var(--ring-bg)" stroke-width="8"/>
       <circle cx="44" cy="44" r="${r}" fill="none" stroke="url(#g)" stroke-width="8"
         stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/>
       <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#8b5cf6"/>
+        <stop offset="0" style="stop-color:var(--grad1)"/><stop offset="1" style="stop-color:var(--mark2)"/>
       </linearGradient></defs>
     </svg><b>${Math.round(pct * 100)}%</b></div>`;
 }
@@ -404,6 +421,14 @@ function renderSettings() {
         <div><label for="snd">Ton bei Antwort</label></div>
         <span class="switch"><input type="checkbox" id="snd" ${s.sound ? 'checked' : ''}><i></i></span>
       </div>
+      <div class="setrow">
+        <div><label for="thm">Farbschema</label><p class="tiny">Hell ist draußen bei Sonne besser lesbar.</p></div>
+        <select id="thm">
+          <option value="system" ${(s.theme || 'system') === 'system' ? 'selected' : ''}>Wie das System</option>
+          <option value="dark" ${s.theme === 'dark' ? 'selected' : ''}>Immer dunkel</option>
+          <option value="light" ${s.theme === 'light' ? 'selected' : ''}>Immer hell</option>
+        </select>
+      </div>
     </div>
 
     <div class="sec">Aktive Themen</div>
@@ -440,6 +465,7 @@ function renderSettings() {
   bind('rec', 'recallMode');
   bind('lvl', 'level');
   document.getElementById('snd').onchange = e => setSetting('sound', e.target.checked);
+  document.getElementById('thm').onchange = e => { setSetting('theme', e.target.value); applyTheme(); };
 
   app.querySelectorAll('[data-tog]').forEach(b => b.onclick = () => {
     const cur = new Set(settings().cats && settings().cats.length ? settings().cats : CATS.map(c => c.id));
@@ -847,6 +873,7 @@ function askDuel(card) {
 
 /* ================= Start ================= */
 function boot() {
+  applyTheme();
   document.getElementById('boot')?.remove();
   app.hidden = false;
   show('home');

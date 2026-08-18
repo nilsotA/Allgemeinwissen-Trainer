@@ -4,6 +4,10 @@
   --line:#2a3340; --txt:#e8edf4; --dim:#9aa7b8; --dim2:#8b97a8;
   --acc:#4f8cff; --acc2:#7aa8ff;
   --ok:#3ddc97; --warn:#ffb454; --bad:#ff6b6b; --gold:#ffd166;
+  --chrome:rgba(14,17,22,.88); --track:#222b37; --toast:#26303d; --dim3:#3a4553;
+  --grad1:#3a6fe0; --grad2:#6d5cff; --mark1:#3a6fe0; --mark2:#7c4ded;
+  --heat0:#1b222c; --heat1:#1e4d3c; --heat2:#2a7a5c; --heat3:#37b17f;
+  --on-ok:#06301f; --on-bad:#3a0d0d; --ring-bg:#222b37;
   --r:16px; --r-s:11px;
   --safe-t:env(safe-area-inset-top,0px);
   --safe-b:env(safe-area-inset-bottom,0px);
@@ -29,17 +33,17 @@ p{margin:0}
 
 /* ---------- Boot ---------- */
 .boot{position:fixed;inset:0;display:grid;place-content:center;justify-items:center;gap:14px;background:var(--bg);z-index:99;color:var(--dim)}
-.boot-logo{width:64px;height:64px;border-radius:18px;background:linear-gradient(140deg,var(--acc),#8b5cf6);
+.boot-logo{width:64px;height:64px;border-radius:18px;background:linear-gradient(140deg,var(--mark1),var(--mark2));
   display:grid;place-content:center;font-weight:800;font-size:30px;color:#fff;animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.07);opacity:1}}
 
 /* ---------- Chrome ---------- */
-.topbar{position:sticky;top:0;z-index:20;background:rgba(14,17,22,.86);backdrop-filter:blur(14px);
+.topbar{position:sticky;top:0;z-index:20;background:var(--chrome);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);padding-top:var(--safe-t)}
 .topbar-in{display:flex;align-items:center;justify-content:space-between;gap:10px;
   padding:8px max(14px,var(--safe-r)) 8px max(14px,var(--safe-l));min-height:52px}
 .brand{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.2px}
-.brand-mark{width:28px;height:28px;border-radius:9px;background:linear-gradient(140deg,var(--acc),#8b5cf6);
+.brand-mark{width:28px;height:28px;border-radius:9px;background:linear-gradient(140deg,var(--mark1),var(--mark2));
   display:grid;place-content:center;font-size:15px;color:#fff}
 .brand-name{font-size:16px}
 .streak{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;font-weight:700}
@@ -49,7 +53,7 @@ p{margin:0}
 .app.full{padding-bottom:calc(var(--safe-b) + 16px)}
 
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,1fr);
-  background:rgba(14,17,22,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line);
+  background:var(--chrome);backdrop-filter:blur(16px);border-top:1px solid var(--line);
   padding-bottom:var(--safe-b)}
 .nav-btn{background:none;border:0;padding:8px 2px 9px;display:grid;justify-items:center;gap:2px;
   font-size:10.5px;color:var(--dim2);min-height:56px;font-weight:600}
@@ -72,8 +76,8 @@ p{margin:0}
   border-radius:14px;border:1px solid var(--line);background:var(--card2);color:var(--txt);
   font-weight:650;font-size:16px;padding:12px 16px;transition:transform .08s ease,background .15s}
 .btn:active{transform:scale(.985)}
-.btn.primary{background:linear-gradient(135deg,var(--acc),#6d5cff);border-color:transparent;color:#fff;
-  box-shadow:0 6px 20px -8px rgba(79,140,255,.75)}
+.btn.primary{background:linear-gradient(135deg,var(--grad1),var(--grad2));border-color:transparent;color:#fff;
+  box-shadow:0 6px 20px -8px rgba(58,111,224,.7)}
 .btn.ghost{background:transparent}
 .btn.sm{min-height:40px;font-size:14px;padding:8px 14px;width:auto;border-radius:11px}
 .btn.danger{color:var(--bad);border-color:#4a2b2f}
@@ -84,8 +88,8 @@ p{margin:0}
   color:var(--dim);font-weight:600;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
 .chip.on{background:rgba(79,140,255,.16);border-color:rgba(79,140,255,.5);color:var(--acc2)}
 
-.bar{display:block;height:9px;border-radius:99px;background:#222b37;overflow:hidden}
-.bar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--acc),#8b5cf6);transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.bar{display:block;height:9px;border-radius:99px;background:var(--track);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--grad1),var(--mark2));transition:width .45s cubic-bezier(.2,.8,.2,1)}
 .bar.ok>i{background:linear-gradient(90deg,#2fbf85,var(--ok))}
 
 /* ---------- Home ---------- */
@@ -129,9 +133,9 @@ p{margin:0}
 .opt .k{width:26px;height:26px;flex:none;border-radius:8px;background:var(--bg2);display:grid;place-content:center;
   font-size:12.5px;color:var(--dim2);font-weight:700}
 .opt.right{background:rgba(61,220,151,.14);border-color:rgba(61,220,151,.6)}
-.opt.right .k{background:var(--ok);color:#06301f}
+.opt.right .k{background:var(--ok);color:var(--on-ok)}
 .opt.wrong{background:rgba(255,107,107,.13);border-color:rgba(255,107,107,.55)}
-.opt.wrong .k{background:var(--bad);color:#3a0d0d}
+.opt.wrong .k{background:var(--bad);color:var(--on-bad)}
 .opt.dim{opacity:.45}
 
 .answer{background:var(--card2);border:1px solid var(--line);border-radius:var(--r);padding:14px}
@@ -165,15 +169,15 @@ p{margin:0}
 .pct{font-size:13px;font-weight:700;color:var(--dim);flex:none;min-width:38px;text-align:right}
 
 .heat{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:3px}
-.heat i{aspect-ratio:1;border-radius:3px;background:#1b222c;display:block}
+.heat i{aspect-ratio:1;border-radius:3px;background:var(--heat0);display:block}
 .heat i.future{background:transparent}
 .heat-days{display:grid;grid-template-rows:repeat(7,1fr);gap:3px;font-size:9px;color:var(--dim2);
   align-content:stretch;margin-right:6px}
 .heat-days span{display:grid;align-items:center;line-height:1}
 .heat-wrap{display:flex;align-items:stretch}
-.heat i[data-l="1"]{background:#1e4d3c}
-.heat i[data-l="2"]{background:#2a7a5c}
-.heat i[data-l="3"]{background:#37b17f}
+.heat i[data-l="1"]{background:var(--heat1)}
+.heat i[data-l="2"]{background:var(--heat2)}
+.heat i[data-l="3"]{background:var(--heat3)}
 .heat i[data-l="4"]{background:var(--ok)}
 .heat i.today{outline:1.5px solid var(--acc2);outline-offset:1px}
 .legend{display:flex;align-items:center;gap:5px;justify-content:flex-end;margin-top:8px;font-size:11px;color:var(--dim2)}
@@ -186,7 +190,7 @@ p{margin:0}
 select,input[type=number]{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:16px;min-height:42px}
 .switch{position:relative;width:50px;height:30px;flex:none}
 .switch input{position:absolute;opacity:0;margin:0;z-index:2;left:-4px;right:-4px;top:-7px;bottom:-7px;width:auto;height:auto}
-.switch i{position:absolute;inset:0;background:#333d4c;border-radius:99px;transition:background .2s}
+.switch i{position:absolute;inset:0;background:var(--track);border-radius:99px;transition:background .2s}
 .switch i::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s}
 .switch input:checked + i{background:var(--acc)}
 .switch input:checked + i::after{transform:translateX(20px)}
@@ -196,7 +200,7 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
 .empty{text-align:center;color:var(--dim);padding:34px 16px}
 
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + var(--safe-b) + 16px);
-  background:#26303d;border:1px solid var(--line);border-radius:12px;padding:11px 17px;font-size:14px;font-weight:600;
+  background:var(--toast);border:1px solid var(--line);border-radius:12px;padding:11px 17px;font-size:14px;font-weight:600;
   z-index:60;box-shadow:0 10px 30px -10px #000;animation:up .25s ease}
 @keyframes up{from{opacity:0;transform:translate(-50%,10px)}}
 .fade{animation:fade .22s ease}
@@ -215,7 +219,7 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
 .fc{display:flex;align-items:flex-end;gap:6px;height:104px}
 .fc-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%}
 .fc-col > i{display:block;width:100%;border-radius:5px 5px 2px 2px;
-  background:linear-gradient(180deg,var(--acc),#6d5cff);opacity:.9}
+  background:linear-gradient(180deg,var(--grad1),var(--grad2));opacity:.95}
 .fc-col:first-child > i{background:linear-gradient(180deg,var(--warn),#e08b2e)}
 .fc-n{font-size:11.5px;font-weight:700;color:var(--dim);min-height:14px}
 .fc-l{font-size:10px;color:var(--dim2);font-weight:600}
@@ -226,7 +230,7 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
 .lk-head{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;cursor:pointer}
 .lk-q{display:block;font-weight:650;font-size:15px;line-height:1.35;margin-top:3px}
 .lk-body{padding:0 14px 14px}
-.star{background:none;border:0;font-size:19px;line-height:1;color:#3a4553;padding:2px 4px;flex:none;
+.star{background:none;border:0;font-size:19px;line-height:1;color:var(--dim3);padding:2px 4px;flex:none;
   min-width:32px;min-height:32px}
 .star.on{color:var(--gold)}
 
@@ -234,3 +238,33 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
 @media (min-width:700px){
   .tlist{grid-template-columns:1fr 1fr;display:grid}
 }
+
+/* ---------- Helles Design ----------
+   Folgt der Systemeinstellung, solange die App nicht ausdruecklich Dunkel erzwingt.
+   data-theme="light" oder "dark" auf <html> ueberschreibt beides. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+  --bg:#f5f7fa; --bg2:#eceff4; --card:#ffffff; --card2:#f3f6fa;
+  --line:#dbe1ea; --txt:#141920; --dim:#4d5560; --dim2:#5d6672; --dim3:#8a94a2;
+  --acc:#1d4ed8; --acc2:#1e40af;
+  --ok:#0b7a4d; --warn:#9a4a08; --bad:#c02618; --gold:#8a5307;
+  --chrome:rgba(255,255,255,.92); --track:#dfe5ee; --toast:#232b36;
+  --grad1:#1d4ed8; --grad2:#5946ec; --mark1:#1d4ed8; --mark2:#6b37d6;
+  --heat0:#e7ebf1; --heat1:#a9dcc2; --heat2:#5cbf95; --heat3:#25a06d;
+  --on-ok:#ffffff; --on-bad:#ffffff; --ring-bg:#dfe5ee;
+  }
+}
+:root[data-theme="light"] {
+  --bg:#f5f7fa; --bg2:#eceff4; --card:#ffffff; --card2:#f3f6fa;
+  --line:#dbe1ea; --txt:#141920; --dim:#4d5560; --dim2:#5d6672; --dim3:#8a94a2;
+  --acc:#1d4ed8; --acc2:#1e40af;
+  --ok:#0b7a4d; --warn:#9a4a08; --bad:#c02618; --gold:#8a5307;
+  --chrome:rgba(255,255,255,.92); --track:#dfe5ee; --toast:#232b36;
+  --grad1:#1d4ed8; --grad2:#5946ec; --mark1:#1d4ed8; --mark2:#6b37d6;
+  --heat0:#e7ebf1; --heat1:#a9dcc2; --heat2:#5cbf95; --heat3:#25a06d;
+  --on-ok:#ffffff; --on-bad:#ffffff; --ring-bg:#dfe5ee;
+}
+/* Elemente mit eigenem farbigem Grund behalten weisse Schrift, unabhaengig vom Schema. */
+.brand-mark, .boot-logo, .btn.primary, .toast { color:#fff }
+.opt .k { color:var(--dim2) }
+.heat i[data-l="4"] { background:var(--ok) }
