@@ -6,10 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Täglich 10 Minuten Allgemeinwissen mit Spaced Repetition – für Quizduelle und den Alltag.">
 <meta name="theme-color" content="#0e1116">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Nicht black-translucent: dabei zeichnet iOS die Uhr und die Symbole der
+     Statusleiste immer hell. Auf dem hellen Farbschema stehen sie dann weiss
+     auf fast weissem Grund und sind nicht zu lesen. Mit "default" faerbt iOS
+     die Leiste nach theme-color, und die App zieht theme-color beim Wechsel
+     des Farbschemas mit. -->
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Wissenswerk">
 <meta name="format-detection" content="telephone=no">
 <link rel="manifest" href="./manifest.webmanifest">

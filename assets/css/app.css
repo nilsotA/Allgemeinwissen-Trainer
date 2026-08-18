@@ -184,7 +184,13 @@ p{margin:0}
 .heat i[data-l="4"]{background:var(--ok)}
 .heat i.today{outline:1.5px solid var(--acc2);outline-offset:1px}
 .legend{display:flex;align-items:center;gap:5px;justify-content:flex-end;margin-top:8px;font-size:11px;color:var(--dim2)}
-.legend i{width:11px;height:11px;border-radius:3px;display:block}
+/* Die Farben kommen aus denselben Variablen wie das Feld darueber. Frueher standen
+   sie fest im Markup und zeigten im hellen Schema die dunkle Palette. */
+.legend i{width:11px;height:11px;border-radius:3px;display:block;background:var(--heat0)}
+.legend i[data-l="1"]{background:var(--heat1)}
+.legend i[data-l="2"]{background:var(--heat2)}
+.legend i[data-l="3"]{background:var(--heat3)}
+.legend i[data-l="4"]{background:var(--ok)}
 
 .setrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
 .setrow:last-child{border-bottom:0}

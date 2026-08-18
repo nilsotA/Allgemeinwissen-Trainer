@@ -302,7 +302,7 @@ function renderStats() {
         <div class="heat-days"><span>Mo</span><span></span><span>Mi</span><span></span><span>Fr</span><span></span><span>So</span></div>
         <div class="heat grow">${cells}</div>
       </div>
-      <div class="legend">wenig <i style="background:#1b222c"></i><i data-l="1" style="background:#1e4d3c"></i><i data-l="2" style="background:#2a7a5c"></i><i data-l="3" style="background:#37b17f"></i><i data-l="4" style="background:#3ddc97"></i> viel</div>
+      <div class="legend">wenig <i></i><i data-l="1"></i><i data-l="2"></i><i data-l="3"></i><i data-l="4"></i> viel</div>
     </div>
 
     <div class="sec">Was kommt auf dich zu</div>
