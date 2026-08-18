@@ -1,5 +1,5 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-6be124d26b';
+const VERSION = 'wissenswerk-b72f3c4ccf';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",
@@ -32,7 +32,12 @@ const ASSETS = [
 self.addEventListener('install', (e) => {
   e.waitUntil((async () => {
     const cache = await caches.open(VERSION);
-    await cache.addAll(ASSETS);
+    // Bewusst nicht cache.addAll: das laeuft durch den HTTP-Cache und koennte
+    // veraltete Module dauerhaft in den Offline-Bestand uebernehmen.
+    await Promise.all(ASSETS.map(async (url) => {
+      const res = await fetch(url, { cache: 'reload' });
+      if (res.ok) await cache.put(url, res);
+    }));
     self.skipWaiting();
   })());
 });

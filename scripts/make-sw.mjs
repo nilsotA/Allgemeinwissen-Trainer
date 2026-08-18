@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 
-const SKIP = new Set(['node_modules', '.git', 'scripts', '.netlify']);
+const SKIP = new Set(['node_modules', '.git', 'scripts', 'tests', '.netlify']);
 const files = [];
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
@@ -29,7 +29,12 @@ const ASSETS = ${JSON.stringify(files, null, 2)};
 self.addEventListener('install', (e) => {
   e.waitUntil((async () => {
     const cache = await caches.open(VERSION);
-    await cache.addAll(ASSETS);
+    // Bewusst nicht cache.addAll: das laeuft durch den HTTP-Cache und koennte
+    // veraltete Module dauerhaft in den Offline-Bestand uebernehmen.
+    await Promise.all(ASSETS.map(async (url) => {
+      const res = await fetch(url, { cache: 'reload' });
+      if (res.ok) await cache.put(url, res);
+    }));
     self.skipWaiting();
   })());
 });

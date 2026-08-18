@@ -26,7 +26,7 @@
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Bewusst KEINE Weiterleitung /* -> /index.html:
+# Die App hat keine clientseitigen Routen. Die Regel wuerde jede fehlende Datei
+# als HTML mit Status 200 ausliefern - der Service Worker legte das dann als
+# vermeintlich gueltiges JS-Modul in den Cache, und der Fehler waere kaum zu finden.
