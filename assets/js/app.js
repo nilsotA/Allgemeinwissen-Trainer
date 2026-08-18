@@ -3,7 +3,8 @@ import { CATS, CAT_BY_ID, CARDS, LEVELS } from '../../data/index.js';
 import FACTS from '../../data/facts.js';
 import * as store from './store.js';
 import { S, settings, setSetting, save, cardState, putCard, today, todayNum, dayKey,
-         numToKey, liveStreak, touchStreak, isFlagged, toggleFlag, setSaveErrorHandler } from './store.js';
+         numToKey, liveStreak, touchStreak, isFlagged, toggleFlag, setSaveErrorHandler,
+         installFlush } from './store.js';
 import { schedule, strength, preview, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
 import { options, similarity, normalize, shuffle } from './quiz.js';
 import * as sess from './session.js';
@@ -912,6 +913,7 @@ function askDuel(card) {
 /* ================= Start ================= */
 function boot() {
   applyTheme();
+  installFlush();
   document.getElementById('boot')?.remove();
   app.hidden = false;
   show('home');

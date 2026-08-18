@@ -97,3 +97,39 @@ test('Übersicht bleibt in sich stimmig', () => {
   assert.ok(o.seen <= o.total && o.learned <= o.seen && o.mature <= o.learned);
   assert.ok(o.accuracy >= 0 && o.accuracy <= 1);
 });
+
+test('neue Karten liegen gleichmäßig verteilt, nicht als Block am Ende', () => {
+  // Der kritische Fall: mehr neue als fällige Karten
+  store.setSetting('newPerDay', 12);
+  CARDS.slice(0, 3).forEach(c => {
+    const cs = schedule(fresh(), GOOD);
+    cs.due = store.todayNum();
+    store.putCard(c.id, cs);
+  });
+  const q = sess.buildDaily();
+  const neu = q.filter(x => x.fresh).length;
+  assert.ok(neu >= 10, `nur ${neu} neue Karten im Plan`);
+  // In der ersten Hälfte muss ungefähr die Hälfte der neuen Karten stecken
+  const haelfte = Math.floor(q.length / 2);
+  const neuVorn = q.slice(0, haelfte).filter(x => x.fresh).length;
+  const anteil = neuVorn / neu;
+  assert.ok(anteil > 0.3 && anteil < 0.7,
+    `${(anteil * 100).toFixed(0)} % der neuen Karten liegen in der ersten Hälfte – erwartet rund 50 %`);
+});
+
+test('die Verschränkung behält alle Karten und keine doppelt', () => {
+  for (const [nRev, nNeu] of [[0, 12], [12, 0], [3, 12], [40, 5], [1, 1], [90, 12]]) {
+    store.resetAll();
+    store.setSetting('newPerDay', nNeu);
+    store.setSetting('maxReviews', nRev || 1);
+    CARDS.slice(0, nRev).forEach(c => {
+      const cs = schedule(fresh(), GOOD);
+      cs.due = store.todayNum();
+      store.putCard(c.id, cs);
+    });
+    const q = sess.buildDaily();
+    const ids = q.map(x => x.card.id);
+    assert.equal(new Set(ids).size, ids.length, `${nRev}/${nNeu}: doppelte Karten`);
+    assert.equal(q.filter(x => !x.fresh).length, nRev, `${nRev}/${nNeu}: falsche Zahl an Wiederholungen`);
+  }
+});

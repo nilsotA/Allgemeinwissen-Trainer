@@ -65,18 +65,22 @@ export function buildDaily(pool = CARDS) {
   return interleave(rev, fresh);
 }
 
-/** Neue Karten gleichmäßig zwischen die Wiederholungen streuen. */
+/** Neue Karten gleichmäßig zwischen die Wiederholungen streuen.
+    Über einen Sollanteil statt über eine feste Schrittweite: Bei mehr neuen als
+    fälligen Karten ergäbe die Schrittweite immer 1, und der Rest landete als
+    Block am Ende – genau dort, wo die Aufmerksamkeit am kleinsten ist. */
 function interleave(rev, fresh) {
   if (!fresh.length) return rev.map(c => ({ card: c, fresh: false }));
   if (!rev.length) return fresh.map(c => ({ card: c, fresh: true }));
+  const gesamt = rev.length + fresh.length;
   const out = [];
-  const step = Math.max(1, Math.round(rev.length / fresh.length));
-  let fi = 0;
-  rev.forEach((c, i) => {
-    out.push({ card: c, fresh: false });
-    if (i % step === step - 1 && fi < fresh.length) out.push({ card: fresh[fi++], fresh: true });
-  });
-  while (fi < fresh.length) out.push({ card: fresh[fi++], fresh: true });
+  let ri = 0, fi = 0;
+  for (let i = 0; i < gesamt; i++) {
+    const sollNeu = Math.round(((i + 1) * fresh.length) / gesamt);
+    if (fi < sollNeu && fi < fresh.length) out.push({ card: fresh[fi++], fresh: true });
+    else if (ri < rev.length) out.push({ card: rev[ri++], fresh: false });
+    else out.push({ card: fresh[fi++], fresh: true });
+  }
   return out;
 }
 
@@ -170,7 +174,7 @@ export function forecast(days = 7) {
 }
 
 /** Schwächste Teilgebiete – Grundlage für gezieltes Nacharbeiten. */
-export function weakSubs(minSeen = 3, limit = 6) {
+export function weakSubs(minKarten = 4, limit = 6) {
   const acc = {};
   for (const c of CARDS) {
     const s = cardState(c.id);
@@ -180,7 +184,7 @@ export function weakSubs(minSeen = 3, limit = 6) {
     o.n++; o.seen += s.seen; o.ok += (s.ok || 0); o.sum += strength(s);
   }
   return Object.values(acc)
-    .filter(o => o.seen >= minSeen)
+    .filter(o => o.n >= minKarten)          // mindestens so viele geübte Karten, nicht Abfragen
     .map(o => ({ ...o, rate: o.seen ? o.ok / o.seen : 0, pct: o.sum / o.n }))
     .sort((a, b) => a.rate - b.rate || a.pct - b.pct)
     .slice(0, limit);

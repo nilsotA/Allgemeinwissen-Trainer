@@ -68,9 +68,9 @@ export function save(now = false) {
       if (!quotaWarned) { quotaWarned = true; onSaveError(e); }
     }
   };
-  if (now) { clearTimeout(saveTimer); write(); return; }
+  if (now) { clearTimeout(saveTimer); saveTimer = null; write(); return; }
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(write, 250);
+  saveTimer = setTimeout(() => { saveTimer = null; write(); }, 250);
 }
 
 export const S = () => state;
@@ -135,6 +135,17 @@ export function toggleFlag(id) {
 export function putCard(id, cs) {
   state.cards[id] = cs;
   save();
+}
+
+/* iOS beendet eine Web-App oft ohne Vorwarnung. Die gebündelte Speicherung
+   wartet bis zu 250 ms – ohne diesen Anker gingen die letzten Antworten verloren.
+   pagehide ist auf iOS das zuverlässigste Signal, visibilitychange die Ergänzung. */
+export function installFlush() {
+  if (typeof document === 'undefined') return;
+  const flush = () => { if (saveTimer) save(true); };
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); });
+  window.addEventListener('pagehide', flush);
+  window.addEventListener('beforeunload', flush);
 }
 
 export function resetAll() {
