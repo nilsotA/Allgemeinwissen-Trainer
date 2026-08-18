@@ -16,7 +16,13 @@ const live = document.getElementById('live');
 const esc = (s) => String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
 
 /* Grobe Umrechnung: etwa acht Karten je Minute */
-const SHORT = [{ n: 20, label: '~3 Min' }, { n: 40, label: '~5 Min' }, { n: 80, label: '~10 Min' }];
+const SHORT = [{ n: 20, label: '3 Min' }, { n: 40, label: '5 Min' }, { n: 80, label: '10 Min' }];
+
+/* Symbole: ein Strichstil fuer alles. Die Formen liegen als <g> im Dokument,
+   hier wird nur noch darauf verwiesen – kein Emoji, keine fremde Bibliothek. */
+const ico = (name, cls = '') =>
+  `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+const catIcon = (id, cls = '') => ico(id, cls);
 
 let view = 'home';
 let run = null;          // laufende Lerneinheit
@@ -61,7 +67,7 @@ function applyTheme() {
   else root.setAttribute('data-theme', t);
   const dark = t === 'dark' || (t === 'system' && !window.matchMedia('(prefers-color-scheme: light)').matches);
   for (const m of document.querySelectorAll('meta[name="theme-color"]')) {
-    m.setAttribute('content', dark ? '#0e1116' : '#f5f7fa');
+    m.setAttribute('content', dark ? '#17120e' : '#f6f1e9');
   }
   root.style.colorScheme = t === 'system' ? 'light dark' : t;
 }
@@ -88,18 +94,44 @@ function render() {
      stats: renderStats, settings: renderSettings, lookup: renderLookup }[view] || renderHome)();
 }
 
+/* Fortschritt als Ring – nur noch im Rueckblick nach einer Runde. */
 function ring(pct) {
-  const r = 38, c = 2 * Math.PI * r;
+  const r = 41, c = 2 * Math.PI * r;
   const off = c * (1 - Math.max(0, Math.min(1, pct)));
-  return `<div class="dial-ring">
-    <svg viewBox="0 0 88 88" width="88" height="88" aria-hidden="true">
-      <circle cx="44" cy="44" r="${r}" fill="none" stroke="var(--ring-bg)" stroke-width="8"/>
-      <circle cx="44" cy="44" r="${r}" fill="none" stroke="url(#g)" stroke-width="8"
+  return `<div class="done-badge">
+    <svg viewBox="0 0 96 96" aria-hidden="true">
+      <circle cx="48" cy="48" r="${r}" fill="none" stroke="var(--ring-bg)" stroke-width="7"/>
+      <circle cx="48" cy="48" r="${r}" fill="none" stroke="var(--acc)" stroke-width="7"
         stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/>
-      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" style="stop-color:var(--grad1)"/><stop offset="1" style="stop-color:var(--mark2)"/>
-      </linearGradient></defs>
     </svg><b>${Math.round(pct * 100)}%</b></div>`;
+}
+
+/* Der Tagesbogen: zwanzig Marken, die sich im Lauf des Tages fuellen.
+   Fortschritt zum Ansehen statt einer nackten Zahl. */
+function tagesbogen(done, offen) {
+  const N = 20;
+  const ganz = done + offen;
+  const voll = ganz ? Math.round((done / ganz) * N) : N;
+  let s = '';
+  for (let i = 0; i < N; i++) s += `<i class="${i < voll ? 'on' : i === voll && offen ? 'now' : ''}"></i>`;
+  return `<div class="seg" aria-hidden="true">${s}</div>`;
+}
+
+/* Die Woche als Reihe: was liegt hinter dir, was ist heute. */
+function wochenstreifen() {
+  const st = S();
+  const t = todayNum();
+  const dowMon = (d) => ((d + 3) % 7 + 7) % 7;      // Montag = 0; der 1.1.1970 war ein Donnerstag
+  const start = t - dowMon(t);
+  const NAMEN = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+  let s = '';
+  for (let i = 0; i < 7; i++) {
+    const tag = start + i;
+    const n = st.days[numToKey(tag)]?.done || 0;
+    const cls = tag > t ? 'fut' : tag === t ? 'today' : '';
+    s += `<span class="wd ${cls}"><i class="${n > 0 ? 'done' : ''}"></i><span>${NAMEN[i]}</span></span>`;
+  }
+  return `<div class="week">${s}</div>`;
 }
 
 function dailyFact() {
@@ -124,9 +156,10 @@ function renderHome() {
   const hour = new Date().getHours();
   const greet = hour < 11 ? 'Guten Morgen' : hour < 18 ? 'Servus' : 'Guten Abend';
 
+  const streak = liveStreak();
   app.innerHTML = `
   <section class="hero fade">
-    <h1>${greet}!</h1>
+    <h1>${greet}</h1>
     <p class="muted">${plan
       ? `${plan} Karten stehen an – etwa ${Math.max(2, Math.round(plan * 0.13))} Minuten.`
       : 'Heute ist alles erledigt. Stark.'}</p>
@@ -135,31 +168,29 @@ function renderHome() {
       bis der Rückstand kleiner ist. So wächst der Berg nicht weiter.
       <button class="btn sm ghost" id="trotzdem" style="margin-top:9px">Trotzdem neue Karten</button>
     </div>` : ''}
-    <div class="dial">
-      ${ring(pct)}
-      <div class="grow">
-        <div class="row between"><span class="tiny">Heute beantwortet</span><b>${d.done}</b></div>
-        <div class="bar ${plan === 0 ? 'ok' : ''}" style="margin:8px 0 10px"><i style="width:${(pct * 100).toFixed(0)}%"></i></div>
-        <span class="tiny">${d.done ? `${Math.round((d.correct / Math.max(1, d.done)) * 100)} % richtig` : 'Noch nichts gelernt heute'}</span>
-      </div>
+    ${tagesbogen(d.done, plan)}
+    <div class="seg-lab">
+      <span class="tiny">${d.done
+        ? `${d.done} heute geschafft · ${Math.round((d.correct / Math.max(1, d.done)) * 100)} % richtig`
+        : 'Noch nichts gelernt heute – die erste Karte ist die leichteste.'}</span>
+      <b>${Math.round(pct * 100)} %</b>
     </div>
-    <div class="kpis">
-      <div class="kpi"><b>${o.due}</b><span>fällig</span></div>
-      <div class="kpi"><b>${o.newLeft}</b><span>neu frei</span></div>
-      <div class="kpi"><b>${o.mature}</b><span>sitzt fest</span></div>
+    <div class="btn-stack" style="margin-top:15px">
+      <button class="btn primary" data-go="daily">${ico('play')}${plan ? 'Tagestraining starten' : 'Extra-Runde üben'}</button>
+      ${plan > SHORT[0].n ? `<div class="row wrap" style="gap:7px;justify-content:center">
+        ${SHORT.map(o => `<button class="chip" data-short="${o.n}">${ico('uhr', 's')}${o.label}</button>`).join('')}
+      </div>` : ''}
     </div>
   </section>
 
-  <div class="btn-stack" style="margin-top:14px">
-    <button class="btn primary" data-go="daily">${plan ? '▶︎ Tagestraining starten' : '✓ Extra-Runde üben'}</button>
-    ${plan > SHORT[0].n ? `<div class="row wrap" style="gap:8px;justify-content:center">
-      <span class="tiny" style="width:100%;text-align:center;margin-bottom:2px">Wenig Zeit? Kürzere Runde:</span>
-      ${SHORT.map(o => `<button class="chip" data-short="${o.n}">${o.label}</button>`).join('')}
-    </div>` : ''}
-    <div class="row" style="gap:10px">
-      <button class="btn" data-go="weak" style="flex:1">Wackelkandidaten</button>
-      ${flags ? `<button class="btn" data-go="flag" style="flex:1">★ Markierte (${flags})</button>` : ''}
-    </div>
+  <div class="sec">Deine Woche${streak ? ` · ${streak} Tage in Folge` : ''}</div>
+  <div class="card">
+    ${wochenstreifen()}
+  </div>
+
+  <div class="${flags ? 'duo' : 'btn-stack'}" style="margin-top:11px">
+    <button class="btn" data-go="weak">Wackelkandidaten</button>
+    ${flags ? `<button class="btn" data-go="flag">${ico('stern', 's')}Markierte · ${flags}</button>` : ''}
   </div>
 
   <div class="sec">Wissen des Tages</div>
@@ -169,9 +200,14 @@ function renderHome() {
   </div>
 
   <div class="sec">Dein Bestand</div>
-  <div class="card">
+  <div class="kpis">
+    <div class="kpi"><b>${o.due}</b><span>fällig</span></div>
+    <div class="kpi"><b>${o.newLeft}</b><span>neu frei</span></div>
+    <div class="kpi"><b>${o.mature}</b><span>sitzt fest</span></div>
+  </div>
+  <div class="card" style="margin-top:10px">
     <div class="row between"><span>Karten insgesamt</span><b>${o.total}</b></div>
-    <div class="bar" style="margin:10px 0 6px"><i style="width:${((o.learned / o.total) * 100).toFixed(1)}%"></i></div>
+    <div class="bar" style="margin:10px 0 7px"><i style="width:${((o.learned / o.total) * 100).toFixed(1)}%"></i></div>
     <p class="tiny">${o.learned} angefangen · ${o.mature} gefestigt · ${o.total - o.seen} noch unberührt</p>
   </div>`;
 
@@ -189,7 +225,7 @@ function renderHome() {
   });
   app.querySelector('[data-go="weak"]').onclick = () => {
     const q = sess.buildWeak(20);
-    q.length ? startRun(q, 'weak') : toast('Erst ein paar Karten lernen 🙂');
+    q.length ? startRun(q, 'weak') : toast('Erst ein paar Karten lernen');
   };
   app.querySelector('[data-go="flag"]')?.addEventListener('click', () => {
     startRun(sess.buildFlagged(20), 'flag');
@@ -207,7 +243,7 @@ function renderTopics() {
         const s = p[c.id] || { pct: 0, n: 0, due: 0, fresh: 0 };
         const off = active && active.length && !active.includes(c.id);
         return `<button class="trow" data-cat="${c.id}" ${off ? 'style="opacity:.5"' : ''}>
-          <span class="tico">${c.icon}</span>
+          <span class="tico">${catIcon(c.id)}</span>
           <span class="grow">
             <h3>${esc(c.name)}</h3>
             <span class="tiny">${s.n} Karten${s.due ? ` · ${s.due} fällig` : ''}${s.fresh ? ` · ${s.fresh} neu` : ''}${off ? ' · pausiert' : ''}</span>
@@ -235,10 +271,9 @@ function renderDuelStart() {
       <div class="row between" style="margin-top:8px"><span>Trefferquote gesamt</span><b>${st.totalAnswers ? Math.round(st.totalCorrect / st.totalAnswers * 100) : 0} %</b></div>
     </div>
     <div class="btn-stack" style="margin-top:14px">
-      <button class="btn primary" id="duelGo">⚡ Duell starten</button>
+      <button class="btn primary" id="duelGo">${ico('duell')}Duell starten</button>
     </div>
-    <div class="sec">Hinweis</div>
-    <div class="card"><p class="tiny">Fehler aus dem Duell landen automatisch im nächsten Tagestraining – so schließt sich die Lücke sofort.</p></div>`;
+    <p class="tiny center" style="margin-top:14px">Fehler aus dem Duell landen automatisch im nächsten Tagestraining – so schließt sich die Lücke sofort.</p>`;
   document.getElementById('duelGo').onclick = () => startRun(sess.buildDuel(10), 'duel');
 }
 
@@ -322,7 +357,7 @@ function renderStats() {
     <div class="sec">Deine Schwachstellen</div>
     <div class="tlist">
       ${weak.map(w => `<button class="trow" data-sub="${esc(w.cat)}|${esc(w.sub)}">
-        <span class="tico">${CAT_BY_ID[w.cat].icon}</span>
+        <span class="tico">${catIcon(w.cat)}</span>
         <span class="grow">
           <h3>${esc(w.sub)}</h3>
           <span class="tiny">${esc(CAT_BY_ID[w.cat].name)} · ${Math.round(w.rate * 100)} % richtig bei ${w.seen} Abfragen</span>
@@ -356,7 +391,7 @@ function renderStats() {
       ${CATS.map(c => {
         const s = p[c.id] || { pct: 0, n: 0 };
         return `<div class="trow" style="pointer-events:none">
-          <span class="tico">${c.icon}</span>
+          <span class="tico">${catIcon(c.id)}</span>
           <span class="grow"><h3>${esc(c.name)}</h3><span class="bar"><i style="width:${(s.pct * 100).toFixed(0)}%"></i></span></span>
           <span class="pct">${Math.round(s.pct * 100)}%</span></div>`;
       }).join('')}
@@ -386,7 +421,7 @@ function renderLookup() {
     <h1 class="vh">Nachschlagen</h1>
     <input class="recall-in" id="q" type="search" inputmode="search" autocomplete="off"
            aria-label="Karten durchsuchen" placeholder="Suchen – Frage, Antwort oder Thema" value="${esc(lookupQuery)}">
-    <p class="tiny" style="margin:8px 2px 0">Tippe auf eine Karte, um Antwort und Kontext zu sehen. Mit ★ markierst du sie fürs gezielte Üben.</p>
+    <p class="tiny" style="margin:8px 2px 0">Tippe auf eine Karte, um Antwort und Kontext zu sehen. Mit dem Stern markierst du sie fürs gezielte Üben.</p>
     <div id="res"></div>`;
   const input = document.getElementById('q');
   const res = document.getElementById('res');
@@ -414,10 +449,10 @@ function renderLookup() {
         return `<div class="lk" data-id="${c.id}">
           <div class="lk-head">
             <span class="grow">
-              <span class="qcat">${CAT_BY_ID[c.cat].icon} ${esc(c.sub)}</span>
+              <span class="qcat">${catIcon(c.cat, 's')}<span>${esc(c.sub)}</span></span>
               <span class="lk-q">${esc(c.q)}</span>
             </span>
-            <button class="star ${isFlagged(c.id) ? 'on' : ''}" data-flag="${c.id}" aria-label="Markieren">★</button>
+            <button class="star ${isFlagged(c.id) ? 'on' : ''}" data-flag="${c.id}" aria-label="Markieren">${ico('stern')}</button>
           </div>
           <div class="lk-body" hidden>
             <div class="answer">
@@ -506,14 +541,14 @@ function renderSettings() {
     <div class="sec">Aktive Themen</div>
     <div class="card">
       <div class="row wrap" style="gap:8px">
-        ${CATS.map(c => `<button class="chip ${sel.includes(c.id) ? 'on' : ''}" data-tog="${c.id}">${c.icon} ${esc(c.name)}</button>`).join('')}
+        ${CATS.map(c => `<button class="chip ${sel.includes(c.id) ? 'on' : ''}" data-tog="${c.id}">${catIcon(c.id, 's')}${esc(c.name)}</button>`).join('')}
       </div>
       <p class="tiny" style="margin-top:10px">Abgeschaltete Themen tauchen im Tagestraining nicht mehr auf.</p>
     </div>
 
     <div class="sec">Auf dem iPhone installieren</div>
     <div class="card">
-      <p class="muted">Safari öffnen → Teilen-Symbol <b>⬆︎</b> → <b>Zum Home-Bildschirm</b>. Danach startet Wissenswerk wie eine echte App, auch offline.</p>
+      <p class="muted">Safari öffnen → <b>Teilen</b> → <b>Zum Home-Bildschirm</b>. Danach startet Wissenswerk wie eine echte App, auch offline.</p>
     </div>
 
     <div class="sec">Daten</div>
@@ -618,20 +653,21 @@ function endRun() {
 
   app.innerHTML = `
     <div class="done-wrap fade">
-      <div class="done-emoji">${pctv >= 90 ? '🏅' : pctv >= 70 ? '💪' : '🌱'}</div>
-      <h1 style="font-size:24px">${praise}</h1>
+      ${ring(pctv / 100)}
+      <h1>${praise}</h1>
       <p class="muted">${r.correct} von ${r.done} richtig · ${min} Min.</p>
     </div>
-    <div class="kpis">
-      <div class="kpi"><b>${pctv}%</b><span>Trefferquote</span></div>
+    <div class="card">${wochenstreifen()}</div>
+    <div class="kpis" style="margin-top:11px">
       <div class="kpi"><b>${liveStreak()}</b><span>Tage in Folge</span></div>
+      <div class="kpi"><b>${today().done}</b><span>heute gelernt</span></div>
       <div class="kpi"><b>${sess.overview().due}</b><span>noch fällig</span></div>
     </div>
     ${missed.length ? `
       <div class="sec">Das saß noch nicht (${missed.length})</div>
       <div class="tlist">
         ${missed.slice(0, 12).map(c => `<div class="card" style="padding:13px 14px">
-          <span class="qcat">${CAT_BY_ID[c.cat].icon} ${esc(c.sub)}</span>
+          <span class="qcat">${catIcon(c.cat, 's')}<span>${esc(c.sub)}</span></span>
           <p style="font-weight:650;margin:5px 0 4px;font-size:15px">${esc(c.q)}</p>
           <p class="muted" style="color:var(--ok);font-weight:650">${esc(c.a)}</p>
           ${c.t ? `<p class="tiny" style="margin-top:5px">${esc(c.t)}</p>` : ''}
@@ -687,10 +723,10 @@ function shell(inner, foot) {
   app.innerHTML = `
     <div class="sess">
       <div class="sess-top">
-        <button class="icon-btn" id="quit" aria-label="Einheit beenden">✕</button>
+        <button class="icon-btn" id="quit" aria-label="Einheit beenden">${ico('schliessen')}</button>
         <div class="bar"><i style="width:${Math.min(100, pct).toFixed(0)}%"></i></div>
         <span class="tiny" style="min-width:42px;text-align:right">${r.done}/${total}</span>
-        <button class="icon-btn" id="undo" aria-label="Letzte Antwort zurücknehmen" ${r.undo ? '' : 'disabled'}>↶</button>
+        <button class="icon-btn" id="undo" aria-label="Letzte Antwort zurücknehmen" ${r.undo ? '' : 'disabled'}>${ico('zurueck')}</button>
       </div>
       <div class="sess-body fade">${inner}</div>
       <div class="sess-foot">${foot}</div>
@@ -699,15 +735,19 @@ function shell(inner, foot) {
   document.getElementById('undo').onclick = undoLast;
 }
 
+/* Die Frage liegt als eigenes Blatt auf dem Grund. Der Rest der Flaeche ist
+   damit Buehne und nicht Leere – und der Knopf bleibt unten im Daumenbereich. */
+const qkarte = (inner, solo) => `<div class="qcard${solo ? ' solo' : ''}">${inner}</div>`;
+
+/* Eine Zeile Herkunft, dann die Frage. Mehr Beiwerk braucht es vor dem Inhalt nicht:
+   Nur „neu" und „hartnäckig" aendern etwas an der Haltung beim Beantworten. */
 function head(card, isFresh) {
   const cat = CAT_BY_ID[card.cat];
   const zaeh = isLeech(cardState(card.id));
   return `<div class="qmeta">
-      <span class="qcat">${cat.icon} ${esc(cat.name)}</span>
-      <span class="pill">${esc(card.sub)}</span>
-      ${isFresh ? '<span class="pill new">neu</span>' : '<span class="pill rep">Wiederholung</span>'}
-      ${zaeh ? '<span class="pill zaeh" title="Diese Karte kippt immer wieder um">🔁 hartnäckig</span>' : ''}
-      ${LEVELS[card.d].name === card.sub ? '' : `<span class="pill">${LEVELS[card.d].name}</span>`}
+      <span class="qcat">${catIcon(card.cat, 's')}<span>${esc(cat.name)} · ${esc(card.sub)}</span></span>
+      ${isFresh ? '<span class="pill new">neu</span>' : ''}
+      ${zaeh ? '<span class="pill zaeh">hartnäckig</span>' : ''}
     </div>
     <h2 class="q">${esc(card.q)}</h2>`;
 }
@@ -728,7 +768,7 @@ function askChoice(card, isFresh, cs) {
   const opts = options(card);
   const t0 = Date.now();
   shell(
-    head(card, isFresh) + `<div class="opts" id="opts">${
+    qkarte(head(card, isFresh)) + `<div class="opts" id="opts">${
       opts.map((o, i) => `<button class="opt" data-v="${esc(o)}">
         <span class="k">${'ABCD'[i]}</span><span>${esc(o)}</span></button>`).join('')
     }</div>`,
@@ -762,10 +802,10 @@ function askChoice(card, isFresh, cs) {
 /* ---- Freies Abrufen mit Selbstbewertung ---- */
 function askRecall(card, isFresh, cs) {
   shell(
-    head(card, isFresh) + `
+    qkarte(head(card, isFresh) + `
       <input class="recall-in" id="rin" type="text" inputmode="text" autocomplete="off"
              autocapitalize="sentences" spellcheck="false" placeholder="Antwort tippen (optional)">
-      <p class="tiny">Erst selbst denken – der Abruf ist der eigentliche Lerneffekt.</p>`,
+      <p class="tiny">Erst selbst denken – der Abruf ist der eigentliche Lerneffekt.</p>`, true),
     `<button class="btn primary" id="reveal">Lösung zeigen</button>`
   );
   const input = document.getElementById('rin');
@@ -787,14 +827,14 @@ function revealRecall(card, typed, sim, cs, isFresh) {
   if (typed) beep(near);
   announce(near ? 'Deine Eingabe passt.' : `Die Antwort lautet: ${card.a}`);
   const hint = !typed ? '' : near
-    ? `<p class="verdict good">✓ Deine Eingabe passt: „${esc(typed)}“</p>`
+    ? `<p class="verdict good">${ico('haken')}<span>Deine Eingabe passt: „${esc(typed)}“</span></p>`
     : knapp
-      ? `<p class="verdict fast">≈ Knapp daneben: „${esc(typed)}“ – vergleich genau.</p>`
-      : `<p class="verdict bad">✕ Du hattest: „${esc(typed)}“</p>`;
+      ? `<p class="verdict fast">${ico('uhr')}<span>Knapp daneben: „${esc(typed)}“ – vergleich genau.</span></p>`
+      : `<p class="verdict bad">${ico('schliessen')}<span>Du hattest: „${esc(typed)}“</span></p>`;
   const g = (grade, label, cls) =>
     `<button class="btn ${cls}" data-g="${grade}"><span>${label}</span><small>${preview(cs, grade)}</small></button>`;
   shell(
-    head(card, isFresh) + hint + answerBlock(card),
+    qkarte(head(card, isFresh) + hint + answerBlock(card), true),
     `<p class="tiny center" style="margin-bottom:2px">Wie gut saß die Antwort?</p>
      <div class="grades">
        ${g(AGAIN, 'Nochmal', 'g0')}${g(HARD, 'Schwer', 'g1')}${g(GOOD, 'Gut', 'g2')}${g(EASY, 'Leicht', 'g3')}
@@ -841,7 +881,7 @@ function showFeedback(card, ok, grade, isFresh) {
   const body = app.querySelector('.sess-body');
   const div = document.createElement('div');
   div.className = 'fade';
-  div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ok ? '✓ Richtig' : '✕ Leider falsch'}</p>${answerBlock(card)}`;
+  div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ico(ok ? 'haken' : 'schliessen')}<span>${ok ? 'Richtig' : 'Leider falsch'}</span></p>${answerBlock(card)}`;
   body.appendChild(div);
   body.scrollTop = body.scrollHeight;
   app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
@@ -921,7 +961,7 @@ function askDuel(card) {
   const LIMIT = 15000;
   const t0 = Date.now();
   shell(
-    head(card, false) + `<div class="opts">${
+    qkarte(head(card, false)) + `<div class="opts">${
       opts.map((o, i) => `<button class="opt" data-v="${esc(o)}">
         <span class="k">${'ABCD'[i]}</span><span>${esc(o)}</span></button>`).join('')
     }</div>`,
@@ -955,8 +995,8 @@ function askDuel(card) {
     const body = app.querySelector('.sess-body');
     const div = document.createElement('div');
     div.className = 'fade';
-    div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${
-      ok ? '✓ Richtig' : chosen === null ? '⏱ Zeit abgelaufen' : '✕ Leider falsch'}</p>${answerBlock(card)}`;
+    div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ico(ok ? 'haken' : chosen === null ? 'uhr' : 'schliessen')}<span>${
+      ok ? 'Richtig' : chosen === null ? 'Zeit abgelaufen' : 'Leider falsch'}</span></p>${answerBlock(card)}`;
     body.appendChild(div);
     body.scrollTop = body.scrollHeight;
     app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;

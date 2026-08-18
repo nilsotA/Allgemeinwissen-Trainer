@@ -1,310 +1,384 @@
-/* Wissenswerk – mobile-first, iPhone-optimiert */
+/* Wissenswerk – warmes Papier, iPhone zuerst.
+   Zwei Paletten: „Papier" (hell) und „Abendlicht" (dunkel).
+   Beide teilen dieselbe Formensprache: weiche Radien, spuerbarer Abstand
+   zwischen Grund, Blatt und Rahmen, ein Akzent aus gebranntem Ton. */
 :root{
-  --bg:#0e1116; --bg2:#151a22; --card:#1a2029; --card2:#212936;
-  --line:#2a3340; --txt:#e8edf4; --dim:#9aa7b8; --dim2:#8b97a8;
-  --acc:#4f8cff; --acc2:#7aa8ff;
-  --ok:#3ddc97; --warn:#ffb454; --bad:#ff6b6b; --gold:#ffd166;
-  --chrome:rgba(14,17,22,.88); --track:#222b37; --toast:#26303d; --dim3:#3a4553;
-  --grad1:#3a6fe0; --grad2:#6d5cff; --mark1:#3a6fe0; --mark2:#7c4ded;
-  --heat0:#1b222c; --heat1:#1e4d3c; --heat2:#2a7a5c; --heat3:#37b17f;
-  --hero1:#1c2536; --hero2:#171d27;
-  --g-bad:#ff9a9a; --g-warn:#ffca8a; --g-ok:#84e9c1;
-  --on-ok:#06301f; --on-bad:#3a0d0d; --ring-bg:#222b37;
-  --r:16px; --r-s:11px;
+  /* ---- Papier ---- */
+  --bg:#f6f1e9; --bg2:#ece3d6; --card:#fffdfa; --card2:#f7f0e6;
+  --line:#e2d5c2; --line2:#d6c5ae;
+  --txt:#251d16; --dim:#5b4c3f; --dim2:#6a5a4b; --dim3:#a08d78;
+  --acc:#a53f0e; --acc2:#8f360b; --acc-soft:rgba(165,63,14,.10); --on-acc:#fff8f1;
+  --ok:#1f6b3d; --ok-soft:rgba(31,107,61,.12);
+  --warn:#8a4a06; --warn-soft:rgba(190,120,20,.14);
+  --bad:#b3261e; --bad-soft:rgba(179,38,30,.10);
+  --gold:#8a5307;
+  --chrome:rgba(246,241,233,.90); --track:#e4d8c6; --toast:#2b2119;
+  --grad1:#b34a12; --grad2:#95360a; --mark1:#b8500f; --mark2:#8c3208;
+  --heat0:#e9dfd0; --heat1:#f2dcb2; --heat2:#e5b26c; --heat3:#cf8a2c; --heat4:#a5500c;
+  --hero1:#fffdfa; --hero2:#f7ecdc;
+  --g-bad:var(--bad); --g-warn:var(--warn); --g-ok:var(--ok);
+  --on-ok:#ffffff; --on-bad:#ffffff; --ring-bg:#e4d8c6;
+  --sh1:0 1px 2px rgba(72,45,20,.06);
+  --sh2:0 1px 2px rgba(72,45,20,.06),0 10px 22px -14px rgba(72,45,20,.45);
+  --sh3:0 2px 4px rgba(72,45,20,.10),0 16px 30px -18px rgba(72,45,20,.55);
+
+  --r:18px; --r-s:13px; --r-l:24px;
   --safe-t:env(safe-area-inset-top,0px);
   --safe-b:env(safe-area-inset-bottom,0px);
   --safe-l:env(safe-area-inset-left,0px);
   --safe-r:env(safe-area-inset-right,0px);
-  --nav-h:60px;
+  --nav-h:62px;
+  --serif:ui-serif,"New York",Georgia,"Iowan Old Style","Times New Roman",serif;
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{
   background:var(--bg); color:var(--txt);
-  font:16px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;
   min-height:100dvh; overscroll-behavior-y:none;
   -webkit-font-smoothing:antialiased;
 }
 [hidden]{display:none!important}
 button,input,select,textarea{font:inherit;color:inherit}
 button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-h1,h2,h3,h4{margin:0;line-height:1.25;font-weight:700}
+h1,h2,h3,h4{margin:0;line-height:1.24;font-weight:700}
 p{margin:0}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+svg{display:block;flex:none}
+.ic{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ic.s{width:17px;height:17px;stroke-width:1.9}
+.ic.fill{fill:currentColor;stroke:none}
 
 /* ---------- Boot ---------- */
-.boot{position:fixed;inset:0;display:grid;place-content:center;justify-items:center;gap:14px;background:var(--bg);z-index:99;color:var(--dim)}
-.boot-logo{width:64px;height:64px;border-radius:18px;background:linear-gradient(140deg,var(--mark1),var(--mark2));
-  display:grid;place-content:center;font-weight:800;font-size:30px;color:#fff;animation:pulse 1.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.07);opacity:1}}
+.boot{position:fixed;inset:0;display:grid;place-content:center;justify-items:center;gap:16px;background:var(--bg);z-index:99;color:var(--dim)}
+.boot-logo{width:64px;height:64px;border-radius:22px;background:linear-gradient(150deg,var(--mark1),var(--mark2));
+  display:grid;place-content:center;font-family:var(--serif);font-weight:700;font-size:31px;color:var(--on-acc);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.88}50%{transform:scale(1.06);opacity:1}}
 
 /* ---------- Chrome ---------- */
 /* Der -webkit-Vorsatz ist fuer iOS noetig: unpraefixiert kennt Safari
-   backdrop-filter erst ab Version 18. Ohne den Vorsatz bliebe die Leiste auf
-   aelteren iPhones halbdurchsichtig ohne Weichzeichnung - Text scrollt dann
-   sichtbar dahinter durch. */
+   backdrop-filter erst ab Version 18. */
 .topbar{position:sticky;top:0;z-index:20;background:var(--chrome);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
   border-bottom:1px solid var(--line);padding-top:var(--safe-t)}
 .topbar-in{display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:8px max(14px,var(--safe-r)) 8px max(14px,var(--safe-l));min-height:52px}
-.brand{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.2px}
-.brand-mark{width:28px;height:28px;border-radius:9px;background:linear-gradient(140deg,var(--mark1),var(--mark2));
-  display:grid;place-content:center;font-size:15px;color:#fff}
-.brand-name{font-size:16px}
-.streak{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;font-weight:700}
+  padding:7px max(16px,var(--safe-r)) 7px max(16px,var(--safe-l));min-height:52px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.brand-mark{width:29px;height:29px;border-radius:10px;background:linear-gradient(150deg,var(--mark1),var(--mark2));
+  display:grid;place-content:center;font-family:var(--serif);font-size:17px;line-height:1;color:var(--on-acc)}
+.brand-name{font-size:16.5px;font-family:var(--serif);letter-spacing:.1px}
+.streak{display:flex;align-items:center;gap:6px;background:var(--warn-soft);border:1px solid transparent;
+  border-radius:999px;padding:6px 13px 6px 10px;font-size:14.5px;font-weight:700;color:var(--warn);min-height:34px}
 
-.app{padding:16px max(14px,var(--safe-r)) calc(var(--nav-h) + var(--safe-b) + 24px) max(14px,var(--safe-l));
+.app{padding:14px max(16px,var(--safe-r)) calc(var(--nav-h) + var(--safe-b) + 26px) max(16px,var(--safe-l));
   max-width:720px;margin:0 auto}
-/* Die Lernansicht bringt ihre eigenen Abstaende mit und soll exakt das Fenster fuellen.
-   Der Restabstand des Containers ergab sonst 32 px Ueberlauf – die Ansicht scrollte. */
+/* Die Lernansicht bringt ihre eigenen Abstaende mit und soll exakt das Fenster fuellen. */
 .app.full{padding:0}
 
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,1fr);
-  background:var(--chrome);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid var(--line);
-  padding-bottom:var(--safe-b)}
-.nav-btn{background:none;border:0;padding:8px 2px 9px;display:grid;justify-items:center;gap:2px;
-  font-size:10.5px;color:var(--dim2);min-height:56px;font-weight:600}
-.nav-btn .ico{font-size:18px;line-height:1}
+  background:var(--chrome);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
+  border-top:1px solid var(--line);padding-bottom:var(--safe-b)}
+.nav-btn{background:none;border:0;padding:7px 2px 8px;display:grid;justify-items:center;gap:3px;
+  font-size:10.5px;color:var(--dim2);min-height:58px;font-weight:600;letter-spacing:.1px}
+.nav-btn .ico{width:44px;height:26px;border-radius:999px;display:grid;place-content:center;transition:background .18s}
 .nav-btn[aria-current="true"]{color:var(--acc2)}
+.nav-btn[aria-current="true"] .ico{background:var(--acc-soft)}
+.nav-btn:active .ico{transform:scale(.94)}
 
 /* ---------- Bausteine ---------- */
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-.card + .card{margin-top:12px}
-.sec{margin:22px 0 10px;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim2);font-weight:700}
-.muted{color:var(--dim);font-size:14px}
-.tiny{color:var(--dim2);font-size:12.5px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--sh1)}
+.card + .card{margin-top:11px}
+.sec{margin:22px 0 9px;font-size:13px;letter-spacing:.02em;color:var(--dim);font-weight:700}
+.muted{color:var(--dim);font-size:14.5px}
+.tiny{color:var(--dim2);font-size:12.5px;line-height:1.45}
 .row{display:flex;align-items:center;gap:10px}
 .row.between{justify-content:space-between}
 .wrap{flex-wrap:wrap}
 .grow{flex:1;min-width:0}
 .center{text-align:center}
 
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;
-  border-radius:14px;border:1px solid var(--line);background:var(--card2);color:var(--txt);
-  font-weight:650;font-size:16px;padding:12px 16px;transition:transform .08s ease,background .15s}
-.btn:active{transform:scale(.985)}
-.btn.primary{background:linear-gradient(135deg,var(--grad1),var(--grad2));border-color:transparent;color:#fff;
-  box-shadow:0 6px 20px -8px rgba(58,111,224,.7)}
-.btn.ghost{background:transparent}
-.btn.sm{min-height:40px;font-size:14px;padding:8px 14px;width:auto;border-radius:11px}
-.btn.danger{color:var(--bad);border-color:#4a2b2f}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:52px;
+  border-radius:15px;border:1px solid var(--line2);background:var(--card);color:var(--txt);
+  font-weight:650;font-size:16px;padding:12px 16px;box-shadow:var(--sh1);
+  transition:transform .1s cubic-bezier(.3,.7,.4,1),background .15s,box-shadow .15s}
+.btn:active{transform:translateY(1px) scale(.99);box-shadow:none}
+.btn.primary{background:linear-gradient(158deg,var(--grad1),var(--grad2));border-color:transparent;color:var(--on-acc);
+  min-height:56px;font-size:17px;font-weight:700;border-radius:999px;box-shadow:var(--sh2)}
+.btn.primary:active{box-shadow:var(--sh1)}
+.btn.ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--dim)}
+.btn.sm{min-height:44px;font-size:14.5px;padding:8px 15px;width:auto;border-radius:999px}
+.btn.danger{color:var(--bad);border-color:var(--line2)}
 .btn[disabled]{opacity:.45}
 .btn-stack{display:grid;gap:10px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}
+.duo .btn{font-size:14.5px;min-height:50px;padding:10px 8px;gap:7px}
 
-.chip{border:1px solid var(--line);background:var(--bg2);border-radius:999px;padding:10px 14px;font-size:13px;
-  color:var(--dim);font-weight:600;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
-.chip.on{background:rgba(79,140,255,.16);border-color:rgba(79,140,255,.5);color:var(--acc2)}
+.chip{border:1px solid var(--line2);background:var(--card);border-radius:999px;padding:10px 15px;font-size:14px;
+  color:var(--dim);font-weight:600;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;gap:7px;
+  box-shadow:var(--sh1);transition:transform .1s}
+.chip:active{transform:scale(.97)}
+.chip.on{background:var(--acc-soft);border-color:transparent;color:var(--acc2)}
 
-.bar{display:block;height:9px;border-radius:99px;background:var(--track);overflow:hidden}
-.bar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--grad1),var(--mark2));transition:width .45s cubic-bezier(.2,.8,.2,1)}
-.bar.ok>i{background:linear-gradient(90deg,#2fbf85,var(--ok))}
+.bar{display:block;height:10px;border-radius:99px;background:var(--track);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--grad1),var(--mark1));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.bar.ok>i{background:linear-gradient(90deg,var(--ok),var(--ok))}
 
-/* ---------- Home ---------- */
-/* Der Verlauf stand fest im Blatt und blieb im hellen Schema dunkel – die
-   Begruessung stand dann dunkelgrau auf dunkelblau (Kontrast 1,15:1). */
-.hero{background:linear-gradient(150deg,var(--hero1),var(--hero2) 60%);border:1px solid var(--line);
-  border-radius:20px;padding:20px}
-.hero h1{font-size:22px;margin-bottom:4px}
-.dial{display:flex;align-items:center;gap:16px;margin:16px 0 4px}
-.dial-ring{position:relative;width:88px;height:88px;flex:none;border-radius:50%;display:grid;place-content:center}
-.dial-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
-.dial-ring b{font-size:20px;font-weight:800}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.kpi{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r-s);padding:10px 8px;text-align:center}
-.kpi b{display:block;font-size:19px;line-height:1.2}
-.kpi span{font-size:11px;color:var(--dim2);font-weight:600}
+/* ---------- Heute ---------- */
+.hero{background:linear-gradient(158deg,var(--hero1),var(--hero2));border:1px solid var(--line);
+  border-radius:var(--r-l);padding:18px 17px 17px;box-shadow:var(--sh2)}
+.hero h1{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:-.2px}
+.hero .muted{margin-top:5px}
+
+/* Tagesbogen: der Fortschritt als Reihe von Marken, nicht als Zahl. */
+.seg{display:flex;gap:3px;margin:15px 0 8px;height:14px}
+.seg i{flex:1;border-radius:3px;background:var(--track);transition:background .3s}
+.seg i.on{background:linear-gradient(180deg,var(--grad1),var(--grad2))}
+.seg i.now{background:var(--acc-soft);box-shadow:inset 0 0 0 1.5px var(--acc)}
+.seg-lab{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.seg-lab b{font-size:14px;font-weight:700}
+
+.week{display:flex;gap:6px;justify-content:space-between;margin-top:2px}
+.wd{flex:1;display:grid;justify-items:center;gap:5px}
+.wd span{font-size:10.5px;color:var(--dim2);font-weight:700;letter-spacing:.02em}
+.wd i{width:100%;max-width:30px;aspect-ratio:1;border-radius:10px;background:var(--bg2);display:grid;place-content:center}
+.wd i.done{background:linear-gradient(158deg,var(--grad1),var(--grad2))}
+.wd i.done::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--on-acc)}
+.wd.today i{box-shadow:0 0 0 2px var(--acc)}
+.wd.fut i{background:transparent;border:1px dashed var(--line2)}
+
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--r-s);padding:11px 8px;text-align:center;box-shadow:var(--sh1)}
+.kpi b{display:block;font-size:21px;line-height:1.2;font-family:var(--serif);font-weight:600}
+.kpi span{font-size:11.5px;color:var(--dim2);font-weight:600}
 
 .fact{border-left:3px solid var(--gold)}
-.fact h3{font-size:15px;margin-bottom:6px;color:var(--gold)}
+.fact h3{font-family:var(--serif);font-size:17px;font-weight:600;margin-bottom:6px}
 
-/* ---------- Session ---------- */
+/* ---------- Lerneinheit ---------- */
 .sess{display:flex;flex-direction:column;min-height:calc(100dvh - var(--safe-t) - var(--safe-b));padding-top:var(--safe-t)}
-.sess-top{display:flex;align-items:center;gap:10px;padding:8px 12px 10px}
-.sess-top .bar{flex:1}
-.icon-btn{background:var(--card);border:1px solid var(--line);border-radius:12px;width:44px;height:44px;
-  display:grid;place-content:center;font-size:17px;flex:none;color:var(--dim)}
-.sess-body{flex:1;display:flex;flex-direction:column;gap:14px;padding:4px 14px 12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.sess-top{display:flex;align-items:center;gap:12px;padding:6px 12px 8px}
+.sess-top .bar{flex:1;height:8px}
+.icon-btn{background:transparent;border:1px solid transparent;border-radius:14px;width:44px;height:44px;
+  display:grid;place-content:center;flex:none;color:var(--dim)}
+.icon-btn:active{background:var(--bg2)}
+.icon-btn[disabled]{opacity:.3}
+/* Auto-Raender halten den Inhalt in der Mitte, ohne ihn bei Ueberlaenge oben abzuschneiden. */
+.sess-body{flex:1;display:flex;flex-direction:column;gap:12px;padding:4px 14px 5vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.sess-body>*:first-child{margin-top:auto}
+.sess-body>*:last-child{margin-bottom:auto}
 .sess-foot{padding:8px 14px calc(12px + var(--safe-b));display:grid;gap:9px}
 
-.qmeta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.qcat{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc2)}
-.pill{font-size:11px;font-weight:700;border-radius:999px;padding:3px 9px;background:var(--bg2);border:1px solid var(--line);color:var(--dim2)}
-.pill.new{color:var(--ok);border-color:rgba(61,220,151,.35)}
-.pill.rep{color:var(--warn);border-color:rgba(255,180,84,.3)}
-.q{font-size:22px;font-weight:700;line-height:1.35;margin:6px 0 2px}
-@media(min-width:480px){.q{font-size:25px}}
+/* Die Frage liegt als Blatt auf einem Stapel – der Rest der Flaeche ist Buehne, kein Loch. */
+.qcard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);
+  padding:22px 19px;box-shadow:var(--sh3);margin-bottom:13px}
+.qcard::before,.qcard::after{content:"";position:absolute;z-index:-1;border-radius:var(--r-l);
+  background:var(--card2);border:1px solid var(--line2);left:10px;right:10px;bottom:-10px;height:34px}
+.qcard::after{left:22px;right:22px;bottom:-19px;background:var(--bg2)}
+/* Steht die Karte allein auf dem Bildschirm, bekommt sie Hoehe: die Frage sitzt
+   dann mittig im Blatt statt oben an einer leeren Flaeche. */
+.qcard.solo{min-height:min(45dvh,360px);display:flex;flex-direction:column;justify-content:center}
+.qcard .verdict{margin-top:13px}
+.qmeta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:11px}
+.qcat{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:var(--dim)}
+.qcat .ic{color:var(--acc2)}
+.pill{font-size:11.5px;font-weight:700;border-radius:999px;padding:4px 10px;background:var(--bg2);color:var(--dim2)}
+.pill.new{color:var(--ok);background:var(--ok-soft)}
+.pill.rep{color:var(--warn);background:var(--warn-soft)}
+.q{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.3;letter-spacing:-.2px}
+@media(min-width:480px){.q{font-size:27px}}
+.qcard .recall-in{margin-top:15px}
+.qcard .tiny{margin-top:9px}
 
-.opts{display:grid;gap:10px;margin-top:2px}
-.opt{display:flex;align-items:center;gap:12px;text-align:left;width:100%;min-height:58px;padding:13px 14px;
-  border-radius:14px;border:1px solid var(--line);background:var(--card);font-size:16px;font-weight:600;
-  line-height:1.35;transition:transform .08s,background .15s,border-color .15s}
+.opts{display:grid;gap:9px}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;width:100%;min-height:58px;padding:13px 15px;
+  border-radius:15px;border:1px solid var(--line2);background:var(--card);font-size:16px;font-weight:600;
+  line-height:1.35;box-shadow:var(--sh1);color:var(--txt);
+  transition:transform .1s,background .15s,border-color .15s}
 .opt:active{transform:scale(.99)}
-.opt .k{width:26px;height:26px;flex:none;border-radius:8px;background:var(--bg2);display:grid;place-content:center;
+.opt .k{width:27px;height:27px;flex:none;border-radius:9px;background:var(--bg2);display:grid;place-content:center;
   font-size:12.5px;color:var(--dim2);font-weight:700}
-.opt.right{background:rgba(61,220,151,.14);border-color:rgba(61,220,151,.6)}
+.opt.right{background:var(--ok-soft);border-color:var(--ok)}
 .opt.right .k{background:var(--ok);color:var(--on-ok)}
-.opt.wrong{background:rgba(255,107,107,.13);border-color:rgba(255,107,107,.55)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
 .opt.wrong .k{background:var(--bad);color:var(--on-bad)}
-.opt.dim{opacity:.45}
+.opt.dim{opacity:.45;box-shadow:none}
 
-.answer{background:var(--card2);border:1px solid var(--line);border-radius:var(--r);padding:14px}
-.answer .lab{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim2);font-weight:700}
-.answer .val{font-size:21px;font-weight:750;margin-top:4px;color:var(--ok)}
-.expl{margin-top:10px;font-size:14.5px;color:var(--dim);line-height:1.55}
+.answer{background:var(--card2);border:1px solid var(--line);border-radius:var(--r);padding:15px;margin-top:13px}
+.qcard .answer{margin-top:15px}
+.answer .lab{font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--dim2);font-weight:700}
+.answer .val{font-family:var(--serif);font-size:22px;font-weight:600;margin-top:4px;color:var(--ok)}
+.expl{margin-top:10px;font-size:14.5px;color:var(--dim);line-height:1.6}
 .expl b{color:var(--txt)}
-.verdict{font-size:15px;font-weight:700;display:flex;gap:8px;align-items:center}
-.verdict.good{color:var(--ok)} .verdict.bad{color:var(--bad)}
-.verdict.fast{color:var(--warn)}
+.verdict{font-size:15.5px;font-weight:700;display:flex;gap:9px;align-items:center}
+.verdict .ic{width:19px;height:19px;padding:5px;border-radius:50%;box-sizing:content-box}
+.verdict.good{color:var(--ok)} .verdict.good .ic{background:var(--ok-soft)}
+.verdict.bad{color:var(--bad)} .verdict.bad .ic{background:var(--bad-soft)}
+.verdict.fast{color:var(--warn)} .verdict.fast .ic{background:var(--warn-soft)}
 
 .grades{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-.grades .btn{flex-direction:column;gap:2px;min-height:62px;font-size:13.5px;padding:8px 4px}
+.grades .btn{flex-direction:column;gap:2px;min-height:64px;font-size:13.5px;padding:8px 4px;border-radius:14px}
 .grades .btn small{font-size:10.5px;color:var(--dim2);font-weight:600}
-/* Die Schriftfarben lagen fest als helle Pastelltoene im Blatt. Auf dem hellen
-   Schema standen „Nochmal", „Schwer" und „Leicht" damit bei 1,3 bis 1,9:1 auf
-   weissem Grund – und das auf Knoepfen, die bei jeder Karte gedrueckt werden. */
-.g0{border-color:rgba(255,107,107,.45);color:var(--g-bad)}
-.g1{border-color:rgba(255,180,84,.4);color:var(--g-warn)}
-.g2{border-color:rgba(79,140,255,.45);color:var(--acc2)}
-.g3{border-color:rgba(61,220,151,.4);color:var(--g-ok)}
+/* Die Schriftfarben folgen der Palette, sonst stehen sie im hellen Schema
+   als helle Pastelltoene auf weissem Grund. */
+/* Vier klar unterscheidbare Toene – „Gut" bleibt bewusst neutral, sonst laege es
+   im dunklen Schema Farbe an Farbe neben „Schwer". */
+.g0{color:var(--g-bad)} .g1{color:var(--g-warn)} .g2{color:var(--txt)} .g3{color:var(--g-ok)}
 
-.recall-in{width:100%;min-height:52px;background:var(--card);border:1px solid var(--line);border-radius:14px;
-  padding:13px 15px;font-size:16px}
+.recall-in{width:100%;min-height:52px;background:var(--bg2);border:1px solid var(--line2);border-radius:14px;
+  padding:13px 15px;font-size:16px;color:var(--txt)}
 .recall-in::placeholder{color:var(--dim2)}
+.recall-in:focus{outline:2px solid var(--acc);outline-offset:1px;background:var(--card)}
 
 /* ---------- Themen / Statistik ---------- */
-.tlist{display:grid;gap:10px}
-.trow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
-  border-radius:var(--r);padding:13px 14px;width:100%;text-align:left}
-.tico{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-content:center;font-size:20px;background:var(--bg2)}
+.tlist{display:grid;gap:9px}
+.trow{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r);padding:13px 14px;width:100%;text-align:left;box-shadow:var(--sh1);color:var(--txt);
+  transition:transform .1s}
+button.trow:active{transform:scale(.99)}
+.tico{width:42px;height:42px;flex:none;border-radius:13px;display:grid;place-content:center;
+  background:var(--acc-soft);color:var(--acc2)}
+.tico .ic{width:23px;height:23px}
 .trow h3{font-size:15.5px}
 .trow .tiny{display:block;margin-top:2px}
-.trow .bar{margin-top:7px}
-.pct{font-size:13px;font-weight:700;color:var(--dim);flex:none;min-width:38px;text-align:right}
+.trow .bar{margin-top:8px;height:7px}
+.pct{font-size:13.5px;font-weight:700;color:var(--dim);flex:none;min-width:38px;text-align:right}
 
 .heat{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:3px}
 .heat i{aspect-ratio:1;border-radius:3px;background:var(--heat0);display:block}
 .heat i.future{background:transparent}
 .heat-days{display:grid;grid-template-rows:repeat(7,1fr);gap:3px;font-size:9px;color:var(--dim2);
-  align-content:stretch;margin-right:6px}
+  align-content:stretch;margin-right:7px}
 .heat-days span{display:grid;align-items:center;line-height:1}
 .heat-wrap{display:flex;align-items:stretch}
-.heat i[data-l="1"]{background:var(--heat1)}
-.heat i[data-l="2"]{background:var(--heat2)}
-.heat i[data-l="3"]{background:var(--heat3)}
-.heat i[data-l="4"]{background:var(--ok)}
-.heat i.today{outline:1.5px solid var(--acc2);outline-offset:1px}
-.legend{display:flex;align-items:center;gap:5px;justify-content:flex-end;margin-top:8px;font-size:11px;color:var(--dim2)}
-/* Die Farben kommen aus denselben Variablen wie das Feld darueber. Frueher standen
-   sie fest im Markup und zeigten im hellen Schema die dunkle Palette. */
+.heat i[data-l="1"],.legend i[data-l="1"]{background:var(--heat1)}
+.heat i[data-l="2"],.legend i[data-l="2"]{background:var(--heat2)}
+.heat i[data-l="3"],.legend i[data-l="3"]{background:var(--heat3)}
+.heat i[data-l="4"],.legend i[data-l="4"]{background:var(--heat4)}
+.heat i.today{outline:2px solid var(--acc);outline-offset:1px}
+.legend{display:flex;align-items:center;gap:5px;justify-content:flex-end;margin-top:9px;font-size:11.5px;color:var(--dim2)}
 .legend i{width:11px;height:11px;border-radius:3px;display:block;background:var(--heat0)}
-.legend i[data-l="1"]{background:var(--heat1)}
-.legend i[data-l="2"]{background:var(--heat2)}
-.legend i[data-l="3"]{background:var(--heat3)}
-.legend i[data-l="4"]{background:var(--ok)}
 
 .setrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
 .setrow:last-child{border-bottom:0}
 .setrow label{font-weight:600;font-size:15px}
-.setrow .tiny{margin-top:2px}
-select,input[type=number]{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:16px;min-height:44px}
-.switch{position:relative;width:50px;height:30px;flex:none}
-.switch input{position:absolute;opacity:0;margin:0;z-index:2;left:-4px;right:-4px;top:-7px;bottom:-7px;width:auto;height:auto}
+.setrow .tiny{margin-top:3px}
+select,input[type=number]{background:var(--bg2);border:1px solid var(--line2);border-radius:12px;padding:9px 11px;font-size:16px;min-height:44px}
+.setrow > div{flex:1;min-width:0}
+.setrow select{flex:none;max-width:62%;padding-left:10px;padding-right:6px}
+/* Das eingebaute Loeschkreuz der Suche kommt vom System in Systemblau –
+   der einzige Fremdkoerper in der Palette. Wir zeichnen die Suche selbst. */
+input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.switch{position:relative;width:52px;height:32px;flex:none}
+.switch input{position:absolute;opacity:0;margin:0;z-index:2;left:-4px;right:-4px;top:-6px;bottom:-6px;width:auto;height:auto}
 .switch i{position:absolute;inset:0;background:var(--track);border-radius:99px;transition:background .2s}
-.switch i::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s}
+.switch i::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:var(--card);
+  box-shadow:var(--sh1);transition:transform .2s}
 .switch input:checked + i{background:var(--acc)}
 .switch input:checked + i::after{transform:translateX(20px)}
 
-.done-wrap{display:grid;place-items:center;gap:6px;text-align:center;padding:26px 0 10px}
-.done-emoji{font-size:52px}
+/* ---------- Rueckblick ---------- */
+.done-wrap{display:grid;place-items:center;gap:8px;text-align:center;padding:22px 0 14px}
+.done-badge{width:96px;height:96px;display:grid;place-items:center;position:relative;margin-bottom:4px}
+.done-badge svg{position:absolute;inset:0;width:96px;height:96px;transform:rotate(-90deg)}
+.done-badge b{font-family:var(--serif);font-size:25px;font-weight:600}
+.done-wrap h1{font-family:var(--serif);font-size:25px;font-weight:600}
 .empty{text-align:center;color:var(--dim);padding:34px 16px}
 
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + var(--safe-b) + 16px);
-  background:var(--toast);border:1px solid var(--line);border-radius:12px;padding:11px 17px;font-size:14px;font-weight:600;
-  z-index:60;box-shadow:0 10px 30px -10px #000;animation:up .25s ease}
+  background:var(--toast);color:var(--on-toast);border-radius:14px;padding:12px 18px;font-size:14.5px;font-weight:600;
+  z-index:60;box-shadow:0 14px 34px -14px rgba(0,0,0,.7);animation:up .25s ease;max-width:calc(100vw - 40px)}
 @keyframes up{from{opacity:0;transform:translate(-50%,10px)}}
-.fade{animation:fade .22s ease}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+.fade{animation:fade .24s ease}
+@keyframes fade{from{opacity:0;transform:translateY(7px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 /* ---------- Nur für Screenreader ---------- */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
-/* Sichtbare Überschrift einer Ansicht */
-.vh{font-size:22px;margin-bottom:4px}
-
-.icon-btn.sm{width:44px;height:44px;font-size:16px;border-radius:12px}
+.vh{font-family:var(--serif);font-size:25px;font-weight:600;margin-bottom:5px;letter-spacing:-.2px}
+.icon-btn.sm{width:44px;height:44px;border-radius:13px;background:var(--card);border-color:var(--line)}
 
 /* ---------- Prognose der nächsten Tage ---------- */
-.fc{display:flex;align-items:flex-end;gap:6px;height:104px}
+.fc{display:flex;align-items:flex-end;gap:6px;height:106px}
 .fc-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%}
-.fc-col > i{display:block;width:100%;border-radius:5px 5px 2px 2px;
-  background:linear-gradient(180deg,var(--grad1),var(--grad2));opacity:.95}
-.fc-col:first-child > i{background:linear-gradient(180deg,var(--warn),#e08b2e)}
+.fc-col > i{display:block;width:100%;border-radius:6px 6px 3px 3px;
+  background:linear-gradient(180deg,var(--grad1),var(--grad2))}
+.fc-col:first-child > i{background:linear-gradient(180deg,var(--heat3),var(--heat4))}
 .fc-n{font-size:11.5px;font-weight:700;color:var(--dim);min-height:14px}
-.fc-l{font-size:10px;color:var(--dim2);font-weight:600}
+.fc-l{font-size:10.5px;color:var(--dim2);font-weight:600}
+.fc-col > i.quote{background:linear-gradient(180deg,var(--ok),var(--ok))}
+.fc-col:last-child > i.quote{background:linear-gradient(180deg,var(--grad1),var(--grad2))}
 
 /* ---------- Nachschlagen ---------- */
-.lk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:9px;overflow:hidden}
-.lk.open{border-color:rgba(79,140,255,.45)}
-.lk-head{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;cursor:pointer}
-.lk-q{display:block;font-weight:650;font-size:15px;line-height:1.35;margin-top:3px}
+.lk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:9px;overflow:hidden;box-shadow:var(--sh1)}
+.lk.open{border-color:var(--acc);box-shadow:var(--sh2)}
+.lk-head{display:flex;align-items:flex-start;gap:10px;padding:13px 8px 13px 14px;cursor:pointer}
+.lk-q{display:block;font-weight:650;font-size:15.5px;line-height:1.4;margin-top:4px}
 .lk-body{padding:0 14px 14px}
 /* Die Flaeche muss 44 px erreichen, sonst trifft man den Stern auf dem Handy
    nur mit Glueck. Das Zeichen selbst bleibt klein. */
-.star{background:none;border:0;font-size:19px;line-height:1;color:var(--dim3);flex:none;
+.star{background:none;border:0;color:var(--dim3);flex:none;
   min-width:44px;min-height:44px;display:grid;place-content:center;padding:0}
+.star .ic{width:21px;height:21px}
 .star.on{color:var(--gold)}
+.star.on .ic{fill:currentColor}
 
 /* Auf breiten Bildschirmen zwei Spalten für Listen */
 @media (min-width:700px){
   .tlist{grid-template-columns:1fr 1fr;display:grid}
 }
 
-/* ---------- Helles Design ----------
-   Folgt der Systemeinstellung, solange die App nicht ausdruecklich Dunkel erzwingt.
+/* Hinweis auf der Startseite, wenn sich Wiederholungen stauen */
+.hinweis{margin-top:13px;padding:13px 14px;border-radius:var(--r-s);font-size:14px;line-height:1.55;
+  background:var(--warn-soft);color:var(--txt)}
+.hinweis b{color:var(--warn)}
+.pill.zaeh{color:var(--warn);background:var(--warn-soft)}
+.knack{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);
+  font-size:13.5px;line-height:1.55;color:var(--warn)}
+
+/* ---------- Abendlicht (dunkel) ----------
+   Folgt der Systemeinstellung, solange die App nicht ausdruecklich Hell erzwingt.
    data-theme="light" oder "dark" auf <html> ueberschreibt beides. */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-  --bg:#f5f7fa; --bg2:#eceff4; --card:#ffffff; --card2:#f3f6fa;
-  --line:#dbe1ea; --txt:#141920; --dim:#4d5560; --dim2:#5d6672; --dim3:#8a94a2;
-  --acc:#1d4ed8; --acc2:#1e40af;
-  --ok:#0b7a4d; --warn:#9a4a08; --bad:#c02618; --gold:#8a5307;
-  --chrome:rgba(255,255,255,.92); --track:#dfe5ee; --toast:#232b36;
-  --grad1:#1d4ed8; --grad2:#5946ec; --mark1:#1d4ed8; --mark2:#6b37d6;
-  --heat0:#e7ebf1; --heat1:#a9dcc2; --heat2:#5cbf95; --heat3:#25a06d;
-  --hero1:#ffffff; --hero2:#e7eefb;
-  --g-bad:var(--bad); --g-warn:var(--warn); --g-ok:var(--ok);
-  --on-ok:#ffffff; --on-bad:#ffffff; --ring-bg:#dfe5ee;
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17120e; --bg2:#221b15; --card:#26201a; --card2:#2e261e;
+    --line:#3a3026; --line2:#473a2d;
+    --txt:#f4ece2; --dim:#c0b0a0; --dim2:#ad9c8b; --dim3:#7a6c5d;
+    --acc:#f0a24a; --acc2:#f2b166; --acc-soft:rgba(240,162,74,.14); --on-acc:#2a1a06;
+    --ok:#7ad3a1; --ok-soft:rgba(122,211,161,.14);
+    --warn:#eeb757; --warn-soft:rgba(238,183,87,.14);
+    --bad:#f79184; --bad-soft:rgba(247,145,132,.13);
+    --gold:#efc069;
+    --chrome:rgba(23,18,14,.88); --track:#332a21; --toast:#3a2f24;
+    --grad1:#f2ab52; --grad2:#dd8a2e; --mark1:#f2ab52; --mark2:#d97f24;
+    --heat0:#251e17; --heat1:#4a3418; --heat2:#7d5620; --heat3:#b9802c; --heat4:#f0a94a;
+    --hero1:#2a2119; --hero2:#221b15;
+    --on-ok:#0d2b1b; --on-bad:#3a1310; --ring-bg:#332a21;
+    --sh1:0 1px 2px rgba(0,0,0,.35);
+    --sh2:0 1px 2px rgba(0,0,0,.4),0 12px 26px -16px rgba(0,0,0,.9);
+    --sh3:0 2px 6px rgba(0,0,0,.45),0 20px 34px -20px rgba(0,0,0,1);
   }
 }
-:root[data-theme="light"] {
-  --bg:#f5f7fa; --bg2:#eceff4; --card:#ffffff; --card2:#f3f6fa;
-  --line:#dbe1ea; --txt:#141920; --dim:#4d5560; --dim2:#5d6672; --dim3:#8a94a2;
-  --acc:#1d4ed8; --acc2:#1e40af;
-  --ok:#0b7a4d; --warn:#9a4a08; --bad:#c02618; --gold:#8a5307;
-  --chrome:rgba(255,255,255,.92); --track:#dfe5ee; --toast:#232b36;
-  --grad1:#1d4ed8; --grad2:#5946ec; --mark1:#1d4ed8; --mark2:#6b37d6;
-  --heat0:#e7ebf1; --heat1:#a9dcc2; --heat2:#5cbf95; --heat3:#25a06d;
-  --hero1:#ffffff; --hero2:#e7eefb;
-  --g-bad:var(--bad); --g-warn:var(--warn); --g-ok:var(--ok);
-  --on-ok:#ffffff; --on-bad:#ffffff; --ring-bg:#dfe5ee;
+:root[data-theme="dark"]{
+  --bg:#17120e; --bg2:#221b15; --card:#26201a; --card2:#2e261e;
+  --line:#3a3026; --line2:#473a2d;
+  --txt:#f4ece2; --dim:#c0b0a0; --dim2:#ad9c8b; --dim3:#7a6c5d;
+  --acc:#f0a24a; --acc2:#f2b166; --acc-soft:rgba(240,162,74,.14); --on-acc:#2a1a06;
+  --ok:#7ad3a1; --ok-soft:rgba(122,211,161,.14);
+  --warn:#eeb757; --warn-soft:rgba(238,183,87,.14);
+  --bad:#f79184; --bad-soft:rgba(247,145,132,.13);
+  --gold:#efc069;
+  --chrome:rgba(23,18,14,.88); --track:#332a21; --toast:#3a2f24;
+  --grad1:#f2ab52; --grad2:#dd8a2e; --mark1:#f2ab52; --mark2:#d97f24;
+  --heat0:#251e17; --heat1:#4a3418; --heat2:#7d5620; --heat3:#b9802c; --heat4:#f0a94a;
+  --hero1:#2a2119; --hero2:#221b15;
+  --on-ok:#0d2b1b; --on-bad:#3a1310; --ring-bg:#332a21;
+  --sh1:0 1px 2px rgba(0,0,0,.35);
+  --sh2:0 1px 2px rgba(0,0,0,.4),0 12px 26px -16px rgba(0,0,0,.9);
+  --sh3:0 2px 6px rgba(0,0,0,.45),0 20px 34px -20px rgba(0,0,0,1);
 }
-/* Elemente mit eigenem farbigem Grund behalten weisse Schrift, unabhaengig vom Schema. */
-.brand-mark, .boot-logo, .btn.primary, .toast { color:#fff }
-.opt .k { color:var(--dim2) }
-.heat i[data-l="4"] { background:var(--ok) }
-
-/* Hinweis auf der Startseite, wenn sich Wiederholungen stauen */
-.hinweis{margin-top:12px;padding:12px 14px;border-radius:var(--r-s);font-size:14px;line-height:1.5;
-  background:rgba(255,180,84,.12);border:1px solid rgba(255,180,84,.35);color:var(--txt)}
-.hinweis b{color:var(--warn)}
-
-/* Karten, die immer wieder umkippen */
-.pill.zaeh{color:var(--warn);border-color:rgba(255,180,84,.4)}
-.knack{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);
-  font-size:13.5px;line-height:1.5;color:var(--warn)}
-/* Balken der Wochen-Trefferquote heben sich vom Prognose-Diagramm ab */
-.fc-col > i.quote{background:linear-gradient(180deg,var(--ok),#2a9d76)}
-.fc-col:last-child > i.quote{background:linear-gradient(180deg,var(--grad1),var(--grad2))}
+/* Der Trinkspruch dieser Palette: Schrift auf eigenem Farbgrund kommt aus
+   --on-acc, damit sie in beiden Schemata traegt (heller Ton auf dunklem Ziegel,
+   dunkler Ton auf hellem Bernstein). */
+:root{--on-toast:#f6efe6}

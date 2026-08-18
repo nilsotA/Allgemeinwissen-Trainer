@@ -5,7 +5,7 @@
 <title>Wissenswerk – Allgemeinwissen trainieren</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Täglich 10 Minuten Allgemeinwissen mit Spaced Repetition – für Quizduelle und den Alltag.">
-<meta name="theme-color" content="#0e1116">
+<meta name="theme-color" content="#17120e">
 <meta name="color-scheme" content="dark light">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -29,12 +29,44 @@
   <p>Wissenswerk wird geladen …</p>
 </div>
 
+<!-- Alle Symbole liegen als Inline-SVG im Dokument: keine Emoji, keine
+     Zeichensatz-Glyphen, keine fremde Bibliothek. Ein Strichstil fuer alles. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <g id="i-heute"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.3M12 19.1v2.3M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.6 12h2.3M19.1 12h2.3M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></g>
+  <g id="i-themen"><rect x="3.4" y="3.4" width="7.2" height="7.2" rx="2.2"/><rect x="13.4" y="3.4" width="7.2" height="7.2" rx="2.2"/><rect x="3.4" y="13.4" width="7.2" height="7.2" rx="2.2"/><rect x="13.4" y="13.4" width="7.2" height="7.2" rx="2.2"/></g>
+  <g id="i-duell"><path d="M13.4 2.9 5.5 13.1h5.2l-.6 8 8-10.3h-5.3z"/></g>
+  <g id="i-stat"><path d="M4 20.3h16"/><path d="M7.2 17.2v-3.6M12 17.2V6.9M16.8 17.2v-6.6" stroke-width="2.4"/></g>
+  <g id="i-mehr"><path d="M4 7.5h8M17.4 7.5H20M4 16.5h2.6M12 16.5h8"/><circle cx="14.6" cy="7.5" r="2.4"/><circle cx="9.3" cy="16.5" r="2.4"/></g>
+  <g id="i-suche"><circle cx="10.8" cy="10.8" r="6.3"/><path d="M15.4 15.4 20 20"/></g>
+  <g id="i-flamme"><path d="M12.4 3c.5 2.5-.6 3.9-2 5.2-1.6 1.5-3.3 3-3.3 5.7a5.1 5.1 0 0 0 10.2 0c0-1.6-.5-2.8-1.3-3.9-.3 1-1 1.6-1.8 1.7.5-3.3-.9-5.7-1.8-8.7z"/></g>
+  <g id="i-play"><path d="M8.4 5.4 19 12 8.4 18.6z" stroke-linejoin="round"/></g>
+  <g id="i-schliessen"><path d="M6.6 6.6 17.4 17.4M17.4 6.6 6.6 17.4"/></g>
+  <g id="i-zurueck"><path d="M9.2 6.9h6.4a4.6 4.6 0 0 1 0 9.2H8.1"/><path d="m11.8 3.9-3 3 3 3"/></g>
+  <g id="i-haken"><path d="m5.2 12.6 4.6 4.6L18.8 7"/></g>
+  <g id="i-stern"><path d="m12 3.4 2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.8l6-.9z"/></g>
+  <g id="i-uhr"><circle cx="12" cy="12" r="8.3"/><path d="M12 7.3V12l3.2 2"/></g>
+  <g id="i-ges"><path d="M3.9 20.4h16.2M6.4 20.4V9.6M10.1 20.4V9.6M13.9 20.4V9.6M17.6 20.4V9.6M3.4 9.6h17.2L12 3.6z"/></g>
+  <g id="i-geo"><circle cx="12" cy="12" r="8.3"/><path d="M3.7 12h16.6"/><path d="M12 3.7c2.2 2.3 3.4 5.2 3.4 8.3s-1.2 6-3.4 8.3c-2.2-2.3-3.4-5.2-3.4-8.3s1.2-6 3.4-8.3z"/></g>
+  <g id="i-nat"><path d="M9.6 3.6v5.2l-4.5 8.2a2.2 2.2 0 0 0 1.9 3.3h10a2.2 2.2 0 0 0 1.9-3.3l-4.5-8.2V3.6"/><path d="M8.5 3.6h7M7.2 13.4h9.6"/></g>
+  <g id="i-mat"><path d="M4.8 19.3h14.4L4.8 4.9z"/><path d="M7.4 16.7v-2.3h2.3"/></g>
+  <g id="i-spo"><circle cx="12" cy="15.2" r="5.2"/><path d="M7.4 3.4 12 10.2 16.6 3.4"/><path d="M6.6 3.4h10.8"/></g>
+  <g id="i-kul"><circle cx="7" cy="17.6" r="2.9"/><circle cx="17" cy="15.6" r="2.9"/><path d="M9.9 17.6V6.6l10-2v11"/><path d="M9.9 10.2l10-2"/></g>
+  <g id="i-spr"><path d="M12 6.9C10.4 5.2 8.4 4.6 4.6 4.6v12.8c3.8 0 5.8.6 7.4 2.3 1.6-1.7 3.6-2.3 7.4-2.3V4.6c-3.8 0-5.8.6-7.4 2.3z"/><path d="M12 6.9v12.8"/></g>
+  <g id="i-pol"><path d="M12 4.6v15M8.2 19.6h7.6M4.6 7.7h14.8"/><path d="M4.6 7.7 2.3 13.1h4.6zM19.4 7.7 17.1 13.1h4.6z"/></g>
+  <g id="i-all"><path d="M9.4 18.6h5.2M10.2 21.1h3.6"/><path d="M12 3.2a6.1 6.1 0 0 0-3.7 10.9c.6.5 1 1.3 1.1 2.1h5.2c.1-.8.5-1.6 1.1-2.1A6.1 6.1 0 0 0 12 3.2z"/></g>
+</defs></svg>
+
 <header id="topbar" class="topbar" hidden>
   <div class="topbar-in">
     <div class="brand"><span class="brand-mark">W</span><span class="brand-name">Wissenswerk</span></div>
     <div class="row" style="gap:8px">
-      <button class="icon-btn sm" id="searchBtn" type="button" aria-label="Nachschlagen und suchen">🔍</button>
-      <div class="streak" id="streakBadge" title="Tage in Folge">🔥 <span id="streakNum">0</span></div>
+      <button class="icon-btn sm" id="searchBtn" type="button" aria-label="Nachschlagen und suchen">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-suche"/></svg>
+      </button>
+      <div class="streak" id="streakBadge">
+        <svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-flamme"/></svg>
+        <span id="streakNum">0</span><span class="sr-only">Tage in Folge</span>
+      </div>
     </div>
   </div>
 </header>
@@ -43,14 +75,14 @@
 <main id="app" class="app" hidden></main>
 
 <nav id="nav" class="nav" hidden>
-  <button class="nav-btn" data-view="home"  type="button"><span class="ico">◎</span><span>Heute</span></button>
-  <button class="nav-btn" data-view="topics" type="button"><span class="ico">▦</span><span>Themen</span></button>
-  <button class="nav-btn" data-view="duel"  type="button"><span class="ico">⚡</span><span>Duell</span></button>
-  <button class="nav-btn" data-view="stats" type="button"><span class="ico">▤</span><span>Statistik</span></button>
-  <button class="nav-btn" data-view="settings" type="button"><span class="ico">⚙</span><span>Mehr</span></button>
+  <button class="nav-btn" data-view="home"  type="button"><span class="ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heute"/></svg></span><span>Heute</span></button>
+  <button class="nav-btn" data-view="topics" type="button"><span class="ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-themen"/></svg></span><span>Themen</span></button>
+  <button class="nav-btn" data-view="duel"  type="button"><span class="ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-duell"/></svg></span><span>Duell</span></button>
+  <button class="nav-btn" data-view="stats" type="button"><span class="ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-stat"/></svg></span><span>Statistik</span></button>
+  <button class="nav-btn" data-view="settings" type="button"><span class="ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mehr"/></svg></span><span>Mehr</span></button>
 </nav>
 
 <script type="module" src="./assets/js/app.js"></script>
-<noscript><p style="padding:2rem;color:#fff">Diese App braucht JavaScript.</p></noscript>
+<noscript><p style="padding:2rem">Diese App braucht JavaScript.</p></noscript>
 </body>
 </html>
