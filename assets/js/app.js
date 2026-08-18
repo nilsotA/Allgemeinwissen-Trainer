@@ -291,14 +291,26 @@ function renderStats() {
   const t = todayNum();
   const dowMon = (d) => ((d + 3) % 7 + 7) % 7;      // Montag = 0; der 1.1.1970 war ein Donnerstag
   const start = t + (6 - dowMon(t)) - (WEEKS * 7 - 1);
+  /* Die Stufen richten sich nach dem eigenen Pensum, nicht nach festen Zahlen.
+     Vorher lag die oberste Stufe bei 40 Antworten - bei den rund 90 Antworten,
+     die ein voller Tag mit sich bringt, war damit jeder aktive Tag die hoechste
+     Stufe und der Verlauf sagte nur noch „gelernt oder nicht". Bezug ist der
+     Mittelwert der aktiven Tage; solange es zu wenige gibt, bleiben feste
+     Schwellen fuer den Anfang. */
+  const aktive = Object.values(st.days).map(d => d.done || 0).filter(n => n > 0).sort((a, b) => a - b);
+  const bezug = aktive.length >= 5 ? aktive[Math.floor(aktive.length / 2)] : 0;
+  const stufe = (n) => {
+    if (n === 0) return 0;
+    if (!bezug) return n < 8 ? 1 : n < 20 ? 2 : n < 40 ? 3 : 4;
+    return n < bezug * 0.45 ? 1 : n < bezug * 0.85 ? 2 : n < bezug * 1.25 ? 3 : 4;
+  };
   let cells = '';
   for (let i = 0; i < WEEKS * 7; i++) {
     const day = start + i;
     if (day > t) { cells += '<i class="future"></i>'; continue; }
     const k = numToKey(day);
     const n = st.days[k]?.done || 0;
-    const l = n === 0 ? 0 : n < 8 ? 1 : n < 20 ? 2 : n < 40 ? 3 : 4;
-    cells += `<i data-l="${l}" class="${day === t ? 'today' : ''}" title="${k}: ${n} Antworten"></i>`;
+    cells += `<i data-l="${stufe(n)}" class="${day === t ? 'today' : ''}" title="${k}: ${n} Antworten"></i>`;
   }
   const p = sess.catProgress();
   const totalDone = Object.values(st.days).reduce((a, d) => a + (d.done || 0), 0);
