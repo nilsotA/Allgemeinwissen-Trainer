@@ -113,6 +113,15 @@ die Trefferquote und lässt den Scheduler zu optimistisch planen. Nach der Über
 287 Kartensätzen liegt der Wert bei 23,8 %; `npm run check` gibt ihn bei jedem Lauf aus und
 schlägt oberhalb von 32 % fehl.
 
+Dieselbe Prüfung meldet eine zweite Ratestrategie: Bei Zahlenkarten lagen die Ablenker
+anfangs in 85 % der Fälle symmetrisch um die richtige Antwort. Wer beide Extremwerte
+streicht, rät dann mit 50 statt 25 Prozent. Bei Jahreszahlen ist das behoben – die Ablenker
+liegen jetzt teils komplett vor, teils komplett nach dem gesuchten Jahr, bei gleichem Abstand
+und damit gleicher Plausibilität. Der Wert liegt bei 76,6 %; der Rest sind Zahlen mit eigener
+Struktur (Notrufnummern, Zweierpotenzen, Chromosomenzahlen), bei denen ein verschobener
+Ablenker sinnlos würde. Betroffen sind 145 der 1.347 Karten, der Effekt auf die Gesamt-
+Ratequote liegt bei rund drei Prozentpunkten.
+
 Die 58 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.

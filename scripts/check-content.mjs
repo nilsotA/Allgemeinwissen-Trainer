@@ -100,6 +100,30 @@ for (const c of CARDS) {
 }
 const quote = (laengsteGewinnt / mitAblenkern) * 100;
 console.log(`Ratequote    : ${quote.toFixed(1)} % mit „nimm die laengste Option" (Zufall waere 25 %)`);
+
+/* Zweite Ratestrategie: „streich die beiden Extremwerte". Lagen die Ablenker
+   symmetrisch um die richtige Antwort, blieben nur zwei Optionen uebrig - 50 statt
+   25 Prozent Trefferquote. Beim ersten Lauf traf das auf 85 Prozent der Zahlenkarten
+   zu; Zufall waeren 50. */
+const zuZahlwert = (s) => {
+  const t = String(s).replace(/[^0-9,.-]/g, '').replace(/\.(?=\d{3}\b)/g, '').replace(',', '.');
+  const v = parseFloat(t);
+  return isFinite(v) ? v : null;
+};
+let zahlkarten = 0, inDerMitte = 0;
+for (const c of CARDS) {
+  if (!c.w || c.w.length < 3) continue;
+  const alle = [c.a, ...c.w].map(zuZahlwert);
+  if (alle.some(v => v === null) || new Set(alle).size !== 4) continue;
+  zahlkarten++;
+  const sortiert = [...alle].sort((x, y) => x - y);
+  if (alle[0] !== sortiert[0] && alle[0] !== sortiert[3]) inDerMitte++;
+}
+if (zahlkarten) {
+  const mittig = (inDerMitte / zahlkarten) * 100;
+  console.log(`Klammerquote : ${mittig.toFixed(1)} % der Zahlenkarten haben die Antwort zwischen den Ablenkern (Zufall waere 50 %)`);
+  if (mittig > 85) fail(`Zu viele Zahlenkarten klammern die Antwort ein (${mittig.toFixed(1)} %) – wer beide Extremwerte streicht, raet mit 50 statt 25 Prozent.`);
+}
 if (quote > 32) fail(`Die Laenge verraet die Antwort zu oft: ${quote.toFixed(1)} % statt hoechstens 32 %`);
 console.log(`\n${errors} Fehler, ${warnings} Hinweise`);
 process.exit(errors ? 1 : 0);
