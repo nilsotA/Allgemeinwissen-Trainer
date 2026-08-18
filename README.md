@@ -21,6 +21,7 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Schwierigkeits-Leiter** | Neue Karten kommen standardmäßig leicht zuerst, damit Grundlagenlücken zuerst schließen. |
 | **Sofortige Rückmeldung** | Richtig/falsch plus Erklärung direkt nach der Antwort. |
 | **Kleine tägliche Dosis** | Standard: 12 neue Karten pro Tag. Das sind rund 9 Minuten – dauerhaft durchhaltbar. |
+| **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
 Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt 89 Karten pro Tag,
 Spitzenlast 102, nach einem halben Jahr sitzen rund 1.160 der 1.347 Karten fest. Der Deckel
@@ -56,6 +57,11 @@ für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem Kartenbestand
   Thema und Kontext. Antippen klappt die Lösung auf, ★ markiert für später.
 - **Wiederholungs-Vorschau** für die nächsten sieben Tage in der Statistik.
 - **Rückblick nach jeder Runde**: Welche Karten saßen noch nicht – mit Antwort und Kontext.
+- **Hartnäckige Karten** werden nach mehreren Aussetzern gekennzeichnet und liefern einen
+  wechselnden Merkhilfe-Tipp. Wer eine Karte zum fünften Mal vergisst, braucht keine sechste
+  Wiederholung, sondern eine Eselsbrücke.
+- **Trefferquote je Woche** in der Statistik, über acht Wochen mit mindestens zehn Antworten –
+  damit sichtbar wird, ob es besser wird, und nicht nur, wie viel geschafft ist.
 - **Helles und dunkles Design**, standardmäßig nach Systemeinstellung, in den Einstellungen
   festlegbar. Beide Paletten sind auf Kontrast gerechnet (mindestens 4,5:1).
 - **Tastatur** auf Mac oder iPad: `1`–`4` wählt Antwort oder Bewertung,
@@ -84,7 +90,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 42 Einheitentests plus Inhaltsprüfung
+npm test           # 58 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 29 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:all   # beides
 npm run check      # nur die Inhaltsprüfung
@@ -107,13 +113,24 @@ die Trefferquote und lässt den Scheduler zu optimistisch planen. Nach der Über
 287 Kartensätzen liegt der Wert bei 23,8 %; `npm run check` gibt ihn bei jedem Lauf aus und
 schlägt oberhalb von 32 % fehl.
 
-Die 52 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 58 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
-den Vergleich freier Eingaben ab. Beim freien Abrufen zählt insbesondere, dass eine falsche
-Formel nicht als richtig durchgeht: „a² − b² = c²" ist keine Antwort auf den Satz des
-Pythagoras, und „Grundseite mal Höhe" keine auf die Dreiecksfläche. Zwei Invarianten laufen
-über den gesamten Bestand: keine Antwort darf zu einem leeren Text normalisieren, und jede
-Antwort muss mit sich selbst übereinstimmen.
+den Vergleich freier Eingaben ab.
+
+Beim freien Abrufen ist der schlimmste denkbare Fehler, eine falsche Eingabe abzunicken – dann
+lernt man die Falschantwort als richtig. Ein Test tippt deshalb jeden der rund 4.000 Ablenker
+als Antwort auf seine eigene Karte; keiner davon darf durchgehen. Beim ersten Lauf taten es
+148: „Ag" galt als Symbol für Gold, „Ludwig XVI." als „Ludwig XIV.", und vertauschte Aussagen
+wie „kW ist Energie, kWh ist Leistung" kamen zeichenweise auf über 90 % Übereinstimmung.
+Der Vergleich achtet seither auf Wortreihenfolge, Vielfachheit und den Wortanfang – im
+Deutschen sitzt die Unterscheidung vorn (intra-/inter-, Impressionismus/Expressionismus).
+Ein Gegentest sichert die andere Richtung: ein Tippfehler in der Antwort wird weiterhin in
+96 % der Fälle verziehen.
+
+Ebenso geprüft: dass eine falsche Formel nicht durchgeht – „a² − b² = c²" ist keine Antwort
+auf den Satz des Pythagoras, „Grundseite mal Höhe" keine auf die Dreiecksfläche. Zwei
+Invarianten laufen über den gesamten Bestand: keine Antwort darf zu einem leeren Text
+normalisieren, und jede Antwort muss mit sich selbst übereinstimmen.
 
 ### Karten ergänzen
 
@@ -129,6 +146,11 @@ Die Inhalte liegen als reine Datenlisten in `data/<kategorie>.js`:
   w: ["40 km", "42 km", "45 km"]       // optionale Ablenker
 }
 ```
+
+Selten braucht eine Karte zusätzlich `mc: true`. Das heißt: nur als Auswahlfrage abfragen,
+nie als freie Eingabe. Nötig ist das, wenn sich die Antwort getippt nicht vom Ablenker
+trennen lässt – bei der Frage nach „ss" gegen „ß" etwa fallen beide Schreibungen beim
+Normalisieren zusammen.
 
 Ohne `w` erzeugt die App die falschen Antworten selbst – aus dem Antwortpool desselben
 Teilgebiets, bei Jahreszahlen und Zahlen als knappe Beinahe-Treffer.

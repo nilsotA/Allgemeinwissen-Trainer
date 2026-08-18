@@ -1,6 +1,8 @@
 /* Prüft die Kartensammlung auf Vollständigkeit und die Antwortoptionen auf Plausibilität. */
 import { CARDS, CATS, countByCat } from '../data/index.js';
-import { options } from '../assets/js/quiz.js';
+import { options, normalize } from '../assets/js/quiz.js';
+
+const norm = (t) => normalize(t);
 
 let errors = 0, warnings = 0;
 const fail = (m) => { console.error('FEHLER  ' + m); errors++; };
@@ -44,6 +46,17 @@ for (const c of CARDS) {
     laengenAusreisser++;
     warn(`${c.id}: Antwort ${c.a.length} Zeichen, laengster Ablenker nur ${laengsterAblenker} – „${c.a.slice(0, 50)}"`);
   }
+}
+
+/* Steht die Antwort schon im Fragetext, ist die Karte ohne Wissen loesbar:
+   „Wie viele Disziplinen hat der Siebenkampf?" beantwortet sich selbst.
+   Ausgenommen sind Ausschlussfragen, die die Auswahl bewusst mitliefern
+   („Welches Instrument ist kein Streichinstrument: Bratsche, Cello, Oboe …?"). */
+for (const c of CARDS) {
+  const q = norm(c.q), a = norm(c.a);
+  if (a.length < 4 || !q.includes(a)) continue;
+  const nenntAuswahl = (c.w || []).filter(w => q.includes(norm(w))).length >= 2;
+  if (!nenntAuswahl) fail(`${c.id}: die Antwort steht schon in der Frage – „${c.q}“`);
 }
 
 for (const c of CARDS) {

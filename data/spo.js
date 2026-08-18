@@ -9,7 +9,7 @@ export default [
 {q:"Wer ist der erfolgreichste Olympionike aller Zeiten?",a:"Michael Phelps",s:"Olympia",d:2,t:"23 Goldmedaillen im Schwimmen, insgesamt 28 Medaillen.",w:["Usain Bolt","Carl Lewis","Larissa Latynina"]},
 {q:"Welcher Sportler gewann 1936 in Berlin vier Goldmedaillen?",a:"Jesse Owens",s:"Olympia",d:2,t:"100 m, 200 m, Weitsprung, Staffel – vor den Augen des NS-Regimes, das seine Rassenideologie propagierte.",w:["Carl Lewis","Paavo Nurmi","Emil Zátopek"]},
 {q:"Wie viele Disziplinen umfasst der Zehnkampf?",a:"Zehn, verteilt auf zwei Tage",s:"Olympia",d:2,t:"Tag 1: 100 m, Weit, Kugel, Hoch, 400 m. Tag 2: 110 m Hürden, Diskus, Stab, Speer, 1500 m.",w:["Zehn, verteilt auf drei Tage","Acht, verteilt auf zwei Tage","Zwölf, verteilt auf zwei Tage"]},
-{q:"Wie viele Disziplinen hat der Siebenkampf der Frauen?",a:"Sieben",s:"Olympia",d:2,t:"100 m Hürden, Hoch, Kugel, 200 m, Weit, Speer, 800 m. Deutsche Legende: Sabine Braun.",w:["Fünf","Sechs","Acht"]},
+{q:"Wie viele Disziplinen umfasst der leichtathletische Mehrkampf der Frauen bei Olympia?",a:"Sieben",s:"Olympia",d:2,t:"Der Siebenkampf: 100 m Hürden, Hoch, Kugel, 200 m, Weit, Speer, 800 m. Die Männer bestreiten den Zehnkampf. Deutsche Legende: Sabine Braun.",w:["Fünf","Sechs","Acht"]},
 {q:"Wann finden die nächsten Olympischen Sommerspiele nach Paris 2024 statt?",a:"2028 in Los Angeles",s:"Olympia",d:2,t:"LA ist dann zum dritten Mal Gastgeber (1932, 1984, 2028). 2032 folgt Brisbane.",w:["2028 in Brisbane","2028 in Tokio","2026 in Mailand"]},
 {q:"Was sind die Paralympics?",a:"Olympische Spiele für Sportler mit Behinderung",s:"Olympia",d:1,t:"Seit 1960 offiziell, seit 1988 direkt im Anschluss am selben Ort. Name von „para“ = neben, parallel.",w:["Olympische Spiele für Sportler unter 18 Jahren","Olympische Spiele für Amateure ohne Profivertrag","Regionale Winterspiele der asiatischen Länder"]},
 {q:"Welche Organisation bekämpft weltweit Doping?",a:"Die WADA",s:"Olympia",d:2,t:"World Anti-Doping Agency, gegründet 1999, Sitz in Montreal. Der deutsche Ableger heißt NADA.",w:["Die FIFA","Das IOC-Sportgericht","Die UNESCO"]},
@@ -46,7 +46,7 @@ export default [
 
 /* ---------- Weitere Sportarten ---------- */
 {q:"Wie hoch hängt ein Basketballkorb?",a:"3,05 m",s:"Sportarten",d:1,t:"Entspricht 10 Fuß. Das Feld misst 28 × 15 m, ein Team hat fünf Spieler auf dem Feld.",w:["2,80 m","3,50 m","3,00 m"]},
-{q:"Wie viele Punkte bringt ein Wurf hinter der Dreierlinie im Basketball?",a:"Drei",s:"Sportarten",d:1,t:"Innerhalb der Linie zwei, Freiwurf einen. Die Dreierlinie liegt in der FIBA bei 6,75 m.",w:["Zwei","Vier","Fünf"]},
+{q:"Wie viele Punkte bringt im Basketball ein Wurf von jenseits des großen Halbkreises?",a:"Drei",s:"Sportarten",d:1,t:"Innerhalb der Linie zwei, Freiwurf einen. Die Linie liegt bei der FIBA 6,75 m vom Korb entfernt.",w:["Zwei","Vier","Fünf"]},
 {q:"Wie hoch hängt das Volleyballnetz bei den Männern?",a:"2,43 m",s:"Sportarten",d:2,t:"Bei den Frauen 2,24 m. Ein Satz geht bis 25 Punkte, der fünfte nur bis 15 – jeweils mit zwei Punkten Vorsprung.",w:["2,24 m","2,50 m","2,35 m"]},
 {q:"Wie viele Spieler hat eine Handballmannschaft auf dem Feld?",a:"Sieben",s:"Sportarten",d:1,t:"Sechs Feldspieler und ein Torwart. Feld: 40 × 20 m, Tor: 3 × 2 m.",w:["Sechs","Fünf","Elf"]},
 {q:"Wie zählt man beim Tennis innerhalb eines Spiels?",a:"15, 30, 40, Spiel",s:"Sportarten",d:1,t:"Bei 40:40 heißt es Einstand, dann braucht man zwei Punkte Vorsprung. Der Ursprung liegt vermutlich in der Uhr-Einteilung.",w:["1, 2, 3, Spiel","10, 20, 30, Spiel","5, 10, 15, Spiel"]},
