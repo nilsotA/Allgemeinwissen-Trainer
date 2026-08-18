@@ -53,6 +53,50 @@ const errs = [];
 page.on('pageerror', e => errs.push('pageerror: ' + e.message));
 page.on('console', m => { if (m.type() === 'error') errs.push('console: ' + m.text()); });
 
+/* Laeuft im Browser: sucht Textknoten, loest den tatsaechlichen Hintergrund ueber
+   die Elternkette auf (Verlaeufe eingeschlossen) und meldet alles unter der Schwelle. */
+const KONTRAST = () => {
+  const rgb = (s) => { const m = String(s).match(/rgba?\(([^)]+)\)/); if (!m) return null;
+    const p = m[1].split(',').map(x => parseFloat(x)); return { r: p[0], g: p[1], b: p[2], a: p[3] === undefined ? 1 : p[3] }; };
+  const ausVerlauf = (bi) => { const m = String(bi).match(/rgba?\([^)]+\)/g); return m ? m.map(rgb) : null; };
+  const misch = (v, h) => ({ r: v.r * v.a + h.r * (1 - v.a), g: v.g * v.a + h.g * (1 - v.a), b: v.b * v.a + h.b * (1 - v.a), a: 1 });
+  const lum = (c) => { const f = (x) => { x /= 255; return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); };
+    return 0.2126 * f(c.r) + 0.7152 * f(c.g) + 0.0722 * f(c.b); };
+  const verhaeltnis = (a, b) => { const l1 = lum(a), l2 = lum(b); return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05); };
+  const grund = (el) => {
+    let n = el; const stapel = [];
+    while (n && n.nodeType === 1) {
+      const st = getComputedStyle(n);
+      if (st.backgroundImage && st.backgroundImage !== 'none') {
+        const f = ausVerlauf(st.backgroundImage); if (f && f.length) stapel.push(...f);
+      }
+      const bc = rgb(st.backgroundColor);
+      if (bc && bc.a > 0) { stapel.push(bc); if (bc.a === 1) break; }
+      n = n.parentElement;
+    }
+    let out = { r: 255, g: 255, b: 255, a: 1 };
+    for (let i = stapel.length - 1; i >= 0; i--) out = misch(stapel[i], out);
+    return out;
+  };
+  const treffer = [];
+  for (const el of document.querySelectorAll('body *')) {
+    const st = getComputedStyle(el);
+    if (st.display === 'none' || st.visibility === 'hidden' || parseFloat(st.opacity) < 0.3) continue;
+    const txt = [...el.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent.trim()).join(' ').trim();
+    if (!txt) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2) continue;
+    const vg = rgb(st.color); if (!vg) continue;
+    const hg = grund(el);
+    const v = verhaeltnis(misch(vg, hg), hg);
+    const gross = parseFloat(st.fontSize) >= 24 || (parseFloat(st.fontSize) >= 18.66 && parseInt(st.fontWeight, 10) >= 700);
+    if (v < (gross ? 3 : 4.5)) treffer.push({ txt: txt.slice(0, 40), v: +v.toFixed(2), farbe: st.color,
+      grund: 'rgb(' + Math.round(hg.r) + ',' + Math.round(hg.g) + ',' + Math.round(hg.b) + ')',
+      klasse: (el.className || '').toString().slice(0, 24) });
+  }
+  return treffer;
+};
+
 const stored = () => page.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
 const settle = () => page.waitForTimeout(400);          // Speichern ist um 250 ms gebündelt
 
@@ -172,6 +216,52 @@ try {
   const offline = await page.waitForSelector('.hero', { timeout: 8000 }).then(() => true).catch(() => false);
   check('App startet ohne Netz', offline);
   await ctx.setOffline(false);
+
+  group('Farbkontrast');
+  /* Beide Paletten gegen WCAG AA pruefen (4,5:1, bei grosser Schrift 3:1). Eine feste
+     Farbe im Blatt faellt im jeweils anderen Schema sofort auf: der Verlauf des
+     Startblocks blieb hell wie dunkel derselbe, waehrend die Schrift umschlug - die
+     Begruessung stand bei 1,15:1. Ebenso die Bewertungsknoepfe, deren helle
+     Pastelltoene auf weissem Grund bei 1,3:1 landeten. */
+  for (const schema of ['light', 'dark']) {
+    const kctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', colorScheme: schema });
+    const kpage = await kctx.newPage();
+    await kpage.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await kpage.evaluate((k) => {
+      const r = JSON.parse(localStorage.getItem(k) || '{}');
+      r.days = {};
+      const tag = (d) => d.toISOString().slice(0, 10);
+      const heute = new Date();
+      for (let i = 0; i < 40; i++) {
+        const d = new Date(heute); d.setDate(d.getDate() - i);
+        r.days[tag(d)] = { done: 20, correct: 15, newC: 6, sec: 400 };
+      }
+      r.streak = 9; r.best = 15; r.totalAnswers = 800; r.totalCorrect = 600;
+      r.settings = { ...(r.settings || {}), recallMode: 'recall' };   // erzwingt die Bewertungsknoepfe
+      localStorage.setItem(k, JSON.stringify(r));
+    }, KEY);
+    await kpage.reload({ waitUntil: 'networkidle' });
+    const maengel = [];
+    const wege = [
+      async () => {},
+      async () => kpage.locator('.nav-btn[data-view="topics"]').click(),
+      async () => kpage.locator('.nav-btn[data-view="duel"]').click(),
+      async () => kpage.locator('.nav-btn[data-view="stats"]').click(),
+      async () => kpage.locator('.nav-btn[data-view="settings"]').click(),
+      async () => { await kpage.locator('.nav-btn[data-view="home"]').click(); await kpage.waitForTimeout(200);
+        await kpage.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click(); },
+      async () => kpage.locator('.sess-foot button').first().click(),
+    ];
+    for (const gehe of wege) {
+      await gehe();
+      await kpage.waitForTimeout(300);
+      maengel.push(...await kpage.evaluate(KONTRAST));
+    }
+    const eindeutig = [...new Map(maengel.map(m => [m.klasse + m.farbe + m.grund, m])).values()];
+    check(`${schema === 'light' ? 'helles' : 'dunkles'} Schema erfuellt WCAG AA`, eindeutig.length === 0,
+      eindeutig.slice(0, 4).map(m => `${m.v}:1 bei "${m.txt}"`).join(' | '));
+    await kctx.close();
+  }
 
   group('Layout');
   check('kein waagerechter Überlauf',

@@ -7,6 +7,8 @@
   --chrome:rgba(14,17,22,.88); --track:#222b37; --toast:#26303d; --dim3:#3a4553;
   --grad1:#3a6fe0; --grad2:#6d5cff; --mark1:#3a6fe0; --mark2:#7c4ded;
   --heat0:#1b222c; --heat1:#1e4d3c; --heat2:#2a7a5c; --heat3:#37b17f;
+  --hero1:#1c2536; --hero2:#171d27;
+  --g-bad:#ff9a9a; --g-warn:#ffca8a; --g-ok:#84e9c1;
   --on-ok:#06301f; --on-bad:#3a0d0d; --ring-bg:#222b37;
   --r:16px; --r-s:11px;
   --safe-t:env(safe-area-inset-top,0px);
@@ -95,7 +97,9 @@ p{margin:0}
 .bar.ok>i{background:linear-gradient(90deg,#2fbf85,var(--ok))}
 
 /* ---------- Home ---------- */
-.hero{background:linear-gradient(150deg,#1c2536,#171d27 60%);border:1px solid var(--line);
+/* Der Verlauf stand fest im Blatt und blieb im hellen Schema dunkel – die
+   Begruessung stand dann dunkelgrau auf dunkelblau (Kontrast 1,15:1). */
+.hero{background:linear-gradient(150deg,var(--hero1),var(--hero2) 60%);border:1px solid var(--line);
   border-radius:20px;padding:20px}
 .hero h1{font-size:22px;margin-bottom:4px}
 .dial{display:flex;align-items:center;gap:16px;margin:16px 0 4px}
@@ -152,10 +156,13 @@ p{margin:0}
 .grades{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
 .grades .btn{flex-direction:column;gap:2px;min-height:62px;font-size:13.5px;padding:8px 4px}
 .grades .btn small{font-size:10.5px;color:var(--dim2);font-weight:600}
-.g0{border-color:rgba(255,107,107,.45);color:#ff9a9a}
-.g1{border-color:rgba(255,180,84,.4);color:#ffca8a}
+/* Die Schriftfarben lagen fest als helle Pastelltoene im Blatt. Auf dem hellen
+   Schema standen „Nochmal", „Schwer" und „Leicht" damit bei 1,3 bis 1,9:1 auf
+   weissem Grund – und das auf Knoepfen, die bei jeder Karte gedrueckt werden. */
+.g0{border-color:rgba(255,107,107,.45);color:var(--g-bad)}
+.g1{border-color:rgba(255,180,84,.4);color:var(--g-warn)}
 .g2{border-color:rgba(79,140,255,.45);color:var(--acc2)}
-.g3{border-color:rgba(61,220,151,.4);color:#84e9c1}
+.g3{border-color:rgba(61,220,151,.4);color:var(--g-ok)}
 
 .recall-in{width:100%;min-height:52px;background:var(--card);border:1px solid var(--line);border-radius:14px;
   padding:13px 15px;font-size:16px}
@@ -260,6 +267,8 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
   --chrome:rgba(255,255,255,.92); --track:#dfe5ee; --toast:#232b36;
   --grad1:#1d4ed8; --grad2:#5946ec; --mark1:#1d4ed8; --mark2:#6b37d6;
   --heat0:#e7ebf1; --heat1:#a9dcc2; --heat2:#5cbf95; --heat3:#25a06d;
+  --hero1:#ffffff; --hero2:#e7eefb;
+  --g-bad:var(--bad); --g-warn:var(--warn); --g-ok:var(--ok);
   --on-ok:#ffffff; --on-bad:#ffffff; --ring-bg:#dfe5ee;
   }
 }
@@ -271,6 +280,8 @@ select,input[type=number]{background:var(--bg2);border:1px solid var(--line);bor
   --chrome:rgba(255,255,255,.92); --track:#dfe5ee; --toast:#232b36;
   --grad1:#1d4ed8; --grad2:#5946ec; --mark1:#1d4ed8; --mark2:#6b37d6;
   --heat0:#e7ebf1; --heat1:#a9dcc2; --heat2:#5cbf95; --heat3:#25a06d;
+  --hero1:#ffffff; --hero2:#e7eefb;
+  --g-bad:var(--bad); --g-warn:var(--warn); --g-ok:var(--ok);
   --on-ok:#ffffff; --on-bad:#ffffff; --ring-bg:#dfe5ee;
 }
 /* Elemente mit eigenem farbigem Grund behalten weisse Schrift, unabhaengig vom Schema. */

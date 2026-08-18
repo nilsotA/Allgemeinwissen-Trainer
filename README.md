@@ -67,7 +67,8 @@ Kartenbestand mitwächst.
 - **Trefferquote je Woche** in der Statistik, über acht Wochen mit mindestens zehn Antworten –
   damit sichtbar wird, ob es besser wird, und nicht nur, wie viel geschafft ist.
 - **Helles und dunkles Design**, standardmäßig nach Systemeinstellung, in den Einstellungen
-  festlegbar. Beide Paletten sind auf Kontrast gerechnet (mindestens 4,5:1).
+  festlegbar. Beide Paletten sind auf Kontrast gerechnet (mindestens 4,5:1) – und der
+  Durchlauftest misst das nach, statt es zu behaupten (siehe unten).
 - **Tastatur** auf Mac oder iPad: `1`–`4` wählt Antwort oder Bewertung,
   `Enter`/`Leertaste` blättert weiter.
 
@@ -95,7 +96,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 58 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 29 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 31 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:all   # beides
 npm run check      # nur die Inhaltsprüfung
 npm run simulate   # simuliert 180 Tage Lernverlauf
@@ -144,6 +145,14 @@ Ebenso geprüft: dass eine falsche Formel nicht durchgeht – „a² − b² = c
 auf den Satz des Pythagoras, „Grundseite mal Höhe" keine auf die Dreiecksfläche. Zwei
 Invarianten laufen über den gesamten Bestand: keine Antwort darf zu einem leeren Text
 normalisieren, und jede Antwort muss mit sich selbst übereinstimmen.
+
+Der Durchlauftest prüft zusätzlich beide Farbschemata gegen WCAG AA: Er geht alle Ansichten
+bis zu den Bewertungsknöpfen durch, löst für jeden Text den tatsächlichen Hintergrund über
+die Elternkette auf – Verläufe eingeschlossen – und rechnet das Kontrastverhältnis aus.
+Nötig war das, weil sich feste Farben im Stylesheet erst im jeweils anderen Schema zeigen:
+Der Verlauf des Startblocks blieb dunkel, während die Schrift auf dunkel umschlug, sodass
+die Begrüßung bei 1,15:1 stand. Und „Nochmal", „Schwer" und „Leicht" waren helle Pastelltöne
+auf weißem Grund – 1,3:1 auf Knöpfen, die bei jeder Karte gedrückt werden.
 
 ### Karten ergänzen
 
