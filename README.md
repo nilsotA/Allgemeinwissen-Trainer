@@ -66,9 +66,13 @@ Kartenbestand mitwächst.
   Wiederholung, sondern eine Eselsbrücke.
 - **Trefferquote je Woche** in der Statistik, über acht Wochen mit mindestens zehn Antworten –
   damit sichtbar wird, ob es besser wird, und nicht nur, wie viel geschafft ist.
-- **Helles und dunkles Design**, standardmäßig nach Systemeinstellung, in den Einstellungen
+- **Helles und dunkles Design** – „Papier" und „Abendlicht", beide auf warmen Tönen mit einem
+  Akzent aus gebranntem Ton. Standardmäßig nach Systemeinstellung, in den Einstellungen
   festlegbar. Beide Paletten sind auf Kontrast gerechnet (mindestens 4,5:1) – und der
   Durchlauftest misst das nach, statt es zu behaupten (siehe unten).
+- **Alle Symbole selbst gezeichnet** als Inline-SVG in einem Strichstil: Navigation, Suche,
+  Serie, Stern und neun Themenzeichen. Nichts liegt außerhalb des Repositorys, damit die App
+  offline vollständig bleibt.
 - **Tastatur** auf Mac oder iPad: `1`–`4` wählt Antwort oder Bewertung,
   `Enter`/`Leertaste` blättert weiter.
 
