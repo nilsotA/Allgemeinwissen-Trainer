@@ -101,20 +101,37 @@ for (const c of CARDS) {
 const quote = (laengsteGewinnt / mitAblenkern) * 100;
 console.log(`Ratequote    : ${quote.toFixed(1)} % mit „nimm die laengste Option" (Zufall waere 25 %)`);
 
-/* Zweite Ratestrategie: „streich die beiden Extremwerte". Lagen die Ablenker
-   symmetrisch um die richtige Antwort, blieben nur zwei Optionen uebrig - 50 statt
-   25 Prozent Trefferquote. Beim ersten Lauf traf das auf 85 Prozent der Zahlenkarten
-   zu; Zufall waeren 50. */
-const zuZahlwert = (s) => {
-  const t = String(s).replace(/[^0-9,.-]/g, '').replace(/\.(?=\d{3}\b)/g, '').replace(',', '.');
-  const v = parseFloat(t);
-  return isFinite(v) ? v : null;
+/* Zweite Ratestrategie: „streich die beiden Extremwerte". Liegen die Ablenker
+   symmetrisch um die richtige Antwort, bleiben nur zwei Optionen uebrig - 50 statt
+   25 Prozent Trefferquote.
+
+   Gezaehlt wird nur, wo die Strategie ueberhaupt greift: vier Optionen, in
+   jeder genau eine Zahl, davor und dahinter derselbe Text. „11. November 1918"
+   neben „28. Juni 1919" ist keine Zahlenreihe, die man sortiert - die alte
+   Fassung las daraus 11,1918 und 28,1919 und zaehlte die Karte mit.
+
+   Die Quote wird bewusst nicht auf 50 Prozent heruntergedrueckt. Bei Karten wie
+   „Wie hoch ist die Netzspannung?" (230 Volt neben 110, 400 und 12) sind alle
+   Ablenker echte Groessen - dass die richtige Antwort dazwischen liegt, ist die
+   Folge guter Ablenker und nicht ihr Fehler. Wer sie auseinanderzoege, tauschte
+   Lehrwert gegen Ratefestigkeit. Die Schranke faengt deshalb nur den
+   systematischen Fall ab: Ablenker, die maschinell um die Antwort gelegt wurden. */
+const zahl = (s) => {
+  const t = String(s);
+  const tr = [...t.matchAll(/\d[\d.,]*/g)];
+  if (tr.length !== 1) return null;
+  const v = parseFloat(tr[0][0].replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.'));
+  if (!isFinite(v)) return null;
+  return { v, rand: t.slice(0, tr[0].index).trim() + '\u0000' + t.slice(tr[0].index + tr[0][0].length).trim() };
 };
 let zahlkarten = 0, inDerMitte = 0;
 for (const c of CARDS) {
   if (!c.w || c.w.length < 3) continue;
-  const alle = [c.a, ...c.w].map(zuZahlwert);
-  if (alle.some(v => v === null) || new Set(alle).size !== 4) continue;
+  const teile = [c.a, ...c.w].map(zahl);
+  if (teile.some(x => x === null)) continue;
+  if (new Set(teile.map(x => x.rand)).size !== 1) continue;
+  const alle = teile.map(x => x.v);
+  if (new Set(alle).size !== 4) continue;
   zahlkarten++;
   const sortiert = [...alle].sort((x, y) => x - y);
   if (alle[0] !== sortiert[0] && alle[0] !== sortiert[3]) inDerMitte++;

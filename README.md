@@ -133,16 +133,22 @@ die Trefferquote und lässt den Scheduler zu optimistisch planen. Nach der Über
 287 Kartensätzen liegt der Wert bei 23,8 %; `npm run check` gibt ihn bei jedem Lauf aus und
 schlägt oberhalb von 32 % fehl.
 
-Dieselbe Prüfung meldet eine zweite Ratestrategie: Bei Zahlenkarten lagen die Ablenker
-anfangs in 85 % der Fälle symmetrisch um die richtige Antwort. Wer beide Extremwerte
-streicht, rät dann mit 50 statt 25 Prozent. Bei Jahreszahlen ist das behoben – die Ablenker
-liegen jetzt teils komplett vor, teils komplett nach dem gesuchten Jahr, bei gleichem Abstand
-und damit gleicher Plausibilität. Der Wert liegt bei 76,6 %; der Rest sind Zahlen mit eigener
-Struktur (Notrufnummern, Zweierpotenzen, Chromosomenzahlen), bei denen ein verschobener
-Ablenker sinnlos würde. Betroffen sind 152 der 1.477 Karten, der Effekt auf die Gesamt-
-Ratequote liegt bei rund drei Prozentpunkten.
+Dieselbe Prüfung meldet eine zweite Ratestrategie: Bei Zahlenkarten liegen die Ablenker oft
+symmetrisch um die richtige Antwort. Wer beide Extremwerte streicht, rät dann mit 50 statt
+25 Prozent. Gezählt wird nur, wo die Strategie greift – vier Optionen mit je genau einer Zahl
+und gleichem Text davor und dahinter; „11. November 1918" neben „28. Juni 1919" ist keine
+sortierbare Reihe. Der Wert liegt bei 81,2 % von 105 Karten.
 
-Die 64 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Er wird bewusst **nicht** auf 50 % heruntergedrückt. Ein Versuch, die Ablenker automatisch
+auf die andere Seite zu spiegeln, hätte „110" neben „112", die alten 16 % Mehrwertsteuer neben
+den heutigen 19 % und 400 Volt neben 230 Volt durch beliebige Zahlen ersetzt. Genau diese
+Ablenker tragen aber den Lehrwert der Karte: Dass die richtige Antwort zwischen ihnen liegt,
+ist die Folge guter Ablenker und nicht ihr Fehler. Nach Ausschluss der Karten mit
+bedeutungstragenden Werten blieben ganze drei Karten übrig – der Tausch lohnt nicht. Die
+Schranke bei 85 % bleibt trotzdem stehen: Sie fängt den systematischen Fall ab, in dem
+Ablenker maschinell um die Antwort gelegt werden.
+
+Die 70 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 
