@@ -43,6 +43,7 @@ export function schedule(cs, grade, opts) {
   s.ef = Math.min(2.9, Math.max(1.3, s.ef + bump));
 
   const prev = s.iv;
+  const altDue = s.due;
   if (s.reps === 0) {
     s.iv = grade === EASY ? 3 : 1;
   } else if (s.reps === 1) {
@@ -56,11 +57,26 @@ export function schedule(cs, grade, opts) {
     const mult = grade === HARD ? 1.25 : grade === EASY ? s.ef * 1.35 : s.ef;
     s.iv = Math.max(s.iv + 1, Math.round(s.iv * mult));
   }
-  const nominal = Math.max(1, Math.round(s.iv));
+  let nominal = Math.max(1, Math.round(s.iv));
+
+  /* Wurde die Karte VOR ihrem Termin abgefragt, waechst das Intervall nur
+     anteilig zur tatsaechlich verstrichenen Zeit. Ohne das schiebt eine
+     Extra-Runde die schwaechste Karte an einem einzigen Tag von einem Tag auf
+     ein Jahr: Das Wachstum rechnete allein aus dem alten Intervall mal
+     Leichtigkeitsfaktor, ganz gleich ob seit der letzten Abfrage zehn Tage
+     vergangen waren oder zehn Sekunden. Wer punktgenau am Termin antwortet,
+     bekommt unveraendert das volle Wachstum. */
+  if (prev > 0 && t < altDue) {
+    const verstrichen = t - (altDue - prev);
+    const anteil = Math.max(0, Math.min(1, verstrichen / prev));
+    nominal = Math.max(prev, prev + Math.round((nominal - prev) * anteil));
+  }
+
   // Untergrenze: nie kuerzer als vorher, sonst hebt die Streuung das Wachstum auf
-  s.iv = Math.min(365, jitter ? fuzz(nominal, Math.max(1, Math.min(nominal, prev + 1))) : nominal);
+  s.iv = Math.min(365, jitter ? fuzz(nominal, Math.max(1, Math.min(nominal, prev))) : nominal);
   s.reps += 1;
-  s.due = t + s.iv;
+  // Eine fruehe Antwort darf den Termin nie nach vorn ziehen.
+  s.due = Math.max(prev > 0 ? altDue : 0, t + s.iv);
   return s;
 }
 

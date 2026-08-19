@@ -113,11 +113,16 @@ export function buildTopic(cat, limit = 20) {
 
 /** Wackelkandidaten: oft vergessen oder schwach – gezieltes Nacharbeiten. */
 export function buildWeak(limit = 20) {
+  const t = todayNum();
   const scored = CARDS
     .filter(c => inScope(c))
     .map(c => ({ c, s: cardState(c.id) }))
     .filter(x => x.s && x.s.seen > 0)
-    .sort((a, b) => (isLeech(b.s) - isLeech(a.s)) || (strength(a.s) - strength(b.s)));
+    // Faellige zuerst: eine Karte vor ihrem Termin zu ueben bringt wenig und
+    // haelt nur den Platz einer Karte besetzt, die heute wirklich ansteht.
+    .sort((a, b) => (isDue(b.s, t) - isDue(a.s, t))
+                 || (isLeech(b.s) - isLeech(a.s))
+                 || (strength(a.s) - strength(b.s)));
   return scored.slice(0, limit).map(x => ({ card: x.c, fresh: false }));
 }
 

@@ -10,6 +10,12 @@ const { todayNum } = await import('../assets/js/store.js');
 const { options, similarity, normalize, shuffle } = await import('../assets/js/quiz.js');
 const { CARDS, BY_ID } = await import('../data/index.js');
 
+/* Der Scheduler laesst ein Intervall nur dann voll wachsen, wenn die Karte auch
+   faellig war. Ketten von schedule()-Aufrufen am selben Tag beschreiben sonst
+   einen Fall, den es in der App nicht gibt. Dieser Helfer laesst den Termin
+   eintreten, ohne die Uhr zu stellen. */
+const faellig = (cs) => ({ ...cs, due: todayNum() });
+
 /* ---------------- Scheduler ---------------- */
 
 test('frische Karte ist neu und heute fällig', () => {
@@ -49,7 +55,7 @@ test('Intervalle wachsen bei wiederholtem „gut" bis zum Deckel', () => {
   let s = fresh();
   let prev = 0;
   for (let i = 0; i < 12; i++) {
-    s = schedule(s, GOOD);
+    s = schedule(faellig(s), GOOD);
     if (prev >= 365) { assert.equal(s.iv, 365, 'am Deckel bleibt das Intervall stehen'); break; }
     assert.ok(s.iv > prev, `Intervall ${s.iv} muss größer als ${prev} sein`);
     prev = s.iv;
@@ -58,7 +64,7 @@ test('Intervalle wachsen bei wiederholtem „gut" bis zum Deckel', () => {
 
 test('auch „schwer" verlängert das Intervall immer, nie gleich oder kürzer', () => {
   for (const start of [1, 2, 3, 4, 7, 15, 40, 120]) {
-    const base = { ...fresh(), reps: 3, iv: start, due: todayNum() + start };
+    const base = { ...fresh(), reps: 3, iv: start, due: todayNum() };   // Termin ist da
     for (let run = 0; run < 60; run++) {
       const s = schedule({ ...base }, HARD);
       assert.ok(s.iv > start, `iv ${start} → ${s.iv}: „schwer" darf nicht stagnieren`);
@@ -98,7 +104,7 @@ test('Leichtigkeitsfaktor bleibt zwischen 1,3 und 2,9', () => {
 });
 
 test('„leicht" bringt ein längeres Intervall als „gut", „gut" ein längeres als „schwer"', () => {
-  const base = schedule(schedule(schedule(fresh(), GOOD), GOOD), GOOD);
+  const base = faellig(schedule(faellig(schedule(faellig(schedule(fresh(), GOOD)), GOOD)), GOOD));
   const ivs = [HARD, GOOD, EASY].map(g => {
     // Streuung ausmitteln, damit der Vergleich nicht am Zufall hängt
     const runs = Array.from({ length: 200 }, () => schedule({ ...base }, g).iv);
@@ -299,7 +305,7 @@ test('eine Antwort wird auch mit anderer Groß- und Kleinschreibung erkannt', ()
 test('eine richtige Antwort verkürzt das Intervall nie', () => {
   // „leicht" ergibt 3 Tage; ein anschließendes „schwer" darf nicht auf 2 zurückfallen
   for (const erst of [HARD, GOOD, EASY]) {
-    const nach1 = schedule(fresh(), erst);
+    const nach1 = faellig(schedule(fresh(), erst));
     for (const zweit of [HARD, GOOD, EASY]) {
       for (let run = 0; run < 30; run++) {
         const nach2 = schedule({ ...nach1 }, zweit);
@@ -312,7 +318,7 @@ test('eine richtige Antwort verkürzt das Intervall nie', () => {
 
 test('die Bewertungsknöpfe versprechen unterschiedliche Intervalle', () => {
   for (const erst of [HARD, GOOD, EASY]) {
-    const cs = schedule(fresh(), erst);
+    const cs = faellig(schedule(fresh(), erst));
     const gezeigt = [HARD, GOOD, EASY].map(g => preview(cs, g));
     assert.equal(new Set(gezeigt).size, 3,
       `nach „${erst}" zeigen die Knöpfe ${gezeigt.join(' / ')}`);
@@ -457,4 +463,36 @@ test('der Klammerzusatz ist freiwillig, eine falsche Zahl darin aber nicht egal'
   assert.ok(similarity('Stickstoff (78 %)', 'Stickstoff (78 %)') >= 0.8, 'volle Form muss gelten');
   assert.ok(similarity('Stickstoff (21 %)', 'Stickstoff (78 %)') < 0.8, 'falsche Zahl im Zusatz');
   assert.ok(similarity('Sauerstoff', 'Stickstoff (78 %)') < 0.8, 'falsches Gas');
+});
+
+/* Der teuerste Fehler des Schedulers: Wer nach dem Tagestraining noch ein paar
+   Extra-Runden macht, uebt Karten, die noch gar nicht faellig sind. Rechnete das
+   Wachstum allein aus dem alten Intervall mal Leichtigkeitsfaktor, sprang die
+   schwaechste Karte an EINEM Tag von einem Tag auf ein Jahr - und galt danach als
+   gefestigt. Genau die Karte, die man nacharbeiten wollte. */
+test('eine Karte vor ihrem Termin waechst nur anteilig', () => {
+  const t = todayNum();
+  // Zehn Tage geplant, erst einer vergangen: fast kein Wachstum
+  const frueh = schedule({ ...fresh(), reps: 4, iv: 10, ef: 2.5, due: t + 9 }, GOOD, { jitter: false });
+  assert.ok(frueh.iv <= 13, `nach einem von zehn Tagen wuchs das Intervall auf ${frueh.iv}`);
+  // Derselbe Zustand, aber der Termin ist da: volles Wachstum
+  const reif = schedule({ ...fresh(), reps: 4, iv: 10, ef: 2.5, due: t }, GOOD, { jitter: false });
+  assert.ok(reif.iv >= 20, `am Termin sollte es deutlich wachsen, war ${reif.iv}`);
+});
+
+test('mehrere Extra-Runden am selben Tag schieben eine Karte nicht ins nächste Jahr', () => {
+  let s = { ...fresh(), reps: 4, iv: 1, ef: 2.5, due: todayNum() };
+  for (let i = 0; i < 8; i++) s = schedule(s, EASY);          // achtmal hintereinander, ohne Tageswechsel
+  assert.ok(s.iv <= 14, `nach acht Extra-Runden an einem Tag stand das Intervall bei ${s.iv} Tagen`);
+  assert.ok(strength(s) < 0.6, `die Karte gilt nach ${s.iv} Tagen bereits als gefestigt`);
+});
+
+test('eine frühe Antwort zieht den Termin nie nach vorn', () => {
+  const t = todayNum();
+  for (const g of [HARD, GOOD, EASY]) {
+    const vorher = { ...fresh(), reps: 3, iv: 30, ef: 2.3, due: t + 25 };
+    const nachher = schedule(vorher, g);
+    assert.ok(nachher.due >= vorher.due,
+      `Termin rutschte von ${vorher.due} auf ${nachher.due} bei Bewertung ${g}`);
+  }
 });
