@@ -224,8 +224,13 @@ function renderHome() {
     ${tagesbogen(d.done, plan)}
     <div class="seg-lab">
       <span class="tiny">${d.done
-        ? `${d.done} heute geschafft · ${Math.round((d.correct / Math.max(1, d.done)) * 100)} % richtig`
-        : 'Noch nichts gelernt heute – die erste Karte ist die leichteste.'}</span>
+        ? `${d.done} heute geschafft · ${Math.round((d.correct / Math.max(1, d.done)) * 100)} % richtig${
+            d.duel ? ` · dazu ${d.duel} im Duell` : ''}`
+        : d.duel
+          // „Noch nichts gelernt" waere gelogen, wenn schon vierzig Duellfragen
+          // beantwortet sind - der Tagesplan steht nur eben noch offen.
+          ? `${d.duel} Duellfragen heute – der Tagesplan wartet noch.`
+          : 'Noch nichts gelernt heute – die erste Karte ist die leichteste.'}</span>
       ${d.done ? `<b>${Math.round(pct * 100)} %</b>` : ''}
     </div>
     <div class="btn-stack" style="margin-top:15px">
@@ -367,7 +372,8 @@ function renderDuelStart() {
     <p class="muted">Zehn Fragen, 15 Sekunden pro Frage. Trainiert genau das, was im Quizduell zählt: schnelles Erkennen unter Druck.</p>
     <div class="card" style="margin-top:16px">
       <div class="row between"><span>Bestleistung</span><b>${st.duelBest || 0} / 10</b></div>
-      <div class="row between" style="margin-top:8px"><span>Trefferquote gesamt</span><b>${st.totalAnswers ? Math.round(st.totalCorrect / st.totalAnswers * 100) : 0} %</b></div>
+      <div class="row between" style="margin-top:8px"><span>Trefferquote im Duell</span><b>${st.duelAnswers ? Math.round(st.duelCorrect / st.duelAnswers * 100) : 0} %</b></div>
+      <p class="tiny" style="margin-top:9px">Unter Zeitdruck liegt sie naturgemäß unter der Quote im Tagestraining – deshalb wird sie getrennt geführt.</p>
     </div>
     <div class="btn-stack" style="margin-top:14px">
       <button class="btn primary" id="duelGo">${ico('duell')}Duell starten</button>
@@ -422,7 +428,10 @@ function renderStats() {
      Stufe und der Verlauf sagte nur noch „gelernt oder nicht". Bezug ist der
      Mittelwert der aktiven Tage; solange es zu wenige gibt, bleiben feste
      Schwellen fuer den Anfang. */
-  const aktive = Object.values(st.days).map(d => d.done || 0).filter(n => n > 0).sort((a, b) => a - b);
+  // Ein Tag mit drei Duellen war Lernen, auch wenn keine geplante Karte dran war:
+  // fuer die Aktivitaetskarte zaehlen beide Arten von Antworten.
+  const tagesSumme = (d) => (d?.done || 0) + (d?.duel || 0);
+  const aktive = Object.values(st.days).map(tagesSumme).filter(n => n > 0).sort((a, b) => a - b);
   const bezug = aktive.length >= 5 ? aktive[Math.floor(aktive.length / 2)] : 0;
   const stufe = (n) => {
     if (n === 0) return 0;
@@ -434,11 +443,11 @@ function renderStats() {
     const day = start + i;
     if (day > t) { cells += '<i class="future"></i>'; continue; }
     const k = numToKey(day);
-    const n = st.days[k]?.done || 0;
+    const n = tagesSumme(st.days[k]);
     cells += `<i data-l="${stufe(n)}" class="${day === t ? 'today' : ''}" title="${k}: ${n} Antworten"></i>`;
   }
   const p = sess.catProgress();
-  const totalDone = Object.values(st.days).reduce((a, d) => a + (d.done || 0), 0);
+  const totalDone = Object.values(st.days).reduce((a, d) => a + tagesSumme(d), 0);
   const fc = sess.forecast(7);
   const fcMax = Math.max(1, ...fc);
   const names = ['heute', 'morgen', '+2', '+3', '+4', '+5', '+6'];
@@ -1253,8 +1262,13 @@ function askDuel(card) {
     app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
     const next = () => {
       const st = S(), d = today();
-      d.done++; if (ok) d.correct++;
-      st.totalAnswers++; if (ok) st.totalCorrect++;
+      // Duell-Antworten zaehlen getrennt. Sie in denselben Topf zu werfen hiess:
+      // Drei Duelle lassen den Tagesfortschritt auf 71 Prozent springen, obwohl
+      // keine einzige geplante Karte dran war - und die Trefferquote sinkt,
+      // weil unter fuenfzehn Sekunden Zeitdruck naturgemaess geraten wird.
+      // Fuer die Serie zaehlt ein Duell trotzdem: geuebt ist geuebt.
+      d.duel = (d.duel || 0) + 1; if (ok) d.duelOk = (d.duelOk || 0) + 1;
+      st.duelAnswers = (st.duelAnswers || 0) + 1; if (ok) st.duelCorrect = (st.duelCorrect || 0) + 1;
       touchStreak();
       if (!ok) {
         run.wrong.push(card);

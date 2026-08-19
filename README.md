@@ -64,7 +64,11 @@ Deckel steigt.
   „Sport“ öffnet die zwölf Teilgebiete von Trainingslehre bis Rekorde, jedes mit eigenem
   Fortschritt. Vor einer Klausur in Bewegungslehre übt man genau diese Karten.
 - **Duell** – zehn Fragen, 15 Sekunden pro Frage. Trainiert Tempo für Quizduelle.
-  Fehler landen automatisch im nächsten Tagestraining.
+  Fehler landen automatisch im nächsten Tagestraining. Die Antworten zählen **getrennt**:
+  Sie füllen weder den Tagesfortschritt noch die Wissensquote, weil unter Zeitdruck
+  naturgemäß geraten wird – drei Duelle ließen den Tagesbogen sonst auf 71 % springen,
+  ohne dass eine einzige geplante Karte dran war. Für die Serie und die Aktivitätskarte
+  zählt ein Duell trotzdem: geübt ist geübt.
 - **Markierte Karten** – was du beim Nachschlagen mit ★ versiehst, lässt sich gezielt üben.
 - **Schwachstellen** – die Statistik zeigt die Teilgebiete mit der schlechtesten
   Trefferquote; ein Tipp darauf startet eine Runde genau dazu.
@@ -128,7 +132,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 79 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 58 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 65 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung

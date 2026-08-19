@@ -24,9 +24,11 @@ const DEFAULTS = {
   lastExport: 0,          // Tagesnummer der letzten Sicherung – Grundlage der Erinnerung
   factDay: null,
   factIdx: 0,
-  totalAnswers: 0,
+  totalAnswers: 0,       // nur geplantes Lernen – das Duell zaehlt getrennt
   totalCorrect: 0,
-  duelBest: 0
+  duelBest: 0,
+  duelAnswers: 0,
+  duelCorrect: 0
 };
 
 function deepMerge(base, add) {
@@ -94,10 +96,12 @@ function zusammenfuehren(fremd, eigen) {
   for (const [tag, f] of Object.entries(fremd.days || {})) {
     const e = z.days[tag] || {};
     z.days[tag] = { done: groesser(e.done, f.done), correct: groesser(e.correct, f.correct),
-                    newC: groesser(e.newC, f.newC), sec: groesser(e.sec, f.sec) };
+                    newC: groesser(e.newC, f.newC), sec: groesser(e.sec, f.sec),
+                    duel: groesser(e.duel, f.duel), duelOk: groesser(e.duelOk, f.duelOk) };
   }
   for (const id of Object.keys(fremd.flags || {})) z.flags[id] = true;
-  for (const k of ['totalAnswers', 'totalCorrect', 'streak', 'best', 'duelBest', 'lastExport']) {
+  for (const k of ['totalAnswers', 'totalCorrect', 'streak', 'best', 'duelBest',
+                   'duelAnswers', 'duelCorrect', 'lastExport']) {
     z[k] = groesser(z[k], fremd[k]);
   }
   if ((fremd.lastDay || '') > (z.lastDay || '')) z.lastDay = fremd.lastDay;
@@ -306,12 +310,15 @@ function saeubern(roh) {
     rein.days[tag] = {
       done: zahl(d.done, 0, 1e6, 0), correct: zahl(d.correct, 0, 1e6, 0),
       newC: zahl(d.newC, 0, 1e6, 0), sec: zahl(d.sec, 0, 1e8, 0),
+      duel: zahl(d.duel, 0, 1e6, 0), duelOk: zahl(d.duelOk, 0, 1e6, 0),
     };
   }
   for (const id of Object.keys(roh.flags || {})) if (typeof id === 'string') rein.flags[id] = true;
   rein.streak = zahl(roh.streak, 0, 1e5, 0);
   rein.best = zahl(roh.best, 0, 1e5, 0);
   rein.duelBest = zahl(roh.duelBest, 0, 100, 0);
+  rein.duelAnswers = zahl(roh.duelAnswers, 0, 1e8, 0);
+  rein.duelCorrect = zahl(roh.duelCorrect, 0, 1e8, 0);
   rein.totalAnswers = zahl(roh.totalAnswers, 0, 1e8, 0);
   rein.totalCorrect = zahl(roh.totalCorrect, 0, 1e8, 0);
   rein.factIdx = zahl(roh.factIdx, 0, 1e5, 0);

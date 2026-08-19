@@ -231,6 +231,47 @@ try {
   await settle();
   check('Einstellung wird sofort gespeichert', (await stored()).settings.newPerDay === 20);
 
+  group('Duell zählt getrennt');
+  /* Duell-Antworten in denselben Topf zu werfen liess den Tagesfortschritt
+     springen, ohne dass eine geplante Karte dran war – und zog die Trefferquote
+     nach unten, obwohl unter fünfzehn Sekunden naturgemäß geraten wird. */
+  {
+    const dctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const dp = await dctx.newPage();
+    await dp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    const plan = await dp.locator('.hero h1').innerText();
+    await dp.locator('.nav-btn[data-view="duel"]').click();
+    await dp.locator('#duelGo').click();
+    await dp.waitForSelector('.opt');
+    for (let i = 0; i < 4; i++) {
+      await dp.locator('.opt:not([disabled])').first().click();
+      await dp.waitForSelector('#next', { timeout: 5000 });
+      await dp.locator('#next').click();
+      await dp.waitForTimeout(200);
+    }
+    await dp.locator('#quit').click().catch(() => {});
+    await dp.waitForTimeout(600);
+    const st = await dp.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
+    const tag = Object.values(st.days)[0] || {};
+    check('Duell-Antworten landen im eigenen Zähler', (tag.duel || 0) >= 4, JSON.stringify(tag));
+    check('das Tagestraining bleibt unberührt', (tag.done || 0) === 0, `done=${tag.done}`);
+    check('die Wissensquote zählt Duelle nicht mit', (st.totalAnswers || 0) === 0,
+      `totalAnswers=${st.totalAnswers}`);
+    check('die Serie zählt ein Duell trotzdem', (st.streak || 0) === 1, `streak=${st.streak}`);
+    await dp.locator('.nav-btn[data-view="home"]').click();
+    await dp.waitForSelector('.hero h1');
+    check('der Tagesplan schrumpft durch ein Duell nicht',
+      (await dp.locator('.hero h1').innerText()) === plan);
+    check('die Startseite behauptet nicht, es sei nichts gelernt worden',
+      /Duellfragen heute/.test(await dp.locator('.seg-lab').innerText()),
+      await dp.locator('.seg-lab').innerText());
+    await dp.locator('.nav-btn[data-view="stats"]').click();
+    await dp.waitForSelector('.heat');
+    check('die Aktivitätskarte zeigt den Duelltag trotzdem',
+      await dp.locator('.heat i.today').getAttribute('data-l') !== '0');
+    await dctx.close();
+  }
+
   group('Duell');
   await page.click('[data-view="duel"]');
   await page.click('#duelGo');
