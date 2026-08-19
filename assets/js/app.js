@@ -260,7 +260,11 @@ function renderHome() {
     <div class="row between"><span>Karten insgesamt</span><b>${o.total}</b></div>
     <div class="bar" style="margin:10px 0 7px"><i style="width:${((o.learned / o.total) * 100).toFixed(1)}%"></i></div>
     <p class="tiny">${o.learned} angefangen · ${o.mature} gefestigt · ${o.total - o.seen} noch unberührt</p>
-  </div>`;
+  </div>
+  ${sicherungsHinweis()}`;
+
+  const sich = document.getElementById('sichernJetzt');
+  if (sich) sich.onclick = () => { sichern(); render(); };
 
   app.querySelector('[data-go="daily"]').onclick = () => {
     const q = sess.buildDaily();
@@ -547,6 +551,38 @@ function renderStats() {
   bindeTeilgebiete();
 }
 
+/* Der Fortschritt liegt allein im Browserspeicher. Safari raeumt den Speicher
+   von Websites nach laengerer Nichtnutzung auf, ein neues Handy hat ihn ohnehin
+   nicht - und die App kann von sich aus nichts hochladen. Also erinnert sie,
+   sobald genug Arbeit drinsteckt, um den Verlust zu spueren. */
+function sicherungsHinweis() {
+  const st = S();
+  const seit = store.tageSeitSicherung();
+  if ((st.totalAnswers || 0) < 120) return '';          // vorher lohnt der Hinweis nicht
+  if (seit !== null && seit < 30) return '';
+  const text = seit === null
+    ? 'Dein Fortschritt liegt nur in diesem Browser. Sichere ihn einmal als Datei – dann übersteht er auch ein neues Handy.'
+    : `Die letzte Sicherung ist ${seit} Tage her. Ein geleerter Websitespeicher würde den Fortschritt mitnehmen.`;
+  return `<div class="hinweis" style="margin-top:12px">
+    <b>Fortschritt sichern.</b> ${text}
+    <button class="btn sm ghost" id="sichernJetzt" style="margin-top:9px">Jetzt als Datei sichern</button>
+  </div>`;
+}
+
+/* Sichern als Datei. Der Zeitpunkt wird vermerkt, damit die Startseite
+   erinnern kann, bevor Monate an Fortschritt an einem geloeschten
+   Websitespeicher haengen. */
+function sichern() {
+  const blob = new Blob([store.exportJSON()], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `wissenswerk-${dayKey()}.json`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  store.merkeSicherung();
+  toast('Gesichert – die Datei liegt in „Downloads“');
+}
+
 /* ---- Nachschlagen: suchen, lesen, markieren ---- */
 let lookupQuery = '';
 
@@ -755,14 +791,7 @@ function renderSettings() {
     renderSettings();
   });
 
-  document.getElementById('exp').onclick = () => {
-    const blob = new Blob([store.exportJSON()], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `wissenswerk-${dayKey()}.json`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-  };
+  document.getElementById('exp').onclick = () => sichern();
   const file = document.getElementById('impFile');
   document.getElementById('imp').onclick = () => file.click();
   file.onchange = () => {

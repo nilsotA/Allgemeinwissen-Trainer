@@ -76,6 +76,11 @@ Deckel steigt.
   verfälschen.
 - **Nachschlagen** über die Lupe oben rechts: alle Karten durchsuchbar nach Frage, Antwort,
   Thema und Kontext. Antippen klappt die Lösung auf, ★ markiert für später.
+- **Erinnerung ans Sichern.** Der Fortschritt liegt allein im Browserspeicher dieses Geräts –
+  die App hat keinen Server und kann nichts hochladen. Safari räumt den Speicher von Websites
+  nach längerer Nichtnutzung auf, ein neues Handy hat ihn ohnehin nicht. Deshalb erinnert die
+  Startseite ab 120 beantworteten Karten daran, einmal als Datei zu sichern, und danach wieder,
+  wenn die letzte Sicherung 30 Tage her ist. Vorher wäre der Hinweis nur lästig.
 - **Wiederholungs-Vorschau** für die nächsten sieben Tage in der Statistik.
 - **Fortschritt nach Stufe** – „Sitzen die Grundlagen aus Klasse 5 bis 8?" war die
   Ausgangsfrage an diese App; beantworten konnte sie sie lange nicht, weil die Statistik nur
@@ -122,8 +127,8 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 78 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 51 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm test           # 79 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 58 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -221,7 +226,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 78 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 79 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 

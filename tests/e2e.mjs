@@ -476,6 +476,52 @@ try {
     await lctx.close();
   }
 
+  group('Erinnerung ans Sichern');
+  /* Der Fortschritt liegt nur im Browserspeicher. Die Erinnerung darf weder zu
+     früh nerven noch stehenbleiben, nachdem gesichert wurde. */
+  {
+    const sctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', acceptDownloads: true });
+    const sp = await sctx.newPage();
+    await sp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    const setze = (patch) => sp.evaluate(([k, p]) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      Object.assign(st, p);
+      localStorage.setItem(k, JSON.stringify(st));
+    }, [KEY, patch]);
+
+    await setze({ totalAnswers: 40, totalCorrect: 30, lastExport: 0 });
+    await sp.reload({ waitUntil: 'networkidle' });
+    check('bei wenig Fortschritt keine Erinnerung', await sp.locator('#sichernJetzt').count() === 0);
+
+    await setze({ totalAnswers: 400, totalCorrect: 300, lastExport: 0 });
+    await sp.reload({ waitUntil: 'networkidle' });
+    check('ohne je gesichert zu haben erscheint die Erinnerung',
+      await sp.locator('#sichernJetzt').count() === 1);
+
+    const heute = await sp.evaluate(() => Math.floor(Date.UTC(
+      new Date().getFullYear(), new Date().getMonth(), new Date().getDate()) / 86400000));
+    await setze({ lastExport: heute - 5 });
+    await sp.reload({ waitUntil: 'networkidle' });
+    check('kurz nach einer Sicherung ist Ruhe', await sp.locator('#sichernJetzt').count() === 0);
+
+    await setze({ lastExport: heute - 45 });
+    await sp.reload({ waitUntil: 'networkidle' });
+    check('nach 45 Tagen erinnert die App wieder',
+      await sp.locator('#sichernJetzt').count() === 1);
+    check('die Erinnerung nennt die Zahl der Tage',
+      /45 Tage/.test(await sp.locator('.hinweis').last().innerText()));
+
+    const [download] = await Promise.all([
+      sp.waitForEvent('download', { timeout: 10000 }),
+      sp.locator('#sichernJetzt').click(),
+    ]);
+    check('das Sichern liefert eine Datei', /^wissenswerk-\d{4}-\d{2}-\d{2}\.json$/.test(download.suggestedFilename()),
+      download.suggestedFilename());
+    await sp.waitForTimeout(500);
+    check('nach dem Sichern verschwindet die Erinnerung', await sp.locator('#sichernJetzt').count() === 0);
+    await sctx.close();
+  }
+
   group('Kleines Display');
   /* Ein iPhone SE ist 320 x 568 CSS-Pixel gross - die Lernkarte ist dort
      hoeher als das Fenster. Frueher scrollte in diesem Fall die Seite statt

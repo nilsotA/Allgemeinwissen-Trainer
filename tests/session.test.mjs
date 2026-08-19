@@ -98,6 +98,18 @@ test('Schwachstellen-Vorschlaege ueberspringen abgeschaltete Themen', () => {
   assert.equal(sess.catAktiv('spo'), true, 'ohne Filter ist jedes Thema aktiv');
 });
 
+test('die Erinnerung ans Sichern merkt sich den Zeitpunkt', () => {
+  assert.equal(store.tageSeitSicherung(), null, 'ohne Sicherung darf kein Datum stehen');
+  store.merkeSicherung();
+  assert.equal(store.tageSeitSicherung(), 0);
+  // Ein aus einer Datei eingelesener Stand bringt seinen Zeitpunkt mit
+  const text = store.exportJSON();
+  store.resetAll();
+  assert.equal(store.tageSeitSicherung(), null, 'Zurücksetzen löscht auch den Zeitpunkt');
+  store.importJSON(text);
+  assert.equal(store.tageSeitSicherung(), 0, 'Zeitpunkt ging beim Einlesen verloren');
+});
+
 test('Fortschritt je Stufe zählt nur aktive Themen und alle drei Stufen', () => {
   const alle = sess.levelProgress();
   assert.deepEqual(Object.keys(alle).sort(), ['1', '2', '3']);

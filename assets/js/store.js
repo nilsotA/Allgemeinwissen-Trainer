@@ -21,6 +21,7 @@ const DEFAULTS = {
   streak: 0,
   best: 0,
   lastDay: null,
+  lastExport: 0,          // Tagesnummer der letzten Sicherung – Grundlage der Erinnerung
   factDay: null,
   factIdx: 0,
   totalAnswers: 0,
@@ -96,7 +97,7 @@ function zusammenfuehren(fremd, eigen) {
                     newC: groesser(e.newC, f.newC), sec: groesser(e.sec, f.sec) };
   }
   for (const id of Object.keys(fremd.flags || {})) z.flags[id] = true;
-  for (const k of ['totalAnswers', 'totalCorrect', 'streak', 'best', 'duelBest']) {
+  for (const k of ['totalAnswers', 'totalCorrect', 'streak', 'best', 'duelBest', 'lastExport']) {
     z[k] = groesser(z[k], fremd[k]);
   }
   if ((fremd.lastDay || '') > (z.lastDay || '')) z.lastDay = fremd.lastDay;
@@ -257,6 +258,18 @@ export function resetAll() {
 export function exportJSON() {
   return JSON.stringify(state);
 }
+
+/* Der Fortschritt liegt allein im Speicher dieses Browsers. Ein geloeschter
+   Websitespeicher, ein neues Handy, ein zurueckgesetztes Safari - und Monate
+   sind weg. Deshalb merkt sich die App, wann zuletzt gesichert wurde. */
+export function merkeSicherung() {
+  state.lastExport = todayNum();
+  save();
+}
+/** Tage seit der letzten Sicherung – null, wenn noch nie gesichert wurde. */
+export function tageSeitSicherung() {
+  return state.lastExport ? Math.max(0, todayNum() - state.lastExport) : null;
+}
 /* Ein eingelesenes Backup ist Fremdinhalt. Zahlenfelder landen unformatiert in der
    Oberfläche, deshalb wird hier auf Typen geprüft statt nur auf Vorhandensein. */
 const zahl = (v, min, max, standard) => {
@@ -278,6 +291,7 @@ function saeubern(roh) {
     rein.settings.cats = Array.isArray(s.cats) ? s.cats.filter(x => typeof x === 'string').slice(0, 50) : null;
     rein.settings.focus = Array.isArray(s.focus) ? s.focus.filter(x => typeof x === 'string').slice(0, 50) : null;
   }
+  rein.lastExport = zahl(roh.lastExport, 0, 1e6, 0);
   for (const [id, c] of Object.entries(roh.cards || {})) {
     if (typeof id !== 'string' || !c || typeof c !== 'object') continue;
     rein.cards[id] = {
