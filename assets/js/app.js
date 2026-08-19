@@ -48,8 +48,10 @@ document.addEventListener('keydown', (e) => {
 /* ================= Chrome ================= */
 function paintChrome() {
   document.getElementById('streakNum').textContent = liveStreak();
+  // Die Detailansicht eines Themas gehoert in der Leiste weiter zu „Themen".
+  const leiste = view === 'topic' ? 'topics' : view;
   [...nav.querySelectorAll('.nav-btn')].forEach(b =>
-    b.setAttribute('aria-current', String(b.dataset.view === view)));
+    b.setAttribute('aria-current', String(b.dataset.view === leiste)));
 }
 function show(v) {
   view = v;
@@ -110,7 +112,8 @@ setFremdStandHandler(() => {
 function render() {
   paintChrome();
   ({ home: renderHome, topics: renderTopics, duel: renderDuelStart,
-     stats: renderStats, settings: renderSettings, lookup: renderLookup }[view] || renderHome)();
+     stats: renderStats, settings: renderSettings, lookup: renderLookup,
+     topic: renderTopicDetail }[view] || renderHome)();
 }
 
 /* Fortschritt als Ring – nur noch im Rueckblick nach einer Runde. */
@@ -302,10 +305,54 @@ function renderTopics() {
       }).join('')}
     </div>`;
   app.querySelectorAll('[data-cat]').forEach(b => {
-    b.onclick = () => {
-      const q = sess.buildTopic(b.dataset.cat, 20);
-      q.length ? startRun(q, 'topic') : toast('Keine Karten in diesem Thema');
-    };
+    b.onclick = () => { offenesThema = b.dataset.cat; show('topic'); };
+  });
+}
+
+/* Ein Thema von innen: die Teilgebiete einzeln. Vorher startete ein Tippen auf
+   „Sport" sofort 20 zufällige Karten aus 260 - wer für eine Klausur in
+   Bewegungslehre lernt, kam an genau diese Karten nicht heran. */
+let offenesThema = null;
+function renderTopicDetail() {
+  const cat = CAT_BY_ID[offenesThema];
+  if (!cat) return show('topics');
+  const subs = sess.subProgress(cat.id);
+  const gesamt = subs.reduce((n, s) => n + s.n, 0);
+  const aus = !sess.catAktiv(cat.id);
+  app.innerHTML = `
+    <div class="row" style="gap:10px;align-items:center;margin-bottom:4px">
+      <button class="icon-btn sm" id="zurueckThemen" type="button" aria-label="Zurück zu den Themen">${ico('zurueck')}</button>
+      <h1 class="vh" style="margin:0">${esc(cat.name)}</h1>
+    </div>
+    <p class="muted">${gesamt} Karten in ${subs.length} Teilgebieten${aus ? ' · im Tagestraining pausiert' : ''}</p>
+    <div class="btn-stack" style="margin-top:14px">
+      <button class="btn primary" id="ganzesThema">${ico('play')}Ganzes Thema üben</button>
+    </div>
+    <h2 class="sec">Teilgebiete</h2>
+    <div class="tlist">
+      ${subs.map(s => `<button class="trow schmal" data-sub="${esc(cat.id)}|${esc(s.sub)}">
+        <span class="grow">
+          <h3>${esc(s.sub)}</h3>
+          <span class="tiny">${s.n} Karten${s.due ? ` · ${s.due} fällig` : ''}${s.fresh ? ` · ${s.fresh} neu` : ''}</span>
+          <span class="bar"><i style="width:${(s.pct * 100).toFixed(0)}%"></i></span>
+        </span>
+        <span class="pct">${Math.round(s.pct * 100)}%</span>
+      </button>`).join('')}
+    </div>`;
+  document.getElementById('zurueckThemen').onclick = () => show('topics');
+  document.getElementById('ganzesThema').onclick = () => {
+    const q = sess.buildTopic(cat.id, 20);
+    q.length ? startRun(q, 'topic') : toast('Keine Karten in diesem Thema');
+  };
+  bindeTeilgebiete();
+}
+
+/* Teilgebiets-Knöpfe gibt es in der Statistik und in der Themenansicht. */
+function bindeTeilgebiete() {
+  app.querySelectorAll('[data-sub]').forEach(b => b.onclick = () => {
+    const [cat, sub] = b.dataset.sub.split('|');
+    const q = sess.buildSub(cat, sub, 20);
+    q.length ? startRun(q, 'sub') : toast('Keine Karten gefunden');
   });
 }
 
@@ -482,11 +529,7 @@ function renderStats() {
       }).join('')}
     </div>`;
 
-  app.querySelectorAll('[data-sub]').forEach(b => b.onclick = () => {
-    const [cat, sub] = b.dataset.sub.split('|');
-    const q = sess.buildSub(cat, sub, 20);
-    q.length ? startRun(q, 'sub') : toast('Keine Karten gefunden');
-  });
+  bindeTeilgebiete();
 }
 
 /* ---- Nachschlagen: suchen, lesen, markieren ---- */

@@ -199,6 +199,20 @@ try {
   await page.click('[data-view="topics"]');
   await page.waitForSelector('.trow');
   check('neun Themen gelistet', await page.locator('[data-cat]').count() === 9);
+  // Ein Thema von innen: erst die Teilgebiete, dann gezielt eines üben.
+  await page.locator('[data-cat="spo"]').click();
+  await page.waitForSelector('[data-sub]');
+  const teile = await page.locator('[data-sub]').count();
+  check('Teilgebiete des Themas werden gelistet', teile >= 9, `${teile} Teilgebiete`);
+  const gewaehlt = await page.locator('[data-sub]').first().getAttribute('data-sub');
+  await page.locator('[data-sub]').first().click();
+  await page.waitForSelector('.sess-body');
+  const kat = await page.locator('.qcat').first().innerText();
+  check('Übungsrunde kommt aus dem gewählten Teilgebiet',
+    kat.includes(gewaehlt.split('|')[1]), `${kat} statt ${gewaehlt}`);
+  await page.click('#quit');
+  await page.waitForSelector('.hero, .tlist');
+
   await page.click('[data-view="settings"]');
   await page.waitForSelector('#npd');
   check('Themenschalter melden ihren Zustand',

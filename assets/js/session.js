@@ -187,6 +187,26 @@ export function catProgress() {
   return out;
 }
 
+/* Fortschritt je Teilgebiet eines Themas. Mit 44 Teilgebieten ist „das ganze
+   Thema üben" oft zu grob: Wer vor einer Prüfung in Bewegungslehre steht, will
+   genau die 21 Karten und nicht 20 zufällige aus 260. */
+export function subProgress(cat) {
+  const out = new Map();
+  for (const c of CARDS) {
+    if (c.cat !== cat) continue;
+    if (!out.has(c.sub)) out.set(c.sub, { sub: c.sub, n: 0, sum: 0, due: 0, fresh: 0 });
+    const o = out.get(c.sub);
+    o.n++;
+    const s = cardState(c.id);
+    if (!s || !s.seen) { o.fresh++; continue; }
+    o.sum += strength(s);
+    if (isDue(s)) o.due++;
+  }
+  return [...out.values()]
+    .map(o => ({ ...o, pct: o.n ? o.sum / o.n : 0 }))
+    .sort((a, b) => b.n - a.n || (a.sub < b.sub ? -1 : 1));
+}
+
 /** Markierte Karten üben – was du beim Nachschlagen angehakt hast. */
 export function buildFlagged(limit = 20) {
   const pool = CARDS.filter(c => isFlagged(c.id));

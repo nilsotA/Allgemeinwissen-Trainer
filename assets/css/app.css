@@ -268,6 +268,9 @@ button.trow:active{transform:scale(.99)}
 .trow .tiny{display:block;margin-top:1px}
 .trow .bar{margin-top:6px;height:5px}
 .pct{font-size:13.5px;font-weight:700;color:var(--dim);flex:none;min-width:38px;text-align:right}
+/* Teilgebiete tragen kein eigenes Symbol: zwoelf gleiche Zeichen untereinander
+   sagen nichts und nehmen der langen Bezeichnung den Platz. */
+.trow.schmal{padding:11px 14px}
 /* Pausiertes Thema: erkennbar zurueckgenommen, aber noch gut lesbar - der
    Fortschritt daran bleibt ja gueltig, er waechst nur gerade nicht. */
 .trow.aus .tico{background:var(--line);color:var(--dim)}

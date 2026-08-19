@@ -55,7 +55,9 @@ Deckel steigt.
 - **Tagestraining** – fällige Wiederholungen plus neue Karten, thematisch verschränkt.
   Für unterwegs lässt sich eine kürzere Runde wählen (rund 3, 5 oder 10 Minuten).
 - **Wackelkandidaten** – gezielt die Karten, die immer wieder umkippen.
-- **Themen** – ein Gebiet am Stück üben.
+- **Themen** – ein Gebiet am Stück üben oder ein einzelnes Teilgebiet gezielt: Tippen auf
+  „Sport“ öffnet die zwölf Teilgebiete von Trainingslehre bis Rekorde, jedes mit eigenem
+  Fortschritt. Vor einer Klausur in Bewegungslehre übt man genau diese Karten.
 - **Duell** – zehn Fragen, 15 Sekunden pro Frage. Trainiert Tempo für Quizduelle.
   Fehler landen automatisch im nächsten Tagestraining.
 - **Markierte Karten** – was du beim Nachschlagen mit ★ versiehst, lässt sich gezielt üben.
@@ -112,7 +114,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 73 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 43 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 45 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
