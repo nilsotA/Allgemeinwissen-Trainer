@@ -816,6 +816,19 @@ function shell(inner, foot) {
   document.getElementById('undo').onclick = undoLast;
 }
 
+/* Der Fuss wechselt beim Aufdecken den Inhalt: Wo eben noch „Loesung zeigen"
+   stand, stehen danach die Bewertungsknoepfe. Ein zweiter, schneller Tipp landet
+   dann auf einem davon und bewertet eine Karte, die der Nutzer nie gesehen hat.
+   Deshalb sind die frisch erschienenen Knoepfe einen Moment lang taub. */
+const ENTPRELLZEIT = 350;
+let entprelltBis = 0;
+function entprellen() {
+  entprelltBis = Date.now() + ENTPRELLZEIT;
+}
+function zuFrueh() {
+  return Date.now() < entprelltBis;
+}
+
 /* Die Frage liegt als eigenes Blatt auf dem Grund. Der Rest der Flaeche ist
    damit Buehne und nicht Leere – und der Knopf bleibt unten im Daumenbereich. */
 const qkarte = (inner, solo) => `<div class="qcard${solo ? ' solo' : ''}">${inner}</div>`;
@@ -922,7 +935,8 @@ function revealRecall(card, typed, sim, cs, isFresh) {
      </div>`
   );
   lockUndo();
-  const grade = (n) => commit(card, n, n !== AGAIN, isFresh);
+  const grade = (n) => { if (!zuFrueh()) commit(card, n, n !== AGAIN, isFresh); };
+  entprellen();
   app.querySelectorAll('[data-g]').forEach(b => b.onclick = () => grade(Number(b.dataset.g)));
   onKey = (e) => {
     const idx = tastenIndex(e);

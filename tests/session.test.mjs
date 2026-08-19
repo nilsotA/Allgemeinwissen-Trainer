@@ -276,3 +276,26 @@ test('neu frei zeigt den Vorrat, nicht nur das Tagesbudget', () => {
   assert.equal(sess.newCards().length, 0, 'es sollte keine neue Karte mehr geben');
   assert.equal(o.newLeft, 0, `newLeft war ${o.newLeft}, obwohl der Vorrat leer ist`);
 });
+
+/* Ein lastDay in der Zukunft entsteht durch eine zurueckgestellte Uhr, einen Flug
+   ueber die Datumsgrenze oder ein Backup aus einer spaeteren Zeitzone. Vorher fiel
+   die Serie dann auf 0 und wurde bei der naechsten Antwort dauerhaft auf 1 gesetzt. */
+test('eine Serie überlebt ein Datum aus der Zukunft', () => {
+  const st = store.S();
+  st.streak = 60; st.best = 60;
+  st.lastDay = store.numToKey(store.todayNum() + 1);
+  assert.equal(store.liveStreak(), 60, 'die Serie darf nicht auf 0 fallen');
+  store.touchStreak();
+  assert.equal(store.S().streak, 60, `nach einer Antwort stand die Serie bei ${store.S().streak}`);
+  assert.equal(store.S().best, 60);
+});
+
+test('eine echte Lücke setzt die Serie weiterhin zurück', () => {
+  const st = store.S();
+  st.streak = 12; st.best = 12;
+  st.lastDay = store.numToKey(store.todayNum() - 3);
+  assert.equal(store.liveStreak(), 0);
+  store.touchStreak();
+  assert.equal(store.S().streak, 1);
+  assert.equal(store.S().best, 12, 'der Rekord bleibt stehen');
+});

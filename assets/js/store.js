@@ -155,12 +155,26 @@ export function today() {
   return state.days[k];
 }
 
-/* Streak fortschreiben, wenn heute mindestens eine Karte beantwortet wurde */
+/** 'YYYY-MM-DD' als Tagesnummer, passend zu todayNum(). */
+export function keyToNum(k) {
+  const [y, m, d] = String(k || '').split('-').map(Number);
+  if (!y || !m || !d) return null;
+  return Math.floor(Date.UTC(y, m - 1, d) / 86400000);
+}
+
+/* Streak fortschreiben, wenn heute mindestens eine Karte beantwortet wurde.
+   Ein lastDay in der Zukunft ist dabei kein Fehler des Nutzers: Es reicht, dass
+   die Uhr des Geraets zurueckgestellt wird, dass man ueber die Datumsgrenze
+   zurueckfliegt oder ein Backup von einem Geraet in einer spaeteren Zeitzone
+   einliest. Vorher fiel die Serie dann auf 0 und wurde bei der naechsten Antwort
+   dauerhaft auf 1 gesetzt - sechzig Tage Serie waren damit weg. */
 export function touchStreak() {
   const k = dayKey();
   if (state.lastDay === k) return;
-  const yesterday = numToKey(todayNum() - 1);
-  state.streak = state.lastDay === yesterday ? state.streak + 1 : 1;
+  const heute = todayNum();
+  const letzter = keyToNum(state.lastDay);
+  if (letzter !== null && letzter > heute) { state.lastDay = k; save(); return; }
+  state.streak = letzter === heute - 1 ? state.streak + 1 : 1;
   state.best = Math.max(state.best || 0, state.streak);
   state.lastDay = k;
   save();
@@ -168,10 +182,10 @@ export function touchStreak() {
 
 /* Streak zurücksetzen, wenn ein Tag ausgelassen wurde (nur Anzeige) */
 export function liveStreak() {
-  const k = dayKey();
-  const y = numToKey(todayNum() - 1);
-  if (state.lastDay === k || state.lastDay === y) return state.streak;
-  return 0;
+  const heute = todayNum();
+  const letzter = keyToNum(state.lastDay);
+  if (letzter === null) return 0;
+  return letzter >= heute - 1 ? state.streak : 0;
 }
 
 export function cardState(id) {
