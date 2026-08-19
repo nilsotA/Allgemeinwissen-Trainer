@@ -265,6 +265,13 @@ button.trow:active{transform:scale(.99)}
 .trow .tiny{display:block;margin-top:1px}
 .trow .bar{margin-top:6px;height:5px}
 .pct{font-size:13.5px;font-weight:700;color:var(--dim);flex:none;min-width:38px;text-align:right}
+/* Pausiertes Thema: erkennbar zurueckgenommen, aber noch gut lesbar - der
+   Fortschritt daran bleibt ja gueltig, er waechst nur gerade nicht. */
+.trow.aus .tico{background:var(--line);color:var(--dim)}
+.trow.aus .bar i{background:var(--dim3)}
+.merk{display:inline-block;margin-left:7px;padding:1px 7px;border-radius:999px;
+  background:var(--acc-soft);color:var(--acc2);font-size:11px;font-weight:700;
+  letter-spacing:.02em;vertical-align:1px}
 
 .heat{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:3px}
 .heat i{aspect-ratio:1;border-radius:3px;background:var(--heat0);display:block}

@@ -61,6 +61,22 @@ test('abgeschaltete Themen tauchen im Tagesplan nicht auf', () => {
   assert.ok(q.every(x => x.card.cat === 'mat'), 'fremde Kategorie im Plan');
 });
 
+test('Schwachstellen-Vorschlaege ueberspringen abgeschaltete Themen', () => {
+  // Sonst bietet die Statistik einen Uebungsknopf fuer genau das Thema an,
+  // das der Nutzer im Tagestraining ausdruecklich weggeschaltet hat.
+  for (const c of CARDS) {
+    store.putCard(c.id, { ...fresh(), seen: 6, correct: 2, last: store.todayNum() });
+  }
+  store.setSetting('cats', ['mat']);
+  const schwach = sess.weakSubs(1, 20);
+  assert.ok(schwach.length > 0, 'keine Schwachstellen gefunden');
+  assert.ok(schwach.every(w => w.cat === 'mat'), 'fremdes Thema unter den Vorschlaegen');
+  assert.equal(sess.catAktiv('mat'), true);
+  assert.equal(sess.catAktiv('spo'), false);
+  store.setSetting('cats', []);
+  assert.equal(sess.catAktiv('spo'), true, 'ohne Filter ist jedes Thema aktiv');
+});
+
 test('Themen-Training liefert nur Karten des gewählten Themas', () => {
   for (const cat of ['spo', 'mat', 'ges']) {
     const q = sess.buildTopic(cat, 20);

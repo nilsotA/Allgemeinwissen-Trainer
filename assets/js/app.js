@@ -450,9 +450,12 @@ function renderStats() {
     <div class="tlist">
       ${CATS.map(c => {
         const s = p[c.id] || { pct: 0, n: 0 };
-        return `<div class="trow" style="pointer-events:none">
+        // Ein abgeschaltetes Thema zaehlt weiter mit (die Karten bleiben ja gelernt),
+        // aber ohne Hinweis wundert man sich, warum der Balken tagelang stehenbleibt.
+        const aus = !sess.catAktiv(c.id);
+        return `<div class="trow${aus ? ' aus' : ''}" style="pointer-events:none">
           <span class="tico">${catIcon(c.id)}</span>
-          <span class="grow"><h3>${esc(c.name)}</h3><span class="bar"><i style="width:${(s.pct * 100).toFixed(0)}%"></i></span></span>
+          <span class="grow"><h3>${esc(c.name)}${aus ? ' <span class="merk">pausiert</span>' : ''}</h3><span class="bar"><i style="width:${(s.pct * 100).toFixed(0)}%"></i></span></span>
           <span class="pct">${Math.round(s.pct * 100)}%</span></div>`;
       }).join('')}
     </div>`;

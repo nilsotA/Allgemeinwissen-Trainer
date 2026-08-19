@@ -162,6 +162,12 @@ export function overview() {
   };
 }
 
+/** Ist dieses Thema im Tagestraining aktiv? */
+export const catAktiv = (catId) => {
+  const a = activeCats();
+  return !a || a.has(catId);
+};
+
 /** Fortschritt je Kategorie (0..1) für die Themenliste. */
 export function catProgress() {
   const out = {};
@@ -202,6 +208,10 @@ export function forecast(days = 7) {
 export function weakSubs(minKarten = 4, limit = 6) {
   const acc = {};
   for (const c of CARDS) {
+    // Ein abgeschaltetes Thema darf hier nicht auftauchen: Der Eintrag ist ein
+    // Knopf, der eine Uebungsrunde startet - fuer ein Thema, das der Nutzer
+    // ausdruecklich weggeschaltet hat.
+    if (!inScope(c)) continue;
     const s = cardState(c.id);
     if (!s || !s.seen) continue;
     const key = c.cat + '/' + c.sub;
