@@ -50,7 +50,6 @@ export default [
 {q:"Wer schuf die Figur James Bond?",a:"Ian Fleming",s:"Film",d:2,t:"Erster Roman: „Casino Royale“ (1953). Erster Bond-Film mit Sean Connery: „James Bond jagt Dr. No“ (1962).",w:["John le Carré","Frederick Forsyth","Graham Greene"]},
 {q:"Welche Filmreihe spielt in einer weit entfernten Galaxis?",a:"Star Wars",s:"Film",d:1,t:"George Lucas, ab 1977. Der Satz „Ich bin dein Vater“ wird meist falsch zitiert – im Original heißt es „No, I am your father“.",w:["Star Trek","Dune","Battlestar Galactica"]},
 
-{q:"Wer malte „Die Erschaffung Adams“ an die Decke der Sixtinischen Kapelle?",a:"Michelangelo",s:"Kunst",d:1,t:"Die beiden fast berührenden Zeigefinger sind eines der meistzitierten Bildmotive der Welt.",w:["Raffael","Leonardo da Vinci","Botticelli"]},
 {q:"Wer malte „Die Geburt der Venus“?",a:"Sandro Botticelli",s:"Kunst",d:2,t:"Um 1485, heute in den Uffizien in Florenz. Ein Schlüsselwerk der Renaissance.",w:["Tizian","Raffael","Caravaggio"]},
 {q:"Welcher Maler ist für seine Seerosenbilder bekannt?",a:"Claude Monet",s:"Kunst",d:1,t:"Gemalt in seinem Garten in Giverny – über 250 Fassungen in dreißig Jahren.",w:["Édouard Manet","Auguste Renoir","Edgar Degas"]},
 {q:"Welcher Bildhauer schuf „Der Denker“?",a:"Auguste Rodin",s:"Kunst",d:2,t:"Ursprünglich Teil eines Portals nach Dantes „Göttlicher Komödie“.",w:["Michelangelo","Alberto Giacometti","Constantin Brâncuși"]},

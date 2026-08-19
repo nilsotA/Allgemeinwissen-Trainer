@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.641 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.626 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (260 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (250 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (249 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (247 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern reicht die Sammlung bewusst bis auf Studienniveau: biomechanische Prinzipien
 und der Doppelauftrag des Schulsports ebenso wie Hauptsatz, hessesche Normalform, Fehler
@@ -34,8 +34,8 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
 Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt rund 101 Karten pro Tag,
-Spitzenlast etwa 137, gut 12 Minuten täglich. Nach einem halben Jahr sitzen etwa 1.369 der
-1.641 Karten fest. Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
+Spitzenlast etwa 140, gut 12 Minuten täglich. Nach einem halben Jahr sitzen etwa 1.344 der
+1.626 Karten fest. Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
 Kartenbestand mitwächst.
 
 Die Simulation treibt bewusst den **echten** Code – den Scheduler, die Warteschlangen und den
@@ -189,13 +189,34 @@ Die Sammlung wurde Datei für Datei gegengelesen. Gefunden und behoben:
   König, Kaiser erst ab 1084 – bei einer Frage zum Investiturstreit ist genau das der Punkt.
 - **Sachfehler im Kontext.** Frankreich stimmte 1884 nicht gegen Greenwich als Nullmeridian,
   es enthielt sich.
-- **Inhaltliche Dubletten.** Der Betrag eines Vektors wurde zweimal gefragt, DIN A4 zweimal
-  erklärt, und die Verdopplungsregel stand einmal mit 70 und einmal mit 72 im Vorrat.
+- **Widerspruch zwischen zwei Teilen der App.** Die Karte zur Berliner Konferenz 1884/85 sagte,
+  sie habe Afrika aufgeteilt – der Tagesfakt zum selben Thema sagte das Gegenteil (sie setzte nur
+  die Regeln, gezogen wurden die Grenzen danach in bilateralen Verträgen). Der Tagesfakt hatte
+  recht; die Karte ist umformuliert.
+- **Inhaltliche Dubletten: 16 Stück.** Der Betrag eines Vektors wurde zweimal gefragt, DIN A4
+  zweimal erklärt, die Verdopplungsregel stand einmal mit 70 und einmal mit 72 im Vorrat, und
+  Michelangelo an der Sixtinischen Decke gleich zweimal. Der größte Block entstand beim Ausbau
+  von Sport und Mathematik: Zehn neue Sport- und drei neue Mathe-Karten fragten Dinge ab, die der
+  Altbestand längst enthielt – Höhentraining, Kraftstoß, EPO, Übertraining, Kreatinphosphat,
+  Bewegungsphasen. Alle entfernt.
+- **Ein Zahlenwiderspruch.** Der Kreatinphosphat-Speicher trug auf einer Karte „6–10 Sekunden",
+  auf einer neueren „10–20 Sekunden". 6–10 stimmt und passt zum 100-Meter-Lauf im Kontexttext.
 
 Was sich davon maschinell absichern lässt, ist jetzt eine Schranke in `npm run check`:
 doppelte Sätze im selben Kontexttext, gleiche Titel oder Texte bei den Tagesfakten, und Karten
 mit fast gleicher Frage **und** zusammengehender Antwort. Die Antwortschwelle liegt gemessen
 bei 0,25 – darüber rutschte die Vektor-Dublette durch, darunter kämen die Abkürzungsfragen.
+
+Die Dubletten in Sport und Mathematik fand keine dieser Schranken, sondern ein Vergleich über
+**seltene Fachbegriffe**: Wörter, die in höchstens vier Karten vorkommen, sind aussagekräftig –
+teilen sich zwei Karten drei oder mehr davon, lohnt der Blick. Als Dauerschranke taugt das nicht
+(zu viele Fehlalarme), als Werkzeug beim Aufräumen sehr wohl.
+
+Bei der Gelegenheit sind die Teilgebiete sortiert worden: Ableitungen, Integrale und Grenzwerte
+stehen jetzt in **Analysis** statt in Schulmathe, Wahrscheinlichkeiten in **Stochastik**,
+Vektoren in **Linearer Algebra**; im Sport wanderten Kraftstoß und Bewegungsphasen in die
+**Bewegungslehre**, Doping und Verletzungen in die **Sportmedizin**, Methodik in die
+**Sportdidaktik**. Die Kennungen hängen am Fragetext – der Lernfortschritt bleibt dabei erhalten.
 
 Was sich **nicht** absichern lässt: dieselbe Erklärung in anderen Worten. Bei der Schwelle, die
 die beiden Fakten-Dubletten fängt, kommen 15 Fehlalarme mit. Solche Fälle findet nur, wer die
