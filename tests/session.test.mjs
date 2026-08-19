@@ -98,6 +98,30 @@ test('Schwachstellen-Vorschlaege ueberspringen abgeschaltete Themen', () => {
   assert.equal(sess.catAktiv('spo'), true, 'ohne Filter ist jedes Thema aktiv');
 });
 
+test('Fortschritt je Stufe zählt nur aktive Themen und alle drei Stufen', () => {
+  const alle = sess.levelProgress();
+  assert.deepEqual(Object.keys(alle).sort(), ['1', '2', '3']);
+  const gesamt = [1, 2, 3].reduce((n, d) => n + alle[d].n, 0);
+  assert.equal(gesamt, CARDS.length, 'nicht jede Karte hat eine Stufe');
+  for (const d of [1, 2, 3]) {
+    assert.equal(alle[d].seen, 0, 'ohne Abfragen darf nichts gesehen sein');
+    assert.equal(alle[d].pct, 0);
+  }
+  // Eine Karte lernen: nur ihre Stufe darf sich bewegen.
+  const c = CARDS.find(x => x.d === 1);
+  store.putCard(c.id, { ...fresh(), iv: 60, reps: 4, seen: 5, ok: 5, due: store.todayNum() + 60 });
+  const nachher = sess.levelProgress();
+  assert.equal(nachher[1].seen, 1);
+  assert.equal(nachher[2].seen, 0);
+  assert.ok(nachher[1].mature === 1, 'gefestigte Karte wird nicht gezählt');
+
+  store.setSetting('cats', ['mat']);
+  const nurMat = sess.levelProgress();
+  const matKarten = CARDS.filter(x => x.cat === 'mat').length;
+  assert.equal([1, 2, 3].reduce((n, d) => n + (nurMat[d]?.n || 0), 0), matKarten,
+    'pausierte Themen zählen in der Stufenübersicht mit');
+});
+
 test('Schwerpunktthemen bekommen doppelt so viele neue Karten', () => {
   store.setSetting('newPerDay', 90);
   const ohne = sess.newCards().slice(0, 90);

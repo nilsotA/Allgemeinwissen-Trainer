@@ -73,6 +73,10 @@ Deckel steigt.
 - **Nachschlagen** über die Lupe oben rechts: alle Karten durchsuchbar nach Frage, Antwort,
   Thema und Kontext. Antippen klappt die Lösung auf, ★ markiert für später.
 - **Wiederholungs-Vorschau** für die nächsten sieben Tage in der Statistik.
+- **Fortschritt nach Stufe** – „Sitzen die Grundlagen aus Klasse 5 bis 8?" war die
+  Ausgangsfrage an diese App; beantworten konnte sie sie lange nicht, weil die Statistik nur
+  nach Thema aufschlüsselte. Jetzt steht für Basis, Solide und Profi jeweils da, wie viele
+  Karten begonnen sind und wie viele wirklich fest sitzen.
 - **Wissen des Tages** – 141 kurze Merkanker, die ein Warum erklären oder einen verbreiteten
   Irrtum ausräumen. Einer pro Tag, ein knappes halbes Jahr ohne Wiederholung.
 - **Rückblick nach jeder Runde**: Welche Karten saßen noch nicht – mit Antwort und Kontext.
@@ -114,7 +118,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 77 Einheitentests plus Inhaltsprüfung
+npm test           # 78 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 51 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
@@ -213,7 +217,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 77 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 78 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 

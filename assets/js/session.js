@@ -203,6 +203,26 @@ export function catProgress() {
   return out;
 }
 
+/* Fortschritt je Schwierigkeitsstufe. „Sitzen die Grundlagen aus Klasse 5 bis 8?"
+   war die Ausgangsfrage an diese App - beantworten konnte sie sie bisher nicht,
+   weil die Statistik nur nach Thema aufschluesselte. */
+export function levelProgress() {
+  const out = {};
+  for (const c of CARDS) {
+    if (!inScope(c)) continue;
+    const o = (out[c.d] ||= { n: 0, sum: 0, seen: 0, mature: 0 });
+    o.n++;
+    const s = cardState(c.id);
+    if (!s || !s.seen) continue;
+    o.seen++;
+    const st = strength(s);
+    o.sum += st;
+    if (st >= 0.6) o.mature++;
+  }
+  for (const k of Object.keys(out)) out[k].pct = out[k].n ? out[k].sum / out[k].n : 0;
+  return out;
+}
+
 /* Fortschritt je Teilgebiet eines Themas. Mit 44 Teilgebieten ist „das ganze
    Thema üben" oft zu grob: Wer vor einer Prüfung in Bewegungslehre steht, will
    genau die 21 Karten und nicht 20 zufällige aus 260. */

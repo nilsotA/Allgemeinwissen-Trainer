@@ -405,6 +405,7 @@ function verlaufKarte(wochen, trendText) {
 }
 
 function renderStats() {
+  const stufen = sess.levelProgress();
   const st = S();
   const o = sess.overview();
   const WEEKS = 12;
@@ -513,6 +514,20 @@ function renderStats() {
       <div class="row between"><span>Trefferquote gesamt</span><b>${Math.round(o.accuracy * 100)} %</b></div>
       <div class="row between" style="margin-top:9px"><span>Karten gefestigt</span><b>${o.mature} / ${o.total}</b></div>
       <div class="row between" style="margin-top:9px"><span>Noch nie gesehen</span><b>${o.total - o.seen}</b></div>
+    </div>
+
+    <h2 class="sec">Nach Stufe</h2>
+    <div class="tlist">
+      ${[1, 2, 3].map(d => {
+        const l = stufen[d] || { n: 0, pct: 0, seen: 0, mature: 0 };
+        return `<div class="trow schmal" style="pointer-events:none">
+          <span class="grow">
+            <h3>${esc(LEVELS[d].name)}</h3>
+            <span class="tiny">${esc(LEVELS[d].hint)}<br>${l.n} Karten · ${l.seen} begonnen · ${l.mature} sitzen fest</span>
+            <span class="bar"><i style="width:${(l.pct * 100).toFixed(0)}%"></i></span>
+          </span>
+          <span class="pct">${Math.round(l.pct * 100)}%</span></div>`;
+      }).join('')}
     </div>
 
     <h2 class="sec">Nach Thema</h2>
