@@ -98,6 +98,30 @@ test('Schwachstellen-Vorschlaege ueberspringen abgeschaltete Themen', () => {
   assert.equal(sess.catAktiv('spo'), true, 'ohne Filter ist jedes Thema aktiv');
 });
 
+test('Schwerpunktthemen bekommen doppelt so viele neue Karten', () => {
+  store.setSetting('newPerDay', 90);
+  const ohne = sess.newCards().slice(0, 90);
+  const anteilOhne = ohne.filter(c => c.cat === 'mat').length;
+
+  store.setSetting('focus', ['mat']);
+  const mit = sess.newCards().slice(0, 90);
+  const anteilMit = mit.filter(c => c.cat === 'mat').length;
+
+  assert.ok(anteilMit > anteilOhne * 1.6,
+    `Schwerpunkt wirkt kaum: ${anteilOhne} → ${anteilMit} von 90`);
+  assert.equal(new Set(mit.map(c => c.id)).size, mit.length, 'doppelte Karten');
+  store.setSetting('focus', null);
+});
+
+test('ein abgeschaltetes Thema wirkt auch als Schwerpunkt nicht', () => {
+  store.setSetting('cats', ['spo']);
+  store.setSetting('focus', ['mat']);
+  assert.equal(sess.focusCats(), null, 'pausiertes Thema zählt als Schwerpunkt');
+  const q = sess.buildDaily();
+  assert.ok(q.every(x => x.card.cat === 'spo'), 'fremdes Thema im Plan');
+  store.setSetting('focus', null);
+});
+
 test('Themen-Training liefert nur Karten des gewählten Themas', () => {
   for (const cat of ['spo', 'mat', 'ges']) {
     const q = sess.buildTopic(cat, 20);

@@ -625,6 +625,9 @@ function renderLookup() {
 function renderSettings() {
   const s = settings();
   const sel = s.cats && s.cats.length ? s.cats : CATS.map(c => c.id);
+  // Nur aktive Themen koennen Schwerpunkt sein - ein abgeschaltetes zu bevorzugen
+  // waere ein Widerspruch, den die App nicht anzeigen sollte.
+  const fok = (s.focus || []).filter(id => sel.includes(id));
   const flags = sess.flaggedCount();
   app.innerHTML = `
     <h1 class="vh">Einstellungen</h1>
@@ -679,6 +682,16 @@ function renderSettings() {
       <p class="tiny" style="margin-top:10px">Abgeschaltete Themen tauchen im Tagestraining nicht mehr auf.</p>
     </div>
 
+    <h2 class="sec">Schwerpunkt</h2>
+    <div class="card">
+      <div class="row wrap" style="gap:8px">
+        ${CATS.filter(c => sel.includes(c.id)).map(c => `<button type="button" class="chip ${fok.includes(c.id) ? 'on' : ''}" data-fok="${c.id}" aria-pressed="${fok.includes(c.id)}">${catIcon(c.id, 's')}${esc(c.name)}</button>`).join('')}
+      </div>
+      <p class="tiny" style="margin-top:10px">Schwerpunktthemen bekommen doppelt so viele neue Karten pro Tag.
+        ${fok.length ? `Zurzeit ${fok.length === 1 ? 'ist' : 'sind'} ${fok.map(id => esc(CAT_BY_ID[id].name)).join(' und ')} bevorzugt.`
+          : 'Ohne Auswahl kommen alle Themen gleich oft dran.'}</p>
+    </div>
+
     <h2 class="sec">Auf dem iPhone installieren</h2>
     <div class="card">
       <p class="muted">Safari öffnen → <b>Teilen</b> → <b>Zum Home-Bildschirm</b>. Danach startet Wissenswerk wie eine echte App, auch offline.</p>
@@ -708,6 +721,15 @@ function renderSettings() {
   document.getElementById('snd').onchange = e => setSetting('sound', e.target.checked);
   document.getElementById('thm').onchange = e => { setSetting('theme', e.target.value); applyTheme(); };
   document.getElementById('tnk').onchange = e => setSetting('trotzdemNeu', e.target.checked);
+
+  app.querySelectorAll('[data-fok]').forEach(b => b.onclick = () => {
+    const cur = new Set(settings().focus || []);
+    const id = b.dataset.fok;
+    cur.has(id) ? cur.delete(id) : cur.add(id);
+    // Alle als Schwerpunkt zu setzen hiesse: keiner. Dann lieber leeren.
+    setSetting('focus', cur.size && cur.size < sel.length ? [...cur] : null);
+    renderSettings();
+  });
 
   app.querySelectorAll('[data-tog]').forEach(b => b.onclick = () => {
     const cur = new Set(settings().cats && settings().cats.length ? settings().cats : CATS.map(c => c.id));

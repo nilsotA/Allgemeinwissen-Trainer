@@ -23,6 +23,7 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Aktives Abrufen** (retrieval practice) | Erst Multiple Choice zum Erkennen, ab der dritten Wiederholung freies Abrufen mit Selbstbewertung – Abrufen prägt stärker ein als Wiederlesen. |
 | **Verschränken** (interleaving) | Das Tagestraining mischt Themen, statt ein Gebiet am Stück zu pauken, und verteilt neue Karten gleichmäßig über die Einheit. |
 | **Elaboration** | Jede Karte liefert nach der Antwort einen Kontext, eine Eselsbrücke oder eine Einordnung – Wissen hält, wenn es andocken kann. |
+| **Schwerpunkt** | Neue Karten kommen reihum aus allen Themen – ein Studienfach bekäme damit ein Neuntel, egal wie viele Karten dahinterstehen. Als Schwerpunkt markierte Themen sind pro Runde zweimal an der Reihe: Sport und Mathematik steigen so von 22 auf 36 % der Neuzugänge. |
 | **Schwierigkeits-Leiter** | Neue Karten kommen standardmäßig leicht zuerst, damit Grundlagenlücken zuerst schließen – innerhalb einer Stufe gestreut, damit nicht ähnlich formulierte Fragen beieinanderstehen. |
 | **Sofortige Rückmeldung** | Richtig/falsch plus Erklärung direkt nach der Antwort. |
 | **Kleine tägliche Dosis** | Standard: 12 neue Karten pro Tag. Das sind rund 9 Minuten – dauerhaft durchhaltbar. |
@@ -113,8 +114,8 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 73 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 48 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm test           # 77 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 51 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -204,7 +205,15 @@ bedeutungstragenden Werten blieben ganze drei Karten übrig – der Tausch lohnt
 Schranke bei 85 % bleibt trotzdem stehen: Sie fängt den systematischen Fall ab, in dem
 Ablenker maschinell um die Antwort gelegt werden.
 
-Die 73 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Der Planer wird zusätzlich als **Eigenschaftstest** geprüft: 16.000 zufällige Bewertungsfolgen –
+mal früh, mal pünktlich, mal verspätet beantwortet – gegen die Zusicherungen, die immer gelten
+müssen (Intervall in Grenzen, Termin nie in der Vergangenheit, kein Schrumpfen nach richtiger
+Antwort, kein Vorziehen eines Termins). Dazu ein Raster über alle Ausgangslagen: „Leicht" darf
+nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – sonst bestraft die App
+ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
+reproduzierbar und nicht „manchmal rot".
+
+Die 77 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 

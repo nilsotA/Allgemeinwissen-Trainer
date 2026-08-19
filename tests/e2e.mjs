@@ -215,6 +215,15 @@ try {
 
   await page.click('[data-view="settings"]');
   await page.waitForSelector('#npd');
+  await page.locator('[data-fok="mat"]').click();
+  await settle();
+  check('Schwerpunkt wird gespeichert', ((await stored()).settings.focus || []).includes('mat'));
+  check('Schwerpunkt-Schalter melden ihren Zustand',
+    await page.locator('[data-fok="mat"]').getAttribute('aria-pressed') === 'true');
+  await page.locator('[data-fok="mat"]').click();
+  await settle();
+  check('Schwerpunkt lässt sich wieder abwählen', !(await stored()).settings.focus);
+
   check('Themenschalter melden ihren Zustand',
     await page.evaluate(() => [...document.querySelectorAll('[data-tog]')]
       .every(b => b.getAttribute('aria-pressed') === String(b.classList.contains('on')))));

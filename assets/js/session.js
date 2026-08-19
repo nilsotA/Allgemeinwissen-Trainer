@@ -49,18 +49,34 @@ export function newCards(pool = CARDS) {
       ? byCat[k].sort((a, b) => a.d - b.d || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
       : shuffle(byCat[k]);
   }
-  // Reihum durch die Kategorien: gemischte Themen prägen sich besser ein
+  // Reihum durch die Kategorien: gemischte Themen prägen sich besser ein.
+  // Schwerpunktthemen sind in jeder Runde zweimal an der Reihe. Ohne das bekommt
+  // ein Studienfach denselben Anteil wie jedes andere Thema - bei neun Themen
+  // also ein Neuntel, ganz gleich wie viele Karten dahinterstehen.
+  const schwer = focusCats();
   const keys = shuffle(Object.keys(byCat));
   const out = [];
   let more = true;
   while (more) {
     more = false;
     for (const k of keys) {
-      const n = byCat[k].shift();
-      if (n) { out.push(n); more = true; }
+      const zuege = schwer && schwer.has(k) ? 2 : 1;
+      for (let i = 0; i < zuege; i++) {
+        const n = byCat[k].shift();
+        if (n) { out.push(n); more = true; }
+      }
     }
   }
   return out;
+}
+
+/** Schwerpunktthemen – null, wenn keins gewählt ist. Abgeschaltete zählen nicht mit. */
+export function focusCats() {
+  const f = settings().focus;
+  if (!f || !f.length) return null;
+  const a = activeCats();
+  const s = new Set(f.filter(id => !a || a.has(id)));
+  return s.size ? s : null;
 }
 
 /* Ab wann der Rueckstand so gross ist, dass neue Karten nur schaden.
