@@ -1,64 +1,95 @@
-/* Simuliert 120 Tage Nutzung, um Arbeitslast und Behaltensquote zu prüfen.
-   Nutzt den echten Scheduler aus assets/js/srs.js. */
+/* Simuliert Nutzung ueber ein halbes Jahr, um Arbeitslast, Rueckstand und
+   Behaltensquote zu pruefen. Treibt bewusst den ECHTEN Code: den Scheduler aus
+   srs.js, die Warteschlangen aus session.js und den Speicher aus store.js.
+   Eine nachgebaute Simulation prueft sonst nur sich selbst - die Bremse gegen den
+   Rueckstau etwa kam in der frueheren Fassung ueberhaupt nicht vor.
+
+   Aufruf:  node scripts/simulate.mjs [--tage 180] [--neu 12] [--deckel 90] [--pausen]
+            --pausen legt zwei Abwesenheiten von je zwei Wochen ein. */
+
 const RealDate = Date;
 let NOW = RealDate.UTC(2026, 0, 5, 9, 0, 0);
 globalThis.Date = class extends RealDate {
   constructor(...a) { super(...(a.length ? a : [NOW])); }
   static now() { return NOW; }
 };
-globalThis.localStorage = { getItem: () => null, setItem: () => {}, removeItem: () => {} };
+const speicher = new Map();
+globalThis.localStorage = {
+  getItem: (k) => (speicher.has(k) ? speicher.get(k) : null),
+  setItem: (k, v) => speicher.set(k, String(v)),
+  removeItem: (k) => speicher.delete(k),
+};
 
-const { schedule, strength, AGAIN, HARD, GOOD, EASY, fresh } = await import('../assets/js/srs.js');
+const arg = (name, standard) => {
+  const i = process.argv.indexOf('--' + name);
+  return i >= 0 && process.argv[i + 1] ? Number(process.argv[i + 1]) : standard;
+};
+const TAGE = arg('tage', 180);
+const NEU = arg('neu', 12);
+const DECKEL = arg('deckel', 90);
+const PAUSEN = process.argv.includes('--pausen') ? [[45, 58], [110, 123]] : [];
+
+const store = await import('../assets/js/store.js');
+const sess = await import('../assets/js/session.js');
+const { schedule, strength, fresh, AGAIN, HARD, GOOD, EASY } = await import('../assets/js/srs.js');
 const { CARDS } = await import('../data/index.js');
-const { todayNum } = await import('../assets/js/store.js');
 
-const NEW_PER_DAY = 12, MAX_REVIEWS = 90, DAYS = 180;
-const state = new Map();
-let pool = CARDS.slice();
-let rows = [];
+store.setSetting('newPerDay', NEU);
+store.setSetting('maxReviews', DECKEL);
 
 /* Wie gut erinnert sich die Person? Grob an der Vergessenskurve orientiert. */
-function recall(cs, t) {
-  if (!cs.reps) return 0.55;                                  // erster Kontakt, Multiple Choice
-  const elapsed = Math.max(0, t - (cs.due - cs.iv));
-  const p = Math.exp(-elapsed / (Math.max(1, cs.iv) * 3.2));
-  return Math.min(0.97, 0.55 + 0.42 * p);
+function abruf(cs, t) {
+  if (!cs || !cs.reps) return 0.55;                     // erster Kontakt, Auswahlfrage
+  const her = Math.max(0, t - (cs.due - cs.iv));
+  return Math.min(0.97, 0.55 + 0.42 * Math.exp(-her / (Math.max(1, cs.iv) * 3.2)));
 }
 
-for (let day = 0; day < DAYS; day++) {
-  const t = todayNum();
-  const due = [...state.entries()].filter(([, cs]) => cs.due <= t).slice(0, MAX_REVIEWS);
-  let answers = 0, correct = 0;
+const zeilen = [];
+for (let tag = 0; tag < TAGE; tag++) {
+  const t = store.todayNum();
+  const offen = sess.dueCards().length;
+  const pause = PAUSEN.some(([von, bis]) => tag >= von && tag <= bis);
 
-  for (const [id, cs] of due) {
-    const ok = Math.random() < recall(cs, t);
-    answers++; if (ok) correct++;
-    const g = !ok ? AGAIN : Math.random() < 0.18 ? HARD : Math.random() < 0.2 ? EASY : GOOD;
-    state.set(id, schedule(cs, g));
-  }
-  for (let i = 0; i < NEW_PER_DAY && pool.length; i++) {
-    const c = pool.shift();
-    const ok = Math.random() < 0.55;
-    answers++; if (ok) correct++;
-    state.set(c.id, schedule(fresh(), ok ? GOOD : AGAIN));
+  let antworten = 0, richtig = 0;
+  if (!pause) {
+    const plan = sess.buildDaily();
+    const warteschlange = plan.slice();
+    for (let i = 0; i < warteschlange.length && i < 400; i++) {
+      const { card, fresh: istNeu } = warteschlange[i];
+      const cs = store.cardState(card.id) || fresh();
+      const ok = Math.random() < abruf(cs, t);
+      const g = !ok ? AGAIN : Math.random() < 0.18 ? HARD : Math.random() < 0.2 ? EASY : GOOD;
+      store.putCard(card.id, schedule(cs, g));
+      antworten++; if (ok) richtig++;
+      const d = store.today();
+      d.done++; if (ok) d.correct++;
+      if (istNeu) d.newC = (d.newC || 0) + 1;
+      // Falsch beantwortete Karten kommen innerhalb der Einheit noch einmal dran
+      if (g === AGAIN) warteschlange.splice(Math.min(warteschlange.length, i + 5), 0, { card, fresh: false });
+    }
   }
 
-  const mature = [...state.values()].filter(cs => strength(cs) >= 0.6).length;
-  rows.push({ day: day + 1, reviews: due.length, answers, acc: answers ? correct / answers : 0,
-              inLearning: state.size, mature });
+  const uebersicht = sess.overview();
+  zeilen.push({ tag: tag + 1, pause, rueckstand: offen, antworten,
+    quote: antworten ? richtig / antworten : 0, angefangen: uebersicht.learned, fest: uebersicht.mature });
   NOW += 86400000;
 }
 
-const at = (d) => rows[d - 1];
-console.log('Tag | Wdh. | Antworten | Trefferquote | angefangen | gefestigt');
-for (const d of [1, 7, 14, 30, 60, 90, 120, 150, 180]) {
-  const r = at(d);
-  console.log(String(r.day).padStart(3), '|', String(r.reviews).padStart(4), '|',
-    String(r.answers).padStart(9), '|', (r.acc * 100).toFixed(0).padStart(11) + '%', '|',
-    String(r.inLearning).padStart(10), '|', String(r.mature).padStart(9));
+const bei = (d) => zeilen[d - 1];
+console.log(`${TAGE} Tage · ${NEU} neue Karten/Tag · Deckel ${DECKEL}` + (PAUSEN.length ? ' · mit zwei Pausen von je 14 Tagen' : ''));
+console.log('\nTag | Rueckstand | Antworten | Trefferquote | angefangen | gefestigt');
+for (const d of [1, 7, 14, 30, 45, 60, 90, 120, 150, 180].filter(x => x <= TAGE)) {
+  const r = bei(d);
+  console.log(String(r.tag).padStart(3), '|', String(r.rueckstand).padStart(10), '|',
+    String(r.antworten).padStart(9) + (r.pause ? ' P' : '  '), '|',
+    (r.quote * 100).toFixed(0).padStart(10) + ' %', '|',
+    String(r.angefangen).padStart(10), '|', String(r.fest).padStart(9));
 }
-const peak = rows.reduce((a, r) => Math.max(a, r.answers), 0);
-const avg = rows.reduce((a, r) => a + r.answers, 0) / rows.length;
-console.log(`\nSpitzenlast: ${peak} Karten/Tag · Schnitt: ${avg.toFixed(1)} Karten/Tag`);
-console.log(`Geschätzte Zeit im Schnitt: ~${Math.round(avg * 7 / 60)} Minuten pro Tag (7 s je Karte)`);
-console.log(`Nach ${DAYS} Tagen: ${at(DAYS).mature} von ${CARDS.length} Karten gefestigt.`);
+const aktiv = zeilen.filter(r => !r.pause);
+const spitzeLast = Math.max(...aktiv.map(r => r.antworten));
+const spitzeStau = Math.max(...zeilen.map(r => r.rueckstand));
+const schnitt = aktiv.reduce((a, r) => a + r.antworten, 0) / aktiv.length;
+console.log(`\nSpitzenlast   : ${spitzeLast} Karten an einem Tag`);
+console.log(`Spitzenrueckstand: ${spitzeStau} faellige Karten`);
+console.log(`Schnitt       : ${schnitt.toFixed(1)} Karten/Tag · rund ${Math.round(schnitt * 7 / 60)} Minuten (7 s je Karte)`);
+console.log(`Nach ${TAGE} Tagen: ${bei(TAGE).fest} von ${CARDS.length} Karten gefestigt, ${bei(TAGE).angefangen} angefangen.`);
