@@ -493,6 +493,42 @@ try {
     await nctx.close();
   }
 
+  group('Merkanker sind Abrufaufgaben');
+  /* Ein Merkanker, den man nur liest, ist die schwaechste Lernform ueberhaupt.
+     Deshalb steht oben der Hinweisreiz und die Aufloesung kommt erst auf
+     Tastendruck – und ein Anker von vor sieben Anzeigetagen kommt zurueck. */
+  {
+    const mctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const mp = await mctx.newPage();
+    await mp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    check('nur ein Merkanker, solange die Rueckschau nicht reicht',
+      await mp.locator('.card.fact').count() === 1);
+    const verdeckt = await mp.locator('.card.fact .merk').first().isVisible();
+    check('die Aufloesung ist zuerst verdeckt', !verdeckt);
+    await mp.locator('[data-merk="merkHeute"]').click();
+    await mp.waitForTimeout(200);
+    check('Aufdecken zeigt die Aufloesung',
+      await mp.locator('.card.fact .merk').first().isVisible());
+    check('der Knopf verschwindet nach dem Aufdecken',
+      await mp.locator('[data-merk="merkHeute"]').count() === 0);
+
+    // Genug Anzeigetage – jetzt muss die Rueckschau dazukommen
+    await mp.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.factSeen = 30; st.factIdx = 30; st.factDay = '2000-01-01';
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await mp.reload({ waitUntil: 'networkidle' });
+    await mp.waitForTimeout(300);
+    check('ab dem achten Anzeigetag kommt die Rueckschau dazu',
+      await mp.locator('.card.fact').count() === 2);
+    const rueck = await mp.locator('.card.fact').nth(1).innerText();
+    check('die Rueckschau ist als solche beschriftet', /Vor sieben Tagen/.test(rueck), rueck.slice(0, 40));
+    check('auch die Rueckschau ist zuerst verdeckt',
+      !(await mp.locator('#merkRueck').isVisible()));
+    await mctx.close();
+  }
+
   group('Nochmal hat einen Deckel');
   /* Ohne Deckel schob sich eine Karte, die man nicht weiss, bei jedem Versuch
      erneut ein - gemessen wurde dieselbe Karte in einer Runde von zwoelf Karten

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 
 globalThis.localStorage = { getItem: () => null, setItem: () => {}, removeItem: () => {} };
 
-const { schedule, strength, preview, retention, isDue, isNew, isLeech, fresh,
+const { schedule, strength, preview, isDue, isNew, isLeech, fresh,
         AGAIN, HARD, GOOD, EASY } = await import('../assets/js/srs.js');
 const { todayNum } = await import('../assets/js/store.js');
 const { options, similarity, normalize, shuffle } = await import('../assets/js/quiz.js');
@@ -140,16 +140,6 @@ test('Reifegrad liegt immer zwischen 0 und 1', () => {
     const v = strength(s);
     assert.ok(v >= 0 && v <= 1, `Reifegrad außerhalb 0..1: ${v}`);
   }
-});
-
-test('Merkwahrscheinlichkeit fällt mit der Zeit und bleibt zwischen 0 und 1', () => {
-  const s = schedule(schedule(fresh(), GOOD), GOOD);
-  const t = todayNum();
-  const a = retention(s, t);
-  const b = retention(s, t + 30);
-  assert.ok(a >= 0 && a <= 1 && b >= 0 && b <= 1);
-  assert.ok(b < a, 'später erinnert man sich schlechter');
-  assert.equal(retention(fresh(), t), 0);
 });
 
 test('Wackelkandidat wird erst nach mehreren Fehlern erkannt', () => {

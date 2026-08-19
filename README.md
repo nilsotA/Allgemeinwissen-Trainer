@@ -27,6 +27,7 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Aktives Abrufen** (retrieval practice) | Erst Multiple Choice zum Erkennen, ab der dritten Wiederholung freies Abrufen mit Selbstbewertung – Abrufen prägt stärker ein als Wiederlesen. |
 | **Verschränken** (interleaving) | Das Tagestraining mischt Themen, statt ein Gebiet am Stück zu pauken, und verteilt neue Karten gleichmäßig über die Einheit. |
 | **Elaboration** | Jede Karte liefert nach der Antwort einen Kontext, eine Eselsbrücke oder eine Einordnung – Wissen hält, wenn es andocken kann. |
+| **Auch das Beiwerk fragt ab** | „Wissen des Tages" zeigt erst die Frage, dann auf Tastendruck die Auflösung – und holt einen Anker von vor sieben Tagen zurück. Nur Lesen ist die schwächste Lernform, die es gibt. |
 | **Schwerpunkt** | Neue Karten kommen reihum aus allen Themen – ein Studienfach bekäme damit ein Neuntel, egal wie viele Karten dahinterstehen. Als Schwerpunkt markierte Themen sind pro Runde zweimal an der Reihe: Sport und Mathematik steigen so von 22 auf 36 % der Neuzugänge. |
 | **Schwierigkeits-Leiter** | Neue Karten kommen standardmäßig leicht zuerst, damit Grundlagenlücken zuerst schließen – innerhalb einer Stufe gestreut, damit nicht ähnlich formulierte Fragen beieinanderstehen. |
 | **Sofortige Rückmeldung** | Richtig/falsch plus Erklärung direkt nach der Antwort. |
@@ -45,6 +46,64 @@ Mit `npm run simulate -- --pausen` kommen zwei Abwesenheiten von je zwei Wochen 
 staut sich der Rückstand auf rund 550 fällige Karten – die Bremse pausiert daraufhin die neuen
 Karten, und nach etwa vier Wochen ist der Berg abgetragen, ohne dass die Tageslast über den
 Deckel steigt.
+
+### Woher die Methoden stammen – und was sie wirklich hergeben
+
+Die Bezugsgröße ist die Übersichtsarbeit von Dunlosky, Rawson, Marsh, Nathan und
+Willingham (2013, *Psychological Science in the Public Interest*), die zehn verbreitete
+Lerntechniken nach Befundlage einordnet. Zwei erhalten dort **hohe** Wirksamkeit, drei
+**mittlere**, fünf **geringe**. Diese Einteilung ist hier die Messlatte:
+
+| Was die App tut | Technik | Befundlage | Belege |
+|---|---|---|---|
+| Jede Karte ist eine Abfrage, nie ein Lesetext | Übungstests | **hoch** | Roediger & Karpicke 2006; Meta-Analyse Rowland 2014 (g ≈ 0,5) |
+| Wachsende Abstände, Termin je Karte | Verteiltes Lernen | **hoch** | Meta-Analyse Cepeda et al. 2006; Cepeda et al. 2008 zum optimalen Abstand |
+| Wiederholen bis zum Kriterium über mehrere Termine | Erfolgreiches Wiederlernen | **hoch** | Rawson & Dunlosky 2011 |
+| Kontext, Ursache und Einordnung nach jeder Antwort | Elaboration | mittel | Dunlosky et al. 2013 |
+| Themen werden gemischt statt am Stück gepaukt | Verschränken | mittel | Rohrer, Dedrick & Stershic 2015 |
+| Merkhilfen für hartnäckige Karten | Schlüsselwortmethode | **gering** | Dunlosky et al. 2013 |
+
+**Vier Stellen, an denen es hakt – offen benannt:**
+
+**Multiple Choice ist die schwächere Prüfform.** Freies Abrufen prägt stärker ein als
+Wiedererkennen. Die Auswahlfrage ist hier nur das Gerüst für die ersten zwei Begegnungen;
+danach wird frei abgerufen. Gemessen über 180 simulierte Tage sind dadurch bereits
+**48,2 %** aller Abrufe freie Abrufe – eine Karte verbringt den größten Teil ihres Lebens
+jenseits der Schwelle. Ab der ersten Wiederholung umzuschalten brächte 66,2 %, verlangte
+aber, eine gerade erst gesehene Karte schon am nächsten Tag zu tippen. Dass Multiple Choice
+überhaupt trägt, hängt an der Qualität der Ablenker (Little, Bjork, Bjork & Angello 2012):
+Nur wenn die falschen Optionen ernsthaft in Frage kommen, muss man beim Ausschließen
+tatsächlich Wissen abrufen. Genau deshalb steckt so viel Arbeit in den Ablenkern – die
+Ratequote von 27,1 % und die Klammerquote von 61,0 % oben sind keine Kosmetik, sondern die
+Voraussetzung dafür, dass die Auswahlfrage überhaupt eine Prüfung ist.
+
+**Selbstbewertung lädt zur Selbsttäuschung ein.** Beim freien Abrufen bewertet man sich
+selbst – und wer die Lösung erst sieht und dann urteilt, hält für gewusst, was er gerade
+gelesen hat (Koriat & Bjork 2005 nennen das Rückschaufehler). Das Eingabefeld wirkt dagegen,
+weil eine getippte Antwort vor der Auflösung festgelegt ist und automatisch verglichen wird.
+Es ist aber **freiwillig** – ein bewusster Kompromiss zugunsten der Bedienbarkeit auf dem
+Handy, und die schwächste Stelle der App. Wer sich selbst nicht traut, sollte tippen.
+
+**Wachsende Abstände sind Konvention, nicht Beweis.** Dass die Abstände wachsen müssen, ist
+schlechter belegt, als es klingt: Karpicke & Roediger (2007) fanden gleichbleibende Abstände
+mindestens ebenbürtig. Belegt ist der Abstand an sich, nicht seine Steigerung. Der Scheduler
+folgt hier SM-2 – einem Verfahren von 1987, das sich bewährt hat, aber nicht aus Daten
+abgeleitet ist.
+
+**Verschränken wirkt nicht überall gleich.** Der starke Befund von Rohrer et al. betrifft das
+Unterscheiden von *Aufgabentypen* in der Mathematik – wer gemischt übt, erkennt später, welches
+Verfahren gefragt ist. Diese Sammlung besteht aus Wissensfragen, nicht aus Rechenaufgaben; das
+Mischen der Themen ist hier also die schwächere Variante des Prinzips.
+
+**Was die App über sich selbst nicht wissen kann:** Die Simulation (`npm run simulate`) misst
+Arbeitslast, Rückstand und Termintreue – nicht Behalten. Ihre Vergessenskurve ist eine Annahme,
+kein Messwert; eine Simulation, die ihre eigene Annahme zurückliest, belegt nichts. Alle
+Aussagen zum Lernerfolg stehen und fallen daher mit der zitierten Literatur, nicht mit
+Zahlen aus diesem Projekt. Aus demselben Grund wurde eine Funktion `retention()` wieder
+entfernt: Sie berechnete eine „erwartete Merkwahrscheinlichkeit", wurde von keiner Zeile der
+App benutzt und widersprach der Simulation deutlich – am Fälligkeitstag sagte sie 66 %, die
+Simulation rechnete mit 86 %. Eine Vergessenskurve, die niemand benutzt, ist eine Behauptung,
+die niemand prüft.
 
 ### Was bewusst *nicht* drin ist
 
@@ -93,7 +152,16 @@ Deckel steigt.
   nach Thema aufschlüsselte. Jetzt steht für Basis, Solide und Profi jeweils da, wie viele
   Karten begonnen sind und wie viele wirklich fest sitzen.
 - **Wissen des Tages** – 141 kurze Merkanker, die ein Warum erklären oder einen verbreiteten
-  Irrtum ausräumen. Einer pro Tag, ein knappes halbes Jahr ohne Wiederholung.
+  Irrtum ausräumen. Einer pro Tag, ein knappes halbes Jahr ohne Wiederholung. Sie sind
+  **Abrufaufgaben, keine Lesehäppchen**: Oben steht die Frage, die Auflösung kommt erst auf
+  Tastendruck – und ein Anker von vor sieben Anzeigetagen kommt zurück. Vorher war das die
+  schwächste Methode im ganzen Projekt: einmal lesen, nie wieder abrufen, von Dunlosky et al.
+  als *gering wirksam* eingestuft. Gemessen haben **51 der 141** Anker keine Entsprechung unter
+  den Karten – sie wurden also tatsächlich genau einmal gesehen. Damit die Frage überhaupt
+  einen Abruf auslöst, darf sie die Antwort nicht schon enthalten; Überschriften wie
+  „Mitochondrien waren einmal Bakterien" taugen dafür nicht. **118 der 141** Anker haben
+  deshalb eine eigene Abruffrage bekommen, die übrigen 23 fragen schon in der Überschrift
+  („Warum Eis schwimmt").
 - **Rückblick nach jeder Runde**: Welche Karten saßen noch nicht – mit Antwort und Kontext.
 - **„Nochmal" mit Deckel.** Eine falsch beantwortete Karte kommt in derselben Einheit wieder –
   erst rund fünf Karten später, beim zweiten Anlauf am Ende der Runde. Danach nicht mehr:

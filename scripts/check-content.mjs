@@ -92,6 +92,26 @@ for (const c of CARDS) {
   }
 }
 
+/* Die Merkanker sind seit dem Umbau Abrufaufgaben, keine Lesehaeppchen: Oben
+   steht ein Hinweisreiz, der Text kommt erst auf Tastendruck. Das funktioniert
+   nur, wenn der Reiz die Antwort NICHT schon enthaelt. Ob eine Ueberschrift ein
+   guter Reiz ist, laesst sich nicht rechnen - das ist von Hand entschieden.
+   Pruefbar ist der Rest: dass es ueberhaupt einen Reiz gibt, dass er nicht mit
+   dem Text zusammenfaellt und dass kein Reiz zweimal vorkommt. */
+const reiz = (f) => String(f.f || f.t || '');
+const reizGesehen = new Map();
+for (const f of FACTS) {
+  const r = reiz(f);
+  if (r.length < 12) fail(`Merkanker „${r}": Hinweisreiz zu kurz fuer einen Abrufversuch`);
+  if (!f.x || f.x.length < 40) fail(`Merkanker „${r}": Aufloesung zu duenn`);
+  if (norm(f.x).includes(norm(r)) && r.length > 15) {
+    fail(`Merkanker „${r}": der Hinweisreiz steht woertlich in der Aufloesung`);
+  }
+  if (reizGesehen.has(norm(r))) fail(`Zwei Merkanker mit demselben Hinweisreiz: „${r}"`);
+  reizGesehen.set(norm(r), r);
+}
+const eigene = FACTS.filter(f => f.f).length;
+
 const byCat = countByCat();
 const byLvl = CARDS.reduce((o, c) => (o[c.d] = (o[c.d] || 0) + 1, o), {});
 console.log('\nKarten gesamt:', CARDS.length);
@@ -99,6 +119,7 @@ console.log('Je Kategorie :', CATS.map(c => `${c.id}=${byCat[c.id] || 0}`).join(
 console.log('Je Stufe     :', `Grundlagen=${byLvl[1] || 0}  Solide=${byLvl[2] || 0}  Profi=${byLvl[3] || 0}`);
 const subs = new Set(CARDS.map(c => c.cat + '/' + c.sub));
 console.log('Teilgebiete  :', subs.size);
+console.log('Merkanker    :', `${FACTS.length} – davon ${eigene} mit eigener Abruffrage, ${FACTS.length - eigene} mit der Ueberschrift als Reiz`);
 
 /* Wie gut funktioniert „nimm die laengste Option"? Sollte bei 25 Prozent liegen. */
 let laengsteGewinnt = 0, mitAblenkern = 0;

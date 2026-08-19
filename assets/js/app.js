@@ -181,9 +181,39 @@ function dailyFact() {
   if (st.factDay !== k) {
     st.factDay = k;
     st.factIdx = (st.factIdx + 1) % FACTS.length;
+    st.factSeen = (st.factSeen || 0) + 1;
     save();
   }
   return FACTS[st.factIdx % FACTS.length];
+}
+
+/* Ein Merkanker von vor sieben Anzeigetagen kommt noch einmal – als Abruffrage,
+   nicht zum Nachlesen. Gemessen haben 51 der 141 Merkanker keine Entsprechung
+   unter den Karten; ohne Rueckschau werden sie genau einmal gelesen und nie
+   wieder abgerufen. Gezaehlt werden Anzeigetage, nicht Kalendertage: Wer eine
+   Woche aussetzt, bekommt trotzdem den siebten Anker zurueck und keinen, den er
+   nie gesehen hat. */
+const RUECKSCHAU = 7;
+function factRecap() {
+  const st = S();
+  if ((st.factSeen || 0) <= RUECKSCHAU) return null;
+  const n = FACTS.length;
+  return FACTS[(((st.factIdx - RUECKSCHAU) % n) + n) % n];
+}
+
+/* Die Frage, die den Abruf ausloest. Die meisten Ueberschriften taugen selbst
+   als Hinweisreiz („Warum Eis schwimmt"); wo sie zu blass ist, traegt der
+   Merkanker ein eigenes Feld f. */
+const factFrage = (f) => f.f || f.t;
+
+function merkankerKarte(f, kennung, ueber) {
+  return `<div class="card fact">
+    ${ueber ? `<p class="tiny">${esc(ueber)}</p>` : ''}
+    <h3>${esc(factFrage(f))}</h3>
+    <p class="muted merk" id="${kennung}" hidden>${esc(f.x)}</p>
+    <button class="btn ghost auf" data-merk="${kennung}" aria-expanded="false"
+      aria-controls="${kennung}">Erst überlegen – dann aufdecken</button>
+  </div>`;
 }
 
 function renderHome() {
@@ -198,6 +228,7 @@ function renderHome() {
   const stau = sess.imRueckstau() && !settings().trotzdemNeu;
   const pct = Math.min(1, d.done / (d.done + plan || 1));
   const f = dailyFact();
+  const rueck = factRecap();
   const flags = sess.flaggedCount();
   const hour = new Date().getHours();
   const greet = hour < 11 ? 'Guten Morgen' : hour < 18 ? 'Servus' : 'Guten Abend';
@@ -250,10 +281,8 @@ function renderHome() {
   </div>
 
   <h2 class="sec">Wissen des Tages</h2>
-  <div class="card fact">
-    <h3>${esc(f.t)}</h3>
-    <p class="muted">${esc(f.x)}</p>
-  </div>
+  ${merkankerKarte(f, 'merkHeute', '')}
+  ${rueck ? merkankerKarte(rueck, 'merkRueck', 'Vor sieben Tagen – weißt du es noch?') : ''}
 
   <h2 class="sec">Dein Bestand</h2>
   <div class="kpis">
@@ -270,6 +299,13 @@ function renderHome() {
 
   const sich = document.getElementById('sichernJetzt');
   if (sich) sich.onclick = async () => { if (await sichern()) render(); };
+
+  app.querySelectorAll('[data-merk]').forEach(b => b.onclick = () => {
+    const ziel = document.getElementById(b.dataset.merk);
+    ziel.hidden = false;
+    b.setAttribute('aria-expanded', 'true');
+    b.remove();
+  });
 
   app.querySelector('[data-go="daily"]').onclick = () => {
     const q = sess.buildDaily();
@@ -963,7 +999,13 @@ function useRecall(card, cs) {
   if (card.mc) return false;
   if (m === 'mc') return false;
   if (m === 'recall') return true;
-  return !!cs && cs.reps >= 2;              // erst erkennen, dann frei abrufen
+  /* Erst erkennen, dann frei abrufen. Die Schwelle bleibt bei zwei Wiederholungen,
+     und das ist gemessen: Ueber 180 simulierte Tage sind damit bereits 48,2 % aller
+     Abrufe freie Abrufe, weil eine Karte den groessten Teil ihres Lebens jenseits
+     der Schwelle verbringt. Ab reps>=1 waeren es 66,2 % – erkauft damit, dass die
+     zweite Begegnung mit einer voellig neuen Karte schon getippt werden muss.
+     Genau dort traegt die Stuetze noch. */
+  return !!cs && cs.reps >= 2;
 }
 
 function shell(inner, foot) {

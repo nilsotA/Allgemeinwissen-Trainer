@@ -13,7 +13,7 @@ globalThis.localStorage = {
 };
 
 const store = await import('../assets/js/store.js');
-const { schedule, fresh, strength, retention, AGAIN, HARD, GOOD, EASY } = await import('../assets/js/srs.js');
+const { schedule, fresh, strength, AGAIN, HARD, GOOD, EASY } = await import('../assets/js/srs.js');
 
 const TAG = 86400000;
 /* Fester Startwert: ein Fehlschlag ist damit reproduzierbar und nicht
@@ -50,8 +50,6 @@ test('zufällige Bewertungsfolgen verletzen keine Zusicherung des Planers', () =
         }
         const st = strength(s);
         assert.ok(st >= 0 && st <= 1, `Reifegrad ${st}`);
-        const r = retention(s, t);
-        assert.ok(r >= 0 && r <= 1, `Merkwahrscheinlichkeit ${r}`);
       }
     }
   } finally { Date.now = echt; }

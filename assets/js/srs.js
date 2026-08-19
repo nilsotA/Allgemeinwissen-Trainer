@@ -104,14 +104,6 @@ export const isNew = (cs) => !cs || cs.seen === 0;
 /** Karte, die immer wieder umkippt → gezielt üben */
 export const isLeech = (cs) => !!cs && cs.lapses >= 4 && strength(cs) < 0.45;
 
-/** Erwartete Merkwahrscheinlichkeit heute (grobe Vergessenskurve). */
-export function retention(cs, t = todayNum()) {
-  if (!cs || !cs.reps) return 0;
-  const elapsed = Math.max(0, t - (cs.due - cs.iv));
-  const stability = Math.max(1, cs.iv);
-  return Math.exp(-elapsed / (stability * 2.4));
-}
-
 /** Menschenlesbares Intervall für die Bewertungsknöpfe.
     Ohne Streuung, damit der Knopf nicht bei jedem Antippen etwas anderes verspricht. */
 export function preview(cs, grade) {
