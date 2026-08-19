@@ -21,6 +21,25 @@
 <link rel="apple-touch-icon" href="./icons/icon-180.png">
 <link rel="icon" href="./icons/icon-192.png" type="image/png">
 <link rel="stylesheet" href="./assets/css/app.css">
+<!-- Farbschema vor dem ersten Anstrich setzen. Der Rest der App kommt erst
+     nach einem halben Megabyte Modulen an; bis dahin blitzte die App im
+     falschen Schema auf und die Statusleiste stand auf der falschen Farbe.
+     Bewusst ohne Modul, ohne Import, mit eigenem try: schlaegt das hier fehl,
+     uebernimmt applyTheme() spaeter wie bisher. -->
+<script>
+(function () {
+  try {
+    var t = (JSON.parse(localStorage.getItem('wissenswerk.v1') || '{}').settings || {}).theme || 'system';
+    if (t !== 'system' && t !== 'light' && t !== 'dark') t = 'system';
+    var root = document.documentElement;
+    if (t !== 'system') root.setAttribute('data-theme', t);
+    root.style.colorScheme = t === 'system' ? 'light dark' : t;
+    var dunkel = t === 'dark' || (t === 'system' && !matchMedia('(prefers-color-scheme: light)').matches);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', dunkel ? '#17120e' : '#f6f1e9');
+  } catch (e) { /* dann eben spaeter */ }
+})();
+</script>
 </head>
 <body>
 

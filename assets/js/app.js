@@ -1134,8 +1134,51 @@ function boot() {
   document.getElementById('boot')?.remove();
   app.hidden = false;
   show('home');
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js').catch(() => { /* offline ist Kür */ });
-  }
+  if ('serviceWorker' in navigator) starteServiceWorker();
+}
+
+/* Der Service Worker uebernimmt bewusst nicht von selbst: waehrend einer
+   laufenden Runde die halbe App auszutauschen, waere der schlechteste
+   denkbare Moment. Stattdessen fragt die App einmal nach. */
+function starteServiceWorker() {
+  // Beim allerersten Besuch uebernimmt der Worker die Seite ganz normal - das
+  // ist kein Update und darf kein Neuladen ausloesen.
+  const hatteWorker = !!navigator.serviceWorker.controller;
+  let laedtNeu = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hatteWorker || laedtNeu) return;
+    laedtNeu = true;
+    location.reload();
+  });
+  // updateViaCache 'none': das Skript selbst darf nie aus dem HTTP-Cache
+  // kommen, sonst bemerkt der Browser eine neue Fassung tagelang nicht.
+  navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(reg => {
+    const pruefen = () => { if (reg.waiting && navigator.serviceWorker.controller) updateAnbieten(reg.waiting); };
+    pruefen();
+    reg.addEventListener('updatefound', () => {
+      const neu = reg.installing;
+      if (neu) neu.addEventListener('statechange', () => { if (neu.state === 'installed') pruefen(); });
+    });
+  }).catch(() => { /* offline ist Kür */ });
+}
+
+function updateAnbieten(worker) {
+  if (document.querySelector('.toast.aktion')) return;
+  document.querySelector('.toast')?.remove();
+  const d = document.createElement('div');
+  d.className = 'toast aktion';
+  d.setAttribute('role', 'status');
+  d.innerHTML = '<span>Neue Fassung bereit</span>';
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = 'Laden';
+  b.onclick = () => {
+    // Nicht mitten in einer Runde: das Neuladen wuerde die offene Frage schlucken.
+    if (run) { toast('Erst die Runde zu Ende – danach wird geladen'); return; }
+    d.remove();
+    worker.postMessage('jetzt-uebernehmen');
+  };
+  d.appendChild(b);
+  document.body.appendChild(d);
 }
 boot();

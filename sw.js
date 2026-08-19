@@ -1,5 +1,5 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-fdde8dac73';
+const VERSION = 'wissenswerk-4394544b6c';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",
@@ -29,71 +29,83 @@ const ASSETS = [
   "./package.json"
 ];
 
+/* Holt die genannten Dateien am HTTP-Cache vorbei in den Bestand.
+   Einzelne Ausfaelle kippen nichts - zurueck kommt, was noch fehlt. */
+async function vorladen(cache, liste) {
+  const ergebnisse = await Promise.all(liste.map(async (url) => {
+    try {
+      const res = await fetch(url, { cache: 'reload' });
+      if (!res.ok) return url;
+      await cache.put(url, res);
+      return null;
+    } catch (e) { return url; }
+  }));
+  return ergebnisse.filter(Boolean);
+}
+
 self.addEventListener('install', (e) => {
   e.waitUntil((async () => {
     const cache = await caches.open(VERSION);
     // Bewusst nicht cache.addAll: das laeuft durch den HTTP-Cache und koennte
     // veraltete Module dauerhaft in den Offline-Bestand uebernehmen.
-    // Einzelne Ausfaelle duerfen die Installation nicht kippen - was fehlt, holt
-    // der fetch-Handler spaeter nach. Ein Totalausfall wird gemeldet.
-    const ergebnisse = await Promise.all(ASSETS.map(async (url) => {
-      try {
-        const res = await fetch(url, { cache: 'reload' });
-        if (!res.ok) return false;
-        await cache.put(url, res);
-        return true;
-      } catch (e) { return false; }
-    }));
-    const fehlend = ergebnisse.filter(x => !x).length;
-    if (fehlend) console.warn('[sw] ' + fehlend + ' von ' + ASSETS.length + ' Dateien nicht vorgeladen');
-    if (fehlend === ASSETS.length) throw new Error('Vorladen vollstaendig fehlgeschlagen');
-    self.skipWaiting();
+    const fehlend = await vorladen(cache, ASSETS);
+    if (fehlend.length) console.warn('[sw] ' + fehlend.length + ' von ' + ASSETS.length + ' Dateien nicht vorgeladen');
+    // Kein skipWaiting: die laufende Seite haelt ihre alte Fassung, bis sie
+    // geschlossen wird oder der Nutzer das Update ausdruecklich annimmt.
+    // Sonst mischten sich nach einer Veroeffentlichung neues Grundgeruest und
+    // alte Module - genau der Zustand, in dem nichts mehr zusammenpasst.
   })());
+});
+
+self.addEventListener('message', (e) => {
+  if (e.data === 'jetzt-uebernehmen') self.skipWaiting();
 });
 
 self.addEventListener('activate', (e) => {
   e.waitUntil((async () => {
-    const keys = await caches.keys();
-    await Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)));
+    const cache = await caches.open(VERSION);
+    // Was beim Installieren nicht durchkam, jetzt nachholen.
+    const da = new Set((await cache.keys()).map(r => new URL(r.url).pathname));
+    const luecken = ASSETS.filter(u => !da.has(new URL(u, self.location.href).pathname));
+    const fehlend = luecken.length ? await vorladen(cache, luecken) : [];
+    // Den alten Bestand erst wegwerfen, wenn der neue vollstaendig ist. Sonst
+    // steht die App nach einem Update ohne Netz mit halbem Bestand da.
+    if (!fehlend.length) {
+      const keys = await caches.keys();
+      await Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)));
+    } else {
+      console.warn('[sw] alter Bestand bleibt als Rueckfall: ' + fehlend.length + ' Dateien fehlen');
+    }
     await self.clients.claim();
   })());
 });
 
-/* Netz zuerst für das Grundgerüst (damit Updates ankommen),
-   Cache zuerst für alles andere (damit die App offline sofort startet). */
+/* Alles aus einem Guss: Grundgeruest und Module kommen aus demselben
+   Bestand, damit index.html nie auf Module einer anderen Fassung trifft.
+   Neue Fassungen kommen ueber den Lebenszyklus des Service Workers an,
+   nicht ueber einzelne Dateien. */
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
-  const isShell = url.pathname.endsWith('/') || url.pathname.endsWith('index.html');
-  if (isShell) {
-    e.respondWith((async () => {
-      try {
-        const net = await fetch(req);
-        // Nur gueltige Antworten als Offline-Rueckfall speichern, sonst wuerde
-        // eine 404-Seite dauerhaft die App ersetzen.
-        if (net.ok) {
-          const cache = await caches.open(VERSION);
-          cache.put(req, net.clone());
-        }
-        return net;
-      } catch (err) {
-        return (await caches.match(req)) || (await caches.match('./index.html'));
-      }
-    })());
-    return;
-  }
+  const istGeruest = req.mode === 'navigate' || url.pathname.endsWith('/') || url.pathname.endsWith('index.html');
 
   e.respondWith((async () => {
-    const hit = await caches.match(req);
-    if (hit) return hit;
+    const cache = await caches.open(VERSION);
+    const eigen = await cache.match(istGeruest ? './index.html' : req);
+    if (eigen) return eigen;
     try {
       const net = await fetch(req);
-      if (net.ok) (await caches.open(VERSION)).put(req, net.clone());
+      // Nur gueltige Antworten aufnehmen, sonst ersetzte eine 404-Seite
+      // dauerhaft die App.
+      if (net.ok) cache.put(req, net.clone());
       return net;
     } catch (err) {
+      // Letzter Rueckfall: ein aelterer Bestand, falls das Update unvollstaendig blieb.
+      const alt = await caches.match(istGeruest ? './index.html' : req);
+      if (alt) return alt;
       return new Response('Offline', { status: 503, statusText: 'Offline' });
     }
   })());
