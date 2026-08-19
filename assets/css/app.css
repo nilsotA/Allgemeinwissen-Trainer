@@ -93,7 +93,10 @@ svg{display:block;flex:none}
 /* ---------- Bausteine ---------- */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--sh1)}
 .card + .card{margin-top:11px}
-.sec{margin:22px 0 9px;font-size:13px;letter-spacing:.02em;color:var(--dim);font-weight:700}
+/* Abschnittsmarke, gesetzt als h2: sonst springt die Gliederung von der
+   Seitenueberschrift direkt auf h3, und die Sprachausgabe findet keine
+   Zwischenebene zum Springen. */
+.sec{margin:22px 0 9px;font-size:13px;line-height:1.4;letter-spacing:.02em;color:var(--dim);font-weight:700}
 /* Kein einzelnes Wort auf der letzten Zeile - gilt fuer alle Textbloecke,
    die ueber mehrere Zeilen laufen koennen. */
 p,.muted,.tiny,.val,.expl,.lk-q,.q{text-wrap:pretty}

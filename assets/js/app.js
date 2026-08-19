@@ -190,7 +190,7 @@ function renderHome() {
     </div>
   </section>
 
-  <div class="sec">Deine Woche${streak ? ` · ${streak} Tage in Folge` : ''}</div>
+  <h2 class="sec">Deine Woche${streak ? ` · ${streak} Tage in Folge` : ''}</h2>
   <div class="card">
     ${wochenstreifen()}
   </div>
@@ -200,13 +200,13 @@ function renderHome() {
     ${flags ? `<button class="btn" data-go="flag">${ico('stern', 's')}Markierte · ${flags}</button>` : ''}
   </div>
 
-  <div class="sec">Wissen des Tages</div>
+  <h2 class="sec">Wissen des Tages</h2>
   <div class="card fact">
     <h3>${esc(f.t)}</h3>
     <p class="muted">${esc(f.x)}</p>
   </div>
 
-  <div class="sec">Dein Bestand</div>
+  <h2 class="sec">Dein Bestand</h2>
   <div class="kpis">
     <div class="kpi"><b>${o.due}</b><span>fällig</span></div>
     <div class="kpi"><b>${o.newLeft}</b><span>neu frei</span></div>
@@ -301,7 +301,7 @@ function verlaufKarte(wochen, trendText) {
   const schnitt = werte.reduce((a, b) => a + b, 0) / werte.length;
   const punkte = wochen.map((w, i) => `${x(i)},${y(w.pct).toFixed(1)}`).join(' ');
   return `
-    <div class="sec">Trefferquote je Woche</div>
+    <h2 class="sec">Trefferquote je Woche</h2>
     <div class="card">
       <svg class="spark" viewBox="0 0 ${breite} 96" width="100%" height="96"
            role="img" aria-label="Trefferquote der letzten ${wochen.length} Wochen: ${werte.join(', ')} Prozent">
@@ -382,7 +382,7 @@ function renderStats() {
       <div class="kpi"><b>${totalDone}</b><span>Antworten</span></div>
     </div>
 
-    <div class="sec">Letzte 12 Wochen</div>
+    <h2 class="sec">Letzte 12 Wochen</h2>
     <div class="card">
       <div class="heat-wrap">
         <div class="heat-days"><span>Mo</span><span></span><span>Mi</span><span></span><span>Fr</span><span></span><span>So</span></div>
@@ -391,7 +391,7 @@ function renderStats() {
       <div class="legend">wenig <i></i><i data-l="1"></i><i data-l="2"></i><i data-l="3"></i><i data-l="4"></i> viel</div>
     </div>
 
-    <div class="sec">Was kommt auf dich zu</div>
+    <h2 class="sec">Was kommt auf dich zu</h2>
     <div class="card">
       ${fc.some(n => n > 0) ? `
       <div class="fc">${fc.map((n, i) => `
@@ -405,7 +405,7 @@ function renderStats() {
     </div>
 
     ${weak.length ? `
-    <div class="sec">Deine Schwachstellen</div>
+    <h2 class="sec">Deine Schwachstellen</h2>
     <div class="tlist">
       ${weak.map(w => `<button class="trow" data-sub="${esc(w.cat)}|${esc(w.sub)}">
         <span class="tico">${catIcon(w.cat)}</span>
@@ -420,14 +420,14 @@ function renderStats() {
 
     ${wochen.length >= 2 ? verlaufKarte(wochen, trendText) : ''}
 
-    <div class="sec">Wissensstand</div>
+    <h2 class="sec">Wissensstand</h2>
     <div class="card">
       <div class="row between"><span>Trefferquote gesamt</span><b>${Math.round(o.accuracy * 100)} %</b></div>
       <div class="row between" style="margin-top:9px"><span>Karten gefestigt</span><b>${o.mature} / ${o.total}</b></div>
       <div class="row between" style="margin-top:9px"><span>Noch nie gesehen</span><b>${o.total - o.seen}</b></div>
     </div>
 
-    <div class="sec">Nach Thema</div>
+    <h2 class="sec">Nach Thema</h2>
     <div class="tlist">
       ${CATS.map(c => {
         const s = p[c.id] || { pct: 0, n: 0 };
@@ -536,7 +536,7 @@ function renderSettings() {
   const flags = sess.flaggedCount();
   app.innerHTML = `
     <h1 class="vh">Einstellungen</h1>
-    <div class="sec">Tagespensum</div>
+    <h2 class="sec">Tagespensum</h2>
     <div class="card">
       <div class="setrow">
         <div><label for="npd">Neue Karten pro Tag</label><p class="tiny">Mehr heißt schneller – aber auch mehr Wiederholungen später.</p></div>
@@ -579,7 +579,7 @@ function renderSettings() {
       </div>
     </div>
 
-    <div class="sec">Aktive Themen</div>
+    <h2 class="sec">Aktive Themen</h2>
     <div class="card">
       <div class="row wrap" style="gap:8px">
         ${CATS.map(c => `<button class="chip ${sel.includes(c.id) ? 'on' : ''}" data-tog="${c.id}">${catIcon(c.id, 's')}${esc(c.name)}</button>`).join('')}
@@ -587,12 +587,12 @@ function renderSettings() {
       <p class="tiny" style="margin-top:10px">Abgeschaltete Themen tauchen im Tagestraining nicht mehr auf.</p>
     </div>
 
-    <div class="sec">Auf dem iPhone installieren</div>
+    <h2 class="sec">Auf dem iPhone installieren</h2>
     <div class="card">
       <p class="muted">Safari öffnen → <b>Teilen</b> → <b>Zum Home-Bildschirm</b>. Danach startet Wissenswerk wie eine echte App, auch offline.</p>
     </div>
 
-    <div class="sec">Daten</div>
+    <h2 class="sec">Daten</h2>
     <div class="card">
       <div class="btn-stack">
         <button class="btn" id="exp">Fortschritt sichern (Datei)</button>
@@ -705,7 +705,7 @@ function endRun() {
       <div class="kpi"><b>${sess.overview().due}</b><span>noch fällig</span></div>
     </div>
     ${missed.length ? `
-      <div class="sec">Das saß noch nicht (${missed.length})</div>
+      <h2 class="sec">Das saß noch nicht (${missed.length})</h2>
       <div class="tlist">
         ${missed.slice(0, 12).map(c => `<div class="card" style="padding:13px 14px">
           <span class="qcat">${catIcon(c.cat, 's')}<span>${esc(c.sub)}</span></span>
@@ -790,7 +790,7 @@ function head(card, isFresh) {
       ${isFresh ? '<span class="pill new">neu</span>' : ''}
       ${zaeh ? '<span class="pill zaeh">hartnäckig</span>' : ''}
     </div>
-    <h2 class="q">${esc(card.q)}</h2>`;
+    <h1 class="q">${esc(card.q)}</h1>`;
 }
 
 function step() {
