@@ -85,7 +85,9 @@ const ZEICHEN = [
   // „u' · v + u · v'" nicht von „u · v + u' · v'" zu unterscheiden.
   [/[’´`']/g, ' strich '], [/[éèê]/g, 'e'], [/[àâá]/g, 'a'], [/[ç]/g, 'c'], [/[ñ]/g, 'n'],
 ];
-const FUELLWOERTER = /\b(der|die|das|ein|eine|einen|einem|im|in|von|vom|zu|zum|zur|und|des|dem)\b/g;
+// „den", „einer", „eines" fehlten: „Grand Canyon" galt deshalb nicht als Antwort
+// auf eine Karte, deren Loesung „Den Grand Canyon" lautet.
+const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|im|in|von|vom|zu|zum|zur|und)\b/g;
 
 export function normalize(s) {
   let t = String(s).toLowerCase();
@@ -170,7 +172,20 @@ const kennwoerter = (t) =>
   woerter(t).filter(w => /\d/.test(w) || OPERATOR.has(w)).sort().join(' ');
 
 /** 0..1 – wie nah kommt die Eingabe der Lösung? */
+/* Ein nachgestellter Klammerzusatz erlaeutert die Antwort, er ist nicht die
+   Antwort: Wer auf „Stickstoff (78 %)" nur „Stickstoff" tippt, hat recht. Solche
+   Eingaben werden deshalb auch gegen die Loesung ohne den Zusatz gemessen. */
+const OHNE_ZUSATZ = /\s*\([^()]*\)\s*$/;
+
 export function similarity(input, answer) {
+  const knapp = String(answer).replace(OHNE_ZUSATZ, '').trim();
+  if (knapp && knapp.length >= 3 && knapp !== String(answer).trim()) {
+    return Math.max(vergleich(input, answer), vergleich(input, knapp));
+  }
+  return vergleich(input, answer);
+}
+
+function vergleich(input, answer) {
   const a = normalize(input), b = normalize(answer);
   if (!a || !b) return 0;
   if (a === b) return 1;

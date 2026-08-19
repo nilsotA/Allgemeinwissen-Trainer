@@ -427,3 +427,34 @@ test('vertauschte Aussagen gelten nicht als richtig', () => {
     assert.ok(v < 0.8, `„${eingabe}" ging als „${loesung}" durch (${v.toFixed(2)})`);
   }
 });
+
+/* Die Gegenrichtung zur Strenge: richtige Antworten in ueblichen Schreibvarianten
+   muessen durchgehen, sonst wird die freie Eingabe zur Schikane. */
+test('uebliche Schreibvarianten einer richtigen Antwort gelten', () => {
+  const varianten = [
+    ['klein geschrieben', (a) => a.toLowerCase()],
+    ['Punkt am Ende', (a) => a + '.'],
+    ['ohne Artikel vorn', (a) => a.replace(/^(Der|Die|Das|Ein|Eine|Den|Dem)\s+/, '')],
+    ['Umlaute umschrieben', (a) => a.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')],
+    ['ohne nachgestellten Klammerzusatz', (a) => a.replace(/\s*\([^()]*\)\s*$/, '').trim()],
+  ];
+  for (const [name, wandeln] of varianten) {
+    const daneben = [];
+    for (const c of CARDS) {
+      const v = wandeln(c.a);
+      if (!v || v === c.a || v.length < 2) continue;
+      if (similarity(v, c.a) < 0.8) daneben.push(`„${v}" gegen „${c.a}"`);
+    }
+    assert.deepEqual(daneben, [], `${name}: ${daneben.slice(0, 3).join(' · ')}`);
+  }
+});
+
+/* Ein nachgestellter Klammerzusatz erläutert nur – verlangt wird er nicht.
+   Wer ihn aber mit einer falschen Zahl hinschreibt, bekommt kein Häkchen: Das
+   ist eine Aussage über die Zahl, und sie ist falsch. */
+test('der Klammerzusatz ist freiwillig, eine falsche Zahl darin aber nicht egal', () => {
+  assert.ok(similarity('Stickstoff', 'Stickstoff (78 %)') >= 0.8, 'knappe Form muss gelten');
+  assert.ok(similarity('Stickstoff (78 %)', 'Stickstoff (78 %)') >= 0.8, 'volle Form muss gelten');
+  assert.ok(similarity('Stickstoff (21 %)', 'Stickstoff (78 %)') < 0.8, 'falsche Zahl im Zusatz');
+  assert.ok(similarity('Sauerstoff', 'Stickstoff (78 %)') < 0.8, 'falsches Gas');
+});

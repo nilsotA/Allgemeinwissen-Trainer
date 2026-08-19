@@ -107,7 +107,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 61 Einheitentests plus Inhaltsprüfung
+npm test           # 63 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 34 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:all   # beides
 npm run check      # nur die Inhaltsprüfung
@@ -139,7 +139,7 @@ Struktur (Notrufnummern, Zweierpotenzen, Chromosomenzahlen), bei denen ein versc
 Ablenker sinnlos würde. Betroffen sind 152 der 1.477 Karten, der Effekt auf die Gesamt-
 Ratequote liegt bei rund drei Prozentpunkten.
 
-Die 61 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 63 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 
@@ -151,7 +151,10 @@ wie „kW ist Energie, kWh ist Leistung" kamen zeichenweise auf über 90 % Über
 Der Vergleich achtet seither auf Wortreihenfolge, Vielfachheit und den Wortanfang – im
 Deutschen sitzt die Unterscheidung vorn (intra-/inter-, Impressionismus/Expressionismus).
 Ein Gegentest sichert die andere Richtung: ein Tippfehler in der Antwort wird weiterhin in
-96 % der Fälle verziehen.
+96 % der Fälle verziehen, und übliche Schreibvarianten müssen durchgehen – klein geschrieben,
+mit Punkt am Ende, ohne den Artikel vorn, mit umschriebenen Umlauten und ohne einen
+nachgestellten Klammerzusatz. Der letzte Punkt kostete zuvor Treffer: Wer auf
+„Stickstoff (78 %)" nur „Stickstoff" tippte, bekam kein Häkchen, obwohl das die Antwort ist.
 
 Ebenso geprüft: dass eine falsche Formel nicht durchgeht – „a² − b² = c²" ist keine Antwort
 auf den Satz des Pythagoras, „Grundseite mal Höhe" keine auf die Dreiecksfläche. Zwei
