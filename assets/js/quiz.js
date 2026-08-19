@@ -89,11 +89,21 @@ const ZEICHEN = [
 // auf eine Karte, deren Loesung „Den Grand Canyon" lautet.
 const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|im|in|von|vom|zu|zum|zur|und)\b/g;
 
+/* Wer „Wie viele Kontinente gibt es?" beantwortet, tippt „7" und nicht „Sieben".
+   Ohne diese Zuordnung galt die richtige Antwort als falsch – bei 93 Karten,
+   deren Loesung ein Zahlwort enthaelt. Die Schreibweisen stehen hier bereits
+   in der Form, die nach der Umschrift der Umlaute uebrig bleibt. */
+const ZAHLWOERTER = {
+  null: '0', eins: '1', zwei: '2', drei: '3', vier: '4', fuenf: '5', sechs: '6',
+  sieben: '7', acht: '8', neun: '9', zehn: '10', elf: '11', zwoelf: '12'
+};
+
 export function normalize(s) {
   let t = String(s).toLowerCase();
   for (const [re, ersatz] of ZEICHEN) t = t.replace(re, ersatz);
   t = t.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
        .replace(/[^a-z0-9]+/g, ' ');
+  t = t.split(' ').map(w => ZAHLWOERTER[w] || w).join(' ');
   const ohneFuell = t.replace(FUELLWOERTER, ' ').trim().replace(/\s+/g, ' ');
   // Besteht die Eingabe nur aus Füllwörtern, ist der ungefilterte Text die bessere Grundlage
   return ohneFuell || t.trim().replace(/\s+/g, ' ');

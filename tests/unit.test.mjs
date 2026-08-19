@@ -187,6 +187,32 @@ test('Kartendaten sind vollständig und eindeutig', () => {
   }
 });
 
+test('Zahlwörter und Ziffern gelten als dieselbe Antwort', () => {
+  // 93 Karten haben ein Zahlwort in der Lösung. Wer „8" tippt, hat die Frage
+  // nach den Planeten richtig beantwortet – das darf nicht als Fehler zählen.
+  for (const [ein, loesung] of [['8', 'Acht'], ['sieben', '7'], ['12', 'Zwölf'], ['2 Minuten', 'Zwei Minuten']]) {
+    assert.ok(similarity(ein, loesung) >= 0.95, `„${ein}" gilt nicht als „${loesung}"`);
+  }
+  // Zusammensetzungen bleiben unangetastet
+  assert.equal(normalize('Vierzig'), 'vierzig');
+  assert.equal(normalize('zweite Ableitung'), 'zweite ableitung');
+});
+
+test('zugelassene Nebenschreibweisen zählen als richtig, Ablenker nicht', () => {
+  const mitAz = CARDS.filter(c => c.az && c.az.length);
+  assert.ok(mitAz.length > 0, 'keine Karte mit Nebenschreibweise');
+  for (const c of mitAz) {
+    for (const z of c.az) {
+      const beste = Math.max(...[c.a, ...c.az].map(l => similarity(z, l)));
+      assert.ok(beste >= 0.9, `${c.id}: „${z}" wird nicht anerkannt`);
+    }
+    for (const w of c.w || []) {
+      const beste = Math.max(...[c.a, ...c.az].map(l => similarity(w, l)));
+      assert.ok(beste < 0.8, `${c.id}: Ablenker „${w}" gilt als richtig`);
+    }
+  }
+});
+
 test('Karten-IDs hängen nur an der Frage, nicht an der Position', async () => {
   // Zwei Importe müssen dieselben IDs ergeben
   const again = await import('../data/index.js');

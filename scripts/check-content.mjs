@@ -72,6 +72,15 @@ for (const c of CARDS) {
   }
 }
 
+/* Eine zugelassene Nebenschreibweise darf keinem Ablenker gleichen - sonst
+   zaehlte beim freien Abrufen ausgerechnet die falsche Antwort als richtig. */
+for (const c of CARDS) {
+  for (const z of c.az || []) {
+    if (norm(z) === norm(c.a)) warn(`${c.id}: Nebenschreibweise „${z}" ist die Antwort selbst`);
+    if ((c.w || []).some(w => norm(w) === norm(z))) fail(`${c.id}: Nebenschreibweise „${z}" ist zugleich ein Ablenker`);
+  }
+}
+
 // Antwortoptionen mehrfach ziehen, weil Ablenker teils zufällig gewählt werden
 for (const c of CARDS) {
   for (let run = 0; run < 6; run++) {

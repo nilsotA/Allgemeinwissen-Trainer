@@ -935,7 +935,12 @@ function askRecall(card, isFresh, cs) {
   const input = document.getElementById('rin');
   const go = () => {
     const typed = input.value.trim();
-    revealRecall(card, typed, typed ? similarity(typed, card.a) : 0, cs, isFresh);
+    // Gegen jede zugelassene Schreibweise pruefen und die beste nehmen: Wer
+    // „1/x" tippt, hat die Frage nach der Ableitung des Logarithmus richtig
+    // beantwortet, auch wenn auf der Karte „Eins durch x" steht.
+    const beste = !typed ? 0
+      : Math.max(...[card.a, ...(card.az || [])].map(l => similarity(typed, l)));
+    revealRecall(card, typed, beste, cs, isFresh);
   };
   document.getElementById('reveal').onclick = go;
   input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });

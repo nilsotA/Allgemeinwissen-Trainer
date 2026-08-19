@@ -50,7 +50,11 @@ for (const [cat, list] of Object.entries(SOURCES)) {
       // beim Ergaenzen von Karten stabil bleibt - eine Umformulierung wuerde
       // den Lernfortschritt dieser Karte sonst stillschweigend wegwerfen.
       // Wer eine Frage umschreibt, traegt den alten Wortlaut unter p ein.
-      alt: (Array.isArray(c.p) ? c.p : c.p ? [c.p] : []).map(q => cat + '-' + hashId(q))
+      alt: (Array.isArray(c.p) ? c.p : c.p ? [c.p] : []).map(q => cat + '-' + hashId(q)),
+      // Ebenso richtige Schreibweisen derselben Antwort. „1/x" ist beim freien
+      // Abrufen dasselbe wie „Eins durch x" - ohne diese Liste haette der
+      // Vergleich die kuerzere Fassung als falsch gemeldet.
+      az: Array.isArray(c.az) ? c.az : c.az ? [c.az] : []
     });
   });
 }

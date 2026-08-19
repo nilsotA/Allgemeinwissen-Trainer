@@ -3,13 +3,15 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.477 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.604 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (Trainingslehre, Anatomie, Sportbiologie, Biomechanik,
-Sportpsychologie) und **Mathematik** (Grundlagen, Schulmathematik, Mathematikgeschichte) –
-in beiden Fächern reicht die Sammlung bewusst über das hinaus, was als Allgemeinwissen
-durchgeht: Energiebereitstellung und Muskelfasertypen ebenso wie Kongruenzsätze, p-q-Formel,
-Logarithmusgesetze und vollständige Induktion.
+Schwerpunkte liegen auf **Sport** (260 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (250 Karten: Grundlagen,
+Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
+In beiden Fächern reicht die Sammlung bewusst bis auf Studienniveau: biomechanische Prinzipien
+und der Doppelauftrag des Schulsports ebenso wie Hauptsatz, hessesche Normalform, Fehler
+erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht nur mitreden,
+sondern sattelfest sein.
 
 ## Warum die App so gebaut ist
 
@@ -26,16 +28,16 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Kleine tägliche Dosis** | Standard: 12 neue Karten pro Tag. Das sind rund 9 Minuten – dauerhaft durchhaltbar. |
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
-Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt rund 97 Karten pro Tag,
-Spitzenlast etwa 140, gut 11 Minuten täglich. Nach einem halben Jahr sitzen etwa 1.300 der
-1.477 Karten fest. Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
+Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt rund 101 Karten pro Tag,
+Spitzenlast etwa 146, gut 12 Minuten täglich. Nach einem halben Jahr sitzen etwa 1.378 der
+1.604 Karten fest. Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
 Kartenbestand mitwächst.
 
 Die Simulation treibt bewusst den **echten** Code – den Scheduler, die Warteschlangen und den
 Speicher. Eine nachgebaute Rechnung prüft sonst nur sich selbst: In der früheren Fassung kam
 die Bremse gegen den Rückstau überhaupt nicht vor, sie konnte also auch nichts über sie sagen.
 Mit `npm run simulate -- --pausen` kommen zwei Abwesenheiten von je zwei Wochen dazu. Dann
-staut sich der Rückstand auf rund 570 fällige Karten – die Bremse pausiert daraufhin die neuen
+staut sich der Rückstand auf rund 550 fällige Karten – die Bremse pausiert daraufhin die neuen
 Karten, und nach etwa vier Wochen ist der Berg abgetragen, ohne dass die Tageslast über den
 Deckel steigt.
 
@@ -109,7 +111,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 71 Einheitentests plus Inhaltsprüfung
+npm test           # 73 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 43 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
@@ -117,6 +119,16 @@ npm run check      # nur die Inhaltsprüfung
 npm run simulate   # simuliert 180 Tage Lernverlauf
 npm run build      # erneuert Icons und Service-Worker-Cache
 ```
+
+### Mehrere richtige Schreibweisen
+
+Beim freien Abrufen zählt die Eingabe gegen die Antwort der Karte – und gegen jede
+Schreibweise, die unter `az` hinterlegt ist. `„1/x"` gilt damit als richtige Antwort auf die
+Frage nach der Ableitung des natürlichen Logarithmus, obwohl auf der Karte „Eins durch x"
+steht. `npm run check` weist zurück, was zugleich Ablenker der Karte ist.
+
+Zahlwörter und Ziffern gelten grundsätzlich als dasselbe: Wer „8" tippt, hat die Frage nach
+der Zahl der Planeten beantwortet. Das betrifft 93 Karten, deren Lösung ein Zahlwort enthält.
 
 ### Kartenkennungen
 
@@ -165,7 +177,7 @@ bedeutungstragenden Werten blieben ganze drei Karten übrig – der Tausch lohnt
 Schranke bei 85 % bleibt trotzdem stehen: Sie fängt den systematischen Fall ab, in dem
 Ablenker maschinell um die Antwort gelegt werden.
 
-Die 71 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 73 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 
