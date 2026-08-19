@@ -152,6 +152,42 @@ if (zahlkarten) {
   if (mittig > 85) fail(`Zu viele Zahlenkarten klammern die Antwort ein (${mittig.toFixed(1)} %) – wer beide Extremwerte streicht, raet mit 50 statt 25 Prozent.`);
 }
 if (quote > 32) fail(`Die Laenge verraet die Antwort zu oft: ${quote.toFixed(1)} % statt hoechstens 32 %`);
+/* Zwei Arten von Schludrigkeit, die beim Lesen durchrutschen und beim Lernen
+   Zeit kosten: derselbe Satz zweimal im selben Kontexttext, und zwei Karten,
+   die dieselbe Frage mit derselbe Antwort stellen. Die zweite Sorte kostet
+   doppelte Wiederholungen fuer einen einzigen Fakt. */
+for (const c of CARDS) {
+  const saetze = String(c.t || '').split(/(?<=[.!?])\s+/).map(x => x.trim()).filter(x => x.length > 15);
+  const gesehen = new Set();
+  for (const satz of saetze) {
+    if (gesehen.has(satz)) fail(`${c.id}: derselbe Satz steht zweimal im Kontext – „${satz.slice(0, 60)}"`);
+    gesehen.add(satz);
+  }
+}
+
+const wortmenge = (t) => new Set(norm(t).split(' ').filter(w => w.length > 4));
+const ueberlappung = (a, b) => {
+  if (a.size < 3 || b.size < 3) return 0;
+  let g = 0;
+  for (const w of a) if (b.has(w)) g++;
+  return g / (a.size + b.size - g);
+};
+const fragen = CARDS.map(c => ({ c, q: wortmenge(c.q), a: wortmenge(c.a) }));
+for (let i = 0; i < fragen.length; i++) {
+  for (let j = i + 1; j < fragen.length; j++) {
+    // Beides muss passen: „Wofuer steht die Abkuerzung X?" gibt es zu Recht
+    // mehrfach – erst wenn auch die Antworten zusammengehen, ist es eine Dublette.
+    // Die Antwortschwelle liegt bewusst niedrig bei 0,25: Zwei Karten koennen
+    // denselben Sachverhalt mit ganz anderen Woertern beantworten („Wurzel aus
+    // der Summe aller Komponentenquadrate" gegen „Wurzel aus der Summe der
+    // quadrierten Koordinaten"). Gemessen trennt 0,25 sauber – darueber
+    // rutschte genau dieser Fall durch, darunter kaemen die Abkuerzungsfragen.
+    if (ueberlappung(fragen[i].q, fragen[j].q) < 0.7) continue;
+    if (ueberlappung(fragen[i].a, fragen[j].a) < 0.25 && norm(fragen[i].c.a) !== norm(fragen[j].c.a)) continue;
+    fail(`Inhaltliche Dublette: ${fragen[i].c.id} „${fragen[i].c.q}" und ${fragen[j].c.id} „${fragen[j].c.q}"`);
+  }
+}
+
 /* Kennungen haengen am Fragetext. Wer eine Frage umschreibt, gibt der Karte
    damit eine neue Kennung - und wirft den Lernfortschritt aller Nutzer weg,
    ohne dass es irgendwo auffiele. Deshalb liegt der Bestand als Liste bei und
