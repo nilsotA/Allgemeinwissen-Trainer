@@ -149,7 +149,9 @@ export function overview() {
   const st = S();
   return {
     total: pool.length, seen: seenTotal, learned, mature, due,
-    newLeft: newBudget(),
+    // Nicht nur das Budget, sondern auch der Vorrat: Sind alle Karten einmal
+    // gesehen, stand auf der Startseite „12 neu frei" neben „alles erledigt".
+    newLeft: Math.min(newBudget(), newCards(pool).length),
     accuracy: st.totalAnswers ? st.totalCorrect / st.totalAnswers : 0,
     t
   };

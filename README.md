@@ -107,7 +107,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 63 Einheitentests plus Inhaltsprüfung
+npm test           # 64 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 34 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:all   # beides
 npm run check      # nur die Inhaltsprüfung
@@ -139,7 +139,7 @@ Struktur (Notrufnummern, Zweierpotenzen, Chromosomenzahlen), bei denen ein versc
 Ablenker sinnlos würde. Betroffen sind 152 der 1.477 Karten, der Effekt auf die Gesamt-
 Ratequote liegt bei rund drei Prozentpunkten.
 
-Die 63 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 64 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 

@@ -266,3 +266,13 @@ test('die Leiter bringt weiterhin die leichten Karten zuerst', () => {
   const erste = sess.newCards().slice(0, 60);
   assert.ok(erste.every(c => c.d === 1), 'in den ersten 60 neuen Karten steckt eine schwerere');
 });
+
+/* Ist jede Karte einmal gesehen, gibt es nichts Neues mehr - dann darf die
+   Startseite auch nicht "12 neu frei" melden. */
+test('neu frei zeigt den Vorrat, nicht nur das Tagesbudget', () => {
+  const voll = { ...fresh(), reps: 5, seen: 6, ok: 5, iv: 40, due: store.todayNum() + 30 };
+  for (const c of CARDS) store.putCard(c.id, { ...voll });
+  const o = sess.overview();
+  assert.equal(sess.newCards().length, 0, 'es sollte keine neue Karte mehr geben');
+  assert.equal(o.newLeft, 0, `newLeft war ${o.newLeft}, obwohl der Vorrat leer ist`);
+});
