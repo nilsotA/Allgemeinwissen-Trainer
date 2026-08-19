@@ -177,6 +177,30 @@ Die restlichen sechs Sekunden sind reine Übertragungszeit für 240 kB Karten �
 nur weniger Inhalt. Stattdessen sagt der Startbildschirm nach anderthalb Sekunden, was gerade
 passiert und dass es einmalig ist.
 
+### Faktenprüfung
+
+Die Sammlung wurde Datei für Datei gegengelesen. Gefunden und behoben:
+
+- **Ablenker, die selbst richtig sind.** „Die Währungsreform" stand als falsche Antwort auf
+  „Was passierte 1923 in Deutschland wirtschaftlich?" – die Rentenmark kam im November 1923,
+  der Kontexttext der Karte sagte das sogar selbst. Ebenso „1517" beim Ende des Mittelalters
+  und „Cyan, Magenta, Gelb" beim additiven Weiß: Als Licht addiert ergeben auch die drei Weiß.
+- **Titel-Anachronismus.** Heinrich IV. war beim Gang nach Canossa 1077 römisch-deutscher
+  König, Kaiser erst ab 1084 – bei einer Frage zum Investiturstreit ist genau das der Punkt.
+- **Sachfehler im Kontext.** Frankreich stimmte 1884 nicht gegen Greenwich als Nullmeridian,
+  es enthielt sich.
+- **Inhaltliche Dubletten.** Der Betrag eines Vektors wurde zweimal gefragt, DIN A4 zweimal
+  erklärt, und die Verdopplungsregel stand einmal mit 70 und einmal mit 72 im Vorrat.
+
+Was sich davon maschinell absichern lässt, ist jetzt eine Schranke in `npm run check`:
+doppelte Sätze im selben Kontexttext, gleiche Titel oder Texte bei den Tagesfakten, und Karten
+mit fast gleicher Frage **und** zusammengehender Antwort. Die Antwortschwelle liegt gemessen
+bei 0,25 – darüber rutschte die Vektor-Dublette durch, darunter kämen die Abkürzungsfragen.
+
+Was sich **nicht** absichern lässt: dieselbe Erklärung in anderen Worten. Bei der Schwelle, die
+die beiden Fakten-Dubletten fängt, kommen 15 Fehlalarme mit. Solche Fälle findet nur, wer die
+Dateien liest.
+
 ### Kartenkennungen
 
 Die Kennung einer Karte ist ein Hash ihres Fragetextes. Das hält sie stabil, wenn Karten

@@ -1,6 +1,7 @@
 /* Prüft die Kartensammlung auf Vollständigkeit und die Antwortoptionen auf Plausibilität. */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { CARDS, CATS, countByCat } from '../data/index.js';
+import FACTS from '../data/facts.js';
 import { options, normalize } from '../assets/js/quiz.js';
 
 const norm = (t) => normalize(t);
@@ -187,6 +188,23 @@ for (let i = 0; i < fragen.length; i++) {
     fail(`Inhaltliche Dublette: ${fragen[i].c.id} „${fragen[i].c.q}" und ${fragen[j].c.id} „${fragen[j].c.q}"`);
   }
 }
+
+/* „Wissen des Tages" laeuft als Rundlauf: Steht derselbe Gedanke zweimal drin,
+   bekommt der Nutzer ihn innerhalb eines halben Jahres doppelt serviert.
+   Geprueft wird nur, was sich verlaesslich pruefen laesst: gleicher Titel oder
+   gleicher Text. Zwei Fassungen DERSELBEN Erklaerung in anderen Worten faengt
+   das nicht - gemessen an den beiden gefundenen Faellen (A4 zweimal erklaert,
+   Verdopplungsregel einmal mit 70 und einmal mit 72) trennt Wortueberlappung
+   nicht: bei der Schwelle, die beide faengt, kommen 15 Fehlalarme mit. Solche
+   Dubletten findet nur, wer die Datei liest. */
+const faktTitel = new Map(), faktText = new Map();
+FACTS.forEach((f, i) => {
+  if (!f || !f.t || !f.x) { fail(`Tagesfakt ${i}: Titel oder Text fehlt`); return; }
+  const t = norm(f.t), x = norm(f.x);
+  if (faktTitel.has(t)) fail(`Tagesfakt mit gleichem Titel: „${f.t}" (${faktTitel.get(t)} und ${i})`);
+  if (faktText.has(x)) fail(`Tagesfakt mit gleichem Text: „${f.t}" und „${FACTS[faktText.get(x)].t}"`);
+  faktTitel.set(t, i); faktText.set(x, i);
+});
 
 /* Kennungen haengen am Fragetext. Wer eine Frage umschreibt, gibt der Karte
    damit eine neue Kennung - und wirft den Lernfortschritt aller Nutzer weg,
