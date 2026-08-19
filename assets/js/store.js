@@ -3,6 +3,7 @@ const KEY = 'wissenswerk.v1';
 
 const DEFAULTS = {
   version: 1,
+  rev: 0,                 // steigt bei jedem Schreiben – erkennt den anderen Tab
   settings: {
     newPerDay: 12,        // neue Karten pro Tag
     maxReviews: 90,       // Deckel für Wiederholungen
@@ -75,9 +76,44 @@ let quotaWarned = false;
 export let onSaveError = () => {};
 export const setSaveErrorHandler = (fn) => { onSaveError = fn; };
 
+/* Zwei offene Tabs teilen sich einen Speicher. Wer zuletzt schreibt, hat sonst
+   recht - und loescht die Lerneinheit des anderen. Alle Zaehler hier wachsen nur,
+   deshalb laesst sich verlustfrei zusammenfuehren statt zu ueberschreiben. */
+function zusammenfuehren(fremd, eigen) {
+  const z = structuredClone(eigen);
+  const groesser = (a, b) => Math.max(Number(a) || 0, Number(b) || 0);
+  for (const [id, f] of Object.entries(fremd.cards || {})) {
+    const e = z.cards[id];
+    // Der juengere Kartenzustand gewinnt als Ganzes – Felder mischen ergaebe Unsinn.
+    if (!e || (f.last || 0) > (e.last || 0) || ((f.last || 0) === (e.last || 0) && (f.seen || 0) > (e.seen || 0))) {
+      z.cards[id] = f;
+    }
+  }
+  for (const [tag, f] of Object.entries(fremd.days || {})) {
+    const e = z.days[tag] || {};
+    z.days[tag] = { done: groesser(e.done, f.done), correct: groesser(e.correct, f.correct),
+                    newC: groesser(e.newC, f.newC), sec: groesser(e.sec, f.sec) };
+  }
+  for (const id of Object.keys(fremd.flags || {})) z.flags[id] = true;
+  for (const k of ['totalAnswers', 'totalCorrect', 'streak', 'best', 'duelBest']) {
+    z[k] = groesser(z[k], fremd[k]);
+  }
+  if ((fremd.lastDay || '') > (z.lastDay || '')) z.lastDay = fremd.lastDay;
+  z.rev = groesser(z.rev, fremd.rev);
+  return z;                                  // Einstellungen bleiben die dieses Tabs
+}
+
 export function save(now = false) {
   const write = () => {
     try {
+      const roh = localStorage.getItem(KEY);
+      if (roh) {
+        const fremd = JSON.parse(roh);
+        if (fremd && typeof fremd === 'object' && (fremd.rev || 0) > (state.rev || 0)) {
+          state = zusammenfuehren(fremd, state);
+        }
+      }
+      state.rev = (state.rev || 0) + 1;
       localStorage.setItem(KEY, JSON.stringify(state));
       quotaWarned = false;
     } catch (e) {
@@ -157,18 +193,50 @@ export function putCard(id, cs) {
 /* iOS beendet eine Web-App oft ohne Vorwarnung. Die gebündelte Speicherung
    wartet bis zu 250 ms – ohne diesen Anker gingen die letzten Antworten verloren.
    pagehide ist auf iOS das zuverlässigste Signal, visibilitychange die Ergänzung. */
+/* Laeuft gerade eine Einheit? Dann darf der Zustand nicht unter ihr weggetauscht
+   werden. Die Oberflaeche meldet das hier an. */
+let istBeschaeftigt = () => false;
+export const setBusyCheck = (fn) => { istBeschaeftigt = fn; };
+
+/** Wird gerufen, wenn ein anderer Tab geschrieben hat und wir uebernommen haben. */
+export let onFremdStand = () => {};
+export const setFremdStandHandler = (fn) => { onFremdStand = fn; };
+
 export function installFlush() {
   if (typeof document === 'undefined') return;
   const flush = () => { if (saveTimer) save(true); };
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); });
   window.addEventListener('pagehide', flush);
   window.addEventListener('beforeunload', flush);
+
+  window.addEventListener('storage', (e) => {
+    if (e.key !== KEY || !e.newValue) return;
+    let fremd;
+    try { fremd = JSON.parse(e.newValue); } catch (err) { return; }
+    if (!fremd || typeof fremd !== 'object' || (fremd.rev || 0) <= (state.rev || 0)) return;
+    // Waehrend einer Einheit nur merken: beim naechsten Speichern wird ohnehin
+    // zusammengefuehrt, und ein Tausch mitten im Ablauf verschluckt Antworten.
+    if (istBeschaeftigt()) return;
+    state = zusammenfuehren(fremd, state);
+    onFremdStand();
+  });
+}
+
+/* Zuruecksetzen und Einlesen sind ausdrueckliche Entscheidungen - sie duerfen
+   nicht vom Zusammenfuehren wieder eingesammelt werden. Deshalb bekommt der neue
+   Zustand eine hoehere Fassungsnummer als alles, was gerade gespeichert ist. */
+function ersetzeZustand(neu) {
+  let gespeichert = 0;
+  try { gespeichert = Number(JSON.parse(localStorage.getItem(KEY) || '{}').rev) || 0; }
+  catch (e) { /* unlesbar ist so gut wie nicht vorhanden */ }
+  neu.rev = Math.max(Number(state.rev) || 0, gespeichert) + 1;
+  state = neu;
+  save(true);
 }
 
 export function resetAll() {
   sichereJetzigen();
-  state = structuredClone(DEFAULTS);
-  save(true);
+  ersetzeZustand(structuredClone(DEFAULTS));
 }
 
 export function exportJSON() {
@@ -251,8 +319,7 @@ export function kennzahlen(z) {
 export function importJSON(txt) {
   const rein = pruefeBackup(txt);
   sichereJetzigen();
-  state = rein;
-  save(true);
+  ersetzeZustand(rein);
 }
 
 function sichereJetzigen() {
@@ -271,7 +338,6 @@ export function sicherungZurueck() {
   if (!roh) return false;
   const rein = saeubern(JSON.parse(roh));
   localStorage.removeItem(SICHERUNG);
-  state = rein;
-  save(true);
+  ersetzeZustand(rein);
   return true;
 }

@@ -4,7 +4,7 @@ import FACTS from '../../data/facts.js';
 import * as store from './store.js';
 import { S, settings, setSetting, save, cardState, putCard, today, todayNum, dayKey,
          numToKey, liveStreak, touchStreak, isFlagged, toggleFlag, setSaveErrorHandler,
-         installFlush } from './store.js';
+         installFlush, setBusyCheck, setFremdStandHandler } from './store.js';
 import { schedule, strength, preview, isLeech, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
 import { options, similarity, normalize, shuffle } from './quiz.js';
 import * as sess from './session.js';
@@ -95,6 +95,16 @@ function toast(msg, ms = 2200) {
 function announce(msg) { if (live) live.textContent = msg; }
 
 setSaveErrorHandler(() => toast('Speicher voll – Fortschritt sichern und Platz schaffen', 5000));
+
+/* Zwei offene Tabs: Der Speicher wird zusammengefuehrt, nicht ueberschrieben.
+   Waehrend einer laufenden Einheit bleibt der Zustand unangetastet - sonst
+   verschluckte der Tausch die gerade gegebene Antwort. */
+setBusyCheck(() => run !== null);
+setFremdStandHandler(() => {
+  if (run) return;
+  render();
+  toast('In einem anderen Tab gelernt – Stand zusammengeführt');
+});
 
 /* ================= Views ================= */
 function render() {
