@@ -1,7 +1,7 @@
 /* Geografie */
 export default [
 /* ---------- Deutschland ---------- */
-{q:"Wie viele Bundesländer hat Deutschland?",a:"16",s:"Deutschland",d:1,t:"Drei davon sind Stadtstaaten: Berlin, Hamburg, Bremen. Merkhilfe: 16 Länder, 16 Landtage.",w:["12","14","18"]},
+{q:"Wie viele Bundesländer hat Deutschland?",a:"16",s:"Deutschland",d:1,t:"Drei davon sind Stadtstaaten: Berlin, Hamburg, Bremen. Merkhilfe: 16 Länder, 16 Landtage.",w:["11","12","14"]},
 {q:"Welches Bundesland ist flächenmäßig das größte?",a:"Bayern",s:"Deutschland",d:1,t:"70.500 km². Bevölkerungsreichstes Land ist dagegen Nordrhein-Westfalen mit knapp 18 Millionen.",w:["Niedersachsen","Nordrhein-Westfalen","Baden-Württemberg"]},
 {q:"Welches Bundesland hat die meisten Einwohner?",a:"Nordrhein-Westfalen",s:"Deutschland",d:1,t:"Rund 18 Millionen – etwa jeder fünfte Deutsche. Landeshauptstadt ist Düsseldorf, nicht Köln.",w:["Bayern","Baden-Württemberg","Niedersachsen"]},
 {q:"Wie heißt der höchste Berg Deutschlands?",a:"Zugspitze",s:"Deutschland",d:1,t:"2.962 m, im Wettersteingebirge an der Grenze zu Österreich.",w:["Watzmann","Feldberg","Brocken"]},
@@ -59,7 +59,7 @@ export default [
 {q:"Welcher See ist der größte Süßwassersee der Welt nach Fläche?",a:"Der Obere See",s:"Welt",d:2,t:"In Nordamerika. Das Kaspische Meer ist größer, aber salzig. Nach Volumen führt der Baikalsee.",w:["Baikalsee","Victoriasee","Michigansee"]},
 {q:"Welcher See enthält das meiste Süßwasser der Erde?",a:"Der Baikalsee",s:"Welt",d:2,t:"Rund 20 % des flüssigen Süßwassers und mit 1.642 m der tiefste See der Welt.",w:["Oberer See","Tanganjikasee","Genfersee"]},
 {q:"Wie heißt der größte Regenwald der Erde?",a:"Der Amazonas-Regenwald",s:"Welt",d:1,t:"Rund 5,5 Mio. km² in neun Ländern; oft „grüne Lunge“ genannt – tatsächlich verbraucht er fast so viel Sauerstoff, wie er produziert.",w:["Der Kongo-Regenwald","Der Regenwald von Borneo","Der Neuguinea-Regenwald"]},
-{q:"Wie viele Zeitzonen hat die Erde?",a:"24",s:"Welt",d:2,t:"Faktisch mehr, weil einige Länder halbe oder viertel Stunden nutzen (z. B. Indien +5:30, Nepal +5:45).",w:["12","18","36"]},
+{q:"Wie viele Zeitzonen hat die Erde?",a:"24",s:"Welt",d:2,t:"Faktisch mehr, weil einige Länder halbe oder viertel Stunden nutzen (z. B. Indien +5:30, Nepal +5:45).",w:["6","12","18"]},
 {q:"Was ist der Äquator?",a:"Der Breitenkreis 0° um die Erdmitte",s:"Welt",d:1,t:"40.075 km lang. Dort ist Tag und Nacht ganzjährig etwa gleich lang.",w:["Der Längengrad 0° durch Greenwich","Die nördliche Grenze der Tropen","Die Linie, an der ein neuer Tag beginnt"]},
 {q:"Durch welche Stadt verläuft der Nullmeridian?",a:"London-Greenwich",s:"Welt",d:2,t:"Deshalb heißt die Weltzeit GMT (Greenwich Mean Time), heute abgelöst durch UTC.",w:["Paris","Rom","New York"]},
 {q:"Wie heißt die Grenze zwischen Europa und Asien im Osten?",a:"Der Ural",s:"Welt",d:2,t:"Ural-Gebirge und Ural-Fluss, dazu Kaukasus und Bosporus – eine Konvention, keine Naturgrenze.",w:["Der Kaukasus","Der Jenissei","Das Altai-Gebirge"]},

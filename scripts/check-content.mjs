@@ -125,8 +125,14 @@ console.log(`Ratequote    : ${quote.toFixed(1)} % mit „nimm die laengste Optio
    „Wie hoch ist die Netzspannung?" (230 Volt neben 110, 400 und 12) sind alle
    Ablenker echte Groessen - dass die richtige Antwort dazwischen liegt, ist die
    Folge guter Ablenker und nicht ihr Fehler. Wer sie auseinanderzoege, tauschte
-   Lehrwert gegen Ratefestigkeit. Die Schranke faengt deshalb nur den
-   systematischen Fall ab: Ablenker, die maschinell um die Antwort gelegt wurden. */
+   Lehrwert gegen Ratefestigkeit. Maschinell umsortiert wird deshalb nichts.
+
+   Von Hand durchgesehen trugen 22 der damals 86 eingeklammerten Karten Ablenker,
+   die nichts erklaeren - rund gegriffene Nachbarwerte. Bei ihnen wurde je ein Wert
+   getauscht, mehrfach gegen einen, der selbst etwas beibringt (11 Bundeslaender
+   der alten BRD, 4 kg Kugel der Frauen, 598 Abgeordnete als alte Sollgroesse).
+   Das drueckte die Quote von 81,9 auf 61,0 Prozent. Die Schranke faengt weiter
+   den systematischen Fall ab: Ablenker, die maschinell um die Antwort gelegt wurden. */
 const zahl = (s) => {
   const t = String(s);
   const tr = [...t.matchAll(/\d[\d.,]*/g)];
@@ -150,7 +156,11 @@ for (const c of CARDS) {
 if (zahlkarten) {
   const mittig = (inDerMitte / zahlkarten) * 100;
   console.log(`Klammerquote : ${mittig.toFixed(1)} % der Zahlenkarten haben die Antwort zwischen den Ablenkern (Zufall waere 50 %)`);
-  if (mittig > 85) fail(`Zu viele Zahlenkarten klammern die Antwort ein (${mittig.toFixed(1)} %) – wer beide Extremwerte streicht, raet mit 50 statt 25 Prozent.`);
+  /* 70 statt der frueheren 85: Nach dem Handdurchgang liegt der Wert bei 61 %.
+     Die Schranke haelt den Stand fest, ohne die Karten zu verbieten, deren
+     Ablenker die Antwort aus gutem Grund einklammern (Rechenfehler in Mathe,
+     Jahreszahlen in Geschichte, 16 % neben 19 % Mehrwertsteuer). */
+  if (mittig > 70) fail(`Zu viele Zahlenkarten klammern die Antwort ein (${mittig.toFixed(1)} %) – wer beide Extremwerte streicht, raet mit 50 statt 25 Prozent.`);
 }
 if (quote > 32) fail(`Die Laenge verraet die Antwort zu oft: ${quote.toFixed(1)} % statt hoechstens 32 %`);
 /* Zwei Arten von Schludrigkeit, die beim Lesen durchrutschen und beim Lernen

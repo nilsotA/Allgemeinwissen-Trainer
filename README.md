@@ -264,16 +264,31 @@ Dieselbe Prüfung meldet eine zweite Ratestrategie: Bei Zahlenkarten liegen die 
 symmetrisch um die richtige Antwort. Wer beide Extremwerte streicht, rät dann mit 50 statt
 25 Prozent. Gezählt wird nur, wo die Strategie greift – vier Optionen mit je genau einer Zahl
 und gleichem Text davor und dahinter; „11. November 1918" neben „28. Juni 1919" ist keine
-sortierbare Reihe. Der Wert liegt bei 81,2 % von 105 Karten.
+sortierbare Reihe. Der Wert lag bei 81,9 % von 105 Karten.
 
-Er wird bewusst **nicht** auf 50 % heruntergedrückt. Ein Versuch, die Ablenker automatisch
-auf die andere Seite zu spiegeln, hätte „110" neben „112", die alten 16 % Mehrwertsteuer neben
-den heutigen 19 % und 400 Volt neben 230 Volt durch beliebige Zahlen ersetzt. Genau diese
-Ablenker tragen aber den Lehrwert der Karte: Dass die richtige Antwort zwischen ihnen liegt,
-ist die Folge guter Ablenker und nicht ihr Fehler. Nach Ausschluss der Karten mit
-bedeutungstragenden Werten blieben ganze drei Karten übrig – der Tausch lohnt nicht. Die
-Schranke bei 85 % bleibt trotzdem stehen: Sie fängt den systematischen Fall ab, in dem
-Ablenker maschinell um die Antwort gelegt werden.
+Automatisch **gespiegelt** wird trotzdem nicht. Ein Versuch, die Ablenker maschinell auf die
+andere Seite zu legen, hätte „110" neben „112", die alten 16 % Mehrwertsteuer neben den
+heutigen 19 % und 400 Volt neben 230 Volt durch beliebige Zahlen ersetzt. Genau diese Ablenker
+tragen den Lehrwert der Karte: Dass die richtige Antwort zwischen ihnen liegt, ist dann die
+Folge guter Ablenker und nicht ihr Fehler.
+
+Die frühere Schätzung, es blieben nach Ausschluss dieser Karten „ganze drei" übrig, war zu
+pessimistisch – sie stammte aus dem Versuch, ganze Ablenkersätze am Stück zu tauschen. Von
+Hand durchgesehen trugen **22 der 86** Karten Ablenker, die nichts erklären: rund gegriffene
+Nachbarwerte, die nur den Abstand zur Lösung füllen. Bei ihnen wurde je ein Wert getauscht,
+mehrfach gegen einen, der selbst etwas beibringt – 11 statt 12 Bundesländer (die alte BRD),
+4 kg statt 10 kg (die Kugel der Frauen), 598 statt 800 Abgeordnete (die alte Sollgröße des
+Bundestags), 43.200 statt 100.000 Sekunden (ein halber Tag), 27 und 39 statt 12 und 150
+(die Bücher des Neuen und des Alten Testaments). Die Klammerquote fiel damit von 81,9 % auf
+**61,0 %**, ohne dass eine Karte an Aussage verlor.
+
+Der Rest bleibt so: alle 16 Mathematikkarten (ihre Ablenker sind die typischen Rechenfehler),
+alle 7 Geschichtskarten (jede Jahreszahl ist selbst ein Anker) und jede Karte, deren Ablenker
+etwas bedeuten – 2,24 m Netzhöhe der Frauen, 92 als letztes natürliches Element, 1,62 m/s²
+Mondschwerkraft, 48 Staaten vor Alaska, die Pfandstufen 8 und 15 Cent, die Promillegrenzen
+0,3 / 0,8 / 1,1. Die Schranke im Prüfskript liegt jetzt bei 70 % statt 85 %: Sie fängt weiter
+den systematischen Fall ab, in dem Ablenker maschinell um die Antwort gelegt werden, hält
+aber den erreichten Stand fest.
 
 Der Planer wird zusätzlich als **Eigenschaftstest** geprüft: 16.000 zufällige Bewertungsfolgen –
 mal früh, mal pünktlich, mal verspätet beantwortet – gegen die Zusicherungen, die immer gelten

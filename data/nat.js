@@ -1,7 +1,7 @@
 /* Natur & Technik: Biologie, Chemie, Physik, Astronomie, Technik */
 export default [
 /* ---------- Biologie ---------- */
-{q:"Wie viele Knochen hat ein erwachsener Mensch?",a:"206",s:"Biologie",d:1,t:"Babys haben rund 300 – viele wachsen zusammen. Der kleinste Knochen ist der Steigbügel im Ohr (3 mm).",w:["150","256","306"]},
+{q:"Wie viele Knochen hat ein erwachsener Mensch?",a:"206",s:"Biologie",d:1,t:"Babys haben rund 300 – viele wachsen zusammen. Der kleinste Knochen ist der Steigbügel im Ohr (3 mm).",w:["106","150","176"]},
 {q:"Welches Organ produziert Insulin?",a:"Die Bauchspeicheldrüse",s:"Biologie",d:1,t:"In den Langerhans-Inseln. Fehlt Insulin, steigt der Blutzucker – Diabetes Typ 1.",w:["Die Leber","Die Niere","Die Schilddrüse"]},
 {q:"Wie heißt der rote Blutfarbstoff, der Sauerstoff transportiert?",a:"Hämoglobin",s:"Biologie",d:1,t:"Enthält Eisen – deshalb schmeckt Blut metallisch und deshalb macht Eisenmangel müde.",w:["Melanin","Chlorophyll","Kollagen"]},
 {q:"Aus wie vielen Herzhöhlen besteht das menschliche Herz?",a:"Vier",s:"Biologie",d:1,t:"Zwei Vorhöfe und zwei Kammern. Die linke Kammer ist am kräftigsten – sie versorgt den ganzen Körper.",w:["Zwei","Drei","Sechs"]},
@@ -33,7 +33,7 @@ export default [
 {q:"Welches Gas macht den größten Teil unserer Luft aus?",a:"Stickstoff (78 %)",s:"Chemie",d:1,t:"Sauerstoff nur 21 %, Argon knapp 1 %, CO₂ rund 0,04 %.",w:["Sauerstoff (78 %)","Kohlendioxid (40 %)","Wasserstoff (50 %)"]},
 {q:"Was misst der pH-Wert?",a:"Wie sauer oder basisch eine Lösung ist",s:"Chemie",d:1,t:"Skala 0–14, 7 ist neutral. Magensäure ~2, Seife ~10. Eine Stufe = Faktor 10.",w:["Wie warm oder kalt eine Lösung ist","Wie gut eine Lösung elektrischen Strom leitet","Wie viel Salz in einer Lösung gelöst ist"]},
 {q:"Was ist Kochsalz chemisch?",a:"Natriumchlorid",s:"Chemie",d:1,t:"Ein Ionengitter. Natrium allein reagiert heftig mit Wasser, Chlor ist giftig – zusammen essbar.",w:["Kaliumnitrat","Calciumcarbonat","Natriumhydroxid"]},
-{q:"Bei welcher Temperatur siedet Wasser auf Meereshöhe?",a:"100 °C",s:"Chemie",d:1,t:"Bei geringerem Luftdruck früher: auf dem Mount Everest schon bei rund 70 °C.",w:["90 °C","110 °C","80 °C"]},
+{q:"Bei welcher Temperatur siedet Wasser auf Meereshöhe?",a:"100 °C",s:"Chemie",d:1,t:"Bei geringerem Luftdruck früher: auf dem Mount Everest schon bei rund 70 °C.",w:["80 °C","90 °C","95 °C"]},
 {q:"Was entsteht bei einer Verbrennung von Kohlenstoff mit Sauerstoff?",a:"Kohlendioxid",s:"Chemie",d:1,t:"C + O₂ → CO₂. Bei Sauerstoffmangel entsteht das giftige Kohlenmonoxid CO.",w:["Methan","Ozon","Kohlensäure"]},
 {q:"Wie heißt das leichteste Edelgas?",a:"Helium",s:"Chemie",d:2,t:"Edelgase reagieren kaum, weil ihre Außenschale voll ist. Helium wurde zuerst in der Sonne entdeckt – daher der Name (helios).",w:["Neon","Argon","Wasserstoff"]},
 {q:"Was ist eine Legierung?",a:"Ein Gemisch aus Metallen",s:"Chemie",d:2,t:"Bronze = Kupfer + Zinn, Messing = Kupfer + Zink, Stahl = Eisen + Kohlenstoff.",w:["Ein reines Metall","Eine Säure-Base-Reaktion","Ein Kunststoff"]},
