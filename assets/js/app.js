@@ -161,6 +161,17 @@ function wochenstreifen() {
   return `<div class="week" role="group" aria-label="Diese Woche">${s}</div>`;
 }
 
+/* Kurzrunden nur anbieten, wenn sie tatsaechlich kuerzer sind als der Plan.
+   „5 Min" neben einem Plan von 25 Karten waere kein Angebot, sondern eine
+   Irrefuehrung: die Runde umfasste dann denselben Stapel. */
+function kurzeRunden(plan) {
+  const passend = SHORT.filter(o => o.n < plan);
+  if (!passend.length) return '';
+  return `<div class="row wrap" style="gap:7px;justify-content:center">
+    ${passend.map(o => `<button type="button" class="chip" data-short="${o.n}">${ico('uhr', 's')}${o.label}</button>`).join('')}
+  </div>`;
+}
+
 function dailyFact() {
   const st = S();
   const k = dayKey();
@@ -175,7 +186,12 @@ function dailyFact() {
 function renderHome() {
   const o = sess.overview();
   const d = today();
-  const plan = sess.buildDaily().length;
+  const tagesplan = sess.buildDaily();
+  const plan = tagesplan.length;
+  // Aus dem Plan gezaehlt, nicht aus der Differenz zum Rueckstand: sobald mehr
+  // faellig ist als der Deckel zulaesst, wird die Differenz null und die
+  // Auskunft „davon neu" verschwand, obwohl neue Karten im Plan standen.
+  const neuImPlan = tagesplan.filter(x => x.fresh).length;
   const stau = sess.imRueckstau() && !settings().trotzdemNeu;
   const pct = Math.min(1, d.done / (d.done + plan || 1));
   const f = dailyFact();
@@ -195,7 +211,7 @@ function renderHome() {
       : 'Heute ist alles erledigt'}</h1>
     <p class="muted">${plan
       ? `Etwa ${Math.max(2, Math.round(plan * 0.13))} Minuten${
-          Math.max(0, plan - o.due) ? ` · ${Math.max(0, plan - o.due)} davon neu` : ''}`
+          neuImPlan ? ` · ${neuImPlan} davon neu` : ''}`
       : 'Stark. Eine Extra-Runde geht trotzdem.'}</p>
     ${stau ? `<div class="hinweis">
       <b>Erst mal aufholen.</b> ${o.due} Wiederholungen warten – neue Karten pausieren,
@@ -211,9 +227,7 @@ function renderHome() {
     </div>
     <div class="btn-stack" style="margin-top:15px">
       <button class="btn primary" data-go="daily">${ico('play')}${plan ? 'Tagestraining starten' : 'Extra-Runde üben'}</button>
-      ${plan > SHORT[0].n ? `<div class="row wrap" style="gap:7px;justify-content:center">
-        ${SHORT.map(o => `<button class="chip" data-short="${o.n}">${ico('uhr', 's')}${o.label}</button>`).join('')}
-      </div>` : ''}
+      ${kurzeRunden(plan)}
     </div>
   </section>
 
@@ -987,6 +1001,18 @@ function answerBlock(card) {
     </div>`;
 }
 
+/* Die Antwort muss nach dem Aufdecken sichtbar sein - auch auf einem kleinen
+   iPhone, wo die Karte hoeher ist als das Fenster. Ein blosses scrollTop am
+   Kasten reicht nicht: scrollt in dem Moment die Seite und nicht der Kasten,
+   passiert gar nichts. scrollIntoView zieht jeden beteiligten Rahmen mit. */
+function zurAntwort(body, div) {
+  body.scrollTop = body.scrollHeight;
+  requestAnimationFrame(() => {
+    try { div.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+    catch (e) { div.scrollIntoView(false); }
+  });
+}
+
 function showFeedback(card, ok, grade, isFresh) {
   announce(ok ? 'Richtig.' : `Falsch. Die Antwort lautet: ${card.a}`);
   const body = app.querySelector('.sess-body');
@@ -994,7 +1020,7 @@ function showFeedback(card, ok, grade, isFresh) {
   div.className = 'fade';
   div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ico(ok ? 'haken' : 'schliessen')}<span>${ok ? 'Richtig' : 'Leider falsch'}</span></p>${answerBlock(card)}`;
   body.appendChild(div);
-  body.scrollTop = body.scrollHeight;
+  zurAntwort(body, div);
   app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
   lockUndo();
   const next = () => commit(card, grade, ok, isFresh);
@@ -1109,7 +1135,7 @@ function askDuel(card) {
     div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ico(ok ? 'haken' : chosen === null ? 'uhr' : 'schliessen')}<span>${
       ok ? 'Richtig' : chosen === null ? 'Zeit abgelaufen' : 'Leider falsch'}</span></p>${answerBlock(card)}`;
     body.appendChild(div);
-    body.scrollTop = body.scrollHeight;
+    zurAntwort(body, div);
     app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
     const next = () => {
       const st = S(), d = today();

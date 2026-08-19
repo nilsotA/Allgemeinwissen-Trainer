@@ -387,6 +387,37 @@ try {
       [...funde.values()].slice(0, 4).map(t => `${t.art} .${t.kl} (${t.n}px)`).join(' | '));
   }
 
+  group('Kleines Display');
+  /* Ein iPhone SE ist 320 x 568 CSS-Pixel gross - die Lernkarte ist dort
+     hoeher als das Fenster. Frueher scrollte in diesem Fall die Seite statt
+     des Kastens, und Antwort wie Bewertungsknoepfe standen unter dem Rand. */
+  {
+    const kctx = await browser.newContext({
+      viewport: { width: 320, height: 568 }, deviceScaleFactor: 2,
+      isMobile: true, hasTouch: true, locale: 'de-DE',
+      userAgent: devices['iPhone 13'].userAgent
+    });
+    const kp = await kctx.newPage();
+    await kp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await kp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await kp.waitForSelector('.sess-body');
+    if (await kp.locator('.opt').count()) await kp.locator('.opt').first().click();
+    else await kp.locator('.sess-foot button').first().click();
+    await kp.waitForTimeout(700);
+    const sicht = await kp.evaluate(() => {
+      const h = innerHeight;
+      const box = (sel) => { const e = document.querySelector(sel); if (!e) return null;
+        const r = e.getBoundingClientRect(); return { top: r.top, bottom: r.bottom }; };
+      return { antwort: box('.sess-body .val'), fuss: box('.sess-foot button'), seite: scrollY, h };
+    });
+    check('Antwort steht im sichtbaren Bereich',
+      sicht.antwort && sicht.antwort.top >= 0 && sicht.antwort.top < sicht.h,
+      JSON.stringify(sicht.antwort));
+    check('Bewertung bleibt erreichbar',
+      sicht.fuss && sicht.fuss.bottom <= sicht.h + 1, JSON.stringify(sicht.fuss));
+    await kctx.close();
+  }
+
   group('Layout');
   check('kein waagerechter Überlauf',
     (await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)) === 0);
