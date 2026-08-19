@@ -21,7 +21,9 @@ function fuzz(days, floor) {
 
 /** Neuen Zustand aus altem Zustand + Bewertung berechnen.
     Mit opts.jitter = false bleibt die Streuung aus – so kann die Oberflaeche
-    dasselbe Intervall anzeigen, das anschliessend auch gesetzt wird. */
+    dasselbe Intervall anzeigen, das anschliessend auch gesetzt wird.
+    Mit opts.nachlernen = true zaehlt ein „Nochmal" nicht als neuer Aussetzer –
+    fuer die Wiederholung derselben Karte innerhalb einer Einheit. */
 export function schedule(cs, grade, opts) {
   const jitter = !opts || opts.jitter !== false;
   const s = { ...(cs || fresh()) };
@@ -30,8 +32,16 @@ export function schedule(cs, grade, opts) {
   s.last = Date.now();
 
   if (grade === AGAIN) {
-    s.lapses = (s.lapses || 0) + 1;
-    s.ef = Math.max(1.3, s.ef - 0.2);
+    /* Nur das erste Umkippen einer Karte zaehlt als Aussetzer. Die zweite und
+       dritte Antwort auf dieselbe Karte innerhalb einer Einheit ist Nachlernen,
+       kein neuer Aussetzer: Sonst meldete die App nach einer einzigen zaehen
+       Runde „Diese Karte ist dir schon 3-mal entfallen", der Leichtigkeitsfaktor
+       faellt dreifach, und der Wackelkandidaten-Filter schlug nach zwei
+       schlechten Tagen an statt nach vier schlechten Terminen. */
+    if (!opts || !opts.nachlernen) {
+      s.lapses = (s.lapses || 0) + 1;
+      s.ef = Math.max(1.3, s.ef - 0.2);
+    }
     s.reps = 0;
     s.iv = 0;              // wird noch in dieser Sitzung erneut gezeigt
     s.due = t;             // morgen sowieso wieder fällig

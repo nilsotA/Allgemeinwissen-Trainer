@@ -4,6 +4,7 @@ import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
+import { CARDS } from '../data/index.js';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const PORT = 8123;
@@ -490,6 +491,93 @@ try {
     }
     check('dieselbe Karte kommt in der Einheit wieder', wieder);
     await nctx.close();
+  }
+
+  group('Nochmal hat einen Deckel');
+  /* Ohne Deckel schob sich eine Karte, die man nicht weiss, bei jedem Versuch
+     erneut ein - gemessen wurde dieselbe Karte in einer Runde von zwoelf Karten
+     49-mal gestellt, und die Runde endete nie. Hoechstens zwei Nachreichungen. */
+  {
+    const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
+    const dctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const dp = await dctx.newPage();
+    await dp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await dp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await dp.waitForSelector('.sess-body');
+    const ziel = (await dp.locator('.q').innerText()).trim();
+    let gezeigt = 0, antworten = 0, fertig = false;
+    for (let i = 0; i < 40; i++) {
+      if (!(await dp.locator('.q').count())) { fertig = true; break; }
+      const q = (await dp.locator('.q').innerText()).trim();
+      const richtig = ANTWORT.get(q);
+      const opts = await dp.locator('.opt').evaluateAll(ns => ns.map(n => n.dataset.v));
+      if (!opts.length) break;
+      // Die Zielkarte immer falsch, alle anderen richtig beantworten
+      const wahl = q === ziel ? opts.find(o => o !== richtig)
+        : (opts.includes(richtig) ? richtig : opts[0]);
+      await dp.locator(`.opt[data-v="${wahl.replace(/"/g, '&quot;')}"]`).first().click();
+      antworten++;
+      if (q === ziel) gezeigt++;
+      await dp.waitForTimeout(260);
+      const weiter = dp.locator('.sess-foot button');
+      if (await weiter.count()) { await weiter.first().click(); await dp.waitForTimeout(260); }
+    }
+    check('die Runde endet trotz immer falscher Karte', fertig, `${antworten} Antworten`);
+    check('die Karte wird hoechstens dreimal gestellt', gezeigt <= 3, `${gezeigt}-mal`);
+    check('die Karte wird ueberhaupt nachgereicht', gezeigt >= 2, `${gezeigt}-mal`);
+    await dctx.close();
+  }
+
+  /* Zuruecknehmen muss auch den Nachreich-Zaehler zuruecksetzen - sonst gilt der
+     naechste Fehlversuch faelschlich als zweiter und die Karte landete am Ende
+     der Runde statt fuenf Karten weiter. */
+  {
+    const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
+    const uctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const up = await uctx.newPage();
+    await up.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await up.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await up.waitForSelector('.sess-body');
+    const vorrat = async () => Number((await up.locator('.sess-top .tiny').innerText()).split('/')[1]);
+    const start = await vorrat();
+    const frage = (await up.locator('.q').innerText()).trim();
+    const falschTippen = async () => {
+      const opts = await up.locator('.opt').evaluateAll(ns => ns.map(n => n.dataset.v));
+      const w = opts.find(o => o !== ANTWORT.get((up.__q = frage)));
+      await up.locator(`.opt[data-v="${w.replace(/"/g, '&quot;')}"]`).first().click();
+      await up.waitForTimeout(260);
+      await up.locator('#next').click();
+      await up.waitForTimeout(260);
+    };
+    await falschTippen();
+    check('falsche Antwort schiebt eine Karte ein', (await vorrat()) === start + 1);
+    await up.click('#undo');
+    await up.waitForTimeout(400);
+    check('Zuruecknehmen entfernt die eingeschobene Karte', (await vorrat()) === start,
+      `${await vorrat()} statt ${start}`);
+    check('dieselbe Frage steht wieder an', (await up.locator('.q').innerText()).trim() === frage);
+    /* Entscheidend ist nicht, dass ueberhaupt wieder eingeschoben wird, sondern
+       dass der Zaehler bei null anfaengt: Nach dem Zuruecknehmen muss die Karte
+       noch zweimal nachgereicht werden koennen, also insgesamt dreimal drankommen.
+       Bliebe der Zaehler stehen, waere es nur zweimal. */
+    let zeigt = 0;
+    for (let i = 0; i < 40; i++) {
+      if (!(await up.locator('.q').count())) break;
+      const q = (await up.locator('.q').innerText()).trim();
+      const richtig = ANTWORT.get(q);
+      const opts = await up.locator('.opt').evaluateAll(ns => ns.map(n => n.dataset.v));
+      if (!opts.length) break;
+      const wahl = q === frage ? opts.find(o => o !== richtig)
+        : (opts.includes(richtig) ? richtig : opts[0]);
+      await up.locator(`.opt[data-v="${wahl.replace(/"/g, '&quot;')}"]`).first().click();
+      if (q === frage) zeigt++;
+      await up.waitForTimeout(260);
+      const w = up.locator('.sess-foot button');
+      if (await w.count()) { await w.first().click(); await up.waitForTimeout(260); }
+    }
+    check('nach dem Zuruecknehmen faengt der Nachreich-Zaehler wieder bei null an',
+      zeigt === 3, `${zeigt} statt 3 Aufrufe`);
+    await uctx.close();
   }
 
   group('Erster Start auf langsamer Leitung');

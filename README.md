@@ -95,9 +95,20 @@ Deckel steigt.
 - **Wissen des Tages** – 141 kurze Merkanker, die ein Warum erklären oder einen verbreiteten
   Irrtum ausräumen. Einer pro Tag, ein knappes halbes Jahr ohne Wiederholung.
 - **Rückblick nach jeder Runde**: Welche Karten saßen noch nicht – mit Antwort und Kontext.
+- **„Nochmal" mit Deckel.** Eine falsch beantwortete Karte kommt in derselben Einheit wieder –
+  erst rund fünf Karten später, beim zweiten Anlauf am Ende der Runde. Danach nicht mehr:
+  Sie ist auf heute fällig gesetzt und steht in der nächsten Runde ohnehin obenan. Ohne
+  diesen Deckel schob sich eine Karte, die man schlicht nicht weiß, bei jedem Versuch erneut
+  ein. Gemessen wurde dieselbe Karte in einer Runde von zwölf Karten **49-mal** gestellt, und
+  die Runde endete nie – ein Test hält das jetzt fest. Der wachsende Abstand ist Absicht:
+  Eine Wiederholung im selben Atemzug hält kürzer vor als eine mit ein paar Karten dazwischen.
 - **Hartnäckige Karten** werden nach mehreren Aussetzern gekennzeichnet und liefern einen
   wechselnden Merkhilfe-Tipp. Wer eine Karte zum fünften Mal vergisst, braucht keine sechste
-  Wiederholung, sondern eine Eselsbrücke.
+  Wiederholung, sondern eine Eselsbrücke. Als Aussetzer zählt dabei nur das **erste** Umkippen
+  je Einheit – die Nachreichungen derselben Runde sind Nachlernen. Sonst meldete die App nach
+  einer einzigen zähen Runde „Diese Karte ist dir schon 3-mal entfallen", der
+  Leichtigkeitsfaktor fiele dreifach, und die Wackelkandidaten füllten sich nach zwei
+  schlechten Tagen statt nach vier schlechten Terminen.
 - **Trefferquote je Woche** in der Statistik, über acht Wochen mit mindestens zehn Antworten –
   damit sichtbar wird, ob es besser wird, und nicht nur, wie viel geschafft ist.
 - **Helles und dunkles Design** – „Papier" und „Abendlicht", beide auf warmen Tönen mit einem

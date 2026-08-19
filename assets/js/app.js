@@ -876,7 +876,8 @@ function startRun(queue, mode) {
     queue: queue.slice(), i: 0, mode,
     done: 0, correct: 0, start: Date.now(),
     total: queue.length, added: 0,
-    wrong: [], undo: null
+    wrong: [], undo: null,
+    nochmal: new Map()          // Karte -> wie oft in dieser Einheit schon nachgereicht
   };
   topbar.hidden = true; nav.hidden = true;
   app.classList.add('full');
@@ -1186,7 +1187,7 @@ function snapshot(card) {
     streak: st.streak, best: st.best, lastDay: st.lastDay,
     i: run.i, done: run.done, correct: run.correct,
     added: run.added, wrongLen: run.wrong.length,
-    insertedAt: -1
+    insertedAt: -1, nochmalVorher: null
   };
 }
 
@@ -1200,6 +1201,8 @@ function undoLast() {
   st.totalAnswers = u.totalAnswers; st.totalCorrect = u.totalCorrect;
   st.streak = u.streak; st.best = u.best; st.lastDay = u.lastDay;
   if (u.insertedAt >= 0) run.queue.splice(u.insertedAt, 1);
+  if (u.nochmalVorher === 0) run.nochmal.delete(u.id);
+  else if (u.nochmalVorher !== null) run.nochmal.set(u.id, u.nochmalVorher);
   run.i = u.i; run.done = u.done; run.correct = u.correct;
   run.added = u.added; run.wrong.length = u.wrongLen;
   run.undo = null;
@@ -1211,7 +1214,10 @@ function undoLast() {
 function commit(card, grade, ok, isFresh) {
   const undo = snapshot(card);
 
-  putCard(card.id, schedule(cardState(card.id) || freshState(), grade));
+  // Kippt dieselbe Karte in derselben Einheit erneut, ist das Nachlernen und
+  // kein zweiter Aussetzer – siehe schedule().
+  const nachlernen = grade === AGAIN && (run.nochmal.get(card.id) || 0) > 0;
+  putCard(card.id, schedule(cardState(card.id) || freshState(), grade, { nachlernen }));
 
   const st = S();
   const d = today();
@@ -1223,12 +1229,33 @@ function commit(card, grade, ok, isFresh) {
   run.done++; if (ok) run.correct++; else run.wrong.push(card);
   run.i++;
 
-  // Falsch beantwortete Karten kommen innerhalb der Einheit noch einmal dran
+  /* Falsch beantwortete Karten kommen innerhalb der Einheit noch einmal dran –
+     aber hoechstens zweimal. Ohne Deckel schob sich eine Karte, die man schlicht
+     nicht weiss, bei jedem Versuch erneut ein: Gemessen wurde dieselbe Karte in
+     einer Runde von zwoelf Karten 49-mal gestellt, und die Runde endete nie.
+     Nachgewiesen ist ohnehin nur der Nutzen der ersten Wiederholungen; danach
+     bringt Massieren im selben Zeitfenster kaum noch etwas. Die Karte ist auf
+     heute faellig gesetzt und kommt in der naechsten Runde ohnehin wieder.
+
+     Der zweite Anlauf kommt spaeter als der erste: erst rund fuenf Karten
+     Abstand, dann ans Ende der Einheit. Ein groesserer Abstand haelt laenger vor
+     als eine Wiederholung im selben Atemzug. */
+  const NACHREICHEN_MAX = 2;
   if (grade === AGAIN) {
-    const pos = Math.min(run.queue.length, run.i + 4);
-    run.queue.splice(pos, 0, { card, fresh: false });
-    run.added++;
-    undo.insertedAt = pos;
+    const bisher = run.nochmal.get(card.id) || 0;
+    undo.nochmalVorher = bisher;
+    if (bisher < NACHREICHEN_MAX) {
+      // Beim ersten Mal fuenf Karten Abstand, beim zweiten ans Ende der Einheit.
+      const pos = bisher === 0
+        ? Math.min(run.queue.length, run.i + 5)
+        : run.queue.length;
+      run.queue.splice(pos, 0, { card, fresh: false });
+      run.nochmal.set(card.id, bisher + 1);
+      run.added++;
+      undo.insertedAt = pos;
+    } else {
+      toast('Die Karte kommt in der nächsten Runde wieder', 1800);
+    }
   }
   run.undo = undo;
   save();

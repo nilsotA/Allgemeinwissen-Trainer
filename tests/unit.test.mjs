@@ -51,6 +51,23 @@ test('„nochmal" setzt zurück, zählt einen Lapse und senkt den Leichtigkeitsf
   assert.equal(after.ok, s.ok, 'ein Fehler zählt nicht als Treffer');
 });
 
+test('Nachlernen in derselben Einheit zaehlt nicht als zweiter Aussetzer', () => {
+  let s = schedule(fresh(), GOOD);
+  s = schedule(s, GOOD);
+  const erster = schedule(s, AGAIN);                       // Karte kippt um
+  const zweiter = schedule(erster, AGAIN, { nachlernen: true });   // gleich nochmal falsch
+  const dritter = schedule(zweiter, AGAIN, { nachlernen: true });
+  assert.equal(erster.lapses, 1);
+  assert.equal(dritter.lapses, 1, 'drei Fehlversuche in einer Einheit sind ein Aussetzer');
+  assert.equal(dritter.ef, erster.ef, 'der Leichtigkeitsfaktor faellt nur einmal');
+  assert.equal(dritter.seen, erster.seen + 2, 'gesehen wurde die Karte trotzdem dreimal');
+  assert.equal(dritter.due, todayNum());
+  // Am naechsten Termin kippt sie erneut - das ist ein neuer Aussetzer.
+  const spaeter = schedule(dritter, AGAIN);
+  assert.equal(spaeter.lapses, 2);
+  assert.ok(spaeter.ef < dritter.ef);
+});
+
 test('Intervalle wachsen bei wiederholtem „gut" bis zum Deckel', () => {
   let s = fresh();
   let prev = 0;
