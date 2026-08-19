@@ -166,6 +166,7 @@ export function installFlush() {
 }
 
 export function resetAll() {
+  sichereJetzigen();
   state = structuredClone(DEFAULTS);
   save(true);
 }
@@ -221,12 +222,56 @@ function saeubern(roh) {
   return rein;
 }
 
-export function importJSON(txt) {
+/* Ein Einlesen ersetzt alles, was auf diesem Geraet liegt - und der Fortschritt
+   liegt nur hier. Deshalb wird die Datei erst geprueft und beschrieben, bevor
+   irgendetwas ueberschrieben wird, und der bisherige Stand wandert vorher in
+   einen Sicherungsschluessel, aus dem er sich zurueckholen laesst. */
+const SICHERUNG = KEY + '.vorher';
+
+/** Liest ein Backup, ohne etwas zu veraendern. Wirft, wenn es keines ist. */
+export function pruefeBackup(txt) {
   const parsed = JSON.parse(txt);
   if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed) ||
       !parsed.cards || typeof parsed.cards !== 'object') {
     throw new Error('Kein gültiges Wissenswerk-Backup');
   }
-  state = saeubern(parsed);
+  return saeubern(parsed);
+}
+
+/** Kennzahlen eines Zustands, um zwei Staende gegenueberzustellen. */
+export function kennzahlen(z) {
+  const tage = Object.keys(z.days || {}).sort();
+  return {
+    karten: Object.keys(z.cards || {}).length,
+    antworten: z.totalAnswers || 0,
+    letzterTag: tage.length ? tage[tage.length - 1] : null,
+  };
+}
+
+export function importJSON(txt) {
+  const rein = pruefeBackup(txt);
+  sichereJetzigen();
+  state = rein;
   save(true);
+}
+
+function sichereJetzigen() {
+  // Darf nie den Import kippen: ist der Speicher voll, gibt es eben keine Sicherung.
+  try { localStorage.setItem(SICHERUNG, JSON.stringify(state)); }
+  catch (e) { console.warn('Sicherung vor dem Ueberschreiben fehlgeschlagen', e); }
+}
+
+export const hatSicherung = () => {
+  try { return !!localStorage.getItem(SICHERUNG); } catch (e) { return false; }
+};
+
+/** Holt den Stand von vor dem letzten Einlesen oder Zuruecksetzen zurueck. */
+export function sicherungZurueck() {
+  const roh = localStorage.getItem(SICHERUNG);
+  if (!roh) return false;
+  const rein = saeubern(JSON.parse(roh));
+  localStorage.removeItem(SICHERUNG);
+  state = rein;
+  save(true);
+  return true;
 }

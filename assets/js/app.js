@@ -609,6 +609,7 @@ function renderSettings() {
         <input type="file" id="impFile" accept="application/json" hidden>
         ${flags ? `<button class="btn" id="clrFlags">Alle ${flags} Markierungen löschen</button>` : ''}
         <button class="btn danger" id="rst">Alles zurücksetzen</button>
+        ${store.hatSicherung() ? `<button class="btn" id="undoImp">Letztes Einlesen rückgängig</button>` : ''}
       </div>
       <p class="tiny" style="margin-top:10px">Alles liegt nur auf diesem Gerät – kein Konto, kein Server. Löschst du in Safari die Website-Daten, ist der Fortschritt weg. Sichere ihn gelegentlich.</p>
     </div>
@@ -646,14 +647,34 @@ function renderSettings() {
   document.getElementById('imp').onclick = () => file.click();
   file.onchange = () => {
     const f = file.files[0];
+    file.value = '';                       // sonst loest dieselbe Datei kein change mehr aus
     if (!f) return;
     const r = new FileReader();
     r.onload = () => {
-      try { store.importJSON(r.result); applyTheme(); toast('Fortschritt geladen'); show('home'); }
-      catch (e) { toast('Datei passt nicht'); }
+      // Erst lesen und beschreiben, dann fragen, dann erst ersetzen. Der Fortschritt
+      // liegt nur auf diesem Geraet - ein Fehlgriff im Dateiwaehler darf ihn nicht kosten.
+      let neu;
+      try { neu = store.pruefeBackup(r.result); }
+      catch (e) { return toast('Das ist kein Wissenswerk-Backup'); }
+      const a = store.kennzahlen(neu), b = store.kennzahlen(S());
+      const tag = (d) => (d ? new Date(d).toLocaleDateString('de-DE') : 'noch nie');
+      const frage = `Diese Datei ersetzt deinen ganzen Fortschritt.\n\n`
+        + `Aus der Datei:   ${a.karten} Karten, ${a.antworten} Antworten, zuletzt ${tag(a.letzterTag)}\n`
+        + `Jetzt gespeichert: ${b.karten} Karten, ${b.antworten} Antworten, zuletzt ${tag(b.letzterTag)}\n\n`
+        + `Wirklich ersetzen?`;
+      if (!confirm(frage)) return toast('Nichts geändert');
+      try { store.importJSON(r.result); } catch (e) { return toast('Das ist kein Wissenswerk-Backup'); }
+      applyTheme(); toast('Fortschritt geladen – rückgängig unter „Mehr“'); show('home');
     };
+    r.onerror = () => toast('Datei ließ sich nicht lesen');
     r.readAsText(f);
   };
+  document.getElementById('undoImp')?.addEventListener('click', () => {
+    // Das Netz unter Einlesen und Zuruecksetzen: der Stand davor liegt noch da.
+    if (!confirm('Den Stand von vor dem letzten Einlesen oder Zurücksetzen wiederherstellen?')) return;
+    if (store.sicherungZurueck()) { applyTheme(); toast('Vorheriger Stand wiederhergestellt'); show('home'); }
+    else toast('Keine Sicherung vorhanden');
+  });
   document.getElementById('clrFlags')?.addEventListener('click', () => {
     S().flags = {}; save(true); toast('Markierungen gelöscht'); renderSettings();
   });
