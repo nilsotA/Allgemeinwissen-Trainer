@@ -199,8 +199,14 @@ Die Sammlung wurde Datei für Datei gegengelesen. Gefunden und behoben:
   von Sport und Mathematik: Zehn neue Sport- und drei neue Mathe-Karten fragten Dinge ab, die der
   Altbestand längst enthielt – Höhentraining, Kraftstoß, EPO, Übertraining, Kreatinphosphat,
   Bewegungsphasen. Alle entfernt.
+- **Veraltete Frageform.** „Wie viele Abgeordnete hat der Bundestag regulär mindestens?" – seit
+  der Wahlrechtsreform sind 630 keine Untergrenze mehr, sondern die feste Größe.
 - **Ein Zahlenwiderspruch.** Der Kreatinphosphat-Speicher trug auf einer Karte „6–10 Sekunden",
   auf einer neueren „10–20 Sekunden". 6–10 stimmt und passt zum 100-Meter-Lauf im Kontexttext.
+
+Alle zehn Datendateien sind einmal vollständig gegengelesen. Sprache & Literatur, Kunst & Musik
+und Politik & Wirtschaft blieben ohne inhaltlichen Fund; die Fehler häuften sich dort, wo Karten
+nachträglich ergänzt wurden.
 
 Was sich davon maschinell absichern lässt, ist jetzt eine Schranke in `npm run check`:
 doppelte Sätze im selben Kontexttext, gleiche Titel oder Texte bei den Tagesfakten, und Karten
