@@ -21,6 +21,24 @@
 <link rel="apple-touch-icon" href="./icons/icon-180.png">
 <link rel="icon" href="./icons/icon-192.png" type="image/png">
 <link rel="stylesheet" href="./assets/css/app.css">
+<!-- Ohne diese Zeilen findet der Browser die Kartendaten erst, nachdem er
+     index.html, app.js und data/index.js nacheinander geladen und ausgewertet
+     hat - vier Runden Wartezeit hintereinander. Mit Vorabruf laufen sie
+     gleichzeitig. Auf langsamem Mobilfunk macht das mehrere Sekunden aus.
+     Die Liste haelt scripts/make-sw.mjs mit dem Ordner data/ synchron. -->
+<link rel="modulepreload" href="./assets/js/app.js">
+<link rel="modulepreload" href="./data/index.js">
+<link rel="modulepreload" href="./data/all.js">
+<link rel="modulepreload" href="./data/cats.js">
+<link rel="modulepreload" href="./data/facts.js">
+<link rel="modulepreload" href="./data/geo.js">
+<link rel="modulepreload" href="./data/ges.js">
+<link rel="modulepreload" href="./data/kul.js">
+<link rel="modulepreload" href="./data/mat.js">
+<link rel="modulepreload" href="./data/nat.js">
+<link rel="modulepreload" href="./data/pol.js">
+<link rel="modulepreload" href="./data/spo.js">
+<link rel="modulepreload" href="./data/spr.js">
 <!-- Farbschema vor dem ersten Anstrich setzen. Der Rest der App kommt erst
      nach einem halben Megabyte Modulen an; bis dahin blitzte die App im
      falschen Schema auf und die Statusleiste stand auf der falschen Farbe.
@@ -46,7 +64,16 @@
 <div id="boot" class="boot">
   <div class="boot-logo">W</div>
   <p>Wissenswerk wird geladen …</p>
+  <!-- Beim ersten Start kommen gut 240 kB Karten herunter. Auf langsamem
+       Mobilfunk dauert das mehrere Sekunden - ohne Erklaerung wirkt das wie
+       ein Haenger. Der Hinweis erscheint erst, wenn es wirklich lange dauert. -->
+  <p id="bootHinweis" class="boot-hinweis" hidden>Beim ersten Start werden alle Karten
+    geladen. Danach startet die App sofort – auch ohne Netz.</p>
 </div>
+<script>setTimeout(function () {
+  var h = document.getElementById('bootHinweis');
+  if (h && document.getElementById('boot')) h.hidden = false;
+}, 1500);</script>
 
 <!-- Alle Symbole liegen als Inline-SVG im Dokument: keine Emoji, keine
      Zeichensatz-Glyphen, keine fremde Bibliothek. Ein Strichstil fuer alles. -->

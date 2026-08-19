@@ -59,6 +59,8 @@ svg{display:block;flex:none}
 .boot-logo{width:64px;height:64px;border-radius:22px;background:linear-gradient(150deg,var(--mark1),var(--mark2));
   display:grid;place-content:center;font-family:var(--serif);font-weight:700;font-size:31px;color:var(--on-acc);animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:.88}50%{transform:scale(1.06);opacity:1}}
+.boot-hinweis{max-width:26ch;text-align:center;font-size:13.5px;line-height:1.5;
+  color:var(--dim2);margin-top:-6px;animation:fade .3s ease}
 
 /* ---------- Chrome ---------- */
 /* Der -webkit-Vorsatz ist fuer iOS noetig: unpraefixiert kennt Safari

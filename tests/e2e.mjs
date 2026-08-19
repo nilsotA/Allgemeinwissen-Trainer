@@ -442,6 +442,31 @@ try {
     await nctx.close();
   }
 
+  group('Erster Start auf langsamer Leitung');
+  /* Der Startbildschirm muss erklaeren, warum es dauert - sonst wirkt die App
+     beim ersten Aufruf im Zug wie abgestuerzt. */
+  {
+    const lctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'block' });
+    const lp = await lctx.newPage();
+    const cdp = await lctx.newCDPSession(lp);
+    await cdp.send('Network.emulateNetworkConditions', {
+      offline: false, latency: 300,
+      downloadThroughput: 400 * 1024 / 8, uploadThroughput: 400 * 1024 / 8
+    });
+    await lp.goto(URL_BASE, { waitUntil: 'commit' });
+    // Das Grundgeruest selbst braucht auf dieser Leitung schon rund zwei
+    // Sekunden; der Zaehler laeuft erst danach los.
+    await lp.waitForSelector('#bootHinweis', { state: 'attached', timeout: 30000 });
+    await lp.waitForTimeout(2200);
+    const hinweis = await lp.locator('#bootHinweis').isVisible().catch(() => false);
+    check('Startbildschirm erklärt die Wartezeit', hinweis);
+    await lp.waitForSelector('#app:not([hidden])', { timeout: 60000 });
+    check('App erscheint auch auf langsamer Leitung', true);
+    check('der Hinweis verschwindet mit dem Startbildschirm',
+      await lp.locator('#bootHinweis').count() === 0);
+    await lctx.close();
+  }
+
   group('Kleines Display');
   /* Ein iPhone SE ist 320 x 568 CSS-Pixel gross - die Lernkarte ist dort
      hoeher als das Fenster. Frueher scrollte in diesem Fall die Seite statt

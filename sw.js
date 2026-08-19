@@ -1,5 +1,5 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-20faf7d0c7';
+const VERSION = 'wissenswerk-53c9c4103b';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",
@@ -23,8 +23,6 @@ const ASSETS = [
   "./icons/favicon-32.png",
   "./icons/icon-180.png",
   "./icons/icon-192.png",
-  "./icons/icon-512-maskable.png",
-  "./icons/icon-512.png",
   "./index.html",
   "./manifest.webmanifest",
   "./package.json"
@@ -35,7 +33,12 @@ const ASSETS = [
 async function vorladen(cache, liste) {
   const ergebnisse = await Promise.all(liste.map(async (url) => {
     try {
-      const res = await fetch(url, { cache: 'reload' });
+      // 'no-cache' statt 'reload': beides fragt den Server, aber 'reload' laedt
+      // jede Datei voll herunter - beim ersten Besuch also ein zweites Mal,
+      // direkt nachdem die Seite sie geladen hat. 'no-cache' fragt nur nach,
+      // ob sie sich geaendert hat, und begnuegt sich sonst mit einer 304.
+      // Veraltete Module koennen so trotzdem nicht in den Bestand geraten.
+      const res = await fetch(url, { cache: 'no-cache' });
       if (!res.ok) return url;
       await cache.put(url, res);
       return null;
@@ -47,8 +50,8 @@ async function vorladen(cache, liste) {
 self.addEventListener('install', (e) => {
   e.waitUntil((async () => {
     const cache = await caches.open(VERSION);
-    // Bewusst nicht cache.addAll: das laeuft durch den HTTP-Cache und koennte
-    // veraltete Module dauerhaft in den Offline-Bestand uebernehmen.
+    // Bewusst nicht cache.addAll: das nimmt Antworten ungeprueft aus dem
+    // HTTP-Cache und koennte veraltete Module dauerhaft uebernehmen.
     const fehlend = await vorladen(cache, ASSETS);
     if (fehlend.length) console.warn('[sw] ' + fehlend.length + ' von ' + ASSETS.length + ' Dateien nicht vorgeladen');
     // Kein skipWaiting: die laufende Seite haelt ihre alte Fassung, bis sie

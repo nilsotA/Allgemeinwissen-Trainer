@@ -114,7 +114,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 73 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 45 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 48 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -131,6 +131,31 @@ steht. `npm run check` weist zurück, was zugleich Ablenker der Karte ist.
 
 Zahlwörter und Ziffern gelten grundsätzlich als dasselbe: Wer „8" tippt, hat die Frage nach
 der Zahl der Planeten beantwortet. Das betrifft 93 Karten, deren Lösung ein Zahlwort enthält.
+
+### Erster Start
+
+Alles Weitere läuft offline, aber der allererste Aufruf muss die Karten holen. Gemessen auf
+langsamem 3G (400 kbit/s, 300 ms Latenz, vierfach gedrosselte CPU):
+
+| | vorher | jetzt |
+|---|---|---|
+| Datenmenge des ersten Besuchs | 757 kB | 295 kB |
+| bis zur ersten Ansicht | 6,4 s | 6,1 s |
+
+Der große Posten war nicht die App, sondern der Service Worker: Er lud mit `cache: 'reload'`
+jede Datei ein zweites Mal herunter, direkt nachdem die Seite sie geladen hatte. Mit
+`cache: 'no-cache'` fragt er nur noch nach, ob sich etwas geändert hat, und begnügt sich sonst
+mit einer 304 – dieselbe Sicherheit gegen veraltete Module, ohne den doppelten Verkehr. Dazu
+bleiben die beiden 512er-Icons (230 kB) aus dem Vorabbestand: Sie gehen ans Betriebssystem
+beim Installieren, die App selbst zeigt sie nie.
+
+`<link rel="modulepreload">` in `index.html` spart die Nachladerunden, mit denen der Browser
+die Kartendateien sonst erst über `app.js` und `data/index.js` entdeckt. `npm run build` bricht
+ab, wenn diese Liste nicht mehr zum Ordner `data/` passt.
+
+Die restlichen sechs Sekunden sind reine Übertragungszeit für 240 kB Karten – dagegen hilft
+nur weniger Inhalt. Stattdessen sagt der Startbildschirm nach anderthalb Sekunden, was gerade
+passiert und dass es einmalig ist.
 
 ### Kartenkennungen
 

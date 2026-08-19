@@ -18,20 +18,49 @@ const files = [];
 })('.');
 files.sort();
 
+/* Die beiden 512er-Icons sind zusammen 230 KB gross und werden von der App nie
+   angezeigt - sie gehen ans Betriebssystem, wenn der Nutzer die App auf den
+   Startbildschirm legt, und an den Startbildschirm-Splash. Sie im Voraus zu
+   laden verdoppelte beinahe die Datenmenge des ersten Besuchs. Wer sie doch
+   anfordert, bekommt sie ueber den fetch-Handler und danach aus dem Bestand. */
+const NUR_BEI_BEDARF = /icon-512/;
+const vorab = files.filter(f => !NUR_BEI_BEDARF.test(f));
+
+/* index.html ruft die Kartendateien vorab ab, damit der Browser sie nicht erst
+   nach drei Runden Nachladen entdeckt. Diese Liste steht dort von Hand - also
+   hier pruefen, ob sie noch zum Ordner passt. Ein vergessener Eintrag kostet
+   auf langsamem Mobilfunk eine ganze Runde Wartezeit und faellt sonst nie auf. */
+const html = readFileSync('index.html', 'utf8');
+const vorgemerkt = new Set([...html.matchAll(/rel="modulepreload"\s+href="\.\/([^"]+)"/g)].map(m => m[1]));
+const module = files.filter(f => /^\.\/(data|assets\/js)\/.*\.js$/.test(f)).map(f => f.slice(2));
+const fehlen = module.filter(f => !vorgemerkt.has(f) && !/^assets\/js\/(?!app\.js)/.test(f));
+const zuviel = [...vorgemerkt].filter(f => !module.includes(f));
+if (fehlen.length || zuviel.length) {
+  console.error('FEHLER  Vorabruf in index.html passt nicht zum Ordner:'
+    + (fehlen.length ? `\n  fehlt:  ${fehlen.join(', ')}` : '')
+    + (zuviel.length ? `\n  zuviel: ${zuviel.join(', ')}` : ''));
+  process.exit(1);
+}
+
 const hash = createHash('sha256');
 for (const f of files) hash.update(readFileSync(f));
 const version = hash.digest('hex').slice(0, 10);
 
 const sw = `/* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
 const VERSION = 'wissenswerk-${version}';
-const ASSETS = ${JSON.stringify(files, null, 2)};
+const ASSETS = ${JSON.stringify(vorab, null, 2)};
 
 /* Holt die genannten Dateien am HTTP-Cache vorbei in den Bestand.
    Einzelne Ausfaelle kippen nichts - zurueck kommt, was noch fehlt. */
 async function vorladen(cache, liste) {
   const ergebnisse = await Promise.all(liste.map(async (url) => {
     try {
-      const res = await fetch(url, { cache: 'reload' });
+      // 'no-cache' statt 'reload': beides fragt den Server, aber 'reload' laedt
+      // jede Datei voll herunter - beim ersten Besuch also ein zweites Mal,
+      // direkt nachdem die Seite sie geladen hat. 'no-cache' fragt nur nach,
+      // ob sie sich geaendert hat, und begnuegt sich sonst mit einer 304.
+      // Veraltete Module koennen so trotzdem nicht in den Bestand geraten.
+      const res = await fetch(url, { cache: 'no-cache' });
       if (!res.ok) return url;
       await cache.put(url, res);
       return null;
@@ -43,8 +72,8 @@ async function vorladen(cache, liste) {
 self.addEventListener('install', (e) => {
   e.waitUntil((async () => {
     const cache = await caches.open(VERSION);
-    // Bewusst nicht cache.addAll: das laeuft durch den HTTP-Cache und koennte
-    // veraltete Module dauerhaft in den Offline-Bestand uebernehmen.
+    // Bewusst nicht cache.addAll: das nimmt Antworten ungeprueft aus dem
+    // HTTP-Cache und koennte veraltete Module dauerhaft uebernehmen.
     const fehlend = await vorladen(cache, ASSETS);
     if (fehlend.length) console.warn('[sw] ' + fehlend.length + ' von ' + ASSETS.length + ' Dateien nicht vorgeladen');
     // Kein skipWaiting: die laufende Seite haelt ihre alte Fassung, bis sie
@@ -109,4 +138,5 @@ self.addEventListener('fetch', (e) => {
 });
 `;
 writeFileSync('sw.js', sw);
-console.log(`sw.js geschrieben – Version ${version}, ${files.length} Dateien im Cache.`);
+console.log(`sw.js geschrieben – Version ${version}, ${vorab.length} Dateien vorgeladen`
+  + `, ${files.length - vorab.length} erst bei Bedarf.`);
