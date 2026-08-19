@@ -165,12 +165,28 @@ try {
   await page.fill('#q', 'zugspitze');
   await page.waitForTimeout(300);
   check('Suche findet Treffer', await page.locator('.lk').count() > 0);
-  await page.locator('.lk-head').first().click();
+  // Mit der Tastatur, nicht mit der Maus: der Kasten war frueher nur klickbar.
+  await page.locator('.lk-btn').first().focus();
+  await page.keyboard.press('Enter');
   await page.waitForTimeout(150);
-  check('Antwort klappt auf', await page.locator('.lk .val').first().isVisible());
+  check('Antwort klappt per Tastatur auf', await page.locator('.lk .val').first().isVisible());
+  check('Aufklapp-Knopf meldet seinen Zustand',
+    await page.locator('.lk-btn').first().getAttribute('aria-expanded') === 'true');
   await page.locator('.star').first().click();
   await settle();
   check('Markierung wird gespeichert', Object.keys((await stored()).flags || {}).length === 1);
+  check('Stern meldet seinen Zustand',
+    await page.locator('.star').first().getAttribute('aria-pressed') === 'true');
+
+  group('Vorlesbarkeit');
+  await page.click('[data-view="home"]');
+  await page.waitForSelector('.week');
+  const wochenText = await page.evaluate(() => [...document.querySelectorAll('.week .wd')]
+    .map(w => [...w.querySelectorAll('*')].filter(e => !e.closest('[aria-hidden="true"]')
+      && e.getAttribute('aria-hidden') !== 'true').map(e => e.textContent).join(' ').trim()));
+  check('Wochenstreifen nennt Tag und Ergebnis',
+    wochenText.length === 7 && wochenText.every(t => /(Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)( \(heute\))?: \S/.test(t)),
+    JSON.stringify(wochenText));
 
   group('Statistik');
   await page.click('[data-view="stats"]');
@@ -185,6 +201,9 @@ try {
   check('neun Themen gelistet', await page.locator('[data-cat]').count() === 9);
   await page.click('[data-view="settings"]');
   await page.waitForSelector('#npd');
+  check('Themenschalter melden ihren Zustand',
+    await page.evaluate(() => [...document.querySelectorAll('[data-tog]')]
+      .every(b => b.getAttribute('aria-pressed') === String(b.classList.contains('on')))));
   await page.selectOption('#npd', '20');
   await settle();
   check('Einstellung wird sofort gespeichert', (await stored()).settings.newPerDay === 20);

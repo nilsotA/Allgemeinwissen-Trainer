@@ -366,7 +366,11 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appeara
 /* ---------- Nachschlagen ---------- */
 .lk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:9px;overflow:hidden;box-shadow:var(--sh1)}
 .lk.open{border-color:var(--acc);box-shadow:var(--sh2)}
-.lk-head{display:flex;align-items:flex-start;gap:10px;padding:13px 8px 13px 14px;cursor:pointer}
+.lk-head{display:flex;align-items:flex-start;gap:10px;padding:13px 8px 13px 14px}
+/* Die Frage ist ein Knopf, kein anklickbarer Kasten - sieht gleich aus,
+   laesst sich aber mit Tastatur und Sprachsteuerung bedienen. */
+.lk-btn{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;
+  text-align:left;display:block;cursor:pointer;min-height:44px}
 .lk-q{display:block;font-weight:650;font-size:15.5px;line-height:1.4;margin-top:4px}
 .lk-body{padding:0 14px 14px}
 /* Die Flaeche muss 44 px erreichen, sonst trifft man den Stern auf dem Handy

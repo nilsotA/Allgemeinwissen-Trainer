@@ -110,7 +110,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 70 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 34 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 38 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung

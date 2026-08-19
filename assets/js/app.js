@@ -143,14 +143,22 @@ function wochenstreifen() {
   const dowMon = (d) => ((d + 3) % 7 + 7) % 7;      // Montag = 0; der 1.1.1970 war ein Donnerstag
   const start = t - dowMon(t);
   const NAMEN = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+  const LANG = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
   let s = '';
   for (let i = 0; i < 7; i++) {
     const tag = start + i;
     const n = st.days[numToKey(tag)]?.done || 0;
     const cls = tag > t ? 'fut' : tag === t ? 'today' : '';
-    s += `<span class="wd ${cls}"><i class="${n > 0 ? 'done' : ''}"></i><span>${NAMEN[i]}</span></span>`;
+    // Vorgelesen wurde bisher nur "Mo Di Mi Do Fr Sa So" - der eigentliche
+    // Inhalt, naemlich was an welchem Tag gelaufen ist, steckte allein in der
+    // Farbe des Kaestchens.
+    const sagt = tag > t ? `${LANG[i]}: noch nicht`
+      : n > 0 ? `${LANG[i]}${tag === t ? ' (heute)' : ''}: ${n} ${n === 1 ? 'Karte' : 'Karten'}`
+      : `${LANG[i]}${tag === t ? ' (heute)' : ''}: nichts gelernt`;
+    s += `<span class="wd ${cls}"><i class="${n > 0 ? 'done' : ''}" aria-hidden="true"></i>`
+      + `<span aria-hidden="true">${NAMEN[i]}</span><span class="sr-only">${sagt}</span></span>`;
   }
-  return `<div class="week">${s}</div>`;
+  return `<div class="week" role="group" aria-label="Diese Woche">${s}</div>`;
 }
 
 function dailyFact() {
@@ -509,15 +517,18 @@ function renderLookup() {
       ${shown.map(c => {
         const cs = cardState(c.id);
         const st = cs ? Math.round(strength(cs) * 100) : 0;
+        const markiert = isFlagged(c.id);
         return `<div class="lk" data-id="${c.id}">
           <div class="lk-head">
-            <span class="grow">
+            <button type="button" class="grow lk-btn" data-auf="${c.id}"
+                    aria-expanded="false" aria-controls="lkb-${c.id}">
               <span class="qcat">${catIcon(c.cat, 's')}<span>${esc(c.sub)}</span></span>
               <span class="lk-q">${esc(c.q)}</span>
-            </span>
-            <button class="star ${isFlagged(c.id) ? 'on' : ''}" data-flag="${c.id}" aria-label="Markieren">${ico('stern')}</button>
+            </button>
+            <button type="button" class="star ${markiert ? 'on' : ''}" data-flag="${c.id}"
+                    aria-pressed="${markiert}" aria-label="Karte markieren">${ico('stern')}</button>
           </div>
-          <div class="lk-body" hidden>
+          <div class="lk-body" id="lkb-${c.id}" hidden>
             <div class="answer">
               <div class="lab">Antwort</div>
               <div class="val">${esc(c.a)}</div>
@@ -528,17 +539,19 @@ function renderLookup() {
         </div>`;
       }).join('') || '<p class="empty">Nichts gefunden. Andere Wörter probieren?</p>'}`;
 
-    res.querySelectorAll('.lk').forEach(el => {
-      el.querySelector('.lk-head').onclick = (e) => {
-        if (e.target.closest('[data-flag]')) return;
-        const b = el.querySelector('.lk-body');
-        b.hidden = !b.hidden;
-        el.classList.toggle('open', !b.hidden);
-      };
+    // Ein echter Knopf statt eines anklickbaren Kastens: nur so laesst sich
+    // die Antwort auch mit Tastatur oder Sprachsteuerung aufdecken.
+    res.querySelectorAll('[data-auf]').forEach(kn => kn.onclick = () => {
+      const el = kn.closest('.lk');
+      const b = el.querySelector('.lk-body');
+      b.hidden = !b.hidden;
+      el.classList.toggle('open', !b.hidden);
+      kn.setAttribute('aria-expanded', String(!b.hidden));
     });
     res.querySelectorAll('[data-flag]').forEach(b => b.onclick = () => {
       const on = toggleFlag(b.dataset.flag);
       b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', String(on));
       toast(on ? 'Markiert' : 'Markierung entfernt', 1200);
     });
   };
@@ -604,7 +617,7 @@ function renderSettings() {
     <h2 class="sec">Aktive Themen</h2>
     <div class="card">
       <div class="row wrap" style="gap:8px">
-        ${CATS.map(c => `<button class="chip ${sel.includes(c.id) ? 'on' : ''}" data-tog="${c.id}">${catIcon(c.id, 's')}${esc(c.name)}</button>`).join('')}
+        ${CATS.map(c => `<button type="button" class="chip ${sel.includes(c.id) ? 'on' : ''}" data-tog="${c.id}" aria-pressed="${sel.includes(c.id)}">${catIcon(c.id, 's')}${esc(c.name)}</button>`).join('')}
       </div>
       <p class="tiny" style="margin-top:10px">Abgeschaltete Themen tauchen im Tagestraining nicht mehr auf.</p>
     </div>
