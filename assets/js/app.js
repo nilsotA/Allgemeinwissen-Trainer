@@ -13,6 +13,15 @@ const app = document.getElementById('app');
 const nav = document.getElementById('nav');
 const topbar = document.getElementById('topbar');
 const live = document.getElementById('live');
+/* Die Antwortknoepfe tragen A bis D, die Bewertungsknoepfe stehen in einer Reihe.
+   Wer die Buchstaben sieht, tippt auch die Buchstaben - deshalb gelten beide. */
+const tastenIndex = (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return -1;
+  const z = '1234'.indexOf(e.key);
+  if (z >= 0) return z;
+  return 'abcd'.indexOf(String(e.key).toLowerCase());
+};
+
 const esc = (s) => String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
 
 /* Grobe Umrechnung: etwa acht Karten je Minute */
@@ -640,7 +649,7 @@ function renderSettings() {
     if (!f) return;
     const r = new FileReader();
     r.onload = () => {
-      try { store.importJSON(r.result); toast('Fortschritt geladen'); show('home'); }
+      try { store.importJSON(r.result); applyTheme(); toast('Fortschritt geladen'); show('home'); }
       catch (e) { toast('Datei passt nicht'); }
     };
     r.readAsText(f);
@@ -650,7 +659,7 @@ function renderSettings() {
   });
   document.getElementById('rst').onclick = () => {
     if (confirm('Wirklich den gesamten Lernfortschritt löschen?')) {
-      store.resetAll(); toast('Zurückgesetzt'); show('home');
+      store.resetAll(); applyTheme(); toast('Zurückgesetzt'); show('home');
     }
   };
 }
@@ -832,7 +841,7 @@ function askChoice(card, isFresh, cs) {
   };
   app.querySelectorAll('.opt').forEach(b => b.onclick = () => pick(b));
   onKey = (e) => {
-    const n = '1234'.indexOf(e.key);
+    const n = tastenIndex(e);
     const l = 'abcd'.indexOf(e.key.toLowerCase());
     const idx = n >= 0 ? n : l;
     const btns = app.querySelectorAll('.opt:not([disabled])');
@@ -885,7 +894,7 @@ function revealRecall(card, typed, sim, cs, isFresh) {
   const grade = (n) => commit(card, n, n !== AGAIN, isFresh);
   app.querySelectorAll('[data-g]').forEach(b => b.onclick = () => grade(Number(b.dataset.g)));
   onKey = (e) => {
-    const idx = '1234'.indexOf(e.key);
+    const idx = tastenIndex(e);
     if (idx >= 0) { e.preventDefault(); grade(idx); }
   };
 }
@@ -1064,7 +1073,7 @@ function askDuel(card) {
   }
   app.querySelectorAll('.opt').forEach(b => b.onclick = () => finish(b.dataset.v));
   onKey = (e) => {
-    const n = '1234'.indexOf(e.key);
+    const n = tastenIndex(e);
     const btns = app.querySelectorAll('.opt:not([disabled])');
     if (n >= 0 && btns[n]) { e.preventDefault(); finish(btns[n].dataset.v); }
   };

@@ -83,8 +83,8 @@ Deckel steigt.
 - **Alle Symbole selbst gezeichnet** als Inline-SVG in einem Strichstil: Navigation, Suche,
   Serie, Stern und neun Themenzeichen. Nichts liegt außerhalb des Repositorys, damit die App
   offline vollständig bleibt.
-- **Tastatur** auf Mac oder iPad: `1`–`4` wählt Antwort oder Bewertung,
-  `Enter`/`Leertaste` blättert weiter.
+- **Tastatur** auf Mac oder iPad: `1`–`4` **oder** `A`–`D` wählt Antwort oder Bewertung –
+  die Knöpfe tragen Buchstaben, also gelten auch die. `Enter`/`Leertaste` blättert weiter.
 
 ## Auf dem iPhone installieren
 
