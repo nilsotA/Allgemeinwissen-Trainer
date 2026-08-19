@@ -1,4 +1,5 @@
 /* Prüft die Kartensammlung auf Vollständigkeit und die Antwortoptionen auf Plausibilität. */
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { CARDS, CATS, countByCat } from '../data/index.js';
 import { options, normalize } from '../assets/js/quiz.js';
 
@@ -142,5 +143,32 @@ if (zahlkarten) {
   if (mittig > 85) fail(`Zu viele Zahlenkarten klammern die Antwort ein (${mittig.toFixed(1)} %) – wer beide Extremwerte streicht, raet mit 50 statt 25 Prozent.`);
 }
 if (quote > 32) fail(`Die Laenge verraet die Antwort zu oft: ${quote.toFixed(1)} % statt hoechstens 32 %`);
+/* Kennungen haengen am Fragetext. Wer eine Frage umschreibt, gibt der Karte
+   damit eine neue Kennung - und wirft den Lernfortschritt aller Nutzer weg,
+   ohne dass es irgendwo auffiele. Deshalb liegt der Bestand als Liste bei und
+   wird bei jeder Pruefung verglichen. Verschwundene Kennungen brauchen einen
+   Nachfolger: der alte Wortlaut kommt bei der Karte unter p in die Datei.
+   Uebernehmen mit: node scripts/check-content.mjs --kennungen */
+const KENNUNGEN = 'data/kennungen.json';
+const jetzt = CARDS.map(c => c.id).sort();
+const nachfolger = new Set(CARDS.flatMap(c => c.alt || []));
+if (process.argv.includes('--kennungen')) {
+  writeFileSync(KENNUNGEN, JSON.stringify(jetzt, null, 0).replace(/","/g, '",\n "') + '\n');
+  console.log(`${KENNUNGEN} auf ${jetzt.length} Kennungen gebracht`);
+} else if (existsSync(KENNUNGEN)) {
+  const frueher = JSON.parse(readFileSync(KENNUNGEN, 'utf8'));
+  const heute = new Set(jetzt);
+  const weg = frueher.filter(id => !heute.has(id) && !nachfolger.has(id));
+  if (weg.length) {
+    fail(`${weg.length} Karten haben ihre Kennung verloren – der Lernfortschritt dazu waere weg. `
+      + `Bei jeder umformulierten Karte den alten Fragetext als p eintragen, sonst `
+      + `mit --kennungen uebernehmen. Betroffen: ${weg.slice(0, 6).join(', ')}${weg.length > 6 ? ' …' : ''}`);
+  }
+  const neuHinzu = jetzt.filter(id => !new Set(frueher).has(id)).length;
+  if (neuHinzu) console.log(`Kennungen    : ${neuHinzu} neu, ${frueher.length - weg.length} unveraendert`);
+} else {
+  warn(`${KENNUNGEN} fehlt – einmal mit --kennungen anlegen, dann faellt jede verlorene Kennung auf`);
+}
+
 console.log(`\n${errors} Fehler, ${warnings} Hinweise`);
 process.exit(errors ? 1 : 0);

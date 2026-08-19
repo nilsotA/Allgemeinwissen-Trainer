@@ -17,6 +17,27 @@ const { fresh, schedule, GOOD } = await import('../assets/js/srs.js');
 
 beforeEach(() => { store.resetAll(); });
 
+test('eine umformulierte Frage nimmt ihren Lernstand mit', () => {
+  // Die Kennung haengt am Fragetext. Ohne diese Uebernahme faengt eine Karte
+  // nach einer Umformulierung bei null an - und der Nutzer merkt es nie.
+  const c = CARDS[0];
+  const alteKennung = c.cat + '-frueher';
+  const stand = { ...fresh(), iv: 40, reps: 5, seen: 9, ok: 8, due: store.todayNum() + 40 };
+  store.putCard(alteKennung, stand);
+  store.toggleFlag(alteKennung);
+
+  const bewegt = store.uebernimmVorgaenger([[c.id, ['gibt-es-nicht', alteKennung]]]);
+  assert.equal(bewegt, 1);
+  assert.deepEqual(store.cardState(c.id), stand, 'Stand nicht uebernommen');
+  assert.ok(!store.cardState(alteKennung), 'alter Eintrag blieb liegen');
+  assert.equal(store.isFlagged(c.id), true, 'Markierung nicht mitgewandert');
+
+  // Zweiter Lauf: ein vorhandener Stand darf nicht ueberschrieben werden.
+  store.putCard(alteKennung, { ...fresh(), seen: 1 });
+  assert.equal(store.uebernimmVorgaenger([[c.id, [alteKennung]]]), 0);
+  assert.deepEqual(store.cardState(c.id), stand);
+});
+
 test('Tagesplan enthält keine Karte doppelt', () => {
   const q = sess.buildDaily();
   const ids = q.map(x => x.card.id);

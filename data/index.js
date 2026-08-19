@@ -45,7 +45,12 @@ for (const [cat, list] of Object.entries(SOURCES)) {
       d: c.d || 2,
       // Karten, deren Antwort sich getippt nicht von einem Ablenker unterscheiden
       // laesst (etwa „ss" gegen „ss"), duerfen nur als Auswahlfrage laufen.
-      mc: !!c.mc
+      mc: !!c.mc,
+      // Fruehere Fragefassungen. Die Kennung haengt am Fragetext, damit sie
+      // beim Ergaenzen von Karten stabil bleibt - eine Umformulierung wuerde
+      // den Lernfortschritt dieser Karte sonst stillschweigend wegwerfen.
+      // Wer eine Frage umschreibt, traegt den alten Wortlaut unter p ein.
+      alt: (Array.isArray(c.p) ? c.p : c.p ? [c.p] : []).map(q => cat + '-' + hashId(q))
     });
   });
 }

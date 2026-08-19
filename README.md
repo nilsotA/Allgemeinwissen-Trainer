@@ -109,14 +109,31 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 70 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 40 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm test           # 71 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 43 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
 npm run simulate   # simuliert 180 Tage Lernverlauf
 npm run build      # erneuert Icons und Service-Worker-Cache
 ```
+
+### Kartenkennungen
+
+Die Kennung einer Karte ist ein Hash ihres Fragetextes. Das hält sie stabil, wenn Karten
+ergänzt oder umsortiert werden – aber eine **umformulierte Frage** bekommt eine neue Kennung,
+und der Lernfortschritt dazu wäre still verloren.
+
+Zwei Vorkehrungen verhindern das:
+
+- `data/kennungen.json` führt den Bestand. `npm run check` meldet jede Kennung, die ohne
+  Nachfolger verschwindet, als Fehler.
+- Wer eine Frage umschreibt, trägt den alten Wortlaut bei der Karte unter `p` ein
+  (`p:"alte Fassung der Frage"`, auch als Liste). Die App hebt den gespeicherten Stand beim
+  Start auf die neue Kennung – samt Markierung.
+
+Nach dem Umformulieren einmal `node scripts/check-content.mjs --kennungen` laufen lassen,
+damit die Liste den neuen Stand kennt.
 
 ### Qualitätssicherung
 
@@ -148,7 +165,7 @@ bedeutungstragenden Werten blieben ganze drei Karten übrig – der Tausch lohnt
 Schranke bei 85 % bleibt trotzdem stehen: Sie fängt den systematischen Fall ab, in dem
 Ablenker maschinell um die Antwort gelegt werden.
 
-Die 70 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 71 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
 den Vergleich freier Eingaben ab.
 

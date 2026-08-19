@@ -387,6 +387,47 @@ try {
       [...funde.values()].slice(0, 4).map(t => `${t.art} .${t.kl} (${t.n}px)`).join(' | '));
   }
 
+  group('Nochmal-Karten zählen mit');
+  /* „Nochmal" schiebt die Karte in derselben Einheit erneut ein. Waechst der
+     Vorrat dabei nicht mit, zeigt der Balken einen Fortschritt, den es nicht
+     gibt - und die Einheit ist laenger als angekuendigt. */
+  {
+    const nctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const np = await nctx.newPage();
+    await np.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await np.evaluate((k) => {                       // freies Abrufen erzwingen
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.settings = { ...(st.settings || {}), recallMode: 'recall' };
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await np.reload({ waitUntil: 'networkidle' });
+    await np.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await np.waitForSelector('.sess-body');
+    const stand = async () => (await np.locator('.sess-top .tiny').innerText()).split('/').map(Number);
+    const [, vorrat] = await stand();
+    const frage = await np.locator('.q').innerText();
+    await np.locator('.sess-foot button').first().click();     // Lösung zeigen
+    await np.waitForTimeout(500);
+    await np.getByRole('button', { name: 'Nochmal' }).click();
+    await np.waitForTimeout(400);
+    const [erledigt, nachher] = await stand();
+    check('Vorrat wächst um die eingeschobene Karte', nachher === vorrat + 1, `${vorrat} → ${nachher}`);
+    check('erledigt zählt die Antwort', erledigt === 1, String(erledigt));
+    // Die Karte kommt in derselben Einheit wieder - sonst waere „Nochmal" ein leeres Versprechen.
+    let wieder = false;
+    for (let i = 0; i < 6 && !wieder; i++) {
+      if ((await np.locator('.q').innerText()) === frage && i > 0) { wieder = true; break; }
+      await np.locator('.sess-foot button').first().click();
+      await np.waitForTimeout(350);
+      await np.getByRole('button', { name: 'Gut' }).click();
+      await np.waitForTimeout(350);
+      if (!(await np.locator('.q').count())) break;
+      if ((await np.locator('.q').innerText()) === frage) wieder = true;
+    }
+    check('dieselbe Karte kommt in der Einheit wieder', wieder);
+    await nctx.close();
+  }
+
   group('Kleines Display');
   /* Ein iPhone SE ist 320 x 568 CSS-Pixel gross - die Lernkarte ist dort
      hoeher als das Fenster. Frueher scrollte in diesem Fall die Seite statt

@@ -308,6 +308,27 @@ function saeubern(roh) {
    liegt nur hier. Deshalb wird die Datei erst geprueft und beschrieben, bevor
    irgendetwas ueberschrieben wird, und der bisherige Stand wandert vorher in
    einen Sicherungsschluessel, aus dem er sich zurueckholen laesst. */
+/* Eine umformulierte Frage bekommt eine neue Kennung. Ohne diesen Schritt
+   faenge die Karte bei null an: gelernt bleibt gelernt, nur der Name aendert
+   sich. Die Zuordnung kommt von aussen, damit die Ablage nichts ueber Inhalte
+   wissen muss. */
+export function uebernimmVorgaenger(paare) {
+  let bewegt = 0;
+  for (const [neu, alte] of paare) {
+    if (state.cards[neu]) continue;              // neue Kennung hat schon einen Stand
+    for (const alt of alte) {
+      if (!state.cards[alt]) continue;
+      state.cards[neu] = state.cards[alt];
+      delete state.cards[alt];
+      if (state.flags[alt]) { state.flags[neu] = true; delete state.flags[alt]; }
+      bewegt++;
+      break;
+    }
+  }
+  if (bewegt) save();
+  return bewegt;
+}
+
 const SICHERUNG = KEY + '.vorher';
 
 /** Liest ein Backup, ohne etwas zu veraendern. Wirft, wenn es keines ist. */
