@@ -68,6 +68,8 @@ Deckel steigt.
 - **Nachschlagen** über die Lupe oben rechts: alle Karten durchsuchbar nach Frage, Antwort,
   Thema und Kontext. Antippen klappt die Lösung auf, ★ markiert für später.
 - **Wiederholungs-Vorschau** für die nächsten sieben Tage in der Statistik.
+- **Wissen des Tages** – 141 kurze Merkanker, die ein Warum erklären oder einen verbreiteten
+  Irrtum ausräumen. Einer pro Tag, ein knappes halbes Jahr ohne Wiederholung.
 - **Rückblick nach jeder Runde**: Welche Karten saßen noch nicht – mit Antwort und Kontext.
 - **Hartnäckige Karten** werden nach mehreren Aussetzern gekennzeichnet und liefern einen
   wechselnden Merkhilfe-Tipp. Wer eine Karte zum fünften Mal vergisst, braucht keine sechste
