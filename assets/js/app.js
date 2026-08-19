@@ -269,7 +269,7 @@ function renderHome() {
   ${sicherungsHinweis()}`;
 
   const sich = document.getElementById('sichernJetzt');
-  if (sich) sich.onclick = () => { sichern(); render(); };
+  if (sich) sich.onclick = async () => { if (await sichern()) render(); };
 
   app.querySelector('[data-go="daily"]').onclick = () => {
     const q = sess.buildDaily();
@@ -581,15 +581,35 @@ function sicherungsHinweis() {
 /* Sichern als Datei. Der Zeitpunkt wird vermerkt, damit die Startseite
    erinnern kann, bevor Monate an Fortschritt an einem geloeschten
    Websitespeicher haengen. */
-function sichern() {
-  const blob = new Blob([store.exportJSON()], { type: 'application/json' });
+async function sichern() {
+  const name = `wissenswerk-${dayKey()}.json`;
+  const datei = new File([store.exportJSON()], name, { type: 'application/json' });
+
+  /* Als installierte App vom Home-Bildschirm kennt iOS keinen Download-Ordner:
+     ein <a download> verpufft dort still - der Knopf saehe kaputt aus, und
+     schlimmer, der Nutzer glaubte gesichert zu haben. Das Teilen-Blatt ist der
+     Weg, den iOS fuer Dateien vorsieht; "In Dateien sichern" liegt direkt darin. */
+  if (navigator.canShare && navigator.canShare({ files: [datei] })) {
+    try {
+      await navigator.share({ files: [datei], title: name });
+      store.merkeSicherung();
+      toast('Gesichert');
+      return true;
+    } catch (e) {
+      // Abbruch im Teilen-Blatt heisst: NICHT gesichert - nichts vermerken.
+      if (e.name === 'AbortError') return false;
+      // Alles andere (Teilen dieser Datei doch nicht moeglich): Download versuchen.
+    }
+  }
+
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `wissenswerk-${dayKey()}.json`;
+  a.href = URL.createObjectURL(datei);
+  a.download = name;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   store.merkeSicherung();
   toast('Gesichert – die Datei liegt in „Downloads“');
+  return true;
 }
 
 /* ---- Nachschlagen: suchen, lesen, markieren ---- */

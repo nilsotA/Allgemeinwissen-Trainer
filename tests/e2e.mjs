@@ -560,6 +560,31 @@ try {
       download.suggestedFilename());
     await sp.waitForTimeout(500);
     check('nach dem Sichern verschwindet die Erinnerung', await sp.locator('#sichernJetzt').count() === 0);
+
+    /* iOS-Pfad: Als installierte App gibt es keinen Download-Ordner, das Sichern
+       laeuft ueber das Teilen-Blatt. Ein Abbruch dort darf NICHT als gesichert
+       vermerkt werden - sonst glaubt der Nutzer, er habe eine Datei. */
+    await setze({ lastExport: heute - 45 });
+    await sp.addInitScript(() => {
+      navigator.canShare = () => true;
+      window.__geteilt = 0;
+      navigator.share = () => { window.__geteilt++; return window.__teilenKlappt
+        ? Promise.resolve()
+        : Promise.reject(Object.assign(new Error('abgebrochen'), { name: 'AbortError' })); };
+    });
+    await sp.reload({ waitUntil: 'networkidle' });
+    await sp.evaluate(() => { window.__teilenKlappt = false; });
+    await sp.locator('#sichernJetzt').click();
+    await sp.waitForTimeout(400);
+    check('das Teilen-Blatt wird benutzt, wenn es eines gibt',
+      await sp.evaluate(() => window.__geteilt) === 1);
+    check('Abbruch im Teilen-Blatt zählt nicht als Sicherung',
+      await sp.locator('#sichernJetzt').count() === 1);
+    await sp.evaluate(() => { window.__teilenKlappt = true; });
+    await sp.locator('#sichernJetzt').click();
+    await sp.waitForTimeout(400);
+    check('erfolgreiches Teilen zählt als Sicherung',
+      await sp.locator('#sichernJetzt').count() === 0);
     await sctx.close();
   }
 

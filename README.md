@@ -84,7 +84,9 @@ Deckel steigt.
   die App hat keinen Server und kann nichts hochladen. Safari räumt den Speicher von Websites
   nach längerer Nichtnutzung auf, ein neues Handy hat ihn ohnehin nicht. Deshalb erinnert die
   Startseite ab 120 beantworteten Karten daran, einmal als Datei zu sichern, und danach wieder,
-  wenn die letzte Sicherung 30 Tage her ist. Vorher wäre der Hinweis nur lästig.
+  wenn die letzte Sicherung 30 Tage her ist. Vorher wäre der Hinweis nur lästig. Als installierte
+  App läuft das Sichern über das iOS-Teilen-Blatt („In Dateien sichern") – ein `<a download>`
+  verpufft im Home-Bildschirm-Modus still. Ein Abbruch im Teilen-Blatt zählt nicht als Sicherung.
 - **Wiederholungs-Vorschau** für die nächsten sieben Tage in der Statistik.
 - **Fortschritt nach Stufe** – „Sitzen die Grundlagen aus Klasse 5 bis 8?" war die
   Ausgangsfrage an diese App; beantworten konnte sie sie lange nicht, weil die Statistik nur
@@ -132,7 +134,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 79 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 65 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 68 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
