@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.604 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.641 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (260 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (250 Karten: Grundlagen,
@@ -12,6 +12,10 @@ In beiden Fächern reicht die Sammlung bewusst bis auf Studienniveau: biomechani
 und der Doppelauftrag des Schulsports ebenso wie Hauptsatz, hessesche Normalform, Fehler
 erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht nur mitreden,
 sondern sattelfest sein.
+
+Ein eigenes Teilgebiet **Geld im Alltag** deckt ab, was mit Anfang zwanzig anfängt zu zählen und
+in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und Kündigungsfrist, Probezeit
+und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man trotzdem braucht.
 
 ## Warum die App so gebaut ist
 
@@ -30,8 +34,8 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
 Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt rund 101 Karten pro Tag,
-Spitzenlast etwa 146, gut 12 Minuten täglich. Nach einem halben Jahr sitzen etwa 1.378 der
-1.604 Karten fest. Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
+Spitzenlast etwa 137, gut 12 Minuten täglich. Nach einem halben Jahr sitzen etwa 1.369 der
+1.641 Karten fest. Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
 Kartenbestand mitwächst.
 
 Die Simulation treibt bewusst den **echten** Code – den Scheduler, die Warteschlangen und den
