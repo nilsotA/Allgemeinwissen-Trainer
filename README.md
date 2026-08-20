@@ -163,7 +163,11 @@ die niemand prüft.
   Sie füllen weder den Tagesfortschritt noch die Wissensquote, weil unter Zeitdruck
   naturgemäß geraten wird – drei Duelle ließen den Tagesbogen sonst auf 71 % springen,
   ohne dass eine einzige geplante Karte dran war. Für die Serie und die Aktivitätskarte
-  zählt ein Duell trotzdem: geübt ist geübt.
+  zählt ein Duell trotzdem: geübt ist geübt. Die Uhr **pausiert, während die App im
+  Hintergrund ist**: Sie rechnet mit der Uhrzeit statt mit Zeitgeber-Ticks, damit gedrosselte
+  Intervalle sie nicht verfälschen – nur läuft die Uhrzeit eben auch weiter, während das Handy
+  klingelt oder gesperrt ist. Vorher fand man die Frage nach einem Anruf abgelaufen vor, ohne
+  sie je gesehen zu haben.
 - **Markierte Karten** – was du beim Nachschlagen mit ★ versiehst, lässt sich gezielt üben.
 - **Schwachstellen** – die Statistik zeigt die Teilgebiete mit der schlechtesten
   Trefferquote; ein Tipp darauf startet eine Runde genau dazu.

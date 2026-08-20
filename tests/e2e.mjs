@@ -493,6 +493,50 @@ try {
     await nctx.close();
   }
 
+  group('Duell: Zeit im Hintergrund zaehlt nicht');
+  /* Der Zeitgeber rechnet mit Date.now(), damit gedrosselte Intervalle ihn nicht
+     verfaelschen – nur laeuft Date.now() auch weiter, waehrend das Handy klingelt
+     oder gesperrt ist. Vorher fand man die Frage nach einem Anruf abgelaufen vor,
+     ohne sie je gesehen zu haben.
+
+     Geprueft wird der Zeitbalken, nicht der Endzustand der Frage: Wie viel von den
+     fuenfzehn Sekunden bis hierher schon verbraucht war, haengt davon ab, wie lange
+     der gesamte Testlauf bis zu dieser Stelle gebraucht hat. Der Balken zeigt
+     dagegen unmittelbar, ob die Pause angerechnet wurde. */
+  {
+    const dctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const dp2 = await dctx2.newPage();
+    await dp2.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await dp2.locator('nav button[data-view="duel"]').click();
+    await dp2.waitForTimeout(300);
+    await dp2.locator('#duelGo').click();
+    await dp2.waitForSelector('.opts');
+
+    const balken = async () => Number(
+      /width:\s*([\d.]+)%/.exec(await dp2.locator('#clock i').getAttribute('style') || '')?.[1] ?? -1);
+    const sichtbarkeit = (wert) => dp2.evaluate((v) => {
+      Object.defineProperty(document, 'visibilityState', { get: () => v, configurable: true });
+      Object.defineProperty(document, 'hidden', { get: () => v === 'hidden', configurable: true });
+      document.dispatchEvent(new Event('visibilitychange'));
+    }, wert);
+
+    const vorher = await balken();
+    check('der Zeitbalken laeuft ueberhaupt', vorher > 0, `${vorher} %`);
+    await sichtbarkeit('hidden');
+    await new Promise(r => setTimeout(r, 6000));      // 6 von 15 Sekunden = 40 Prozentpunkte
+    await sichtbarkeit('visible');
+    await dp2.waitForTimeout(400);
+    const nachher = await balken();
+
+    check('die Frage ist nach der Rueckkehr noch offen',
+      await dp2.locator('.verdict').count() === 0,
+      await dp2.locator('.verdict').innerText().catch(() => ''));
+    check('sechs Sekunden im Hintergrund kosten kaum Zeit',
+      nachher >= 0 && vorher - nachher < 12,
+      `${vorher} % -> ${nachher} % (ohne die Pause waeren es rund 40 Punkte weniger)`);
+    await dctx2.close();
+  }
+
   group('Nachschlagen: der richtige Treffer steht oben');
   /* Gesucht wird nach Teilzeichenketten – absichtlich grosszuegig, damit
      „integr" auch „Integral" findet. Ohne Reihenfolge stand dadurch Unsinn oben:
