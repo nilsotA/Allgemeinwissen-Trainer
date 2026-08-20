@@ -70,10 +70,61 @@
   <p id="bootHinweis" class="boot-hinweis" hidden>Beim ersten Start werden alle Karten
     geladen. Danach startet die App sofort – auch ohne Netz.</p>
 </div>
-<script>setTimeout(function () {
-  var h = document.getElementById('bootHinweis');
-  if (h && document.getElementById('boot')) h.hidden = false;
-}, 1500);</script>
+<!-- Ohne diese Zeilen bleibt „wird geladen" fuer immer stehen, wenn das Modul
+     nicht laedt: abgebrochener Download, kaputte Datendatei, zu alter Browser.
+     Der Hinweis darunter verspricht dann sogar, dass es gleich losgeht. Es gibt
+     zwei Faelle und zwei Antworten darauf: Ein gemeldeter Fehler ist sicher, da
+     wird sofort Klartext gezeigt. Langsam ist nicht gleich kaputt, deshalb sagt
+     der Zeitablauf nur, dass es ungewoehnlich lange dauert – und bietet einen
+     Knopf an, statt einen Abbruch zu behaupten. Bewusst ohne Modul und ohne
+     moderne Schreibweise: Diese Zeilen muessen gerade dort laufen, wo der Rest
+     der App es nicht tut. -->
+<script>(function () {
+  var kaputt = false;
+  function ersetzen(titel, text, knopf) {
+    var b = document.getElementById('boot');
+    if (!b || kaputt) return;
+    kaputt = true;
+    var alt = b.querySelector('.boot-logo');
+    b.innerHTML = '';
+    if (alt) b.appendChild(alt);
+    var p1 = document.createElement('p');
+    p1.textContent = titel;
+    var p2 = document.createElement('p');
+    p2.className = 'boot-hinweis';
+    p2.textContent = text;
+    b.appendChild(p1); b.appendChild(p2);
+    if (knopf) {
+      var k = document.createElement('button');
+      k.type = 'button';
+      k.id = 'bootNeu';
+      k.className = 'btn primary';
+      k.textContent = 'Neu laden';
+      k.onclick = function () { location.reload(); };
+      b.appendChild(k);
+    }
+  }
+  setTimeout(function () {
+    var h = document.getElementById('bootHinweis');
+    if (h && document.getElementById('boot')) h.hidden = false;
+  }, 1500);
+  // Sicher kaputt: Ein Skriptfehler oder eine Datei, die nicht kommt.
+  window.addEventListener('error', function (e) {
+    if (!document.getElementById('boot')) return;
+    var datei = (e && e.target && e.target.src) ? ' (' + String(e.target.src).split('/').pop() + ')' : '';
+    ersetzen('Die App konnte nicht geladen werden.',
+      'Ein Teil der App fehlt oder ist beschädigt' + datei
+      + '. Neu laden hilft meist. Bleibt es dabei, ist der Browser womöglich zu alt –'
+      + ' Wissenswerk braucht Safari 15.4 oder neuer.', true);
+  }, true);
+  // Nur langsam: kein Abbruch behaupten, aber einen Ausweg anbieten.
+  setTimeout(function () {
+    if (!document.getElementById('boot') || kaputt) return;
+    ersetzen('Das dauert ungewöhnlich lange.',
+      'Beim ersten Start kommen alle Karten herunter – bei schwacher Verbindung'
+      + ' kann das dauern. Wenn nichts mehr passiert, hilft neu laden.', true);
+  }, 20000);
+})();</script>
 
 <!-- Alle Symbole liegen als Inline-SVG im Dokument: keine Emoji, keine
      Zeichensatz-Glyphen, keine fremde Bibliothek. Ein Strichstil fuer alles. -->

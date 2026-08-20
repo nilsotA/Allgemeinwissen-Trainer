@@ -493,6 +493,32 @@ try {
     await nctx.close();
   }
 
+  group('Wenn die App nicht laedt');
+  /* Ohne Ausweg blieb „Wissenswerk wird geladen …" fuer immer stehen – samt dem
+     Hinweis, dass es gleich losgeht. Ein abgebrochener Download, eine kaputte
+     Datendatei oder ein zu alter Browser sahen aus wie ein Haenger. */
+  {
+    for (const [name, muster, erwartet] of [
+      ['fehlende Datei', '**/assets/js/app.js', /nicht geladen/],
+      ['kaputte Kartendatei', '**/data/spo.js', /nicht geladen/],
+    ]) {
+      const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'block' });
+      const bp = await bctx.newPage();
+      bp.on('pageerror', () => { /* genau darum geht es hier */ });
+      await bp.route(muster, (route) => {
+        if (name === 'fehlende Datei') return route.fulfill({ status: 404, body: 'weg' });
+        return route.fulfill({ status: 200, contentType: 'text/javascript', body: 'export default [ kein gueltiges JS' });
+      });
+      await bp.goto(URL_BASE, { waitUntil: 'domcontentloaded' });
+      await bp.waitForTimeout(2000);
+      const txt = await bp.locator('#boot').innerText().catch(() => '');
+      check(`${name}: der Startbildschirm sagt Bescheid`, erwartet.test(txt), txt.slice(0, 60));
+      check(`${name}: es gibt einen Knopf zum Neuladen`, await bp.locator('#bootNeu').count() === 1);
+      check(`${name}: kein falsches Versprechen mehr`, !/startet die App sofort/.test(txt));
+      await bctx.close();
+    }
+  }
+
   group('Hinweise schlucken keine Tipper');
   /* Der Hinweisbalken liegt fest ueber dem unteren Rand – also ueber den
      Antwortknoepfen. Ohne pointer-events:none nahm sein Rechteck jeden Tipper

@@ -311,6 +311,23 @@ Die restlichen sechs Sekunden sind reine Übertragungszeit für 240 kB Karten �
 nur weniger Inhalt. Stattdessen sagt der Startbildschirm nach anderthalb Sekunden, was gerade
 passiert und dass es einmalig ist.
 
+**Und wenn die App gar nicht lädt?** Dann blieb „Wissenswerk wird geladen …" für immer stehen –
+samt dem Hinweis, dass es gleich losgeht. Ein abgebrochener Download, eine beschädigte
+Kartendatei oder ein zu alter Browser sahen aus wie ein Hänger. Zwei Fälle, zwei Antworten:
+Ein **gemeldeter Fehler** ist eindeutig, dort steht sofort Klartext samt Dateiname und ein Knopf
+zum Neuladen. **Langsam ist nicht kaputt** – nach 20 Sekunden sagt der Bildschirm deshalb nur,
+dass es ungewöhnlich lange dauert, und bietet denselben Knopf an, statt einen Abbruch zu
+behaupten. Diese Zeilen stehen bewusst als klassisches Skript in `index.html`, ohne Modul und
+ohne moderne Schreibweise: Sie müssen gerade dort laufen, wo der Rest der App es nicht tut.
+
+Die Fehlermeldung nennt **Safari 15.4** als Mindestversion. Das ist nachgerechnet und nicht
+geschätzt: `structuredClone` und die Einheit `dvh` sind die einzigen Bausteine mit einer höheren
+Anforderung als Safari 14 – alles andere ist älter oder fällt weich aus, etwa
+`overscroll-behavior`, das ältere Versionen einfach überlesen. Ein Ersatz für `structuredClone`
+wäre drei Zeilen lang, ist aber bewusst nicht drin: Betroffen wären nur Geräte, die seit
+März 2022 kein Update bekommen haben, und eine klare Meldung ist dort ehrlicher als eine
+halb funktionierende App.
+
 ### Wie fair wird eine getippte Antwort bewertet?
 
 Beim freien Abrufen vergleicht die App die Eingabe mit der Lösung und meldet drei Stufen:
