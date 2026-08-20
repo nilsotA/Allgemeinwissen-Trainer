@@ -519,6 +519,13 @@ sauber, und jede einzelne war nötig:
 So eingestellt findet die Prüfung über den ganzen Bestand **genau zwei** Fälle und keinen falschen.
 Beide sind behoben.
 
+Dieselbe Regel auf **Wortantworten** auszuweiten bringt dagegen nichts, und das ist gemessen:
+Von 14 Kandidaten war kein einziger echt. „Deutsch", „Afrika" und „Der Bundestag" stehen in
+vielen Fragen, ohne irgendetwas zu verraten – dass „Niedersachsen" irgendwo vorkommt, sagt
+nicht, welches Bundesland an die meisten anderen grenzt. Zahlen sind der Sonderfall, weil eine
+genannte Zahl die Antwort *ist* und nicht bloß ein Stichwort. Die Prüfung bleibt deshalb bei
+Zahlen.
+
 Solche Karten lassen sich ohne Wissen lösen. Wer immer die längste Option wählt, traf in
 einer frühen Fassung in 47 % der Fälle richtig statt in 25 % wie beim Raten – das verfälscht
 die Trefferquote und lässt den Scheduler zu optimistisch planen. Nach der Überarbeitung von
