@@ -80,7 +80,10 @@ for (const c of CARDS) {
 for (const c of CARDS) {
   if (!c.ug) continue;
   const glieder = String(c.a).split(/,| und /).map(t => t.trim()).filter(Boolean);
-  if (glieder.length < 3) fail(`${c.id}: als Menge gekennzeichnet, aber die Antwort ist keine Aufzaehlung – „${c.a}"`);
+  /* Zwei Glieder reichen: „Aufteilen und Verteilen" ist eine Menge, und die
+     Reihenfolge traegt dort ebenso wenig wie bei fuenf Gliedern. Der Wert faengt
+     den groben Fehler ab – das Kennzeichen an einer einteiligen Antwort. */
+  if (glieder.length < 2) fail(`${c.id}: als Menge gekennzeichnet, aber die Antwort ist keine Aufzaehlung – „${c.a}"`);
   if (c.mc) warn(`${c.id}: als Menge gekennzeichnet, laeuft aber nur als Auswahlfrage`);
 }
 console.log('Mengenkarten :', `${CARDS.filter(c => c.ug).length} – dort zaehlt die Reihenfolge der Antwort nicht`);

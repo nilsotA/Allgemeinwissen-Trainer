@@ -3,13 +3,19 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.671 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.701 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (267 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (274 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
-Fakt fragt, sondern nach der Entscheidung davor – siehe unten.
+Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
+eigens verstärkt (Mathedidaktik 29, Sportdidaktik 35): Dort schreibt man Prüfungen, und dort
+war die Sammlung am dünnsten. Neu unter anderem Aufsichtspflicht, die pädagogischen
+Perspektiven, Bezugsnormen der Leistungsbewertung, das Taktik-Spiel-Modell und differenzielles
+Lernen; auf der Mathematikseite Variablenaspekte nach Malle, die beiden Deutungen des
+Gleichheitszeichens, das Permanenzprinzip, präformales Beweisen und zählendes Rechnen als Kern
+der Rechenschwäche.
 In beiden Fächern reicht die Sammlung bewusst bis auf Studienniveau: biomechanische Prinzipien
 und der Doppelauftrag des Schulsports ebenso wie Hauptsatz, hessesche Normalform, Fehler
 erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht nur mitreden,
