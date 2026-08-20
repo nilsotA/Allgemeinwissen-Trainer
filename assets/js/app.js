@@ -981,27 +981,40 @@ function renderSettings() {
 /* Laufender Zeitgeber der Duellfrage – muss beim Verlassen der Ansicht enden,
    sonst feuert er weiter und ruft finish() auf einem längst ersetzten Bildschirm auf. */
 let duelTimer = null;
-/* Zeit, in der die App nicht sichtbar war. Der Zeitgeber im Duell rechnet mit
-   Date.now(), damit ihn gedrosselte Intervalle nicht verfaelschen – nur laeuft
-   Date.now() eben auch weiter, waehrend das Handy klingelt oder gesperrt ist.
-   Wer nach einem Anruf zurueckkommt, fand die Frage abgelaufen vor, ohne sie je
-   gesehen zu haben. Diese Pause zaehlt deshalb nicht mit. */
-let duelPause = null;
-function stopDuelTimer() {
-  if (duelTimer) { clearInterval(duelTimer); duelTimer = null; }
-  if (duelPause) { document.removeEventListener('visibilitychange', duelPause.horcher); duelPause = null; }
-}
+function stopDuelTimer() { if (duelTimer) { clearInterval(duelTimer); duelTimer = null; } }
 
-function pauseStarten() {
-  const p = { gesamt: 0, seit: document.visibilityState === 'hidden' ? Date.now() : 0 };
-  p.horcher = () => {
-    if (document.visibilityState === 'hidden') p.seit = p.seit || Date.now();
-    else if (p.seit) { p.gesamt += Date.now() - p.seit; p.seit = 0; }
+/* Wie lange steht diese Frage schon da – gerechnet nur fuer die Zeit, in der die
+   App tatsaechlich sichtbar war.
+
+   Gerechnet wird mit der Uhrzeit und nicht mit Zeitgeber-Ticks, damit gedrosselte
+   Intervalle die Messung nicht verfaelschen. Die Uhrzeit laeuft aber auch weiter,
+   waehrend das Handy klingelt oder gesperrt ist, und daran haengen zwei
+   Entscheidungen: die Frist im Duell und die Note im Tagestraining. Ohne diese
+   Rechnung kostete ein Anruf im Duell die Frage – und im Tagestraining wurde eine
+   sofortige richtige Antwort als „Schwer" gewertet, was den Leichtigkeitsfaktor
+   der Karte dauerhaft senkt.
+
+   Es laeuft immer hoechstens eine Messung: Die naechste beendet die vorige, damit
+   kein Horcher am Dokument haengen bleibt, wenn eine Frage ohne Antwort verlassen
+   wird. */
+let laufendeMessung = null;
+function sichtbareZeit() {
+  if (laufendeMessung) laufendeMessung.beenden();
+  const start = Date.now();
+  let versteckt = 0;
+  let seit = document.visibilityState === 'hidden' ? start : 0;
+  const horcher = () => {
+    if (document.visibilityState === 'hidden') seit = seit || Date.now();
+    else if (seit) { versteckt += Date.now() - seit; seit = 0; }
   };
-  document.addEventListener('visibilitychange', p.horcher);
-  duelPause = p;
-  // Verstrichene Zeit abzueglich aller Phasen im Hintergrund, die laufende eingeschlossen.
-  return () => p.gesamt + (p.seit ? Date.now() - p.seit : 0);
+  document.addEventListener('visibilitychange', horcher);
+  const messen = () => Date.now() - start - versteckt - (seit ? Date.now() - seit : 0);
+  messen.beenden = () => {
+    document.removeEventListener('visibilitychange', horcher);
+    if (laufendeMessung === messen) laufendeMessung = null;
+  };
+  laufendeMessung = messen;
+  return messen;
 }
 
 function startRun(queue, mode) {
@@ -1171,7 +1184,9 @@ function step() {
 /* ---- Multiple Choice ---- */
 function askChoice(card, isFresh, cs) {
   const opts = options(card);
-  const t0 = Date.now();
+  // Nur die Zeit zaehlen, in der die Frage auch sichtbar war – sonst macht ein
+  // Anruf aus einer sofortigen richtigen Antwort ein „Schwer".
+  const verstrichen = sichtbareZeit();
   shell(
     qkarte(head(card, isFresh)) + `<div class="opts" id="opts">${
       opts.map((o, i) => `<button class="opt" data-v="${esc(o)}">
@@ -1181,7 +1196,8 @@ function askChoice(card, isFresh, cs) {
   );
   const pick = (b) => {
     const ok = b.dataset.v === card.a;
-    const dt = Date.now() - t0;
+    const dt = verstrichen();
+    verstrichen.beenden();
     app.querySelectorAll('.opt').forEach(x => {
       x.disabled = true;
       if (x.dataset.v === card.a) x.classList.add('right');
@@ -1459,7 +1475,6 @@ function commit(card, grade, ok, isFresh, behauptet) {
 function askDuel(card) {
   const opts = options(card);
   const LIMIT = 15000;
-  const t0 = Date.now();
   shell(
     qkarte(head(card, false)) + `<div class="opts">${
       opts.map((o, i) => `<button class="opt" data-v="${esc(o)}">
@@ -1471,10 +1486,10 @@ function askDuel(card) {
   const bar = app.querySelector('#clock i');
   let finished = false;
   stopDuelTimer();
-  const versteckt = pauseStarten();
+  const verstrichen = sichtbareZeit();
   duelTimer = setInterval(() => {
     if (!run || !document.getElementById('clock')) return stopDuelTimer();
-    const left = Math.max(0, 1 - (Date.now() - t0 - versteckt()) / LIMIT);
+    const left = Math.max(0, 1 - verstrichen() / LIMIT);
     bar.style.width = (left * 100).toFixed(1) + '%';
     bar.style.background = left < 0.3 ? 'linear-gradient(90deg,#ff6b6b,#ffb454)' : '';
     if (left <= 0) finish(null);

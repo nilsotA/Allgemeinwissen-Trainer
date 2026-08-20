@@ -164,16 +164,23 @@ die niemand prüft.
   naturgemäß geraten wird – drei Duelle ließen den Tagesbogen sonst auf 71 % springen,
   ohne dass eine einzige geplante Karte dran war. Für die Serie und die Aktivitätskarte
   zählt ein Duell trotzdem: geübt ist geübt. Die Uhr **pausiert, während die App im
-  Hintergrund ist**: Sie rechnet mit der Uhrzeit statt mit Zeitgeber-Ticks, damit gedrosselte
-  Intervalle sie nicht verfälschen – nur läuft die Uhrzeit eben auch weiter, während das Handy
-  klingelt oder gesperrt ist. Vorher fand man die Frage nach einem Anruf abgelaufen vor, ohne
-  sie je gesehen zu haben.
+  Hintergrund ist** – siehe unten.
 - **Markierte Karten** – was du beim Nachschlagen mit ★ versiehst, lässt sich gezielt üben.
 - **Schwachstellen** – die Statistik zeigt die Teilgebiete mit der schlechtesten
   Trefferquote; ein Tipp darauf startet eine Runde genau dazu.
 
 ## Weitere Funktionen
 
+- **Eine Unterbrechung kostet nichts.** Zwei Stellen messen, wie lange eine Frage schon
+  dasteht: die Frist im Duell und die Note im Tagestraining, wo über 14 Sekunden als „Schwer"
+  gilt. Gerechnet wird mit der Uhrzeit statt mit Zeitgeber-Ticks, damit gedrosselte Intervalle
+  die Messung nicht verfälschen – nur läuft die Uhrzeit auch weiter, während das Handy klingelt
+  oder gesperrt ist. Gezählt wird deshalb nur die Zeit, in der die App **sichtbar** war.
+  Vorher fand man nach einem Anruf die Duellfrage abgelaufen vor, ohne sie je gesehen zu haben.
+  Schwerer wog der zweite Fall: Eine sofortige richtige Antwort nach der Unterbrechung wurde als
+  „Schwer" gewertet – gemessen fiel der Leichtigkeitsfaktor der Karte von 2,50 auf 2,35, und der
+  wirkt auf **jedes künftige Intervall** dieser Karte. Anders als im Duell trifft das den
+  Scheduler.
 - **Verklickt? Zurücknehmen.** Ein Tipp auf ↶ macht die letzte Antwort samt Terminplanung
   rückgängig – auf dem Handy passiert ein Fehlgriff schnell, und er soll den Verlauf nicht
   verfälschen.

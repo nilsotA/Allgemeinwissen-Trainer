@@ -493,6 +493,46 @@ try {
     await nctx.close();
   }
 
+  group('Eine Unterbrechung verdirbt die Note nicht');
+  /* Die Note im Tagestraining haengt auch daran, wie lange man gebraucht hat:
+     ueber 14 Sekunden gilt als „Schwer". Gerechnet wurde mit der Uhrzeit, und die
+     laeuft auch waehrend eines Anrufs weiter – eine sofortige richtige Antwort
+     wurde danach als „Schwer" gewertet und senkte den Leichtigkeitsfaktor der
+     Karte dauerhaft. Anders als im Duell trifft das den Scheduler. */
+  {
+    const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
+    const uctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const up2 = await uctx2.newPage();
+    await up2.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await up2.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await up2.waitForSelector('.opts');
+    const frage = (await up2.locator('.q').innerText()).trim();
+    const richtig = ANTWORT.get(frage);
+
+    const sichtbarkeit = (wert) => up2.evaluate((v) => {
+      Object.defineProperty(document, 'visibilityState', { get: () => v, configurable: true });
+      Object.defineProperty(document, 'hidden', { get: () => v === 'hidden', configurable: true });
+      document.dispatchEvent(new Event('visibilitychange'));
+    }, wert);
+
+    await sichtbarkeit('hidden');
+    await new Promise(r => setTimeout(r, 16000));    // laenger als die 14-Sekunden-Schwelle
+    await sichtbarkeit('visible');
+    await up2.waitForTimeout(200);
+    await up2.locator(`.opt[data-v="${String(richtig).replace(/"/g, '&quot;')}"]`).first().click();
+    await up2.waitForTimeout(400);
+    await up2.locator('#next').click();
+    await up2.waitForTimeout(500);
+
+    const zustand = await up2.evaluate((k) => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
+    const karte = Object.values(zustand.cards || {})[0];
+    check('die Karte wurde ueberhaupt bewertet', !!karte);
+    check('der Leichtigkeitsfaktor bleibt unberuehrt', karte && karte.ef === 2.5,
+      karte ? `ef=${karte.ef} (2,35 hiesse: als „Schwer" gewertet)` : 'keine Karte');
+    check('die Antwort zaehlt als richtig', karte && karte.ok === 1);
+    await uctx2.close();
+  }
+
   group('Duell: Zeit im Hintergrund zaehlt nicht');
   /* Der Zeitgeber rechnet mit Date.now(), damit gedrosselte Intervalle ihn nicht
      verfaelschen – nur laeuft Date.now() auch weiter, waehrend das Handy klingelt
