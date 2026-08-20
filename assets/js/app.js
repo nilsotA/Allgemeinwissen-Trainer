@@ -681,9 +681,56 @@ let lookupQuery = '';
 let SEARCH_INDEX = null;
 function searchIndex() {
   if (!SEARCH_INDEX) {
-    SEARCH_INDEX = CARDS.map(c => normalize(`${c.q} ${c.a} ${c.sub} ${CAT_BY_ID[c.cat].name} ${c.t}`));
+    // Genau der Text von vorher: Was frueher gefunden wurde, wird weiter gefunden.
+    SEARCH_INDEX = CARDS.map(c => ({
+      alles: normalize(`${c.q} ${c.a} ${c.sub} ${CAT_BY_ID[c.cat].name} ${c.t}`),
+    }));
   }
   return SEARCH_INDEX;
+}
+
+/* Die Einzelfelder braucht nur die Reihenfolge, also nur fuer Karten, die
+   ueberhaupt treffen – und dann einmal. Sie beim Aufbau des Index gleich
+   mitzurechnen kostete auf einem gedrosselten Handy fast eine Sekunde extra
+   beim ersten Suchlauf, fuer Karten, die meist gar nicht in der Liste landen. */
+function felder(i) {
+  const e = SEARCH_INDEX[i];
+  if (e.frage === undefined) {
+    const c = CARDS[i];
+    e.frage = normalize(c.q);
+    e.antwort = normalize(c.a);
+    e.gebiet = normalize(`${c.sub} ${CAT_BY_ID[c.cat].name}`);
+    e.kontext = normalize(c.t);
+  }
+  return e;
+}
+
+/* Gesucht wird nach Teilzeichenketten – das ist absichtlich grosszuegig, damit
+   „integr" auch „Integral" findet. Ohne Reihenfolge stand dadurch aber Unsinn
+   oben: „dna" steckt in „schuldnachweis", „standardnah" und
+   „rekordnationalspieler", und die beiden echten DNA-Karten landeten auf Platz
+   drei und vier. Bei „Grundgesetz" gewann die Goldene Bulle, weil das Wort in
+   ihrem Kontexttext vorkommt.
+
+   Deshalb zaehlt jetzt, WO der Treffer sitzt: Frage vor Antwort vor Teilgebiet
+   vor Kontext – und ein ganzes Wort vor einem Wortteil. */
+/* Die Ausdruecke werden einmal je Suchbegriff gebaut, nicht je Karte und Feld:
+   Bei einer breiten Suche waeren das sonst Tausende pro Tastendruck. */
+const wortMuster = (terms) => terms.map(t => ({
+  t, re: new RegExp(`(^| )${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}( |$)`),
+}));
+
+function trefferGewicht(e, muster) {
+  let punkte = 0;
+  for (const { t, re } of muster) {
+    if (re.test(e.frage)) punkte += 8;
+    else if (e.frage.includes(t)) punkte += 4;
+    if (re.test(e.antwort)) punkte += 6;
+    else if (e.antwort.includes(t)) punkte += 3;
+    if (re.test(e.gebiet)) punkte += 4;
+    if (re.test(e.kontext)) punkte += 2;
+  }
+  return punkte;
 }
 function renderLookup() {
   app.innerHTML = `
@@ -704,7 +751,13 @@ function renderLookup() {
       if (!list.length) list = shuffle(CARDS).slice(0, 20);
     } else {
       const idx = searchIndex();
-      list = CARDS.filter((c, i) => terms.every(t => idx[i].includes(t)));
+      const muster = wortMuster(terms);
+      const treffer = [];
+      CARDS.forEach((c, i) => {
+        if (terms.every(t => idx[i].alles.includes(t))) treffer.push([c, trefferGewicht(felder(i), muster)]);
+      });
+      treffer.sort((a, b) => b[1] - a[1]);          // gleiche Punktzahl behaelt die Reihenfolge
+      list = treffer.map(x => x[0]);
     }
     const shown = list.slice(0, 60);
     res.innerHTML = `

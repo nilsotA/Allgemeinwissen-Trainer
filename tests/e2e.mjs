@@ -493,6 +493,38 @@ try {
     await nctx.close();
   }
 
+  group('Nachschlagen: der richtige Treffer steht oben');
+  /* Gesucht wird nach Teilzeichenketten – absichtlich grosszuegig, damit
+     „integr" auch „Integral" findet. Ohne Reihenfolge stand dadurch Unsinn oben:
+     „dna" steckt in „schuldnachweis" und „rekordnationalspieler", und die echten
+     DNA-Karten landeten auf Platz drei und vier. */
+  {
+    const sctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const sp = await sctx.newPage();
+    await sp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await sp.locator('#searchBtn').click();
+    await sp.waitForSelector('#q');
+    for (const [begriff, erwartet] of [
+      ['DNA', /Abkürzung DNA|Basen bilden die DNA/],
+      ['Grundgesetz', /Grundgesetz/],
+      ['Bundesrat', /Bundesrat/],
+      ['Kettenregel', /Kettenregel/],
+    ]) {
+      await sp.locator('#q').fill(begriff);
+      await sp.waitForTimeout(450);
+      const treffer = await sp.locator('.lk-q').count();
+      check(`„${begriff}" findet etwas`, treffer > 0);
+      const erste = await sp.locator('.lk-q').first().innerText();
+      check(`„${begriff}": der erste Treffer passt`, erwartet.test(erste), erste.slice(0, 55));
+    }
+    // Die Suche darf nichts verlieren: derselbe Bestand wie ohne Reihenfolge
+    await sp.locator('#q').fill('ableitung');
+    await sp.waitForTimeout(450);
+    const kopf = await sp.locator('#res .tiny').first().innerText();
+    check('die Trefferzahl wird genannt', /\d+ Treffer/.test(kopf), kopf);
+    await sctx.close();
+  }
+
   group('Wenn die App nicht laedt');
   /* Ohne Ausweg blieb „Wissenswerk wird geladen …" fuer immer stehen – samt dem
      Hinweis, dass es gleich losgeht. Ein abgebrochener Download, eine kaputte

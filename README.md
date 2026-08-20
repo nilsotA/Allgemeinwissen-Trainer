@@ -174,7 +174,13 @@ die niemand prüft.
   rückgängig – auf dem Handy passiert ein Fehlgriff schnell, und er soll den Verlauf nicht
   verfälschen.
 - **Nachschlagen** über die Lupe oben rechts: alle Karten durchsuchbar nach Frage, Antwort,
-  Thema und Kontext. Antippen klappt die Lösung auf, ★ markiert für später.
+  Thema und Kontext. Antippen klappt die Lösung auf, ★ markiert für später. Gesucht wird nach
+  Teilzeichenketten – absichtlich großzügig, damit „integr" auch „Integral" findet. Sortiert
+  wird danach, **wo** der Treffer sitzt: Frage vor Antwort vor Teilgebiet vor Kontext, ganzes
+  Wort vor Wortteil. Ohne diese Reihenfolge stand Unsinn oben: „dna" steckt auch in
+  „schuldnachweis" und „rekordnationalspieler", und die beiden echten DNA-Karten landeten auf
+  Platz drei und vier; bei „Grundgesetz" gewann die Goldene Bulle, weil das Wort in ihrem
+  Kontexttext vorkommt. Die Trefferzahl bleibt dieselbe – die Reihenfolge filtert nichts weg.
 - **Hinweise schlucken keine Tipper.** Der Hinweisbalken liegt fest über dem unteren Rand –
   also genau über den Antwort- und Notenknöpfen. Ohne `pointer-events: none` nahm sein
   Rechteck jeden Tipper entgegen, der darunter zielte; in einem simulierten Verlauf über
