@@ -396,3 +396,63 @@ test('eine echte Lücke setzt die Serie weiterhin zurück', () => {
   assert.equal(store.S().streak, 1);
   assert.equal(store.S().best, 12, 'der Rekord bleibt stehen');
 });
+
+/* Der gesamte Lernfortschritt liegt nur auf diesem Geraet. Die Sicherungsdatei ist
+   das einzige Netz – wenn beim Wiederherstellen still ein Feld verlorengeht, faellt
+   das erst auf, wenn es zu spaet ist. Der Test scheitert, sobald jemand ein Feld
+   zum Zustand hinzufuegt, ohne saeubern() davon zu erzaehlen. */
+test('eine Sicherung geht verlustfrei wieder herein', () => {
+  const st = store.S();
+  st.cards['pruef-1'] = { ef: 2.3, iv: 9, due: 5, reps: 4, lapses: 2, seen: 9, ok: 7, last: 123 };
+  st.days['2026-08-20'] = { done: 12, correct: 9, newC: 3, sec: 400, duel: 10, duelOk: 6 };
+  st.flags['pruef-1'] = true;
+  Object.assign(st, {
+    totalAnswers: 99, totalCorrect: 70, streak: 5, best: 9, lastDay: '2026-08-20',
+    claims: 20, claimsMiss: 4, factSeen: 30, factIdx: 30, factDay: '2026-08-20',
+    duelBest: 8, duelAnswers: 40, duelCorrect: 25, lastExport: 19000,
+  });
+  Object.assign(st.settings, { focus: ['spo'], newPerDay: 15, recallMode: 'recall' });
+
+  const vorher = JSON.parse(store.exportJSON());
+  const zurueck = store.pruefeBackup(store.exportJSON());
+  const verloren = [];
+  (function vergleiche(a, b, pfad) {
+    for (const k of Object.keys(a)) {
+      if (k === 'rev') continue;            // wird beim Einlesen absichtlich neu gesetzt
+      if (!(k in b)) { verloren.push(pfad + k + ' fehlt ganz'); continue; }
+      if (a[k] && typeof a[k] === 'object' && !Array.isArray(a[k])) vergleiche(a[k], b[k], pfad + k + '.');
+      else if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) {
+        verloren.push(`${pfad}${k}: ${JSON.stringify(a[k])} wurde ${JSON.stringify(b[k])}`);
+      }
+    }
+  })(vorher, zurueck, '');
+  assert.deepEqual(verloren, [], 'Felder gehen beim Wiederherstellen verloren');
+});
+
+/* Ein zweiter offener Tab darf einen eingelesenen Stand nicht wieder einsammeln.
+   Geprueft wird nicht die Fassungsnummer, sondern das Ergebnis: Zaehlt der neue
+   Zustand nicht hoeher als alles Gespeicherte, fuehrt schon das erste Speichern
+   den fremden Stand wieder herein – und die wiederhergestellte Sicherung traegt
+   ploetzlich Karten, die gar nicht in der Datei standen. */
+test('ein eingelesener Stand sammelt nicht den fremden Tab wieder ein', () => {
+  const datei = JSON.stringify({
+    ...JSON.parse(store.exportJSON()),
+    cards: { 'aus-der-datei': { ef: 2.5, iv: 3, due: 1, reps: 1, lapses: 0, seen: 1, ok: 1, last: 50 } },
+  });
+  // Dieser Tab ruht seit langem, der andere war fleissig und hat viel abgelegt.
+  store.S().rev = 2;
+  const fremd = JSON.parse(store.exportJSON());
+  fremd.rev = 500;
+  fremd.cards = { 'aus-dem-anderen-tab': { ef: 2.5, iv: 1, due: 1, reps: 1, lapses: 0, seen: 1, ok: 1, last: 9999 } };
+  localStorage.setItem('wissenswerk.v1', JSON.stringify(fremd));
+
+  store.importJSON(datei);
+
+  const ids = Object.keys(store.S().cards);
+  assert.ok(ids.includes('aus-der-datei'), 'die Karte aus der Datei muss da sein');
+  assert.ok(!ids.includes('aus-dem-anderen-tab'),
+    `der fremde Tab wurde wieder eingesammelt: ${ids.join(', ')}`);
+  const abgelegt = JSON.parse(localStorage.getItem('wissenswerk.v1'));
+  assert.ok(!Object.keys(abgelegt.cards).includes('aus-dem-anderen-tab'),
+    'auch im Speicher darf der fremde Stand nicht wieder auftauchen');
+});
