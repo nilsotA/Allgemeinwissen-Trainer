@@ -112,15 +112,26 @@ export function normalize(s) {
 /* Verneinungen kehren die Aussage um – wer sie tippt, meint etwas anderes. */
 const VERNEINUNG = /\b(nicht|kein|keine|keinen|keiner|nie|niemals|falsch|weiss nicht|ahnung)\b/;
 
+/* Abstand zweier Zeichenketten – mit einer Zusatzregel: Zwei vertauschte
+   Nachbarzeichen zaehlen als EIN Fehler, nicht als zwei. Auf der Handytastatur
+   ist der Dreher der haeufigste Vertipper, und er ist ein Tippfehler und kein
+   Wissensfehler: „Bren" statt „Bern" weiss die Antwort, „Bonn" statt „Bern"
+   nicht. Ohne die Regel kosteten beide gleich viel, und kurze Antworten fielen
+   dadurch in die Bewertung „glatt falsch". */
 function levenshtein(a, b) {
   if (a === b) return 0;
   if (!a.length || !b.length) return Math.max(a.length, b.length);
+  let vorvor = null;
   let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
   for (let i = 1; i <= a.length; i++) {
     const cur = [i];
     for (let j = 1; j <= b.length; j++) {
       cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (vorvor && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        cur[j] = Math.min(cur[j], vorvor[j - 2] + 1);
+      }
     }
+    vorvor = prev;
     prev = cur;
   }
   return prev[b.length];
@@ -150,12 +161,27 @@ const traegtBedeutung = (t) => !WEGLASSBAR.has(t);
    einen Buchstaben auseinander und meinen etwas völlig anderes. Bei längeren Wörtern
    muss die vordere Hälfte stimmen: im Deutschen sitzt die Unterscheidung vorn
    (intra-/inter-, Impressionismus/Expressionismus, Bundesrats-/Bundestags-). */
+/* Genau eine Ausnahme von der Kopfregel: zwei vertauschte Nachbarzeichen. Ein
+   Dreher ist ein Tippfehler und laesst die Buchstaben unveraendert – „varusshclacht"
+   ist dasselbe Wort wie „varusschlacht". Die Faelle, um die es der Kopfregel geht,
+   sind keine Dreher: „intra"/„inter" und „impressionismus"/„expressionismus"
+   tauschen nichts, sie ersetzen. Deshalb bleiben sie weiterhin getrennt. */
+function nurDreher(x, y) {
+  if (x.length !== y.length) return false;
+  const ab = [];
+  for (let i = 0; i < x.length; i++) if (x[i] !== y[i]) ab.push(i);
+  return ab.length === 2 && ab[1] === ab[0] + 1
+    && x[ab[0]] === y[ab[1]] && x[ab[1]] === y[ab[0]];
+}
+
 function gleichesWort(x, y) {
   if (x === y) return true;
   const lang = Math.max(x.length, y.length);
   if (lang < 5) return false;
   const kopf = Math.max(4, Math.ceil(lang / 2));
-  if (x.slice(0, kopf) !== y.slice(0, kopf)) return false;
+  // Der Dreher wird am ganzen Wort geprueft: Er kann genau auf der Kopfgrenze
+  // liegen, und dann steckt im Kopf nur seine Haelfte.
+  if (x.slice(0, kopf) !== y.slice(0, kopf) && !nurDreher(x, y)) return false;
   return 1 - levenshtein(x, y) / lang >= 0.8;
 }
 

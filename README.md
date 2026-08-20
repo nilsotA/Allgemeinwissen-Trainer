@@ -305,6 +305,42 @@ Die restlichen sechs Sekunden sind reine Übertragungszeit für 240 kB Karten �
 nur weniger Inhalt. Stattdessen sagt der Startbildschirm nach anderthalb Sekunden, was gerade
 passiert und dass es einmalig ist.
 
+### Wie fair wird eine getippte Antwort bewertet?
+
+Beim freien Abrufen vergleicht die App die Eingabe mit der Lösung und meldet drei Stufen:
+**passt** (ab 0,8), **knapp daneben – vergleich genau** (ab 0,6) und darunter die bloße
+Gegenüberstellung. Bewertet wird trotzdem selbst; die Zahl steuert nur, was danebensteht.
+Weil inzwischen **48 %** aller Abrufe freie Abrufe sind, entscheidet diese Zahl mit darüber,
+ob sich das Üben fair anfühlt.
+
+Gemessen wurde mit dem naheliegendsten Fall: Was passiert, wenn jemand die Antwort **weiß**
+und sich vertippt? Über alle 1.671 Karten wurden zwei Vertipper erzeugt – zwei vertauschte
+Nachbarbuchstaben und ein fehlender Buchstabe – und eingestuft:
+
+| | vorher „passt" | jetzt „passt" |
+|---|---|---|
+| zwei vertauschte Buchstaben | 8,6 % | **77,7 %** |
+| ein fehlender Buchstabe | 27,3 % | 27,3 % |
+
+Der Dreher war der wunde Punkt. Zwei Regeln hatten ihn zum Wissensfehler gemacht. Erstens
+zählte der Editierabstand ihn als **zwei** Fehler; jetzt als einen, denn die Buchstaben sind
+alle noch da. Zweitens verlangte der Wortvergleich, dass die **vordere Worthälfte exakt**
+stimmt – aus gutem Grund, denn im Deutschen sitzt die Unterscheidung vorn
+(intra-/inter-, Impressionismus/Expressionismus, Bundesrats-/Bundestags-). Ein Dreher in
+dieser Hälfte machte daraus ein völlig anderes Wort: „Varusshclacht" galt nicht als
+„Varusschlacht". Erlaubt ist dort jetzt **genau der Dreher und sonst nichts** – die Paare, um
+die es der Regel geht, vertauschen nichts, sie ersetzen. Sie bleiben getrennt, ein Test hält
+alle sieben fest.
+
+Der fehlende Buchstabe bleibt bewusst, wo er war: Er kann ein Wort echt verändern, und 68 %
+dieser Fälle landen bei „knapp daneben" – genau die richtige Aufforderung, nachzusehen.
+
+Zwei Dinge, die die Messung **nicht** ergeben haben, gehören dazu: Eine erste Auswertung
+meldete auch „Antwort ohne Satzzeichen" als Problem – bis auffiel, dass sie aus „9,81 m/s²"
+die Zahl „981" machte. Und verkürzte Antworten („Die Bibliothek" statt „Die Bibliothek von
+Alexandria") werden abgelehnt, was richtig ist: Das sind unvollständige Antworten, keine
+Tippfehler.
+
 ### Faktenprüfung
 
 Die Sammlung wurde Datei für Datei gegengelesen. Gefunden und behoben:
