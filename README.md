@@ -3,11 +3,13 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.626 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.671 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (249 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (247 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (267 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (274 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
+In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
+Fakt fragt, sondern nach der Entscheidung davor – siehe unten.
 In beiden Fächern reicht die Sammlung bewusst bis auf Studienniveau: biomechanische Prinzipien
 und der Doppelauftrag des Schulsports ebenso wie Hauptsatz, hessesche Normalform, Fehler
 erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht nur mitreden,
@@ -35,8 +37,8 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
 Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt rund 101 Karten pro Tag,
-Spitzenlast etwa 140, gut 12 Minuten täglich. Nach einem halben Jahr sitzen etwa 1.344 der
-1.626 Karten fest. Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
+Spitzenlast etwa 140, gut 12 Minuten täglich. Nach einem halben Jahr sitzen rund 1.360 der
+1.671 Karten fest (über mehrere Läufe zwischen 1.333 und 1.395). Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
 Kartenbestand mitwächst.
 
 Die Simulation treibt bewusst den **echten** Code – den Scheduler, die Warteschlangen und den
@@ -103,10 +105,25 @@ mindestens ebenbürtig. Belegt ist der Abstand an sich, nicht seine Steigerung. 
 folgt hier SM-2 – einem Verfahren von 1987, das sich bewährt hat, aber nicht aus Daten
 abgeleitet ist.
 
-**Verschränken wirkt nicht überall gleich.** Der starke Befund von Rohrer et al. betrifft das
-Unterscheiden von *Aufgabentypen* in der Mathematik – wer gemischt übt, erkennt später, welches
-Verfahren gefragt ist. Diese Sammlung besteht aus Wissensfragen, nicht aus Rechenaufgaben; das
-Mischen der Themen ist hier also die schwächere Variante des Prinzips.
+**Verschränken wirkt nicht überall gleich – deshalb gibt es „Verfahren erkennen".** Der starke
+Befund von Rohrer et al. betrifft das Unterscheiden von *Aufgabentypen*: Wer gemischt übt,
+erkennt später, welches Verfahren gefragt ist. Wer ein Kapitel am Stück übt, weiß das Verfahren
+schon aus der Überschrift – genau diese Entscheidung wird dabei nie trainiert. Eine Sammlung aus
+reinen Wissensfragen kann das Prinzip nur in der schwachen Variante nutzen.
+
+Deshalb gibt es in beiden Schwerpunktfächern jetzt ein Teilgebiet, das die Richtung umdreht:
+**Mathematik: 27 Karten**, bei denen eine konkrete Aufgabe dasteht und das Werkzeug gesucht ist –
+„∫ x · e^x dx" führt auf partielle Integration, „∫ 2x · (x² + 1)⁵ dx" auf Substitution, „1/(x² − 1)"
+auf Partialbruchzerlegung. Die Ablenker sind jeweils die *anderen* Verfahren, sodass die Karte
+nur lösbar ist, wenn man das Erkennungsmerkmal kennt. **Sport: 18 Karten** nach demselben Muster
+– gegeben ist ein Ziel, gesucht die Methode: Maximalkraft, Muskelaufbau, Kraftausdauer,
+Sprungkraft; extensive Dauermethode, intensive Intervallmethode, Wiederholungsmethode.
+
+Sieben zunächst geschriebene Karten sind wieder herausgeflogen, weil sie nur die Umkehrung einer
+vorhandenen waren: „Wofür braucht man die hessesche Normalform?" gab es schon, „Welches Verfahren
+liefert den Abstand Punkt–Ebene?" ist dieselbe Karte von hinten. Zwei Karten für einen Fakt heißt
+doppelte Wiederholungen für einen Fakt – dieselbe Regel, nach der auch der Dublettenwächter
+arbeitet. Gefunden hat sie ein Abgleich über seltene Wörter, entschieden wurde von Hand.
 
 **Was die App über sich selbst nicht wissen kann:** Die Simulation (`npm run simulate`) misst
 Arbeitslast, Rückstand und Termintreue – nicht Behalten. Ihre Vergessenskurve ist eine Annahme,
