@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.701 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.724 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -483,7 +483,27 @@ darauf, ob sich eine richtige Antwort schon an ihrer **Form** verrät:
 
 - ein Klammerzusatz, den nur die Lösung trägt,
 - eine Einheit, die nur in der Lösung ausgeschrieben ist („9 Kilokalorien" gegen „4"),
-- eine Antwort, die deutlich länger ist als alle drei Ablenker.
+- eine Antwort, die deutlich länger ist als alle drei Ablenker,
+- eine Zahl, die eine Frage beiläufig nennt und damit die Antwort einer **anderen** Karte
+  verrät.
+
+Der letzte Punkt ist der jüngste und war der schwerste zu fassen. Der harmlose Fall ist
+häufig und egal: Dass „Niedersachsen" in irgendeiner Frage vorkommt, verrät nicht, welches
+Bundesland an die meisten anderen grenzt – über den ganzen Bestand sind das 23 solcher Fälle,
+alle unschädlich. Schädlich ist der enge Fall: Eine Karte fragt nach einer Zahl, und eine
+andere Frage zum selben Gegenstand nennt sie nebenbei. Drei Bedingungen zusammen trennen ihn
+sauber, und jede einzelne war nötig:
+
+1. Die Antwort ist eine bloße Zahl oder ein Zahlwort.
+2. Beide Fragen liegen inhaltlich dicht beieinander – verglichen über die ersten sechs
+   Buchstaben, sonst zählt „pädagogische" nicht als „pädagogischen" und der Fall rutscht durch.
+   Genau daran scheiterte der erste Versuch: Die Prüfung meldete nichts.
+3. Die Zahl steht **frei im Satz**. Ohne diese Bedingung meldete die Prüfung auch „Welche
+   Dezimalzahl ergibt der Bruch 1/3?" und „die Folge (1 + 1/n) hoch n" – dort ist die Ziffer
+   Teil einer Formel und verrät nichts.
+
+So eingestellt findet die Prüfung über 1.724 Karten **genau zwei** Fälle und keinen falschen.
+Beide sind behoben.
 
 Solche Karten lassen sich ohne Wissen lösen. Wer immer die längste Option wählt, traf in
 einer frühen Fassung in 47 % der Fälle richtig statt in 25 % wie beim Raten – das verfälscht

@@ -73,6 +73,56 @@ for (const c of CARDS) {
   }
 }
 
+/* Eine Frage darf die Antwort einer ANDEREN Karte nicht ausplaudern. Der
+   harmlose Fall ist haeufig und egal: Dass „Niedersachsen" in irgendeiner Frage
+   vorkommt, verraet nicht, welches Bundesland an die meisten anderen grenzt –
+   ueber den ganzen Bestand gemessen sind das 23 solcher Faelle, alle unschaedlich.
+
+   Schaedlich ist der enge Fall: Eine Karte fragt nach einer Zahl, und eine andere
+   Frage zum selben Gegenstand nennt sie beilaeufig. Genau das war zweimal
+   passiert. Drei Bedingungen zusammen trennen ihn sauber:
+
+   1. Die Antwort ist eine blosse Zahl oder ein Zahlwort.
+   2. Beide Fragen liegen inhaltlich dicht beieinander (Ueberlappung ab 0,3,
+      verglichen ueber die ersten sechs Buchstaben – sonst zaehlt
+      „paedagogische" nicht als „paedagogischen" und der Fall rutscht durch).
+   3. Die Zahl steht in der anderen Frage FREI im Satz. Ohne diese Bedingung
+      meldete die Pruefung auch „Welche Dezimalzahl ergibt der Bruch 1/3?" und
+      „die Folge (1 + 1/n) hoch n" – dort ist die Ziffer Teil einer Formel und
+      verraet nichts. */
+const ZAHLWORT = { null: '0', eins: '1', ein: '1', zwei: '2', drei: '3', vier: '4',
+  fuenf: '5', sechs: '6', sieben: '7', acht: '8', neun: '9', zehn: '10', elf: '11', zwoelf: '12' };
+const zahlwert = (a) => {
+  const t = norm(a).trim();
+  return /^\d+$/.test(t) ? t : (ZAHLWORT[t] || null);
+};
+const stamm = (t) => new Set(norm(t).split(' ').filter(w => w.length > 4).map(w => w.slice(0, 6)));
+const umlautfrei = (t) => t.toLowerCase()
+  .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+function freiGenannt(frage, v) {
+  // Nur Leerraum davor: Eine Klammer davor heisst fast immer Formel – „(1 + 1/n)".
+  if (new RegExp(`(^|\\s)${v}([\\s.,;:?!]|$)`).test(frage)) return true;
+  const wort = Object.keys(ZAHLWORT).find(w => ZAHLWORT[w] === v);
+  return !!wort && new RegExp(`\\b${wort}\\b`).test(umlautfrei(frage));
+}
+for (const a of CARDS) {
+  const v = zahlwert(a.a);
+  if (!v) continue;
+  const wa = stamm(a.q);
+  if (!wa.size) continue;
+  for (const b of CARDS) {
+    if (b.id === a.id) continue;
+    const wb = stamm(b.q);
+    if (!wb.size) continue;
+    let g = 0;
+    for (const w of wa) if (wb.has(w)) g++;
+    if (g / (wa.size + wb.size - g) < 0.3) continue;
+    if (!norm(b.q).split(' ').includes(v)) continue;
+    if (!freiGenannt(b.q, v)) continue;
+    fail(`${b.id}: die Frage nennt „${v}" und verraet damit die Antwort von ${a.id} – „${a.q}"`);
+  }
+}
+
 /* Das Kennzeichen ug sagt: Die Antwort nennt eine Menge, die Reihenfolge traegt
    keine Bedeutung. Das ergibt nur bei Aufzaehlungen Sinn – steht es an einer
    Karte mit einteiliger Antwort, ist es ein Versehen und wuerde beim freien
