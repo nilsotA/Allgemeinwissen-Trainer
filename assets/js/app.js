@@ -450,6 +450,30 @@ function verlaufKarte(wochen, trendText) {
     </div>`;
 }
 
+/* Wie gut trifft die eigene Einschaetzung? Gezaehlt werden nur die Faelle, in
+   denen vor der Aufloesung „Hab ich" gedrueckt wurde und danach trotzdem
+   „Nochmal" – also die Faelle, in denen man sich sicher war und es nicht war.
+   Unter 15 Festlegungen sagt die Quote nichts, dann bleibt die Karte weg. */
+function selbsteinschaetzung() {
+  const st = S();
+  const n = st.claims || 0;
+  if (n < 15) return '';
+  const daneben = st.claimsMiss || 0;
+  const quote = Math.round((daneben / n) * 100);
+  const text = quote <= 10
+    ? 'Deine Einschätzung ist verlässlich – wenn du „Hab ich" sagst, stimmt es fast immer.'
+    : quote <= 25
+      ? 'Solide Einschätzung. Ein Viertel Fehlgriff ist normal; wer tippt statt nur zu denken, drückt den Wert weiter.'
+      : 'Deutlich zu optimistisch. Vertrautheit fühlt sich wie Können an – tipp die Antwort, dann entscheidet der Vergleich und nicht das Gefühl.';
+  return `
+    <h2 class="sec">Selbsteinschätzung</h2>
+    <div class="card">
+      <div class="row between"><span>„Hab ich" gesagt, danach doch nicht</span><b>${daneben} / ${n}</b></div>
+      <div class="bar" style="margin:10px 0 7px"><i style="width:${Math.min(100, quote)}%"></i></div>
+      <p class="tiny">${text}</p>
+    </div>`;
+}
+
 function renderStats() {
   const stufen = sess.levelProgress();
   const st = S();
@@ -557,6 +581,7 @@ function renderStats() {
     </div>` : ''}
 
     ${wochen.length >= 2 ? verlaufKarte(wochen, trendText) : ''}
+    ${selbsteinschaetzung()}
 
     <h2 class="sec">Wissensstand</h2>
     <div class="card">
@@ -1105,30 +1130,64 @@ function askChoice(card, isFresh, cs) {
 }
 
 /* ---- Freies Abrufen mit Selbstbewertung ---- */
+/* Wer die Loesung sieht und erst danach urteilt, haelt fuer gewusst, was er
+   gerade gelesen hat. Dagegen hilft nur, sich festzulegen, BEVOR die Antwort
+   sichtbar wird. Eine getippte Antwort ist so eine Festlegung und wird ausserdem
+   automatisch verglichen. Wer nichts tippt, bekam bisher einen Knopf „Loesung
+   zeigen" und durfte hinterher urteilen – das ist die Falle. Jetzt stehen dort
+   zwei Knoepfe: „Hab ich" und „Hab ich nicht". Gleich viele Tipper, aber das
+   Urteil faellt ohne Netz. */
 function askRecall(card, isFresh, cs) {
   shell(
     qkarte(head(card, isFresh) + `
       <input class="recall-in" id="rin" type="text" inputmode="text" autocomplete="off"
-             autocapitalize="sentences" spellcheck="false" placeholder="Antwort tippen (optional)">
+             autocapitalize="sentences" spellcheck="false" placeholder="Antwort tippen (empfohlen)">
       <p class="tiny">Erst selbst denken – der Abruf ist der eigentliche Lerneffekt.</p>`, true),
-    `<button class="btn primary" id="reveal">Lösung zeigen</button>`
+    ''
   );
   const input = document.getElementById('rin');
-  const go = () => {
+  const foot = app.querySelector('.sess-foot');
+  const go = (behauptet) => {
     const typed = input.value.trim();
     // Gegen jede zugelassene Schreibweise pruefen und die beste nehmen: Wer
     // „1/x" tippt, hat die Frage nach der Ableitung des Logarithmus richtig
     // beantwortet, auch wenn auf der Karte „Eins durch x" steht.
     const beste = !typed ? 0
       : Math.max(...[card.a, ...(card.az || [])].map(l => similarity(typed, l)));
-    revealRecall(card, typed, beste, cs, isFresh);
+    revealRecall(card, typed, beste, cs, isFresh, behauptet);
   };
-  document.getElementById('reveal').onclick = go;
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-  onKey = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
+
+  /* Der Fuss wird nur beim Wechsel leer/nicht leer neu gesetzt, nicht bei jedem
+     Anschlag – sonst verliert das Feld auf dem Handy die Schreibmarke. */
+  let warLeer = null;
+  const fussSetzen = () => {
+    const leer = !input.value.trim();
+    if (leer === warLeer) return;
+    warLeer = leer;
+    if (leer) {
+      foot.innerHTML = `<p class="tiny center" style="margin-bottom:5px">Erst festlegen – dann kommt die Lösung</p>
+        <div class="festlegen">
+          <button class="btn" data-hab="1">Hab ich</button>
+          <button class="btn" data-hab="0">Hab ich nicht</button>
+        </div>`;
+      foot.querySelectorAll('[data-hab]').forEach(b => b.onclick = () => go(b.dataset.hab === '1'));
+    } else {
+      foot.innerHTML = `<button class="btn primary" id="reveal">Lösung zeigen</button>`;
+      document.getElementById('reveal').onclick = () => go(null);
+    }
+  };
+  fussSetzen();
+  input.addEventListener('input', fussSetzen);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter' && input.value.trim()) go(null); });
+  /* Ohne Eingabe gibt es keine Sammeltaste: Die Festlegung soll eine Entscheidung
+     sein und nicht der Reflex auf die Leertaste. */
+  onKey = (e) => {
+    if (!input.value.trim()) return;
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(null); }
+  };
 }
 
-function revealRecall(card, typed, sim, cs, isFresh) {
+function revealRecall(card, typed, sim, cs, isFresh, behauptet) {
   const near = sim >= 0.8;
   // Dazwischen liegt das Feld, in dem der Vergleich bewusst streng ist: ein
   // vertauschter Wortanfang oder ein fehlendes tragendes Wort. Das als glatt
@@ -1136,11 +1195,20 @@ function revealRecall(card, typed, sim, cs, isFresh) {
   const knapp = !near && sim >= 0.6;
   if (typed) beep(near);
   announce(near ? 'Deine Eingabe passt.' : `Die Antwort lautet: ${card.a}`);
-  const hint = !typed ? '' : near
-    ? `<p class="verdict good">${ico('haken')}<span>Deine Eingabe passt: „${esc(typed)}“</span></p>`
-    : knapp
-      ? `<p class="verdict fast">${ico('uhr')}<span>Knapp daneben: „${esc(typed)}“ – vergleich genau.</span></p>`
-      : `<p class="verdict bad">${ico('schliessen')}<span>Du hattest: „${esc(typed)}“</span></p>`;
+  /* Ohne Eingabe wird die Festlegung von vorhin zurueckgespiegelt. Sie steht
+     damit neben der Loesung – wer „Hab ich" gesagt hat und jetzt etwas anderes
+     liest, sieht den Unterschied, statt ihn sich wegzuerinnern. */
+  const hint = !typed
+    ? (behauptet === true
+        ? `<p class="verdict fast">${ico('uhr')}<span>Du hattest gesagt: hab ich – jetzt genau vergleichen.</span></p>`
+        : behauptet === false
+          ? `<p class="verdict bad">${ico('schliessen')}<span>Du hattest gesagt: hab ich nicht.</span></p>`
+          : '')
+    : near
+      ? `<p class="verdict good">${ico('haken')}<span>Deine Eingabe passt: „${esc(typed)}“</span></p>`
+      : knapp
+        ? `<p class="verdict fast">${ico('uhr')}<span>Knapp daneben: „${esc(typed)}“ – vergleich genau.</span></p>`
+        : `<p class="verdict bad">${ico('schliessen')}<span>Du hattest: „${esc(typed)}“</span></p>`;
   const g = (grade, label, cls) =>
     `<button class="btn ${cls}" data-g="${grade}"><span>${label}</span><small>${preview(cs, grade)}</small></button>`;
   shell(
@@ -1151,7 +1219,7 @@ function revealRecall(card, typed, sim, cs, isFresh) {
      </div>`
   );
   lockUndo();
-  const grade = (n) => { if (!zuFrueh()) commit(card, n, n !== AGAIN, isFresh); };
+  const grade = (n) => { if (!zuFrueh()) commit(card, n, n !== AGAIN, isFresh, behauptet); };
   entprellen();
   app.querySelectorAll('[data-g]').forEach(b => b.onclick = () => grade(Number(b.dataset.g)));
   onKey = (e) => {
@@ -1226,6 +1294,7 @@ function snapshot(card) {
     dayKey: k,
     day: { ...today() },
     totalAnswers: st.totalAnswers, totalCorrect: st.totalCorrect,
+    claims: st.claims, claimsMiss: st.claimsMiss,
     streak: st.streak, best: st.best, lastDay: st.lastDay,
     i: run.i, done: run.done, correct: run.correct,
     added: run.added, wrongLen: run.wrong.length,
@@ -1241,6 +1310,7 @@ function undoLast() {
   if (u.tagVorhanden) st.days[u.dayKey] = u.day;
   else delete st.days[u.dayKey];            // der Tag hatte vorher keinen Eintrag
   st.totalAnswers = u.totalAnswers; st.totalCorrect = u.totalCorrect;
+  st.claims = u.claims; st.claimsMiss = u.claimsMiss;
   st.streak = u.streak; st.best = u.best; st.lastDay = u.lastDay;
   if (u.insertedAt >= 0) run.queue.splice(u.insertedAt, 1);
   if (u.nochmalVorher === 0) run.nochmal.delete(u.id);
@@ -1253,7 +1323,7 @@ function undoLast() {
   step();
 }
 
-function commit(card, grade, ok, isFresh) {
+function commit(card, grade, ok, isFresh, behauptet) {
   const undo = snapshot(card);
 
   // Kippt dieselbe Karte in derselben Einheit erneut, ist das Nachlernen und
@@ -1266,6 +1336,13 @@ function commit(card, grade, ok, isFresh) {
   d.done++; if (ok) d.correct++;
   if (isFresh) d.newC = (d.newC || 0) + 1;
   st.totalAnswers++; if (ok) st.totalCorrect++;
+  /* Wer sich vor der Aufloesung festgelegt hat, bekommt gezaehlt, wie gut das
+     Urteil war. Erst diese Rueckmeldung macht aus der Festlegung etwas Lernbares:
+     „Ich dachte, ich hab's" ist eine Beobachtung, die man sonst sofort vergisst. */
+  if (behauptet === true) {
+    st.claims = (st.claims || 0) + 1;
+    if (grade === AGAIN) st.claimsMiss = (st.claimsMiss || 0) + 1;
+  }
   touchStreak();
 
   run.done++; if (ok) run.correct++; else run.wrong.push(card);

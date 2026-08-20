@@ -493,6 +493,56 @@ try {
     await nctx.close();
   }
 
+  group('Festlegen vor der Aufloesung');
+  /* Wer die Loesung sieht und erst danach urteilt, haelt fuer gewusst, was er
+     gerade gelesen hat. Ohne Eingabe muss deshalb vorher eine Festlegung fallen. */
+  {
+    const fctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const fp = await fctx.newPage();
+    await fp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await fp.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.settings = { ...(st.settings || {}), recallMode: 'recall' };
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await fp.reload({ waitUntil: 'networkidle' });
+    await fp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await fp.waitForSelector('.sess-body');
+
+    check('ohne Eingabe gibt es keinen blossen Aufdeck-Knopf',
+      await fp.locator('#reveal').count() === 0);
+    check('stattdessen stehen zwei Festlegungen bereit',
+      await fp.locator('[data-hab]').count() === 2);
+    check('die Loesung ist noch nicht sichtbar',
+      await fp.locator('.answer .val').count() === 0);
+
+    // Tippen ist selbst eine Festlegung – dann genuegt ein Knopf.
+    await fp.locator('#rin').fill('irgendeine Antwort');
+    await fp.waitForTimeout(250);
+    check('mit Eingabe wird daraus wieder „Lösung zeigen"',
+      await fp.locator('#reveal').count() === 1 && await fp.locator('[data-hab]').count() === 0);
+    check('der getippte Text bleibt beim Umschalten stehen',
+      (await fp.locator('#rin').inputValue()) === 'irgendeine Antwort');
+    await fp.locator('#rin').fill('');
+    await fp.waitForTimeout(250);
+    check('leert man wieder, kommt die Festlegung zurueck',
+      await fp.locator('[data-hab]').count() === 2);
+
+    await fp.locator('[data-hab="1"]').click();
+    await fp.waitForTimeout(350);
+    const spiegel = await fp.locator('.verdict').innerText();
+    check('die Festlegung steht neben der Loesung', /hab ich/i.test(spiegel), spiegel);
+    check('danach stehen alle vier Noten bereit', await fp.locator('[data-g]').count() === 4);
+
+    // „Hab ich" und dann doch „Nochmal" – genau das zaehlt die Selbsteinschaetzung.
+    await fp.getByRole('button', { name: 'Nochmal' }).click();
+    await fp.waitForTimeout(350);
+    const z = await fp.evaluate((k) => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
+    check('die Festlegung wird gezaehlt', z.claims === 1, `claims=${z.claims}`);
+    check('der Fehlgriff wird gezaehlt', z.claimsMiss === 1, `claimsMiss=${z.claimsMiss}`);
+    await fctx.close();
+  }
+
   group('Merkanker sind Abrufaufgaben');
   /* Ein Merkanker, den man nur liest, ist die schwaechste Lernform ueberhaupt.
      Deshalb steht oben der Hinweisreiz und die Aufloesung kommt erst auf

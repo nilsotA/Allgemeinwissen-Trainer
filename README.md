@@ -63,7 +63,9 @@ Lerntechniken nach Befundlage einordnet. Zwei erhalten dort **hohe** Wirksamkeit
 | Themen werden gemischt statt am Stück gepaukt | Verschränken | mittel | Rohrer, Dedrick & Stershic 2015 |
 | Merkhilfen für hartnäckige Karten | Schlüsselwortmethode | **gering** | Dunlosky et al. 2013 |
 
-**Vier Stellen, an denen es hakt – offen benannt:**
+**Vier Stellen, an denen es hakt – offen benannt.** Eine davon ist inzwischen behoben; sie
+steht hier trotzdem, weil die Begründung erklärt, warum die App an dieser Stelle so aussieht,
+wie sie aussieht:
 
 **Multiple Choice ist die schwächere Prüfform.** Freies Abrufen prägt stärker ein als
 Wiedererkennen. Die Auswahlfrage ist hier nur das Gerüst für die ersten zwei Begegnungen;
@@ -77,12 +79,23 @@ tatsächlich Wissen abrufen. Genau deshalb steckt so viel Arbeit in den Ablenker
 Ratequote von 27,1 % und die Klammerquote von 61,0 % oben sind keine Kosmetik, sondern die
 Voraussetzung dafür, dass die Auswahlfrage überhaupt eine Prüfung ist.
 
-**Selbstbewertung lädt zur Selbsttäuschung ein.** Beim freien Abrufen bewertet man sich
-selbst – und wer die Lösung erst sieht und dann urteilt, hält für gewusst, was er gerade
-gelesen hat (Koriat & Bjork 2005 nennen das Rückschaufehler). Das Eingabefeld wirkt dagegen,
-weil eine getippte Antwort vor der Auflösung festgelegt ist und automatisch verglichen wird.
-Es ist aber **freiwillig** – ein bewusster Kompromiss zugunsten der Bedienbarkeit auf dem
-Handy, und die schwächste Stelle der App. Wer sich selbst nicht traut, sollte tippen.
+**Selbstbewertung lädt zur Selbsttäuschung ein – deshalb kommt das Urteil zuerst.** Beim
+freien Abrufen bewertet man sich selbst, und wer die Lösung erst sieht und dann urteilt, hält
+für gewusst, was er gerade gelesen hat (Koriat & Bjork 2005 nennen das Rückschaufehler). Das
+Eingabefeld wirkt dagegen, weil eine getippte Antwort vor der Auflösung feststeht und
+automatisch verglichen wird – es ist aber freiwillig, und genau daraus entstand die Lücke:
+Ein Tipp auf „Lösung zeigen", und schon urteilte man über etwas, das man bereits gelesen hatte.
+
+Deshalb gibt es diesen Knopf ohne Eingabe nicht mehr. An seiner Stelle stehen zwei:
+**„Hab ich"** und **„Hab ich nicht"**. Gleich viele Tipper wie vorher, aber das Urteil fällt,
+solange die Antwort noch verdeckt ist. Danach steht die eigene Festlegung neben der Lösung –
+wer „Hab ich" gesagt hat und etwas anderes liest, sieht den Unterschied, statt ihn sich
+wegzuerinnern. Wer tippt, bekommt weiterhin den einen Knopf: Die Eingabe *ist* die Festlegung.
+
+Aus der Festlegung wird eine Rückmeldung: Die Statistik zeigt ab 15 Festlegungen, in wie
+vielen Fällen auf „Hab ich" doch ein „Nochmal" folgte. Erst das macht die Selbsttäuschung
+sichtbar – ohne Zahl bleibt „ich dachte, ich hab's" eine Beobachtung, die man sofort wieder
+vergisst.
 
 **Wachsende Abstände sind Konvention, nicht Beweis.** Dass die Abstände wachsen müssen, ist
 schlechter belegt, als es klingt: Karpicke & Roediger (2007) fanden gleichbleibende Abstände
@@ -177,6 +190,9 @@ die niemand prüft.
   einer einzigen zähen Runde „Diese Karte ist dir schon 3-mal entfallen", der
   Leichtigkeitsfaktor fiele dreifach, und die Wackelkandidaten füllten sich nach zwei
   schlechten Tagen statt nach vier schlechten Terminen.
+- **Selbsteinschätzung** in der Statistik: Wie oft folgte auf ein „Hab ich" doch ein
+  „Nochmal"? Ab 15 Festlegungen sichtbar. Wer dauerhaft über einem Viertel liegt, sollte die
+  Antwort tippen statt sie nur zu denken – dann entscheidet der Vergleich und nicht das Gefühl.
 - **Trefferquote je Woche** in der Statistik, über acht Wochen mit mindestens zehn Antworten –
   damit sichtbar wird, ob es besser wird, und nicht nur, wie viel geschafft ist.
 - **Helles und dunkles Design** – „Papier" und „Abendlicht", beide auf warmen Tönen mit einem

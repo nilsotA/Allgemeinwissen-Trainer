@@ -242,6 +242,10 @@ p,.muted,.tiny,.val,.expl,.lk-q,.q{text-wrap:pretty}
 .verdict.fast{color:var(--warn)} .verdict.fast .ic{background:var(--warn-soft)}
 
 .grades{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+/* Die Festlegung vor der Aufloesung: zwei gleich grosse Knoepfe, damit keiner
+   die bequemere Wahl ist. */
+.festlegen{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.festlegen .btn{min-height:52px}
 .grades .btn{flex-direction:column;gap:2px;min-height:64px;font-size:13.5px;padding:8px 4px;border-radius:14px}
 .grades .btn small{font-size:10.5px;color:var(--dim2);font-weight:600}
 /* Die Schriftfarben folgen der Palette, sonst stehen sie im hellen Schema

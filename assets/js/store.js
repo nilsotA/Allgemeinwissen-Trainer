@@ -23,6 +23,8 @@ const DEFAULTS = {
   lastDay: null,
   lastExport: 0,          // Tagesnummer der letzten Sicherung – Grundlage der Erinnerung
   factDay: null,
+  claims: 0,         // „Hab ich" vor der Aufloesung – wie oft behauptet
+  claimsMiss: 0,     // ... und wie oft danach doch „Nochmal"
   factIdx: 0,
   factSeen: 0,       // wie viele Merkanker schon gezeigt wurden (fuer die Rueckschau)
   totalAnswers: 0,       // nur geplantes Lernen – das Duell zaehlt getrennt
@@ -322,6 +324,8 @@ function saeubern(roh) {
   rein.duelCorrect = zahl(roh.duelCorrect, 0, 1e8, 0);
   rein.totalAnswers = zahl(roh.totalAnswers, 0, 1e8, 0);
   rein.totalCorrect = zahl(roh.totalCorrect, 0, 1e8, 0);
+  rein.claims = zahl(roh.claims, 0, 1e7, 0);
+  rein.claimsMiss = zahl(roh.claimsMiss, 0, 1e7, 0);
   rein.factIdx = zahl(roh.factIdx, 0, 1e5, 0);
   rein.factSeen = zahl(roh.factSeen, 0, 1e6, 0);
   rein.lastDay = /^\d{4}-\d{2}-\d{2}$/.test(roh.lastDay) ? roh.lastDay : null;
