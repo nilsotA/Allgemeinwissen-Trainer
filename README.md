@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.724 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.743 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -21,9 +21,15 @@ und der Doppelauftrag des Schulsports ebenso wie Hauptsatz, hessesche Normalform
 erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht nur mitreden,
 sondern sattelfest sein.
 
-Ein eigenes Teilgebiet **Geld im Alltag** deckt ab, was mit Anfang zwanzig anfängt zu zählen und
-in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und Kündigungsfrist, Probezeit
-und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man trotzdem braucht.
+Ein eigenes Teilgebiet **Geld im Alltag** (41 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
+zählen und in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und
+Kündigungsfrist, Probezeit und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man
+trotzdem braucht. Dazu die Fristen, die man einmal falsch verstreichen lässt und dann nicht
+vergisst – zwei Wochen für die Anmeldung nach dem Umzug, 14 Tage Widerruf im Fernabsatz,
+acht Wochen für die Rückbuchung einer Lastschrift, vier Wochen zum 15. oder Monatsende bei der
+eigenen Kündigung –, die 20-Stunden-Grenze des Werkstudentenprivilegs, die Kappungsgrenze bei
+Mieterhöhungen und der Satz, den der Bundesgerichtshof zu unrenoviert übernommenen Wohnungen
+gesprochen hat.
 
 ## Warum die App so gebaut ist
 
@@ -345,6 +351,14 @@ wäre drei Zeilen lang, ist aber bewusst nicht drin: Betroffen wären nur Gerät
 März 2022 kein Update bekommen haben, und eine klare Meldung ist dort ehrlicher als eine
 halb funktionierende App.
 
+**Zwei Wege zur selben Dublette.** Die Prüfung meldet zwei Karten als inhaltlich gleich, wenn
+sich Frage *und* Antwort stark überlappen (ab 0,7). Diese Schranke ließ eine Lücke: „Wie lange
+gilt die gesetzliche Gewährleistung bei Neuware?" und „Wie lange gilt die Gewährleistung auf neu
+gekaufte Ware?" kommen nur auf 0,40 – anders formuliert, dasselbe gemeint. Steht auf beiden
+Karten **wörtlich dieselbe** Antwort, genügt deshalb schon 0,40. Gemessen über den ganzen
+Bestand liefert das genau diesen einen Treffer; bei 0,33 kämen „Wer malte die Mona Lisa?" und
+„Wer malte das Abendmahl?" dazu – zwei verschiedene Fakten mit derselben Antwort.
+
 ### Wie fair wird eine getippte Antwort bewertet?
 
 Beim freien Abrufen vergleicht die App die Eingabe mit der Lösung und meldet drei Stufen:
@@ -502,7 +516,7 @@ sauber, und jede einzelne war nötig:
    Dezimalzahl ergibt der Bruch 1/3?" und „die Folge (1 + 1/n) hoch n" – dort ist die Ziffer
    Teil einer Formel und verrät nichts.
 
-So eingestellt findet die Prüfung über 1.724 Karten **genau zwei** Fälle und keinen falschen.
+So eingestellt findet die Prüfung über den ganzen Bestand **genau zwei** Fälle und keinen falschen.
 Beide sind behoben.
 
 Solche Karten lassen sich ohne Wissen lösen. Wer immer die längste Option wählt, traf in

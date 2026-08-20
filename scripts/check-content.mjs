@@ -279,8 +279,19 @@ for (let i = 0; i < fragen.length; i++) {
     // der Summe aller Komponentenquadrate" gegen „Wurzel aus der Summe der
     // quadrierten Koordinaten"). Gemessen trennt 0,25 sauber – darueber
     // rutschte genau dieser Fall durch, darunter kaemen die Abkuerzungsfragen.
-    if (ueberlappung(fragen[i].q, fragen[j].q) < 0.7) continue;
-    if (ueberlappung(fragen[i].a, fragen[j].a) < 0.25 && norm(fragen[i].c.a) !== norm(fragen[j].c.a)) continue;
+    const gleicheAntwort = norm(fragen[i].c.a) === norm(fragen[j].c.a);
+    const fq = ueberlappung(fragen[i].q, fragen[j].q);
+    /* Zwei Wege zur selben Feststellung. Der zweite kam dazu, weil die Schranke
+       von 0,7 eine Luecke liess: „Wie lange gilt die gesetzliche Gewaehrleistung
+       bei Neuware?" und „Wie lange gilt die Gewaehrleistung auf neu gekaufte
+       Ware?" kommen nur auf 0,40 – die Fragen sind anders formuliert, gemeint ist
+       dasselbe. Steht auf beiden Karten woertlich dieselbe Antwort, genuegt
+       deshalb schon 0,40. Gemessen ueber alle Karten liefert das genau diesen
+       einen Treffer: Bei 0,33 kaemen „Wer malte die Mona Lisa?" und „Wer malte
+       das Abendmahl?" dazu – zwei verschiedene Fakten mit derselben Antwort. */
+    const dublette = (fq >= 0.7 && (gleicheAntwort || ueberlappung(fragen[i].a, fragen[j].a) >= 0.25))
+      || (gleicheAntwort && fq >= 0.4);
+    if (!dublette) continue;
     fail(`Inhaltliche Dublette: ${fragen[i].c.id} „${fragen[i].c.q}" und ${fragen[j].c.id} „${fragen[j].c.q}"`);
   }
 }
