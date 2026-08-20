@@ -7,7 +7,7 @@ globalThis.localStorage = { getItem: () => null, setItem: () => {}, removeItem: 
 const { schedule, strength, preview, isDue, isNew, isLeech, fresh,
         AGAIN, HARD, GOOD, EASY } = await import('../assets/js/srs.js');
 const { todayNum } = await import('../assets/js/store.js');
-const { options, similarity, normalize, shuffle } = await import('../assets/js/quiz.js');
+const { options, similarity, bewerte, normalize, shuffle } = await import('../assets/js/quiz.js');
 const { CARDS, BY_ID } = await import('../data/index.js');
 const { execFileSync } = await import('node:child_process');
 const { writeFileSync, mkdtempSync } = await import('node:fs');
@@ -458,7 +458,9 @@ test('kein Ablenker im Bestand wird als richtige Eingabe durchgewunken', () => {
   for (const c of CARDS) {
     if (!c.w || c.mc) continue;
     for (const w of c.w) {
-      if (similarity(w, c.a) >= 0.8) durchgerutscht.push(`„${w}" galt als „${c.a}" (${c.id})`);
+      // bewerte() statt similarity(): So laeuft der Rundumschlag durch denselben
+      // Weg wie die App, samt Nebenschreibweisen und Mengenkarten.
+      if (bewerte(c, w) >= 0.8) durchgerutscht.push(`„${w}" galt als „${c.a}" (${c.id})`);
     }
   }
   assert.deepEqual(durchgerutscht, [], durchgerutscht.join('\n'));
@@ -596,4 +598,40 @@ test('mehrdeutige Teilgebiete werden beim Einpflegen nicht geraten', () => {
   assert.match(aus, new RegExp(`data/${einThema}\\.js\\s+\\+1`),
     'mit richtigem Thema landet genau eine Karte in der richtigen Datei');
   assert.match(aus, /1 Karten wären ergänzt, 2 abgewiesen/);
+});
+
+/* Bei manchen Antworten nennt die Loesung eine MENGE – die vier DNA-Basen, die
+   fuenf Verfassungsorgane. Wer sie in anderer Folge tippt, hat recht. Bei anderen
+   ist die Reihenfolge die ganze Antwort: der Modellierungskreislauf, die PECH-
+   Regel, die Rangfolge beim Skat. Das laesst sich nicht rechnen, es steht als
+   Kennzeichen ug an der Karte. Beide Seiten muessen halten. */
+test('bei Mengenantworten zaehlt die Reihenfolge nicht', () => {
+  const mengen = CARDS.filter(c => c.ug);
+  assert.ok(mengen.length >= 20, `nur ${mengen.length} Mengenkarten`);
+  for (const c of mengen) {
+    const teile = c.a.split(/,| und /).map(t => t.trim()).filter(Boolean);
+    const gedreht = [...teile].reverse().join(', ');
+    assert.ok(bewerte(c, gedreht) >= 0.8,
+      `${c.id}: „${gedreht}" gilt nicht als „${c.a}"`);
+  }
+});
+
+test('bei Abfolgen bleibt die Reihenfolge die Antwort', () => {
+  const abfolgen = [
+    'Welche Schritte umfasst der Modellierungskreislauf?',
+    'In welcher Reihenfolge schwimmt man die Lagen im Einzel-Lagenschwimmen?',
+    'Welche Farben hat die deutsche Flagge von oben nach unten?',
+    'Was ist die PECH-Regel bei Sportverletzungen?',
+    'Welche Rangfolge haben die Kartenfarben beim Skat?',
+    'Wie lauten die ersten zehn Primzahlen?',
+  ];
+  for (const frage of abfolgen) {
+    const c = CARDS.find(x => x.q === frage);
+    assert.ok(c, `Karte fehlt: ${frage}`);
+    assert.ok(!c.ug, `${c.id} ist faelschlich als Menge gekennzeichnet`);
+    const teile = c.a.split(/,| und /).map(t => t.trim()).filter(Boolean);
+    const gedreht = [...teile].reverse().join(', ');
+    assert.ok(bewerte(c, gedreht) < 0.8,
+      `${c.id}: umgekehrte Reihenfolge gilt faelschlich als richtig`);
+  }
 });

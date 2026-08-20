@@ -54,7 +54,13 @@ for (const [cat, list] of Object.entries(SOURCES)) {
       // Ebenso richtige Schreibweisen derselben Antwort. „1/x" ist beim freien
       // Abrufen dasselbe wie „Eins durch x" - ohne diese Liste haette der
       // Vergleich die kuerzere Fassung als falsch gemeldet.
-      az: Array.isArray(c.az) ? c.az : c.az ? [c.az] : []
+      az: Array.isArray(c.az) ? c.az : c.az ? [c.az] : [],
+      // Antworten, die eine MENGE nennen: Die Reihenfolge traegt keine Bedeutung,
+      // „Thymin, Adenin, Guanin, Cytosin" ist so richtig wie jede andere Folge.
+      // Von Hand gesetzt, weil sich Menge und Abfolge nicht rechnen lassen: Bei
+      // „Vereinfachen, mathematisieren, rechnen, interpretieren, validieren" ist
+      // die Reihenfolge die ganze Antwort.
+      ug: !!c.ug
     });
   });
 }

@@ -6,7 +6,7 @@ import { S, settings, setSetting, save, cardState, putCard, today, todayNum, day
          numToKey, liveStreak, touchStreak, isFlagged, toggleFlag, setSaveErrorHandler,
          installFlush, setBusyCheck, setFremdStandHandler } from './store.js';
 import { schedule, strength, preview, isLeech, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
-import { options, similarity, normalize, shuffle } from './quiz.js';
+import { options, bewerte, normalize, shuffle } from './quiz.js';
 import * as sess from './session.js';
 
 const app = document.getElementById('app');
@@ -1153,8 +1153,7 @@ function askRecall(card, isFresh, cs) {
     // Gegen jede zugelassene Schreibweise pruefen und die beste nehmen: Wer
     // „1/x" tippt, hat die Frage nach der Ableitung des Logarithmus richtig
     // beantwortet, auch wenn auf der Karte „Eins durch x" steht.
-    const beste = !typed ? 0
-      : Math.max(...[card.a, ...(card.az || [])].map(l => similarity(typed, l)));
+    const beste = bewerte(card, typed);
     revealRecall(card, typed, beste, cs, isFresh, behauptet);
   };
 

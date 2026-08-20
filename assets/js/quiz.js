@@ -213,6 +213,26 @@ const kennwoerter = (t) =>
    Eingaben werden deshalb auch gegen die Loesung ohne den Zusatz gemessen. */
 const OHNE_ZUSATZ = /\s*\([^()]*\)\s*$/;
 
+/* Bewertet eine getippte Eingabe gegen eine ganze Karte statt gegen eine
+   einzelne Zeichenkette: Zugelassene Nebenschreibweisen zaehlen mit, und bei
+   Karten mit ug (ungeordnet) zaehlt die Reihenfolge nicht.
+
+   Diese Stelle gab es vorher dreimal – in der App, im Test und in jeder Messung.
+   Jede Kopie konnte eine Regel verpassen. */
+export function bewerte(card, eingabe) {
+  const txt = String(eingabe || '').trim();
+  if (!txt) return 0;
+  const listen = [card.a, ...(card.az || [])];
+  let beste = Math.max(...listen.map(l => similarity(txt, l)));
+  if (card.ug) beste = Math.max(beste, ...listen.map(l => similarity(sortiert(txt), sortiert(l))));
+  return beste;
+}
+
+/* Fuer Mengenantworten: normalisieren, in Woerter zerlegen, sortieren. Damit
+   ist „Thymin Adenin Guanin Cytosin" dasselbe wie „Adenin, Thymin, Guanin,
+   Cytosin" – und zwar unabhaengig davon, ob der Nutzer Kommas tippt. */
+const sortiert = (t) => normalize(t).split(' ').filter(Boolean).sort().join(' ');
+
 export function similarity(input, answer) {
   const knapp = String(answer).replace(OHNE_ZUSATZ, '').trim();
   if (knapp && knapp.length >= 3 && knapp !== String(answer).trim()) {

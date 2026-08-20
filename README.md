@@ -332,6 +332,25 @@ dieser Hälfte machte daraus ein völlig anderes Wort: „Varusshclacht" galt ni
 die es der Regel geht, vertauschen nichts, sie ersetzen. Sie bleiben getrennt, ein Test hält
 alle sieben fest.
 
+**Aufzählungen: Menge oder Abfolge?** 54 Antworten der Sammlung sind
+kommagetrennte Aufzählungen – und sie zerfallen in zwei Sorten. Bei den einen nennt die Lösung
+eine **Menge**: Wer die vier DNA-Basen oder die fünf Verfassungsorgane in anderer Folge tippt,
+hat recht. Bei den anderen **ist die Reihenfolge die Antwort**: der Modellierungskreislauf, die
+PECH-Regel, die Rangfolge beim Skat, die Flagge von oben nach unten. Vorher wurden alle 54
+streng behandelt, also die Hälfte davon zu Unrecht.
+
+Welche Sorte vorliegt, kann kein Vergleich errechnen – es steht deshalb als Kennzeichen `ug`
+an der Karte, von Hand gesetzt für **23** davon. Ein Gegentest zeigt, warum das so sein muss:
+Markiert man versuchsweise alle Karten als Menge, rutschen Ablenker als richtig durch *und* die
+Abfolgen brechen. `npm run check` weist das Kennzeichen zurück, wenn die Antwort gar keine
+Aufzählung ist, und meldet es als überflüssig, wenn die Karte ohnehin nur als Auswahlfrage
+läuft – so wurde es bei den Kongruenzsätzen gleich wieder entfernt.
+
+Der Vergleich lief bisher an drei Stellen getrennt: in der App, im Test und in jeder Messung.
+Jede Kopie konnte eine Regel verpassen. Es gibt jetzt eine Funktion `bewerte(card, eingabe)`,
+die die Karte als Ganzes bewertet – mit Nebenschreibweisen und Mengenregel –, und der
+Ablenker-Rundumschlag läuft durch genau diesen Weg.
+
 Der fehlende Buchstabe bleibt bewusst, wo er war: Er kann ein Wort echt verändern, und 68 %
 dieser Fälle landen bei „knapp daneben" – genau die richtige Aufforderung, nachzusehen.
 

@@ -73,6 +73,18 @@ for (const c of CARDS) {
   }
 }
 
+/* Das Kennzeichen ug sagt: Die Antwort nennt eine Menge, die Reihenfolge traegt
+   keine Bedeutung. Das ergibt nur bei Aufzaehlungen Sinn – steht es an einer
+   Karte mit einteiliger Antwort, ist es ein Versehen und wuerde beim freien
+   Abrufen nur die Woerter eines Satzes durcheinanderwuerfeln lassen. */
+for (const c of CARDS) {
+  if (!c.ug) continue;
+  const glieder = String(c.a).split(/,| und /).map(t => t.trim()).filter(Boolean);
+  if (glieder.length < 3) fail(`${c.id}: als Menge gekennzeichnet, aber die Antwort ist keine Aufzaehlung – „${c.a}"`);
+  if (c.mc) warn(`${c.id}: als Menge gekennzeichnet, laeuft aber nur als Auswahlfrage`);
+}
+console.log('Mengenkarten :', `${CARDS.filter(c => c.ug).length} – dort zaehlt die Reihenfolge der Antwort nicht`);
+
 /* Eine zugelassene Nebenschreibweise darf keinem Ablenker gleichen - sonst
    zaehlte beim freien Abrufen ausgerechnet die falsche Antwort als richtig. */
 for (const c of CARDS) {

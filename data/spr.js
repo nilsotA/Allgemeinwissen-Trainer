@@ -23,7 +23,7 @@ export default [
 {q:"Was ist eine Ballade?",a:"Ein erzählendes Gedicht",s:"Literatur",d:1,t:"Verbindet Epik, Lyrik und Dramatik. Klassiker: Goethes „Erlkönig“, Schillers „Die Bürgschaft“.",w:["Ein kurzes Theaterstück","Ein Liebesgedicht","Eine Kurzgeschichte"]},
 {q:"Was ist ein Sonett?",a:"Ein Gedicht aus 14 Versen",s:"Literatur",d:2,t:"Meist zwei Quartette und zwei Terzette. Shakespeare schrieb 154 davon.",w:["Ein Gedicht aus 12 Versen","Ein Lied mit Refrain","Ein antikes Versmaß"]},
 {q:"Was ist der Unterschied zwischen Metapher und Vergleich?",a:"Der Vergleich nutzt „wie“, die Metapher setzt gleich",s:"Literatur",d:1,t:"„Stark wie ein Bär“ ist ein Vergleich, „Er ist ein Bär“ eine Metapher.",w:["Metaphern sind immer länger","Vergleiche sind nur in Gedichten erlaubt","Es gibt keinen Unterschied"]},
-{q:"Welche drei literarischen Gattungen unterscheidet man?",a:"Epik, Lyrik, Dramatik",s:"Literatur",d:1,t:"Epik erzählt, Lyrik drückt aus, Dramatik zeigt auf der Bühne.",w:["Roman, Novelle, Kurzgeschichte","Prosa, Poesie, Essay","Komödie, Tragödie, Satire"]},
+{q:"Welche drei literarischen Gattungen unterscheidet man?",ug:1,a:"Epik, Lyrik, Dramatik",s:"Literatur",d:1,t:"Epik erzählt, Lyrik drückt aus, Dramatik zeigt auf der Bühne.",w:["Roman, Novelle, Kurzgeschichte","Prosa, Poesie, Essay","Komödie, Tragödie, Satire"]},
 
 /* ---------- Sprache ---------- */
 {q:"Wie viele Fälle hat die deutsche Sprache?",a:"Vier",s:"Sprache",d:1,t:"Nominativ (wer/was), Genitiv (wessen), Dativ (wem), Akkusativ (wen/was). Merkhilfe: „Wer-Wessen-Wem-Wen“.",w:["Drei","Fünf","Sechs"]},
