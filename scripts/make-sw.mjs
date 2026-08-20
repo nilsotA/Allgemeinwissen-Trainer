@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 
 const SKIP = new Set(['node_modules', '.git', 'scripts', 'tests', '.netlify']);
-const files = [];
+let files = [];
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
     if (SKIP.has(name) || name.startsWith('.')) continue;
@@ -17,6 +17,23 @@ const files = [];
   }
 })('.');
 files.sort();
+
+/* Nicht alles, was im Ordner liegt, gehoert zur App. package.json ist eine
+   Bau-Datei, data/kennungen.json ist der Bestandsnachweis fuer die
+   Inhaltspruefung – die App importiert beide nirgends. Ausgeliefert kosteten sie
+   26 KB beim ersten Besuch und, schlimmer, sie gingen in die Versionskennung
+   ein: Eine neue Zeile in package.json haette jedem Nutzer ein Update
+   angeboten, das nichts aendert. kennungen.json wird ausserdem von
+   „npm run check --kennungen" neu geschrieben, sodass die Reihenfolge der
+   Bauschritte ueber die Versionskennung entschied. */
+const NUR_FUER_DIE_WERKSTATT = new Set(['./package.json', './data/kennungen.json']);
+const uebrig = files.filter(f => NUR_FUER_DIE_WERKSTATT.has(f));
+if (uebrig.length !== NUR_FUER_DIE_WERKSTATT.size) {
+  console.error('FEHLER  Werkstatt-Datei nicht gefunden – Liste in make-sw.mjs veraltet:'
+    + ` erwartet ${[...NUR_FUER_DIE_WERKSTATT].join(', ')}, gefunden ${uebrig.join(', ') || 'keine'}`);
+  process.exit(1);
+}
+files = files.filter(f => !NUR_FUER_DIE_WERKSTATT.has(f));
 
 /* Die beiden 512er-Icons sind zusammen 230 KB gross und werden von der App nie
    angezeigt - sie gehen ans Betriebssystem, wenn der Nutzer die App auf den

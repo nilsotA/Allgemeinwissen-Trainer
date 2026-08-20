@@ -1,6 +1,5 @@
 /* Nimmt geprüfte Karten aus einem Workflow-Ergebnis (JSON) und hängt sie an die
-   richtige Datei in data/ an. Das Teilgebiet bestimmt die Datei – die Teilgebiete
-   sind über alle Dateien hinweg eindeutig.
+   richtige Datei in data/ an. Das Teilgebiet bestimmt die Datei.
    Aufruf: node scripts/merge-cards.mjs <ergebnis.json> [--dry] */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { CARDS } from '../data/index.js';
@@ -9,9 +8,29 @@ const [pfad, ...flags] = process.argv.slice(2);
 const dry = flags.includes('--dry');
 if (!pfad) { console.error('Aufruf: node scripts/merge-cards.mjs <ergebnis.json> [--dry]'); process.exit(1); }
 
-/* Teilgebiet -> Datei, aus dem Bestand abgeleitet statt von Hand gepflegt */
-const datei = new Map();
-for (const c of CARDS) if (!datei.has(c.sub)) datei.set(c.sub, `data/${c.cat}.js`);
+/* Teilgebiet -> Datei, aus dem Bestand abgeleitet statt von Hand gepflegt.
+   Teilgebiete sind NICHT durchweg eindeutig: „Verfahren erkennen" gibt es in
+   Mathematik und in Sport. Die frühere Fassung nahm einfach die erste Datei und
+   haette Sportkarten stillschweigend in data/mat.js abgelegt. Mehrdeutige
+   Teilgebiete verlangen deshalb ein ausdrueckliches Feld cat. */
+const dateien = new Map();
+for (const c of CARDS) {
+  if (!dateien.has(c.sub)) dateien.set(c.sub, new Set());
+  dateien.get(c.sub).add(`data/${c.cat}.js`);
+}
+const kategorien = new Set(CARDS.map(c => c.cat));
+const zielDatei = (c) => {
+  const moeglich = dateien.get(c.s);
+  if (!moeglich) return { fehler: `unbekanntes Teilgebiet „${c.s}"` };
+  if (moeglich.size === 1) return { ziel: [...moeglich][0] };
+  if (!c.cat) {
+    return { fehler: `Teilgebiet „${c.s}" gibt es in mehreren Themen (${[...moeglich].join(', ')}) – Feld cat noetig` };
+  }
+  if (!kategorien.has(c.cat)) return { fehler: `unbekanntes Thema „${c.cat}"` };
+  const ziel = `data/${c.cat}.js`;
+  if (!moeglich.has(ziel)) return { fehler: `Teilgebiet „${c.s}" gibt es nicht im Thema „${c.cat}"` };
+  return { ziel };
+};
 
 const roh = JSON.parse(readFileSync(pfad, 'utf8'));
 const eingang = (roh.gebiete || []).flatMap(g => g.cards || []);
@@ -28,8 +47,8 @@ for (const c of eingang) {
   const q = (c.q || '').trim();
   if (!q || !c.a || !c.s || !Array.isArray(c.w) || c.w.length !== 3) { abgelehnt.push([q, 'unvollständig']); continue; }
   if (vorhanden.has(q)) { abgelehnt.push([q, 'Frage gibt es schon']); continue; }
-  const ziel = datei.get(c.s);
-  if (!ziel) { abgelehnt.push([q, `unbekanntes Teilgebiet „${c.s}"`]); continue; }
+  const { ziel, fehler } = zielDatei(c);
+  if (fehler) { abgelehnt.push([q, fehler]); continue; }
   if (c.w.includes(c.a)) { abgelehnt.push([q, 'Ablenker enthält die Antwort']); continue; }
   if (new Set(c.w).size !== 3) { abgelehnt.push([q, 'doppelte Ablenker']); continue; }
   vorhanden.add(q);

@@ -9,6 +9,10 @@ const { schedule, strength, preview, isDue, isNew, isLeech, fresh,
 const { todayNum } = await import('../assets/js/store.js');
 const { options, similarity, normalize, shuffle } = await import('../assets/js/quiz.js');
 const { CARDS, BY_ID } = await import('../data/index.js');
+const { execFileSync } = await import('node:child_process');
+const { writeFileSync, mkdtempSync } = await import('node:fs');
+const { join } = await import('node:path');
+const { tmpdir } = await import('node:os');
 
 /* Der Scheduler laesst ein Intervall nur dann voll wachsen, wenn die Karte auch
    faellig war. Ketten von schedule()-Aufrufen am selben Tag beschreiben sonst
@@ -528,4 +532,40 @@ test('eine frühe Antwort zieht den Termin nie nach vorn', () => {
     assert.ok(nachher.due >= vorher.due,
       `Termin rutschte von ${vorher.due} auf ${nachher.due} bei Bewertung ${g}`);
   }
+});
+
+/* Das Einpflegeskript ordnet neue Karten ueber ihr Teilgebiet einer Datei zu.
+   Teilgebiete sind aber NICHT eindeutig – „Verfahren erkennen" gibt es in
+   Mathematik und in Sport. Die fruehere Fassung nahm stillschweigend die erste
+   Datei und haette Sportkarten in data/mat.js abgelegt. */
+test('mehrdeutige Teilgebiete werden beim Einpflegen nicht geraten', () => {
+  const mehrfach = new Map();
+  for (const c of CARDS) {
+    if (!mehrfach.has(c.sub)) mehrfach.set(c.sub, new Set());
+    mehrfach.get(c.sub).add(c.cat);
+  }
+  const strittig = [...mehrfach].filter(([, cats]) => cats.size > 1);
+  assert.ok(strittig.length > 0,
+    'Der Test braucht ein Teilgebiet, das in mehreren Themen vorkommt');
+  const [sub, cats] = strittig[0];
+  const [einThema] = [...cats];
+
+  const karte = (extra) => ({ q: 'Pruefsatz ' + extra.marke + ' fuer den Einpflegetest?',
+    a: 'Antwort', s: sub, d: 2, t: 'Kontext fuer den Pruefsatz.', w: ['B', 'C', 'D'], ...extra });
+  const daten = { gebiete: [{ cards: [
+    karte({ marke: 'ohne' }),
+    karte({ marke: 'mit', cat: einThema }),
+    karte({ marke: 'falsch', cat: [...CARDS.reduce((s2, c) => s2.add(c.cat), new Set())]
+      .find(k => !cats.has(k)) }),
+  ] }] };
+  const datei = join(mkdtempSync(join(tmpdir(), 'einpflegen-')), 'ergebnis.json');
+  writeFileSync(datei, JSON.stringify(daten));
+  const aus = execFileSync(process.execPath,
+    ['scripts/merge-cards.mjs', datei, '--dry'], { encoding: 'utf8' });
+
+  assert.match(aus, /Feld cat noetig/, 'ohne Thema muss die Karte abgewiesen werden');
+  assert.match(aus, /gibt es nicht im Thema/, 'falsches Thema muss abgewiesen werden');
+  assert.match(aus, new RegExp(`data/${einThema}\\.js\\s+\\+1`),
+    'mit richtigem Thema landet genau eine Karte in der richtigen Datei');
+  assert.match(aus, /1 Karten wären ergänzt, 2 abgewiesen/);
 });

@@ -493,6 +493,55 @@ try {
     await nctx.close();
   }
 
+  group('Hinweise schlucken keine Tipper');
+  /* Der Hinweisbalken liegt fest ueber dem unteren Rand – also ueber den
+     Antwortknoepfen. Ohne pointer-events:none nahm sein Rechteck jeden Tipper
+     entgegen, der darunter zielte; in einem Durchlauf ueber Monate blieb genau
+     daran eine Runde haengen. Das Update-Angebot wird ausserdem bis zum Ende der
+     Runde zurueckgehalten: Mitten in der Runde kann es ohnehin nichts bewirken. */
+  {
+    const tctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const tp = await tctx.newPage();
+    await tp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await tp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await tp.waitForSelector('.sess-body');
+
+    // Einen bleibenden Hinweisbalken erzeugen, wie ihn eine neue Fassung zeigt
+    await tp.evaluate(() => {
+      const d = document.createElement('div');
+      d.className = 'toast aktion';
+      d.setAttribute('role', 'status');
+      d.innerHTML = '<span>Neue Fassung bereit</span><button type="button">Laden</button>';
+      document.body.appendChild(d);
+    });
+    await tp.waitForTimeout(200);
+    check('der Balken liegt ueber dem Antwortbereich',
+      await tp.locator('.toast.aktion').isVisible());
+    // Trifft ein Tipper in der Mitte des Balkens den Balken oder das, was darunter liegt?
+    const durch = await tp.evaluate(() => {
+      const t = document.querySelector('.toast.aktion');
+      const r = t.getBoundingClientRect();
+      const el = document.elementFromPoint(r.left + 12, r.top + r.height / 2);
+      return !t.contains(el);
+    });
+    check('ein Tipper auf den Balken erreicht, was darunter liegt', durch);
+    const knopf = await tp.evaluate(() => {
+      const b = document.querySelector('.toast.aktion button');
+      const r = b.getBoundingClientRect();
+      const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+      return b.contains(el);
+    });
+    check('der Knopf des Balkens bleibt bedienbar', knopf);
+
+    // Antworten muss trotz Balken moeglich sein
+    const opts = await tp.locator('.opt').evaluateAll(ns => ns.map(n => n.dataset.v));
+    await tp.locator(`.opt[data-v="${opts[0].replace(/"/g, '&quot;')}"]`).first()
+      .click({ timeout: 4000 });
+    await tp.waitForTimeout(300);
+    check('antworten geht trotz stehendem Hinweis', await tp.locator('.verdict').count() > 0);
+    await tctx.close();
+  }
+
   group('Festlegen vor der Aufloesung');
   /* Wer die Loesung sieht und erst danach urteilt, haelt fuer gewusst, was er
      gerade gelesen hat. Ohne Eingabe muss deshalb vorher eine Festlegung fallen. */

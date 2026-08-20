@@ -115,7 +115,41 @@ try {
   check('App läuft trotz halbem Update ohne Netz', navHalb === 5, `${navHalb} Navigationsknöpfe`);
   await ctx.setOffline(false);
 
+  group('Update-Angebot waehrend einer Runde');
+  /* Der Balken „Neue Fassung bereit" bleibt stehen, bis der Nutzer entscheidet –
+     und liegt dabei ueber den Antwortknoepfen. Mitten in einer Runde kann er
+     ohnehin nichts bewirken, weil das Neuladen bis zum Ende verweigert wird.
+     Also wird er zurueckgehalten und danach nachgeholt. */
+  {
+    kaputt = new Set();
+    await page.reload({ waitUntil: 'load' });
+    await page.waitForSelector('#app:not([hidden])', { timeout: 15000 });
+    await page.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await page.waitForSelector('.sess-body', { timeout: 10000 });
+    swErsatz = swQuelle.replace(/wissenswerk-[0-9a-f]+/, 'wissenswerk-rundenfassung');
+    await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
+    await page.waitForFunction(async () => (await caches.keys()).some(k => k.endsWith('rundenfassung')),
+      null, { timeout: 20000 }).catch(() => {});
+    await new Promise(r => setTimeout(r, 1200));
+    check('waehrend der Runde erscheint kein Balken',
+      await page.locator('.toast.aktion').count() === 0);
+
+    // Runde zu Ende bringen: Karten beantworten, bis die Zusammenfassung steht
+    for (let i = 0; i < 60 && await page.locator('.sess-body').count(); i++) {
+      const o = page.locator('.opt:not([disabled])').first();
+      if (await o.count()) { await o.click(); await new Promise(r => setTimeout(r, 420)); }
+      const w = page.locator('.sess-foot button:not([disabled])').first();
+      if (await w.count()) { await w.click(); await new Promise(r => setTimeout(r, 420)); }
+      else break;
+    }
+    await new Promise(r => setTimeout(r, 800));
+    check('nach der Runde wird der Balken nachgeholt',
+      await page.locator('.toast.aktion').count() === 1,
+      `sess-body noch da: ${await page.locator('.sess-body').count()}`);
+  }
+
   kaputt = new Set();
+  swErsatz = null;
   group('Vollständiges Update');
   await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
   await new Promise(r => setTimeout(r, 1500));

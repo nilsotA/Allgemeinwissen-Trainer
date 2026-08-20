@@ -996,6 +996,7 @@ function endRun() {
   };
   document.getElementById('home').onclick = () => show('home');
   run = null;
+  if (updateWartet) { const w = updateWartet; updateWartet = null; updateBalken(w); }
   paintChrome();
 }
 
@@ -1495,7 +1496,19 @@ function starteServiceWorker() {
   }).catch(() => { /* offline ist Kür */ });
 }
 
+/* Waehrend einer laufenden Runde wird das Angebot zurueckgehalten. Es liegt sonst
+   als fester Balken ueber den Antwortknoepfen und schluckt dort die Tipper – im
+   Durchlauf ueber mehrere Monate blieb genau daran eine Runde haengen. Bewirken
+   koennte es mitten in der Runde ohnehin nichts: Das Neuladen wird bis zum Ende
+   der Runde verweigert, weil es die offene Frage schlucken wuerde. */
+let updateWartet = null;
 function updateAnbieten(worker) {
+  if (run) { updateWartet = worker; return; }
+  updateBalken(worker);
+}
+
+/* Wird auch aus endRun aufgerufen, wenn das Angebot zurueckgehalten wurde. */
+function updateBalken(worker) {
   if (document.querySelector('.toast.aktion')) return;
   document.querySelector('.toast')?.remove();
   const d = document.createElement('div');
@@ -1506,7 +1519,8 @@ function updateAnbieten(worker) {
   b.type = 'button';
   b.textContent = 'Laden';
   b.onclick = () => {
-    // Nicht mitten in einer Runde: das Neuladen wuerde die offene Frage schlucken.
+    // Doppelt gesichert: Waehrend einer Runde wird gar nicht erst angeboten,
+    // aber eine Runde kann waehrend des Balkens auch neu gestartet werden.
     if (run) { toast('Erst die Runde zu Ende – danach wird geladen'); return; }
     d.remove();
     worker.postMessage('jetzt-uebernehmen');

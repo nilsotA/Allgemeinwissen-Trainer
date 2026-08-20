@@ -169,6 +169,13 @@ die niemand prüft.
   verfälschen.
 - **Nachschlagen** über die Lupe oben rechts: alle Karten durchsuchbar nach Frage, Antwort,
   Thema und Kontext. Antippen klappt die Lösung auf, ★ markiert für später.
+- **Hinweise schlucken keine Tipper.** Der Hinweisbalken liegt fest über dem unteren Rand –
+  also genau über den Antwort- und Notenknöpfen. Ohne `pointer-events: none` nahm sein
+  Rechteck jeden Tipper entgegen, der darunter zielte; in einem simulierten Verlauf über
+  mehrere Monate blieb eine Runde genau daran hängen. Nur der Knopf im Balken nimmt jetzt noch
+  Tipper an. Das Update-Angebot erscheint außerdem gar nicht mehr mitten in der Runde: Laden
+  wird dort ohnehin verweigert, weil es die offene Frage schlucken würde, also wird es
+  zurückgehalten und nach der Runde nachgeholt.
 - **Erinnerung ans Sichern.** Der Fortschritt liegt allein im Browserspeicher dieses Geräts –
   die App hat keinen Server und kann nichts hochladen. Safari räumt den Speicher von Websites
   nach längerer Nichtnutzung auf, ein neues Handy hat ihn ohnehin nicht. Deshalb erinnert die
@@ -285,6 +292,15 @@ beim Installieren, die App selbst zeigt sie nie.
 die Kartendateien sonst erst über `app.js` und `data/index.js` entdeckt. `npm run build` bricht
 ab, wenn diese Liste nicht mehr zum Ordner `data/` passt.
 
+Zwei Dateien lagen im Vorabbestand, die gar nicht zur App gehören: `package.json` und
+`data/kennungen.json`, der Bestandsnachweis für die Inhaltsprüfung. Zusammen 26 kB, die jeder
+Erstbesucher lud, obwohl die App beide nirgends importiert. Schwerer wog, dass sie in die
+Versionskennung des Service Workers eingingen: Eine neue Zeile in `package.json` hätte jedem
+Nutzer ein Update angeboten, das nichts ändert. `kennungen.json` wird zudem von
+`npm run check --kennungen` neu geschrieben – damit entschied die Reihenfolge der Bauschritte
+über die Versionskennung. Beide sind jetzt ausgenommen, und `npm run build` bricht ab, wenn
+die Ausnahmeliste nicht mehr zum Ordner passt.
+
 Die restlichen sechs Sekunden sind reine Übertragungszeit für 240 kB Karten – dagegen hilft
 nur weniger Inhalt. Stattdessen sagt der Startbildschirm nach anderthalb Sekunden, was gerade
 passiert und dass es einmalig ist.
@@ -354,6 +370,14 @@ Zwei Vorkehrungen verhindern das:
   (`p:"alte Fassung der Frage"`, auch als Liste). Die App hebt den gespeicherten Stand beim
   Start auf die neue Kennung – samt Markierung.
 
+Eine dritte Stelle konnte Karten still an den falschen Ort legen: `scripts/merge-cards.mjs`
+ordnet neue Karten über ihr Teilgebiet einer Datei zu und ging davon aus, dass Teilgebiete
+eindeutig sind. Seit „Verfahren erkennen" in Mathematik **und** Sport existiert, stimmt das
+nicht mehr – das Skript nahm einfach die erste Datei und hätte Sportkarten nach `data/mat.js`
+geschrieben. Es verlangt jetzt bei mehrdeutigen Teilgebieten ein ausdrückliches Feld `cat` und
+weist alles andere ab. Ein Test prüft das mit, weil falsch abgelegte Karten beim Lesen des
+Diffs kaum auffallen.
+
 Nach dem Umformulieren einmal `node scripts/check-content.mjs --kennungen` laufen lassen,
 damit die Liste den neuen Stand kennt.
 
@@ -401,6 +425,12 @@ Mondschwerkraft, 48 Staaten vor Alaska, die Pfandstufen 8 und 15 Cent, die Promi
 0,3 / 0,8 / 1,1. Die Schranke im Prüfskript liegt jetzt bei 70 % statt 85 %: Sie fängt weiter
 den systematischen Fall ab, in dem Ablenker maschinell um die Antwort gelegt werden, hält
 aber den erreichten Stand fest.
+
+Das Skript, das die Ablenker automatisch spiegeln konnte, ist gelöscht. Es lag noch in
+`scripts/`, war in keinem npm-Befehl eingetragen und tat genau das, was hier als schädlich
+gemessen und verworfen wurde. Ein lauffähiges Werkzeug für eine verworfene Entscheidung ist
+eine Falle: Ein einziger Aufruf hätte die Ablenker eingeebnet, die den Lehrwert tragen. Die
+Kennzahl selbst meldet weiterhin `npm run check`.
 
 Der Planer wird zusätzlich als **Eigenschaftstest** geprüft: 16.000 zufällige Bewertungsfolgen –
 mal früh, mal pünktlich, mal verspätet beantwortet – gegen die Zusicherungen, die immer gelten

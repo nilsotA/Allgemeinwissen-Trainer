@@ -1,5 +1,5 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-7b5d331c7c';
+const VERSION = 'wissenswerk-01eb7c390f';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",
@@ -13,7 +13,6 @@ const ASSETS = [
   "./data/geo.js",
   "./data/ges.js",
   "./data/index.js",
-  "./data/kennungen.json",
   "./data/kul.js",
   "./data/mat.js",
   "./data/nat.js",
@@ -24,8 +23,7 @@ const ASSETS = [
   "./icons/icon-180.png",
   "./icons/icon-192.png",
   "./index.html",
-  "./manifest.webmanifest",
-  "./package.json"
+  "./manifest.webmanifest"
 ];
 
 /* Holt die genannten Dateien am HTTP-Cache vorbei in den Bestand.
