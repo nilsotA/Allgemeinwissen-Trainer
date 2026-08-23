@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.743 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.742 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -350,6 +350,20 @@ Anforderung als Safari 14 – alles andere ist älter oder fällt weich aus, etw
 wäre drei Zeilen lang, ist aber bewusst nicht drin: Betroffen wären nur Geräte, die seit
 März 2022 kein Update bekommen haben, und eine klare Meldung ist dort ehrlicher als eine
 halb funktionierende App.
+
+**Ein blinder Fleck, der bleibt.** Das Wortmengen-Maß zählt nur Wörter über vier Buchstaben und
+liefert 0, sobald eine Seite weniger als drei davon hat. Damit ist **jede kurze Frage von der
+Dublettenprüfung ausgenommen** – gemessen 312 von 1.742 Karten, also 18 %. „Was ist ein
+Palindrom?" hat genau ein solches Wort. Genau dort saß eine Dublette: „Was ist ein
+Palindrom-Datum wie 22.02.2022?" ist aus der Grundkarte ableitbar und kostete nur
+Wiederholungen; sie ist jetzt in den Kontext der Grundkarte eingearbeitet.
+
+Eine Ersatzregel für kurze Fragen wurde gebaut und wieder verworfen. Sie findet über den ganzen
+Bestand **zwei** Fälle: den echten und „Wer malte die Mona Lisa?" gegen „Wer malte das
+Abendmahl?" – zwei verschiedene Fakten mit derselben Antwort. Eine höhere Schranke hilft nicht,
+denn der falsche Treffer liegt mit 1,00 *über* dem echten mit 0,80. Ein Wächter, der zuverlässig
+einen Fehlalarm meldet, erzieht dazu, ihn zu überlesen. Die Lücke bleibt deshalb offen und ist
+hier festgehalten: Kurze Fragen brauchen einen Blick von Hand.
 
 **Zwei Wege zur selben Dublette.** Die Prüfung meldet zwei Karten als inhaltlich gleich, wenn
 sich Frage *und* Antwort stark überlappen (ab 0,7). Diese Schranke ließ eine Lücke: „Wie lange
