@@ -110,9 +110,12 @@ setSaveErrorHandler(() => toast('Speicher voll – Fortschritt sichern und Platz
    Waehrend einer laufenden Einheit bleibt der Zustand unangetastet - sonst
    verschluckte der Tausch die gerade gegebene Antwort. */
 setBusyCheck(() => run !== null);
-setFremdStandHandler((uebernommen) => {
+setFremdStandHandler((uebernommen, sichtbar) => {
   if (run) return;
   render();
+  // Ein Folge-Ereignis ohne sichtbare Aenderung bleibt stumm – sonst
+  // ueberschreibt es die Meldung, die zum eigentlichen Ereignis gehoert.
+  if (!sichtbar) return;
   toast(uebernommen
     ? 'Ein anderer Tab hat den Stand ersetzt – hier übernommen'
     : 'In einem anderen Tab gelernt – Stand zusammengeführt');

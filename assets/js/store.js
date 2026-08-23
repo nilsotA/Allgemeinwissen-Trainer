@@ -254,11 +254,24 @@ export function installFlush() {
     // Waehrend einer Einheit nur merken: beim naechsten Speichern wird ohnehin
     // zusammengefuehrt, und ein Tausch mitten im Ablauf verschluckt Antworten.
     if (istBeschaeftigt()) return;
+    const vorher = state;
     const eigeneGen = Number(state.gen) || 0;
     state = zusammenfuehren(fremd, state);
-    // Der Handler bekommt gesagt, ob zusammengefuehrt oder uebernommen wurde –
-    // nach einem Zuruecksetzen im anderen Tab waere „zusammengefuehrt" gelogen.
-    onFremdStand((Number(state.gen) || 0) > eigeneGen);
+    const uebernommen = (Number(state.gen) || 0) > eigeneGen;
+    /* Der Handler bekommt gesagt, ob zusammengefuehrt oder uebernommen wurde –
+       nach einem Zuruecksetzen im anderen Tab waere „zusammengefuehrt" gelogen.
+       Und er erfaehrt, ob sich sichtbar etwas geaendert hat: Nach einem Reset
+       rendert der andere Tab seine Startseite und speichert dabei den
+       Merkanker-Tag. Dieses generationsgleiche Folge-Ereignis aendert nichts,
+       ueberschrieb aber die ehrliche „uebernommen"-Meldung wieder mit
+       „zusammengefuehrt". */
+    const sichtbar = uebernommen
+      || state.totalAnswers !== vorher.totalAnswers
+      || state.duelAnswers !== vorher.duelAnswers
+      || state.streak !== vorher.streak
+      || Object.keys(state.cards).length !== Object.keys(vorher.cards).length
+      || Object.keys(state.flags).length !== Object.keys(vorher.flags).length;
+    onFremdStand(uebernommen, sichtbar);
   });
 }
 

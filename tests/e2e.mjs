@@ -533,6 +533,52 @@ try {
     await uctx2.close();
   }
 
+  group('Zwei Tabs: ein Reset wird uebernommen, nicht eingesammelt');
+  /* Der Unit-Test faehrt zwei Modulinstanzen ueber den save()-Pfad gegeneinander.
+     Echte Nutzer treffen aber den storage-Horcher: Tab B liegt offen auf der
+     Startseite, Tab A setzt zurueck. Ohne Generationsnummer fuellte B den
+     geleerten Stand wieder auf, und ein Folge-Ereignis (Tab A speichert beim
+     Rendern den Merkanker-Tag) ueberschrieb die ehrliche Meldung. */
+  {
+    const zctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const A = await zctx.newPage();
+    await A.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await A.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.cards = { 'probe-1': { ef: 2.5, iv: 3, due: 5, reps: 2, lapses: 0, seen: 4, ok: 3, last: 111 } };
+      st.totalAnswers = 42; st.totalCorrect = 30; st.streak = 17; st.rev = 5;
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await A.reload({ waitUntil: 'networkidle' });
+    const B = await zctx.newPage();
+    await B.goto(URL_BASE, { waitUntil: 'networkidle' });
+
+    await A.bringToFront();
+    A.on('dialog', (d) => d.accept());
+    await A.locator('nav button[data-view="settings"]').click();
+    await A.waitForTimeout(400);
+    await A.locator('#rst').click();
+    await A.waitForTimeout(700);
+
+    await B.bringToFront();
+    await B.waitForTimeout(700);
+    const meldung = await B.locator('.toast').innerText().catch(() => '(keine)');
+    check('Tab B meldet die Uebernahme ehrlich', /ersetzt – hier übernommen/.test(meldung), meldung);
+
+    // Der kritische Moment: Tab B speichert etwas – der Altbestand darf nicht zurueckkommen.
+    await B.locator('#searchBtn').click();
+    await B.waitForTimeout(500);
+    const stern = B.locator('.star').first();
+    if (await stern.count()) { await stern.click(); await B.waitForTimeout(600); }
+    const danach = await B.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k));
+      return { karten: Object.keys(st.cards).length, antworten: st.totalAnswers };
+    }, KEY);
+    check('der Reset ueberlebt das Speichern in Tab B',
+      danach.karten === 0 && danach.antworten === 0, JSON.stringify(danach));
+    await zctx.close();
+  }
+
   group('Duell: Zeit im Hintergrund zaehlt nicht');
   /* Der Zeitgeber rechnet mit Date.now(), damit gedrosselte Intervalle ihn nicht
      verfaelschen – nur laeuft Date.now() auch weiter, waehrend das Handy klingelt
