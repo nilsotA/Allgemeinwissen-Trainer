@@ -5,7 +5,7 @@ import * as store from './store.js';
 import { S, settings, setSetting, save, cardState, putCard, today, todayNum, dayKey,
          numToKey, liveStreak, touchStreak, isFlagged, toggleFlag, setSaveErrorHandler,
          installFlush, setBusyCheck, setFremdStandHandler } from './store.js';
-import { schedule, strength, preview, isLeech, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
+import { schedule, strength, preview, isLeech, nachDuellFehler, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
 import { options, bewerte, normalize, shuffle } from './quiz.js';
 import * as sess from './session.js';
 
@@ -87,9 +87,17 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', ()
 });
 
 function toast(msg, ms = 2200) {
-  document.querySelector('.toast')?.remove();
+  /* Nur die eigene Kurzmeldung ersetzen. Der Update-Balken traegt dieselbe
+     Klasse und bleibt stehen, bis der Nutzer entscheidet – vorher loeschte ihn
+     jede beliebige Meldung endgueltig, sogar die eigene Antwort des Balkens
+     („Erst die Runde zu Ende") raeumte den Balken weg, zu dem sie gehoerte. */
+  document.querySelector('.toast:not(.aktion)')?.remove();
   const d = document.createElement('div');
   d.className = 'toast';
+  // Steht der Balken, rueckt die Meldung ueber ihn, statt ihn zu verdecken.
+  // Gemessen statt geschaetzt: Die Hoehe des Balkens haengt vom Textumbruch ab.
+  const balken = document.querySelector('.toast.aktion');
+  if (balken) d.style.bottom = `${Math.round(window.innerHeight - balken.getBoundingClientRect().top + 10)}px`;
   d.textContent = msg;
   document.body.appendChild(d);
   setTimeout(() => d.remove(), ms);
@@ -102,10 +110,12 @@ setSaveErrorHandler(() => toast('Speicher voll – Fortschritt sichern und Platz
    Waehrend einer laufenden Einheit bleibt der Zustand unangetastet - sonst
    verschluckte der Tausch die gerade gegebene Antwort. */
 setBusyCheck(() => run !== null);
-setFremdStandHandler(() => {
+setFremdStandHandler((uebernommen) => {
   if (run) return;
   render();
-  toast('In einem anderen Tab gelernt – Stand zusammengeführt');
+  toast(uebernommen
+    ? 'Ein anderer Tab hat den Stand ersetzt – hier übernommen'
+    : 'In einem anderen Tab gelernt – Stand zusammengeführt');
 });
 
 /* ================= Views ================= */
@@ -1232,7 +1242,8 @@ function askRecall(card, isFresh, cs) {
   shell(
     qkarte(head(card, isFresh) + `
       <input class="recall-in" id="rin" type="text" inputmode="text" autocomplete="off"
-             autocapitalize="sentences" spellcheck="false" placeholder="Antwort tippen (empfohlen)">
+             autocapitalize="sentences" spellcheck="false" enterkeyhint="go"
+             placeholder="Antwort tippen (empfohlen)">
       <p class="tiny">Erst selbst denken – der Abruf ist der eigentliche Lerneffekt.</p>`, true),
     ''
   );
@@ -1532,7 +1543,9 @@ function askDuel(card) {
         // gelernten Karten – eine unberührte Karte steht ohnehin in der Neu-Liste,
         // und ein Zustand mit seen=0 würde sie in beide Listen bringen.
         const cs = cardState(card.id);
-        if (cs && cs.seen > 0) putCard(card.id, { ...cs, due: todayNum() });
+        // Termin auf heute, Intervall auf die wirklich verstrichene Zeit
+        // gedeckelt – Begruendung bei nachDuellFehler in srs.js.
+        if (cs && cs.seen > 0) putCard(card.id, nachDuellFehler(cs));
       }
       save();
       run.done++; if (ok) run.correct++;
@@ -1608,9 +1621,15 @@ function updateBalken(worker) {
   b.type = 'button';
   b.textContent = 'Laden';
   b.onclick = () => {
-    // Doppelt gesichert: Waehrend einer Runde wird gar nicht erst angeboten,
-    // aber eine Runde kann waehrend des Balkens auch neu gestartet werden.
-    if (run) { toast('Erst die Runde zu Ende – danach wird geladen'); return; }
+    /* Eine Runde kann gestartet werden, waehrend der Balken schon steht. Dann
+       wird das Angebot zurueckgestellt wie beim Eintreffen waehrend einer Runde:
+       Balken weg, Vormerkung setzen – endRun holt ihn nach. */
+    if (run) {
+      d.remove();
+      updateWartet = worker;
+      toast('Erst die Runde zu Ende – danach kommt das Angebot zurück');
+      return;
+    }
     d.remove();
     worker.postMessage('jetzt-uebernehmen');
   };

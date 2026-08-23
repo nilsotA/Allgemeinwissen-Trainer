@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 
 globalThis.localStorage = { getItem: () => null, setItem: () => {}, removeItem: () => {} };
 
-const { schedule, strength, preview, isDue, isNew, isLeech, fresh,
+const { schedule, strength, preview, isDue, isNew, isLeech, nachDuellFehler, fresh,
         AGAIN, HARD, GOOD, EASY } = await import('../assets/js/srs.js');
 const { todayNum } = await import('../assets/js/store.js');
 const { options, similarity, bewerte, normalize, shuffle } = await import('../assets/js/quiz.js');
@@ -634,4 +634,34 @@ test('bei Abfolgen bleibt die Reihenfolge die Antwort', () => {
     assert.ok(bewerte(c, gedreht) < 0.8,
       `${c.id}: umgekehrte Reihenfolge gilt faelschlich als richtig`);
   }
+});
+
+/* Ein Fehler im Duell zieht die Karte ins naechste Tagestraining. Dabei muss der
+   Anker „due − iv = letzte Abfrage" wahr bleiben – sonst gilt eine Karte, die
+   nach zehn Tagen nachweislich gescheitert ist, morgen als puenktlich
+   abgefragte 30-Tage-Karte, und die vom Duell-Loesungstext geprimte richtige
+   Antwort treibt das Intervall auf rund 75 Tage. */
+test('nach einem Duell-Fehler ist das Intervall auf die verstrichene Zeit gedeckelt', () => {
+  const t = todayNum();
+  // Vor 10 Tagen gelernt, Intervall 30 – also in 20 Tagen faellig
+  const cs = { ef: 2.5, iv: 30, due: t + 20, reps: 4, lapses: 0, seen: 6, ok: 5, last: 1 };
+  const nach = nachDuellFehler(cs, t);
+  assert.equal(nach.due, t, 'die Karte muss heute faellig sein');
+  assert.equal(nach.iv, 10, 'das Intervall ist die wirklich verstrichene Zeit');
+  assert.equal(nach.due - nach.iv, cs.due - cs.iv, 'der Anker letzte Abfrage bleibt wahr');
+  // Das naechste korrekte Wachstum rechnet aus 10 Tagen, nicht aus 30
+  const danach = schedule(nach, GOOD, { jitter: false });
+  assert.ok(danach.iv <= Math.round(10 * 2.5) + 1,
+    `Wachstum aus dem echten Abstand: iv=${danach.iv} statt hoechstens 26`);
+
+  // Ueberfaellige Karte: nie verlaengern, das alte Intervall bleibt stehen
+  const spaet = { ef: 2.5, iv: 5, due: t - 3, reps: 3, lapses: 0, seen: 4, ok: 3, last: 1 };
+  assert.equal(nachDuellFehler(spaet, t).iv, 5, 'ueberfaellig bleibt beim alten Intervall');
+
+  // Heute gelernt, morgen faellig: Intervall faellt auf null, naechster Termin morgen
+  const frisch = { ef: 2.5, iv: 1, due: t + 1, reps: 1, lapses: 0, seen: 1, ok: 1, last: 1 };
+  const f = nachDuellFehler(frisch, t);
+  assert.equal(f.iv, 0);
+  const fDanach = schedule(f, GOOD, { jitter: false });
+  assert.ok(fDanach.iv >= 1 && fDanach.due > t, 'auch aus null waechst ein gueltiger Termin');
 });

@@ -684,6 +684,35 @@ try {
     await tctx.close();
   }
 
+  /* Der Balken bleibt stehen, bis der Nutzer entscheidet – also muss er auch
+     jede Kurzmeldung ueberleben. Vorher loeschte toast() schlicht das erste
+     Element mit der Klasse .toast, und das war der Balken: Ein Stern im
+     Nachschlagen, ein „Gesichert", irgendeine Meldung – und das Update-Angebot
+     war bis zum naechsten vollstaendigen Neuladen verschwunden. */
+  {
+    const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const bp = await bctx.newPage();
+    await bp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await bp.evaluate(() => {
+      const d = document.createElement('div');
+      d.className = 'toast aktion';
+      d.innerHTML = '<span>Neue Fassung bereit</span><button type="button">Laden</button>';
+      document.body.appendChild(d);
+    });
+    // Ein frisches Profil hat keine Wackelkandidaten – der Knopf zeigt nur eine Meldung.
+    await bp.getByRole('button', { name: 'Wackelkandidaten' }).click();
+    await bp.waitForTimeout(400);
+    check('eine Kurzmeldung erscheint', await bp.locator('.toast:not(.aktion)').count() === 1);
+    check('der Update-Balken ueberlebt die Kurzmeldung', await bp.locator('.toast.aktion').count() === 1);
+    const oben = await bp.evaluate(() => {
+      const t = document.querySelector('.toast:not(.aktion)');
+      const b = document.querySelector('.toast.aktion');
+      return t && b && t.getBoundingClientRect().bottom <= b.getBoundingClientRect().top + 1;
+    });
+    check('die Meldung steht ueber dem Balken statt darauf', oben);
+    await bctx.close();
+  }
+
   group('Festlegen vor der Aufloesung');
   /* Wer die Loesung sieht und erst danach urteilt, haelt fuer gewusst, was er
      gerade gelesen hat. Ohne Eingabe muss deshalb vorher eine Festlegung fallen. */

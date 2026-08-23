@@ -456,3 +456,29 @@ test('ein eingelesener Stand sammelt nicht den fremden Tab wieder ein', () => {
   assert.ok(!Object.keys(abgelegt.cards).includes('aus-dem-anderen-tab'),
     'auch im Speicher darf der fremde Stand nicht wieder auftauchen');
 });
+
+/* Zuruecksetzen und Einlesen sind ausdrueckliche Entscheidungen – aber das
+   Zusammenfuehren zweier Tabs kennt nur Wachstum. Ohne Generationsnummer fuellte
+   der zweite offene Tab einen bewusst geleerten Stand einfach wieder auf:
+   Nachgestellt genuegte ein einziger Stern in Tab B, und der komplette
+   Altbestand stand wieder im Speicher. Der Test faehrt zwei echte
+   Modulinstanzen gegeneinander, wie zwei Tabs es tun. */
+test('ein Zuruecksetzen ueberlebt den zweiten offenen Tab', async () => {
+  const B = await import('../assets/js/store.js?zweiter-tab');
+  store.putCard('probe-tab', { ef: 2.5, iv: 3, due: 5, reps: 2, lapses: 0, seen: 4, ok: 3, last: 111 });
+  store.S().totalAnswers = 42; store.S().streak = 17;
+  store.save(true);
+  B.save(true);                       // Tab B zieht den Stand einmal zu sich
+  assert.ok(Object.keys(B.S().cards).length >= 1, 'Tab B muss den Stand kennen');
+
+  store.resetAll();                   // Tab A: Alles zuruecksetzen
+  B.toggleFlag('irgendwas');          // Tab B tippt danach einen Stern an
+  B.save(true);
+
+  const danach = JSON.parse(localStorage.getItem('wissenswerk.v1'));
+  assert.equal(Object.keys(danach.cards).length, 0,
+    `der Altbestand ist wieder da: ${Object.keys(danach.cards).join(', ')}`);
+  assert.equal(danach.totalAnswers, 0, 'auch die Zaehler muessen leer bleiben');
+  assert.equal(Object.keys(B.S().cards).length, 0,
+    'Tab B selbst muss den ersetzten Stand uebernommen haben');
+});

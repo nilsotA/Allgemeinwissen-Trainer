@@ -90,6 +90,27 @@ export function schedule(cs, grade, opts) {
   return s;
 }
 
+/** Zustand einer gelernten Karte nach einem Fehler im Duell.
+
+    Das Duell zaehlt getrennt und darf den Scheduler nicht beschaedigen – aber
+    die Karte soll ins naechste Tagestraining. Bisher wurde nur due auf heute
+    gezogen und das Intervall blieb stehen. Damit war der Anker
+    „due − iv = letzte Abfrage" zerstoert: Eine 30-Tage-Karte, vor zehn Tagen
+    gelernt und im Duell falsch beantwortet, galt am naechsten Tag als
+    puenktlich abgefragte 30-Tage-Karte. Die richtige Antwort – geprimt vom
+    Loesungstext, den das Duell gerade gezeigt hat – trieb das Intervall auf
+    rund 75 Tage, obwohl der Abruf nachweislich schon nach zehn Tagen
+    gescheitert war.
+
+    Deshalb wird das Intervall auf die tatsaechlich verstrichene Zeit gedeckelt.
+    Der Anker bleibt wahr, und das naechste Wachstum rechnet aus dem, was die
+    Karte wirklich getragen hat. Es wird nur gedeckelt, nie verlaengert – bei
+    einer ohnehin ueberfaelligen Karte bleibt das alte Intervall stehen. */
+export function nachDuellFehler(cs, t = todayNum()) {
+  const zuletzt = cs.due - cs.iv;
+  return { ...cs, due: t, iv: Math.max(0, Math.min(cs.iv, t - zuletzt)) };
+}
+
 /** Reifegrad 0..1 – wie fest sitzt die Karte? */
 export function strength(cs) {
   if (!cs || !cs.reps) return 0;

@@ -4,6 +4,7 @@ const KEY = 'wissenswerk.v1';
 const DEFAULTS = {
   version: 1,
   rev: 0,                 // steigt bei jedem Schreiben – erkennt den anderen Tab
+  gen: 0,                 // steigt NUR bei Zuruecksetzen/Einlesen – erzwingt Uebernahme statt Zusammenfuehren
   settings: {
     newPerDay: 12,        // neue Karten pro Tag
     maxReviews: 90,       // Deckel für Wiederholungen
@@ -87,6 +88,19 @@ export const setSaveErrorHandler = (fn) => { onSaveError = fn; };
    recht - und loescht die Lerneinheit des anderen. Alle Zaehler hier wachsen nur,
    deshalb laesst sich verlustfrei zusammenfuehren statt zu ueberschreiben. */
 function zusammenfuehren(fremd, eigen) {
+  /* Zuruecksetzen und das Einlesen einer Sicherung sind ausdrueckliche
+     Entscheidungen. Das Zusammenfuehren kennt aber nur Wachstum – ein bewusst
+     geleerter Stand wuerde vom zweiten offenen Tab einfach wieder aufgefuellt:
+     Nachgestellt stand nach „Alles zuruecksetzen" der komplette Altbestand
+     wieder im Speicher, sobald der andere Tab einen einzigen Stern setzte.
+     Deshalb traegt jedes Ersetzen eine neue Generationsnummer, und ein Stand
+     hoeherer Generation wird uebernommen statt eingesammelt. */
+  if ((Number(fremd.gen) || 0) > (Number(eigen.gen) || 0)) {
+    const uebernommen = saeubern(fremd);
+    uebernommen.rev = Number(fremd.rev) || 0;
+    uebernommen.gen = Number(fremd.gen) || 0;
+    return uebernommen;
+  }
   const z = structuredClone(eigen);
   const groesser = (a, b) => Math.max(Number(a) || 0, Number(b) || 0);
   for (const [id, f] of Object.entries(fremd.cards || {})) {
@@ -240,8 +254,11 @@ export function installFlush() {
     // Waehrend einer Einheit nur merken: beim naechsten Speichern wird ohnehin
     // zusammengefuehrt, und ein Tausch mitten im Ablauf verschluckt Antworten.
     if (istBeschaeftigt()) return;
+    const eigeneGen = Number(state.gen) || 0;
     state = zusammenfuehren(fremd, state);
-    onFremdStand();
+    // Der Handler bekommt gesagt, ob zusammengefuehrt oder uebernommen wurde –
+    // nach einem Zuruecksetzen im anderen Tab waere „zusammengefuehrt" gelogen.
+    onFremdStand((Number(state.gen) || 0) > eigeneGen);
   });
 }
 
@@ -253,6 +270,10 @@ function ersetzeZustand(neu) {
   try { gespeichert = Number(JSON.parse(localStorage.getItem(KEY) || '{}').rev) || 0; }
   catch (e) { /* unlesbar ist so gut wie nicht vorhanden */ }
   neu.rev = Math.max(Number(state.rev) || 0, gespeichert) + 1;
+  let gespeicherteGen = 0;
+  try { gespeicherteGen = Number(JSON.parse(localStorage.getItem(KEY) || '{}').gen) || 0; }
+  catch (e) { /* unlesbar ist so gut wie nicht vorhanden */ }
+  neu.gen = Math.max(Number(state.gen) || 0, gespeicherteGen) + 1;
   state = neu;
   save(true);
 }
@@ -324,6 +345,7 @@ function saeubern(roh) {
   rein.duelCorrect = zahl(roh.duelCorrect, 0, 1e8, 0);
   rein.totalAnswers = zahl(roh.totalAnswers, 0, 1e8, 0);
   rein.totalCorrect = zahl(roh.totalCorrect, 0, 1e8, 0);
+  rein.gen = zahl(roh.gen, 0, 1e9, 0);
   rein.claims = zahl(roh.claims, 0, 1e7, 0);
   rein.claimsMiss = zahl(roh.claimsMiss, 0, 1e7, 0);
   rein.factIdx = zahl(roh.factIdx, 0, 1e5, 0);

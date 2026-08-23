@@ -147,6 +147,23 @@ App benutzt und widersprach der Simulation deutlich – am Fälligkeitstag sagte
 Simulation rechnete mit 86 %. Eine Vergessenskurve, die niemand benutzt, ist eine Behauptung,
 die niemand prüft.
 
+### Zwei offene Tabs und das ausdrückliche Ersetzen
+
+Zwei offene Tabs derselben App führen ihren Speicher **zusammen**, statt sich zu
+überschreiben – alle Zähler wachsen nur, also geht dabei nichts verloren. Genau diese
+Eigenschaft wurde beim Zurücksetzen und beim Einlesen einer Sicherung zur Falle: Ein bewusst
+geleerter oder ersetzter Stand ist für das Zusammenführen ununterscheidbar von einem alten,
+und der zweite Tab füllte ihn einfach wieder auf. Nachgestellt genügte nach „Alles
+zurücksetzen" ein einziger Stern im anderen Tab, und der komplette Altbestand stand wieder im
+Speicher – mit höherer Fassungsnummer, also endgültig.
+
+Deshalb trägt der Zustand neben der Fassungsnummer (steigt bei jedem Schreiben) eine
+**Generationsnummer**, die nur beim ausdrücklichen Ersetzen steigt: Zurücksetzen, Sicherung
+einlesen, Wiederherstellen. Ein Stand höherer Generation wird von anderen Tabs übernommen
+statt eingesammelt – die Meldung sagt dann ehrlich „ersetzt – hier übernommen" statt
+„zusammengeführt". Ein Test fährt zwei echte Modulinstanzen gegeneinander, wie zwei Tabs es
+tun; gegen den alten Stand schlägt er fehl.
+
 ### Was bewusst *nicht* drin ist
 
 - **Terminglättung.** Die Idee, Wiederholungen auf den am wenigsten belasteten Tag im
@@ -170,7 +187,13 @@ die niemand prüft.
   naturgemäß geraten wird – drei Duelle ließen den Tagesbogen sonst auf 71 % springen,
   ohne dass eine einzige geplante Karte dran war. Für die Serie und die Aktivitätskarte
   zählt ein Duell trotzdem: geübt ist geübt. Die Uhr **pausiert, während die App im
-  Hintergrund ist** – siehe unten.
+  Hintergrund ist** – siehe unten. Eine im Duell verfehlte Karte wird auf heute fällig
+  gestellt, und ihr Intervall wird dabei auf die **wirklich verstrichene Zeit gedeckelt**:
+  Vorher galt eine 30-Tage-Karte, die nach zehn Tagen im Duell scheiterte, am nächsten Tag
+  als pünktlich abgefragte 30-Tage-Karte – und die vom gerade gezeigten Lösungstext geprimte
+  richtige Antwort trieb das Intervall auf rund 75 Tage. Jetzt rechnet das nächste Wachstum
+  aus den zehn Tagen, die die Karte nachweislich getragen hat. Gedeckelt wird nur, nie
+  verlängert.
 - **Markierte Karten** – was du beim Nachschlagen mit ★ versiehst, lässt sich gezielt üben.
 - **Schwachstellen** – die Statistik zeigt die Teilgebiete mit der schlechtesten
   Trefferquote; ein Tipp darauf startet eine Runde genau dazu.
@@ -204,7 +227,13 @@ die niemand prüft.
   mehrere Monate blieb eine Runde genau daran hängen. Nur der Knopf im Balken nimmt jetzt noch
   Tipper an. Das Update-Angebot erscheint außerdem gar nicht mehr mitten in der Runde: Laden
   wird dort ohnehin verweigert, weil es die offene Frage schlucken würde, also wird es
-  zurückgehalten und nach der Runde nachgeholt.
+  zurückgehalten und nach der Runde nachgeholt. Und der Balken **überlebt Kurzmeldungen**:
+  Vorher räumte jede Meldung („Gesichert", ein Stern im Nachschlagen) das erste Element mit
+  der Klasse `.toast` weg – und das war der Balken. Das Update-Angebot war damit bis zum
+  nächsten vollständigen Neuladen verschwunden; bei einer vom Home-Bildschirm gestarteten
+  App kann das Wochen dauern. Jetzt ersetzt eine Meldung nur ihresgleichen und rückt über
+  den Balken, statt ihn zu verdecken. Wer während einer laufenden Runde auf „Laden" tippt,
+  bekommt das Angebot nach der Runde erneut, statt es zu verlieren.
 - **Erinnerung ans Sichern.** Der Fortschritt liegt allein im Browserspeicher dieses Geräts –
   die App hat keinen Server und kann nichts hochladen. Safari räumt den Speicher von Websites
   nach längerer Nichtnutzung auf, ein neues Handy hat ihn ohnehin nicht. Deshalb erinnert die
