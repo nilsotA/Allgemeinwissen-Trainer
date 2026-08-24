@@ -26,7 +26,7 @@ export default [
 
 /* ---------- Chemie ---------- */
 {q:"Wie lautet die chemische Formel von Wasser?",a:"H₂O",s:"Chemie",d:1,t:"Zwei Wasserstoff-, ein Sauerstoffatom. Eis ist weniger dicht als flüssiges Wasser und schwimmt deshalb; das Dichtemaximum bei 4 °C lässt Seen von oben zufrieren.",w:["HO₂","H₂O₂","OH"]},
-{q:"Wie viele Elemente hat das Periodensystem derzeit?",a:"118",s:"Chemie",d:2,t:"Bis Ordnungszahl 118 (Oganesson). Ab Nummer 95 sind alle künstlich erzeugt.",w:["92","102","150"]},
+{q:"Wie viele Elemente hat das Periodensystem derzeit?",a:"118",s:"Chemie",d:2,t:"Bis Ordnungszahl 118 (Oganesson). Ab Nummer 95 sind alle künstlich erzeugt.",w:["92","102","108"]},
 {q:"Welches chemische Symbol steht für Gold?",a:"Au",s:"Chemie",d:1,t:"Von lat. „aurum“. Silber ist Ag (argentum), Eisen Fe (ferrum), Blei Pb (plumbum).",w:["Go","Ag","Gd"]},
 {q:"Welches Element hat die Ordnungszahl 1?",a:"Wasserstoff",s:"Chemie",d:1,t:"Das häufigste Element im Universum – rund 75 % der gewöhnlichen Materie.",w:["Helium","Kohlenstoff","Sauerstoff"]},
 {q:"Was gibt die Ordnungszahl eines Elements an?",a:"Die Anzahl der Protonen",s:"Chemie",d:2,t:"Sie bestimmt, welches Element es ist. Unterschiedliche Neutronenzahlen ergeben Isotope.",w:["Die Anzahl der Neutronen","Die Atommasse","Die Zahl der Schalen"]},
@@ -86,7 +86,7 @@ export default [
 {q:"Wer entwickelte den ersten funktionsfähigen Computer (Z3)?",a:"Konrad Zuse",s:"Technik",d:2,t:"1941 in Berlin, programmgesteuert und binär. Gilt als erster funktionsfähiger Digitalrechner der Welt.",w:["Alan Turing","John von Neumann","Charles Babbage"]},
 {q:"Wer erfand das World Wide Web?",a:"Tim Berners-Lee",s:"Technik",d:2,t:"1989 am CERN. Das Internet als Netz gab es vorher – das WWW ist der Dienst mit Links und Browsern.",w:["Bill Gates","Vint Cerf","Steve Jobs"]},
 {q:"Wofür steht die Abkürzung „URL“?",a:"Uniform Resource Locator",s:"Technik",d:2,t:"Die Adresse einer Ressource im Web. HTTP ist das Protokoll, HTML die Auszeichnungssprache.",w:["Universal Reference Link","United Resource Line","User Request Log"]},
-{q:"Was bedeutet 1 Byte?",a:"8 Bit",s:"Technik",d:1,t:"Ein Bit ist 0 oder 1. Mit einem Byte lassen sich 256 Zustände darstellen – genug für ein Zeichen.",w:["4 Bit","16 Bit","1024 Bit"]},
+{q:"Was bedeutet 1 Byte?",a:"8 Bit",s:"Technik",d:1,t:"Ein Bit ist 0 oder 1. Mit einem Byte lassen sich 256 Zustände darstellen – genug für ein Zeichen.",w:["16 Bit","32 Bit","1024 Bit"]},
 {q:"Wer erfand die Glühlampe massentauglich?",a:"Thomas Edison",s:"Technik",d:1,t:"1879. Er verbesserte Vorarbeiten anderer entscheidend und baute gleich das Stromnetz dazu.",w:["Nikola Tesla","Alexander Graham Bell","Werner von Siemens"]},
 {q:"Wer meldete das Patent für das Telefon an?",a:"Alexander Graham Bell",s:"Technik",d:2,t:"1876 – knapp vor Elisha Gray. Philipp Reis hatte schon 1861 einen Vorläufer gebaut.",w:["Philipp Reis","Guglielmo Marconi","Samuel Morse"]},
 {q:"Was macht ein Transformator?",a:"Er ändert die elektrische Spannung",s:"Technik",d:2,t:"Funktioniert nur mit Wechselstrom – der Hauptgrund, warum sich Wechselstrom gegen Gleichstrom durchsetzte.",w:["Er speichert Strom","Er wandelt Wechsel- in Gleichstrom","Er misst Stromstärke"]},

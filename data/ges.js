@@ -22,7 +22,7 @@ export default [
 
 /* ---------- Mittelalter ---------- */
 {q:"Wer wurde im Jahr 800 in Rom zum Kaiser gekrönt?",a:"Karl der Große",s:"Mittelalter",d:1,t:"Papst Leo III. krönte ihn an Weihnachten. Seine Pfalz stand in Aachen, dort liegt er auch begraben.",w:["Otto I.","Chlodwig","Friedrich Barbarossa"]},
-{q:"In welchem Jahr begann der Erste Kreuzzug?",a:"1096",s:"Mittelalter",d:2,t:"Ausgelöst durch Papst Urban II. 1095 in Clermont: „Deus lo vult“ – Gott will es. 1099 fiel Jerusalem.",w:["1066","1189","1204"]},
+{q:"In welchem Jahr begann der Erste Kreuzzug?",a:"1096",s:"Mittelalter",d:2,t:"Ausgelöst durch Papst Urban II. 1095 in Clermont: „Deus lo vult“ – Gott will es. 1099 fiel Jerusalem.",w:["1147","1189","1204"]},
 {q:"Was geschah 1066 bei Hastings?",a:"Wilhelm der Eroberer besiegte die Angelsachsen",s:"Mittelalter",d:2,t:"Die Normannen übernahmen England – deshalb sind heute so viele englische Wörter französischen Ursprungs.",w:["Die Wikinger erreichten Amerika","Die Magna Carta wurde unterzeichnet","Der Hundertjährige Krieg begann"]},
 {q:"Welche Seuche tötete im 14. Jahrhundert etwa ein Drittel Europas?",a:"Die Pest",s:"Mittelalter",d:1,t:"1347–1353. Übertragen durch Flöhe auf Ratten, verbreitet über Handelsschiffe aus dem Schwarzen Meer.",w:["Die Cholera","Die Pocken","Die Spanische Grippe"]},
 {q:"Wann endete das Mittelalter nach gängiger Einteilung?",a:"1492",s:"Mittelalter",d:1,t:"Alternativ 1453 (Fall Konstantinopels) oder 1450 (Buchdruck). Epochengrenzen sind immer Konventionen.",w:["1348","1648","1789"]},
@@ -52,7 +52,7 @@ export default [
 {q:"Welcher preußische König führte im 18. Jh. die Kartoffel in Preußen breit ein?",a:"Friedrich II.",s:"Neuzeit",d:2,t:"Per „Kartoffelbefehl“. Auf seinem Grab in Sanssouci liegen bis heute Kartoffeln.",w:["Friedrich Wilhelm I.","Wilhelm I.","Friedrich Wilhelm IV."]},
 
 /* ---------- 19./20. Jahrhundert ---------- */
-{q:"In welchem Jahr wurde das Deutsche Kaiserreich gegründet?",a:"1871",s:"Moderne",d:1,t:"Kaiserproklamation im Spiegelsaal von Versailles, nach dem Sieg über Frankreich. Erster Kanzler: Bismarck.",w:["1848","1866","1888"]},
+{q:"In welchem Jahr wurde das Deutsche Kaiserreich gegründet?",a:"1871",s:"Moderne",d:1,t:"Kaiserproklamation im Spiegelsaal von Versailles, nach dem Sieg über Frankreich. Erster Kanzler: Bismarck.",w:["1815","1848","1866"]},
 {q:"Wie nennt man 1888 in der deutschen Geschichte?",a:"Das Dreikaiserjahr",s:"Moderne",d:2,t:"Wilhelm I. starb, Friedrich III. regierte 99 Tage, dann kam Wilhelm II.",w:["Das Revolutionsjahr","Das Gründerjahr","Das Krisenjahr"]},
 {q:"Wann fand die deutsche Märzrevolution statt?",a:"1848",s:"Moderne",d:2,t:"Erstes gesamtdeutsches Parlament in der Frankfurter Paulskirche. Schwarz-Rot-Gold stammt aus dieser Zeit.",w:["1867","1866","1871"]},
 {q:"Welches Ereignis löste 1914 den Ersten Weltkrieg aus?",a:"Das Attentat von Sarajevo",s:"Moderne",d:1,t:"Ermordung des österreichischen Thronfolgers Franz Ferdinand am 28. Juni durch Gavrilo Princip.",w:["Der Überfall auf Polen","Die Versenkung der Lusitania","Der Panamaskandal"]},

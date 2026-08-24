@@ -99,7 +99,7 @@ aber, eine gerade erst gesehene Karte schon am nächsten Tag zu tippen. Dass Mul
 überhaupt trägt, hängt an der Qualität der Ablenker (Little, Bjork, Bjork & Angello 2012):
 Nur wenn die falschen Optionen ernsthaft in Frage kommen, muss man beim Ausschließen
 tatsächlich Wissen abrufen. Genau deshalb steckt so viel Arbeit in den Ablenkern – die
-Ratequote von 27,1 % und die Klammerquote von 61,0 % oben sind keine Kosmetik, sondern die
+Ratequote von 27,0 % und die Klammerquote von 49,1 % oben sind keine Kosmetik, sondern die
 Voraussetzung dafür, dass die Auswahlfrage überhaupt eine Prüfung ist.
 
 **Selbstbewertung lädt zur Selbsttäuschung ein – deshalb kommt das Urteil zuerst.** Beim
@@ -639,6 +639,17 @@ Mondschwerkraft, 48 Staaten vor Alaska, die Pfandstufen 8 und 15 Cent, die Promi
 0,3 / 0,8 / 1,1. Die Schranke im Prüfskript liegt jetzt bei 70 % statt 85 %: Sie fängt weiter
 den systematischen Fall ab, in dem Ablenker maschinell um die Antwort gelegt werden, hält
 aber den erreichten Stand fest.
+
+Eine zweite Handdurchsicht hat die Quote später von 61,0 % auf **49,1 %** gebracht – also auf
+Zufallsniveau, „nimm die Mitte" verrät nichts mehr. Getauscht wurde wieder nur je ein Wert und
+nur, wo er reiner Füllwert war; mehrfach kam etwas Lehrreicheres zurück: 9.999 statt 100.000
+Code-Möglichkeiten (der klassische Zählfehler von 0000 bis 9999), 225 statt 1024 für FF
+(die verführerische Rechnung 15 · 15), 55 statt 21 Dominosteine (das Doppel-Neun-Spiel),
+1147 statt 1066 beim Kreuzzug und 1815 statt 1888 beim Kaiserreich (je ein Anker für einen
+Anker). Wo der Ablenker selbst Wissen trägt, blieb er auch diesmal stehen – 1967 bei der
+Staatsgründung Israels, 28 Zähne ohne Weisheitszähne, 180 als Dart-Maximum mit drei Pfeilen,
+die 28 EU-Staaten vor dem Brexit; ein bereits getauschter 1967er-Wert wurde deshalb wieder
+zurückgenommen.
 
 Das Skript, das die Ablenker automatisch spiegeln konnte, ist gelöscht. Es lag noch in
 `scripts/`, war in keinem npm-Befehl eingetragen und tat genau das, was hier als schädlich
