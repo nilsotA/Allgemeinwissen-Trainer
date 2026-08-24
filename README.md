@@ -543,6 +543,49 @@ Was sich **nicht** absichern lässt: dieselbe Erklärung in anderen Worten. Bei 
 die beiden Fakten-Dubletten fängt, kommen 15 Fehlalarme mit. Solche Fälle findet nur, wer die
 Dateien liest.
 
+### Quer-Audit und Wartungsliste
+
+Nachdem jede Karte einzeln geprüft war, hat ein Quer-Audit (August 2026) erstmals alle
+1.900 Karten **gegeneinander** gelesen: Widersprüche zwischen Karten, Dubletten über
+Dateigrenzen hinweg – die bekannte blinde Stelle der automatischen Schranke – und
+Behauptungen, die durch Zeitablauf falsch werden können. Ergebnis: sieben strukturelle
+Befunde, alle behoben. Vier Dubletten wurden nicht gelöscht, sondern zu einem anderen
+Abrufziel umgebaut (Begriff → englischer Fachterm, Definition → Beispiel-Erkennung,
+Autor → Werk, Frist → Ausnahmen), jeweils mit `p`-Migration; ein Widerspruch
+(Innenohr „verarbeitet“ vs. Kleinhirn „steuert“ das Gleichgewicht) wurde auf „misst“
+präzisiert. Bewusst behalten: das Marathon-Paar (Wortherkunft und Perserkriegs-Schlacht
+sind verschiedene Abrufwege), das Descartes-Paar (Übersetzung vs. Urheber) und die
+Antibiotika-Einnahme-Karte (siehe Widerlegungen oben).
+
+Der zweite Ertrag ist diese **Wartungsliste**: Behauptungen, die heute stimmen, aber
+kippen können. Wer die Sammlung pflegt, prüft sie einmal im Jahr – der jeweilige
+Auslöser steht dabei.
+
+- **Zählwerte per Beschluss:** EU-Mitglieder 27 (nächster Beitritt), Euro-Länder 21,
+  Europarat 46, UNO 193, 96 deutsche EU-Parlamentssitze (jede Europawahl),
+  Bundestag 630 (Wahlrechtsreform), Fünf-Prozent-Hürde samt Grundmandatsklausel
+  (BVerfG verlangt Neuregelung), DAX 40, sechs Lohnsteuerklassen (III/V-Reform),
+  Mehrwertsteuer 19/7 % (Gastronomie 2026), Abgeltungsteuer 25 % + Soli,
+  Mietkappung 20/15 %, Pfandsätze 25/8/15 Cent, EZB-Ziel 2 % (Strategieüberprüfung),
+  Periodensystem 118 (IUPAC-Anerkennung von Element 119/120).
+- **Laufende Rekorde und Rankings:** Burj Khalifa höchstes Gebäude (Jeddah Tower),
+  Tokio größte Metropolregion (UN sehen Delhi um 2028–2030 vorn), Minecraft
+  meistverkauft, Chanel No. 5 „gilt als“ meistverkauft, Finnland Kaffee-Weltmeister,
+  Umsatzsteuer „knapp vor“ der Lohnsteuer, Indonesien größte muslimische Bevölkerung
+  und Hauptstadt Jakarta (Umzug nach Nusantara), „beide über 1,4 Milliarden“
+  (China fällt Ende des Jahrzehnts darunter), Srebrenica-Einordnung „seit 1945“,
+  ISS „ununterbrochen bewohnt“ (geplanter Absturz um 2030), „Die Mausefalle“ läuft
+  seit 1952, Energieklasse-A-Kontext („kaum ein Gerät erreicht A“).
+- **Amts- und Serienstände:** Kanzler-Aufzählungen enden bei Merz (Zählstand 6:4),
+  Nixon „bislang einziger“ Rücktritt, Facebook-Mutter „heißt seit 2021 Meta“,
+  Musk „wurde später Chef“ von Tesla, Earhart-Wrack „nie gefunden“ (aktive Suche),
+  G7-Aufzählung, Pariser Abkommen „fast alle Staaten“, Zeitumstellung (EU-Abschaffung
+  schwebt seit 2019).
+
+Drei Karten wurden dabei vorsorglich gehärtet: Die Weltbevölkerungs-Karte nennt jetzt
+die 9-Milliarden-Prognose, die Schaltsekunden-Karte das beschlossene Auslaufen bis 2035,
+der CO₂-Fußabdruck die sinkende Tendenz.
+
 ### Kartenkennungen
 
 Die Kennung einer Karte ist ein Hash ihres Fragetextes. Das hält sie stabil, wenn Karten
