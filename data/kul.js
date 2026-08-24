@@ -213,6 +213,6 @@ export default [
 /* ---------- Comic-Klassiker ---------- */
 {q:"In welcher fiktiven Stadt kämpft Batman gegen das Verbrechen?",a:"In Gotham City",s:"Film",d:2,t:"Metropolis ist dagegen die Stadt Supermans – beliebte Verwechslung. Batman erschien 1939 erstmals im Comic: ohne Superkräfte, dafür mit Technik und Vermögen.",w:["In Metropolis","In Central City","In Star City"]},
 {q:"Wie heißt der Druide, der in den Asterix-Comics den Zaubertrank braut?",a:"Miraculix",s:"Film",d:1,t:"Majestix ist der Häuptling, Troubadix der Barde. Die Comics von Goscinny und Uderzo spielen um 50 v. Chr. in einem unbeugsamen gallischen Dorf.",w:["Majestix","Troubadix","Methusalix"]},
-{q:"Wie heißt die reichste Ente Entenhausens?",a:"Dagobert Duck",s:"Film",d:1,t:"Im Original Scrooge McDuck, benannt nach dem Geizhals aus Dickens' „Weihnachtsgeschichte“. Sein ewiger Rivale um den Titel ist Klaas Klever.",w:["Donald Duck","Daniel Düsentrieb","Klaas Klever"]},
+{q:"Wie heißt die reichste Ente Entenhausens?",a:"Dagobert Duck",s:"Film",d:1,t:"Im Original Scrooge McDuck, benannt nach dem Geizhals aus Dickens' „Weihnachtsgeschichte“. Sein Rivale um den Titel ist Mac Moneysac – Klaas Klever rangiert nur als Nummer drei.",w:["Donald Duck","Daniel Düsentrieb","Klaas Klever"]},
 {q:"Aus welchem Land stammt der Comic „Tim und Struppi“?",a:"Aus Belgien",s:"Film",d:2,t:"Gezeichnet von Hergé ab 1929. Belgien ist das große Comic-Land Europas: Auch die Schlümpfe und Lucky Luke stammen von belgischen Zeichnern.",w:["Aus Frankreich","Aus der Schweiz","Aus den Niederlanden"]},
 ];
