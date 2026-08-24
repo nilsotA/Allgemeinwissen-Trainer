@@ -212,4 +212,5 @@ export default [
 {q:"Als was wurde Nokia 1865 gegründet?",a:"Als Papierfabrik",s:"Wirtschaft",d:3,t:"Gegründet in Tampere; den Namen gab die zweite Fabrik am Fluss Nokianvirta. Später kamen Gummistiefel und Kabel dazu, erst in den 1980ern die Telefone.",w:["Als Sägewerk","Als Fischereibetrieb","Als Telegrafenamt"]},
 {q:"Wofür steht der Name Aldi?",a:"Für Albrecht-Diskont",s:"Wirtschaft",d:2,t:"Die Brüder Karl und Theo Albrecht teilten das Reich 1961 in Aldi Nord und Aldi Süd – angeblich im Streit über den Zigarettenverkauf.",w:["Für Alles diskret","Für Albrecht Discount International","Für den Gründer Alfred Dietrich"]},
 {q:"Wie hieß die Währung Italiens vor dem Euro?",a:"Lira",s:"Geld im Alltag",d:1,t:"Die Ablenker gab es wirklich: Peseta (Spanien), Drachme (Griechenland), Escudo (Portugal). In Deutschland löste der Euro 2002 die D-Mark als Bargeld ab.",w:["Peseta","Drachme","Escudo"]},
+{q:"Welches Unternehmen stellt die PlayStation her?",a:"Sony",s:"Wirtschaft",d:1,t:"Seit 1994. Die Konsole entstand, nachdem eine geplante Zusammenarbeit mit Nintendo geplatzt war – aus dem Partner wurde der größte Konkurrent.",w:["Nintendo","Microsoft","Sega"]},
 ];
