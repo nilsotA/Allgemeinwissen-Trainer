@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.742 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.785 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -20,6 +20,12 @@ In beiden Fächern reicht die Sammlung bewusst bis auf Studienniveau: biomechani
 und der Doppelauftrag des Schulsports ebenso wie Hauptsatz, hessesche Normalform, Fehler
 erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht nur mitreden,
 sondern sattelfest sein.
+
+Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
+**Mythologie** (21 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (15 – Reinheitsgebot,
+Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (7 – Penicillin, Dynamit,
+MP3 aus Erlangen, der fränkische Jeans-Erfinder).
 
 Ein eigenes Teilgebiet **Geld im Alltag** (41 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
 zählen und in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und
