@@ -979,8 +979,15 @@ try {
     check('ohne je gesichert zu haben erscheint die Erinnerung',
       await sp.locator('#sichernJetzt').count() === 1);
 
-    const heute = await sp.evaluate(() => Math.floor(Date.UTC(
-      new Date().getFullYear(), new Date().getMonth(), new Date().getDate()) / 86400000));
+    /* Genau wie die App rechnen: Der App-Tag beginnt um 4 Uhr (Nachteule-Schutz).
+       Die alte Rechnung nahm den Kalendertag ab Mitternacht – zwischen 0 und
+       4 Uhr war „heute" damit einen Tag voraus, die App sagte korrekt
+       „44 Tage her" und der Test bestand auf 45. */
+    const heute = await sp.evaluate(() => {
+      const d = new Date();
+      if (d.getHours() < 4) d.setDate(d.getDate() - 1);
+      return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
+    });
     await setze({ lastExport: heute - 5 });
     await sp.reload({ waitUntil: 'networkidle' });
     check('kurz nach einer Sicherung ist Ruhe', await sp.locator('#sichernJetzt').count() === 0);
