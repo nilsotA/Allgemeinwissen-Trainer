@@ -496,3 +496,40 @@ test('der Tagesplan ist bei jedem Aufruf anders sortiert', () => {
   const laengen = new Set([...folgen].map(f => f.split(',').length));
   assert.equal(laengen.size, 1, 'die Laenge muss dabei stabil bleiben');
 });
+
+test('der Neu-Vorrat in overview zaehlt dieselbe Menge wie die Warteschlange', () => {
+  // overview() baute fuer diese eine Zahl die komplette Neu-Warteschlange auf
+  // (sortieren, mischen, reihum). Jetzt faellt sie in der ohnehin laufenden
+  // Schleife ab - das darf am Ergebnis nichts aendern, auch nicht mit
+  // eingeschraenkten Themen.
+  const t = store.todayNum();
+  for (let i = 0; i < 30; i++) {
+    const c = CARDS[i * 7];
+    store.putCard(c.id, { ...fresh(), iv: 3, reps: 2, seen: 4, ok: 3, due: t - 1 });
+  }
+  // Der heikle Fall: Karten MIT Zustand, aber ohne je gestellte Abfrage. Sie
+  // gelten als neu (isNew prueft seen === 0, nicht die blosse Existenz). Ohne
+  // sie liefe jede Zaehlung, die nur auf einen fehlenden Zustand schaut,
+  // faelschlich durch.
+  for (let i = 0; i < 25; i++) store.putCard(CARDS[i * 11 + 3].id, { ...fresh(), seen: 0 });
+  const erwartet = () => {
+    const a = sess.activeCats();
+    const pool = CARDS.filter(c => !a || a.has(c.cat));
+    return Math.min(sess.newBudget(), sess.newCards(pool).length);
+  };
+  assert.equal(sess.overview().newLeft, erwartet(), 'ueber alle Themen');
+
+  store.setSetting('cats', ['mat', 'spo']);
+  assert.equal(sess.overview().newLeft, erwartet(), 'mit eingeschraenkten Themen');
+
+  // Entscheidend ist der Fall, in dem der Vorrat KLEINER ist als das Tagesbudget
+  // - sonst verdeckt das Math.min jeden Zaehlfehler. Alles auf gesehen setzen,
+  // dann genau drei Karten mit Zustand, aber ohne Abfrage zuruecklassen.
+  store.setSetting('cats', null);
+  for (const c of CARDS) store.putCard(c.id, { ...fresh(), seen: 1, reps: 1, iv: 5, due: t + 5 });
+  assert.equal(sess.overview().newLeft, 0, 'ohne Vorrat muss die Zahl null sein');
+  for (const c of CARDS.slice(0, 3)) store.putCard(c.id, { ...fresh(), seen: 0 });
+  assert.equal(sess.overview().newLeft, 3,
+    'drei Karten mit Zustand, aber ohne Abfrage, gelten als neu');
+  assert.equal(sess.overview().newLeft, erwartet(), 'und decken sich mit der Warteschlange');
+});

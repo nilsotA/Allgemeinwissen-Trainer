@@ -340,7 +340,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 89 Einheitentests plus Inhaltsprüfung
+npm test           # 90 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 137 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
@@ -688,6 +688,42 @@ Ohne Sicht bekam man weder mit, dass die Zeit läuft, noch dass sie fast um ist 
 löste sich einfach auf. Der Balken ist jetzt `aria-hidden`, dafür nennt ein Satz das Limit,
 und fünf Sekunden vor Schluss kommt **einmalig** eine Ansage. Einmalig ist wichtig: Eine
 Live-Region, die zehnmal je Sekunde schreibt, macht das Vorlesen der Frage unmöglich.
+
+### Was die Startseite kostet – und was bewusst teuer bleibt
+
+`overview()` liefert die Kennzahlen der Startseite und lief bei jedem Aufbau **2,44 ms**
+(gemessen an einem realistischen Halbjahresstand: 800 gelernte Karten, 400 Tage Verlauf,
+94 kB). Zwei Posten waren reine Doppelarbeit: `dueCards()` lief zweimal – einmal direkt,
+einmal über `newBudget() → imRueckstau()` –, und für die eine Zahl „wie viele neue Karten
+gibt es noch" baute `newCards()` die **komplette Warteschlange** auf, mit Sortieren je
+Kategorie, Mischen und Reihum-Verteilung. Beide Zahlen fallen jetzt dort ab, wo ohnehin
+gerechnet wird: `dueCards()` wird einmal ermittelt und durchgereicht, der Vorrat in der
+Schleife mitgezählt, die ohnehin über alle Karten läuft. Ergebnis: **1,04 ms**, gemessen
+mit demselben Aufbau.
+
+Der Test dazu war zweimal zu schwach, bevor er gegriffen hat – und das ist die eigentliche
+Lehre. Erster Versuch: Der Aufbau enthielt gar keine Karte, die *einen Zustand hat, aber nie
+abgefragt wurde* (`seen === 0`). Genau die gilt als neu, und genau die übersieht eine
+Zählung, die nur auf einen fehlenden Zustand schaut. Zweiter Versuch, mit solchen Karten:
+immer noch grün – weil `newLeft` ein `Math.min(Budget, Vorrat)` ist. Bei Budget 12 und einem
+Vorrat von 1875 oder 1900 kommt beide Male 12 heraus; der Zählfehler war **maskiert**. Erst
+ein Aufbau, in dem der Vorrat *kleiner* ist als das Budget – alles auf gesehen, dann genau
+drei Karten mit Zustand ohne Abfrage – macht den Fehler sichtbar. Ein Test, der eine
+absichtlich kaputte Fassung nicht rot färbt, prüft nichts; hier hat erst der dritte Anlauf
+wirklich geprüft.
+
+**Nicht gemacht: die Fassungsnummer aus dem Speicher herauslösen.** `save()` liest und
+parst vor jedem Schreiben den kompletten Stand, nur um zu erkennen, ob ein zweiter Tab
+inzwischen geschrieben hat – gemessen **1,91 ms** je Schreibvorgang. Eine separate
+Mini-Zelle nur für die Fassungsnummer würde das auf den seltenen Fall beschränken, dass
+wirklich jemand voraus ist. Dagegen sprechen drei Dinge: Der Gewinn landet **nicht** auf dem
+kritischen Pfad (`save()` ist um 250 ms verzögert und läuft nach dem Bildaufbau, 2 ms sind
+dort unsichtbar); zwei Schlüssel statt einem sind **nicht mehr atomar**, die Schreibreihenfolge
+wird sicherheitsrelevant und öffnet ein neues Zeitfenster zwischen den beiden Schreibvorgängen;
+und betroffen wäre ausgerechnet die Zwei-Tab-Logik, die sich diese App mühsam erarbeitet hat
+und mit einem eigenen Zwei-Instanzen-Test absichert. Ein unsichtbarer Gewinn rechtfertigt
+kein Risiko an der Stelle, an der Datenverlust entstünde. Die Messung steht hier, damit die
+Frage nicht dreimal neu aufgeworfen wird.
 
 ### Qualitätssicherung
 

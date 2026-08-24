@@ -85,11 +85,14 @@ export function focusCats() {
    geben Lernende auf. Mit Bremse bleibt die Spitze bei rund 18, ohne dass am
    Ende weniger Karten sitzen. */
 export const rueckstauSchwelle = () => Math.round(settings().maxReviews * 0.9);
-export const imRueckstau = () => dueCards().length >= rueckstauSchwelle();
+/* Die Anzahl faelliger Karten laesst sich durchreichen, wo sie ohnehin schon
+   ermittelt wurde - overview() rief dueCards() sonst zweimal. */
+export const imRueckstau = (faellig = null) =>
+  (faellig ?? dueCards().length) >= rueckstauSchwelle();
 
 /** Wie viele neue Karten sind heute noch frei? */
-export function newBudget() {
-  if (imRueckstau() && !settings().trotzdemNeu) return 0;
+export function newBudget(faellig = null) {
+  if (imRueckstau(faellig) && !settings().trotzdemNeu) return 0;
   return Math.max(0, settings().newPerDay - (today().newC || 0));
 }
 
@@ -172,10 +175,12 @@ export function overview() {
   // Alle Kennzahlen auf denselben Ausschnitt beziehen: sonst zeigte die Startseite
   // „3 faellig" (gefiltert) neben „400 sitzt fest" (ungefiltert).
   const pool = CARDS.filter(c => inScope(c));
-  let learned = 0, mature = 0, seenTotal = 0;
+  let learned = 0, mature = 0, seenTotal = 0, neuVorrat = 0;
   for (const c of pool) {
     const s = cardState(c.id);
-    if (!s || !s.seen) continue;
+    // Dieselbe Bedingung wie isNew - der Vorrat faellt in dieser Schleife mit ab,
+    // statt dass newCards() dafuer die ganze Warteschlange aufbaut.
+    if (!s || !s.seen) { neuVorrat++; continue; }
     seenTotal++;
     if (s.reps > 0) learned++;
     if (strength(s) >= 0.6) mature++;
@@ -186,7 +191,7 @@ export function overview() {
     total: pool.length, seen: seenTotal, learned, mature, due,
     // Nicht nur das Budget, sondern auch der Vorrat: Sind alle Karten einmal
     // gesehen, stand auf der Startseite „12 neu frei" neben „alles erledigt".
-    newLeft: Math.min(newBudget(), newCards(pool).length),
+    newLeft: Math.min(newBudget(due), neuVorrat),
     accuracy: st.totalAnswers ? st.totalCorrect / st.totalAnswers : 0,
     t
   };
