@@ -341,7 +341,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 89 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 135 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 137 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -666,6 +666,22 @@ nach einem einzigen Speicherfehler bis zum nächsten Start verschwunden.
 Hilfsmittel schlicht leer. Jetzt sind die Bilder `aria-hidden` und tragen einen Satz
 daneben: „X von Y Tagen gelernt, zusammen N Antworten" bzw. die sieben Tageswerte im
 Klartext. Dasselbe Muster benutzte die Datei an zwei anderen Stellen längst.
+
+**Ein Klassenname war doppelt vergeben – mit sichtbarer Folge.** `.merk` stylt eine
+kleine Marke am Zeilenende („pausiert"): 11 px, fett, Akzentfarbe, Pillenform. Dieselbe
+Klasse trug versehentlich auch den Auflösungstext der Merkanker. Ein mehrsätziger
+Erklärtext erschien dadurch als **vierzeilige Pille in fettem Akzentrot** statt als ruhiger
+Fließtext – nachgemessen im Browser: `display:inline-block`, `border-radius:999px`,
+`font-size:11px`, 315 × 70 px. Der Text hat jetzt eine eigene Klasse. Gefunden wurde das
+nicht durch Lesen, sondern durch einen Screenshot mit ausgelesenen berechneten Stilen; der
+bestehende Test suchte nach der alten Klasse und wäre nach dem Umbenennen aus dem falschen
+Grund grün geblieben (kein Element ist auch „unsichtbar") – er prüft jetzt die Existenz mit.
+
+**Der Rückblick nach der Runde war reiner Lesetext.** Er zeigte Frage, Antwort und Kontext
+der verfehlten Karten offen nebeneinander – nach der eigenen Regel dieser App die
+schwächste Lernform. Die Lösung steht jetzt hinter „Erst überlegen – dann aufdecken",
+demselben Muster wie beim Merkanker; der Aufdeck-Handler ist dafür in eine gemeinsame
+Funktion gewandert.
 
 **Die Duell-Uhr existierte nur visuell.** Ein `<div class="bar">` ohne Rolle und ohne Text:
 Ohne Sicht bekam man weder mit, dass die Zeit läuft, noch dass sie fast um ist – die Frage

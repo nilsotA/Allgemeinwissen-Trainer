@@ -180,6 +180,21 @@ try {
   if (!(await page.locator('.done-wrap').count())) await page.click('#quit');
   await page.waitForSelector('.done-wrap');
   check('Abschlussbildschirm erscheint', await page.locator('.done-wrap').count() === 1);
+  /* Der Rueckblick zeigte Frage, Antwort und Kontext offen nebeneinander -
+     blosses Lesen ist nach der eigenen Regel dieser App die schwaechste
+     Lernform. Die Loesung steht jetzt hinter einem Griff. */
+  const verfehlt = await page.locator('[data-merk^="rb-"]').count();
+  if (verfehlt) {
+    check('verfehlte Karten decken ihre Loesung nicht von selbst auf',
+      !await page.locator('[data-merk^="rb-"]').first()
+        .evaluate(b => document.getElementById(b.dataset.merk).checkVisibility?.()
+          ?? !document.getElementById(b.dataset.merk).hidden));
+    await page.locator('[data-merk^="rb-"]').first().click();
+    check('Aufdecken im Rueckblick zeigt die Loesung',
+      await page.locator('[id^="rb-"]:not([hidden])').count() >= 1);
+  } else {
+    check('Rueckblick ohne verfehlte Karten braucht keine Aufdecker', true);
+  }
   await page.click('#home');
   await page.waitForSelector('.hero');
 
@@ -862,12 +877,15 @@ try {
     await mp.goto(URL_BASE, { waitUntil: 'networkidle' });
     check('nur ein Merkanker, solange die Rueckschau nicht reicht',
       await mp.locator('.card.fact').count() === 1);
-    const verdeckt = await mp.locator('.card.fact .merk').first().isVisible();
-    check('die Aufloesung ist zuerst verdeckt', !verdeckt);
+    // Existenz mitpruefen: Ein umbenanntes Element waere sonst „unsichtbar"
+    // und der Test gruen, obwohl er nichts mehr findet.
+    check('die Aufloesung ist vorhanden, aber verdeckt',
+      await mp.locator('.card.fact .merk-loesung').count() === 1
+      && !await mp.locator('.card.fact .merk-loesung').first().isVisible());
     await mp.locator('[data-merk="merkHeute"]').click();
     await mp.waitForTimeout(200);
     check('Aufdecken zeigt die Aufloesung',
-      await mp.locator('.card.fact .merk').first().isVisible());
+      await mp.locator('.card.fact .merk-loesung').first().isVisible());
     check('der Knopf verschwindet nach dem Aufdecken',
       await mp.locator('[data-merk="merkHeute"]').count() === 0);
 

@@ -246,10 +246,21 @@ function merkankerKarte(f, kennung, ueber) {
   return `<div class="card fact">
     ${ueber ? `<p class="tiny">${esc(ueber)}</p>` : ''}
     <h3>${esc(factFrage(f))}</h3>
-    <p class="muted merk" id="${kennung}" hidden>${esc(f.x)}</p>
+    <p class="merk-loesung" id="${kennung}" hidden>${esc(f.x)}</p>
     <button class="btn ghost auf" data-merk="${kennung}" aria-expanded="false"
       aria-controls="${kennung}">Erst überlegen – dann aufdecken</button>
   </div>`;
+}
+
+/* „Erst überlegen – dann aufdecken" gibt es an zwei Stellen: beim Merkanker
+   auf der Startseite und im Rueckblick nach einer Runde. */
+function bindeAufdecken() {
+  app.querySelectorAll('[data-merk]').forEach(b => b.onclick = () => {
+    const ziel = document.getElementById(b.dataset.merk);
+    ziel.hidden = false;
+    b.setAttribute('aria-expanded', 'true');
+    b.remove();
+  });
 }
 
 function renderHome() {
@@ -336,12 +347,7 @@ function renderHome() {
   const sich = document.getElementById('sichernJetzt');
   if (sich) sich.onclick = async () => { if (await sichern()) render(); };
 
-  app.querySelectorAll('[data-merk]').forEach(b => b.onclick = () => {
-    const ziel = document.getElementById(b.dataset.merk);
-    ziel.hidden = false;
-    b.setAttribute('aria-expanded', 'true');
-    b.remove();
-  });
+  bindeAufdecken();
 
   // Genau den Plan starten, der oben angesagt wurde. buildDaily() wuerfelt die
   // Kategorien-Reihenfolge bei jedem Aufruf neu – ein zweiter Aufruf lieferte
@@ -1129,8 +1135,12 @@ function endRun() {
         ${missed.slice(0, 12).map(c => `<div class="card" style="padding:13px 14px">
           <span class="qcat">${catIcon(c.cat, 's')}<span>${esc(c.sub)}</span></span>
           <p style="font-weight:650;margin:5px 0 4px;font-size:15px">${esc(c.q)}</p>
-          <p class="muted" style="color:var(--ok);font-weight:650">${esc(c.a)}</p>
-          ${c.t ? `<p class="tiny" style="margin-top:5px">${esc(c.t)}</p>` : ''}
+          <div id="rb-${esc(c.id)}" hidden>
+            <p class="muted" style="color:var(--ok);font-weight:650">${esc(c.a)}</p>
+            ${c.t ? `<p class="tiny" style="margin-top:5px">${esc(c.t)}</p>` : ''}
+          </div>
+          <button class="btn ghost sm" style="margin-top:8px" data-merk="rb-${esc(c.id)}"
+            aria-expanded="false" aria-controls="rb-${esc(c.id)}">Erst überlegen – dann aufdecken</button>
         </div>`).join('')}
       </div>
       <p class="tiny center" style="margin-top:10px">Diese Karten kommen morgen wieder – sie sind schon eingeplant.</p>` : ''}
@@ -1138,6 +1148,10 @@ function endRun() {
       <button class="btn primary" id="again">Weitermachen</button>
       <button class="btn ghost" id="home">Zur Übersicht</button>
     </div>`;
+  /* Der Rueckblick zeigte Frage, Antwort und Kontext offen nebeneinander. Nach
+     der eigenen Regel dieser App ist blosses Lesen die schwaechste Lernform –
+     also steht die Loesung auch hier hinter einem Griff. */
+  bindeAufdecken();
   document.getElementById('again').onclick = () => {
     // Die Kategorie muss mit: sonst wechselt die zweite Runde still das Thema.
     const heute = r.mode === 'duel' ? null : sess.buildDaily();
