@@ -220,4 +220,5 @@ export default [
 {q:"Aus welchem Land stammt das Arcade-Spiel Pac-Man?",a:"Aus Japan",s:"Film",d:2,t:"Namco, 1980. Der Name kommt von „paku-paku“, dem japanischen Wort für Schmatzen. Die vier Geister jagen jeweils nach eigener Strategie.",w:["Aus den USA","Aus Südkorea","Aus Taiwan"]},
 {q:"Welches gelbe Pokémon ist das Maskottchen der Reihe?",a:"Pikachu",s:"Film",d:1,t:"Der Name verbindet die japanischen Lautwörter für Funkeln (pika) und Quieken (chū). Die Spiele starteten 1996 auf dem Game Boy.",w:["Glumanda","Schiggy","Evoli"]},
 {q:"Welches Videospiel gilt als das meistverkaufte aller Zeiten?",a:"Minecraft",s:"Film",d:2,t:"Über 300 Millionen Mal verkauft seit 2011, erfunden vom Schweden Markus „Notch“ Persson. Bei Tetris ist die Zählung über die vielen Versionen strittig.",w:["Tetris","Grand Theft Auto V","Wii Sports"]},
+{q:"Welche Schauspielerin sang 1962 „Happy Birthday, Mr. President“ für John F. Kennedy?",a:"Marilyn Monroe",s:"Film",d:2,t:"Im hautengen Glitzerkleid im Madison Square Garden. Wenige Monate später starb sie mit 36 – ihr bürgerlicher Name war Norma Jeane.",w:["Audrey Hepburn","Elizabeth Taylor","Jayne Mansfield"]},
 ];
