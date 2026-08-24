@@ -121,6 +121,16 @@ try {
   await page.waitForSelector('#next');
   check('Lösung wird eingeblendet', await page.locator('.answer .val').count() > 0);
   check('richtige Option ist markiert', await page.locator('.opt.right').count() === 1);
+  /* Die Rueckmeldung darf nicht nur an der Farbe haengen: Haken bzw. Kreuz
+     ersetzen den Buchstaben, damit auch Rot-Gruen-Blinde sie erkennen. */
+  check('richtige Option traegt einen Haken',
+    await page.locator('.opt.right .k use[href="#i-haken"]').count() === 1);
+  const falschMark = await page.locator('.opt.wrong').count()
+    ? await page.locator('.opt.wrong .k use[href="#i-schliessen"]').count() === 1
+    : true;
+  check('falsch gewaehlte Option traegt ein Kreuz', falschMark);
+  check('uebrige Optionen behalten ihren Buchstaben',
+    (await page.locator('.opt.dim .k').allInnerTexts()).every(t => /^[ABCD]$/.test(t.trim())));
   await page.click('#next');
   await settle();
   const s1 = await stored();

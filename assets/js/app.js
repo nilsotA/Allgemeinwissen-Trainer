@@ -33,6 +33,25 @@ const ico = (name, cls = '') =>
   `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const catIcon = (id, cls = '') => ico(id, cls);
 
+/* Sperrt die Optionen nach der Antwort und markiert sie. Neben der Farbe
+   bekommt die richtige Option einen Haken, die falsch gewaehlte ein Kreuz:
+   Rot und Gruen allein unterscheiden rund acht Prozent der Maenner nicht. */
+function markiereOptionen(wurzel, richtig, gewaehlt) {
+  wurzel.querySelectorAll('.opt').forEach(x => {
+    x.disabled = true;
+    const k = x.querySelector('.k');
+    if (x.dataset.v === richtig) {
+      x.classList.add('right');
+      if (k) k.innerHTML = ico('haken', 's');
+    } else if (x.dataset.v === gewaehlt) {
+      x.classList.add('wrong');
+      if (k) k.innerHTML = ico('schliessen', 's');
+    } else {
+      x.classList.add('dim');
+    }
+  });
+}
+
 let view = 'home';
 let run = null;          // laufende Lerneinheit
 let onKey = null;        // Tastaturbelegung des aktuellen Bildschirms
@@ -1211,12 +1230,7 @@ function askChoice(card, isFresh, cs) {
     const ok = b.dataset.v === card.a;
     const dt = verstrichen();
     verstrichen.beenden();
-    app.querySelectorAll('.opt').forEach(x => {
-      x.disabled = true;
-      if (x.dataset.v === card.a) x.classList.add('right');
-      else if (x === b) x.classList.add('wrong');
-      else x.classList.add('dim');
-    });
+    markiereOptionen(app, card.a, b.dataset.v);
     beep(ok);
     const grade = !ok ? AGAIN
       : (cs && cs.reps >= 2 && dt < 4000) ? EASY
@@ -1514,12 +1528,7 @@ function askDuel(card) {
     finished = true;
     stopDuelTimer();
     const ok = chosen === card.a;
-    app.querySelectorAll('.opt').forEach(x => {
-      x.disabled = true;
-      if (x.dataset.v === card.a) x.classList.add('right');
-      else if (x.dataset.v === chosen) x.classList.add('wrong');
-      else x.classList.add('dim');
-    });
+    markiereOptionen(app, card.a, chosen);
     beep(ok);
     announce(ok ? 'Richtig.' : `Falsch. Die Antwort lautet: ${card.a}`);
     const body = app.querySelector('.sess-body');
