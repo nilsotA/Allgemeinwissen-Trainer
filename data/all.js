@@ -202,4 +202,7 @@ export default [
 {q:"Bei welcher Gelegenheit verwandelte Jesus Wasser in Wein?",a:"Bei einer Hochzeit in Kana",s:"Religion",d:2,t:"Nach dem Johannesevangelium sein erstes Wunder. Kana lag in Galiläa, unweit von Nazareth.",w:["Beim letzten Abendmahl","Bei der Bergpredigt","Bei der Speisung der Fünftausend"]},
 {q:"Wer erschlug in der Bibel seinen Bruder Abel?",a:"Kain",s:"Religion",d:1,t:"Der erste Mord der Bibel: Der Ackerbauer Kain tötete den Hirten Abel aus Eifersucht auf dessen Opfer. Der dritte Sohn Adams und Evas hieß Set.",w:["Esau","Isaak","Set"]},
 {q:"Auf welchem Berg empfing Mose die Zehn Gebote?",a:"Auf dem Sinai",s:"Religion",d:1,t:"Auf zwei Steintafeln. Vom Berg Nebo aus sah Mose später das Gelobte Land – betreten durfte er es nicht mehr.",w:["Auf dem Ararat","Auf dem Berg Nebo","Auf dem Ölberg"]},
+/* ---------- Alltagsbraeuche ---------- */
+{q:"Welcher Hochzeitstag wird nach 25 Ehejahren gefeiert?",a:"Die silberne Hochzeit",s:"Alltag",d:1,t:"Nach 50 Jahren folgt die goldene, nach 60 die diamantene Hochzeit. Merkhilfe: Silber vor Gold – wie beim Edelmetall.",w:["Die goldene Hochzeit","Die diamantene Hochzeit","Die bronzene Hochzeit"]},
+{q:"Wie viele Sternzeichen kennt der Tierkreis?",a:"Zwölf",s:"Alltag",d:1,t:"Je etwa ein Monat, von Widder bis Fische. Astronomisch durchquert die Sonne noch ein dreizehntes Sternbild, den Schlangenträger – die Astrologie zählt ihn nicht mit.",w:["Dreizehn","Vierzehn","Vierundzwanzig"]},
 ];
