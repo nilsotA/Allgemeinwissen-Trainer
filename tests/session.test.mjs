@@ -482,3 +482,17 @@ test('ein Zuruecksetzen ueberlebt den zweiten offenen Tab', async () => {
   assert.equal(Object.keys(B.S().cards).length, 0,
     'Tab B selbst muss den ersetzten Stand uebernommen haben');
 });
+
+test('der Tagesplan ist bei jedem Aufruf anders sortiert', () => {
+  // Genau deshalb darf die Startseite den Plan nicht zweimal bauen: Die Ansage
+  // beschriebe sonst eine Runde, die beim Tippen verworfen wird. Die Laenge
+  // bleibt gleich, die Reihenfolge nicht - ein Laengenvergleich reicht als
+  // Nachweis also nicht aus.
+  store.setSetting('newPerDay', 40);
+  const folgen = new Set();
+  for (let i = 0; i < 12; i++) folgen.add(sess.buildDaily().map(x => x.card.id).join(','));
+  assert.ok(folgen.size > 1,
+    'zwoelf Aufrufe ergaben dieselbe Reihenfolge - dann waere der Plan-Cache unnoetig');
+  const laengen = new Set([...folgen].map(f => f.split(',').length));
+  assert.equal(laengen.size, 1, 'die Laenge muss dabei stabil bleiben');
+});

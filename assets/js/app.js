@@ -339,9 +339,13 @@ function renderHome() {
     b.remove();
   });
 
+  // Genau den Plan starten, der oben angesagt wurde. buildDaily() wuerfelt die
+  // Kategorien-Reihenfolge bei jedem Aufruf neu – ein zweiter Aufruf lieferte
+  // eine andere Warteschlange, und „N Karten, davon M neu" beschrieb eine
+  // Runde, die beim Tippen verworfen wurde. Am deutlichsten bei den Kurzrunden:
+  // slice(0, 20) schnitt aus einem frisch gemischten Plan.
   app.querySelector('[data-go="daily"]').onclick = () => {
-    const q = sess.buildDaily();
-    startRun(q.length ? q : sess.buildWeak(15), 'daily');
+    startRun(tagesplan.length ? tagesplan : sess.buildWeak(15), 'daily');
   };
   document.getElementById('trotzdem')?.addEventListener('click', () => {
     setSetting('trotzdemNeu', true);
@@ -349,7 +353,7 @@ function renderHome() {
     renderHome();
   });
   app.querySelectorAll('[data-short]').forEach(b => b.onclick = () => {
-    startRun(sess.buildDaily().slice(0, Number(b.dataset.short)), 'daily');
+    startRun(tagesplan.slice(0, Number(b.dataset.short)), 'daily');
   });
   app.querySelector('[data-go="weak"]').onclick = () => {
     const q = sess.buildWeak(20);
@@ -854,6 +858,11 @@ function renderLookup() {
     timer = setTimeout(paint, 120);
   });
   paint();
+  // Den Suchindex in der Leerlaufzeit aufbauen, nicht beim ersten Tastendruck:
+  // normalize() ueber alle Karten kostet hier 128 ms, auf einem gedrosselten
+  // iPhone rund eine halbe Sekunde - lang genug, dass die ersten Zeichen
+  // verschluckt werden. Bis zum ersten Buchstaben ist der Index jetzt warm.
+  (window.requestIdleCallback || ((f) => setTimeout(f, 0)))(() => searchIndex());
 }
 
 function renderSettings() {
@@ -1118,8 +1127,9 @@ function endRun() {
     </div>`;
   document.getElementById('again').onclick = () => {
     // Die Kategorie muss mit: sonst wechselt die zweite Runde still das Thema.
+    const heute = r.mode === 'duel' ? null : sess.buildDaily();
     const q = r.mode === 'duel' ? sess.buildDuel(10, r.cat)
-      : sess.buildDaily().length ? sess.buildDaily() : sess.buildWeak(15);
+      : heute.length ? heute : sess.buildWeak(15);
     q.length ? startRun(q, r.mode, r.cat) : show('home');
   };
   document.getElementById('home').onclick = () => show('home');

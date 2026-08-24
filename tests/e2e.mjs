@@ -110,8 +110,15 @@ try {
   // wird der ganze Block geprueft statt eines einzelnen Elements.
   check('Tagesplan wird angekündigt', /Karten stehen an|alles erledigt/.test(await page.locator('.hero').first().innerText()));
 
+  /* Die Startseite sagt eine Kartenzahl an – genau die Runde muss auch
+     starten. buildDaily() wuerfelt bei jedem Aufruf neu, ein zweiter Aufruf
+     beim Tippen ergab eine andere Warteschlange als die angekuendigte. */
+  const angesagt = Number((await page.locator('.hero h1').innerText()).match(/\d+/)?.[0] || 0);
   await page.click('[data-go="daily"]');
   await page.waitForSelector('.opt, #reveal');
+  const gestartet = Number((await page.locator('.sess-top .tiny').innerText()).split('/')[1]);
+  check('gestartete Runde entspricht der Ansage', gestartet === angesagt,
+    `${gestartet} Karten statt angesagter ${angesagt}`);
   const q1 = await page.locator('.q').innerText();
   check('Frage wird angezeigt', q1.length > 5);
   check('vier Antwortmöglichkeiten', await page.locator('.opt').count() === 4);
