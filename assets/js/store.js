@@ -32,7 +32,9 @@ const DEFAULTS = {
   totalCorrect: 0,
   duelBest: 0,
   duelAnswers: 0,
-  duelCorrect: 0
+  duelCorrect: 0,
+  duelMs: 0,             // aufsummierte Antwortzeit richtiger Duell-Antworten
+  duelTimed: 0           // wie viele Antworten in duelMs stecken
 };
 
 function deepMerge(base, add) {
@@ -118,7 +120,7 @@ function zusammenfuehren(fremd, eigen) {
   }
   for (const id of Object.keys(fremd.flags || {})) z.flags[id] = true;
   for (const k of ['totalAnswers', 'totalCorrect', 'streak', 'best', 'duelBest',
-                   'duelAnswers', 'duelCorrect', 'lastExport']) {
+                   'duelAnswers', 'duelCorrect', 'duelMs', 'duelTimed', 'lastExport']) {
     z[k] = groesser(z[k], fremd[k]);
   }
   if ((fremd.lastDay || '') > (z.lastDay || '')) z.lastDay = fremd.lastDay;
@@ -356,6 +358,8 @@ function saeubern(roh) {
   rein.duelBest = zahl(roh.duelBest, 0, 100, 0);
   rein.duelAnswers = zahl(roh.duelAnswers, 0, 1e8, 0);
   rein.duelCorrect = zahl(roh.duelCorrect, 0, 1e8, 0);
+  rein.duelMs = zahl(roh.duelMs, 0, 1e12, 0);
+  rein.duelTimed = zahl(roh.duelTimed, 0, 1e8, 0);
   rein.totalAnswers = zahl(roh.totalAnswers, 0, 1e8, 0);
   rein.totalCorrect = zahl(roh.totalCorrect, 0, 1e8, 0);
   rein.gen = zahl(roh.gen, 0, 1e9, 0);

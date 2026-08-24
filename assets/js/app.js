@@ -404,6 +404,7 @@ function renderTopicDetail() {
     <p class="muted">${gesamt} Karten in ${subs.length} Teilgebieten${aus ? ' · im Tagestraining pausiert' : ''}</p>
     <div class="btn-stack" style="margin-top:14px">
       <button class="btn primary" id="ganzesThema">${ico('play')}Ganzes Thema üben</button>
+      <button class="btn ghost" id="themaDuell">${ico('duell')}Thema im Duell</button>
     </div>
     <h2 class="sec">Teilgebiete</h2>
     <div class="tlist">
@@ -420,6 +421,12 @@ function renderTopicDetail() {
   document.getElementById('ganzesThema').onclick = () => {
     const q = sess.buildTopic(cat.id, 20);
     q.length ? startRun(q, 'topic') : toast('Keine Karten in diesem Thema');
+  };
+  /* Im Quizduell kennt man die Kategorie vor der Frage – genau diese Lage
+     laesst sich hier proben: ein Thema, aber unter Zeitdruck. */
+  document.getElementById('themaDuell').onclick = () => {
+    const q = sess.buildDuel(10, cat.id);
+    q.length ? startRun(q, 'duel', cat.id) : toast('Keine Karten in diesem Thema');
   };
   bindeTeilgebiete();
 }
@@ -441,6 +448,7 @@ function renderDuelStart() {
     <div class="card" style="margin-top:16px">
       <div class="row between"><span>Bestleistung</span><b>${st.duelBest || 0} / 10</b></div>
       <div class="row between" style="margin-top:8px"><span>Trefferquote im Duell</span><b>${st.duelAnswers ? Math.round(st.duelCorrect / st.duelAnswers * 100) : 0} %</b></div>
+      ${st.duelTimed ? `<div class="row between" style="margin-top:8px"><span>Ø Zeit bis zur richtigen Antwort</span><b>${(st.duelMs / st.duelTimed / 1000).toFixed(1)} s</b></div>` : ''}
       <p class="tiny" style="margin-top:9px">Unter Zeitdruck liegt sie naturgemäß unter der Quote im Tagestraining – deshalb wird sie getrennt geführt.</p>
     </div>
     <div class="btn-stack" style="margin-top:14px">
@@ -1049,11 +1057,11 @@ function sichtbareZeit() {
   return messen;
 }
 
-function startRun(queue, mode) {
+function startRun(queue, mode, cat = null) {
   if (!queue.length) return toast('Nichts zu üben');
   stopDuelTimer();
   run = {
-    queue: queue.slice(), i: 0, mode,
+    queue: queue.slice(), i: 0, mode, cat,
     done: 0, correct: 0, start: Date.now(),
     total: queue.length, added: 0,
     wrong: [], undo: null,
@@ -1109,9 +1117,10 @@ function endRun() {
       <button class="btn ghost" id="home">Zur Übersicht</button>
     </div>`;
   document.getElementById('again').onclick = () => {
-    const q = r.mode === 'duel' ? sess.buildDuel(10)
+    // Die Kategorie muss mit: sonst wechselt die zweite Runde still das Thema.
+    const q = r.mode === 'duel' ? sess.buildDuel(10, r.cat)
       : sess.buildDaily().length ? sess.buildDaily() : sess.buildWeak(15);
-    q.length ? startRun(q, r.mode) : show('home');
+    q.length ? startRun(q, r.mode, r.cat) : show('home');
   };
   document.getElementById('home').onclick = () => show('home');
   run = null;
@@ -1527,6 +1536,9 @@ function askDuel(card) {
     if (finished || !run) return;
     finished = true;
     stopDuelTimer();
+    // Zeit vor dem Stoppen ablesen; abgelaufene Fragen zaehlen mit vollem Limit.
+    const gebraucht = Math.min(LIMIT, verstrichen());
+    verstrichen.beenden();
     const ok = chosen === card.a;
     markiereOptionen(app, card.a, chosen);
     beep(ok);
@@ -1548,6 +1560,10 @@ function askDuel(card) {
       // Fuer die Serie zaehlt ein Duell trotzdem: geuebt ist geuebt.
       d.duel = (d.duel || 0) + 1; if (ok) d.duelOk = (d.duelOk || 0) + 1;
       st.duelAnswers = (st.duelAnswers || 0) + 1; if (ok) st.duelCorrect = (st.duelCorrect || 0) + 1;
+      // Tempo ist im Quizduell die eigentliche Waehrung – es wurde bisher
+      // gemessen und weggeworfen. Nur richtige Antworten zaehlen: Wie schnell
+      // jemand danebengreift, sagt nichts ueber Fortschritt.
+      if (ok) { st.duelMs = (st.duelMs || 0) + gebraucht; st.duelTimed = (st.duelTimed || 0) + 1; }
       touchStreak();
       if (!ok) {
         run.wrong.push(card);

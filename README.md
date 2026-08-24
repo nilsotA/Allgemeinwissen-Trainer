@@ -203,6 +203,27 @@ tun; gegen den alten Stand schlägt er fehl.
   richtige Antwort trieb das Intervall auf rund 75 Tage. Jetzt rechnet das nächste Wachstum
   aus den zehn Tagen, die die Karte nachweislich getragen hat. Gedeckelt wird nur, nie
   verlängert.
+
+  Die Zusammenstellung zog anfangs **blind**: 60 % zufällig aus allem Bekannten, der Rest
+  zufällig aus dem Gesamtbestand. Damit kam ausgerechnet das, woran man unter Zeitdruck
+  gescheitert war, nie wieder unter Zeitdruck dran – ein Duell-Fehler landete nur im
+  untimed Tagestraining. Wer eine Karte in zwanzig Sekunden abruft, hat den Quizduell-Punkt
+  trotzdem verloren. Jetzt füllt sich das Duell aus **drei Töpfen**: knapp ein Drittel die
+  schwächsten bekannten Karten (Wackelkandidaten zuerst), dann weiteres Bekanntes, dann
+  Neues. Dafür war kein neuer Zustand nötig – der Einbruch nach einem Duell-Fehler steckt
+  schon in `strength()`.
+
+  Dazu kommt das **Themen-Duell**: Im Quizduell steht die Kategorie vor der Frage fest,
+  und genau diese Lage ließ sich vorher nicht proben – Themen nur in Ruhe, Zeitdruck nur
+  über den Gesamtbestand. Jeder Themenseite liegt jetzt ein zweiter Knopf bei. Die
+  gewählte Kategorie wird im Lauf mitgeführt, sonst wechselte „Weitermachen" nach der
+  Runde still das Thema.
+
+  Schließlich wird die **Antwortzeit** ausgewertet, statt sie zu messen und wegzuwerfen:
+  Die Duellkarte zeigt die durchschnittliche Zeit bis zur richtigen Antwort. Nur richtige
+  Antworten zählen hinein – wie schnell jemand danebengreift, sagt nichts über Fortschritt.
+  Tempo ist im Quizduell die eigentliche Währung, und es war die einzige Größe, die die App
+  erheben konnte und nicht zeigte.
 - **Markierte Karten** – was du beim Nachschlagen mit ★ versiehst, lässt sich gezielt üben.
 - **Schwachstellen** – die Statistik zeigt die Teilgebiete mit der schlechtesten
   Trefferquote; ein Tipp darauf startet eine Runde genau dazu.

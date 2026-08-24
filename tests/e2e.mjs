@@ -215,6 +215,19 @@ try {
   await page.waitForSelector('[data-sub]');
   const teile = await page.locator('[data-sub]').count();
   check('Teilgebiete des Themas werden gelistet', teile >= 9, `${teile} Teilgebiete`);
+  /* Im Quizduell steht die Kategorie vor der Frage fest – dieselbe Lage muss
+     sich unter Zeitdruck proben lassen, nicht nur in Ruhe. */
+  check('Thema laesst sich auch im Duell ueben', await page.locator('#themaDuell').count() === 1);
+  await page.click('#themaDuell');
+  await page.waitForSelector('#clock');
+  const duellKat = await page.locator('.qcat').first().innerText();
+  check('Themen-Duell bleibt beim gewaehlten Thema',
+    duellKat.includes('Sport'), `${duellKat} statt Sport`);
+  await page.click('#quit');
+  await page.click('[data-view="topics"]');
+  await page.waitForSelector('[data-cat]');
+  await page.locator('[data-cat="spo"]').click();
+  await page.waitForSelector('[data-sub]');
   const gewaehlt = await page.locator('[data-sub]').first().getAttribute('data-sub');
   await page.locator('[data-sub]').first().click();
   await page.waitForSelector('.sess-body');

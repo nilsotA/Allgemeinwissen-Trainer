@@ -146,14 +146,24 @@ export function buildWeak(limit = 20) {
   return scored.slice(0, limit).map(x => ({ card: x.c, fresh: false }));
 }
 
-/** Duell: schnelle Multiple-Choice-Runde aus dem gesamten aktiven Bestand. */
-export function buildDuel(n = 10) {
-  const pool = CARDS.filter(c => inScope(c));
-  const known = pool.filter(c => { const s = cardState(c.id); return s && s.seen > 0; });
-  // Zwei Drittel Bekanntes (Festigung), ein Drittel Neues (Ausweitung)
-  const a = shuffle(known).slice(0, Math.ceil(n * 0.6));
-  const b = shuffle(pool.filter(c => !a.includes(c))).slice(0, n - a.length);
-  return shuffle([...a, ...b]).map(c => ({ card: c, fresh: false }));
+/** Duell: schnelle Multiple-Choice-Runde, wahlweise auf ein Thema begrenzt.
+ *  Drei Toepfe: erst die schwaechsten bekannten Karten, dann weiteres
+ *  Bekanntes, dann Neues. Ohne den ersten Topf kaeme ausgerechnet das, woran
+ *  man unter Zeitdruck gescheitert ist, nie wieder unter Zeitdruck dran –
+ *  eine Karte, die man in zwanzig Sekunden abruft, ist im Duell verloren. */
+export function buildDuel(n = 10, cat = null) {
+  const pool = CARDS.filter(c => inScope(c) && (!cat || c.cat === cat));
+  const known = pool.map(c => ({ c, s: cardState(c.id) })).filter(x => x.s && x.s.seen > 0);
+  const schwach = known
+    .filter(x => isLeech(x.s) || strength(x.s) < 0.6)
+    .sort((a, b) => (isLeech(b.s) - isLeech(a.s)) || (strength(a.s) - strength(b.s)))
+    .slice(0, Math.round(n * 0.3))
+    .map(x => x.c);
+  const rest = shuffle(known.map(x => x.c).filter(c => !schwach.includes(c)))
+    .slice(0, Math.ceil(n * 0.6) - schwach.length);
+  const gewaehlt = [...schwach, ...rest];
+  const neu = shuffle(pool.filter(c => !gewaehlt.includes(c))).slice(0, n - gewaehlt.length);
+  return shuffle([...gewaehlt, ...neu]).map(c => ({ card: c, fresh: false }));
 }
 
 /** Kennzahlen für Startseite und Statistik. */
