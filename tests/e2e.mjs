@@ -216,6 +216,13 @@ try {
   await page.click('[data-view="stats"]');
   await page.waitForSelector('.heat');
   check('Heatmap hat 12 Wochen', await page.locator('.heat i').count() === 84);
+  /* 84 Zellen mit title-Attribut sind fuer Hilfsmittel wertlos - auf iOS wird
+     title nie gezeigt. Bild ausblenden, Text danebenstellen. */
+  check('Heatmap ist fuer Hilfsmittel ausgeblendet',
+    await page.locator('.heat-wrap[aria-hidden="true"]').count() === 1);
+  check('Heatmap hat eine Textfassung',
+    await page.evaluate(() => [...document.querySelectorAll('.sr-only')]
+      .some(n => /Tagen gelernt/.test(n.textContent))));
   check('Fortschrittsbalken sind sichtbar',
     (await page.evaluate(() => [...document.querySelectorAll('.trow .bar')].every(b => b.getBoundingClientRect().height > 4))));
 

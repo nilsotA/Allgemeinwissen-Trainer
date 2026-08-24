@@ -547,11 +547,14 @@ function renderStats() {
     return n < bezug * 0.45 ? 1 : n < bezug * 0.85 ? 2 : n < bezug * 1.25 ? 3 : 4;
   };
   let cells = '';
+  let aktiveTage = 0, vergangeneTage = 0;
   for (let i = 0; i < WEEKS * 7; i++) {
     const day = start + i;
     if (day > t) { cells += '<i class="future"></i>'; continue; }
     const k = numToKey(day);
     const n = tagesSumme(st.days[k]);
+    vergangeneTage++;
+    if (n > 0) aktiveTage++;
     cells += `<i data-l="${stufe(n)}" class="${day === t ? 'today' : ''}" title="${k}: ${n} Antworten"></i>`;
   }
   const p = sess.catProgress();
@@ -594,22 +597,28 @@ function renderStats() {
 
     <h2 class="sec">Letzte 12 Wochen</h2>
     <div class="card">
-      <div class="heat-wrap">
+      <!-- Die 84 Zellen tragen ihre Auskunft nur im title-Attribut. Auf iOS
+           wird das nie angezeigt und von VoiceOver unzuverlaessig gelesen –
+           fuer Hilfsmittel war die Karte damit leer. Das Bild wird deshalb
+           ausgeblendet und durch einen Satz ersetzt, der dasselbe sagt. -->
+      <div class="heat-wrap" aria-hidden="true">
         <div class="heat-days"><span>Mo</span><span></span><span>Mi</span><span></span><span>Fr</span><span></span><span>So</span></div>
         <div class="heat grow">${cells}</div>
       </div>
-      <div class="legend">wenig <i></i><i data-l="1"></i><i data-l="2"></i><i data-l="3"></i><i data-l="4"></i> viel</div>
+      <p class="sr-only">${aktiveTage} von ${vergangeneTage} Tagen gelernt, zusammen ${totalDone} Antworten.</p>
+      <div class="legend" aria-hidden="true">wenig <i></i><i data-l="1"></i><i data-l="2"></i><i data-l="3"></i><i data-l="4"></i> viel</div>
     </div>
 
     <h2 class="sec">Was kommt auf dich zu</h2>
     <div class="card">
       ${fc.some(n => n > 0) ? `
-      <div class="fc">${fc.map((n, i) => `
+      <div class="fc" aria-hidden="true">${fc.map((n, i) => `
         <div class="fc-col" title="${n} Wiederholungen">
           <span class="fc-n">${n || ''}</span>
           <i style="height:${Math.max(3, (n / fcMax) * 72).toFixed(0)}px"></i>
           <span class="fc-l">${names[i]}</span>
         </div>`).join('')}</div>
+      <p class="sr-only">${fc.map((n, i) => `${names[i]}: ${n}`).join(', ')} Wiederholungen.</p>
       <p class="tiny" style="margin-top:10px">Fällige Wiederholungen der nächsten sieben Tage – neue Karten kommen noch dazu.</p>`
       : `<p class="muted">Noch nichts eingeplant. Sobald du Karten gelernt hast, siehst du hier, wie viele Wiederholungen an den nächsten Tagen anstehen.</p>`}
     </div>
@@ -1543,18 +1552,27 @@ function askDuel(card) {
       opts.map((o, i) => `<button class="opt" data-v="${esc(o)}">
         <span class="k">${'ABCD'[i]}</span><span>${esc(o)}</span></button>`).join('')
     }</div>`,
-    `<div class="bar" id="clock"><i style="width:100%;transition:width .1s linear"></i></div>`
+    /* Der Balken traegt keine Auskunft fuer Hilfsmittel – ohne Sicht bekam man
+       weder mit, dass die Zeit laeuft, noch dass sie fast um ist; die Frage
+       loeste sich einfach auf. Der Hinweis unten und die Fuenf-Sekunden-Ansage
+       im Takt ersetzen das. */
+    `<div class="bar" id="clock" aria-hidden="true"><i style="width:100%;transition:width .1s linear"></i></div>
+     <p class="sr-only">15 Sekunden Zeit für diese Frage.</p>`
   );
   document.getElementById('undo').disabled = true;   // im Duell zählt die Zeit
   const bar = app.querySelector('#clock i');
   let finished = false;
   stopDuelTimer();
   const verstrichen = sichtbareZeit();
+  let gewarnt = false;
   duelTimer = setInterval(() => {
     if (!run || !document.getElementById('clock')) return stopDuelTimer();
     const left = Math.max(0, 1 - verstrichen() / LIMIT);
     bar.style.width = (left * 100).toFixed(1) + '%';
     bar.style.background = left < 0.3 ? 'linear-gradient(90deg,#ff6b6b,#ffb454)' : '';
+    // Einmalig, nicht im Takt: eine Live-Region, die zehnmal je Sekunde
+    // schreibt, macht das Vorlesen der Frage unmoeglich.
+    if (!gewarnt && left > 0 && verstrichen() > LIMIT - 5000) { gewarnt = true; announce('Noch fünf Sekunden.'); }
     if (left <= 0) finish(null);
   }, 100);
 

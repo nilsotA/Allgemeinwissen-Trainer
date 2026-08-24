@@ -341,7 +341,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 89 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 133 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 135 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -659,6 +659,19 @@ der App, auf dem Antworten still verschwinden. Jetzt steht ein **Aktionsbalken**
 gesichert wurde, mit dem Sichern-Knopf gleich daneben. Er verdrängt ein wartendes
 Update-Angebot nicht, sondern stellt es zurück und holt es nach – sonst wäre das Angebot
 nach einem einzigen Speicherfehler bis zum nächsten Start verschwunden.
+
+**Bilder, die ihre Auskunft nur im `title` tragen.** Die Heatmap besteht aus 84 Zellen
+`<i title="…">`, die Wochenvorschau aus sieben Säulen derselben Bauart. Auf iOS wird
+`title` nie angezeigt und von VoiceOver unzuverlässig gelesen – beide Karten waren für
+Hilfsmittel schlicht leer. Jetzt sind die Bilder `aria-hidden` und tragen einen Satz
+daneben: „X von Y Tagen gelernt, zusammen N Antworten" bzw. die sieben Tageswerte im
+Klartext. Dasselbe Muster benutzte die Datei an zwei anderen Stellen längst.
+
+**Die Duell-Uhr existierte nur visuell.** Ein `<div class="bar">` ohne Rolle und ohne Text:
+Ohne Sicht bekam man weder mit, dass die Zeit läuft, noch dass sie fast um ist – die Frage
+löste sich einfach auf. Der Balken ist jetzt `aria-hidden`, dafür nennt ein Satz das Limit,
+und fünf Sekunden vor Schluss kommt **einmalig** eine Ansage. Einmalig ist wichtig: Eine
+Live-Region, die zehnmal je Sekunde schreibt, macht das Vorlesen der Frage unmöglich.
 
 ### Qualitätssicherung
 
