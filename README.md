@@ -341,7 +341,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 89 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 128 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 133 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -631,6 +631,34 @@ Diffs kaum auffallen.
 
 Nach dem Umformulieren einmal `node scripts/check-content.mjs --kennungen` laufen lassen,
 damit die Liste den neuen Stand kennt.
+
+### Bedienung ohne Farbe, ohne Blick, ohne Verlust
+
+Drei Stellen kosteten Nutzer etwas, ohne dass es beim Ausprobieren auffiel.
+
+**Richtig und falsch hingen allein an der Farbe.** Nach dem Antworten unterschied nur
+der Hintergrund die richtige von der gewählten Option – grün gegen rot, bei ähnlicher
+Helligkeit. Rund acht Prozent der Männer trennen die beiden nicht zuverlässig. Screenreader
+erfuhren das Ergebnis über die Live-Region, sehende Farbfehlsichtige nicht. Jetzt ersetzt
+ein **Haken** bzw. ein **Kreuz** den Buchstaben im Feld; die übrigen Optionen behalten ihren.
+
+**Der Fokus fiel bei jeder Karte auf `body`.** Jedes `innerHTML` zerstört das fokussierte
+Element – mit VoiceOver begann der Lesecursor deshalb bei *jeder einzelnen Frage* wieder
+ganz oben und musste über Beenden-Knopf, Fortschrittsbalken und Zurücknehmen hinweg. Frage
+und Lösung tragen jetzt `tabindex="-1"`, und nach jedem Aufbau wandert der Fokus auf das
+letzte Ziel: bei der Frage auf die Frage, nach dem Aufdecken auf die Lösung. `preventScroll`
+und eine Regel gegen den Rahmen sorgen dafür, dass für alle anderen optisch nichts passiert.
+Beim Aufdecken war ein zweiter Griff nötig – dort wird die Lösung **angehängt**, nicht neu
+gerendert; der Test hat genau diese Lücke gefunden, nachdem der erste Teil schon grün war.
+
+**„Speicher voll" war eine Fünf-Sekunden-Meldung.** Schlug das Schreiben fehl, kam genau
+eine Kurzmeldung, und `quotaWarned` verhinderte jede weitere – zurückgesetzt wird das Flag
+nur durch einen *erfolgreichen* Schreibvorgang, den es bei wirklich vollem Speicher nie
+gibt. Danach konnte man eine Stunde weiterlernen, ohne dass etwas ankam: der einzige Pfad
+der App, auf dem Antworten still verschwinden. Jetzt steht ein **Aktionsbalken**, bis
+gesichert wurde, mit dem Sichern-Knopf gleich daneben. Er verdrängt ein wartendes
+Update-Angebot nicht, sondern stellt es zurück und holt es nach – sonst wäre das Angebot
+nach einem einzigen Speicherfehler bis zum nächsten Start verschwunden.
 
 ### Qualitätssicherung
 

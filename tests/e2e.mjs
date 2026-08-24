@@ -122,11 +122,17 @@ try {
   const q1 = await page.locator('.q').innerText();
   check('Frage wird angezeigt', q1.length > 5);
   check('vier Antwortmöglichkeiten', await page.locator('.opt').count() === 4);
+  /* Ohne gesetzten Fokus faellt er nach jedem innerHTML auf body – mit
+     VoiceOver beginnt der Lesecursor dann bei jeder Karte wieder ganz oben. */
+  check('Fokus steht auf der Frage',
+    await page.evaluate(() => document.activeElement?.classList.contains('q')));
 
   group('Antwort, Rückmeldung, Fortschritt');
   await page.locator('.opt').first().click();
   await page.waitForSelector('#next');
   check('Lösung wird eingeblendet', await page.locator('.answer .val').count() > 0);
+  check('Fokus wandert auf die Lösung',
+    await page.evaluate(() => document.activeElement?.classList.contains('answer')));
   check('richtige Option ist markiert', await page.locator('.opt.right').count() === 1);
   /* Die Rueckmeldung darf nicht nur an der Farbe haengen: Haken bzw. Kreuz
      ersetzen den Buchstaben, damit auch Rot-Gruen-Blinde sie erkennen. */
@@ -1063,6 +1069,39 @@ try {
     check('erfolgreiches Teilen zählt als Sicherung',
       await sp.locator('#sichernJetzt').count() === 0);
     await sctx.close();
+  }
+
+  group('Voller Speicher meldet sich dauerhaft');
+  /* Der einzige Pfad, auf dem Antworten still verschwinden. Eine Kurzmeldung
+     reichte nicht: Nach fuenf Sekunden lernte man ahnungslos weiter. */
+  {
+    const vctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const vp = await vctx.newPage();
+    await vp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await vp.waitForSelector('[data-go="daily"]');
+    await vp.evaluate((k) => {
+      const orig = localStorage.setItem.bind(localStorage);
+      localStorage.setItem = (key, val) => {
+        if (key === k) throw new DOMException('voll', 'QuotaExceededError');
+        return orig(key, val);
+      };
+    }, KEY);
+    await vp.click('[data-go="daily"]');
+    await vp.waitForSelector('.opt, #reveal');
+    if (await vp.locator('.opt').count()) await vp.locator('.opt').first().click();
+    else await vp.click('#reveal');
+    // Geschrieben wird erst beim Weitergehen, nicht schon beim Antworten.
+    await vp.waitForSelector('#next, .grades .btn');
+    if (await vp.locator('#next').count()) await vp.click('#next');
+    else await vp.locator('.grades .btn').first().click();
+    await vp.waitForSelector('.toast.aktion.speicher', { timeout: 5000 });
+    check('Speicherhinweis erscheint', await vp.locator('.toast.aktion.speicher').count() === 1);
+    check('Speicherhinweis bietet das Sichern an',
+      (await vp.locator('.toast.aktion.speicher button').innerText()).includes('Sichern'));
+    await vp.waitForTimeout(6000);
+    check('Speicherhinweis verschwindet nicht von selbst',
+      await vp.locator('.toast.aktion.speicher').count() === 1);
+    await vctx.close();
   }
 
   group('Kleines Display');

@@ -123,7 +123,11 @@ function toast(msg, ms = 2200) {
 }
 function announce(msg) { if (live) live.textContent = msg; }
 
-setSaveErrorHandler(() => toast('Speicher voll – Fortschritt sichern und Platz schaffen', 5000));
+/* Der einzige Pfad, auf dem Antworten still verschwinden: Schlaegt das
+   Schreiben fehl, kam bisher genau eine Kurzmeldung – danach konnte man eine
+   Stunde weiterlernen, ohne dass etwas ankam. Der Aktionsbalken bleibt stehen,
+   bis der Stand gesichert ist, und bietet das Sichern gleich an. */
+setSaveErrorHandler(() => speicherBalken());
 
 /* Zwei offene Tabs: Der Speicher wird zusammengefuehrt, nicht ueberschrieben.
    Waehrend einer laufenden Einheit bleibt der Zustand unangetastet - sonst
@@ -1189,6 +1193,14 @@ function shell(inner, foot) {
     </div>`;
   document.getElementById('quit').onclick = () => (run.done ? endRun() : show('home'));
   document.getElementById('undo').onclick = undoLast;
+  /* Jedes innerHTML zerstoert das fokussierte Element, der Fokus faellt auf
+     body. Mit VoiceOver landete der Lesecursor damit bei JEDER Karte wieder
+     ganz oben und musste ueber Beenden-Knopf, Balken und Zuruecknehmen
+     hinweggewischt werden, bis die Frage kam. Wir setzen ihn auf das letzte
+     Fokusziel: beim Fragen auf die Frage, nach dem Aufdecken auf die Loesung.
+     preventScroll, damit fuer alle anderen optisch nichts passiert. */
+  const ziele = app.querySelectorAll('[data-fokus]');
+  ziele[ziele.length - 1]?.focus({ preventScroll: true });
 }
 
 /* Der Fuss wechselt beim Aufdecken den Inhalt: Wo eben noch „Loesung zeigen"
@@ -1218,7 +1230,7 @@ function head(card, isFresh) {
       ${isFresh ? '<span class="pill new">neu</span>' : ''}
       ${zaeh ? '<span class="pill zaeh">hartnäckig</span>' : ''}
     </div>
-    <h1 class="q">${esc(card.q)}</h1>`;
+    <h1 class="q" tabindex="-1" data-fokus>${esc(card.q)}</h1>`;
 }
 
 function step() {
@@ -1383,7 +1395,7 @@ const KNACK_TIPPS = [
 function answerBlock(card) {
   const cs = cardState(card.id);
   const zaeh = isLeech(cs);
-  return `<div class="answer">
+  return `<div class="answer" tabindex="-1" data-fokus>
       <div class="lab">Antwort</div>
       <div class="val">${esc(card.a)}</div>
       ${card.t ? `<p class="expl">${esc(card.t)}</p>` : ''}
@@ -1398,6 +1410,10 @@ function answerBlock(card) {
    passiert gar nichts. scrollIntoView zieht jeden beteiligten Rahmen mit. */
 function zurAntwort(body, div) {
   body.scrollTop = body.scrollHeight;
+  // Die Loesung wird angehaengt, nicht neu gerendert - der Fokus aus shell()
+  // steht also noch auf der Frage. Fuer Screenreader muss er mitwandern,
+  // sonst liest der Cursor weiter oben und die Aufloesung bleibt ungehoert.
+  div.querySelector('[data-fokus]')?.focus({ preventScroll: true });
   requestAnimationFrame(() => {
     try { div.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
     catch (e) { div.scrollIntoView(false); }
@@ -1649,6 +1665,10 @@ function updateAnbieten(worker) {
 
 /* Wird auch aus endRun aufgerufen, wenn das Angebot zurueckgehalten wurde. */
 function updateBalken(worker) {
+  /* Der Speicherhinweis ist dringender und belegt denselben Platz. Das
+     Update-Angebot wird dann zurueckgestellt statt verworfen - sonst waere es
+     nach einem einzigen Speicherfehler bis zum naechsten Start verschwunden. */
+  if (document.querySelector('.toast.aktion.speicher')) { updateWartet = worker; return; }
   if (document.querySelector('.toast.aktion')) return;
   document.querySelector('.toast')?.remove();
   const d = document.createElement('div');
@@ -1670,6 +1690,29 @@ function updateBalken(worker) {
     }
     d.remove();
     worker.postMessage('jetzt-uebernehmen');
+  };
+  d.appendChild(b);
+  document.body.appendChild(d);
+}
+
+/* Bleibender Hinweis bei vollem Speicher – anders als das Update-Angebot darf
+   er eine laufende Runde nicht abwarten: Ab jetzt geht jede Antwort verloren,
+   also muss der Nutzer es sofort erfahren. Ein bereits stehender Balken wird
+   ersetzt, damit die dringendere Meldung gewinnt. */
+function speicherBalken() {
+  document.querySelector('.toast.aktion.speicher')?.remove();
+  const d = document.createElement('div');
+  d.className = 'toast aktion speicher';
+  d.setAttribute('role', 'alert');
+  d.innerHTML = '<span>Speicher voll – neue Antworten gehen verloren</span>';
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = 'Sichern';
+  b.onclick = async () => {
+    if (!await sichern()) return;
+    d.remove();
+    // Ein waehrenddessen zurueckgestelltes Update-Angebot jetzt nachholen.
+    if (updateWartet && !run) { const w = updateWartet; updateWartet = null; updateBalken(w); }
   };
   d.appendChild(b);
   document.body.appendChild(d);

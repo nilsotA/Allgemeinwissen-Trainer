@@ -45,6 +45,10 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 h1,h2,h3,h4{margin:0;line-height:1.24;font-weight:700}
 p{margin:0}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+/* Frage und Loesung bekommen den Fokus nur programmatisch, damit Screenreader
+   nicht bei jeder Karte oben anfangen. Per Tab erreichbar sind sie nicht
+   (tabindex -1), deshalb darf und soll das optisch unsichtbar bleiben. */
+[data-fokus]:focus{outline:none}
 svg{display:block;flex:none}
 /* Ziffern laufen gleich breit. Sonst springen Zahlen beim Hochzaehlen in der
    Breite, und in der Statistik stehen Spalten nicht untereinander. */
