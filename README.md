@@ -488,6 +488,32 @@ Alle zehn Datendateien sind einmal vollständig gegengelesen. Sprache & Literatu
 und Politik & Wirtschaft blieben ohne inhaltlichen Fund; die Fehler häuften sich dort, wo Karten
 nachträglich ergänzt wurden.
 
+**Zweite Runde: der ganze Bestand, unabhängig geprüft.** Gegenlesen durch denselben Autor hat
+eine bekannte blinde Stelle – wer schreibt, liest seine eigenen Fehler am schlechtesten. Deshalb
+haben anschließend unabhängige Prüfinstanzen sämtliche 1.742 Karten und 141 Merkanker
+durchgesehen, in Gruppen von höchstens ~150 Stück, mit klarem Auftrag: nur echte Sachfehler,
+keine Geschmacksfragen. Jeder gemeldete Fehler ging an zwei Skeptiker mit dem Gegenauftrag, ihn
+zu **widerlegen** – eine falsche „Korrektur" an richtigem Inhalt wäre teurer als ein
+stehengelassener Zweifelsfall. Zeitabhängige Befunde wurden zusätzlich per Websuche gegen
+mehrere Quellen geprüft.
+
+Ergebnis: **acht bestätigte Fehler in 1.883 Einträgen**, alle behoben. Der schwerste war der
+WM-Torrekord – Klose (16) ist seit Juli 2026 von Mbappé (22) und Messi (21) überholt; genau die
+Karte, mit der man im Quizduell aufgelaufen wäre. Dazu: Magdeburg hat Halle als größte Stadt
+Sachsen-Anhalts abgelöst, die 979 m des Salto Ángel sind Gesamthöhe und nicht freier Fall
+(Fallstufe: 807 m), der Grönlandhai ist das langlebigste *Wirbeltier* und nicht das
+längstlebige Tier (Islandmuschel: 507 Jahre), der DOSB zählt 29 statt 27 Millionen
+Mitgliedschaften, „Form follows function" stammt von Louis Sullivan und nicht vom Bauhaus,
+Bismarck begründete drei der fünf Sozialversicherungssäulen und nicht alle, und der
+Oscar-Nominierungsrekord von „Das Boot" fiel 2023 an „Im Westen nichts Neues".
+
+Ebenso wichtig: **Sechs weitere Meldungen wurden von den Skeptikern entkräftet** – darunter
+Fälle, in denen die vorgeschlagene „Korrektur" eine richtige Karte verschlechtert hätte, etwa
+der Vorwurf, bei der Ableitung von (x+1)/(x−1) sei auch „Produktregel" richtig (allein reicht
+sie nicht), oder die Antibiotika-Karte, deren Frage ausdrücklich an die ärztliche Verordnung
+gebunden ist und deren Kontext die verkürzten Leitlinien längst nennt. Ohne die
+Widerlegungsstufe wären sechs korrekte Karten „repariert" worden.
+
 Was sich davon maschinell absichern lässt, ist jetzt eine Schranke in `npm run check`:
 doppelte Sätze im selben Kontexttext, gleiche Titel oder Texte bei den Tagesfakten, und Karten
 mit fast gleicher Frage **und** zusammengehender Antwort. Die Antwortschwelle liegt gemessen

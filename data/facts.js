@@ -4,7 +4,7 @@
    nennen. t ist die Ueberschrift, f die Abruffrage (wenn die Ueberschrift als
    Reiz nicht taugt oder die Antwort verraet), x die Aufloesung. */
 export default [
-  { t: "Die 11 im Elfmeter", f: "Warum heißt der Elfmeter Elfmeter, wenn der Punkt bei 10,97 m liegt?", x: "Der Elfmeterpunkt liegt seit 1891 bei 12 Yards – umgerechnet 10,97 m. Deshalb heißt es in England „penalty spot“ und bei uns griffig Elfmeter." },
+  { t: "Die 11 im Elfmeter", f: "Warum heißt der Elfmeter Elfmeter, wenn der Punkt bei 10,97 m liegt?", x: "Der Strafstoß wird seit 1891 aus 12 Yards ausgeführt – umgerechnet 10,97 m; den festen Punkt gibt es seit 1902. In England heißt er „penalty spot“, bei uns griffig Elfmeter." },
   { t: "Warum der Februar kurz ist", x: "Im römischen Kalender war der Februar der letzte Monat des Jahres und bekam die Restzeit. Deshalb landet auch der Schalttag dort." },
   { t: "Rechenanker Prozent", f: "Wie rechnest du 15 Prozent im Kopf, ganz ohne Formel?", x: "1 % ist immer der Wert geteilt durch 100. Von dort aus baust du alles: 5 % = halbe 10 %, 15 % = 10 % + 5 %. So brauchst du nie eine Formel." },
   { t: "Die Zahl e im Alltag", f: "Was hat die Zahl e mit Zinsen zu tun?", x: "Bei 100 % Zins im Jahr und unendlich häufiger Verzinsung wächst 1 € auf genau e ≈ 2,718 €. Mehr geht nicht – das ist die natürliche Wachstumsgrenze." },
