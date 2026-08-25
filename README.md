@@ -592,11 +592,23 @@ Der Balken „Neue Fassung bereit" beantwortete nur die halbe Frage. Nach dem Ti
 lud die Seite neu, und **niemand sagte, ob es geklappt hat**. Auch sonst gab es keine Stelle,
 an der man hätte nachsehen können, welche Fassung gerade läuft.
 
-Der Service Worker kannte seine Fassung die ganze Zeit – die Seite konnte sie nur nicht
-erfragen. Jetzt beantwortet er die Frage `welche-fassung` über den Port der Anfrage (nicht per
-Rundruf, sonst antwortete er allen offenen Tabs). Die App fragt beim Start, merkt sich die
-Antwort und vergleicht beim nächsten Mal. Weicht sie ab, kommt die Meldung **„Aktualisiert –
-Wissenswerk läuft jetzt in der neuen Fassung"**, auch für Sprachausgabe.
+**Der erste Anlauf fragte den Service Worker danach – und das war der Umweg zu viel.** Er
+kannte seine Fassung, beantwortete sie brav über den Port der Anfrage, und trotzdem taugte es
+nichts: Im **privaten Tab** steuert kein Worker, beim allerersten Aufruf noch keiner, und eine
+ältere Fassung beantwortet die Frage gar nicht. In allen drei Fällen stand in den Einstellungen
+„wird beim ersten Start eingerichtet" statt einer Auskunft – ausgerechnet dann, wenn man
+nachsehen will, ob die neue Fassung überhaupt ankommt. Genau in dieser Lage stand ich, als eine
+veraltete Netlify-Auslieferung zu klären war.
+
+Jetzt schreibt der Build die Kennung **in die App**: `scripts/make-sw.mjs` erzeugt
+`assets/js/fassung.js` mit derselben Kennung, die auch der Service Worker trägt. Die App
+vergleicht sie beim Start mit der zuletzt gemerkten. Weicht sie ab, kommt die Meldung
+**„Aktualisiert – Wissenswerk läuft jetzt in der neuen Fassung"**, auch für Sprachausgabe. Ohne
+Worker, ohne Netz, ohne Wartezeit.
+
+Diese eine Datei bleibt aus der Kennungsberechnung heraus – sie enthält die Kennung, sie kann
+sie nicht mitbestimmen. Ausgeliefert und offline vorgehalten wird sie trotzdem. Der Build
+bricht ab, wenn sie fehlt, und zwei Läufe hintereinander ergeben dasselbe Ergebnis.
 
 Dazu eine Karte unter **Mehr → Fassung**: die installierte Fassung mit dem Datum, seit dem sie
 läuft, ein Knopf **Suchen** für die Nachfrage von Hand, und – falls etwas bereitsteht – **Neue
@@ -604,13 +616,17 @@ Fassung laden** an derselben Stelle wie der Balken. Das Datum wird nur fortgesch
 sich die Fassung wirklich geändert hat; sonst stünde dort nach jedem Start das heutige und die
 Angabe wäre wertlos.
 
-Zwei Feinheiten, die beim Bauen auffielen:
+Eine Feinheit, die beim Bauen auffiel: `update()` stößt bei einer neuen Fassung erst das
+Installieren an – das Ergebnis steht nicht sofort fest. Der Suchen-Knopf wartet deshalb kurz,
+statt vorschnell „alles aktuell" zu behaupten.
 
-- Eine **ältere Fassung kennt die Frage nicht** und antwortet nie. Ohne einen Wecker von zwei
-  Sekunden bliebe das Versprechen für immer offen und die Startseite hinge daran.
-- `update()` stößt bei einer neuen Fassung erst das Installieren an – das Ergebnis steht nicht
-  sofort fest. Der Suchen-Knopf wartet deshalb kurz, statt vorschnell „alles aktuell" zu
-  behaupten.
+**Der Prüfstein selbst war zuerst falsch gebaut.** Der Offline-Test stellte eine
+Veröffentlichung nach, indem er nur `sw.js` austauschte. Solange die Kennung allein im Service
+Worker stand, war das eine gültige Nachstellung – mit dem eingebackenen Stempel ist es keine
+mehr: Ein echter Build tauscht **beide** Dateien, weil beide aus ihm entstehen. Nur `sw.js` zu
+ersetzen ergibt einen neuen Cache-Schlüssel bei unveränderter App, und die Meldung
+„Aktualisiert" bliebe dann zu Recht aus. Der Test wurde rot – zu Recht, aber am falschen Ende.
+Er stellt jetzt beides um.
 
 Der erste Sprung von einer Fassung ohne diese Anzeige meldet noch nichts: Es gibt keinen
 gemerkten Vorgänger, mit dem sich vergleichen ließe. Ab dem übernächsten Update sagt die App

@@ -362,6 +362,30 @@ try {
   await settle();
   check('Einstellung wird sofort gespeichert', (await stored()).settings.newPerDay === 20);
 
+  /* Die Fassungskennung muss OHNE Service Worker dastehen. Genau daran scheiterte
+     die erste Umsetzung: Sie fragte den Worker, und im privaten Tab, beim
+     allerersten Aufruf oder bei abgeschaltetem Worker gab es keinen - dort stand
+     dann „wird eingerichtet" statt einer Auskunft. Ausgerechnet dann will man
+     nachsehen, ob ueberhaupt die neue Fassung ankommt. Dieser Kontext laeuft
+     ohne Worker, wie ein privater Tab. */
+  {
+    const octx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE',
+      serviceWorkers: 'block' });
+    const op = await octx.newPage();
+    await op.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await op.waitForSelector('#app:not([hidden])', { timeout: 15000 });
+    check('die App startet auch ohne Service Worker',
+      await op.locator('.nav-btn').count() === 5);
+    await op.click('[data-view="settings"]');
+    await op.waitForSelector('#updSuch', { timeout: 10000 });
+    const zeile = await op.locator('#updSuch').locator('xpath=../..').innerText();
+    check('die Fassung steht auch ohne Service Worker da', /[0-9a-f]{7}/.test(zeile),
+      zeile.replace(/\n/g, ' | '));
+    check('und behauptet nicht, sie werde noch eingerichtet',
+      !/wird beim ersten Start eingerichtet/.test(zeile));
+    await octx.close();
+  }
+
   group('Duell zählt getrennt');
   /* Duell-Antworten in denselben Topf zu werfen liess den Tagesfortschritt
      springen, ohne dass eine geplante Karte dran war – und zog die Trefferquote

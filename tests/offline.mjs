@@ -25,13 +25,22 @@ const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; ch
 /* Der Server kann einzelne Pfade absichtlich scheitern lassen und sw.js
    umschreiben – so lässt sich eine Veröffentlichung nachstellen. */
 let kaputt = new Set();
+/* Eine echte Veroeffentlichung tauscht IMMER beides: den Service Worker und den
+   Fassungsstempel in assets/js/fassung.js, denn beide entstehen aus demselben
+   Build. Die frueheren Tests tauschten nur sw.js - damit war die Nachstellung
+   kein Deployment mehr, sondern nur ein neuer Cache-Schluessel. */
 let swErsatz = null;
+let fassungErsatz = null;
 const server = createServer(async (req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
   if (p.endsWith('/')) p += 'index.html';
   if (kaputt.has(p)) { res.writeHead(503).end('kaputt'); return; }
   if (p === '/sw.js' && swErsatz) {
     res.writeHead(200, { 'Content-Type': TYPES['.js'] }).end(swErsatz);
+    return;
+  }
+  if (p === '/assets/js/fassung.js' && fassungErsatz) {
+    res.writeHead(200, { 'Content-Type': TYPES['.js'] }).end(fassungErsatz);
     return;
   }
   try {
@@ -92,6 +101,17 @@ try {
   const namen1 = Object.keys(b1);
   check('genau ein Bestand angelegt', namen1.length === 1, JSON.stringify(b1));
   const swQuelle = await readFile(join(ROOT, 'sw.js'), 'utf8');
+  const fassungQuelle = await readFile(join(ROOT, 'assets/js/fassung.js'), 'utf8');
+  /* Stellt eine Veroeffentlichung nach: Service Worker UND Fassungsstempel
+     bekommen dieselbe neue Kennung, so wie der Build es tut. Nur sw.js zu
+     tauschen ergaebe einen neuen Cache-Schluessel bei unveraenderter App - die
+     Meldung „Aktualisiert" bliebe dann zu Recht aus, und der Test haette daraus
+     den falschen Schluss gezogen. */
+  const stelleFassung = (marke) => {
+    const ersetzen = (t) => t.replace(/wissenswerk-[0-9a-f]+/, 'wissenswerk-' + marke);
+    swErsatz = marke ? ersetzen(swQuelle) : null;
+    fassungErsatz = marke ? ersetzen(fassungQuelle) : null;
+  };
   const anzahl = JSON.parse(swQuelle.match(/const ASSETS = (\[[\s\S]*?\]);/)[1]).length;
   check(`alle ${anzahl} Dateien im Bestand`, b1[namen1[0]] >= anzahl, JSON.stringify(b1));
 
@@ -138,7 +158,7 @@ try {
   group('Unvollständiges Update');
   // Neue Fassung, bei der eine Datei nicht ausgeliefert wird: der alte
   // Bestand muss stehenbleiben, sonst steht die App ohne Netz halb da.
-  swErsatz = swQuelle.replace(/wissenswerk-[0-9a-f]+/, 'wissenswerk-testfassung');
+  stelleFassung('testfassung');
   kaputt = new Set(['/assets/js/quiz.js']);
   await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
   await page.waitForFunction(async () => (await caches.keys()).some(k => k.endsWith('testfassung')), null, { timeout: 15000 });
@@ -170,7 +190,7 @@ try {
     await page.waitForSelector('#app:not([hidden])', { timeout: 15000 });
     await page.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await page.waitForSelector('.sess-body', { timeout: 10000 });
-    swErsatz = swQuelle.replace(/wissenswerk-[0-9a-f]+/, 'wissenswerk-rundenfassung');
+    stelleFassung('rundenfassung');
     await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
     await page.waitForFunction(async () => (await caches.keys()).some(k => k.endsWith('rundenfassung')),
       null, { timeout: 20000 }).catch(() => {});
@@ -209,7 +229,7 @@ try {
     return [c, pg];
   };
   const veroeffentliche = async (pg, marke) => {
-    swErsatz = swQuelle.replace(/wissenswerk-[0-9a-f]+/, 'wissenswerk-' + marke);
+    stelleFassung(marke);
     await pg.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
     await pg.waitForFunction(async (m) => (await caches.keys()).some(k => k.endsWith(m)),
       marke, { timeout: 25000 });
@@ -232,7 +252,7 @@ try {
     // 1. Eine Runde ohne einzige Antwort abbrechen: Der Balken wurde
     //    zurueckgehalten, aber nur endRun() holte ihn nach - der Abbruch geht
     //    ueber show(). Das Angebot blieb bis zum naechsten Start liegen.
-    kaputt = new Set(); swErsatz = null;
+    kaputt = new Set(); stelleFassung(null);
     const [actx, ap] = await frischerTab();
     await ap.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await ap.waitForSelector('.sess-body', { timeout: 10000 });
@@ -251,7 +271,7 @@ try {
     // 2. Waehrend der Balken steht, erscheint eine ZWEITE neue Fassung. Der
     //    Balken hielt eine feste Worker-Referenz auf die erste, die inzwischen
     //    ueberholt (redundant) ist - „Laden" schickte seine Nachricht ins Leere.
-    kaputt = new Set(); swErsatz = null;
+    kaputt = new Set(); stelleFassung(null);
     const [zctx, zp] = await frischerTab();
     await veroeffentliche(zp, 'erstfassung');
     await zp.waitForSelector('.toast.aktion', { timeout: 20000 });
@@ -272,7 +292,7 @@ try {
        Frueher stand „hatte beim Start keinen Worker" als Konstante fest: In der
        ersten Sitzung bewirkte „Laden" nichts, waehrend der neue Worker den
        alten Bestand schon geloescht hatte. */
-    kaputt = new Set(); swErsatz = null;
+    kaputt = new Set(); stelleFassung(null);
     const ectx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'allow' });
     const ep = await ectx.newPage();
     await ep.goto(BASIS + '/', { waitUntil: 'load' });      // KEIN Neuladen: wie beim ersten Besuch
@@ -301,7 +321,7 @@ try {
        daraufhin mitten in der Runde neu und schluckte die offene Frage - ohne
        Vorwarnung, denn hier hatte niemand etwas getippt. Nachgestellt wird der
        zweite Tab, indem die Nachricht am Balken vorbei geschickt wird. */
-    kaputt = new Set(); swErsatz = null;
+    kaputt = new Set(); stelleFassung(null);
     const [rctx, rp] = await frischerTab();
     await rp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await rp.waitForSelector('.sess-body', { timeout: 10000 });
@@ -338,7 +358,7 @@ try {
     /* Nach einem Update meldete sich bisher niemand: „Laden" tippen, die Seite
        laedt neu - und nichts sagte dem Nutzer, ob es geklappt hat. Und nirgends
        stand nachzulesen, welche Fassung ueberhaupt laeuft. */
-    kaputt = new Set(); swErsatz = null;
+    kaputt = new Set(); stelleFassung(null);
     const [fctx, fp] = await frischerTab();
 
     await fp.click('[data-view="settings"]');
@@ -379,7 +399,7 @@ try {
   }
 
   kaputt = new Set();
-  swErsatz = null;
+  stelleFassung(null);
   group('Vollständiges Update');
   await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
   await new Promise(r => setTimeout(r, 1500));

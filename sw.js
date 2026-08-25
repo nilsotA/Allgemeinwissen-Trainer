@@ -1,8 +1,9 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-1861663048';
+const VERSION = 'wissenswerk-1d65a6a9ff';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",
+  "./assets/js/fassung.js",
   "./assets/js/quiz.js",
   "./assets/js/session.js",
   "./assets/js/srs.js",
@@ -61,11 +62,6 @@ self.addEventListener('install', (e) => {
 
 self.addEventListener('message', (e) => {
   if (e.data === 'jetzt-uebernehmen') self.skipWaiting();
-  /* Die Seite fragt beim Start, welche Fassung sie gerade bedient. Nur so kann
-     sie melden, dass ein Update angekommen ist - der Worker weiss es, die Seite
-     wusste es nie. Geantwortet wird ueber den Port der Anfrage, damit die
-     Antwort den Fragenden erreicht und nicht alle offenen Tabs. */
-  if (e.data === 'welche-fassung' && e.ports && e.ports[0]) e.ports[0].postMessage(VERSION);
 });
 
 self.addEventListener('activate', (e) => {

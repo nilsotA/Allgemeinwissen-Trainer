@@ -7,6 +7,7 @@ import { S, settings, setSetting, save, cardState, putCard, today, todayNum, day
          installFlush, setBusyCheck, setFremdStandHandler } from './store.js';
 import { schedule, strength, preview, isLeech, nachDuellFehler, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
 import { options, bewerte, normalize, shuffle } from './quiz.js';
+import { FASSUNG } from './fassung.js';
 import * as sess from './session.js';
 
 const app = document.getElementById('app');
@@ -991,8 +992,7 @@ function renderSettings() {
       <div class="setrow">
         <div>
           <label>Installierte Fassung</label>
-          <p class="tiny">${f ? `${esc(fassungKurz(f.v))}${f.seit ? ` · seit ${new Date(f.seit).toLocaleDateString('de-DE')}` : ''}`
-                             : 'wird beim ersten Start eingerichtet'}</p>
+          <p class="tiny">${esc(fassungKurz(FASSUNG)) || '—'}${f && f.seit ? ` · seit ${new Date(f.seit).toLocaleDateString('de-DE')}` : ''}</p>
         </div>
         <button class="btn" id="updSuch">Suchen</button>
       </div>
@@ -1733,6 +1733,10 @@ function boot() {
   document.getElementById('boot')?.remove();
   app.hidden = false;
   show('home');
+  /* Vor dem Service Worker und unabhaengig von ihm: Die Fassungskennung steht in
+     der App selbst, also gibt es die Auskunft auch im privaten Tab und beim
+     allerersten Aufruf. */
+  pruefeFassung();
   if ('serviceWorker' in navigator) starteServiceWorker();
 }
 
@@ -1750,9 +1754,7 @@ function starteServiceWorker() {
   let hatWorker = !!navigator.serviceWorker.controller;
   let laedtNeu = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    // Beim allerersten Besuch gibt es hier zum ersten Mal einen Worker, den man
-    // nach seiner Fassung fragen kann.
-    if (!hatWorker) { hatWorker = true; pruefeFassung(); return; }
+    if (!hatWorker) { hatWorker = true; return; }
     if (laedtNeu) return;
     laedtNeu = true;
     /* Nicht mitten in einer Runde: Der Wechsel kann auch aus einem zweiten Tab
@@ -1765,7 +1767,6 @@ function starteServiceWorker() {
   });
   // updateViaCache 'none': das Skript selbst darf nie aus dem HTTP-Cache
   // kommen, sonst bemerkt der Browser eine neue Fassung tagelang nicht.
-  pruefeFassung();
   navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(reg => {
     swReg = reg;
     const pruefen = () => { if (reg.waiting && navigator.serviceWorker.controller) updateAnbieten(); };
@@ -1790,22 +1791,15 @@ function fassungGemerkt() {
   catch (e) { return null; }          // privater Modus, geleerter Speicher
 }
 
-function fassungVomWorker() {
-  return new Promise((fertig) => {
-    const ctrl = navigator.serviceWorker && navigator.serviceWorker.controller;
-    if (!ctrl) return fertig(null);
-    const kanal = new MessageChannel();
-    /* Eine aeltere Fassung kennt die Frage nicht und antwortet nie - ohne
-       diesen Wecker bliebe das Versprechen fuer immer offen. */
-    const uhr = setTimeout(() => fertig(null), 2000);
-    kanal.port1.onmessage = (e) => { clearTimeout(uhr); fertig(e.data ? String(e.data) : null); };
-    try { ctrl.postMessage('welche-fassung', [kanal.port2]); }
-    catch (e) { clearTimeout(uhr); fertig(null); }
-  });
-}
-
-async function pruefeFassung() {
-  const jetzt = await fassungVomWorker();
+/* Die Kennung kommt aus der App selbst, nicht mehr vom Service Worker. Der
+   Umweg ueber ihn scheiterte genau dort, wo die Auskunft am wichtigsten ist:
+   Im privaten Tab steuert kein Worker, beim allerersten Aufruf noch keiner, und
+   eine aeltere Fassung beantwortet die Frage gar nicht. In all diesen Faellen
+   stand in den Einstellungen „wird eingerichtet" statt einer Antwort - also
+   ausgerechnet dann, wenn man nachsehen will, ob ueberhaupt das Neue ankommt.
+   Der Build schreibt die Kennung jetzt in assets/js/fassung.js. */
+function pruefeFassung() {
+  const jetzt = FASSUNG;
   if (!jetzt) return;
   const alt = fassungGemerkt();
   const gewechselt = !!(alt && alt.v && alt.v !== jetzt);

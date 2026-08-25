@@ -59,9 +59,28 @@ if (fehlen.length || zuviel.length) {
   process.exit(1);
 }
 
+/* Die Fassungskennung gehoert auch IN die App, nicht nur in den Service Worker.
+   Sonst kann die App nur ueber ihn beantworten, welche Fassung laeuft - und
+   genau dort, wo man es am dringendsten wissen will, gibt es ihn nicht: im
+   privaten Tab, beim allerersten Aufruf, bei abgeschaltetem Worker. Nachgestellt
+   stand in den Einstellungen dann „wird eingerichtet" statt einer Auskunft.
+
+   Diese eine Datei bleibt deshalb aus der Kennung heraus: Sie enthaelt die
+   Kennung, sie kann sie nicht mitbestimmen. Ausgeliefert und zwischengespeichert
+   wird sie trotzdem, sie steht ja in files. */
+const STEMPEL = './assets/js/fassung.js';
+if (!files.includes(STEMPEL)) {
+  console.error(`FEHLER  ${STEMPEL} fehlt – die App koennte ihre Fassung nicht nennen.`);
+  process.exit(1);
+}
+
 const hash = createHash('sha256');
-for (const f of files) hash.update(readFileSync(f));
+for (const f of files) if (f !== STEMPEL) hash.update(readFileSync(f));
 const version = hash.digest('hex').slice(0, 10);
+
+writeFileSync(STEMPEL,
+  '/* Automatisch erzeugt von scripts/make-sw.mjs \u2013 nicht von Hand \u00e4ndern. */\n'
+  + `export const FASSUNG = 'wissenswerk-${version}';\n`);
 
 const sw = `/* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
 const VERSION = 'wissenswerk-${version}';
@@ -102,11 +121,6 @@ self.addEventListener('install', (e) => {
 
 self.addEventListener('message', (e) => {
   if (e.data === 'jetzt-uebernehmen') self.skipWaiting();
-  /* Die Seite fragt beim Start, welche Fassung sie gerade bedient. Nur so kann
-     sie melden, dass ein Update angekommen ist - der Worker weiss es, die Seite
-     wusste es nie. Geantwortet wird ueber den Port der Anfrage, damit die
-     Antwort den Fragenden erreicht und nicht alle offenen Tabs. */
-  if (e.data === 'welche-fassung' && e.ports && e.ports[0]) e.ports[0].postMessage(VERSION);
 });
 
 self.addEventListener('activate', (e) => {
