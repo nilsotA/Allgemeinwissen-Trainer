@@ -4,7 +4,7 @@ export const CATS = [
   { id: "nat", name: "Natur & Technik",     icon: "🔬" },
   { id: "mat", name: "Mathematik",          icon: "📐" },
   { id: "spo", name: "Sport",               icon: "🏅" },
-  { id: "kul", name: "Kunst & Musik",       icon: "🎨" },
+  { id: "kul", name: "Kunst & Unterhaltung", icon: "🎨" },
   { id: "spr", name: "Sprache & Literatur", icon: "📖" },
   { id: "pol", name: "Politik & Wirtschaft",icon: "⚖️" },
   { id: "all", name: "Alltag & Welt",       icon: "💡" }

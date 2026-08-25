@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.906 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.941 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -216,7 +216,7 @@ gegen den alten Stand fehlschlägt.
   Für unterwegs lässt sich eine kürzere Runde wählen (rund 3, 5 oder 10 Minuten).
 - **Wackelkandidaten** – gezielt die Karten, die immer wieder umkippen.
 - **Themen** – ein Gebiet am Stück üben oder ein einzelnes Teilgebiet gezielt: Tippen auf
-  „Sport“ öffnet die zwölf Teilgebiete von Trainingslehre bis Rekorde, jedes mit eigenem
+  „Sport“ öffnet die dreizehn Teilgebiete von Trainingslehre bis Rekorde, jedes mit eigenem
   Fortschritt. Vor einer Klausur in Bewegungslehre übt man genau diese Karten.
 - **Duell** – zehn Fragen, 15 Sekunden pro Frage. Trainiert Tempo für Quizduelle.
   Fehler landen automatisch im nächsten Tagestraining. Die Antworten zählen **getrennt**:
@@ -553,7 +553,7 @@ dachte – zerlegt `normalize()` den Text jetzt in Grundbuchstabe plus Zeichen u
 Zeichen weg. **Nach** der deutschen Umschrift: „Öl" bleibt `oel` und wird nicht zu `ol`.
 Umlaute kann man auf einer deutschen Tastatur schließlich tippen – „Konigs" statt „Königs" ist
 ein Schreibfehler, kein Tastaturproblem, und dafür ist die Fehlertoleranz zuständig. Ein Test
-prüft alle 1906 Antworten daraufhin durch.
+prüft alle 1941 Antworten daraufhin durch.
 
 ### „Weitermachen" wechselte still das Thema
 
@@ -672,7 +672,7 @@ Die Sammlung wurde Datei für Datei gegengelesen. Gefunden und behoben:
 - **Ein Zahlenwiderspruch.** Der Kreatinphosphat-Speicher trug auf einer Karte „6–10 Sekunden",
   auf einer neueren „10–20 Sekunden". 6–10 stimmt und passt zum 100-Meter-Lauf im Kontexttext.
 
-Alle zehn Datendateien sind einmal vollständig gegengelesen. Sprache & Literatur, Kunst & Musik
+Alle zehn Datendateien sind einmal vollständig gegengelesen. Sprache & Literatur, Kunst & Unterhaltung
 und Politik & Wirtschaft blieben ohne inhaltlichen Fund; die Fehler häuften sich dort, wo Karten
 nachträglich ergänzt wurden.
 
@@ -924,6 +924,42 @@ und betroffen wäre ausgerechnet die Zwei-Tab-Logik, die sich diese App mühsam 
 und mit einem eigenen Zwei-Instanzen-Test absichert. Ein unsichtbarer Gewinn rechtfertigt
 kein Risiko an der Stelle, an der Datenverlust entstünde. Die Messung steht hier, damit die
 Frage nicht dreimal neu aufgeworfen wird.
+
+### Die dünnste Flanke fürs Quizduell: Unterhaltung
+
+Ein Abgleich der Sammlung gegen die Fragetypen echter Quizspiele legte eine Lücke offen, die
+in der Fächerverteilung nicht auffällt: **Popkultur**. Film war mit 55 Karten gut ausgebaut,
+Musik mit 67 – aber Fernsehserien kamen auf vier Karten, Videospiele auf vier, Comics auf vier.
+In Quizduell und Trivial Pursuit ist „Unterhaltung" dagegen eine der sechs Hauptkategorien.
+
+35 neue Karten schließen die Lücke, in drei neuen Teilgebieten: **Fernsehen** (15),
+**Videospiele** (10) und **Comics** (10). Das Thema heißt deshalb jetzt **Kunst &
+Unterhaltung** statt „Kunst & Musik" – ein Gebiet, das Serien und Videospiele enthält, sollte
+sich nicht nach Musik benennen.
+
+**Die Gegenprüfung fand bei 15 der 35 Karten etwas.** Zwei unabhängig beauftragte Prüfer mit
+Rechercheauftrag kamen dabei auf denselben Kern – genau diese Übereinstimmung macht die Funde
+belastbar. Die lehrreichsten:
+
+- *The Crown* besetzt **alle zwei** Staffeln neu, nicht jede.
+- Die Namen *Tick, Trick und Track* hat Erika Fuchs **nicht** erfunden – der Verlag gab sie ihr
+  vor. Eine Legende, die in fast jeder Quelle steht.
+- Die *Gamescom* ist die größte Spielemesse der Welt nach **Ausstellungsfläche**; nach
+  Besucherzahl liegt ChinaJoy vorn. Ein Superlativ, der in der falschen Maßeinheit stand.
+- *Doctor Who* „läuft seit 1963" verschweigt, dass die Serie 1989 eingestellt und erst 2005
+  wiederbelebt wurde.
+- *Alfred* taucht erst 1943 in den Comics auf, vier Jahre nach Batman – „von Anfang an dabei"
+  stimmt nicht, und Robin kannte das Geheimnis schon seit 1940.
+- *Game of Thrones* war als Antwort **nicht mehr eindeutig**: „Beruht auf den Romanen von
+  George R. R. Martin" trifft inzwischen auch auf *House of the Dragon* und *A Knight of the
+  Seven Kingdoms* zu. Beim freien Abrufen hätte die App eine richtige Antwort abgestraft.
+- Der *Game Boy* kam 1989 in Japan heraus – nach Deutschland erst 1990.
+
+Dazu vier Zuschreibungen, die zu absolut formuliert waren und jetzt absichern, was sich
+absichern lässt: Doom als „Durchbruch zum Massenphänomen" statt als Begründer des Genres,
+Zelda „die meisten Teile" statt „die Reihe", die Lindenstraße als erste deutsche Soap **nach
+britischem Vorbild**, die Sopranos als Serie, die den Antihelden zum Standard machte statt ihn
+zu erfinden.
 
 ### Was die Fehlerjagd nicht bestätigt hat
 
