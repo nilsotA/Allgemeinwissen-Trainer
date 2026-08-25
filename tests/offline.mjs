@@ -333,6 +333,51 @@ try {
     await rctx.close();
   }
 
+  group('Die App sagt, welche Fassung laeuft');
+  {
+    /* Nach einem Update meldete sich bisher niemand: „Laden" tippen, die Seite
+       laedt neu - und nichts sagte dem Nutzer, ob es geklappt hat. Und nirgends
+       stand nachzulesen, welche Fassung ueberhaupt laeuft. */
+    kaputt = new Set(); swErsatz = null;
+    const [fctx, fp] = await frischerTab();
+
+    await fp.click('[data-view="settings"]');
+    await fp.waitForSelector('#updSuch', { timeout: 10000 });
+    const zeile = await fp.locator('#updSuch').locator('xpath=../..').innerText();
+    check('die Einstellungen nennen die laufende Fassung',
+      /[0-9a-f]{7}/.test(zeile) && /seit/.test(zeile), zeile.replace(/\n/g, ' | '));
+    check('kein Ladeknopf, solange nichts bereitsteht',
+      await fp.locator('#updNun').count() === 0);
+
+    await veroeffentliche(fp, 'fassungsanzeige');
+    await fp.waitForSelector('#updNun', { timeout: 20000 }).catch(() => {});
+    // Die Einstellungen werden nicht von selbst neu gezeichnet – einmal hin und zurück.
+    await fp.click('[data-view="home"]');
+    await fp.click('[data-view="settings"]');
+    await fp.waitForSelector('#updSuch', { timeout: 10000 });
+    check('bei einer neuen Fassung erscheint der Ladeknopf',
+      await fp.locator('#updNun').count() === 1);
+
+    await fp.locator('#updNun').click();
+    // Nach dem Neuladen muss die App sagen, dass sie jetzt neu ist.
+    let gemeldet = '';
+    for (let i = 0; i < 40 && !gemeldet; i++) {
+      await new Promise(r => setTimeout(r, 400));
+      gemeldet = await fp.locator('.toast:not(.aktion)').innerText().catch(() => '');
+    }
+    check('nach dem Update meldet die App den Erfolg', /Aktualisiert/.test(gemeldet),
+      gemeldet || '(keine Meldung)');
+
+    // Und die Fassung in den Einstellungen ist danach eine andere.
+    await fp.waitForSelector('#app:not([hidden])', { timeout: 15000 });
+    await fp.click('[data-view="settings"]');
+    await fp.waitForSelector('#updSuch', { timeout: 10000 });
+    const danach = await fp.locator('#updSuch').locator('xpath=../..').innerText();
+    check('die angezeigte Fassung hat sich geändert', danach !== zeile,
+      `${zeile.replace(/\n/g, ' ')} -> ${danach.replace(/\n/g, ' ')}`);
+    await fctx.close();
+  }
+
   kaputt = new Set();
   swErsatz = null;
   group('Vollständiges Update');

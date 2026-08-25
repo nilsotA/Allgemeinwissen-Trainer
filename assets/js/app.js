@@ -916,6 +916,8 @@ function renderSettings() {
   // waere ein Widerspruch, den die App nicht anzeigen sollte.
   const fok = (s.focus || []).filter(id => sel.includes(id));
   const flags = sess.flaggedCount();
+  const f = fassungGemerkt();
+  const wartet = !!(swReg && swReg.waiting);
   app.innerHTML = `
     <h1 class="vh">Einstellungen</h1>
     <h2 class="sec">Tagespensum</h2>
@@ -982,6 +984,22 @@ function renderSettings() {
     <h2 class="sec">Auf dem iPhone installieren</h2>
     <div class="card">
       <p class="muted">Safari öffnen → <b>Teilen</b> → <b>Zum Home-Bildschirm</b>. Danach startet Wissenswerk wie eine echte App, auch offline.</p>
+    </div>
+
+    <h2 class="sec">Fassung</h2>
+    <div class="card">
+      <div class="setrow">
+        <div>
+          <label>Installierte Fassung</label>
+          <p class="tiny">${f ? `${esc(fassungKurz(f.v))}${f.seit ? ` · seit ${new Date(f.seit).toLocaleDateString('de-DE')}` : ''}`
+                             : 'wird beim ersten Start eingerichtet'}</p>
+        </div>
+        <button class="btn" id="updSuch">Suchen</button>
+      </div>
+      ${wartet
+        ? `<div class="btn-stack" style="margin-top:11px"><button class="btn primary" id="updNun">Neue Fassung laden</button></div>
+           <p class="tiny" style="margin-top:9px">Eine neue Fassung liegt bereit. Beim Laden startet die App einmal neu – dein Lernfortschritt bleibt.</p>`
+        : `<p class="tiny" style="margin-top:11px">Wissenswerk meldet sich, sobald eine neue Fassung da ist – ausgetauscht wird erst, wenn du zustimmst.</p>`}
     </div>
 
     <h2 class="sec">Daten</h2>
@@ -1063,6 +1081,25 @@ function renderSettings() {
   document.getElementById('clrFlags')?.addEventListener('click', () => {
     // Nicht S().flags leeren: Der zweite offene Tab holte die Sterne sonst zurueck.
     store.loescheAlleMarkierungen(); toast('Markierungen gelöscht'); renderSettings();
+  });
+  document.getElementById('updSuch')?.addEventListener('click', async () => {
+    if (!swReg) return toast('Der Offline-Speicher wird noch eingerichtet');
+    toast('Wird geprüft …');
+    try { await swReg.update(); }
+    catch (e) { return toast('Keine Verbindung – später noch einmal versuchen'); }
+    /* update() stoesst bei einer neuen Fassung erst das Installieren an; das
+       Ergebnis steht nicht sofort fest. Deshalb kurz warten, statt vorschnell
+       „alles aktuell" zu behaupten. */
+    setTimeout(() => {
+      if (swReg.waiting || swReg.installing) { renderSettings(); toast('Neue Fassung gefunden'); }
+      else toast('Du hast bereits die neueste Fassung');
+    }, 1500);
+  });
+  document.getElementById('updNun')?.addEventListener('click', () => {
+    const w = swReg && swReg.waiting;
+    if (!w) { renderSettings(); return toast('Die neue Fassung ist nicht mehr bereit'); }
+    w.postMessage('jetzt-uebernehmen');
+    toast('Wird geladen …');
   });
   document.getElementById('rst').onclick = () => {
     if (confirm('Wirklich den gesamten Lernfortschritt löschen?')) {
@@ -1713,7 +1750,9 @@ function starteServiceWorker() {
   let hatWorker = !!navigator.serviceWorker.controller;
   let laedtNeu = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (!hatWorker) { hatWorker = true; return; }
+    // Beim allerersten Besuch gibt es hier zum ersten Mal einen Worker, den man
+    // nach seiner Fassung fragen kann.
+    if (!hatWorker) { hatWorker = true; pruefeFassung(); return; }
     if (laedtNeu) return;
     laedtNeu = true;
     /* Nicht mitten in einer Runde: Der Wechsel kann auch aus einem zweiten Tab
@@ -1726,6 +1765,7 @@ function starteServiceWorker() {
   });
   // updateViaCache 'none': das Skript selbst darf nie aus dem HTTP-Cache
   // kommen, sonst bemerkt der Browser eine neue Fassung tagelang nicht.
+  pruefeFassung();
   navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(reg => {
     swReg = reg;
     const pruefen = () => { if (reg.waiting && navigator.serviceWorker.controller) updateAnbieten(); };
@@ -1735,6 +1775,50 @@ function starteServiceWorker() {
       if (neu) neu.addEventListener('statechange', () => { if (neu.state === 'installed') pruefen(); });
     });
   }).catch(() => { /* offline ist Kür */ });
+}
+
+/* ---- Welche Fassung laeuft gerade, und ist eine neue da? ----------------
+   Bisher meldete sich nach einem Update niemand: Der Nutzer tippte „Laden", die
+   Seite lud neu - und nichts sagte ihm, ob es geklappt hat. Der Worker kennt
+   seine Fassung, die Seite konnte sie nur nicht erfragen. Jetzt tut sie es beim
+   Start, merkt sich die Antwort und vergleicht beim naechsten Mal. */
+const FASSUNG_KEY = 'wissenswerk.fassung';
+const fassungKurz = (v) => String(v || '').replace(/^wissenswerk-/, '').slice(0, 7);
+
+function fassungGemerkt() {
+  try { return JSON.parse(localStorage.getItem(FASSUNG_KEY) || 'null'); }
+  catch (e) { return null; }          // privater Modus, geleerter Speicher
+}
+
+function fassungVomWorker() {
+  return new Promise((fertig) => {
+    const ctrl = navigator.serviceWorker && navigator.serviceWorker.controller;
+    if (!ctrl) return fertig(null);
+    const kanal = new MessageChannel();
+    /* Eine aeltere Fassung kennt die Frage nicht und antwortet nie - ohne
+       diesen Wecker bliebe das Versprechen fuer immer offen. */
+    const uhr = setTimeout(() => fertig(null), 2000);
+    kanal.port1.onmessage = (e) => { clearTimeout(uhr); fertig(e.data ? String(e.data) : null); };
+    try { ctrl.postMessage('welche-fassung', [kanal.port2]); }
+    catch (e) { clearTimeout(uhr); fertig(null); }
+  });
+}
+
+async function pruefeFassung() {
+  const jetzt = await fassungVomWorker();
+  if (!jetzt) return;
+  const alt = fassungGemerkt();
+  const gewechselt = !!(alt && alt.v && alt.v !== jetzt);
+  // „seit" nur mitfuehren, wenn sich nichts geaendert hat - sonst stuende dort
+  // nach jedem Start das heutige Datum, und die Angabe waere wertlos.
+  const seit = (alt && alt.v === jetzt && alt.seit) ? alt.seit : Date.now();
+  try { localStorage.setItem(FASSUNG_KEY, JSON.stringify({ v: jetzt, seit })); }
+  catch (e) { /* dann eben keine Meldung beim naechsten Mal */ }
+  if (gewechselt) {
+    toast('Aktualisiert – Wissenswerk läuft jetzt in der neuen Fassung', 3600);
+    announce('Wissenswerk wurde aktualisiert.');
+  }
+  if (view === 'settings') renderSettings();
 }
 
 /* Waehrend einer laufenden Runde wird das Angebot zurueckgehalten. Es liegt sonst

@@ -569,6 +569,36 @@ Karten war der Tagesplan aufgebraucht, „Weitermachen" fiel auf die Wackelkandi
 und die waren im Test zufällig auch alle aus Sport. Der Test war grün, obwohl der Fehler
 danebenlag.
 
+### Was läuft hier eigentlich – und ist etwas Neues da?
+
+Der Balken „Neue Fassung bereit" beantwortete nur die halbe Frage. Nach dem Tippen auf „Laden"
+lud die Seite neu, und **niemand sagte, ob es geklappt hat**. Auch sonst gab es keine Stelle,
+an der man hätte nachsehen können, welche Fassung gerade läuft.
+
+Der Service Worker kannte seine Fassung die ganze Zeit – die Seite konnte sie nur nicht
+erfragen. Jetzt beantwortet er die Frage `welche-fassung` über den Port der Anfrage (nicht per
+Rundruf, sonst antwortete er allen offenen Tabs). Die App fragt beim Start, merkt sich die
+Antwort und vergleicht beim nächsten Mal. Weicht sie ab, kommt die Meldung **„Aktualisiert –
+Wissenswerk läuft jetzt in der neuen Fassung"**, auch für Sprachausgabe.
+
+Dazu eine Karte unter **Mehr → Fassung**: die installierte Fassung mit dem Datum, seit dem sie
+läuft, ein Knopf **Suchen** für die Nachfrage von Hand, und – falls etwas bereitsteht – **Neue
+Fassung laden** an derselben Stelle wie der Balken. Das Datum wird nur fortgeschrieben, wenn
+sich die Fassung wirklich geändert hat; sonst stünde dort nach jedem Start das heutige und die
+Angabe wäre wertlos.
+
+Zwei Feinheiten, die beim Bauen auffielen:
+
+- Eine **ältere Fassung kennt die Frage nicht** und antwortet nie. Ohne einen Wecker von zwei
+  Sekunden bliebe das Versprechen für immer offen und die Startseite hinge daran.
+- `update()` stößt bei einer neuen Fassung erst das Installieren an – das Ergebnis steht nicht
+  sofort fest. Der Suchen-Knopf wartet deshalb kurz, statt vorschnell „alles aktuell" zu
+  behaupten.
+
+Der erste Sprung von einer Fassung ohne diese Anzeige meldet noch nichts: Es gibt keinen
+gemerkten Vorgänger, mit dem sich vergleichen ließe. Ab dem übernächsten Update sagt die App
+jedes Mal Bescheid.
+
 ### Drei Wege, auf denen das Update-Angebot verpuffte
 
 Der Balken „Neue Fassung bereit" hatte drei Löcher, alle drei still:
