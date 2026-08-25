@@ -1096,6 +1096,27 @@ try {
     await sctx.close();
   }
 
+  group('Deutsche Zahlenschreibweise');
+  /* toFixed liefert immer einen Punkt - in einer deutschsprachigen Oberflaeche
+     ist „10.3 s" schlicht falsch. */
+  {
+    const zctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const zp = await zctx.newPage();
+    await zp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await zp.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.duelAnswers = 40; st.duelCorrect = 25; st.duelMs = 412000; st.duelTimed = 25;
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await zp.reload({ waitUntil: 'networkidle' });
+    await zp.click('[data-view="duel"]');
+    await zp.waitForSelector('#duelGo');
+    const zeile = await zp.locator('.card .row', { hasText: 'Ø Zeit' }).innerText();
+    check('Antwortzeit steht mit Komma', /\d,\d\s*s/.test(zeile), zeile);
+    check('Antwortzeit steht nicht mit Punkt', !/\d\.\d/.test(zeile), zeile);
+    await zctx.close();
+  }
+
   group('Voller Speicher meldet sich dauerhaft');
   /* Der einzige Pfad, auf dem Antworten still verschwinden. Eine Kurzmeldung
      reichte nicht: Nach fuenf Sekunden lernte man ahnungslos weiter. */

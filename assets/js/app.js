@@ -22,6 +22,11 @@ const tastenIndex = (e) => {
   return 'abcd'.indexOf(String(e.key).toLowerCase());
 };
 
+/* Deutsche Schreibweise: Komma, nicht Punkt. toFixed liefert immer einen
+   Punkt - in einer deutschsprachigen Oberflaeche ist das schlicht falsch. */
+const sekunden = (ms) => (ms / 1000).toLocaleString('de-DE',
+  { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
 const esc = (s) => String(s).replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
 
 /* Grobe Umrechnung: etwa acht Karten je Minute */
@@ -462,7 +467,7 @@ function renderDuelStart() {
     <div class="card" style="margin-top:16px">
       <div class="row between"><span>Bestleistung</span><b>${st.duelBest || 0} / 10</b></div>
       <div class="row between" style="margin-top:8px"><span>Trefferquote im Duell</span><b>${st.duelAnswers ? Math.round(st.duelCorrect / st.duelAnswers * 100) : 0} %</b></div>
-      ${st.duelTimed ? `<div class="row between" style="margin-top:8px"><span>Ø Zeit bis zur richtigen Antwort</span><b>${(st.duelMs / st.duelTimed / 1000).toFixed(1)} s</b></div>` : ''}
+      ${st.duelTimed ? `<div class="row between" style="margin-top:8px"><span>Ø Zeit bis zur richtigen Antwort</span><b>${sekunden(st.duelMs / st.duelTimed)} s</b></div>` : ''}
       <p class="tiny" style="margin-top:9px">Unter Zeitdruck liegt sie naturgemäß unter der Quote im Tagestraining – deshalb wird sie getrennt geführt.</p>
     </div>
     <div class="btn-stack" style="margin-top:14px">
