@@ -192,6 +192,109 @@ try {
       `sess-body noch da: ${await page.locator('.sess-body').count()}`);
   }
 
+  /* Zwei Wege, auf denen das Angebot bisher stillschweigend verpuffte. Beide
+     bekommen einen eigenen Browserkontext: Ein aus dem vorigen Abschnitt
+     stehengebliebener Balken oder Worker wuerde das Ergebnis sonst faerben. */
+  group('Update-Angebot: Abbruch und zweite Veroeffentlichung');
+
+  /* Eigener Kontext, frisch eingerichtet, Worker steuert die Seite. */
+  const frischerTab = async () => {
+    const c = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'allow' });
+    const pg = await c.newPage();
+    await pg.goto(BASIS + '/', { waitUntil: 'load' });
+    await pg.waitForSelector('#app:not([hidden])', { timeout: 15000 });
+    await pg.evaluate(() => navigator.serviceWorker.ready);
+    await pg.reload({ waitUntil: 'load' });
+    await pg.waitForSelector('#app:not([hidden])', { timeout: 15000 });
+    return [c, pg];
+  };
+  const veroeffentliche = async (pg, marke) => {
+    swErsatz = swQuelle.replace(/wissenswerk-[0-9a-f]+/, 'wissenswerk-' + marke);
+    await pg.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); await r.update(); });
+    await pg.waitForFunction(async (m) => (await caches.keys()).some(k => k.endsWith(m)),
+      marke, { timeout: 25000 });
+  };
+  /* Nach dem Tippen laedt die Seite neu - eine waitForFunction stuerbe dabei am
+     zerstoerten Ausfuehrungskontext. Deshalb von aussen nachfragen. */
+  const wartetAufBestand = async (pg, marke) => {
+    for (let i = 0; i < 40; i++) {
+      await new Promise(r => setTimeout(r, 500));
+      const da = await pg.evaluate(async (m) => {
+        const k = await caches.keys();
+        return k.length === 1 && k[0].endsWith(m);
+      }, marke).catch(() => false);
+      if (da) return true;
+    }
+    return false;
+  };
+
+  {
+    // 1. Eine Runde ohne einzige Antwort abbrechen: Der Balken wurde
+    //    zurueckgehalten, aber nur endRun() holte ihn nach - der Abbruch geht
+    //    ueber show(). Das Angebot blieb bis zum naechsten Start liegen.
+    kaputt = new Set(); swErsatz = null;
+    const [actx, ap] = await frischerTab();
+    await ap.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await ap.waitForSelector('.sess-body', { timeout: 10000 });
+    await veroeffentliche(ap, 'abbruchfassung');
+    await new Promise(r => setTimeout(r, 900));
+    check('waehrend der abgebrochenen Runde erscheint kein Balken',
+      await ap.locator('.toast.aktion').count() === 0);
+    await ap.click('#quit');                       // ohne eine einzige Antwort
+    await new Promise(r => setTimeout(r, 900));
+    check('nach dem Abbruch wird der Balken nachgeholt',
+      await ap.locator('.toast.aktion').count() === 1);
+    await actx.close();
+  }
+
+  {
+    // 2. Waehrend der Balken steht, erscheint eine ZWEITE neue Fassung. Der
+    //    Balken hielt eine feste Worker-Referenz auf die erste, die inzwischen
+    //    ueberholt (redundant) ist - „Laden" schickte seine Nachricht ins Leere.
+    kaputt = new Set(); swErsatz = null;
+    const [zctx, zp] = await frischerTab();
+    await veroeffentliche(zp, 'erstfassung');
+    await zp.waitForSelector('.toast.aktion', { timeout: 20000 });
+    await veroeffentliche(zp, 'zweitfassung');
+    await new Promise(r => setTimeout(r, 900));
+    check('der Balken steht noch, wenn die zweite Fassung eintrifft',
+      await zp.locator('.toast.aktion').count() === 1);
+    await zp.locator('.toast.aktion button').click();
+    check('„Laden" erreicht auch die zweite neue Fassung',
+      await wartetAufBestand(zp, 'zweitfassung'));
+    await zctx.close();
+  }
+
+  {
+    /* 3. Der Sonderfall erster Besuch: Beim Start steuert noch kein Worker, er
+       uebernimmt erst waehrend die Seite offen ist. Dieser normale Vorgang darf
+       kein Neuladen ausloesen - eine spaetere, echte neue Fassung aber schon.
+       Frueher stand „hatte beim Start keinen Worker" als Konstante fest: In der
+       ersten Sitzung bewirkte „Laden" nichts, waehrend der neue Worker den
+       alten Bestand schon geloescht hatte. */
+    kaputt = new Set(); swErsatz = null;
+    const ectx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'allow' });
+    const ep = await ectx.newPage();
+    await ep.goto(BASIS + '/', { waitUntil: 'load' });      // KEIN Neuladen: wie beim ersten Besuch
+    await ep.waitForSelector('#app:not([hidden])', { timeout: 15000 });
+    await ep.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 20000 });
+    await new Promise(r => setTimeout(r, 600));
+    await ep.evaluate(() => { window.__marke = 'erste Sitzung'; });
+    check('die erste Uebernahme laedt die Seite nicht neu',
+      await ep.evaluate(() => window.__marke) === 'erste Sitzung');
+
+    await veroeffentliche(ep, 'erstsitzungfassung');
+    await ep.waitForSelector('.toast.aktion', { timeout: 20000 });
+    await ep.locator('.toast.aktion button').click();
+    let neugeladen = false;
+    for (let i = 0; i < 30 && !neugeladen; i++) {
+      await new Promise(r => setTimeout(r, 500));
+      neugeladen = await ep.evaluate(() => window.__marke === undefined).catch(() => false);
+    }
+    check('in der ersten Sitzung laedt „Laden" die Seite trotzdem neu', neugeladen);
+    await ectx.close();
+  }
+
   kaputt = new Set();
   swErsatz = null;
   group('Vollständiges Update');

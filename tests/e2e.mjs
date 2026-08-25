@@ -277,6 +277,73 @@ try {
   await page.click('#quit');
   await page.waitForSelector('.hero, .tlist');
 
+  /* „Weitermachen" nach einer Themenrunde baute die Anschlussrunde aus dem
+     Tagesplan - also aus allen Themen. Wer gezielt Sport uebte, bekam beim
+     Weitermachen still etwas anderes, ohne dass irgendwo stand, dass das Thema
+     gewechselt hat. Dasselbe galt fuer Teilgebiete, Wackelkandidaten und
+     Markierte. */
+  {
+    const wctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const wp = await wctx.newPage();
+    await wp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    /* Das Tagespensum hochsetzen, sonst ist der Tagesplan nach zwanzig Karten
+       aufgebraucht - „Weitermachen" fiele auf die Wackelkandidaten zurueck, und
+       die waeren hier zufaellig auch alle aus Sport. Der Test haette den Fehler
+       dann nicht gesehen. */
+    await wp.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.settings = { ...(st.settings || {}), newPerDay: 120 };
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await wp.reload({ waitUntil: 'networkidle' });
+    await wp.click('[data-view="topics"]');
+    await wp.waitForSelector('[data-cat="spo"]');
+    await wp.locator('[data-cat="spo"]').click();
+    await wp.waitForSelector('#ganzesThema');
+    await wp.click('#ganzesThema');
+    await wp.waitForSelector('.sess-body');
+    const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
+    let ausSport = 0, karten = 0;
+    for (let i = 0; i < 40 && await wp.locator('.q').count(); i++) {
+      const kopf = await wp.locator('.qcat').first().innerText();
+      if (kopf.includes('Sport')) ausSport++;
+      karten++;
+      const q = (await wp.locator('.q').innerText()).trim();
+      const opts = await wp.locator('.opt').evaluateAll(ns => ns.map(n => n.dataset.v));
+      if (!opts.length) break;
+      const richtig = ANTWORT.get(q);
+      const wahl = opts.includes(richtig) ? richtig : opts[0];
+      await wp.locator(`.opt[data-v="${wahl.replace(/"/g, '&quot;')}"]`).first().click();
+      await wp.waitForTimeout(FUSS_TAUB);
+      const weiter = wp.locator('.sess-foot button');
+      if (await weiter.count()) { await weiter.first().click(); await wp.waitForTimeout(FUSS_TAUB); }
+    }
+    check('die Themenrunde bleibt beim Thema', karten > 0 && ausSport === karten,
+      `${ausSport} von ${karten} aus Sport`);
+    await wp.waitForSelector('#again', { timeout: 10000 });
+    await wp.click('#again');
+    await wp.waitForSelector('.sess-body', { timeout: 10000 });
+    /* Mehrere Karten ansehen, nicht nur die erste: Ein gemischter Tagesplan
+       faengt in einem von neun Faellen zufaellig auch mit Sport an - eine
+       einzelne Karte beweist gar nichts. */
+    const kopfe = [];
+    for (let i = 0; i < 5 && await wp.locator('.q').count(); i++) {
+      kopfe.push(await wp.locator('.qcat').first().innerText());
+      const q = (await wp.locator('.q').innerText()).trim();
+      const opts = await wp.locator('.opt').evaluateAll(ns => ns.map(n => n.dataset.v));
+      if (!opts.length) break;
+      const richtig = ANTWORT.get(q);
+      const wahl = opts.includes(richtig) ? richtig : opts[0];
+      await wp.locator(`.opt[data-v="${wahl.replace(/"/g, '&quot;')}"]`).first().click();
+      await wp.waitForTimeout(FUSS_TAUB);
+      const weiter = wp.locator('.sess-foot button');
+      if (await weiter.count()) { await weiter.first().click(); await wp.waitForTimeout(FUSS_TAUB); }
+    }
+    check('„Weitermachen" bleibt beim gewählten Thema',
+      kopfe.length >= 5 && kopfe.every(k => k.includes('Sport')), kopfe.join(' | '));
+    await wctx.close();
+  }
+
   await page.click('[data-view="settings"]');
   await page.waitForSelector('#npd');
   await page.locator('[data-fok="mat"]').click();

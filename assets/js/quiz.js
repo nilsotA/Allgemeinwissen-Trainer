@@ -83,7 +83,10 @@ const ZEICHEN = [
   [/[–—]/g, ' '],
   // Der Ableitungsstrich traegt Bedeutung: ohne ihn waere die Produktregel
   // „u' · v + u · v'" nicht von „u · v + u' · v'" zu unterscheiden.
-  [/[’´`']/g, ' strich '], [/[éèê]/g, 'e'], [/[àâá]/g, 'a'], [/[ç]/g, 'c'], [/[ñ]/g, 'n'],
+  [/[’´`']/g, ' strich '],
+  // é, à, ç und ñ standen hier einmal einzeln. Sie erledigt jetzt die
+  // Zerlegung in normalize() zusammen mit allen anderen Diakritika - eine
+  // Liste von Hand haette immer nur die Zeichen gekannt, an die jemand dachte.
 ];
 // „den", „einer", „eines" fehlten: „Grand Canyon" galt deshalb nicht als Antwort
 // auf eine Karte, deren Loesung „Den Grand Canyon" lautet.
@@ -99,7 +102,9 @@ const ZAHLWOERTER = {
 };
 
 export function normalize(s) {
-  let t = String(s).toLowerCase();
+  // NFC zuerst: Ein zerlegt eingegebenes „ä" (a + Trema) muss die deutsche
+  // Umschrift unten genauso erreichen wie das zusammengesetzte Zeichen.
+  let t = String(s).normalize('NFC').toLowerCase();
   for (const [re, ersatz] of ZEICHEN) t = t.replace(re, ersatz);
   /* Deutscher Tausenderpunkt raus, bevor das naechste Muster ihn zum Leerzeichen
      macht: Sonst wird aus „3.600" die Wortfolge „3 600", waehrend der Nutzer
@@ -107,7 +112,17 @@ export function normalize(s) {
      Handy tippt praktisch niemand Tausenderpunkte. Dieselbe Unterscheidung
      zwischen Tausenderpunkt und Dezimalkomma trifft NUM/zuZahl oben. */
   t = t.replace(/(\d)\.(?=\d{3}(\D|$))/g, '$1');
-  t = t.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+  t = t.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+  /* Erst danach die fremden Diakritika, und nur die: Ein deutsches Tastenfeld
+     gibt í, ó, ø, ř oder ć gar nicht her - wer „Brasilia" tippt, hat die
+     Hauptstadt gewusst. Bekannt war bisher nur eine Handvoll (é, à, ç, ñ), alles
+     andere fiel dem Muster unten zum Opfer und zerriss dabei das Wort: Aus
+     „Brasília" wurde „bras lia", und die richtige Antwort galt als falsch.
+     Die Umlaute sind vorher schon in ihrer deutschen Umschrift und bleiben es -
+     sonst hiesse „Öl" auf einmal „ol". */
+  t = t.replace(/ø/g, 'o').replace(/æ/g, 'ae').replace(/œ/g, 'oe').replace(/ł/g, 'l')
+       .replace(/đ/g, 'd').replace(/ð/g, 'd').replace(/þ/g, 'th').replace(/ı/g, 'i')
+       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
        .replace(/[^a-z0-9]+/g, ' ');
   t = t.split(' ').map(w => ZAHLWOERTER[w] || w).join(' ');
   const ohneFuell = t.replace(FUELLWOERTER, ' ').trim().replace(/\s+/g, ' ');

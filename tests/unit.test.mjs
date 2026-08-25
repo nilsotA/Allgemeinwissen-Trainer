@@ -239,6 +239,44 @@ test('normalize vereinheitlicht Umlaute, Satzzeichen und Füllwörter', () => {
   assert.equal(normalize('Straße'), 'strasse');
 });
 
+/* Ein deutsches Tastenfeld gibt í, ó, ø, ř oder ć gar nicht her - wer „Brasilia"
+   tippt, hat die Hauptstadt gewusst. Bekannt waren nur é, à, ç und ñ; alles
+   andere fiel dem Muster [^a-z0-9] zum Opfer und zerriss das Wort: Aus
+   „Brasília" wurde „bras lia". Umlaute bleiben ausdruecklich in der deutschen
+   Umschrift - die kann man tippen, und „Konigs" statt „Königs" ist ein
+   Schreibfehler, kein Tastaturproblem. */
+test('fremde Diakritika fallen auf ihren Grundbuchstaben', () => {
+  assert.equal(normalize('Brasília'), 'brasilia');
+  assert.equal(normalize('Jørn Utzon'), 'jorn utzon');
+  assert.equal(normalize('Bedřich Smetana'), 'bedrich smetana');
+  assert.equal(normalize('Solidarność'), 'solidarnosc');
+  assert.equal(normalize('Niccolò Machiavelli'), 'niccolo machiavelli');
+  assert.equal(normalize('Gabriel García Márquez'), 'gabriel garcia marquez');
+  // Die deutsche Umschrift bleibt, sonst hiesse „Öl" auf einmal „ol".
+  assert.equal(normalize('Öl'), 'oel');
+  assert.equal(normalize('Köln'), 'koeln');
+  // Zerlegt eingegebene Umlaute (a + Trema) muessen genauso ankommen.
+  assert.equal(normalize('O\u0308l'), 'oel');
+});
+
+/* Der Gegenbeweis am ganzen Bestand: Keine Karte darf die Tastenfeld-Schreibweise
+   ihrer eigenen Antwort abweisen. */
+test('jede Antwort ist auch ohne fremde Diakritika richtig', () => {
+  const HALTEN = new Set(['ä', 'ö', 'ü', 'Ä', 'Ö', 'Ü', 'ß']);
+  const tastenfeld = (t) => [...t].map(z => HALTEN.has(z) ? z
+    : z.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+       .replace(/ø/g, 'o').replace(/Ø/g, 'O').replace(/æ/g, 'ae').replace(/œ/g, 'oe')
+       .replace(/ł/g, 'l').replace(/Ł/g, 'L').replace(/đ/g, 'd').replace(/þ/g, 'th')).join('');
+  const schlecht = [];
+  for (const c of CARDS) for (const t of [c.a, ...(c.al || [])]) {
+    const getippt = tastenfeld(t);
+    if (getippt === t) continue;
+    const note = bewerte(c, getippt);
+    if (note < 0.8) schlecht.push(`${c.id}: „${getippt}" gilt nur zu ${note.toFixed(2)} als „${t}"`);
+  }
+  assert.deepEqual(schlecht, [], 'Antworten, die ohne Sonderzeichen durchfallen');
+});
+
 test('normalize schneidet keine Wortteile aus zusammengesetzten Wörtern', () => {
   // „in", „im", „von" usw. dürfen nur als eigenständige Wörter entfallen
   assert.equal(normalize('Induktion'), 'induktion');

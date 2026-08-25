@@ -539,6 +539,59 @@ die Zahl „981" machte. Und verkürzte Antworten („Die Bibliothek" statt „D
 Alexandria") werden abgelehnt, was richtig ist: Das sind unvollständige Antworten, keine
 Tippfehler.
 
+### Sonderzeichen, die kein deutsches Tastenfeld hergibt
+
+„Brasília", „Reykjavík", „Jørn Utzon", „Bedřich Smetana" – wer die Antwort weiß, tippt
+`Brasilia`, `Reykjavik`, `Jorn Utzon`, `Bedrich Smetana`, denn í, ø und ř stehen auf keiner
+deutschen Tastatur. Die Umschrift kannte aber nur eine handverlesene Liste (é, à, ç, ñ); alles
+andere fiel dem Muster `[^a-z0-9]` zum Opfer und **zerriss dabei das Wort**: Aus „Brasília"
+wurde `bras lia`, und die richtige Antwort galt als glatt falsch. Sieben Karten waren so nicht
+lösbar.
+
+Statt die Liste zu verlängern – sie hätte immer nur die Zeichen gekannt, an die jemand gerade
+dachte – zerlegt `normalize()` den Text jetzt in Grundbuchstabe plus Zeichen und wirft die
+Zeichen weg. **Nach** der deutschen Umschrift: „Öl" bleibt `oel` und wird nicht zu `ol`.
+Umlaute kann man auf einer deutschen Tastatur schließlich tippen – „Konigs" statt „Königs" ist
+ein Schreibfehler, kein Tastaturproblem, und dafür ist die Fehlertoleranz zuständig. Ein Test
+prüft alle 1906 Antworten daraufhin durch.
+
+### „Weitermachen" wechselte still das Thema
+
+Nach einer Runde bietet der Rückblick „Weitermachen" an. Er kannte dafür nur den *Modus* und
+baute für alles außer dem Duell einfach den Tagesplan. Wer gezielt Sport übte, ein Teilgebiet
+durchging, die Wackelkandidaten nacharbeitete oder seine markierten Karten wiederholte, bekam
+beim Weitermachen etwas anderes – ohne dass irgendwo stand, dass gewechselt wurde.
+
+Die Runde trägt jetzt ihre eigene Fortsetzung mit sich: Wer sie startet, weiß am besten, was
+weitergehen soll. Der Rückblick ruft nur noch auf, was ihm mitgegeben wurde. Der Durchlauftest
+prüft es an einer Themenrunde – und musste dafür erst das Tagespensum hochsetzen: Nach zwanzig
+Karten war der Tagesplan aufgebraucht, „Weitermachen" fiel auf die Wackelkandidaten zurück,
+und die waren im Test zufällig auch alle aus Sport. Der Test war grün, obwohl der Fehler
+danebenlag.
+
+### Drei Wege, auf denen das Update-Angebot verpuffte
+
+Der Balken „Neue Fassung bereit" hatte drei Löcher, alle drei still:
+
+- **Erster Besuch.** Ob beim Start schon ein Service Worker die Seite steuerte, wurde einmal
+  abgelesen und als Konstante behalten. Beim allerersten Besuch lautet die Antwort „nein" – und
+  blieb es für die ganze Sitzung. Wurde in derselben Sitzung wirklich eine neue Fassung
+  veröffentlicht, bewirkte „Laden" nichts Sichtbares, während der neue Worker den alten Bestand
+  längst gelöscht hatte. Jetzt zählt nur noch, ob es der *erste* Wechsel dieser Sitzung ist.
+- **Zweite Veröffentlichung.** Der Balken hielt eine feste Referenz auf den wartenden Worker.
+  Erschien, während er stand, eine zweite neue Fassung, war diese Referenz überholt – der
+  Browser stuft den vorherigen Worker als `redundant` ein, und „Laden" schickte seine Nachricht
+  ins Leere. Die wartende Fassung wird jetzt erst beim Tippen abgefragt.
+- **Abgebrochene Runde.** Während einer Runde wird das Angebot zurückgehalten. Nachgeholt hat
+  es nur `endRun()` – eine ohne einzige Antwort abgebrochene Runde geht aber über `show()`.
+  Das Angebot blieb bis zum nächsten Start liegen. Das Nachholen sitzt jetzt in `show()`
+  selbst, damit *jeder* Weg aus einer Runde heraus es mitnimmt.
+
+Alle drei haben einen Prüfstein im Offline-Test, und alle drei brauchten dafür einen **eigenen
+Browserkontext**: In einem gemeinsamen Kontext färbte ein stehengebliebener Balken aus dem
+vorigen Abschnitt das Ergebnis, und zwei der drei Tests waren grün, obwohl der Fehler wieder
+eingebaut war.
+
 ### Zwei Fehler in der Bewertung getippter Antworten
 
 Beide fielen bei einer adversarialen Fehlerjagd auf und waren nachstellbar.

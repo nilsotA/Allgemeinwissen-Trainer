@@ -86,6 +86,11 @@ function show(v) {
   app.hidden = false; topbar.hidden = false; nav.hidden = false;
   render();
   window.scrollTo(0, 0);
+  /* Eine ohne einzige Antwort abgebrochene Runde geht ueber show(), nicht ueber
+     endRun() - ein waehrend der Runde zurueckgehaltenes Update-Angebot blieb
+     dabei bis zum naechsten Start liegen. Hier statt beim Beenden-Knopf, damit
+     jeder Weg aus einer Runde heraus es nachholt. */
+  holeUpdateNach();
 }
 nav.addEventListener('click', e => {
   const b = e.target.closest('.nav-btn');
@@ -359,8 +364,9 @@ function renderHome() {
   // eine andere Warteschlange, und „N Karten, davon M neu" beschrieb eine
   // Runde, die beim Tippen verworfen wurde. Am deutlichsten bei den Kurzrunden:
   // slice(0, 20) schnitt aus einem frisch gemischten Plan.
+  const weiterTag = () => { const h = sess.buildDaily(); return h.length ? h : sess.buildWeak(15); };
   app.querySelector('[data-go="daily"]').onclick = () => {
-    startRun(tagesplan.length ? tagesplan : sess.buildWeak(15), 'daily');
+    startRun(tagesplan.length ? tagesplan : sess.buildWeak(15), 'daily', weiterTag);
   };
   document.getElementById('trotzdem')?.addEventListener('click', () => {
     setSetting('trotzdemNeu', true);
@@ -368,14 +374,14 @@ function renderHome() {
     renderHome();
   });
   app.querySelectorAll('[data-short]').forEach(b => b.onclick = () => {
-    startRun(tagesplan.slice(0, Number(b.dataset.short)), 'daily');
+    startRun(tagesplan.slice(0, Number(b.dataset.short)), 'daily', weiterTag);
   });
   app.querySelector('[data-go="weak"]').onclick = () => {
     const q = sess.buildWeak(20);
-    q.length ? startRun(q, 'weak') : toast('Erst ein paar Karten lernen');
+    q.length ? startRun(q, 'weak', () => sess.buildWeak(20)) : toast('Erst ein paar Karten lernen');
   };
   app.querySelector('[data-go="flag"]')?.addEventListener('click', () => {
-    startRun(sess.buildFlagged(20), 'flag');
+    startRun(sess.buildFlagged(20), 'flag', () => sess.buildFlagged(20));
   });
 }
 
@@ -439,13 +445,15 @@ function renderTopicDetail() {
   document.getElementById('zurueckThemen').onclick = () => show('topics');
   document.getElementById('ganzesThema').onclick = () => {
     const q = sess.buildTopic(cat.id, 20);
-    q.length ? startRun(q, 'topic') : toast('Keine Karten in diesem Thema');
+    q.length ? startRun(q, 'topic', () => sess.buildTopic(cat.id, 20))
+      : toast('Keine Karten in diesem Thema');
   };
   /* Im Quizduell kennt man die Kategorie vor der Frage – genau diese Lage
      laesst sich hier proben: ein Thema, aber unter Zeitdruck. */
   document.getElementById('themaDuell').onclick = () => {
     const q = sess.buildDuel(10, cat.id);
-    q.length ? startRun(q, 'duel', cat.id) : toast('Keine Karten in diesem Thema');
+    q.length ? startRun(q, 'duel', () => sess.buildDuel(10, cat.id))
+      : toast('Keine Karten in diesem Thema');
   };
   bindeTeilgebiete();
 }
@@ -455,7 +463,7 @@ function bindeTeilgebiete() {
   app.querySelectorAll('[data-sub]').forEach(b => b.onclick = () => {
     const [cat, sub] = b.dataset.sub.split('|');
     const q = sess.buildSub(cat, sub, 20);
-    q.length ? startRun(q, 'sub') : toast('Keine Karten gefunden');
+    q.length ? startRun(q, 'sub', () => sess.buildSub(cat, sub, 20)) : toast('Keine Karten gefunden');
   });
 }
 
@@ -474,7 +482,8 @@ function renderDuelStart() {
       <button class="btn primary" id="duelGo">${ico('duell')}Duell starten</button>
     </div>
     <p class="tiny center" style="margin-top:14px">Fehler aus dem Duell landen automatisch im nächsten Tagestraining – so schließt sich die Lücke sofort.</p>`;
-  document.getElementById('duelGo').onclick = () => startRun(sess.buildDuel(10), 'duel');
+  document.getElementById('duelGo').onclick = () =>
+    startRun(sess.buildDuel(10), 'duel', () => sess.buildDuel(10));
 }
 
 /* Trefferquoten liegen fast immer zwischen 60 und 85 Prozent. Als Balken ab
@@ -1091,11 +1100,17 @@ function sichtbareZeit() {
   return messen;
 }
 
-function startRun(queue, mode, cat = null) {
+/* weiter() baut die Anschlussrunde fuer „Weitermachen". Es steht hier und nicht
+   im Rueckblick, weil nur die aufrufende Stelle weiss, WAS gerade geuebt wurde:
+   Vorher las der Rueckblick nur den Modus und baute fuer alles ausser dem Duell
+   einfach den Tagesplan - wer gezielt ein Thema, ein Teilgebiet, die
+   Wackelkandidaten oder die Markierten uebte, bekam beim Weitermachen still
+   etwas anderes, ohne dass es irgendwo stand. */
+function startRun(queue, mode, weiter = null) {
   if (!queue.length) return toast('Nichts zu üben');
   stopDuelTimer();
   run = {
-    queue: queue.slice(), i: 0, mode, cat,
+    queue: queue.slice(), i: 0, mode, weiter,
     done: 0, correct: 0, start: Date.now(),
     total: queue.length, added: 0,
     wrong: [], undo: null,
@@ -1159,15 +1174,12 @@ function endRun() {
      also steht die Loesung auch hier hinter einem Griff. */
   bindeAufdecken();
   document.getElementById('again').onclick = () => {
-    // Die Kategorie muss mit: sonst wechselt die zweite Runde still das Thema.
-    const heute = r.mode === 'duel' ? null : sess.buildDaily();
-    const q = r.mode === 'duel' ? sess.buildDuel(10, r.cat)
-      : heute.length ? heute : sess.buildWeak(15);
-    q.length ? startRun(q, r.mode, r.cat) : show('home');
+    const q = r.weiter ? r.weiter() : [];
+    q.length ? startRun(q, r.mode, r.weiter) : show('home');
   };
   document.getElementById('home').onclick = () => show('home');
   run = null;
-  if (updateWartet) { const w = updateWartet; updateWartet = null; updateBalken(w); }
+  holeUpdateNach();
   paintChrome();
 }
 
@@ -1678,19 +1690,26 @@ function boot() {
    laufenden Runde die halbe App auszutauschen, waere der schlechteste
    denkbare Moment. Stattdessen fragt die App einmal nach. */
 function starteServiceWorker() {
-  // Beim allerersten Besuch uebernimmt der Worker die Seite ganz normal - das
-  // ist kein Update und darf kein Neuladen ausloesen.
-  const hatteWorker = !!navigator.serviceWorker.controller;
+  /* Beim allerersten Besuch uebernimmt der Worker die Seite ganz normal - das
+     ist kein Update und darf kein Neuladen ausloesen. Frueher stand dieser
+     Zustand als Konstante fest, einmal beim Start abgelesen. Wurde in DERSELBEN
+     Sitzung danach wirklich eine neue Fassung veroeffentlicht, blieb es beim
+     „hatte keinen Worker": „Laden" bewirkte nichts Sichtbares, waehrend der
+     neue Worker den alten Bestand laengst geloescht hatte. Jetzt zaehlt nur
+     noch, ob es der erste Wechsel dieser Sitzung ist. */
+  let hatWorker = !!navigator.serviceWorker.controller;
   let laedtNeu = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (!hatteWorker || laedtNeu) return;
+    if (!hatWorker) { hatWorker = true; return; }
+    if (laedtNeu) return;
     laedtNeu = true;
     location.reload();
   });
   // updateViaCache 'none': das Skript selbst darf nie aus dem HTTP-Cache
   // kommen, sonst bemerkt der Browser eine neue Fassung tagelang nicht.
   navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(reg => {
-    const pruefen = () => { if (reg.waiting && navigator.serviceWorker.controller) updateAnbieten(reg.waiting); };
+    swReg = reg;
+    const pruefen = () => { if (reg.waiting && navigator.serviceWorker.controller) updateAnbieten(); };
     pruefen();
     reg.addEventListener('updatefound', () => {
       const neu = reg.installing;
@@ -1704,18 +1723,26 @@ function starteServiceWorker() {
    Durchlauf ueber mehrere Monate blieb genau daran eine Runde haengen. Bewirken
    koennte es mitten in der Runde ohnehin nichts: Das Neuladen wird bis zum Ende
    der Runde verweigert, weil es die offene Frage schlucken wuerde. */
-let updateWartet = null;
-function updateAnbieten(worker) {
-  if (run) { updateWartet = worker; return; }
-  updateBalken(worker);
+let updateWartet = false;
+let swReg = null;
+function updateAnbieten() {
+  if (run) { updateWartet = true; return; }
+  updateBalken();
 }
 
-/* Wird auch aus endRun aufgerufen, wenn das Angebot zurueckgehalten wurde. */
-function updateBalken(worker) {
+/** Ein zurueckgehaltenes Angebot nachholen, sobald keine Runde mehr laeuft. */
+function holeUpdateNach() {
+  if (!updateWartet || run) return;
+  updateWartet = false;
+  updateBalken();
+}
+
+/* Wird auch aus show() und endRun aufgerufen, wenn das Angebot zurueckgehalten wurde. */
+function updateBalken() {
   /* Der Speicherhinweis ist dringender und belegt denselben Platz. Das
      Update-Angebot wird dann zurueckgestellt statt verworfen - sonst waere es
      nach einem einzigen Speicherfehler bis zum naechsten Start verschwunden. */
-  if (document.querySelector('.toast.aktion.speicher')) { updateWartet = worker; return; }
+  if (document.querySelector('.toast.aktion.speicher')) { updateWartet = true; return; }
   if (document.querySelector('.toast.aktion')) return;
   document.querySelector('.toast')?.remove();
   const d = document.createElement('div');
@@ -1731,12 +1758,18 @@ function updateBalken(worker) {
        Balken weg, Vormerkung setzen – endRun holt ihn nach. */
     if (run) {
       d.remove();
-      updateWartet = worker;
+      updateWartet = true;
       toast('Erst die Runde zu Ende – danach kommt das Angebot zurück');
       return;
     }
+    /* Die wartende Fassung wird erst beim Tippen abgefragt. Der Balken hielt
+       frueher eine feste Worker-Referenz: Wurde waehrend er stand ein zweites
+       Mal veroeffentlicht, zeigte sie auf einen laengst ueberholten Worker,
+       und „Laden" verpuffte ohne jede Rueckmeldung. */
+    const w = swReg && swReg.waiting;
     d.remove();
-    worker.postMessage('jetzt-uebernehmen');
+    if (!w) { toast('Die neue Fassung ist nicht mehr bereit – sie kommt beim nächsten Start'); return; }
+    w.postMessage('jetzt-uebernehmen');
   };
   d.appendChild(b);
   document.body.appendChild(d);
@@ -1758,8 +1791,7 @@ function speicherBalken() {
   b.onclick = async () => {
     if (!await sichern()) return;
     d.remove();
-    // Ein waehrenddessen zurueckgestelltes Update-Angebot jetzt nachholen.
-    if (updateWartet && !run) { const w = updateWartet; updateWartet = null; updateBalken(w); }
+    holeUpdateNach();          // ein waehrenddessen zurueckgestelltes Angebot
   };
   d.appendChild(b);
   document.body.appendChild(d);

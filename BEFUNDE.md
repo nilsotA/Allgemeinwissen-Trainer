@@ -29,6 +29,12 @@ ist. Die Begründungen zu behobenen Fehlern stehen dann in der README.
 - [x] **mittel** `store.js` – `claims`, `claimsMiss`, `factIdx`, `factSeen` gingen verloren
 - [x] **mittel** `srs.js` – die Duell-Deckelung überlebte das Zusammenführen nicht
 - [x] **mittel** `store.js` – eine nur markierte Karte verlor beim Umformulieren ihren Stern
+- [x] **mittel** `quiz.js` – í, ø, ř und ć zerrissen das Wort; sieben Karten waren
+  mit deutschem Tastenfeld nicht lösbar
+- [x] **mittel** `app.js` – „Weitermachen" wechselte still das Thema
+- [x] **mittel** `app.js` – in der ersten Sitzung bewirkte „Laden" nichts
+- [x] **mittel** `app.js` – nach einer zweiten Veröffentlichung verpuffte „Laden"
+- [x] **mittel** `app.js` – eine abgebrochene Runde holte das Angebot nicht nach
 
 ## Offen
 
@@ -36,16 +42,7 @@ ist. Die Begründungen zu behobenen Fehlern stehen dann in der README.
 (keine mehr)
 
 ### mittel
-- [ ] `quiz.js:86` – `normalize()` kennt nur einen Teil der diakritischen
-  Zeichen; sieben Karten geben für die deutsche Tastaturschreibweise kein Häkchen.
-- [ ] `app.js:1162` – „Weitermachen" nach einer Themenrunde wechselt still das
-  Thema (gilt auch für Wackelkandidaten und Markierte).
-- [ ] `app.js:1673` – `hatteWorker` wird einmal beim Start festgehalten; in der
-  ersten Sitzung bewirkt „Laden" nichts, der alte Bestand ist trotzdem gelöscht.
-- [ ] `app.js:1729` – der Balken hält eine feste Worker-Referenz; nach einer
-  zweiten Veröffentlichung verpufft „Laden".
-- [ ] `app.js:1222` – eine ohne Antwort abgebrochene Runde geht über `show()`
-  statt `endRun()`; ein zurückgehaltenes Update-Angebot wird nicht nachgeholt.
+(keine mehr)
 
 ### niedrig
 - [ ] `quiz.js:106` – `ZAHLWOERTER` ist ein Objektliteral; die Eingabe
