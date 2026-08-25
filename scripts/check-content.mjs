@@ -321,7 +321,34 @@ FACTS.forEach((f, i) => {
    Uebernehmen mit: node scripts/check-content.mjs --kennungen */
 const KENNUNGEN = 'data/kennungen.json';
 const jetzt = CARDS.map(c => c.id).sort();
+const heuteAlle = new Set(jetzt);
 const nachfolger = new Set(CARDS.flatMap(c => c.alt || []));
+
+/* Ein Vorgaengertext darf nicht auf eine lebende Karte zeigen. Sonst raeumt die
+   Uebernahme beim Start den Lernstand DIESER Karte ab: Sie traegt die Kennung,
+   die eine andere Karte als ihre frueherer Fassung beansprucht, und wird dabei
+   geloescht. Passiert schnell - es genuegt, den alten Wortlaut aus der falschen
+   Zeile zu kopieren oder p bei einer Karte stehenzulassen, die gar nicht
+   umformuliert wurde. Keine andere Pruefung schlaegt dabei an. */
+const lebend = [...nachfolger].filter(id => heuteAlle.has(id));
+if (lebend.length) {
+  const wer = CARDS.filter(c => (c.alt || []).some(id => heuteAlle.has(id)))
+    .map(c => `„${c.q.slice(0, 50)}"`).slice(0, 4).join(', ');
+  fail(`${lebend.length}x zeigt ein Vorgaengertext (p) auf eine Karte, die es noch gibt – `
+    + `deren Lernstand wuerde beim Start geloescht. Betroffen: ${wer}`);
+}
+/* Zwei Karten koennen nicht dieselbe Vorgaengerin beerben - eine ginge leer aus,
+   und welche, entscheidet die Reihenfolge in der Datei. */
+const beansprucht = new Map();
+for (const c of CARDS) {
+  for (const id of c.alt || []) {
+    if (beansprucht.has(id)) {
+      fail(`zwei Karten beanspruchen denselben Vorgaenger: „${beansprucht.get(id).slice(0, 40)}" `
+        + `und „${c.q.slice(0, 40)}"`);
+    }
+    beansprucht.set(id, c.q);
+  }
+}
 if (process.argv.includes('--kennungen')) {
   writeFileSync(KENNUNGEN, JSON.stringify(jetzt, null, 0).replace(/","/g, '",\n "') + '\n');
   console.log(`${KENNUNGEN} auf ${jetzt.length} Kennungen gebracht`);

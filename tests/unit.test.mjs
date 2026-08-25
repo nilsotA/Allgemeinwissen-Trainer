@@ -600,6 +600,39 @@ test('mehrdeutige Teilgebiete werden beim Einpflegen nicht geraten', () => {
   assert.match(aus, /1 Karten wären ergänzt, 2 abgewiesen/);
 });
 
+/* Ein Zeilenumbruch im Kartentext stand roh in einer Zeichenkette mit doppelten
+   Anfuehrungszeichen: data/*.js war damit syntaktisch kaputt, und die App zeigte
+   nach dem naechsten Start nur noch eine weisse Seite. Auffallen wuerde das erst
+   im Browser - die Pruefskripte lesen die Datei ja gar nicht mehr ein. */
+test('Zeilenumbrüche und Anführungszeichen überstehen das Einpflegen', () => {
+  const zaehler = new Map();
+  for (const c of CARDS) {
+    if (!zaehler.has(c.sub)) zaehler.set(c.sub, new Set());
+    zaehler.get(c.sub).add(c.cat);
+  }
+  const [eindeutig] = [...zaehler].find(([, cats]) => cats.size === 1);
+
+  const daten = { gebiete: [{ cards: [{
+    q: 'Pruefsatz mit\nUmbruch und\tTabulator?',
+    a: 'Eine Antwort mit "Anführung" und \\ Schrägstrich',
+    s: eindeutig, d: 2,
+    t: 'Erste Zeile\nZweite Zeile.', w: ['B', 'C', 'D'],
+  }] }] };
+  const datei = join(mkdtempSync(join(tmpdir(), 'umbruch-')), 'ergebnis.json');
+  writeFileSync(datei, JSON.stringify(daten));
+  const aus = execFileSync(process.execPath,
+    ['scripts/merge-cards.mjs', datei, '--dry'], { encoding: 'utf8' });
+
+  const zeile = aus.split('\n').find(z => z.startsWith('{q:"'));
+  assert.ok(zeile, `keine Kartenzeile in der Vorschau:\n${aus}`);
+  let gelesen;
+  assert.doesNotThrow(() => { [gelesen] = new Function('return [' + zeile.replace(/,$/, '') + ']')(); },
+    `die erzeugte Zeile parst nicht: ${zeile}`);
+  assert.equal(gelesen.q, 'Pruefsatz mit Umbruch und Tabulator?');
+  assert.equal(gelesen.t, 'Erste Zeile Zweite Zeile.');
+  assert.equal(gelesen.a, 'Eine Antwort mit "Anführung" und \\ Schrägstrich');
+});
+
 /* Bei manchen Antworten nennt die Loesung eine MENGE – die vier DNA-Basen, die
    fuenf Verfassungsorgane. Wer sie in anderer Folge tippt, hat recht. Bei anderen
    ist die Reihenfolge die ganze Antwort: der Modellierungskreislauf, die PECH-

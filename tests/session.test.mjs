@@ -405,7 +405,7 @@ test('eine Sicherung geht verlustfrei wieder herein', () => {
   const st = store.S();
   st.cards['pruef-1'] = { ef: 2.3, iv: 9, due: 5, reps: 4, lapses: 2, seen: 9, ok: 7, last: 123 };
   st.days['2026-08-20'] = { done: 12, correct: 9, newC: 3, sec: 400, duel: 10, duelOk: 6 };
-  st.flags['pruef-1'] = true;
+  st.flags['pruef-1'] = 1755600000000;      // Markierungen tragen einen Zeitstempel
   Object.assign(st, {
     totalAnswers: 99, totalCorrect: 70, streak: 5, best: 9, lastDay: '2026-08-20',
     claims: 20, claimsMiss: 4, factSeen: 30, factIdx: 30, factDay: '2026-08-20',
@@ -627,4 +627,133 @@ test('das Duell beginnt nicht jedes Mal mit denselben Karten', () => {
   const anteil = treffer / (RUNDEN * 10);
   assert.ok(anteil > 0.20 && anteil < 0.55,
     `Anteil wackliger Karten ${(anteil * 100).toFixed(1)} % liegt ausserhalb 20-55 %`);
+});
+
+/* ---- Zusammenfuehren zweier Tabs: was nur wachsen darf und was nicht ---- */
+
+/* „Alle Markierungen loeschen" war mit zwei offenen Tabs wirkungslos: Das
+   Zusammenfuehren kannte bei flags nur Wachstum, der zweite Tab holte jeden
+   geloeschten Stern sofort zurueck. */
+test('eine geloeschte Markierung bleibt geloescht', async () => {
+  const B = await import('../assets/js/store.js?markier-tab');
+  store.toggleFlag('stern-1');
+  store.save(true);
+  B.save(true);                            // Tab B zieht die Markierung zu sich
+  assert.equal(B.isFlagged('stern-1'), true, 'Tab B muss den Stern erst einmal sehen');
+
+  store.toggleFlag('stern-1');             // Tab A nimmt ihn wieder weg
+  store.save(true);
+  assert.equal(store.isFlagged('stern-1'), false, 'in Tab A ist der Stern weg');
+
+  B.save(true);                            // Tab B schreibt danach irgendetwas
+  assert.equal(B.isFlagged('stern-1'), false, 'der geloeschte Stern kam aus Tab B zurueck');
+  const abgelegt = JSON.parse(localStorage.getItem('wissenswerk.v1'));
+  assert.ok(!abgelegt.flags['stern-1'] || abgelegt.flags['stern-1'] < 0,
+    'auch im Speicher darf die Markierung nicht wieder stehen');
+});
+
+/* touchStreak() setzt die Serie nach einer Pause bewusst auf 1 zurueck. Stand
+   streak in der Maximum-Liste, hob der zweite Tab sie wieder auf den alten
+   Wert - die Anzeige log dann eine Serie, die es nicht mehr gab. */
+test('eine abgerissene Serie wird vom zweiten Tab nicht wieder aufgeblasen', async () => {
+  const B = await import('../assets/js/store.js?serien-tab');
+  const st = store.S();
+  st.streak = 30; st.best = 30; st.lastDay = store.numToKey(store.todayNum() - 9);
+  store.save(true);
+  B.save(true);
+  assert.equal(B.S().streak, 30, 'Tab B muss die alte Serie erst einmal sehen');
+
+  store.touchStreak();                     // Tab A lernt heute - nach neun Tagen Pause
+  store.save(true);
+  assert.equal(store.S().streak, 1, 'in Tab A faengt die Serie neu an');
+
+  B.save(true);
+  assert.equal(B.S().streak, 1, `die abgerissene Serie stand danach bei ${B.S().streak}`);
+  assert.equal(B.S().best, 30, 'der Rekord bleibt dabei stehen');
+});
+
+/* Diese Zaehler standen in keiner Merge-Regel: Der schreibende Tab drueckte
+   seinen eigenen (aelteren) Stand durch, und die Merkanker fingen von vorne an. */
+test('Merkanker und Selbsteinschaetzung ueberleben den zweiten Tab', async () => {
+  const B = await import('../assets/js/store.js?zaehler-tab');
+  Object.assign(store.S(), {
+    claims: 20, claimsMiss: 4, factSeen: 30, factIdx: 7, factDay: '2026-08-20',
+  });
+  store.save(true);
+
+  B.save(true);                            // Tab B schreibt und fuehrt dabei zusammen
+  const b = B.S();
+  assert.equal(b.claims, 20, 'claims verloren');
+  assert.equal(b.claimsMiss, 4, 'claimsMiss verloren');
+  assert.equal(b.factSeen, 30, 'factSeen verloren');
+  assert.equal(b.factIdx, 7, 'factIdx gehoert zum groesseren factSeen');
+  const abgelegt = JSON.parse(localStorage.getItem('wissenswerk.v1'));
+  assert.equal(abgelegt.claims, 20, 'im Speicher steht wieder der alte Stand');
+});
+
+/* Der Kartenvergleich beim Zusammenfuehren entscheidet ueber last. Setzt
+   nachDuellFehler() das Feld nicht, sieht die gedeckelte Karte genauso alt aus
+   wie die ungedeckelte im anderen Tab - und die Deckelung faellt weg. */
+test('eine im Duell verpatzte Karte behaelt ihre Deckelung im zweiten Tab', async () => {
+  const { nachDuellFehler } = await import('../assets/js/srs.js');
+  const B = await import('../assets/js/store.js?duell-tab');
+  const t = store.todayNum();
+  store.putCard('duell-1', { ef: 2.5, iv: 30, due: t + 20, reps: 5, lapses: 0, seen: 6, ok: 5, last: 1000 });
+  store.save(true);
+  B.save(true);
+  assert.equal(B.cardState('duell-1').iv, 30, 'Tab B muss die Karte erst einmal kennen');
+
+  store.putCard('duell-1', nachDuellFehler(store.cardState('duell-1')));
+  store.save(true);
+  assert.equal(store.cardState('duell-1').iv, 10, 'die Deckelung selbst muss stimmen');
+
+  B.save(true);
+  assert.equal(B.cardState('duell-1').iv, 10,
+    `die Deckelung war nach dem Zusammenfuehren wieder bei ${B.cardState('duell-1').iv}`);
+});
+
+/* Eine Karte kann markiert sein, ohne je gelernt worden zu sein - beim
+   Nachschlagen genuegt ein Tippen auf den Stern. Dann gibt es keinen
+   Kartenstand, an dem die Markierung haengen koennte. */
+test('eine nur markierte Karte nimmt ihre Markierung ins neue Kennwort mit', () => {
+  const c = CARDS[1];
+  const alt = c.cat + '-nur-markiert';
+  store.toggleFlag(alt);
+  assert.equal(store.uebernimmVorgaenger([[c.id, [alt]]]), 1, 'nichts hat sich bewegt');
+  assert.equal(store.isFlagged(c.id), true, 'die Markierung ist beim Umformulieren verlorengegangen');
+  assert.equal(store.isFlagged(alt), false, 'die alte Kennung ist noch markiert');
+});
+
+/* Ein Stand aus einer aelteren Fassung traegt bei den Markierungen noch „true".
+   Wuerde das beim Laden verworfen, verschwaenden alle Sterne beim Update. */
+test('eine Markierung aus einer aelteren Fassung bleibt erhalten', async () => {
+  localStorage.setItem('wissenswerk.v1', JSON.stringify({
+    ...JSON.parse(store.exportJSON()), rev: 3, flags: { 'alt-wahr': true },
+  }));
+  const A = await import('../assets/js/store.js?altbestand');
+  assert.equal(A.isFlagged('alt-wahr'), true, 'die alte Markierung ist verlorengegangen');
+  // ... und laesst sich danach loeschen, ohne dass sie zurueckkommt.
+  A.toggleFlag('alt-wahr');
+  assert.equal(A.isFlagged('alt-wahr'), false);
+});
+
+/* Die Uebernahme umformulierter Karten lief nur einmal beim Modulstart - also
+   vor jedem Einlesen. Wer eine Sicherung zurueckholte, verlor den Stand aller
+   Karten, deren Frage seither neu formuliert worden war. */
+test('ein eingelesenes Backup traegt umformulierte Karten mit', () => {
+  const c = CARDS.find(x => x.alt && x.alt.length);
+  assert.ok(c, 'es muss mindestens eine umformulierte Karte geben');
+  const stand = { ef: 2.4, iv: 40, due: store.todayNum() + 40, reps: 6, lapses: 1, seen: 9, ok: 8, last: 5000 };
+  const datei = JSON.stringify({ ...JSON.parse(store.exportJSON()), cards: { [c.alt[0]]: stand } });
+
+  store.importJSON(datei);
+  assert.ok(store.cardState(c.id), 'die umformulierte Karte faengt nach dem Einlesen bei null an');
+  assert.equal(store.cardState(c.id).iv, 40, 'der Stand kam unvollstaendig an');
+  assert.ok(!store.cardState(c.alt[0]), 'die alte Kennung liegt noch herum');
+
+  // Dasselbe gilt fuer den Weg zurueck: Sicherung holen ersetzt den Stand ebenso.
+  store.resetAll();
+  assert.ok(!store.cardState(c.id), 'nach dem Zuruecksetzen darf nichts mehr stehen');
+  assert.equal(store.sicherungZurueck(), true);
+  assert.equal(store.cardState(c.id)?.iv, 40, 'der zurueckgeholte Stand hat die Umformulierung verloren');
 });

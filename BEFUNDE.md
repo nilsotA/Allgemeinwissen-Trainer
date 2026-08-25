@@ -19,34 +19,23 @@ ist. Die Begründungen zu behobenen Fehlern stehen dann in der README.
 - [x] **hoch** `session.js` – „Thema im Duell" war bei pausiertem Thema tot
 - [x] **hoch** `app.js` – Doppeltipp beantwortete die nächste, ungelesene Karte
 - [x] **mittel** `session.js` – jedes Duell begann mit denselben drei Fragen
+- [x] **hoch** `session.js` – nach dem Einlesen einer Sicherung fielen umformulierte
+  Karten auf null zurück
+- [x] **hoch** `sw.js` – eine Lücke beim Geruest heilte nie, offline kam „Offline"
+- [x] **hoch** `check-content.mjs` – ein `p` durfte auf eine lebende Karte zeigen
+- [x] **hoch** `merge-cards.mjs` – Zeilenumbrüche machten `data/*.js` kaputt
+- [x] **mittel** `store.js` – Markierungen ließen sich mit zwei Tabs nicht löschen
+- [x] **mittel** `store.js` – eine abgerissene Serie wurde vom zweiten Tab aufgeblasen
+- [x] **mittel** `store.js` – `claims`, `claimsMiss`, `factIdx`, `factSeen` gingen verloren
+- [x] **mittel** `srs.js` – die Duell-Deckelung überlebte das Zusammenführen nicht
+- [x] **mittel** `store.js` – eine nur markierte Karte verlor beim Umformulieren ihren Stern
 
 ## Offen
 
 ### hoch
-- [ ] `session.js:10` – nach dem Einlesen einer Sicherung verlieren umformulierte
-  Karten ihren Stand: `uebernimmVorgaenger()` läuft einmal beim Modulstart, also
-  vor dem Import. 16 Karten mit früherer Fragefassung fallen auf null zurück.
-- [ ] `sw.js:99` – der fetch-Handler liest das Gerüst unter `./index.html`,
-  schreibt es aber unter der Anfrage-URL. Eine Lücke bei `index.html` heilt nie,
-  offline erscheint die nackte Zeile „Offline" statt der App.
-- [ ] `check-content.mjs:324` – ein Vorgängertext `p` darf auf eine noch lebende
-  Karte zeigen; keine Prüfung schlägt an, der Lernstand der lebenden Karte wird
-  beim Start gelöscht.
-- [ ] `merge-cards.mjs:39` – Zeilenumbrüche werden nicht escapt; eine Karte mit
-  Umbruch macht `data/*.js` syntaktisch kaputt (weiße Seite).
+(keine mehr)
 
 ### mittel
-- [ ] `store.js:121` – Markierungen lassen sich bei zwei offenen Tabs nicht
-  löschen: Das Zusammenführen kennt bei `flags` nur Wachstum.
-- [ ] `store.js:122` – eine abgerissene Serie wird vom zweiten Tab wieder auf den
-  alten Wert gehoben (`streak` steht in der Maximum-Liste, obwohl
-  `touchStreak()` ihn bewusst auf 1 zurücksetzt).
-- [ ] `store.js:125` – `claims`, `claimsMiss`, `factIdx`, `factSeen` fallen beim
-  Zusammenführen auf den Stand des schreibenden Tabs zurück.
-- [ ] `store.js:111` + `srs.js:111` – `nachDuellFehler()` setzt `last` nicht, die
-  Intervall-Deckelung überlebt das Zusammenführen deshalb nicht.
-- [ ] `store.js:388` – eine nur markierte, nie gelernte Karte verliert beim
-  Umformulieren ihre Markierung.
 - [ ] `quiz.js:86` – `normalize()` kennt nur einen Teil der diakritischen
   Zeichen; sieben Karten geben für die deutsche Tastaturschreibweise kein Häkchen.
 - [ ] `app.js:1162` – „Weitermachen" nach einer Themenrunde wechselt still das

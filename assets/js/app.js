@@ -1041,7 +1041,8 @@ function renderSettings() {
     else toast('Keine Sicherung vorhanden');
   });
   document.getElementById('clrFlags')?.addEventListener('click', () => {
-    S().flags = {}; save(true); toast('Markierungen gelöscht'); renderSettings();
+    // Nicht S().flags leeren: Der zweite offene Tab holte die Sterne sonst zurueck.
+    store.loescheAlleMarkierungen(); toast('Markierungen gelöscht'); renderSettings();
   });
   document.getElementById('rst').onclick = () => {
     if (confirm('Wirklich den gesamten Lernfortschritt löschen?')) {

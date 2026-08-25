@@ -1,13 +1,19 @@
 /* Stellt die Lernwarteschlange zusammen: fällige Wiederholungen + neue Karten,
    verschränkt über die Kategorien (Interleaving). */
 import { CARDS, catCards } from '../../data/index.js';
-import { S, settings, cardState, today, todayNum, isFlagged, uebernimmVorgaenger } from './store.js';
+import { S, settings, cardState, today, todayNum, isFlagged, uebernimmVorgaenger,
+         setNachErsatz } from './store.js';
 import { isDue, isNew, strength, isLeech } from './srs.js';
 import { shuffle } from './quiz.js';
 
 /* Umformulierte Karten erben den Stand ihrer frueheren Fassung. Muss laufen,
-   bevor irgendjemand Kartenstaende liest - deshalb hier und nicht spaeter. */
-uebernimmVorgaenger(CARDS.filter(c => c.alt && c.alt.length).map(c => [c.id, c.alt]));
+   bevor irgendjemand Kartenstaende liest - deshalb hier und nicht spaeter. Und
+   erneut nach jedem Einlesen und jedem Zuruecksetzen: Die Sicherungsdatei
+   kennt nur die Kennungen von damals. */
+const VORGAENGER = CARDS.filter(c => c.alt && c.alt.length).map(c => [c.id, c.alt]);
+export const migriereVorgaenger = () => uebernimmVorgaenger(VORGAENGER);
+migriereVorgaenger();
+setNachErsatz(migriereVorgaenger);
 
 export function activeCats() {
   const sel = settings().cats;

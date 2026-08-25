@@ -173,6 +173,34 @@ statt eingesammelt – die Meldung sagt dann ehrlich „ersetzt – hier überno
 „zusammengeführt". Ein Test fährt zwei echte Modulinstanzen gegeneinander, wie zwei Tabs es
 tun; gegen den alten Stand schlägt er fehl.
 
+#### Was wachsen darf – und was nicht
+
+„Alle Zähler wachsen nur" stimmte nicht für alles, was im Zustand steht, und an vier Stellen
+log das Ergebnis:
+
+- **Markierungen.** Sie kannten beim Zusammenführen nur Wachstum. Mit zwei offenen Tabs ließ
+  sich damit kein einziger Stern löschen: Der andere Tab holte ihn beim nächsten Schreiben
+  zurück, und „Alle Markierungen löschen" war wirkungslos. Eine Markierung ist deshalb kein
+  `true` mehr, sondern ein **Zeitpunkt**; ein negativer Wert ist ein Grabstein – entfernt zu
+  diesem Zeitpunkt. Es gewinnt der jüngere Stempel, bei Gleichstand der Grabstein, damit beide
+  Tabs zum selben Ergebnis kommen. Grabsteine werden nach 90 Tagen weggeräumt. Alte Stände mit
+  `true` gelten als Stempel 1 und verlieren gegen jede spätere Entscheidung.
+- **Die Serie.** `streak` stand in der Maximum-Liste, obwohl `touchStreak()` sie nach einer
+  Pause bewusst auf 1 zurücksetzt – der zweite Tab hob sie wieder auf den alten Wert. Die
+  Serie gehört jetzt zu dem Stand, der zuletzt gelernt hat (späteres `lastDay` gewinnt). Der
+  **Rekord** bleibt beim Maximum: Er ist eine Bestmarke und fällt nie.
+- **Merkanker und Selbsteinschätzung.** `claims`, `claimsMiss`, `factSeen` und `factIdx`
+  standen in gar keiner Regel und fielen auf den Stand des schreibenden Tabs zurück – die
+  Merkanker fingen von vorn an. Die drei Zähler wachsen jetzt mit; `factIdx` zeigt in eine
+  Liste und wandert deshalb mit dem `factSeen`, zu dem er gehört.
+- **Die Deckelung nach einem Duellfehler.** Beim Kartenvergleich entscheidet allein `last`,
+  welcher Stand der jüngere ist – und `nachDuellFehler()` setzte das Feld nicht. Die gedeckelte
+  Karte sah damit genauso alt aus wie die ungedeckelte im anderen Tab, und die Deckelung fiel
+  beim nächsten Speichern still wieder weg.
+
+Jeder der vier Fälle hat einen Test, der zwei echte Modulinstanzen gegeneinander fährt und
+gegen den alten Stand fehlschlägt.
+
 ### Was bewusst *nicht* drin ist
 
 - **Terminglättung.** Die Idee, Wiederholungen auf den am wenigsten belasteten Tag im
@@ -403,6 +431,19 @@ die Ausnahmeliste nicht mehr zum Ordner passt.
 Die restlichen sechs Sekunden sind reine Übertragungszeit für 240 kB Karten – dagegen hilft
 nur weniger Inhalt. Stattdessen sagt der Startbildschirm nach anderthalb Sekunden, was gerade
 passiert und dass es einmalig ist.
+
+**Eine Lücke im Bestand heilte nie.** Der Browser räumt bei Platzmangel einzelne Einträge weg,
+und eine Veröffentlichung kann auf halbem Weg stehenbleiben. Fehlte dabei ausgerechnet das
+Grundgerüst, half kein weiterer Aufruf: Der `fetch`-Handler **las** es unter `./index.html`,
+**legte** die Antwort aber unter der Anfrage-URL ab – bei einem Aufruf von `/` also unter `/`.
+Jeder Aufruf mit Netz gelang und verdeckte den Schaden; ohne Netz stand statt der App die
+nackte Zeile „Offline". Gelesen und geschrieben wird jetzt unter demselben Namen.
+
+Der Prüfstein dafür musste zweimal umgebaut werden. Ein Neuladen der Seite bewies nichts –
+Chromium bedient es notfalls aus seinem eigenen Zwischenspeicher –, und `setOffline` ebenso
+wenig: Abrufe, die der Service Worker selbst absetzt, gehen an der Offline-Nachstellung des
+Browsers vorbei. Beide Fassungen waren grün, obwohl der Fehler danebenlag. Erst als der
+Testserver das Grundgerüst selbst verweigert, misst der Test, was er behauptet.
 
 **Und wenn die App gar nicht lädt?** Dann blieb „Wissenswerk wird geladen …" für immer stehen –
 samt dem Hinweis, dass es gleich losgeht. Ein abgebrochener Download, eine beschädigte
@@ -668,6 +709,24 @@ nicht mehr – das Skript nahm einfach die erste Datei und hätte Sportkarten na
 geschrieben. Es verlangt jetzt bei mehrdeutigen Teilgebieten ein ausdrückliches Feld `cat` und
 weist alles andere ab. Ein Test prüft das mit, weil falsch abgelegte Karten beim Lesen des
 Diffs kaum auffallen.
+
+Die Übernahme lief allerdings **nur einmal beim Modulstart** – also vor jedem Einlesen. Wer
+eine Sicherung zurückholte, verlor den Stand genau der Karten, deren Frage seither neu
+formuliert worden war; derzeit wären das 16. Der Zustandsspeicher ruft die Übernahme jetzt
+nach jedem ausdrücklichen Ersetzen erneut auf – Einlesen, Zurücksetzen, Wiederherstellen.
+
+Zwei Fehler im Werkzeug konnten dabei still Schaden anrichten:
+
+- Ein Vorgängertext `p` durfte auf eine **noch lebende** Karte zeigen. Dann räumte die
+  Übernahme beim Start den Lernstand dieser Karte ab – sie trägt ja die Kennung, die eine
+  andere Karte als ihre frühere Fassung beansprucht. Es genügt, den alten Wortlaut aus der
+  falschen Zeile zu kopieren. `npm run check` weist das jetzt ab, ebenso zwei Karten, die
+  dieselbe Vorgängerin beerben wollen.
+- `scripts/merge-cards.mjs` maskierte Anführungszeichen und Schrägstriche, aber keine
+  **Zeilenumbrüche**. Eine Karte mit Umbruch im Text hätte `data/*.js` syntaktisch zerstört –
+  weiße Seite, und keine Prüfung hätte angeschlagen, weil die Skripte die kaputte Datei gar
+  nicht mehr einlesen können. Weißraum wird jetzt eingeebnet, und vor dem Schreiben parst das
+  Skript die erzeugten Zeilen selbst; was nicht parst, wird nicht geschrieben.
 
 Nach dem Umformulieren einmal `node scripts/check-content.mjs --kennungen` laufen lassen,
 damit die Liste den neuen Stand kennt.

@@ -17,7 +17,7 @@ const DEFAULTS = {
     focus: null           // Schwerpunktthemen: bekommen doppelt so viele neue Karten
   },
   cards: {},              // id -> { ef, iv, due, reps, lapses, seen, ok, last }
-  flags: {},              // id -> true, wenn beim Nachschlagen markiert
+  flags: {},              // id -> Zeitstempel (positiv = markiert, negativ = Grabstein)
   days: {},               // 'YYYY-MM-DD' -> { done, correct, newC, min }
   streak: 0,
   best: 0,
@@ -56,6 +56,41 @@ function deepMerge(base, add) {
    Fehlermeldung auf null. Deshalb wird beim Laden aufgefuellt. */
 const KARTE_LEER = { ef: 2.5, iv: 0, due: 0, reps: 0, lapses: 0, seen: 0, ok: 0, last: 0 };
 
+/* Eine Markierung ist kein „true", sondern ein Zeitpunkt. Das Zusammenfuehren
+   zweier Tabs kannte bei flags nur Wachstum: Der zweite Tab holte jeden
+   geloeschten Stern sofort zurueck, „Alle Markierungen loeschen" war mit zwei
+   offenen Tabs also wirkungslos. Ein negativer Stempel ist ein Grabstein - die
+   Markierung wurde zu diesem Zeitpunkt entfernt. Beim Zusammenfuehren gewinnt
+   der juengere Stempel; bei gleichem Betrag der Grabstein, damit beide Tabs
+   dasselbe Ergebnis bekommen. Alte Staende mit „true" zaehlen als Stempel 1 und
+   verlieren damit gegen jede spaetere Entscheidung. */
+const istMarkiert = (v) => v === true || (typeof v === 'number' && v > 0);
+const alsStempel = (v) => {
+  if (v === true) return 1;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
+};
+let flagUhr = 0;
+/* Streng steigend: Zwei Tastendruecke in derselben Millisekunde bekaemen sonst
+   denselben Stempel, und die zweite Entscheidung verlore gegen die erste. */
+const flagStempel = () => (flagUhr = Math.max(Date.now(), flagUhr + 1));
+const GRABSTEIN_TAGE = 90;
+export const zaehleMarkierungen = (z) =>
+  Object.values((z && z.flags) || {}).filter(istMarkiert).length;
+
+/* Grabsteine muessen nicht ewig liegen: Nach drei Monaten haelt kein zweiter Tab
+   die alte Markierung mehr fest, und die Ablage bliebe sonst dauerhaft mit
+   jedem je geloeschten Stern belastet. */
+function normalisiereFlags(z) {
+  const grenze = Date.now() - GRABSTEIN_TAGE * 86400000;
+  for (const [id, v] of Object.entries(z.flags || {})) {
+    const s = alsStempel(v);
+    if (!s || (s < 0 && -s < grenze)) { delete z.flags[id]; continue; }
+    z.flags[id] = s;
+  }
+  return z;
+}
+
 let state = load();
 
 function load() {
@@ -70,7 +105,7 @@ function load() {
         if (typeof c[feld] !== 'number' || !Number.isFinite(c[feld])) c[feld] = KARTE_LEER[feld];
       }
     }
-    return zustand;
+    return normalisiereFlags(zustand);
   } catch (e) {
     // Bewusst console.error: hier landet auch ein Programmierfehler, und der
     // wuerde sonst den gesamten Fortschritt still auf die Standardwerte setzen.
@@ -118,12 +153,42 @@ function zusammenfuehren(fremd, eigen) {
                     newC: groesser(e.newC, f.newC), sec: groesser(e.sec, f.sec),
                     duel: groesser(e.duel, f.duel), duelOk: groesser(e.duelOk, f.duelOk) };
   }
-  for (const id of Object.keys(fremd.flags || {})) z.flags[id] = true;
-  for (const k of ['totalAnswers', 'totalCorrect', 'streak', 'best', 'duelBest',
-                   'duelAnswers', 'duelCorrect', 'duelMs', 'duelTimed', 'lastExport']) {
+  for (const [id, f] of Object.entries(fremd.flags || {})) {
+    const fremdStempel = alsStempel(f);
+    if (!fremdStempel) continue;
+    const eigenStempel = alsStempel(z.flags[id]);
+    if (Math.abs(fremdStempel) > Math.abs(eigenStempel) ||
+        (Math.abs(fremdStempel) === Math.abs(eigenStempel) && fremdStempel < 0)) {
+      z.flags[id] = fremdStempel;
+    }
+  }
+  for (const k of ['totalAnswers', 'totalCorrect', 'best', 'duelBest',
+                   'duelAnswers', 'duelCorrect', 'duelMs', 'duelTimed', 'lastExport',
+                   'claims', 'claimsMiss']) {
     z[k] = groesser(z[k], fremd[k]);
   }
-  if ((fremd.lastDay || '') > (z.lastDay || '')) z.lastDay = fremd.lastDay;
+  /* streak darf hier NICHT das Maximum sein: touchStreak() setzt die Serie nach
+     einer Pause bewusst auf 1 zurueck: Der zweite Tab hob sie sonst wieder auf
+     den alten Wert, und die Startseite zeigte eine Serie, die es nicht mehr gab.
+     Die Serie gehoert zu dem Stand, der zuletzt gelernt hat. best bleibt beim
+     Maximum - das ist ein Rekord und faellt nie. */
+  const eigenerTag = keyToNum(z.lastDay);
+  const fremderTag = keyToNum(fremd.lastDay);
+  if (fremderTag !== null && (eigenerTag === null || fremderTag > eigenerTag)) {
+    z.streak = Number(fremd.streak) || 0;
+    z.lastDay = fremd.lastDay;
+  } else if (fremderTag !== null && fremderTag === eigenerTag) {
+    z.streak = groesser(z.streak, fremd.streak);
+  }
+  z.best = groesser(z.best, z.streak);
+  /* factIdx zeigt in eine Liste und waechst nicht monoton - es wandert mit dem
+     Zaehler, zu dem es gehoert, sonst zeigte die Rueckschau auf einen anderen
+     Merkanker als den zuletzt gesehenen. */
+  if ((Number(fremd.factSeen) || 0) > (Number(z.factSeen) || 0)) {
+    z.factSeen = Number(fremd.factSeen) || 0;
+    z.factIdx = Number(fremd.factIdx) || 0;
+    if (fremd.factDay) z.factDay = fremd.factDay;
+  }
   z.rev = groesser(z.rev, fremd.rev);
   return z;                                  // Einstellungen bleiben die dieses Tabs
 }
@@ -232,12 +297,23 @@ export function cardState(id) {
   return state.cards[id] || null;
 }
 
-export const isFlagged = (id) => !!state.flags[id];
+export const isFlagged = (id) => istMarkiert(state.flags[id]);
 export function toggleFlag(id) {
-  if (state.flags[id]) delete state.flags[id];
-  else state.flags[id] = true;
+  const an = !istMarkiert(state.flags[id]);
+  state.flags[id] = an ? flagStempel() : -flagStempel();
   save();
-  return !!state.flags[id];
+  return an;
+}
+/** Alle Markierungen entfernen – als Grabsteine, damit der zweite Tab sie nicht zurueckholt. */
+export function loescheAlleMarkierungen() {
+  let n = 0;
+  for (const id of Object.keys(state.flags)) {
+    if (!istMarkiert(state.flags[id])) continue;
+    state.flags[id] = -flagStempel();
+    n++;
+  }
+  save(true);
+  return n;
 }
 export function putCard(id, cs) {
   state.cards[id] = cs;
@@ -287,7 +363,7 @@ export function installFlush() {
       || state.duelAnswers !== vorher.duelAnswers
       || state.streak !== vorher.streak
       || Object.keys(state.cards).length !== Object.keys(vorher.cards).length
-      || Object.keys(state.flags).length !== Object.keys(vorher.flags).length;
+      || zaehleMarkierungen(state) !== zaehleMarkierungen(vorher);
     onFremdStand(uebernommen, sichtbar);
   });
 }
@@ -295,6 +371,14 @@ export function installFlush() {
 /* Zuruecksetzen und Einlesen sind ausdrueckliche Entscheidungen - sie duerfen
    nicht vom Zusammenfuehren wieder eingesammelt werden. Deshalb bekommt der neue
    Zustand eine hoehere Fassungsnummer als alles, was gerade gespeichert ist. */
+/* Nach jedem Ersetzen muss aufgeraeumt werden, was sonst nur beim Modulstart
+   laeuft - allen voran die Uebernahme umformulierter Karten. Ohne diesen Haken
+   verloren nach dem Einlesen einer Sicherung genau die Karten ihren Stand,
+   deren Frage seither neu formuliert worden war. Der Haken liegt hier und nicht
+   in session.js, weil nur die Ablage weiss, wann sie den Zustand austauscht. */
+let nachErsatz = () => {};
+export const setNachErsatz = (fn) => { nachErsatz = fn; };
+
 function ersetzeZustand(neu) {
   let gespeichert = 0;
   try { gespeichert = Number(JSON.parse(localStorage.getItem(KEY) || '{}').rev) || 0; }
@@ -305,6 +389,7 @@ function ersetzeZustand(neu) {
   catch (e) { /* unlesbar ist so gut wie nicht vorhanden */ }
   neu.gen = Math.max(Number(state.gen) || 0, gespeicherteGen) + 1;
   state = neu;
+  nachErsatz();
   save(true);
 }
 
@@ -367,7 +452,11 @@ function saeubern(roh) {
       duel: zahl(d.duel, 0, 1e6, 0), duelOk: zahl(d.duelOk, 0, 1e6, 0),
     };
   }
-  for (const id of Object.keys(roh.flags || {})) if (typeof id === 'string') rein.flags[id] = true;
+  for (const [id, v] of Object.entries(roh.flags || {})) {
+    if (typeof id !== 'string') continue;
+    const s = alsStempel(v);
+    if (s) rein.flags[id] = Math.max(-1e15, Math.min(1e15, s));
+  }
   rein.streak = zahl(roh.streak, 0, 1e5, 0);
   rein.best = zahl(roh.best, 0, 1e5, 0);
   rein.duelBest = zahl(roh.duelBest, 0, 100, 0);
@@ -398,15 +487,23 @@ function saeubern(roh) {
 export function uebernimmVorgaenger(paare) {
   let bewegt = 0;
   for (const [neu, alte] of paare) {
-    if (state.cards[neu]) continue;              // neue Kennung hat schon einen Stand
+    let etwas = false;
     for (const alt of alte) {
-      if (!state.cards[alt]) continue;
-      state.cards[neu] = state.cards[alt];
-      delete state.cards[alt];
-      if (state.flags[alt]) { state.flags[neu] = true; delete state.flags[alt]; }
-      bewegt++;
-      break;
+      if (!state.cards[neu] && state.cards[alt]) {   // neue Kennung hat sonst schon einen Stand
+        state.cards[neu] = state.cards[alt];
+        delete state.cards[alt];
+        etwas = true;
+      }
+      /* Die Markierung wandert getrennt vom Lernstand: Beim Nachschlagen genuegt
+         ein Tippen auf den Stern, eine Karte kann also markiert sein, ohne je
+         gelernt worden zu sein. Haengte die Uebernahme am Kartenstand, verlor
+         genau diese Karte beim Umformulieren ihre Markierung. */
+      if (istMarkiert(state.flags[alt])) {
+        if (!istMarkiert(state.flags[neu])) { state.flags[neu] = flagStempel(); etwas = true; }
+        state.flags[alt] = -flagStempel();
+      }
     }
+    if (etwas) bewegt++;
   }
   if (bewegt) save();
   return bewegt;

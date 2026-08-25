@@ -108,7 +108,11 @@ export function schedule(cs, grade, opts) {
     einer ohnehin ueberfaelligen Karte bleibt das alte Intervall stehen. */
 export function nachDuellFehler(cs, t = todayNum()) {
   const zuletzt = cs.due - cs.iv;
-  return { ...cs, due: t, iv: Math.max(0, Math.min(cs.iv, t - zuletzt)) };
+  /* last mitfuehren: Beim Zusammenfuehren zweier Tabs entscheidet allein dieses
+     Feld, welcher Kartenzustand der juengere ist. Ohne die Marke sah die
+     gedeckelte Karte genauso alt aus wie die ungedeckelte im anderen Tab - und
+     die Deckelung fiel beim naechsten Speichern still wieder weg. */
+  return { ...cs, due: t, iv: Math.max(0, Math.min(cs.iv, t - zuletzt)), last: Date.now() };
 }
 
 /** Reifegrad 0..1 – wie fest sitzt die Karte? */

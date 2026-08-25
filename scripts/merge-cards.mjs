@@ -36,7 +36,13 @@ const roh = JSON.parse(readFileSync(pfad, 'utf8'));
 const eingang = (roh.gebiete || []).flatMap(g => g.cards || []);
 const vorhanden = new Set(CARDS.map(c => c.q.trim()));
 
-const esc = (s) => String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+/* Zuerst Weissraum einebnen, dann erst maskieren: Ein Zeilenumbruch im Text
+   stand sonst roh in einer Zeichenkette mit doppelten Anfuehrungszeichen - die
+   Datei war damit syntaktisch kaputt und die App zeigte eine weisse Seite.
+   Umbruch, Tabulator und geschuetztes Leerzeichen sind in einer Kartenzeile
+   ohnehin nie gewollt. */
+const esc = (s) => String(s).replace(/\s+/g, ' ').trim()
+  .replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 const zeile = (c) => `{q:"${esc(c.q)}",a:"${esc(c.a)}",s:"${esc(c.s)}",d:${c.d},`
   + (c.mc ? 'mc:true,' : '')
   + `t:"${esc(c.t)}",w:[${c.w.map(w => `"${esc(w)}"`).join(',')}]},`;
@@ -62,6 +68,11 @@ for (const [ziel, liste] of [...proDatei].sort()) {
   if (schluss < 0) { console.error(`${ziel}: Abschluss „];" nicht gefunden`); process.exit(1); }
   const block = `/* ---------- Ergänzt: Lücken geschlossen ---------- */\n`
     + liste.map(zeile).join('\n') + '\n';
+  /* Letzte Sicherung vor dem Schreiben: Was hier nicht parst, macht data/*.js
+     unbrauchbar - und das faellt erst auf, wenn die App weiss bleibt. */
+  try { new Function('return [' + liste.map(zeile).join('\n').replace(/,$/, '') + ']')(); }
+  catch (e) { console.error(`${ziel}: erzeugte Zeilen parsen nicht – nichts geschrieben (${e.message})`); process.exit(1); }
+  if (dry) console.log(block.trimEnd());
   if (!dry) writeFileSync(ziel, txt.slice(0, schluss) + block + txt.slice(schluss));
   console.log(`${ziel.padEnd(14)} +${liste.length}`);
   summe += liste.length;

@@ -60,6 +60,18 @@ const bereit = () => page.evaluate(async () => {
   for (let i = 0; i < 100 && !navigator.serviceWorker.controller; i++) await new Promise(r => setTimeout(r, 100));
   return !!reg.active && !!navigator.serviceWorker.controller;
 });
+/* Alle Eintraege, die als Geruest durchgehen koennten - zum Nachsehen, ob die
+   Luecke wirklich geschlossen wurde. */
+const geruestPfade = () => page.evaluate(async () => {
+  const out = [];
+  for (const n of await caches.keys()) {
+    for (const r of await (await caches.open(n)).keys()) {
+      const p = new URL(r.url).pathname;
+      if (p === '/' || p.endsWith('index.html')) out.push(n + ' ' + p);
+    }
+  }
+  return out;
+});
 const bestand = () => page.evaluate(async () => {
   const namen = await caches.keys();
   const out = {};
@@ -90,6 +102,38 @@ try {
   const nav = await page.locator('.nav-btn').count();
   check('App startet ohne Netz', nav === 5, `${nav} Navigationsknöpfe`);
   await ctx.setOffline(false);
+
+  group('Lücke beim Gerüst');
+  /* Ein Bestand kann unvollstaendig sein: Der Browser raeumt bei Platzmangel
+     einzelne Eintraege weg, oder eine Veroeffentlichung blieb auf halbem Weg
+     stehen. Fehlt ausgerechnet das Geruest, muss der naechste Aufruf mit Netz
+     die Luecke schliessen - sonst startet die App nie wieder ohne Netz. */
+  await page.evaluate(async () => {
+    for (const n of await caches.keys()) {
+      const c = await caches.open(n);
+      for (const r of await c.keys()) {
+        const pfad = new URL(r.url).pathname;
+        if (pfad === '/index.html' || pfad === '/') await c.delete(r);
+      }
+    }
+  });
+  await page.reload({ waitUntil: 'load' });                 // mit Netz: die Luecke soll heilen
+  await page.waitForSelector('#app:not([hidden])', { timeout: 15000 });
+  await new Promise(r => setTimeout(r, 600));
+  check('das Gerüst liegt danach wieder unter seinem eigenen Namen im Bestand',
+    (await geruestPfade()).some(p => p.endsWith('/index.html')),
+    JSON.stringify(await geruestPfade()));
+
+  /* Und der Nachweis, dass es auch etwas nuetzt. Das Netz wird hier am Server
+     abgeklemmt, nicht ueber setOffline: Abrufe, die der Service Worker selbst
+     absetzt, gehen an der Offline-Nachstellung des Browsers vorbei - die Luecke
+     bliebe damit unsichtbar. */
+  kaputt = new Set(['/index.html']);
+  const status = await page.evaluate(async () => {
+    try { return (await fetch('./index.html')).status; } catch (e) { return 'Ausnahme'; }
+  });
+  check('das Gerüst kommt ohne Netz aus dem Bestand', status === 200, `Status ${status}`);
+  kaputt = new Set();
 
   group('Unvollständiges Update');
   // Neue Fassung, bei der eine Datei nicht ausgeliefert wird: der alte

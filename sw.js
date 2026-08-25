@@ -1,5 +1,5 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-997b690abd';
+const VERSION = 'wissenswerk-2e72b2046c';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",
@@ -93,20 +93,26 @@ self.addEventListener('fetch', (e) => {
   if (url.origin !== self.location.origin) return;
 
   const istGeruest = req.mode === 'navigate' || url.pathname.endsWith('/') || url.pathname.endsWith('index.html');
+  /* Gelesen und geschrieben wird unter demselben Namen. Vorher las der Handler
+     das Geruest unter './index.html', legte die Antwort aber unter der
+     Anfrage-URL ab - bei einem Aufruf von '/' also unter '/'. Eine Luecke beim
+     Geruest heilte damit nie: Jeder Aufruf mit Netz gelang, jeder ohne Netz
+     endete bei der nackten Zeile „Offline" statt bei der App. */
+  const schluessel = istGeruest ? './index.html' : req;
 
   e.respondWith((async () => {
     const cache = await caches.open(VERSION);
-    const eigen = await cache.match(istGeruest ? './index.html' : req);
+    const eigen = await cache.match(schluessel);
     if (eigen) return eigen;
     try {
       const net = await fetch(req);
       // Nur gueltige Antworten aufnehmen, sonst ersetzte eine 404-Seite
       // dauerhaft die App.
-      if (net.ok) cache.put(req, net.clone());
+      if (net.ok) cache.put(schluessel, net.clone());
       return net;
     } catch (err) {
       // Letzter Rueckfall: ein aelterer Bestand, falls das Update unvollstaendig blieb.
-      const alt = await caches.match(istGeruest ? './index.html' : req);
+      const alt = await caches.match(schluessel);
       if (alt) return alt;
       return new Response('Offline', { status: 503, statusText: 'Offline' });
     }
