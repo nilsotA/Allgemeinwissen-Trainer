@@ -364,16 +364,33 @@ gegen den alten Stand fehlschlägt.
 
 ## Auf Netlify veröffentlichen
 
+**Live:** <https://merry-mooncake-4ddc2a.netlify.app/>
+
 Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 **Weg 1 – aus GitHub (empfohlen, aktualisiert sich bei jedem Push):**
 1. [app.netlify.com](https://app.netlify.com) → *Add new site* → *Import an existing project*
-2. GitHub verbinden, dieses Repository und den Branch wählen
+2. GitHub verbinden, dieses Repository und den Branch wählen.
+   **Achtung beim Branch:** Dieses Repository hat kein `main`. Der Produktivzweig heißt
+   `claude/general-knowledge-learning-app-6sldd8` und ist zugleich der Standardzweig.
+   Netlify schlägt gern `main` vor – das ginge ins Leere.
 3. Build command: `node scripts/make-sw.mjs` · Publish directory: `.`
    (steht bereits in `netlify.toml`, Netlify übernimmt es automatisch)
 4. *Deploy* – fertig.
 
 **Weg 2 – ohne GitHub:** Ordner auf [app.netlify.com/drop](https://app.netlify.com/drop) ziehen.
+Achtung: So eine Seite holt sich **nie** etwas von GitHub. Sie bleibt für immer auf dem Stand
+des hochgeladenen Ordners, egal wie oft danach gepusht wird.
+
+### Welche Fassung liegt gerade draußen?
+
+Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
+
+- **Ohne Technik:** Seite in Safari öffnen → **Mehr** → ganz unten steht `N Karten · Wissenswerk`.
+  Diese Zahl wächst mit jeder Ergänzung und verrät den Stand eindeutig.
+- **Genau:** `<Adresse>/sw.js` aufrufen. In der dritten Zeile steht
+  `const VERSION = 'wissenswerk-…'`. Dieselbe Kennung gibt `node scripts/make-sw.mjs`
+  hier im Repository aus. Stimmen beide überein, ist der Stand draußen aktuell.
 
 ## Entwicklung
 
