@@ -101,6 +101,12 @@ const ZAHLWOERTER = {
 export function normalize(s) {
   let t = String(s).toLowerCase();
   for (const [re, ersatz] of ZEICHEN) t = t.replace(re, ersatz);
+  /* Deutscher Tausenderpunkt raus, bevor das naechste Muster ihn zum Leerzeichen
+     macht: Sonst wird aus „3.600" die Wortfolge „3 600", waehrend der Nutzer
+     „3600" tippt - und die exakt richtige Zahl galt als glatt falsch. Auf dem
+     Handy tippt praktisch niemand Tausenderpunkte. Dieselbe Unterscheidung
+     zwischen Tausenderpunkt und Dezimalkomma trifft NUM/zuZahl oben. */
+  t = t.replace(/(\d)\.(?=\d{3}(\D|$))/g, '$1');
   t = t.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
        .replace(/[^a-z0-9]+/g, ' ');
   t = t.split(' ').map(w => ZAHLWOERTER[w] || w).join(' ');
@@ -204,8 +210,17 @@ function zuordnen(eingabe, loesung) {
    ein schlechtes Mass: „3 Stunden" und „7 Stunden" unterscheiden sich in einem
    von neun Zeichen, „a2 plus b2" und „a2 minus b2" in vieren von elf. */
 const OPERATOR = new Set(['plus', 'minus', 'gleich', 'mal', 'geteilt', 'durch', 'hoch', 'wurzel']);
-const kennwoerter = (t) =>
-  woerter(t).filter(w => /\d/.test(w) || OPERATOR.has(w)).sort().join(' ');
+/* Drei dieser acht Woerter - „durch", „mal", „wurzel" - sind zugleich ganz
+   gewoehnliche deutsche Woerter. Zaehlten sie immer mit, fiel die natuerliche
+   Kurzantwort auf eine Wodurch-Frage hart durch: „Eindampfen" statt „Durch
+   Eindampfen" galt nicht als knapp daneben, sondern als falsch. Rechenzeichen
+   zaehlen deshalb nur, wo ueberhaupt Zahlen im Spiel sind - genau der Fall,
+   fuer den die Regel gedacht war. */
+const kennwoerter = (t) => {
+  const ws = woerter(t);
+  const rechnerisch = ws.some(w => /\d/.test(w));
+  return ws.filter(w => /\d/.test(w) || (rechnerisch && OPERATOR.has(w))).sort().join(' ');
+};
 
 /** 0..1 – wie nah kommt die Eingabe der Lösung? */
 /* Ein nachgestellter Klammerzusatz erlaeutert die Antwort, er ist nicht die

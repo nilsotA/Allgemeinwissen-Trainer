@@ -340,7 +340,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 92 Einheitentests plus Inhaltsprüfung
+npm test           # 94 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 139 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
@@ -486,6 +486,35 @@ meldete auch „Antwort ohne Satzzeichen" als Problem – bis auffiel, dass sie 
 die Zahl „981" machte. Und verkürzte Antworten („Die Bibliothek" statt „Die Bibliothek von
 Alexandria") werden abgelehnt, was richtig ist: Das sind unvollständige Antworten, keine
 Tippfehler.
+
+### Zwei Fehler in der Bewertung getippter Antworten
+
+Beide fielen bei einer adversarialen Fehlerjagd auf und waren nachstellbar.
+
+**Der deutsche Tausenderpunkt machte die richtige Zahl falsch.** `normalize()` ersetzte
+jedes Nicht-Alphanumerische durch ein Leerzeichen – aus „3.600" wurde die Wortfolge
+„3 600", während der Nutzer schlicht „3600" tippt. Der Kernwort-Vergleich sah dann links
+zwei Zahlen und rechts eine, wertete das als Kernfehler und deckelte auf 0,5 – unter der
+Schwelle. Wer die exakt richtige Zahl getippt hatte, bekam ein rotes Kreuz und den
+Fehlerton. Betroffen waren alle **zehn** Karten mit Tausenderpunkt; auf dem Handy tippt
+praktisch niemand Tausenderpunkte, sie waren beim freien Abrufen faktisch unlösbar.
+Ironischerweise unterscheidet `NUM`/`zuZahl` ein paar Zeilen weiter oben Tausenderpunkt
+und Dezimalkomma längst korrekt – nur `normalize()` tat es nicht. Jetzt fällt der
+Tausenderpunkt vorher heraus; das Dezimalkomma bleibt unberührt.
+
+**„Durch", „mal" und „wurzel" galten immer als Rechenzeichen.** Drei der acht Operatorwörter
+sind zugleich gewöhnliche deutsche Wörter. Die natürliche Kurzantwort auf eine
+Wodurch-Frage – „Eindampfen" statt „Durch Eindampfen" – wurde deshalb nicht als „knapp
+daneben" gewertet, sondern als glatt falsch, und zwar *bevor* die nachgelagerte,
+verzeihende Logik überhaupt zum Zuge kam. Rechenzeichen zählen jetzt nur noch, wo
+überhaupt Ziffern im Spiel sind – genau der Fall, für den die Regel gedacht war.
+
+Die strengere Variante – Rechenzeichen nur *zwischen* zwei Zahlen – wurde **gemessen und
+verworfen**: Sie hätte den Schutz gegen einen vertauschten Operator bei 38 auf 10 Antworten
+gedrückt, also bei 28 Antworten verloren, darunter „Grundseite mal Höhe geteilt durch 2"
+und „E = mc²" – und das, um genau *eine* Karte zusätzlich zu retten („Durch 3,6 teilen",
+wo eine Ziffer in der Antwort steht und „durch" deshalb weiter mitzählt). Gemessen über
+alle 1.906 Karten: Die wörtlich getippte Antwort ergibt weiterhin ausnahmslos 1,00.
 
 ### Faktenprüfung
 

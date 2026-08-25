@@ -665,3 +665,31 @@ test('nach einem Duell-Fehler ist das Intervall auf die verstrichene Zeit gedeck
   const fDanach = schedule(f, GOOD, { jitter: false });
   assert.ok(fDanach.iv >= 1 && fDanach.due > t, 'auch aus null waechst ein gueltiger Termin');
 });
+
+test('der deutsche Tausenderpunkt macht die richtige Zahl nicht falsch', () => {
+  // normalize zerlegte „3.600" zu „3 600", waehrend der Nutzer „3600" tippt -
+  // die exakt richtige Zahl galt dann als glatt falsch. Auf dem Handy tippt
+  // praktisch niemand Tausenderpunkte.
+  assert.equal(normalize('3.600'), normalize('3600'));
+  assert.equal(normalize('1 zu 13.983.816'), normalize('1 zu 13983816'));
+  assert.equal(bewerte({ a: '3.600' }, '3600'), 1);
+  assert.equal(bewerte({ a: '300.000 km/s' }, '300000 km/s'), 1);
+  // Das Dezimalkomma bleibt davon unberuehrt - es trennt keine Tausender.
+  assert.notEqual(normalize('3,14'), normalize('314'));
+  // Und eine wirklich andere Zahl bleibt falsch.
+  assert.ok(bewerte({ a: '3.600' }, '3700') < 0.6);
+});
+
+test('Durch, mal und wurzel gelten nur dort als Rechenzeichen, wo Zahlen stehen', () => {
+  /* Drei der acht Operatorwoerter sind zugleich gewoehnliche deutsche Woerter.
+     Zaehlten sie immer mit, fiel die natuerliche Kurzantwort hart durch. */
+  assert.ok(bewerte({ a: 'Durch Eindampfen' }, 'Eindampfen') >= 0.6,
+    'die Kurzform darf hoechstens knapp daneben sein, nicht glatt falsch');
+  assert.ok(bewerte({ a: 'Durch quadratische Ergänzung' }, 'quadratische Ergänzung') >= 0.6);
+  assert.ok(bewerte({ a: 'Wurzel aus der Summe aller Komponentenquadrate' },
+    'aus der Summe aller Komponentenquadrate') >= 0.6);
+  // Wo Zahlen im Spiel sind, trennt die Regel weiterhin scharf.
+  assert.ok(bewerte({ a: 'a2 plus b2' }, 'a2 minus b2') <= 0.5);
+  assert.ok(bewerte({ a: 'Grundseite mal Höhe geteilt durch 2' },
+    'Grundseite geteilt Höhe geteilt durch 2') <= 0.5);
+});
