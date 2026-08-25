@@ -352,7 +352,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 96 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 139 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 142 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -671,6 +671,30 @@ Diffs kaum auffallen.
 
 Nach dem Umformulieren einmal `node scripts/check-content.mjs --kennungen` laufen lassen,
 damit die Liste den neuen Stand kennt.
+
+### Der Doppeltipp, der eine Karte verbrannte
+
+Die Bewertungsknöpfe einer Karte und die Festlegen-Knöpfe der nächsten stehen an
+**derselben Stelle im Fuß**. Gegen einen zweiten, schnellen Tipp war bisher nur die eine
+Richtung geschützt (aufdecken → benoten); die Gegenrichtung nicht. Wer nach dem Benoten
+noch einmal zutippte, legte sich damit für eine Karte fest, die er nie gelesen hatte, und
+deckte sie gleich auf. Die Karte war verbraucht, und die selbst vergebene Note ging über
+`schedule()` dauerhaft in Leichtigkeitsfaktor und Intervall ein.
+
+Entprellt wird jetzt auch beim Aufbau jeder neuen Karte. Bewusst **nur der Fuß**: Die
+Antwortoptionen liegen im Rumpf, wo es keine Kollision gibt – sie bleiben sofort tippbar,
+damit im Duell keine Zeit verfällt. Der Durchlauftest musste dafür lernen zu warten wie ein
+Mensch; er klickte schneller, als eine Frage lesbar ist.
+
+**Ein Test war zunächst wackelig – und das fiel nur auf, weil ein Lauf rot war.** Die erste
+Fassung des Prüfsteins für die Duell-Auswahl schlug in etwa einem von dreizehn Läufen fehl.
+Ursache war der Aufbau: Er machte *alle* sechzig Karten schwach, womit die Zusicherung
+„schwache kommen bevorzugt dran" gar nichts mehr prüfte und nur noch Rauschen maß. Der neue
+Aufbau trennt sauber – zehn wacklige, vierzig fest sitzende –, und die Schwellen sind
+**ausgemessen** statt geraten: über 40 Versuche nie eine Karte in allen Runden, Anteil der
+Wackligen zwischen 30 und 38 %. Der Test läuft jetzt 20-mal grün und 5-mal rot, wenn man den
+Fehler wieder einbaut. Ein Test, der manchmal grundlos rot wird, ist schlimmer als keiner:
+Man gewöhnt sich an, ihn zu ignorieren.
 
 ### Bedienung ohne Farbe, ohne Blick, ohne Verlust
 

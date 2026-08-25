@@ -9,6 +9,10 @@ import { CARDS } from '../data/index.js';
 const ROOT = new URL('..', import.meta.url).pathname;
 const PORT = 8123;
 const KEY = 'wissenswerk.v1';
+/* Frisch erschienene Knoepfe im Fuss sind 350 ms taub: Sonst beantwortet ein
+   zweiter schneller Tipp die naechste, ungelesene Karte. Tests muessen sich
+   daran halten wie ein Mensch. */
+const FUSS_TAUB = 400;
 
 let playwright;
 for (const p of ['playwright', '/opt/node22/lib/node_modules/playwright/index.mjs']) {
@@ -173,6 +177,7 @@ try {
       await page.locator('.opt:not([disabled])').first().click();
       await page.waitForSelector('#next'); await page.click('#next');
     } else if (await page.locator('#reveal').count()) {
+      await page.waitForTimeout(FUSS_TAUB);
       await page.click('#reveal'); await page.waitForSelector('[data-g]'); await page.click('[data-g="2"]');
     } else break;
     await page.waitForTimeout(30);
@@ -529,6 +534,9 @@ try {
     const stand = async () => (await np.locator('.sess-top .tiny').innerText()).split('/').map(Number);
     const [, vorrat] = await stand();
     const frage = await np.locator('.q').innerText();
+    // Frisch erschienene Fussknoepfe sind kurz taub (siehe entprellen()) -
+    // ein Mensch braucht die Zeit ohnehin zum Lesen der Frage.
+    await np.waitForTimeout(FUSS_TAUB);
     await np.locator('.sess-foot button').first().click();     // Lösung zeigen
     await np.waitForTimeout(500);
     await np.getByRole('button', { name: 'Nochmal' }).click();
@@ -1094,6 +1102,41 @@ try {
     check('erfolgreiches Teilen zählt als Sicherung',
       await sp.locator('#sichernJetzt').count() === 0);
     await sctx.close();
+  }
+
+  group('Doppeltipp verbrennt keine Karte');
+  /* Bewertungsknoepfe und die Festlegen-Knoepfe der naechsten Karte stehen an
+     derselben Stelle im Fuss. Ein zweiter, schneller Tipp legte sich sonst fuer
+     eine ungelesene Karte fest und deckte sie gleich auf. */
+  {
+    const dctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const dp = await dctx.newPage();
+    await dp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await dp.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.settings = { ...(st.settings || {}), recallMode: 'recall' };
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await dp.reload({ waitUntil: 'networkidle' });
+    await dp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await dp.waitForSelector('.sess-body');
+    await dp.waitForTimeout(FUSS_TAUB);
+    await dp.locator('[data-hab="0"]').click();          // erste Karte: festlegen
+    await dp.waitForSelector('[data-g]');
+    await dp.waitForTimeout(FUSS_TAUB);
+    // Jetzt der Doppeltipp: Note geben und sofort noch einmal an dieselbe Stelle
+    const note = dp.locator('[data-g="2"]');
+    const kasten = await note.boundingBox();
+    await note.click();
+    await dp.mouse.click(kasten.x + kasten.width / 2, kasten.y + kasten.height / 2);
+    await dp.waitForTimeout(250);
+    check('die zweite Karte ist nach dem Doppeltipp noch verdeckt',
+      await dp.locator('.answer .val').count() === 0);
+    check('und wartet weiter auf die Festlegung',
+      await dp.locator('[data-hab]').count() === 2);
+    const st2 = await dp.evaluate((k) => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
+    check('nur die erste Karte wurde bewertet', st2.totalAnswers === 1, `totalAnswers=${st2.totalAnswers}`);
+    await dctx.close();
   }
 
   group('Deutsche Zahlenschreibweise');

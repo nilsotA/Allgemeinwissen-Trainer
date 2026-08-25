@@ -1264,6 +1264,14 @@ function head(card, isFresh) {
 function step() {
   if (!run) return;
   if (run.i >= run.queue.length) return endRun();
+  /* Auch in dieser Richtung entprellen. Die Kollision ist immer Fuss auf Fuss:
+     Wo eben die Bewertungsknoepfe standen, stehen bei der naechsten Karte
+     „Hab ich" und „Hab ich nicht". Ein zweiter, schneller Tipp legte sich sonst
+     fuer eine Karte fest, die der Nutzer nie gelesen hat, und deckte sie gleich
+     auf - die Karte war verbraucht, und die Note ging ueber schedule() dauerhaft
+     in den Plan ein. Die Antwortoptionen liegen im Rumpf und sind nicht
+     betroffen; sie bleiben sofort tippbar, damit im Duell keine Zeit verfaellt. */
+  entprellen();
   const item = run.queue[run.i];
   const card = item.card;
   const cs = cardState(card.id);
@@ -1326,6 +1334,7 @@ function askRecall(card, isFresh, cs) {
   const input = document.getElementById('rin');
   const foot = app.querySelector('.sess-foot');
   const go = (behauptet) => {
+    if (zuFrueh()) return;
     const typed = input.value.trim();
     // Gegen jede zugelassene Schreibweise pruefen und die beste nehmen: Wer
     // „1/x" tippt, hat die Frage nach der Ableitung des Logarithmus richtig
