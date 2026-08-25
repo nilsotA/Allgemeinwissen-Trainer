@@ -533,3 +533,51 @@ test('der Neu-Vorrat in overview zaehlt dieselbe Menge wie die Warteschlange', (
     'drei Karten mit Zustand, aber ohne Abfrage, gelten als neu');
   assert.equal(sess.overview().newLeft, erwartet(), 'und decken sich mit der Warteschlange');
 });
+
+test('ein fehlgeschlagenes Speichern darf den anderen Tab nicht ueberschreiben', async () => {
+  /* Die Fassungsnummer wurde vor dem Schreiben erhoeht. Schlug das Schreiben
+     fehl, lief sie trotzdem weiter - der Tab hielt sich fuer den aktuelleren
+     und uebersprang danach das Zusammenfuehren. */
+  store.resetAll();
+  const B = await import('../assets/js/store.js?fehlschlag-tab');
+  B.resetAll();
+  store.save(true);
+  B.save(true);
+
+  // Tab A scheitert fuenfmal am vollen Speicher
+  const echt = globalThis.localStorage.setItem;
+  globalThis.localStorage.setItem = (k, v) => {
+    if (k === 'wissenswerk.v1') throw new Error('QuotaExceededError');
+    return echt(k, v);
+  };
+  for (let i = 0; i < 5; i++) store.save(true);
+  globalThis.localStorage.setItem = echt;
+
+  // Tab B lernt derweil zwanzig Karten und speichert erfolgreich
+  for (let i = 0; i < 20; i++) B.putCard('karte-' + i, { ...fresh(), seen: 1, reps: 1, last: 5 });
+  B.S().totalAnswers = 20;
+  B.save(true);
+
+  // Und jetzt schreibt Tab A wieder
+  store.save(true);
+  const stand = JSON.parse(globalThis.localStorage.getItem('wissenswerk.v1'));
+  assert.equal(Object.keys(stand.cards).length, 20,
+    `die zwanzig Karten aus Tab B muessen ueberleben, gefunden: ${Object.keys(stand.cards).length}`);
+  assert.equal(stand.totalAnswers, 20, 'auch der Zaehler darf nicht zurueckfallen');
+});
+
+test('bei weiter vollem Speicher meldet sich jeder Fehlversuch', () => {
+  // Der Nutzer kann den Hinweis wegbekommen, waehrend der Speicher voll bleibt.
+  store.resetAll();
+  let gemeldet = 0;
+  store.setSaveErrorHandler(() => { gemeldet++; });
+  const echt = globalThis.localStorage.setItem;
+  globalThis.localStorage.setItem = (k, v) => {
+    if (k === 'wissenswerk.v1') throw new Error('QuotaExceededError');
+    return echt(k, v);
+  };
+  for (let i = 0; i < 4; i++) store.save(true);
+  globalThis.localStorage.setItem = echt;
+  store.setSaveErrorHandler(() => {});
+  assert.equal(gemeldet, 4, `jeder Fehlversuch muss melden, gemeldet: ${gemeldet}`);
+});

@@ -130,20 +130,35 @@ function zusammenfuehren(fremd, eigen) {
 
 export function save(now = false) {
   const write = () => {
+    /* Die Fassungsnummer darf nur zaehlen, was wirklich im Speicher steht.
+       Wurde sie vor dem Schreiben erhoeht und das Schreiben schlug fehl (volles
+       Kontingent, privater Modus), lief sie bei jedem Versuch weiter - der Tab
+       hielt sich dann faelschlich fuer den aktuelleren und uebersprang beim
+       naechsten gelungenen Schreiben das Zusammenfuehren. Nachgestellt gingen so
+       zwanzig im anderen Tab gelernte Karten verloren, ohne jede Meldung. */
+    let vorherigeRev = state.rev || 0;
     try {
       const roh = localStorage.getItem(KEY);
       if (roh) {
         const fremd = JSON.parse(roh);
         if (fremd && typeof fremd === 'object' && (fremd.rev || 0) > (state.rev || 0)) {
           state = zusammenfuehren(fremd, state);
+          vorherigeRev = state.rev || 0;   // nach dem Zusammenfuehren neu ablesen
         }
       }
-      state.rev = (state.rev || 0) + 1;
+      state.rev = vorherigeRev + 1;
       localStorage.setItem(KEY, JSON.stringify(state));
       quotaWarned = false;
     } catch (e) {
-      console.warn('Speichern fehlgeschlagen', e);
-      if (!quotaWarned) { quotaWarned = true; onSaveError(e); }
+      state.rev = vorherigeRev;
+      if (!quotaWarned) console.warn('Speichern fehlgeschlagen', e);
+      quotaWarned = true;
+      /* Immer melden, nicht nur beim ersten Mal: Der Nutzer kann den Hinweis
+         wegbekommen (Sichern), waehrend der Speicher weiter voll ist.
+         Zurueckgesetzt wird quotaWarned nur nach einem GELUNGENEN Schreiben -
+         den gibt es dann nie, und der Hinweis kam nie wieder. Der Empfaenger
+         ist gegen Wiederholung unempfindlich. */
+      onSaveError(e);
     }
   };
   if (now) { clearTimeout(saveTimer); saveTimer = null; write(); return; }
