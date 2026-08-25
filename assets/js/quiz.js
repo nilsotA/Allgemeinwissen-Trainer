@@ -96,10 +96,13 @@ const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eine
    Ohne diese Zuordnung galt die richtige Antwort als falsch – bei 93 Karten,
    deren Loesung ein Zahlwort enthaelt. Die Schreibweisen stehen hier bereits
    in der Form, die nach der Umschrift der Umlaute uebrig bleibt. */
-const ZAHLWOERTER = {
+/* Eine Map, kein Objektliteral: Bei einem Objekt beantwortet auch die
+   Prototypenkette, und „constructor" lieferte statt des Wortes den Quelltext
+   „function Object() { [native code] }" - der stand dann in der Bewertung. */
+const ZAHLWOERTER = new Map(Object.entries({
   null: '0', eins: '1', zwei: '2', drei: '3', vier: '4', fuenf: '5', sechs: '6',
   sieben: '7', acht: '8', neun: '9', zehn: '10', elf: '11', zwoelf: '12'
-};
+}));
 
 export function normalize(s) {
   // NFC zuerst: Ein zerlegt eingegebenes „ä" (a + Trema) muss die deutsche
@@ -124,7 +127,7 @@ export function normalize(s) {
        .replace(/đ/g, 'd').replace(/ð/g, 'd').replace(/þ/g, 'th').replace(/ı/g, 'i')
        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
        .replace(/[^a-z0-9]+/g, ' ');
-  t = t.split(' ').map(w => ZAHLWOERTER[w] || w).join(' ');
+  t = t.split(' ').map(w => ZAHLWOERTER.get(w) || w).join(' ');
   const ohneFuell = t.replace(FUELLWOERTER, ' ').trim().replace(/\s+/g, ' ');
   // Besteht die Eingabe nur aus Füllwörtern, ist der ungefilterte Text die bessere Grundlage
   return ohneFuell || t.trim().replace(/\s+/g, ' ');

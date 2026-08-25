@@ -592,6 +592,30 @@ Browserkontext**: In einem gemeinsamen Kontext färbte ein stehengebliebener Bal
 vorigen Abschnitt das Ergebnis, und zwei der drei Tests waren grün, obwohl der Fehler wieder
 eingebaut war.
 
+### Drei kleine Löcher, die zusammen die Fehlerjagd beschließen
+
+- **`constructor` als Antwort.** Die Zahlwortliste („sieben" → `7`) war ein Objektliteral, und
+  bei einem Objekt antwortet auch die Prototypenkette. Wer `constructor` tippte, bekam
+  `function Object() { [native code] }` in die Bewertung. Es ist jetzt eine `Map`.
+- **Der Rückblick, den ein zweiter Tab wegwischte.** Nach einer Runde steht der Rückblick mit
+  der Liste der Karten, die man gerade falsch hatte. Er ist keine Ansicht, die `render()`
+  kennt – schrieb der zweite Tab in diesem Moment, zeichnete der Horcher die zuletzt gewählte
+  Ansicht, und der Rückblick war weg, ohne dass der Nutzer etwas getan hätte. Die Meldung über
+  den fremden Stand kommt weiterhin, nur ohne Neuzeichnen.
+- **Das Neuladen mitten in der Runde.** Tippt jemand im *zweiten* Tab auf „Laden", übernimmt
+  der neue Service Worker für alle Tabs. Dieser hier lud daraufhin sofort neu und schluckte die
+  offene Frage – ohne Vorwarnung, denn hier hatte niemand etwas getippt. Der Austausch wartet
+  jetzt auf den nächsten Ansichtswechsel; die Module laufen so lange aus dem Speicher der Seite
+  weiter.
+
+Dazu die eine strittige Meldung, die zwei Prüfer unterschiedlich bewertet hatten: Beim
+Einpflegen gewann ein eindeutiges Teilgebiet über ein ausdrücklich angegebenes Thema. Eine
+Karte mit `cat:"spo"` und einem Teilgebiet, das es nur in Mathematik gibt, landete wortlos in
+`data/mat.js`. Wer beides angibt und sich dabei widerspricht, hat einen Fehler gemacht und will
+davon erfahren – die Karte wird jetzt abgewiesen.
+
+Damit sind alle 25 bestätigten Befunde der Fehlerjagd abgearbeitet.
+
 ### Zwei Fehler in der Bewertung getippter Antworten
 
 Beide fielen bei einer adversarialen Fehlerjagd auf und waren nachstellbar.
@@ -900,6 +924,18 @@ und betroffen wäre ausgerechnet die Zwei-Tab-Logik, die sich diese App mühsam 
 und mit einem eigenen Zwei-Instanzen-Test absichert. Ein unsichtbarer Gewinn rechtfertigt
 kein Risiko an der Stelle, an der Datenverlust entstünde. Die Messung steht hier, damit die
 Frage nicht dreimal neu aufgeworfen wird.
+
+### Was die Fehlerjagd nicht bestätigt hat
+
+Drei Meldungen aus derselben Suche hielten der Gegenprüfung **nicht** stand. Sie stehen hier,
+damit niemand sie ein zweites Mal „findet":
+
+- *Ein Tag mit ausschließlich Duellfragen erscheine im Wochenstreifen als „nichts gelernt".*
+  Falsch – der Streifen liest `done` **und** `duel`.
+- *Ein getippter Bindestrich statt eines Gedankenstrichs mache die Antwort falsch.* Falsch –
+  `normalize()` ebnet beide zum selben Zeichen ein.
+- *Fehlende Felder in einer eingelesenen Ergebnisdatei rutschten als Text „undefined" durch.*
+  Falsch – `merge-cards.mjs` weist unvollständige Karten vorher ab.
 
 ### Qualitätssicherung
 

@@ -295,6 +295,44 @@ try {
     await ectx.close();
   }
 
+  {
+    /* 4. Der Wechsel muss nicht aus diesem Tab kommen: Tippt jemand im zweiten
+       Tab auf „Laden", uebernimmt der neue Worker fuer alle. Dieser Tab lud
+       daraufhin mitten in der Runde neu und schluckte die offene Frage - ohne
+       Vorwarnung, denn hier hatte niemand etwas getippt. Nachgestellt wird der
+       zweite Tab, indem die Nachricht am Balken vorbei geschickt wird. */
+    kaputt = new Set(); swErsatz = null;
+    const [rctx, rp] = await frischerTab();
+    await rp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await rp.waitForSelector('.sess-body', { timeout: 10000 });
+    await rp.evaluate(() => { window.__marke = 'laufende Runde'; });
+    await veroeffentliche(rp, 'fremdfassung');
+    // Warten und Zustellen in einem Zug: Zwischen zwei evaluate-Aufrufen kann
+    // sich der wartende Worker aendern, und die Nachricht ginge ins Leere.
+    const zugestellt = await rp.evaluate(async () => {
+      for (let i = 0; i < 60; i++) {
+        const r = await navigator.serviceWorker.getRegistration();
+        if (r && r.waiting) { r.waiting.postMessage('jetzt-uebernehmen'); return true; }
+        await new Promise(res => setTimeout(res, 250));
+      }
+      return false;
+    });
+    check('der zweite Tab erreicht den wartenden Worker', zugestellt);
+    await new Promise(r => setTimeout(r, 2500));
+    check('waehrend der Runde wird nicht neu geladen',
+      await rp.evaluate(() => window.__marke).catch(() => null) === 'laufende Runde'
+      && await rp.locator('.sess-body').count() === 1);
+
+    await rp.click('#quit');                                // Ansicht gewechselt
+    let neugeladen = false;
+    for (let i = 0; i < 30 && !neugeladen; i++) {
+      await new Promise(r => setTimeout(r, 400));
+      neugeladen = await rp.evaluate(() => window.__marke === undefined).catch(() => false);
+    }
+    check('nach der Runde wird der Wechsel nachgeholt', neugeladen);
+    await rctx.close();
+  }
+
   kaputt = new Set();
   swErsatz = null;
   group('Vollständiges Update');

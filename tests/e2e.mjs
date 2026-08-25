@@ -712,6 +712,44 @@ try {
     await zctx.close();
   }
 
+  /* Nach einer Runde steht der Rueckblick - und mit ihm die Liste der Karten,
+     die man gerade falsch hatte. Er ist keine Ansicht, die render() kennt:
+     Schrieb der zweite Tab in diesem Moment, zeichnete der Horcher die zuletzt
+     gewaehlte Ansicht und der Rueckblick war weg, ohne dass der Nutzer etwas
+     getan haette. */
+  {
+    const rctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const R = await rctx.newPage();
+    await R.goto(URL_BASE, { waitUntil: 'networkidle' });
+    const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
+    await R.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await R.waitForSelector('.sess-body', { timeout: 10000 });
+    // Eine Karte falsch beantworten, damit der Rueckblick etwas zu zeigen hat,
+    // dann die Runde ueber den Beenden-Knopf abschliessen (run.done > 0).
+    const q = (await R.locator('.q').innerText()).trim();
+    const opts = await R.locator('.opt').evaluateAll(ns => ns.map(n => n.dataset.v));
+    const falsch = opts.find(o => o !== ANTWORT.get(q)) || opts[0];
+    await R.locator(`.opt[data-v="${falsch.replace(/"/g, '&quot;')}"]`).first().click();
+    await R.waitForTimeout(FUSS_TAUB);
+    await R.locator('.sess-foot button').first().click();
+    await R.waitForTimeout(FUSS_TAUB);
+    await R.click('#quit');
+    await R.waitForSelector('#again', { timeout: 10000 });
+    check('der Rueckblick steht nach der Runde', await R.locator('#again').count() === 1);
+
+    const Z = await rctx.newPage();                 // zweiter Tab schreibt
+    await Z.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await Z.locator('#searchBtn').click();
+    await Z.waitForTimeout(400);
+    const stern = Z.locator('.star').first();
+    if (await stern.count()) { await stern.click(); await Z.waitForTimeout(600); }
+    await R.bringToFront();
+    await R.waitForTimeout(800);
+    check('ein zweiter Tab loescht den Rueckblick nicht',
+      await R.locator('#again').count() === 1);
+    await rctx.close();
+  }
+
   group('Duell: Zeit im Hintergrund zaehlt nicht');
   /* Der Zeitgeber rechnet mit Date.now(), damit gedrosselte Intervalle ihn nicht
      verfaelschen – nur laeuft Date.now() auch weiter, waehrend das Handy klingelt

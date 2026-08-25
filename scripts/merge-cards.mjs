@@ -22,6 +22,16 @@ const kategorien = new Set(CARDS.map(c => c.cat));
 const zielDatei = (c) => {
   const moeglich = dateien.get(c.s);
   if (!moeglich) return { fehler: `unbekanntes Teilgebiet „${c.s}"` };
+  /* Ein ausdrueckliches Thema wird auch dann geprueft, wenn das Teilgebiet
+     eindeutig ist. Vorher gewann die Eindeutigkeit und das Feld wurde
+     stillschweigend ignoriert: Eine Karte mit cat:"spo" und einem Teilgebiet,
+     das es nur in Mathematik gibt, landete wortlos in data/mat.js. Wer beides
+     angibt und sich widerspricht, hat einen Fehler gemacht - und will davon
+     erfahren, statt die Karte am falschen Ort wiederzufinden. */
+  if (c.cat && !kategorien.has(c.cat)) return { fehler: `unbekanntes Thema „${c.cat}"` };
+  if (c.cat && !moeglich.has(`data/${c.cat}.js`)) {
+    return { fehler: `Teilgebiet „${c.s}" gibt es nicht im Thema „${c.cat}"` };
+  }
   if (moeglich.size === 1) return { ziel: [...moeglich][0] };
   if (!c.cat) {
     return { fehler: `Teilgebiet „${c.s}" gibt es in mehreren Themen (${[...moeglich].join(', ')}) – Feld cat noetig` };

@@ -59,6 +59,8 @@ function markiereOptionen(wurzel, richtig, gewaehlt) {
 
 let view = 'home';
 let run = null;          // laufende Lerneinheit
+let rueckblickOffen = false;   // der Rueckblick nach einer Runde steht (kein Ansichtenwechsel)
+let neuLadenNachRunde = false; // ein Worker-Wechsel wartet auf einen ruhigen Moment
 let onKey = null;        // Tastaturbelegung des aktuellen Bildschirms
 
 document.addEventListener('keydown', (e) => {
@@ -80,6 +82,7 @@ function paintChrome() {
 function show(v) {
   view = v;
   run = null;
+  rueckblickOffen = false;
   onKey = null;
   stopDuelTimer();
   app.classList.remove('full');
@@ -91,6 +94,10 @@ function show(v) {
      dabei bis zum naechsten Start liegen. Hier statt beim Beenden-Knopf, damit
      jeder Weg aus einer Runde heraus es nachholt. */
   holeUpdateNach();
+  /* Ein Worker-Wechsel aus einem zweiten Tab wurde waehrend der Runde
+     zurueckgestellt. Hier ist der ruhige Moment dafuer - nicht schon im
+     Rueckblick, der sonst mitsamt der Fehlerliste verschwaende. */
+  if (neuLadenNachRunde) location.reload();
 }
 nav.addEventListener('click', e => {
   const b = e.target.closest('.nav-btn');
@@ -145,7 +152,11 @@ setSaveErrorHandler(() => speicherBalken());
 setBusyCheck(() => run !== null);
 setFremdStandHandler((uebernommen, sichtbar) => {
   if (run) return;
-  render();
+  /* Der Rueckblick nach einer Runde steht nicht im Ansichtenwechsel: render()
+     zeichnet die zuletzt gewaehlte Ansicht und loeschte ihn dabei weg - mitsamt
+     der Liste der Karten, die man gerade falsch hatte. Die Meldung kommt
+     trotzdem, nur ohne Neuzeichnen. */
+  if (!rueckblickOffen) render();
   // Ein Folge-Ereignis ohne sichtbare Aenderung bleibt stumm – sonst
   // ueberschreibt es die Meldung, die zum eigentlichen Ereignis gehoert.
   if (!sichtbar) return;
@@ -1108,9 +1119,10 @@ function sichtbareZeit() {
    etwas anderes, ohne dass es irgendwo stand. */
 function startRun(queue, mode, weiter = null) {
   if (!queue.length) return toast('Nichts zu üben');
+  rueckblickOffen = false;
   stopDuelTimer();
   run = {
-    queue: queue.slice(), i: 0, mode, weiter,
+    queue: queue.slice(), i: 0, mode, weiter,   // weiter(): Anschlussrunde fuer „Weitermachen"
     done: 0, correct: 0, start: Date.now(),
     total: queue.length, added: 0,
     wrong: [], undo: null,
@@ -1179,6 +1191,7 @@ function endRun() {
   };
   document.getElementById('home').onclick = () => show('home');
   run = null;
+  rueckblickOffen = true;
   holeUpdateNach();
   paintChrome();
 }
@@ -1703,6 +1716,12 @@ function starteServiceWorker() {
     if (!hatWorker) { hatWorker = true; return; }
     if (laedtNeu) return;
     laedtNeu = true;
+    /* Nicht mitten in einer Runde: Der Wechsel kann auch aus einem zweiten Tab
+       kommen, in dem jemand „Laden" getippt hat. Hier schluckte das Neuladen
+       dann die offene Frage - und zwar ohne Vorwarnung, weil dieser Tab gar
+       nichts getippt hat. Der Austausch wartet, bis eine Ansicht gewechselt
+       wird. Die Module laufen so lange aus dem Speicher der Seite weiter. */
+    if (run) { neuLadenNachRunde = true; return; }
     location.reload();
   });
   // updateViaCache 'none': das Skript selbst darf nie aus dem HTTP-Cache

@@ -277,6 +277,17 @@ test('jede Antwort ist auch ohne fremde Diakritika richtig', () => {
   assert.deepEqual(schlecht, [], 'Antworten, die ohne Sonderzeichen durchfallen');
 });
 
+/* Die Zahlwortliste war ein Objektliteral - da antwortet auch die
+   Prototypenkette. Wer „constructor" tippte, bekam „function Object() { [native
+   code] }" in die Bewertung. */
+test('Wörter aus der Prototypenkette bleiben Wörter', () => {
+  for (const w of ['constructor', 'toString', 'valueOf', 'hasOwnProperty', '__proto__']) {
+    assert.equal(normalize(w), w.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(),
+      `„${w}" wurde zu „${normalize(w)}"`);
+  }
+  assert.equal(normalize('sieben'), '7', 'die Zahlwörter müssen weiter greifen');
+});
+
 test('normalize schneidet keine Wortteile aus zusammengesetzten Wörtern', () => {
   // „in", „im", „von" usw. dürfen nur als eigenständige Wörter entfallen
   assert.equal(normalize('Induktion'), 'induktion');
@@ -636,6 +647,37 @@ test('mehrdeutige Teilgebiete werden beim Einpflegen nicht geraten', () => {
   assert.match(aus, new RegExp(`data/${einThema}\\.js\\s+\\+1`),
     'mit richtigem Thema landet genau eine Karte in der richtigen Datei');
   assert.match(aus, /1 Karten wären ergänzt, 2 abgewiesen/);
+});
+
+/* Bei einem eindeutigen Teilgebiet gewann frueher die Eindeutigkeit, und ein
+   ausdrueckliches Feld cat wurde stillschweigend ignoriert. Eine Karte, die
+   „Sport" sagt und ein Teilgebiet aus Mathematik traegt, landete wortlos in
+   data/mat.js - wer beides angibt und sich widerspricht, will davon erfahren. */
+test('ein widersprechendes Thema wird auch bei eindeutigem Teilgebiet abgewiesen', () => {
+  const themen = new Map();
+  for (const c of CARDS) {
+    if (!themen.has(c.sub)) themen.set(c.sub, new Set());
+    themen.get(c.sub).add(c.cat);
+  }
+  const [sub, cats] = [...themen].find(([, k]) => k.size === 1);
+  const eigenes = [...cats][0];
+  const fremdes = [...new Set(CARDS.map(c => c.cat))].find(k => k !== eigenes);
+
+  const karte = (extra) => ({ q: 'Widerspruchsprobe ' + extra.marke + '?', a: 'Antwort',
+    s: sub, d: 2, t: 'Kontext.', w: ['B', 'C', 'D'], ...extra });
+  const daten = { gebiete: [{ cards: [
+    karte({ marke: 'passt', cat: eigenes }),
+    karte({ marke: 'widerspricht', cat: fremdes }),
+    karte({ marke: 'erfunden', cat: 'gibtsnicht' }),
+  ] }] };
+  const datei = join(mkdtempSync(join(tmpdir(), 'thema-')), 'ergebnis.json');
+  writeFileSync(datei, JSON.stringify(daten));
+  const aus = execFileSync(process.execPath,
+    ['scripts/merge-cards.mjs', datei, '--dry'], { encoding: 'utf8' });
+
+  assert.match(aus, /gibt es nicht im Thema/, 'das widersprechende Thema muss auffallen');
+  assert.match(aus, /unbekanntes Thema/, 'ein erfundenes Thema muss auffallen');
+  assert.match(aus, /1 Karten wären ergänzt, 2 abgewiesen/, aus);
 });
 
 /* Ein Zeilenumbruch im Kartentext stand roh in einer Zeichenkette mit doppelten
