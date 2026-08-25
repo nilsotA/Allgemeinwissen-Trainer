@@ -155,12 +155,23 @@ export function buildWeak(limit = 20) {
  *  man unter Zeitdruck gescheitert ist, nie wieder unter Zeitdruck dran –
  *  eine Karte, die man in zwanzig Sekunden abruft, ist im Duell verloren. */
 export function buildDuel(n = 10, cat = null) {
-  const pool = CARDS.filter(c => inScope(c) && (!cat || c.cat === cat));
+  /* Ein ausdruecklich gewaehltes Thema haengt nicht am Tagestraining: Wer auf
+     „Thema im Duell" tippt, will genau dieses Thema - auch wenn es unter Mehr
+     pausiert ist. Sonst meldete der Knopf „Keine Karten in diesem Thema" fuer
+     ein Thema mit 282 Karten, waehrend „Ganzes Thema ueben" daneben lief.
+     buildTopic() haelt es ueber catCards() genauso. */
+  const pool = cat ? catCards(cat) : CARDS.filter(c => inScope(c));
   const known = pool.map(c => ({ c, s: cardState(c.id) })).filter(x => x.s && x.s.seen > 0);
-  const schwach = known
+  /* Aus dem schwaechsten Feld gezogen, nicht die schwaechsten Karten der
+     Reihe nach: Fest sortiert kamen in acht Duellen hintereinander dieselben
+     drei Fragen - aus dem Tempotest wurde das Auswendiglernen von drei Karten.
+     Die Vorauswahl bleibt bei den Wackelkandidaten, die Ziehung wuerfelt. */
+  const wieViele = Math.round(n * 0.3);
+  const schwach = shuffle(known
     .filter(x => isLeech(x.s) || strength(x.s) < 0.6)
     .sort((a, b) => (isLeech(b.s) - isLeech(a.s)) || (strength(a.s) - strength(b.s)))
-    .slice(0, Math.round(n * 0.3))
+    .slice(0, Math.max(wieViele * 4, 12)))
+    .slice(0, wieViele)
     .map(x => x.c);
   const rest = shuffle(known.map(x => x.c).filter(c => !schwach.includes(c)))
     .slice(0, Math.ceil(n * 0.6) - schwach.length);

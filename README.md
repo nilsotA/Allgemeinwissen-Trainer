@@ -219,6 +219,17 @@ tun; gegen den alten Stand schlägt er fehl.
   gewählte Kategorie wird im Lauf mitgeführt, sonst wechselte „Weitermachen" nach der
   Runde still das Thema.
 
+  Zwei Fehler in genau dieser Erweiterung fielen erst einer späteren Fehlerjagd auf, beide
+  nachgestellt: Das **Themen-Duell war bei pausiertem Thema tot** – `buildDuel` filterte
+  zusätzlich auf die im Tagestraining aktiven Themen, sodass der Knopf „Keine Karten in
+  diesem Thema" für ein Thema mit 282 Karten meldete, während „Ganzes Thema üben" direkt
+  daneben lief. Wer ein Thema ausdrücklich wählt, meint es auch; `buildTopic()` hält es über
+  `catCards()` seit jeher so. Und das **Duell begann jedes Mal mit denselben drei Fragen**:
+  Der Schwachstellen-Topf war fest sortiert, also kamen die drei schwächsten Karten in jeder
+  Runde erneut – aus dem Tempotest wurde das Auswendiglernen von drei Karten. Gemessen über
+  acht Runden: drei Karten in allen acht, jetzt keine einzige. Die Vorauswahl bleibt bei den
+  Wackelkandidaten, gezogen wird daraus gewürfelt.
+
   Schließlich wird die **Antwortzeit** ausgewertet, statt sie zu messen und wegzuwerfen:
   Die Duellkarte zeigt die durchschnittliche Zeit bis zur richtigen Antwort. Nur richtige
   Antworten zählen hinein – wie schnell jemand danebengreift, sagt nichts über Fortschritt.
@@ -340,7 +351,7 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 94 Einheitentests plus Inhaltsprüfung
+npm test           # 96 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 139 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
 npm run test:all   # alles zusammen

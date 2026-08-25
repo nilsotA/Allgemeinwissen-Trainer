@@ -581,3 +581,36 @@ test('bei weiter vollem Speicher meldet sich jeder Fehlversuch', () => {
   store.setSaveErrorHandler(() => {});
   assert.equal(gemeldet, 4, `jeder Fehlversuch muss melden, gemeldet: ${gemeldet}`);
 });
+
+test('das Themen-Duell haengt nicht am Tagestraining', () => {
+  /* Wer auf „Thema im Duell" tippt, waehlt das Thema ausdruecklich - auch wenn
+     es unter Mehr pausiert ist. Sonst meldete der Knopf „Keine Karten in
+     diesem Thema" fuer ein Thema mit hunderten Karten, waehrend „Ganzes Thema
+     ueben" direkt daneben lief. */
+  store.resetAll();
+  store.setSetting('cats', ['mat']);          // Sport pausiert
+  const duell = sess.buildDuel(10, 'spo');
+  assert.equal(duell.length, 10, 'das Duell muss trotzdem Karten liefern');
+  assert.ok(duell.every(x => x.card.cat === 'spo'), 'und zwar nur aus dem gewaehlten Thema');
+  assert.ok(sess.buildTopic('spo', 20).length > 0, 'Gegenprobe: das Themen-Training lief schon immer');
+});
+
+test('das Duell beginnt nicht jedes Mal mit denselben Karten', () => {
+  // Fest sortiert kamen die schwaechsten drei Karten in jeder Runde erneut.
+  store.resetAll();
+  const t = store.todayNum();
+  for (let i = 0; i < 60; i++) {
+    store.putCard(CARDS[i].id, { ...fresh(), iv: 5, reps: 2, seen: 6,
+      ok: i < 8 ? 1 : 5, lapses: i < 5 ? 5 : 0, due: t + 3, last: t });
+  }
+  const zaehl = {};
+  const RUNDEN = 8;
+  for (let r = 0; r < RUNDEN; r++) {
+    for (const id of new Set(sess.buildDuel(10).map(x => x.card.id))) zaehl[id] = (zaehl[id] || 0) + 1;
+  }
+  const immer = Object.values(zaehl).filter(n => n === RUNDEN).length;
+  assert.equal(immer, 0, `${immer} Karten kamen in allen ${RUNDEN} Duellen vor`);
+  // Die Vorauswahl soll trotzdem bei den Schwachen bleiben, nicht rein zufaellig sein.
+  const oft = Object.values(zaehl).filter(n => n >= RUNDEN / 2).length;
+  assert.ok(oft > 0, 'schwache Karten muessen weiterhin bevorzugt drankommen');
+});
