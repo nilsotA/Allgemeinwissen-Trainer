@@ -388,9 +388,12 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 - **Ohne Technik:** Seite in Safari öffnen → **Mehr** → ganz unten steht `N Karten · Wissenswerk`.
   Diese Zahl wächst mit jeder Ergänzung und verrät den Stand eindeutig.
-- **Genau:** `<Adresse>/sw.js` aufrufen. In der dritten Zeile steht
+- **Genau:** `<Adresse>/sw.js` **im privaten Tab** aufrufen. In der dritten Zeile steht
   `const VERSION = 'wissenswerk-…'`. Dieselbe Kennung gibt `node scripts/make-sw.mjs`
   hier im Repository aus. Stimmen beide überein, ist der Stand draußen aktuell.
+  Der private Tab ist nötig, weil ein aktiver Service Worker jede *Navigation* als Anfrage
+  nach dem Grundgerüst behandelt und die App ausliefert – im normalen Tab bekäme man also
+  die Oberfläche zu sehen statt des Quelltexts.
 
 ## Entwicklung
 
@@ -1023,6 +1026,73 @@ absichern lässt: Doom als „Durchbruch zum Massenphänomen" statt als Begründ
 Zelda „die meisten Teile" statt „die Reihe", die Lindenstraße als erste deutsche Soap **nach
 britischem Vorbild**, die Sopranos als Serie, die den Antihelden zum Standard machte statt ihn
 zu erfinden.
+
+### Zweite Fehlerjagd: der eigene neue Code
+
+Nach der ersten Jagd sind rund tausend Zeilen dazugekommen – Markierungs-Zeitstempel,
+Fassungsanzeige, Rundenfortsetzung, Diakritika, ein neuer Build-Schritt. Genau dort sitzen die
+noch unentdeckten Fehler, also lief eine zweite Jagd **nur über diesen Bereich**: acht
+Perspektiven, jeder Fund von zwei Skeptikern mit verschiedenem Blickwinkel gegengeprüft
+(„ist der Ablauf überhaupt erreichbar?" und „ist das falsch – oder Absicht?"), dazu ein
+Kritiker, der am Ende nach dem Übersehenen sucht. **Neun bestätigt, sieben von den Skeptikern
+verworfen, vier Nachträge vom Kritiker.**
+
+Die schwersten Funde waren beides Selbsttore aus derselben Woche:
+
+- **Der Nachlauf des Suchen-Knopfs sperrte den Nutzer ein.** „Suchen" prüft nach und zeichnet
+  1,5 Sekunden später die Einstellungen neu. Startet man in dieser Zeit eine Runde, zeichnete
+  der Nachlauf die Einstellungen darüber – und weil eine Runde Leiste und Kopfzeile
+  ausblendet, stand man ohne jede Navigation da. Heraus kam man nur über Neuladen oder die
+  zerstörenden Knöpfe. Der Rückruf prüft jetzt, ob er noch in seine Lage passt.
+- **Ein Prüfstein konnte nicht fehlschlagen.** Der Test „die erste Übernahme lädt die Seite
+  nicht neu" setzte seine Marke **nach** dem Ereignis, das sie überleben sollte, und las sie
+  eine Zeile später zurück. Er wäre auch dann grün geblieben, wenn die Seite jedem
+  Erstbesucher unter den Händen neu geladen hätte.
+
+Dazu, kürzer:
+
+- **„Alle Markierungen löschen" beerdigte nur, was dieser Tab kannte.** Während einer Runde
+  verwirft ein Tab die Meldungen des anderen bewusst – dessen frische Sterne bekamen deshalb
+  keinen Grabstein, und das Speichern danach führte sie wieder herein. Erst einholen, dann
+  beerdigen.
+- **Ein Stern aus der Zukunft überlebte seinen Grabstein.** Der Zeitstempel ist zugleich die
+  Fassungsnummer der Entscheidung; fängt die Uhr bei 0 an, kann eine spätere Entscheidung
+  einen kleineren Betrag tragen als eine frühere. Die Uhr wird jetzt aus dem vorhandenen
+  Bestand nachgezogen.
+- **Ein Duellfehler löschte die Wiederholung des anderen Tabs.** Die Deckelung trägt eine
+  frische `last`-Marke, und beim Zusammenführen gewinnt der jüngere Stand *als Ganzes* – auf
+  einem veralteten Kartenzustand angewandt nahm sie `reps`, `ok` und das gewachsene Intervall
+  mit. Sie wird jetzt über `aendereKarte()` auf den eingeholten Stand angewandt. Der Fix von
+  vorgestern hatte einen kleinen Verlust gegen einen großen getauscht.
+- **Der Service Worker konnte sich selbst vergiften.** Bei einer Lücke im Bestand legte er die
+  Antwort auf die *angefragte* Adresse unter dem Gerüst-Schlüssel ab. Ein Aufruf von
+  `/manifest.webmanifest` als Seite genügte, und die App lieferte dauerhaft JSON statt
+  Oberfläche – und heilte nie wieder, weil der Eintrag ja vorhanden war. Bei einer Navigation
+  wird jetzt das Gerüst selbst geholt, und nur was `id="app"` enthält, darf dort landen.
+- **Der zurückgestellte Worker-Wechsel schützte den Rückblick nicht** (`endRun()` setzt `run`
+  vorher auf null), und nach einer Übernahme aus dem zweiten Tab bot der Rückblick eine
+  Fassung an, die es nicht mehr gab.
+- **Zwölf Karten lagen im falschen Teilgebiet.** Tatort, Batman, Super Mario und neun weitere
+  standen weiter unter „Film", obwohl es seit dem Unterhaltungs-Paket Fernsehen, Comics und
+  Videospiele gibt. Wer gezielt „Videospiele" übte, bekam vier Karten nicht zu sehen. Das
+  Teilgebiet geht nicht in die Kennung ein, der Lernfortschritt blieb beim Umtragen erhalten.
+- **Ein weiterer Prüfstein las ein Feld, das es nicht gibt** (`c.al` statt `c.az`) und ließ
+  damit genau die Hälfte aus, für die er geschrieben war.
+- **`merge-cards.mjs` meldete „nichts geschrieben", nachdem es geschrieben hatte** – die
+  Syntaxprüfung saß innerhalb der Schleife über die Zieldateien. Sie prüft jetzt alle, bevor
+  die erste geschrieben wird.
+
+**Was die Skeptiker verwarfen**, ist genauso lehrreich: eine angebliche Lücke in der
+lastDay-Regel, ein behaupteter Rückwärtssprung beim Merkanker, eine „Weitermachen"-Runde mit
+angeblich identischer Kartenmenge, ein Bewertungsrückschritt bei „Machiavelli" – alle vier
+hielten der Gegenprüfung nicht stand. Ein Fund war strittig: Eine Perspektive meldete die
+Gerüst-Vergiftung, die Gegenprüfung einer anderen widerlegte sie – aber am falschen Punkt, sie
+prüfte das vorgeschlagene Gegenmittel statt den Fehler. Der Prüfstein hat es dann entschieden.
+
+**Und der Prüfstein dafür war zunächst selbst falsch gebaut:** Er löste die Vergiftung über
+einen Aufruf von `/sw.js` aus – Anfragen an das Worker-Skript selbst fängt der Worker nach
+Spezifikation aber gar nicht ab. Der Test blieb grün, obwohl der Fehler danebenlag. Mit
+`/manifest.webmanifest` schlägt er zu und zeigt das eingelagerte JSON im Klartext.
 
 ### Was die Fehlerjagd nicht bestätigt hat
 

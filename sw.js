@@ -1,5 +1,5 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-1d65a6a9ff';
+const VERSION = 'wissenswerk-fad78d9e1e';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",
@@ -87,6 +87,14 @@ self.addEventListener('activate', (e) => {
    Bestand, damit index.html nie auf Module einer anderen Fassung trifft.
    Neue Fassungen kommen ueber den Lebenszyklus des Service Workers an,
    nicht ueber einzelne Dateien. */
+/* Erkennt das eigene Grundgeruest an einer Marke, die jede Fremdseite verfehlt. */
+async function istUnsereSeite(antwort) {
+  const art = antwort.headers.get('content-type') || '';
+  if (!art.includes('text/html')) return false;
+  try { return (await antwort.text()).includes('id="app"'); }
+  catch (err) { return false; }
+}
+
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
@@ -106,10 +114,17 @@ self.addEventListener('fetch', (e) => {
     const eigen = await cache.match(schluessel);
     if (eigen) return eigen;
     try {
-      const net = await fetch(req);
+      /* Bei einer Navigation wird das GERUEST geholt, nicht die angefragte
+         Adresse. Sonst legte eine Luecke im Bestand die falsche Antwort unter
+         dem Geruest-Schluessel ab: Ein direkter Aufruf von /sw.js ist auch eine
+         Navigation, seine Antwort ist gueltig (200), und danach lieferte die App
+         dauerhaft Quelltext statt Oberflaeche - und heilte nie wieder, weil der
+         Eintrag ja nun vorhanden war. */
+      const net = await fetch(istGeruest ? './index.html' : req);
       // Nur gueltige Antworten aufnehmen, sonst ersetzte eine 404-Seite
-      // dauerhaft die App.
-      if (net.ok) cache.put(schluessel, net.clone());
+      // dauerhaft die App. Und beim Geruest nur, was auch wirklich die App ist:
+      // Ein Anmeldefenster im Hotel-WLAN antwortet mit 200 und text/html.
+      if (net.ok && (!istGeruest || await istUnsereSeite(net.clone()))) cache.put(schluessel, net.clone());
       return net;
     } catch (err) {
       // Letzter Rueckfall: ein aelterer Bestand, falls das Update unvollstaendig blieb.

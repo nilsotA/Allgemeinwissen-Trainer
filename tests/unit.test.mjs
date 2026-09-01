@@ -268,7 +268,10 @@ test('jede Antwort ist auch ohne fremde Diakritika richtig', () => {
        .replace(/ø/g, 'o').replace(/Ø/g, 'O').replace(/æ/g, 'ae').replace(/œ/g, 'oe')
        .replace(/ł/g, 'l').replace(/Ł/g, 'L').replace(/đ/g, 'd').replace(/þ/g, 'th')).join('');
   const schlecht = [];
-  for (const c of CARDS) for (const t of [c.a, ...(c.al || [])]) {
+  // c.az sind die zugelassenen Nebenschreibweisen. Hier stand einmal c.al -
+  // ein Feld, das es nirgends gibt: Der „Rundumbeweis" prueft dann nur die
+  // Hauptantworten und laesst genau die Haelfte aus, fuer die er gedacht war.
+  for (const c of CARDS) for (const t of [c.a, ...(c.az || [])]) {
     const getippt = tastenfeld(t);
     if (getippt === t) continue;
     const note = bewerte(c, getippt);

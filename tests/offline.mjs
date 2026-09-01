@@ -297,11 +297,15 @@ try {
     const ep = await ectx.newPage();
     await ep.goto(BASIS + '/', { waitUntil: 'load' });      // KEIN Neuladen: wie beim ersten Besuch
     await ep.waitForSelector('#app:not([hidden])', { timeout: 15000 });
-    await ep.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 20000 });
-    await new Promise(r => setTimeout(r, 600));
+    /* Die Marke MUSS vor der Uebernahme gesetzt werden - sie soll ja beweisen,
+       dass die Uebernahme sie nicht wegraeumt. Vorher stand sie danach: Der Test
+       las eine Zeile spaeter zurueck, was er eine Zeile vorher selbst gesetzt
+       hatte, und konnte gar nicht fehlschlagen. */
     await ep.evaluate(() => { window.__marke = 'erste Sitzung'; });
+    await ep.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 20000 });
+    await new Promise(r => setTimeout(r, 1200));
     check('die erste Uebernahme laedt die Seite nicht neu',
-      await ep.evaluate(() => window.__marke) === 'erste Sitzung');
+      await ep.evaluate(() => window.__marke).catch(() => null) === 'erste Sitzung');
 
     await veroeffentliche(ep, 'erstsitzungfassung');
     await ep.waitForSelector('.toast.aktion', { timeout: 20000 });
@@ -396,6 +400,75 @@ try {
     check('die angezeigte Fassung hat sich geändert', danach !== zeile,
       `${zeile.replace(/\n/g, ' ')} -> ${danach.replace(/\n/g, ' ')}`);
     await fctx.close();
+  }
+
+  group('Was unter dem Geruest-Schluessel landen darf');
+  {
+    /* Der Handler liest das Geruest unter './index.html'. Schrieb er dorthin die
+       Antwort auf die ANGEFRAGTE Adresse, genuegte bei einer Luecke im Bestand
+       ein einziger Aufruf von /sw.js als Seite - eine Navigation wie jede andere,
+       Antwort gueltig -, um Quelltext dauerhaft als Grundgeruest abzulegen. Die
+       App lieferte danach nur noch JavaScript und heilte nie wieder, weil der
+       Eintrag ja vorhanden war. Die README fordert genau diesen Aufruf. */
+    kaputt = new Set(); stelleFassung(null);
+    const [gctx, gp] = await frischerTab();
+    await gp.evaluate(async () => {                       // Luecke reissen
+      for (const n of await caches.keys()) {
+        const c = await caches.open(n);
+        for (const r of await c.keys()) {
+          const pfad = new URL(r.url).pathname;
+          if (pfad === '/index.html' || pfad === '/') await c.delete(r);
+        }
+      }
+    });
+    /* Nicht /sw.js aufrufen: Anfragen an das Worker-Skript selbst faengt der
+       Worker nach Spezifikation NICHT ab - dieser Aufruf ginge am Handler
+       vorbei und bewiese nichts. Eine gewoehnliche Datei tut es. */
+    await gp.goto(BASIS + '/manifest.webmanifest', { waitUntil: 'load' });
+    await new Promise(r => setTimeout(r, 800));
+    /* JEDEN Bestand pruefen, nicht den erstbesten: Der Rueckfall im Handler sucht
+       ueber alle Bestaende, ein vergifteter Eintrag in irgendeinem von ihnen kann
+       also ausgeliefert werden. Und den ganzen Text ansehen - id="app" steht
+       weit unten in index.html. */
+    const schlecht = await gp.evaluate(async () => {
+      const raus = [];
+      for (const n of await caches.keys()) {
+        const t = await (await caches.open(n)).match('./index.html');
+        if (!t) continue;
+        const txt = await t.text();
+        if (!txt.includes('id="app"')) raus.push(n + ': ' + txt.slice(0, 70).replace(/\s+/g, ' '));
+      }
+      return raus;
+    });
+    check('in keinem Bestand steht Fremdes unter dem Gerüst-Schlüssel',
+      schlecht.length === 0, schlecht.join(' | '));
+
+    await gp.goto(BASIS + '/', { waitUntil: 'load' });
+    await gp.waitForSelector('#app:not([hidden])', { timeout: 15000 }).catch(() => {});
+    check('die App startet danach unveraendert', await gp.locator('.nav-btn').count() === 5);
+    await gctx.close();
+  }
+
+  group('Der Nachlauf des Suchen-Knopfs');
+  {
+    /* „Suchen" prueft nach und zeichnet 1,5 s spaeter die Einstellungen neu.
+       Startet der Nutzer in dieser Zeit eine Runde, zeichnete der Nachlauf die
+       Einstellungen darueber: Runde und Rueckblick weg, und weil startRun()
+       Leiste und Kopfzeile ausblendet, stand er ohne jede Navigation da. */
+    kaputt = new Set(); stelleFassung(null);
+    const [sctx, sp] = await frischerTab();
+    await veroeffentliche(sp, 'suchfassung');            // damit „Suchen" faendig wird
+    await sp.click('[data-view="settings"]');
+    await sp.waitForSelector('#updSuch', { timeout: 10000 });
+    await sp.click('#updSuch');
+    await sp.click('[data-view="home"]');                 // sofort weiter, nicht warten
+    await sp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await sp.waitForSelector('.sess-body', { timeout: 10000 });
+    await new Promise(r => setTimeout(r, 2500));          // der Nachlauf feuert
+    check('die laufende Runde steht noch', await sp.locator('.sess-body').count() === 1,
+      `#npd da: ${await sp.locator('#npd').count()}`);
+    check('der Beenden-Knopf ist erreichbar', await sp.locator('#quit').count() === 1);
+    await sctx.close();
   }
 
   kaputt = new Set();

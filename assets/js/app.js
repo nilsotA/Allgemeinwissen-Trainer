@@ -1091,8 +1091,15 @@ function renderSettings() {
        Ergebnis steht nicht sofort fest. Deshalb kurz warten, statt vorschnell
        „alles aktuell" zu behaupten. */
     setTimeout(() => {
-      if (swReg.waiting || swReg.installing) { renderSettings(); toast('Neue Fassung gefunden'); }
-      else toast('Du hast bereits die neueste Fassung');
+      const bereit = swReg.waiting || swReg.installing;
+      /* Nur neu zeichnen, wenn der Nutzer ueberhaupt noch hier ist. Ohne diese
+         Bedingung zeichnete der Nachlauf die Einstellungen ueber eine inzwischen
+         gestartete Runde: Die Runde verschwand mitsamt Rueckblick, und weil
+         startRun() Leiste und Kopfzeile ausblendet, stand der Nutzer ohne jede
+         Navigation da - herauszukommen war nur ueber Neuladen oder die
+         zerstoerenden Knoepfe. Der Balken holt das Angebot ohnehin nach. */
+      if (view === 'settings' && !run) renderSettings();
+      toast(bereit ? 'Neue Fassung gefunden' : 'Du hast bereits die neueste Fassung');
     }, 1500);
   });
   document.getElementById('updNun')?.addEventListener('click', () => {
@@ -1707,8 +1714,19 @@ function askDuel(card) {
         // und ein Zustand mit seen=0 würde sie in beide Listen bringen.
         const cs = cardState(card.id);
         // Termin auf heute, Intervall auf die wirklich verstrichene Zeit
-        // gedeckelt – Begruendung bei nachDuellFehler in srs.js.
-        if (cs && cs.seen > 0) putCard(card.id, nachDuellFehler(cs));
+        /* gedeckelt – Begruendung bei nachDuellFehler in srs.js. Ueber
+           aendereKarte, nicht ueber putCard: Die Deckelung traegt eine frische
+           last-Marke, und beim Zusammenfuehren gewinnt der juengere Stand als
+           GANZES. Auf einem veralteten Kartenzustand angewandt haette sie damit
+           eine im anderen Tab bereits gezaehlte Wiederholung geloescht - reps,
+           ok und das gewachsene Intervall waeren weg gewesen. aendereKarte holt
+           erst den abgelegten Stand ein und deckelt dann diesen. */
+        if (cs && cs.seen > 0) {
+          store.aendereKarte(card.id, (aktuell) => {
+            const grund = (aktuell && aktuell.seen > 0) ? aktuell : cs;
+            return nachDuellFehler(grund);
+          });
+        }
       }
       save();
       run.done++; if (ok) run.correct++;
@@ -1762,7 +1780,11 @@ function starteServiceWorker() {
        dann die offene Frage - und zwar ohne Vorwarnung, weil dieser Tab gar
        nichts getippt hat. Der Austausch wartet, bis eine Ansicht gewechselt
        wird. Die Module laufen so lange aus dem Speicher der Seite weiter. */
-    if (run) { neuLadenNachRunde = true; return; }
+    /* Auch der Rueckblick ist schuetzenswert: endRun() setzt run bereits auf
+       null, bevor die Liste der falsch beantworteten Karten stehenbleibt. Ohne
+       rueckblickOffen lud ein Wechsel aus dem zweiten Tab genau diese Liste weg,
+       ohne dass hier jemand etwas getippt haette. */
+    if (run || rueckblickOffen) { neuLadenNachRunde = true; return; }
     location.reload();
   });
   // updateViaCache 'none': das Skript selbst darf nie aus dem HTTP-Cache
@@ -1823,6 +1845,7 @@ function pruefeFassung() {
 let updateWartet = false;
 let swReg = null;
 function updateAnbieten() {
+  if (neuLadenNachRunde) return;      // schon uebernommen, nur noch nicht geladen
   if (run) { updateWartet = true; return; }
   updateBalken();
 }
@@ -1831,6 +1854,11 @@ function updateAnbieten() {
 function holeUpdateNach() {
   if (!updateWartet || run) return;
   updateWartet = false;
+  /* Hat inzwischen ein zweiter Tab die neue Fassung angenommen, ist sie laengst
+     aktiv und es gibt nichts mehr anzubieten. Vorher stand danach der Balken
+     „Neue Fassung bereit" ueber dem Rueckblick, und ein Tipp darauf antwortete
+     „ist nicht mehr bereit" - obwohl sie eine Beruehrung spaeter geladen wurde. */
+  if (neuLadenNachRunde) return;
   updateBalken();
 }
 

@@ -71,6 +71,19 @@ for (const c of eingang) {
   (proDatei.get(ziel) || proDatei.set(ziel, []).get(ziel)).push(c);
 }
 
+/* Erst alles pruefen, dann schreiben. Die Pruefung sass frueher IN der Schleife:
+   Bei zwei Zieldateien war die erste laengst geschrieben, wenn die zweite
+   scheiterte - und die Meldung sagte trotzdem „nichts geschrieben". Wer ihr
+   glaubte und nicht in git status sah, committete eine halb eingespielte
+   Ergaenzung. */
+for (const [ziel, liste] of [...proDatei].sort()) {
+  try { new Function('return [' + liste.map(zeile).join('\n').replace(/,$/, '') + ']')(); }
+  catch (e) {
+    console.error(`${ziel}: erzeugte Zeilen parsen nicht – nichts geschrieben (${e.message})`);
+    process.exit(1);
+  }
+}
+
 let summe = 0;
 for (const [ziel, liste] of [...proDatei].sort()) {
   const txt = readFileSync(ziel, 'utf8');
@@ -78,10 +91,6 @@ for (const [ziel, liste] of [...proDatei].sort()) {
   if (schluss < 0) { console.error(`${ziel}: Abschluss „];" nicht gefunden`); process.exit(1); }
   const block = `/* ---------- Ergänzt: Lücken geschlossen ---------- */\n`
     + liste.map(zeile).join('\n') + '\n';
-  /* Letzte Sicherung vor dem Schreiben: Was hier nicht parst, macht data/*.js
-     unbrauchbar - und das faellt erst auf, wenn die App weiss bleibt. */
-  try { new Function('return [' + liste.map(zeile).join('\n').replace(/,$/, '') + ']')(); }
-  catch (e) { console.error(`${ziel}: erzeugte Zeilen parsen nicht – nichts geschrieben (${e.message})`); process.exit(1); }
   if (dry) console.log(block.trimEnd());
   if (!dry) writeFileSync(ziel, txt.slice(0, schluss) + block + txt.slice(schluss));
   console.log(`${ziel.padEnd(14)} +${liste.length}`);

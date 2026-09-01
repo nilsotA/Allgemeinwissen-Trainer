@@ -757,3 +757,77 @@ test('ein eingelesenes Backup traegt umformulierte Karten mit', () => {
   assert.equal(store.sicherungZurueck(), true);
   assert.equal(store.cardState(c.id)?.iv, 40, 'der zurueckgeholte Stand hat die Umformulierung verloren');
 });
+
+/* „Alle Markierungen loeschen" beerdigte nur, was DIESER Tab im Speicher hatte.
+   Waehrend einer Lerneinheit verwirft ein Tab die Meldungen des anderen bewusst -
+   dessen frische Sterne kannte er also nicht, sie bekamen keinen Grabstein, und
+   das Speichern danach fuehrte sie wieder herein. Der Nutzer sah „Markierungen
+   geloescht" und darunter unveraendert „Alle 1 Markierungen loeschen". */
+test('Markierungen loeschen erwischt auch die des zweiten Tabs', async () => {
+  const B = await import('../assets/js/store.js?loesch-tab');
+  store.toggleFlag('stern-eigen');
+  store.save(true);
+  B.save(true);                          // Tab B holt sich den Stand
+  B.toggleFlag('stern-fremd');           // ... und setzt einen eigenen Stern
+  B.save(true);
+  assert.equal(store.isFlagged('stern-fremd'), false,
+    'Tab A darf den fremden Stern noch nicht kennen - sonst prueft der Test nichts');
+
+  assert.ok(store.loescheAlleMarkierungen() >= 1);
+
+  assert.equal(store.isFlagged('stern-eigen'), false);
+  assert.equal(store.isFlagged('stern-fremd'), false, 'der fremde Stern blieb stehen');
+  const abgelegt = JSON.parse(localStorage.getItem('wissenswerk.v1'));
+  const uebrig = Object.entries(abgelegt.flags).filter(([, v]) => v === true || v > 0);
+  assert.deepEqual(uebrig, [], `im Speicher stehen noch Markierungen: ${JSON.stringify(uebrig)}`);
+  B.save(true);
+  assert.equal(B.isFlagged('stern-fremd'), false, 'Tab B holt seinen Stern zurueck');
+});
+
+/* Der Stempel ist zugleich die Fassungsnummer der Entscheidung. Faengt die Uhr
+   bei 0 an, kann eine spaetere Entscheidung einen KLEINEREN Betrag tragen als
+   eine fruehere - etwa wenn die Geraeteuhr vorging und dann korrigiert wurde.
+   Dann gewinnt beim Zusammenfuehren der alte Stern gegen den neuen Grabstein. */
+test('ein Grabstein schlaegt auch einen Stern aus der Zukunft', async () => {
+  const st = store.S();
+  st.flags['stern-zukunft'] = Date.now() + 3600000;      // Uhr ging eine Stunde vor
+  store.save(true);
+  const B = await import('../assets/js/store.js?uhr-tab');
+  assert.equal(B.isFlagged('stern-zukunft'), true, 'Tab B muss den Stern erst sehen');
+
+  B.toggleFlag('stern-zukunft');                          // jetzt wegnehmen
+  B.save(true);
+  assert.equal(B.isFlagged('stern-zukunft'), false);
+
+  store.save(true);                                       // Tab A schreibt irgendetwas
+  assert.equal(store.isFlagged('stern-zukunft'), false,
+    'der Stern aus der Zukunft hat den Grabstein ueberlebt');
+});
+
+/* Die Deckelung nach einem Duellfehler traegt eine frische last-Marke, und beim
+   Zusammenfuehren gewinnt der juengere Stand als GANZES. Auf einem veralteten
+   Kartenzustand angewandt loeschte sie damit eine im anderen Tab bereits
+   gezaehlte Wiederholung: reps, ok und das gewachsene Intervall waren weg. */
+test('ein Duellfehler wirft die Wiederholung des anderen Tabs nicht weg', async () => {
+  const { nachDuellFehler } = await import('../assets/js/srs.js');
+  const B = await import('../assets/js/store.js?duellverlust-tab');
+  const t = store.todayNum();
+  store.putCard('karte-x', { ef: 2.5, iv: 14, due: t, reps: 4, lapses: 0, seen: 11, ok: 9, last: 1000 });
+  store.save(true);
+  B.save(true);                                    // beide Tabs kennen die Karte
+
+  // Tab A wiederholt sie regulaer und schreibt.
+  store.putCard('karte-x', { ef: 2.6, iv: 35, due: t + 35, reps: 5, lapses: 0, seen: 12, ok: 10, last: 2000 });
+  store.save(true);
+
+  // Tab B kennt das nicht (war beschaeftigt) und verpatzt sie im Duell.
+  B.aendereKarte('karte-x', (aktuell) => nachDuellFehler(aktuell));
+  B.save(true);
+
+  const nachher = JSON.parse(localStorage.getItem('wissenswerk.v1')).cards['karte-x'];
+  assert.equal(nachher.reps, 5, `die Wiederholung von Tab A ist weg: ${JSON.stringify(nachher)}`);
+  assert.equal(nachher.seen, 12, 'die gezaehlte Abfrage ist weg');
+  assert.equal(nachher.ok, 10, 'die richtige Antwort ist weg');
+  assert.equal(nachher.due, t, 'die Karte muss trotzdem ins naechste Training');
+  assert.ok(nachher.iv < 35, `die Deckelung fehlt: iv ${nachher.iv}`);
+});

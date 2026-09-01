@@ -74,6 +74,19 @@ let flagUhr = 0;
 /* Streng steigend: Zwei Tastendruecke in derselben Millisekunde bekaemen sonst
    denselben Stempel, und die zweite Entscheidung verlore gegen die erste. */
 const flagStempel = () => (flagUhr = Math.max(Date.now(), flagUhr + 1));
+/* Und streng ueber allem, was schon abgelegt ist. Faengt die Uhr bei 0 an, kann
+   ein Stempel aus der Vergangenheit kommen: Ging die Geraeteuhr eine Stunde vor
+   und wurde danach korrigiert, trug eine gesetzte Markierung einen groesseren
+   Betrag als der Grabstein, der sie spaeter entfernt - der zweite Tab holte den
+   geloeschten Stern beim naechsten Zusammenfuehren zurueck. Dasselbe im Kleinen
+   beim Leeren vieler Markierungen: Das kostet Millisekunden, in denen ein frisch
+   gesetzter Stern des anderen Tabs gegen den Grabstein verloere. */
+const flagUhrNachziehen = (z) => {
+  for (const v of Object.values((z && z.flags) || {})) {
+    const b = Math.abs(alsStempel(v));
+    if (b > flagUhr) flagUhr = b;
+  }
+};
 const GRABSTEIN_TAGE = 90;
 export const zaehleMarkierungen = (z) =>
   Object.values((z && z.flags) || {}).filter(istMarkiert).length;
@@ -105,7 +118,9 @@ function load() {
         if (typeof c[feld] !== 'number' || !Number.isFinite(c[feld])) c[feld] = KARTE_LEER[feld];
       }
     }
-    return normalisiereFlags(zustand);
+    normalisiereFlags(zustand);
+    flagUhrNachziehen(zustand);
+    return zustand;
   } catch (e) {
     // Bewusst console.error: hier landet auch ein Programmierfehler, und der
     // wuerde sonst den gesamten Fortschritt still auf die Standardwerte setzen.
@@ -181,6 +196,7 @@ function zusammenfuehren(fremd, eigen) {
     z.streak = groesser(z.streak, fremd.streak);
   }
   z.best = groesser(z.best, z.streak);
+  flagUhrNachziehen(z);            // fremde Stempel duerfen eigene nicht ueberholen
   /* factIdx zeigt in eine Liste und waechst nicht monoton - es wandert mit dem
      Zaehler, zu dem es gehoert, sonst zeigte die Rueckschau auf einen anderen
      Merkanker als den zuletzt gesehenen. */
@@ -193,6 +209,31 @@ function zusammenfuehren(fremd, eigen) {
   return z;                                  // Einstellungen bleiben die dieses Tabs
 }
 
+/* Den abgelegten Stand einholen, ohne zu schreiben. Wer den Zustand veraendern
+   will, muss das auf dem juengsten Stand tun - sonst behauptet die eigene
+   Aenderung, sie sei die neueste, und verdraengt eine fremde, die sie nie
+   gesehen hat. Gibt true zurueck, wenn zusammengefuehrt wurde. */
+function holeFremdenStand() {
+  try {
+    const roh = localStorage.getItem(KEY);
+    if (!roh) return false;
+    const fremd = JSON.parse(roh);
+    if (!fremd || typeof fremd !== 'object' || (fremd.rev || 0) <= (state.rev || 0)) return false;
+    state = zusammenfuehren(fremd, state);
+    return true;
+  } catch (e) { return false; }   // unlesbar ist so gut wie nicht vorhanden
+}
+
+/** Eine Karte auf dem juengsten Stand veraendern – fuer Aenderungen, die auf
+    einem veralteten Kartenzustand Schaden anrichten wuerden. */
+export function aendereKarte(id, fn) {
+  holeFremdenStand();
+  const neu = fn(state.cards[id] || null);
+  if (neu) state.cards[id] = neu;
+  save();
+  return neu;
+}
+
 export function save(now = false) {
   const write = () => {
     /* Die Fassungsnummer darf nur zaehlen, was wirklich im Speicher steht.
@@ -203,14 +244,7 @@ export function save(now = false) {
        zwanzig im anderen Tab gelernte Karten verloren, ohne jede Meldung. */
     let vorherigeRev = state.rev || 0;
     try {
-      const roh = localStorage.getItem(KEY);
-      if (roh) {
-        const fremd = JSON.parse(roh);
-        if (fremd && typeof fremd === 'object' && (fremd.rev || 0) > (state.rev || 0)) {
-          state = zusammenfuehren(fremd, state);
-          vorherigeRev = state.rev || 0;   // nach dem Zusammenfuehren neu ablesen
-        }
-      }
+      if (holeFremdenStand()) vorherigeRev = state.rev || 0;   // nach dem Zusammenfuehren neu ablesen
       state.rev = vorherigeRev + 1;
       localStorage.setItem(KEY, JSON.stringify(state));
       quotaWarned = false;
@@ -306,6 +340,12 @@ export function toggleFlag(id) {
 }
 /** Alle Markierungen entfernen – als Grabsteine, damit der zweite Tab sie nicht zurueckholt. */
 export function loescheAlleMarkierungen() {
+  /* Erst einholen, dann beerdigen. Waehrend einer Lerneinheit verwirft dieser
+     Tab die Meldungen des anderen bewusst - er kennt dessen frische Markierungen
+     also nicht. Ohne den Abgleich bekamen genau die keinen Grabstein, und das
+     Speichern danach fuehrte sie wieder herein: Der Nutzer sah „Markierungen
+     geloescht" und darunter unveraendert „Alle 1 Markierungen loeschen". */
+  holeFremdenStand();
   let n = 0;
   for (const id of Object.keys(state.flags)) {
     if (!istMarkiert(state.flags[id])) continue;
