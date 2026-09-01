@@ -258,4 +258,9 @@ export default [
 {q:"Unter welchem Künstlernamen zeichnete Georges Remi „Tim und Struppi“?",a:"Hergé",s:"Comics",d:3,t:"Die Initialen rückwärts – R. G. – französisch ausgesprochen. Sein klarer Strich prägte eine ganze Schule, die „ligne claire“.",w:["Peyo","Morris","Franquin"]},
 {q:"Welche wortlose Bildergeschichte schuf e.o.plauen?",a:"Vater und Sohn",s:"Comics",d:3,t:"Erich Ohser zeichnete sie ab 1934, weil er unter eigenem Namen nicht mehr veröffentlichen durfte. Die Geschichten kommen ganz ohne Text aus.",w:["Max und Moritz","Die Fliegenden Blätter","Lurchi"]},
 {q:"Wie heißt der beste Freund von Asterix?",a:"Obelix",s:"Comics",d:1,t:"Er fiel als Kind in den Zaubertrank und hat deshalb dauerhaft übermenschliche Kräfte – weshalb er nie welchen bekommen darf.",w:["Miraculix","Majestix","Automatix"]},
+
+/* ---------- Quizduell-Haertetest: gemessene Luecken ---------- */
+{q:"In welcher fiktiven Stadt leben die Simpsons?",a:"Springfield",s:"Fernsehen",d:1,t:"Der Bundesstaat bleibt in der Serie absichtlich offen – ein Running Gag, weil es den Ortsnamen in den USA dutzendfach gibt. Matt Groening nannte als Vorbild Springfield in Oregon.",w:["Quahog","Shelbyville","South Park"]},
+{q:"Wer moderierte 1999 die erste Folge von „Wer wird Millionär?“?",a:"Günther Jauch",s:"Fernsehen",d:1,t:"Deutsche Fassung des britischen Formats „Who Wants to Be a Millionaire?“, seit September 1999 bei RTL. Die klassischen Joker: 50:50, Publikums- und Telefonjoker.",w:["Jörg Pilawa","Kai Pflaume","Frank Elstner"]},
+{q:"Wie lautet der bürgerliche Name von Batman?",a:"Bruce Wayne",s:"Comics",d:1,t:"Milliardenerbe bei Tag, Fledermaus bei Nacht. Seine einzigen Mittel sind Geld, Training und Technik – Superkräfte hat er keine, ebenso wenig wie Iron Man oder Green Arrow.",w:["Clark Kent","Tony Stark","Barry Allen"]},
 ];

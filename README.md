@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.941 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.965 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -573,7 +573,7 @@ dachte – zerlegt `normalize()` den Text jetzt in Grundbuchstabe plus Zeichen u
 Zeichen weg. **Nach** der deutschen Umschrift: „Öl" bleibt `oel` und wird nicht zu `ol`.
 Umlaute kann man auf einer deutschen Tastatur schließlich tippen – „Konigs" statt „Königs" ist
 ein Schreibfehler, kein Tastaturproblem, und dafür ist die Fehlertoleranz zuständig. Ein Test
-prüft alle 1941 Antworten daraufhin durch.
+prüft alle 1965 Antworten daraufhin durch.
 
 ### „Weitermachen" wechselte still das Thema
 
@@ -1026,6 +1026,58 @@ absichern lässt: Doom als „Durchbruch zum Massenphänomen" statt als Begründ
 Zelda „die meisten Teile" statt „die Reihe", die Lindenstraße als erste deutsche Soap **nach
 britischem Vorbild**, die Sopranos als Serie, die den Antihelden zum Standard machte statt ihn
 zu erfinden.
+
+### Der Härtetest: wie viele Quizfragen kann die Sammlung wirklich?
+
+Bis hierher wurde gezählt, wie viele Karten es gibt. Das ist die falsche Zahl. Die richtige
+lautet: *Wie viele Fragen, die ein Quizspiel tatsächlich stellt, kann die Sammlung
+beantworten?* Acht Prüfer haben je zwanzig typische Fragen aus ihrem Gebiet geschrieben – was
+in Quizduell, Trivial Pursuit oder im Kneipenquiz wirklich drankommt – und für jede
+nachgesehen, ob eine Karte sie abdeckt.
+
+**97 von 160, also 61 %.** Aufgeschlüsselt:
+
+| Gebiet | abgedeckt |
+|---|---|
+| Geschichte | 15/20 |
+| Naturwissenschaft | 15/20 |
+| Politik & Wirtschaft | 13/20 |
+| Unterhaltung | 12/20 |
+| Sprache & Literatur | 12/20 |
+| Geografie | 11/20 |
+| Alltag & Welt | 11/20 |
+| **Sport** | **8/20** |
+
+Der schlechteste Wert ist ausgerechnet Sport – bei 282 Sportkarten. Der Grund steht in der
+Datei: Rund 150 davon sind Trainingslehre, Sportdidaktik, Anatomie und Bewegungslehre. Das ist
+**Lehramtsstoff, kein Quizstoff**. Die siebzehn Fußballkarten fragen nach Rekordmeister und
+Rekordnationalspieler – nicht nach Beckenbauers Spitznamen oder der Meisterschale. Dasselbe
+gilt für die 289 Mathematikkarten, die in keinem der acht Prüfgebiete überhaupt vorkommen. Das
+ist kein Fehler: Diese Karten haben einen anderen Zweck. Aber sie zählen nicht für das Quiz,
+und die Gesamtzahl 1.941 hat das bisher verdeckt.
+
+**Die wichtigste Erkenntnis ist aber kein Themenloch, sondern eine Rollenverwechslung.** Von
+dreizehn nachgeprüften Fehlbegriffen – Stalingrad, Nürnberg, Den Haag, Jauch, Dürrenmatt,
+Frisch, Ärmelkanal, Heine, Wilhelm II., St. Helena, Pyrenäen, Klose – stand **kein einziger im
+`a`-Feld einer Karte**. Fast alle standen als Ablenker oder im Erklärtext. Die Sammlung kennt
+den Stoff, prüft ihn aber nie ab.
+
+Damit verbunden eine zweite Schlagseite: Wo ein Thema besetzt ist, sitzt die Karte auf der
+zweiten Assoziationsstufe statt auf der ersten. Argentiniens Hauptstadt ja, Belgiens nein.
+Volleyball-Netzhöhe ja, Spieleranzahl nein. Simpsons-Rekordlaufzeit ja, Springfield nein.
+Gotham City ja, Bruce Wayne nein. Genau das Naheliegende, das im Spiel zuerst gefragt wird,
+wurde beim Schreiben gemieden.
+
+**24 geprüfte Karten** schließen die dringendsten dieser Lücken – jede von zwei Prüfern
+gegengelesen, einer auf Wahrheit (mit Recherche), einer auf Handwerk (Form, Ablenker,
+Dublette). Sieben wurden zunächst abgelehnt und nach der Kritik repariert: Der Batman-Kontext
+behauptete, er sei „der einzige Held ohne Superkräfte" (Iron Man auch nicht), der Moby-Dick-Text
+trug die Legende, Melville habe das Schreiben aufgegeben, und bei GmbH und TÜV ließ sich je ein
+Ablenker durch bloßes Buchstabenzählen ausschließen – ohne jedes Sachwissen.
+
+Aus der Erkenntnis ist ein Werkzeug geworden: `npm run luecken` listet alle Begriffe, die in
+der Sammlung **nur als Ablenker** vorkommen und nie als Antwort. Derzeit sind das 4.376 – die
+Fundgrube für jede weitere Runde, ohne eine einzige Neurecherche.
 
 ### Zweite Fehlerjagd: der eigene neue Code
 

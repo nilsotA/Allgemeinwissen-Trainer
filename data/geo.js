@@ -182,4 +182,9 @@ export default [
 {q:"Wie heißt die Hauptstadt von Kenia?",a:"Nairobi",s:"Welt",d:2,t:"Wirtschaftszentrum Ostafrikas – mit einem Nationalpark direkt am Stadtrand. Daressalam liegt in Tansania, Kampala in Uganda.",w:["Mombasa","Daressalam","Kampala"]},
 {q:"Wie heißt die Hauptstadt des Iran?",a:"Teheran",s:"Welt",d:2,t:"Am Fuß des Elburs-Gebirges, auf über 1.000 Metern Höhe. Bagdad ist die Hauptstadt des Nachbarlands Irak – beliebte Verwechslung.",w:["Isfahan","Bagdad","Damaskus"]},
 {q:"Wie heißt die Hauptstadt der Ukraine?",a:"Kiew",s:"Europa",d:1,t:"Am Dnepr. Die mittelalterliche Kiewer Rus gilt als gemeinsame Keimzelle der ukrainischen, russischen und belarussischen Geschichte.",w:["Charkiw","Odessa","Lwiw"]},
+
+/* ---------- Quizduell-Haertetest: gemessene Luecken ---------- */
+{q:"Welcher Fluss fließt durch Paris?",a:"Die Seine",s:"Europa",d:1,t:"775 km lang, Mündung bei Le Havre in den Ärmelkanal. Beliebte Quizfalle: Frankreichs längster Fluss ist die Loire – die fließt aber weit südlich an der Hauptstadt vorbei zum Atlantik.",w:["Die Loire","Die Rhône","Die Marne"]},
+{q:"Welches Bundesland ist flächenmäßig das kleinste?",a:"Bremen",s:"Deutschland",d:2,t:"Nur rund 420 km² – und das Land besteht aus zwei getrennten Stücken: der Stadt selbst und dem rund 60 km nördlich gelegenen Bremerhaven. Auch nach Einwohnerzahl ist es das kleinste Land.",w:["Saarland","Hamburg","Berlin"]},
+{q:"Wie heißt die Hauptstadt von Belgien?",a:"Brüssel",s:"Europa",d:1,t:"Sitz der EU-Kommission und des NATO-Hauptquartiers. Belgien hat drei Amtssprachen: Niederländisch, Französisch und – im Osten Walloniens – Deutsch. Die Hauptstadtregion selbst ist offiziell zweisprachig.",w:["Antwerpen","Gent","Lüttich"]},
 ];
