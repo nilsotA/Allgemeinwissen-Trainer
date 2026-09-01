@@ -183,4 +183,8 @@ export default [
 {q:"Welche Sprache ist in den meisten Ländern Südamerikas Amtssprache?",a:"Spanisch",s:"Sprache",d:1,t:"In neun der zwölf Staaten des Kontinents. Die drei Ausnahmen: Brasilien mit Portugiesisch, Guyana mit Englisch, Suriname mit Niederländisch.",w:["Portugiesisch","Englisch","Quechua"]},
 {q:"Wer schrieb den Abenteuerroman „Der Ruf der Wildnis“?",a:"Jack London",s:"Literatur",d:2,t:"Der Schlittenhund Buck wird aus Kalifornien in den hohen Norden verschleppt und verwildert dort. Der Autor war 1897 selbst als Goldsucher am Klondike.",w:["Mark Twain","Jules Verne","Karl May"]},
 {q:"Wer schrieb das Kinderbuch „Timm Thaler oder Das verkaufte Lachen“?",a:"James Krüss",s:"Literatur",d:2,t:"Der Junge gibt sein Lachen her und gewinnt dafür jede Wette. Der Autor stammte von Helgoland, von ihm ist auch „Mein Urgroßvater und ich“.",w:["Michael Ende","Erich Kästner","Paul Maar"]},
+
+/* ---------- Gemessene Quizluecken geschlossen ---------- */
+{q:"Wer schrieb die tragische Komödie „Der Besuch der alten Dame“?",a:"Friedrich Dürrenmatt",s:"Literatur",d:2,t:"Uraufführung am 29. Januar 1956 in Zürich: Die Milliardärin Claire Zachanassian kehrt in ihr verarmtes Heimatstädtchen Güllen zurück und bietet eine Milliarde für den Tod ihres früheren Geliebten. Vom selben Schweizer Autor stammt auch „Die Physiker“.",w:["Max Frisch","Bertolt Brecht","Carl Zuckmayer"]},
+{q:"Wer schrieb den Roman „Homo faber“?",a:"Max Frisch",s:"Literatur",d:2,t:"Der Bericht von 1957 zeigt einen Ingenieur, der nur an Technik und Statistik glaubt und ausgerechnet vom Zufall eingeholt wird. Vom selben Schweizer stammen die Dramen „Andorra“ und „Biedermann und die Brandstifter“.",w:["Klaus Mann","Paul Celan","Karl Kraus"]},
 ];

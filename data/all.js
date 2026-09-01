@@ -210,4 +210,7 @@ export default [
 {q:"Wie viele Zentimeter ergibt ein Zoll?",a:"2,54",s:"Alltag",d:2,t:"Der Wert ist seit 1959 international exakt festgelegt. Bei Bildschirmen meint die Zollangabe die Diagonale: 32 Zoll sind gut 81 Zentimeter – deshalb wirkt ein Fernseher schmaler, als die Zahl vermuten lässt.",w:["1,25","3,50","5,08"]},
 {q:"Wie viele Tage dauert die christliche Fastenzeit vor Ostern traditionell?",a:"40",s:"Religion",d:1,t:"Vorbild sind Jesu 40 Tage in der Wüste. Von Aschermittwoch bis Karsamstag liegen tatsächlich 46 Kalendertage – die sechs Sonntage zählen als Auferstehungstage nicht als Fastentage mit.",w:["30","50","60"]},
 {q:"Wofür steht die Abkürzung „TÜV“?",a:"Technischer Überwachungsverein",s:"Alltag",d:1,t:"Hervorgegangen aus den Dampfkessel-Überwachungsvereinen des 19. Jahrhunderts – der erste entstand 1866 in Mannheim, nach einer Kesselexplosion im Jahr zuvor. Heute mehrere eigenständige Gesellschaften, nicht eine Behörde.",w:["Technischer Überprüfungsverband","Technische Überwachungsvereinigung","Technischer Umweltverein"]},
+
+/* ---------- Gemessene Quizluecken geschlossen ---------- */
+{q:"Wie viel Gramm hat ein Pfund in Deutschland?",a:"500",s:"Alltag",d:1,t:"Der Deutsche Zollverein vereinheitlichte das Maß 1858; amtlich gilt es längst nicht mehr, im Handel und in Rezepten hält es sich trotzdem. Das amerikanische Pound wiegt dagegen nur rund 454 Gramm.",w:["250","750","200"]},
 ];

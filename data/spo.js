@@ -319,4 +319,9 @@ export default [
 
 /* ---------- Bisher nur Ablenker, jetzt eigene Karte ---------- */
 {q:"Welches Land wurde 2006 bei der WM in Deutschland Fußball-Weltmeister?",a:"Italien",s:"Fußball",d:2,t:"Im Berliner Finale 1:1 nach Verlängerung, dann 5:3 im Elfmeterschießen gegen Frankreich. In Erinnerung blieb vor allem Zidanes Kopfstoß gegen Materazzi und die Rote Karte in seinem letzten Spiel.",w:["Frankreich","Brasilien","Portugal"]},
+
+/* ---------- Gemessene Quizluecken geschlossen ---------- */
+{q:"Wie groß ist eine Volleyballmannschaft auf dem Spielfeld?",a:"Sechs Spieler",s:"Sportarten",d:1,t:"Drei stehen vorn am Netz, drei hinten; nach jedem gewonnenen Aufschlagrecht rotiert die Mannschaft im Uhrzeigersinn um eine Position weiter. Beim Beachvolleyball sind es dagegen nur zwei pro Team.",w:["Fünf Spieler","Vier Spieler","Acht Spieler"]},
+{q:"Wer stellte zwischen 1965 und 1979 mit 365 Treffern den Bundesliga-Torrekord auf?",a:"Gerd Müller",s:"Fußball",d:2,t:"Der Bayern-Stürmer brauchte dafür nur 427 Spiele, im Volksmund hieß er „Bomber der Nation“. Zweiter der ewigen Liste ist Robert Lewandowski mit 312 Treffern (Stand 2026).",w:["Uwe Seeler","Ulf Kirsten","Rudi Völler"]},
+{q:"Wie heißt das jährliche Endspiel der US-Footballliga NFL?",a:"Super Bowl",s:"Sportarten",d:1,t:"Das erste Endspiel dieser Art fand 1967 statt, die Auflagen werden mit römischen Zahlen durchgezählt. Kein anderes Fernsehereignis der USA holt so verlässlich hohe Quoten – entsprechend teuer sind die Werbeplätze.",w:["Pro Bowl","Rose Bowl","Orange Bowl"]},
 ];

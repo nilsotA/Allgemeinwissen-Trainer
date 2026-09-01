@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.981 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.999 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -573,7 +573,7 @@ dachte – zerlegt `normalize()` den Text jetzt in Grundbuchstabe plus Zeichen u
 Zeichen weg. **Nach** der deutschen Umschrift: „Öl" bleibt `oel` und wird nicht zu `ol`.
 Umlaute kann man auf einer deutschen Tastatur schließlich tippen – „Konigs" statt „Königs" ist
 ein Schreibfehler, kein Tastaturproblem, und dafür ist die Fehlertoleranz zuständig. Ein Test
-prüft alle 1981 Antworten daraufhin durch.
+prüft alle 1999 Antworten daraufhin durch.
 
 ### „Weitermachen" wechselte still das Thema
 
@@ -1105,6 +1105,37 @@ Weltmeister 2006, Newtons Apfel, Raffaels „Schule von Athen", Berninis Kolonna
 Wildnis", die Niere. Und eine Karte kam mit einer **Frage im Kontextfeld** aus der Prüfung –
 offenbar ein durchgereichter Formulierungsvorschlag. Sie ist vor dem Einpflegen aufgefallen,
 weil ein kurzer Selbsttest über alle neuen Karten lief; ohne den wäre sie durchgerutscht.
+
+### Zwei Wege, Lücken zu finden – im Vergleich gemessen
+
+Die Fundregel „nur als Ablenker vorhanden" hatte 38 % Ausbeute. Der zweite Weg nahm stattdessen
+die **konkret gemessenen** Lücken aus dem Härtetest: 47 benannte Fragen, die ein Quizspiel
+stellt und die die Sammlung nicht beantwortete. Sechs Autoren, wieder zwei Prüfer je Karte.
+
+| | Heuristik („nur Ablenker") | Gemessene Lücken |
+|---|---|---|
+| Karten angenommen | 16 | 18 |
+| Annahmequote der geschriebenen | 53 % | **75 %** |
+| Quote inkl. vorab verworfener Kandidaten | 38 % | **53 %** |
+
+**Gemessene Nachfrage schlägt jede Heuristik.** Aber die Messung zeigt eben nur Nachfrage, nicht
+Deckung: Vierzehn der 47 Lücken waren inzwischen geschlossen, die Autoren mussten sie erst
+wegprüfen. Ein Abgleich mit dem Bestand bleibt Pflicht, egal wie gut die Fundregel ist.
+
+**Der Prüfdruck ist gewandert.** In vier der sechs Ablehnungen waren Frage, Antwort und Ablenker
+sauber – beanstandet wurde der **Kontexttext**: eine Zuspitzung über das Reichstagsgebäude, ein
+falsches Detail zum Westfalenstadion, eine unbelegte Behauptung über Mark Twain. Die
+Kartenmechanik sitzt inzwischen; die Fehler stecken jetzt in dem Satz, der nach der Antwort
+kommt. Zwei klassische Konstruktionsfehler waren trotzdem dabei: Bei „Wie heißt die größte
+Schlagader?" war **kein einziger Ablenker eine Arterie** – wer nur weiß, dass eine Vene keine
+Schlagader ist, trifft ohne Anatomiekenntnis. Und bei „Welche Beere gibt Gin sein Aroma?"
+tippt man frei „Wacholderbeere", die Karte erwartete „Wacholder".
+
+**Die eigene Dublettenschranke hat dabei gegriffen** – gegen eine der neuen Karten. „Wie viele
+Spieler stehen beim Volleyball pro Team auf dem Feld?" kollidierte mit der vorhandenen
+Eishockey-Karte: dieselbe Antwort, fast wortgleiche Frage. Wer das Muster erkennt, tippt
+„Sechs", ohne die Sportart zu lesen. Umformuliert zu „Wie groß ist eine Volleyballmannschaft
+auf dem Spielfeld?" mit der Antwort „Sechs Spieler".
 
 ### Zweite Fehlerjagd: der eigene neue Code
 
