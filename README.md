@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.965 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**1.981 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -573,7 +573,7 @@ dachte – zerlegt `normalize()` den Text jetzt in Grundbuchstabe plus Zeichen u
 Zeichen weg. **Nach** der deutschen Umschrift: „Öl" bleibt `oel` und wird nicht zu `ol`.
 Umlaute kann man auf einer deutschen Tastatur schließlich tippen – „Konigs" statt „Königs" ist
 ein Schreibfehler, kein Tastaturproblem, und dafür ist die Fehlertoleranz zuständig. Ein Test
-prüft alle 1965 Antworten daraufhin durch.
+prüft alle 1981 Antworten daraufhin durch.
 
 ### „Weitermachen" wechselte still das Thema
 
@@ -1068,7 +1068,7 @@ Volleyball-Netzhöhe ja, Spieleranzahl nein. Simpsons-Rekordlaufzeit ja, Springf
 Gotham City ja, Bruce Wayne nein. Genau das Naheliegende, das im Spiel zuerst gefragt wird,
 wurde beim Schreiben gemieden.
 
-**24 geprüfte Karten** schließen die dringendsten dieser Lücken – jede von zwei Prüfern
+**24 geprüfte Karten** schlossen die dringendsten dieser Lücken – jede von zwei Prüfern
 gegengelesen, einer auf Wahrheit (mit Recherche), einer auf Handwerk (Form, Ablenker,
 Dublette). Sieben wurden zunächst abgelehnt und nach der Kritik repariert: Der Batman-Kontext
 behauptete, er sei „der einzige Held ohne Superkräfte" (Iron Man auch nicht), der Moby-Dick-Text
@@ -1076,8 +1076,35 @@ trug die Legende, Melville habe das Schreiben aufgegeben, und bei GmbH und TÜV 
 Ablenker durch bloßes Buchstabenzählen ausschließen – ohne jedes Sachwissen.
 
 Aus der Erkenntnis ist ein Werkzeug geworden: `npm run luecken` listet alle Begriffe, die in
-der Sammlung **nur als Ablenker** vorkommen und nie als Antwort. Derzeit sind das 4.376 – die
-Fundgrube für jede weitere Runde, ohne eine einzige Neurecherche.
+der Sammlung **nur als Ablenker** vorkommen und nie als Antwort.
+
+### Die Fundregel auf die Probe gestellt – und für schwächer befunden als gedacht
+
+Der nächste Durchgang nahm die 42 häufigsten dieser Begriffe und ließ sechs Autoren daraus
+Karten machen, jede wieder von zwei Prüfern gegengelesen. **16 wurden es.** Zwölf Kandidaten
+verwarfen die Autoren vorab, vierzehn Karten fielen bei der Prüfung durch – macht **38 %
+Ausbeute**.
+
+Das ist die ehrliche Zahl, und sie ist niedriger, als die Regel versprochen hatte. Der Grund
+ist systematisch: **Ablenker werden gerade so gewählt, dass sie plausible Nachbarn vorhandener
+Antworten sind.** Sie sitzen also per Konstruktion in Themenfeldern, die schon besetzt sind –
+Schweden war die Antwort der IKEA-Karte, Basketball hatte vier eigene Karten, die
+naheliegendste Ölberg-Frage stand schon als Getsemane-Karte da. Die zweite Hälfte des
+Ausschusses waren Fülltypen: Zahlen, Zeitspannen, Farben, Blutgruppen – als Antwort gar nicht
+eindeutig treffbar. Die Liste liefert Begriffe, aber keine Lücken. Sie ist eine **Ideenquelle,
+keine Bedarfsanalyse**, und im Werkzeug steht das jetzt auch so.
+
+Dabei kam ein Fehler im Werkzeug selbst heraus: Es hielt „Schweden" und „Aus Schweden" für
+verschiedene Antworten, weil `normalize()` zwar Artikel wegräumt, aber keine Präpositionen. Die
+Kandidatenliste war dadurch fast doppelt so lang wie berechtigt – 4.376 statt der tatsächlichen
+2.448. Behoben, und die Fülltypen filtert es jetzt gleich mit heraus.
+
+Die 16 Karten, die durchkamen, sind gleichwohl lauter Erstassoziationen, die vorher fehlten:
+Hauptstadt von Finnland, das Land zu Reykjavík, der flächenkleinste Kontinent, der Koreakrieg,
+Weltmeister 2006, Newtons Apfel, Raffaels „Schule von Athen", Berninis Kolonnaden, „Der Ruf der
+Wildnis", die Niere. Und eine Karte kam mit einer **Frage im Kontextfeld** aus der Prüfung –
+offenbar ein durchgereichter Formulierungsvorschlag. Sie ist vor dem Einpflegen aufgefallen,
+weil ein kurzer Selbsttest über alle neuen Karten lief; ohne den wäre sie durchgerutscht.
 
 ### Zweite Fehlerjagd: der eigene neue Code
 

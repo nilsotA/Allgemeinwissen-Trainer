@@ -316,4 +316,7 @@ export default [
 {q:"Welchen Spitznamen trug der Fußballer Franz Beckenbauer?",a:"Der Kaiser",s:"Fußball",d:1,t:"Er gewann 1974 als Spielführer und 1990 als Teamchef den WM-Titel. Gerd Müller hieß dagegen „Der Bomber“, Oliver Kahn „Der Titan“.",w:["Der Bomber","Der Titan","Der König"]},
 {q:"In welchen Jahren wurde Deutschland Fußball-Europameister?",a:"1972, 1980 und 1996",s:"Fußball",d:2,t:"Der Titel 1996 fiel im Wembley-Stadion gegen Tschechien durch Oliver Bierhoffs Golden Goal – das erste der EM-Geschichte. 1972 und 1980 gewann noch die Bundesrepublik.",w:["1972, 1984 und 1992","1976, 1980 und 1988","1968, 1980 und 1996"]},
 {q:"Wie heißt die Trophäe für den Sieger der Fußball-Bundesliga?",a:"Die Meisterschale",s:"Fußball",d:2,t:"Elf Kilogramm, versilbert und vergoldet, seit 1949 vergeben. Die Vorgängerin von 1903 bis 1944 hieß Viktoria und steht heute im Deutschen Fußballmuseum.",w:["Der Meisterteller","Die Goldene Kugel","Der Silberne Adler"]},
+
+/* ---------- Bisher nur Ablenker, jetzt eigene Karte ---------- */
+{q:"Welches Land wurde 2006 bei der WM in Deutschland Fußball-Weltmeister?",a:"Italien",s:"Fußball",d:2,t:"Im Berliner Finale 1:1 nach Verlängerung, dann 5:3 im Elfmeterschießen gegen Frankreich. In Erinnerung blieb vor allem Zidanes Kopfstoß gegen Materazzi und die Rote Karte in seinem letzten Spiel.",w:["Frankreich","Brasilien","Portugal"]},
 ];
