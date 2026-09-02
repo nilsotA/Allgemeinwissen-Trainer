@@ -26,7 +26,7 @@ export default [
 
 /* ---------- Chemie ---------- */
 {q:"Wie lautet die chemische Formel von Wasser?",a:"H₂O",s:"Chemie",d:1,t:"Zwei Wasserstoff-, ein Sauerstoffatom. Eis ist weniger dicht als flüssiges Wasser und schwimmt deshalb; das Dichtemaximum bei 4 °C lässt Seen von oben zufrieren.",w:["HO₂","H₂O₂","OH"]},
-{q:"Wie viele Elemente hat das Periodensystem derzeit?",a:"118",s:"Chemie",d:2,t:"Bis Ordnungszahl 118 (Oganesson). Ab Nummer 95 sind alle künstlich erzeugt.",w:["92","102","108"]},
+{q:"Wie viele Elemente hat das Periodensystem derzeit?",a:"118",s:"Chemie",d:2,t:"Stand 2026 bis Ordnungszahl 118 (Oganesson). Ab Nummer 95 sind alle künstlich erzeugt.",w:["92","102","108"]},
 {q:"Welches chemische Symbol steht für Gold?",a:"Au",s:"Chemie",d:1,t:"Von lat. „aurum“. Silber ist Ag (argentum), Eisen Fe (ferrum), Blei Pb (plumbum).",w:["Go","Ag","Gd"]},
 {q:"Welches Element hat die Ordnungszahl 1?",a:"Wasserstoff",s:"Chemie",d:1,t:"Das häufigste Element im Universum – rund 75 % der gewöhnlichen Materie.",w:["Helium","Kohlenstoff","Sauerstoff"]},
 {q:"Was gibt die Ordnungszahl eines Elements an?",a:"Die Anzahl der Protonen",s:"Chemie",d:2,t:"Sie bestimmt, welches Element es ist. Unterschiedliche Neutronenzahlen ergeben Isotope.",w:["Die Anzahl der Neutronen","Die Atommasse","Die Zahl der Schalen"]},

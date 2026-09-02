@@ -136,6 +136,42 @@ for (const c of CARDS) {
   if (glieder.length < 2) fail(`${c.id}: als Menge gekennzeichnet, aber die Antwort ist keine Aufzaehlung – „${c.a}"`);
   if (c.mc) warn(`${c.id}: als Menge gekennzeichnet, laeuft aber nur als Auswahlfrage`);
 }
+/* Das Kontextfeld t ist inzwischen die Stelle, an der die Fehler sitzen: In der
+   letzten Pruefrunde waren bei vier von sechs abgelehnten Karten Frage, Antwort
+   und Ablenker sauber - beanstandet wurde der Beitext. Zwei Sorten lassen sich
+   maschinell fassen. */
+
+/* Erstens: t ist gar kein Kontext, sondern eine FRAGE. So kam eine Karte durch
+   zwei unabhaengige Pruefungen, in deren t-Feld „Welche Einheit hat der Druck?"
+   stand - offenbar ein durchgereichter Formulierungsvorschlag. Der Nutzer haette
+   nach der Antwort eine zweite Frage praesentiert bekommen.
+   Eine Rueckfrage MITTEN im Text bleibt erlaubt („Damit raet man ganzzahlige
+   Loesungen: Welche zwei Zahlen passen zu Summe und Produkt?"); getroffen wird
+   nur, was von vorn bis hinten nichts als eine Frage ist. */
+const FRAGEWORT = /^(Wer|Was|Wie|Wo|Wann|Warum|Weshalb|Wieso|Welche[rsnm]?|Wieviel|Woher|Wohin|Wodurch|Wofuer|Wofür|Ist|Sind|War|Waren|Hat|Haben|Kann|Darf|Muss|Gibt|Nenne|Nennt)\b/;
+for (const c of CARDS) {
+  const t = String(c.t || '').trim();
+  if (t.endsWith('?') && FRAGEWORT.test(t) && !/[.!]/.test(t.slice(0, -1))) {
+    fail(`${c.id}: das Kontextfeld ist eine Frage, kein Kontext – „${t}"`);
+  }
+}
+
+/* Zweitens: eine Behauptung, die vom Kalender abhaengt, ohne Jahreszahl daneben.
+   „Rekordhalter: X mit N Titeln" stimmt, bis jemand N+1 holt. Nur ein Hinweis,
+   keine Schranke: Ein Teil der Treffer ist harmlos, und die Wartungsliste in der
+   README fuehrt solche Stellen ohnehin. Verlangt wird eine Zahl im Text - ohne
+   sie ist die Aussage meist zu allgemein, um zu veralten. Ausgeschriebene Zahlen
+   zaehlen mit: „Rekordhalter: Messi mit acht Auszeichnungen" entkam der ersten
+   Fassung, weil dort nur nach Ziffern gesucht wurde. */
+const ZEITABHAENGIG = /\b(aktuell|derzeit|zurzeit|Rekordhalter|meistverkauft|bestverkauft)\w*/i;
+const ZAHL_IRGENDWIE = /\d|\b(zwei|drei|vier|fuenf|fünf|sechs|sieben|acht|neun|zehn|elf|zwoelf|zwölf|dreizehn|zwanzig|hundert|tausend)\b/i;
+for (const c of CARDS) {
+  const txt = `${c.q} ${c.a} ${c.t || ''}`;
+  if (ZEITABHAENGIG.test(txt) && ZAHL_IRGENDWIE.test(txt) && !/\b(1[6-9]|20)\d\d\b/.test(txt)) {
+    warn(`${c.id}: zeitabhaengige Angabe ohne Jahreszahl – „${(c.t || c.q).slice(0, 70)}"`);
+  }
+}
+
 console.log('Mengenkarten :', `${CARDS.filter(c => c.ug).length} – dort zaehlt die Reihenfolge der Antwort nicht`);
 
 /* Eine zugelassene Nebenschreibweise darf keinem Ablenker gleichen - sonst

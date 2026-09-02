@@ -31,7 +31,7 @@ export default [
 {q:"Welcher ist der längste Fluss Europas?",a:"Die Wolga",s:"Europa",d:2,t:"3.531 km, komplett in Russland, mündet ins Kaspische Meer. Die Donau ist mit 2.850 km die Nummer zwei.",w:["Die Donau","Der Rhein","Der Dnepr"]},
 {q:"Durch wie viele Länder fließt die Donau?",a:"Zehn",s:"Europa",d:3,t:"Mehr als jeder andere Fluss der Welt: D, A, SK, H, HR, RS, RO, BG, MD, UA.",w:["Sechs","Acht","Zwölf"]},
 {q:"Wie heißt der höchste Berg der Alpen?",a:"Mont Blanc",s:"Europa",d:1,t:"4.808 m, an der Grenze Frankreich/Italien. Höchster Berg Österreichs ist der Großglockner (3.798 m).",w:["Matterhorn","Großglockner","Monte Rosa"]},
-{q:"Welches Land ist das kleinste der Welt?",a:"Vatikanstadt",s:"Europa",d:1,t:"0,44 km², rund 800 Einwohner. Rekordhalter Nr. 2: Monaco.",w:["Monaco","San Marino","Liechtenstein"]},
+{q:"Welches Land ist das kleinste der Welt?",a:"Vatikanstadt",s:"Europa",d:1,t:"0,44 km², rund 800 Einwohner. Der zweitkleinste Staat ist Monaco.",w:["Monaco","San Marino","Liechtenstein"]},
 {q:"Welche Meerenge trennt Europa von Afrika?",a:"Die Straße von Gibraltar",s:"Europa",d:1,t:"An der schmalsten Stelle nur 14 km breit – dahinter beginnt Marokko.",w:["Der Bosporus","Der Ärmelkanal","Die Straße von Messina"]},
 {q:"Welche Meerenge trennt Europa von Asien in der Türkei?",a:"Der Bosporus",s:"Europa",d:2,t:"Istanbul liegt auf beiden Kontinenten – die einzige Millionenstadt der Welt mit dieser Lage.",w:["Die Dardanellen","Die Straße von Hormus","Der Suezkanal"]},
 {q:"Welches europäische Land hat die meisten Einwohner (ohne Russland)?",a:"Deutschland",s:"Europa",d:2,t:"Rund 84 Millionen. Dahinter Frankreich (~68) und Großbritannien (~68).",w:["Frankreich","Italien","Spanien"]},

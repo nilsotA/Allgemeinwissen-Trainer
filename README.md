@@ -1106,6 +1106,34 @@ Wildnis", die Niere. Und eine Karte kam mit einer **Frage im Kontextfeld** aus d
 offenbar ein durchgereichter Formulierungsvorschlag. Sie ist vor dem Einpflegen aufgefallen,
 weil ein kurzer Selbsttest über alle neuen Karten lief; ohne den wäre sie durchgerutscht.
 
+### Wenn der Fehler wandert, muss die Schranke mitwandern
+
+Die Prüfrunden hatten einen Trend gezeigt: Die Kartenmechanik sitzt inzwischen – die Fehler
+stecken im **Kontexttext**, dem Satz nach der Antwort. Vier von sechs Ablehnungen der letzten
+Runde betrafen ihn, und eine Karte war sogar durch zwei unabhängige Prüfungen gekommen, in
+deren `t`-Feld eine **Frage** stand („Welche Einheit hat der Druck?") – offenbar ein
+durchgereichter Formulierungsvorschlag. Der Nutzer hätte nach der Antwort eine zweite Frage
+präsentiert bekommen.
+
+Zwei dieser Fehlersorten lassen sich maschinell fassen, und `npm run check` prüft sie jetzt:
+
+- **Das Kontextfeld ist eine Frage.** Harte Schranke. Getroffen wird nur, was von vorn bis
+  hinten nichts als eine Frage ist – eine Rückfrage *mitten* im Text bleibt erlaubt („Damit rät
+  man ganzzahlige Lösungen: Welche zwei Zahlen passen zu Summe und Produkt?"). Über alle 1.999
+  Karten: kein einziger Fehltreffer.
+- **Zeitabhängige Angabe ohne Jahreszahl.** Nur ein Hinweis, kein Fehler – ein Teil der Treffer
+  ist harmlos. „Rekordhalter: Messi mit acht Auszeichnungen" stimmt, bis jemand die neunte holt.
+  Drei Karten sind daraufhin datiert worden.
+
+**Eine dritte Idee ist durchgefallen und bleibt draußen:** „Der Kontexttext trägt nichts über
+die Antwort hinaus bei" klang plausibel, traf aber 15 Karten, von denen fast alle in Ordnung
+waren – „Vor dem Brandenburger Tor, adressiert an Gorbatschow" trägt sehr wohl bei. Eine
+Schranke, die zu 90 % Unschuldige meldet, wird ignoriert und ist damit schlimmer als keine.
+
+Auch die zweite Schranke war beim ersten Wurf zu eng: Sie verlangte eine **Ziffer** im Text und
+übersah deshalb „Rekordhalter: Messi mit **acht** Auszeichnungen". Ausgeschriebene Zahlen zählen
+jetzt mit.
+
 ### Zwei Wege, Lücken zu finden – im Vergleich gemessen
 
 Die Fundregel „nur als Ablenker vorhanden" hatte 38 % Ausbeute. Der zweite Weg nahm stattdessen
