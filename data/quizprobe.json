@@ -1,0 +1,522 @@
+[
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt die Hauptstadt von Belgien?",
+  "antwort": "Brüssel"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welcher Fluss fließt durch Wien?",
+  "antwort": "Die Donau"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt die größte Insel der Erde?",
+  "antwort": "Grönland"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welcher See ist der flächengrößte der Erde?",
+  "antwort": "Das Kaspische Meer"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt die Hauptstadt von Portugal?",
+  "antwort": "Lissabon"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welches Land hat die meisten Einwohner?",
+  "antwort": "Indien"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt der höchste Berg Deutschlands?",
+  "antwort": "Die Zugspitze"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welcher Kontinent ist der flächengrößte?",
+  "antwort": "Asien"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt die Hauptstadt von Norwegen?",
+  "antwort": "Oslo"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welches Meer liegt zwischen Italien und Kroatien?",
+  "antwort": "Die Adria"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt die Währung Polens?",
+  "antwort": "Der Zloty"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welcher Fluss fließt durch Dresden?",
+  "antwort": "Die Elbe"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt die Hauptstadt von Ungarn?",
+  "antwort": "Budapest"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wer war der erste Reichskanzler des Deutschen Kaiserreichs?",
+  "antwort": "Otto von Bismarck"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Mit dem Sturm auf welches Gefängnis begann die Französische Revolution?",
+  "antwort": "Die Bastille"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Welcher englische König hatte sechs Ehefrauen?",
+  "antwort": "Heinrich VIII."
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Welcher Cheruskerfürst schlug 9 n. Chr. die Römer?",
+  "antwort": "Arminius"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "In welchem Jahr endete der Zweite Weltkrieg in Europa?",
+  "antwort": "1945"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wer war die erste deutsche Bundeskanzlerin?",
+  "antwort": "Angela Merkel"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Welches Reich beherrschte Julius Caesar?",
+  "antwort": "Das Römische Reich"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wer führte die Reformation in Deutschland an?",
+  "antwort": "Martin Luther"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "In welchem Jahr wurde die Berliner Mauer gebaut?",
+  "antwort": "1961"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wie hieß der letzte Zar Russlands?",
+  "antwort": "Nikolaus II."
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Welche Stadt war Schauplatz der Kriegsverbrecherprozesse 1945?",
+  "antwort": "Nürnberg"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Auf welcher Insel starb Napoleon?",
+  "antwort": "St. Helena"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wer war der erste Mensch im Weltall?",
+  "antwort": "Juri Gagarin"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie heißt der grüne Farbstoff in Pflanzenblättern?",
+  "antwort": "Chlorophyll"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welches Element hat das chemische Symbol Fe?",
+  "antwort": "Eisen"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie heißt die größte Schlagader des Menschen?",
+  "antwort": "Die Aorta"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie viele Monde hat der Mars?",
+  "antwort": "Zwei"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welcher Planet ist der größte im Sonnensystem?",
+  "antwort": "Jupiter"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie viele Mägen hat eine Kuh?",
+  "antwort": "Vier"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welches Säugetier legt Eier?",
+  "antwort": "Das Schnabeltier"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie heißt das härteste natürliche Material?",
+  "antwort": "Diamant"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welches Gas atmen Menschen aus?",
+  "antwort": "Kohlendioxid"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie viele Chromosomen hat der Mensch?",
+  "antwort": "46"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wer entwickelte die Evolutionstheorie?",
+  "antwort": "Charles Darwin"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Bei wie viel Grad Celsius siedet Wasser auf Meereshöhe?",
+  "antwort": "100"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welcher Nadelbaum wirft im Herbst seine Nadeln ab?",
+  "antwort": "Die Lärche"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wie heißt Batmans bürgerlicher Name?",
+  "antwort": "Bruce Wayne"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "In welcher Stadt leben die Simpsons?",
+  "antwort": "Springfield"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wer spielte den Terminator?",
+  "antwort": "Arnold Schwarzenegger"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welche Sängerin gilt als Queen of Pop?",
+  "antwort": "Madonna"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wie heißt der Preis für den schlechtesten Film?",
+  "antwort": "Die Goldene Himbeere"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wie heißt der Hund von Micky Maus?",
+  "antwort": "Pluto"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welche Band sang Bohemian Rhapsody?",
+  "antwort": "Queen"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wer spielt Jack Sparrow?",
+  "antwort": "Johnny Depp"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welcher Regisseur drehte Jurassic Park?",
+  "antwort": "Steven Spielberg"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wie heißt die meistverkaufte Videospielreihe von Nintendo?",
+  "antwort": "Mario"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welcher Sänger wird King of Pop genannt?",
+  "antwort": "Michael Jackson"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wie heißt der gelbe Bär aus dem Dschungelbuch?",
+  "antwort": "Balu"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welche Serie spielt in Westeros?",
+  "antwort": "Game of Thrones"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer schrieb Moby Dick?",
+  "antwort": "Herman Melville"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer schrieb Tom Sawyer?",
+  "antwort": "Mark Twain"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Was bedeutet das Fremdwort obsolet?",
+  "antwort": "Veraltet"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Was ist ein Euphemismus?",
+  "antwort": "Eine beschönigende Umschreibung"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer schrieb Der Besuch der alten Dame?",
+  "antwort": "Friedrich Dürrenmatt"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer schrieb Homo faber?",
+  "antwort": "Max Frisch"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer dichtete das Loreley-Lied?",
+  "antwort": "Heinrich Heine"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wie nennt man den gleichen Anfangsbuchstaben mehrerer Wörter?",
+  "antwort": "Alliteration"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer schrieb Faust?",
+  "antwort": "Johann Wolfgang von Goethe"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Was bedeutet die Redewendung ins Fettnäpfchen treten?",
+  "antwort": "Sich unbeabsichtigt blamieren"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer schrieb Der Sandmann?",
+  "antwort": "E. T. A. Hoffmann"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Was ist ein Pleonasmus?",
+  "antwort": "Eine überflüssige Doppelung"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Welche deutsche Autorin erhielt 2009 den Literaturnobelpreis?",
+  "antwort": "Herta Müller"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wofür steht die Abkürzung GmbH?",
+  "antwort": "Gesellschaft mit beschränkter Haftung"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie heißt die deutsche Zentralbank?",
+  "antwort": "Die Deutsche Bundesbank"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "In welchem Gebäude tagt der Bundestag?",
+  "antwort": "Im Reichstagsgebäude"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Ab welchem Alter darf man in Deutschland Spirituosen kaufen?",
+  "antwort": "18"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie viele Bundesländer hat Deutschland?",
+  "antwort": "16"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wer war der erste Bundespräsident?",
+  "antwort": "Theodor Heuss"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "In welcher Stadt sitzt der Internationale Strafgerichtshof?",
+  "antwort": "In Den Haag"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie heißt die Währung Großbritanniens?",
+  "antwort": "Das Pfund Sterling"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie viele Sterne hat die Europaflagge?",
+  "antwort": "12"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Welches Organ wählt den Bundeskanzler?",
+  "antwort": "Der Bundestag"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wofür steht die Abkürzung UNO?",
+  "antwort": "United Nations Organization"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "In welchem Jahr kam der Euro als Bargeld?",
+  "antwort": "2002"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie lange dauert eine Legislaturperiode des Bundestags?",
+  "antwort": "Vier Jahre"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Welches Gewürz ist das teuerste der Welt?",
+  "antwort": "Safran"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Woraus wird Sauerkraut hergestellt?",
+  "antwort": "Aus Weißkohl"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Was wird beim Richtfest gefeiert?",
+  "antwort": "Der fertige Dachstuhl"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie viele Liter fasst ein Barrel Erdöl?",
+  "antwort": "159"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Welche Beere gibt Gin sein Aroma?",
+  "antwort": "Die Wacholderbeere"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wofür steht die Abkürzung TÜV?",
+  "antwort": "Technischer Überwachungsverein"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie viele Zentimeter ergibt ein Zoll?",
+  "antwort": "2,54"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie heißt die Pilgerfahrt nach Mekka?",
+  "antwort": "Der Hadsch"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Aus welchem Land stammt Sake?",
+  "antwort": "Aus Japan"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie heißt das jüdische Lichterfest?",
+  "antwort": "Chanukka"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie viele Tage dauert die christliche Fastenzeit?",
+  "antwort": "40"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Welche Nudelsorte heißt Schmetterlinge?",
+  "antwort": "Farfalle"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie viel Gramm hat ein deutsches Pfund?",
+  "antwort": "500"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie heißt die Trophäe des deutschen Fußballmeisters?",
+  "antwort": "Die Meisterschale"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Welchen Spitznamen trug Franz Beckenbauer?",
+  "antwort": "Der Kaiser"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wer ist Rekordtorschütze der Bundesliga?",
+  "antwort": "Gerd Müller"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie heißt das Endspiel der NFL?",
+  "antwort": "Der Super Bowl"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie viele Spieler hat eine Volleyballmannschaft auf dem Feld?",
+  "antwort": "Sechs Spieler"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Was ist ein Strike beim Bowling?",
+  "antwort": "Alle zehn Pins mit dem ersten Wurf"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie viele Gewinnsätze braucht man im Grand-Slam-Match der Herren?",
+  "antwort": "Drei"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie heißt das Stadion von Borussia Dortmund?",
+  "antwort": "Das Westfalenstadion"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "In welcher Sportart wird der Stanley Cup vergeben?",
+  "antwort": "Eishockey"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie heißt das Heimstadion des FC Bayern München?",
+  "antwort": "Die Allianz Arena"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Unter welchem Namen wurde Cassius Clay berühmt?",
+  "antwort": "Muhammad Ali"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie viele Ringe hat das olympische Symbol?",
+  "antwort": "Fünf"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie lang ist ein Marathonlauf?",
+  "antwort": "42,195 km"
+ }
+]

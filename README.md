@@ -399,11 +399,13 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 96 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 142 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
-npm run test:offline # Service Worker: Offline-Start und Update ohne Versionsmischung
+npm test           # 109 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 149 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:offline # 29 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
+npm run abdeckung  # wie viele typische Quizfragen die Sammlung beantwortet
+npm run luecken    # Begriffe, die vorkommen, ohne je Antwort zu sein
 npm run simulate   # simuliert 180 Tage Lernverlauf
 npm run build      # erneuert Icons und Service-Worker-Cache
 ```
@@ -1105,6 +1107,41 @@ Weltmeister 2006, Newtons Apfel, Raffaels „Schule von Athen", Berninis Kolonna
 Wildnis", die Niere. Und eine Karte kam mit einer **Frage im Kontextfeld** aus der Prüfung –
 offenbar ein durchgereichter Formulierungsvorschlag. Sie ist vor dem Einpflegen aufgefallen,
 weil ein kurzer Selbsttest über alle neuen Karten lief; ohne den wäre sie durchgerutscht.
+
+### Ein fester Prüfsatz – damit die Zahl endlich etwas bedeutet
+
+Zwei Messungen mit je frisch erfundenen Fragen ergaben 97/160 und 122/160. Der Sprung sah nach
+Fortschritt aus und war keiner (siehe unten). Die Lehre: **Nur ein eingefrorener Fragensatz
+trennt die Wirkung neuer Karten von der Schwierigkeit der Fragen.**
+
+`data/quizprobe.json` enthält deshalb **104 feste Quizfragen** mit erwarteter Antwort, über acht
+Gebiete. `npm run abdeckung` misst dagegen – in einer Sekunde, ohne Prüfer, jederzeit
+wiederholbar. Der Prüfsatz wird **nicht** nachgebessert, wenn die Sammlung wächst; sein ganzer
+Wert liegt darin, dass er gleich bleibt.
+
+**Ausgangswert: 64 von 104 (62 %).**
+
+| Gebiet | | Gebiet | |
+|---|---|---|---|
+| Sprache & Literatur | 5/13 | Naturwissenschaft | 9/13 |
+| Geschichte | 7/13 | Sport | 9/13 |
+| Geografie · Politik · Alltag | je 8/13 | Unterhaltung | 10/13 |
+
+Das Maß ist **absichtlich streng**: Eine Frage gilt nur als abgedeckt, wenn eine Karte die
+erwartete Antwort auch wirklich als *Antwort* trägt – nicht, wenn der Begriff bloß im
+Kontexttext oder unter den Ablenkern steht. Genau diese Unterscheidung war der wichtigste
+Befund aller bisherigen Messungen. Und weil ich den Prüfsatz selbst geschrieben habe, sagt die
+absolute Höhe wenig; aussagekräftig ist die Veränderung über die Zeit.
+
+**Der Vergleicher war beim ersten Wurf zu nachsichtig** – und das ließ sich messen. Erlaubt man
+einer kürzeren Wortfolge, am Anfang einer längeren zu stehen, steigt die Zahl von 63 auf 66.
+Zwei der drei Zugewinne waren aber falsch: „Martin Luther" passte auf **Martin Luther King Jr.**,
+„E. T. A. Hoffmann" auf die **Eulersche Zahl `e`**. Ein Messgerät, das zwei von drei Zugewinnen
+erfindet, misst schlechter als das strenge. Geblieben ist die Nachsicht nur für den Fall, für
+den sie gedacht war: Eine reine Zahl darf am Anfang stehen, damit „100" auf „100 °C" passt.
+
+Nebenbei: `data/quizprobe.json` ist von der Versionskennung ausgenommen – wie `package.json`.
+Sonst böte jede Erweiterung des Prüfsatzes allen Nutzern ein Update an, das nichts ändert.
 
 ### Zweite Messung – und warum „61 % auf 76 %" nicht stimmt
 
