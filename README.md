@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.009 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.048 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (294 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -575,7 +575,7 @@ dachte – zerlegt `normalize()` den Text jetzt in Grundbuchstabe plus Zeichen u
 Zeichen weg. **Nach** der deutschen Umschrift: „Öl" bleibt `oel` und wird nicht zu `ol`.
 Umlaute kann man auf einer deutschen Tastatur schließlich tippen – „Konigs" statt „Königs" ist
 ein Schreibfehler, kein Tastaturproblem, und dafür ist die Fehlertoleranz zuständig. Ein Test
-prüft alle 2009 Antworten daraufhin durch.
+prüft alle 2048 Antworten daraufhin durch.
 
 ### „Weitermachen" wechselte still das Thema
 
@@ -1142,6 +1142,28 @@ den sie gedacht war: Eine reine Zahl darf am Anfang stehen, damit „100" auf �
 
 Nebenbei: `data/quizprobe.json` ist von der Versionskennung ausgenommen – wie `package.json`.
 Sonst böte jede Erweiterung des Prüfsatzes allen Nutzern ein Update an, das nichts ändert.
+
+### 65 auf 102 – und warum der Prüfsatz damit verbraucht ist
+
+Der Prüfsatz hatte **39 offene Fragen** benannt. Genau dagegen sind 39 Karten geschrieben
+worden. Ergebnis: **102 von 104 (98 %)**, vorher 65.
+
+Diese Zahl ist ehrlich gemessen und trotzdem **kein Beleg für breitere Abdeckung**. Sie ist
+weitgehend tautologisch: Wer die Lücken einer festen Liste abschreibt und dann gegen dieselbe
+Liste misst, lernt nur, dass er richtig abgeschrieben hat. Der Prüfsatz hat als **Lückensucher**
+gearbeitet – das war sein Zweck und er hat ihn erfüllt. Als **Fortschrittsmaß** ist er damit
+aufgebraucht; die nächste belastbare Messung braucht einen neuen, unabhängig geschriebenen Satz,
+der wieder eingefroren wird, bevor auch nur eine Karte dazukommt.
+
+Der Sprung von 65 auf 102 heißt also: *diese 39 Wissenslücken sind geschlossen.* Nicht mehr.
+
+**Die letzten zwei Lücken bleiben absichtlich offen.** Der Prüfsatz fragt „Was ist ein
+Euphemismus?" und erwartet „eine beschönigende Umschreibung". Die Karten fragen andersherum:
+„Wie nennt man eine beschönigende Umschreibung?" → *Euphemismus*. Beide Richtungen sind
+sinnvolle Quizfragen, aber im **Freitextmodus** ist nur eine davon brauchbar – einen Fachbegriff
+tippt man, eine Definition formuliert jeder anders. Dieselbe Karte in beide Richtungen würde
+zudem an der Dublettenschranke hängen bleiben. Die Zahl 102 statt 104 ist hier das ehrlichere
+Ergebnis als eine erzwungene 104.
 
 ### Zweite Messung – und warum „61 % auf 76 %" nicht stimmt
 

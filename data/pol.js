@@ -231,4 +231,10 @@ export default [
 /* ---------- Zweite Messung: neue Luecken ---------- */
 {q:"Wie heißt die Währung Polens?",a:"Zloty",s:"Geld im Alltag",d:2,t:"Der Name bedeutet „golden“, ein Zloty besteht aus 100 Groszy. Polen ist seit 2004 in der EU, hat den Euro aber nicht eingeführt – ebenso wenig wie Tschechien, Ungarn, Rumänien, Schweden und Dänemark. Bulgarien trat zum 1. Januar 2026 als 21. Land dem Euroraum bei.",w:["Forint","Leu","Krone"]},
 {q:"Wer wurde im Mai 2025 deutscher Bundeskanzler?",a:"Friedrich Merz",s:"Politik DE",d:1,t:"Der zehnte Kanzler der Bundesrepublik, gewählt am 6. Mai 2025 und weiter im Amt (Stand 2026). Vor ihm regierte Olaf Scholz, davor 16 Jahre lang Angela Merkel.",w:["Markus Söder","Lars Klingbeil","Jens Spahn"]},
+
+/* ---------- Fester Pruefsatz: gemessene Luecken ---------- */
+{q:"Wie heißt die deutsche Zentralbank?",a:"Die Deutsche Bundesbank",s:"Wirtschaft",d:2,t:"Sitz in Frankfurt am Main. Seit dem Euro liegt die Geldpolitik bei der Europäischen Zentralbank – die Bundesbank ist Teil des Eurosystems und beaufsichtigt daneben Banken.",w:["Die Reichsbank","Die Kreditanstalt für Wiederaufbau","Die Bundesfinanzbank"]},
+{q:"In welchem Gebäude tagt der Deutsche Bundestag?",a:"Im Reichstagsgebäude",s:"Politik DE",d:2,t:"1894 fertiggestellt, 1933 ausgebrannt, nach dem Umbau durch Norman Foster seit 1999 Sitz des Parlaments. Die begehbare Glaskuppel darüber ist frei zugänglich.",w:["Im Kanzleramt","Im Bundesrat","Im Paul-Löbe-Haus"]},
+{q:"Wie heißt die Währung des Vereinigten Königreichs?",a:"Das Pfund Sterling",s:"Geld im Alltag",d:1,t:"Unterteilt in 100 Pence. Großbritannien behielt es auch als EU-Mitglied; das Zeichen £ stammt vom lateinischen libra für Pfund.",w:["Die Krone","Der Schilling","Die Guinee"]},
+{q:"In welchem Jahr kam der Euro als Bargeld in Umlauf?",a:"2002",s:"Geld im Alltag",d:2,t:"Als Buchgeld gab es ihn schon seit 1999. Die D-Mark blieb nur wenige Wochen parallel gültig – umtauschen lässt sie sich bei der Bundesbank bis heute unbefristet.",w:["1999","2000","2004"]},
 ];

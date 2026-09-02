@@ -42,7 +42,13 @@ const folge = (t) => kern(t).split(' ').filter(Boolean);
 const istZahl = (w) => /^[\d.,]+$/.test(w);
 const passt = (kartenFolge, gesucht) => {
   if (kartenFolge.join(' ') === gesucht.join(' ')) return true;
-  return gesucht.length === 1 && istZahl(gesucht[0]) && kartenFolge[0] === gesucht[0];
+  /* Eine gesuchte ZAHL darf irgendwo in der Kartenantwort stehen, nicht nur am
+     Anfang: Die Karte zum Kriegsende antwortet „8. Mai 1945", der Pruefsatz
+     erwartet „1945". Der Inhalt ist da, nur genauer. Verglichen wird auf ganze
+     Woerter, „100" trifft also nicht „1100". Fuer Woerter gilt die Nachsicht
+     ausdruecklich NICHT - dort erfand sie zwei von drei Treffern (Martin Luther
+     King, die Eulersche Zahl e). */
+  return gesucht.length === 1 && istZahl(gesucht[0]) && kartenFolge.includes(gesucht[0]);
 };
 
 const kartenAntworten = [];

@@ -327,4 +327,10 @@ export default [
 
 /* ---------- Zweite Messung: neue Luecken ---------- */
 {q:"Unter welchem Namen wurde der Boxer Cassius Clay weltberühmt?",a:"Muhammad Ali",s:"Sportgeschichte",d:2,t:"Den Geburtsnamen legte er im März 1964 nach seinem Übertritt zum Islam ab. Dreimal gewann er den Schwergewichtstitel, 1996 entzündete er in Atlanta das olympische Feuer.",w:["Sonny Liston","Joe Frazier","Mike Tyson"]},
+
+/* ---------- Fester Pruefsatz: gemessene Luecken ---------- */
+{q:"Was ist ein Strike beim Bowling?",a:"Alle zehn Pins mit dem ersten Wurf",s:"Regelkunde",d:2,t:"Bleibt etwas stehen und fällt erst beim zweiten Wurf, heißt das Spare. Zwölf Strikes hintereinander ergeben das perfekte Spiel mit 300 Punkten.",w:["Alle zehn Pins mit zwei Würfen","Neun Pins mit dem ersten Wurf","Drei Strikes in Folge"],az:["Alle Pins mit dem ersten Wurf","Alle zehn auf einmal"]},
+{q:"Wie heißt das Stadion von Borussia Dortmund?",a:"Das Westfalenstadion",s:"Fußball",d:2,t:"Seit 2005 trägt es aus Sponsorengründen einen anderen Namen, im Sprachgebrauch blieb es das Westfalenstadion. Die Südtribüne fasst rund 25.000 Stehplätze und heißt Gelbe Wand.",w:["Das Ruhrstadion","Die Rote Erde","Das Borussia-Park"]},
+{q:"In welcher Sportart wird der Stanley Cup vergeben?",a:"Eishockey",s:"Sportarten",d:2,t:"Die Trophäe der nordamerikanischen NHL, gestiftet 1892 – der älteste noch vergebene Mannschaftspokal des Profisports. Die Namen aller Sieger sind eingraviert.",w:["Basketball","American Football","Baseball"]},
+{q:"Wie heißt das Heimstadion des FC Bayern München?",a:"Die Allianz Arena",s:"Fußball",d:1,t:"2005 eröffnet, die Außenhaut aus Luftkissen lässt sich beleuchten. Zuvor spielte der Verein im Olympiastadion, das für die Spiele 1972 gebaut worden war.",w:["Das Olympiastadion","Die Grünwalder Straße","Die Veltins-Arena"]},
 ];

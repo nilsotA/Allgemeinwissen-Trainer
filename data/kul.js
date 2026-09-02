@@ -277,4 +277,9 @@ export default [
 
 /* ---------- Zweite Messung: neue Luecken ---------- */
 {q:"Wie heißt der Bär, der Mogli in Disneys Zeichentrickfilm von 1967 das Nichtstun beibringt?",a:"Balu",s:"Film",d:1,t:"Der Film war die letzte Zeichentrickproduktion, an der Walt Disney selbst mitwirkte – er starb im Dezember 1966. Vorlage ist Rudyard Kiplings Erzählband von 1894, in dem die Figur ein strenger Lehrer ist und nicht der gemütliche Sänger von „Probier's mal mit Gemütlichkeit“.",w:["Yogi","Puuh","Koda"]},
+
+/* ---------- Fester Pruefsatz: gemessene Luecken ---------- */
+{q:"Wie heißt der Preis für den schlechtesten Film des Jahres?",a:"Die Goldene Himbeere",s:"Film",d:2,t:"Im Original Golden Raspberry Award, verliehen seit 1981 traditionell am Abend vor den Oscars. Manche Preisträger holen ihn persönlich ab – Sandra Bullock tat es 2010.",w:["Der Goldene Zitronenfalter","Die Silberne Zwiebel","Der Blecherne Bär"]},
+{q:"Welche Band veröffentlichte 1975 „Bohemian Rhapsody“?",a:"Queen",s:"Musik",d:1,t:"Fast sechs Minuten lang, ohne Refrain, mit einem Opernteil in der Mitte – die Plattenfirma hielt es für unspielbar. Der Sänger war Freddie Mercury.",w:["Pink Floyd","The Who","Deep Purple"]},
+{q:"Welche Spielfigur ist das Maskottchen von Nintendo?",a:"Mario",s:"Videospiele",d:1,t:"Er trat 1981 zuerst als Zimmermann in „Donkey Kong“ auf und hieß dort noch Jumpman. Schnurrbart und Mütze entstanden aus der Not: Bei der groben Grafik von damals ließen sich Mund und Haare nicht darstellen.",w:["Kirby","Yoshi","Donkey Kong"]},
 ];
