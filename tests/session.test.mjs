@@ -410,6 +410,7 @@ test('eine Sicherung geht verlustfrei wieder herein', () => {
     totalAnswers: 99, totalCorrect: 70, streak: 5, best: 9, lastDay: '2026-08-20',
     claims: 20, claimsMiss: 4, factSeen: 30, factIdx: 30, factDay: '2026-08-20',
     duelBest: 8, duelAnswers: 40, duelCorrect: 25, lastExport: 19000,
+    quizBest: 150, quizRunden: [{ t: 1755600001000, p: 150, m: 180, r: 10, f: 1, l: 1, k: { geo: [30, 30], spo: [0, 15] } }],
   });
   Object.assign(st.settings, { focus: ['spo'], newPerDay: 15, recallMode: 'recall' });
 
@@ -830,4 +831,48 @@ test('ein Duellfehler wirft die Wiederholung des anderen Tabs nicht weg', async 
   assert.equal(nachher.ok, 10, 'die richtige Antwort ist weg');
   assert.equal(nachher.due, t, 'die Karte muss trotzdem ins naechste Training');
   assert.ok(nachher.iv < 35, `die Deckelung fehlt: iv ${nachher.iv}`);
+});
+
+/* Quizrunden werden nur angehaengt. Zwei Tabs, die je eine Runde spielen,
+   muessen hinterher beide Runden haben - und der Bestwert ist ein Rekord, der
+   nie faellt. */
+test('eine im anderen Tab gespielte Quizrunde geht nicht verloren', async () => {
+  const B = await import('../assets/js/store.js?quiz-tab');
+  store.merkeQuizRunde({ t: 1000, p: 120, m: 180, r: 8, f: 2, l: 2, k: { geo: [15, 30] } });
+  // Tab B kennt den ersten Stand, spielt dann seine eigene Runde ...
+  B.merkeQuizRunde({ t: 2000, p: 90, m: 180, r: 6, f: 3, l: 3, k: { spo: [0, 30] } });
+  // ... und Tab A spielt noch eine, ohne von B gehoert zu haben, ausser ueber den Speicher.
+  store.merkeQuizRunde({ t: 3000, p: 150, m: 180, r: 10, f: 1, l: 1, k: { ges: [30, 30] } });
+  const runden = store.S().quizRunden.map(r => r.t);
+  assert.deepEqual(runden, [1000, 2000, 3000], `Runden: ${runden}`);
+  assert.equal(store.S().quizBest, 150);
+  assert.equal(new Set(store.S().quizRunden.map(r => r.t)).size, 3, 'keine Runde doppelt');
+});
+
+test('kaputte Quizrunden im Speicher bringen die App nicht zu Fall', () => {
+  const { mischeRunden } = store;
+  assert.deepEqual(mischeRunden([{ t: 5 }, { t: 3 }], [{ t: 5 }, null, { t: 4 }]).map(r => r.t), [3, 4, 5]);
+  const viele = Array.from({ length: 40 }, (_, i) => ({ t: i + 1 }));
+  assert.equal(mischeRunden(viele, []).length, 30, 'hoechstens dreissig Runden');
+  assert.equal(mischeRunden(viele, [])[0].t, 11, 'die aeltesten fallen weg');
+  const datei = JSON.stringify({ ...JSON.parse(store.exportJSON()),
+    quizRunden: [{ t: 'x' }, 'unsinn', { t: 7, p: -5, k: { geo: 'kein array', spo: [3, 15] } }], quizBest: 'viel' });
+  const rein = store.pruefeBackup(datei);
+  assert.deepEqual(rein.quizRunden, [{ t: 7, p: 0, m: 0, r: 0, f: 0, l: 0, k: { spo: [3, 15] } }]);
+  assert.equal(rein.quizBest, 0);
+});
+
+/* Das Quiz zieht quer durch alle aktiven Themen - auch nie gesehene Karten,
+   denn ein Quizspiel fragt nicht nur, was man schon gelernt hat. Pausierte
+   Themen bleiben draussen; wer Mathematik abgeschaltet hat, will sie auch im
+   Quiz nicht. (Das Duell ohne Thema haelt es genauso.) */
+test('die Quizrunde fragt jedes aktive Thema und laesst pausierte weg', () => {
+  const alle = sess.buildQuiz();
+  assert.equal(alle.length, 12);
+  assert.equal(new Set(alle.map(x => x.card.cat)).size, 9, 'alle neun Themen');
+  store.setSetting('cats', ['spo', 'geo', 'ges']);
+  const drei = sess.buildQuiz();
+  assert.equal(drei.length, 12, 'auch mit drei Themen eine volle Runde');
+  assert.deepEqual([...new Set(drei.map(x => x.card.cat))].sort(), ['geo', 'ges', 'spo']);
+  assert.equal(new Set(drei.map(x => x.card.id)).size, 12, 'keine Karte doppelt');
 });

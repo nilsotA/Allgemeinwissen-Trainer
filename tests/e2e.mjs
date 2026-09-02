@@ -418,7 +418,7 @@ try {
     check('der Tagesplan schrumpft durch ein Duell nicht',
       (await dp.locator('.hero h1').innerText()) === plan);
     check('die Startseite behauptet nicht, es sei nichts gelernt worden',
-      /Duellfragen heute/.test(await dp.locator('.seg-lab').innerText()),
+      /unter Zeitdruck heute/.test(await dp.locator('.seg-lab').innerText()),
       await dp.locator('.seg-lab').innerText());
     await dp.locator('.nav-btn[data-view="stats"]').click();
     await dp.waitForSelector('.heat');
@@ -1351,6 +1351,124 @@ try {
     check('Bewertung bleibt erreichbar',
       sicht.fuss && sicht.fuss.bottom <= sicht.h + 1, JSON.stringify(sicht.fuss));
     await kctx.close();
+  }
+
+  group('Quizrunde: Punkte, Uhr, Ergebnisbild, Rueckfluss in den Plan');
+  /* Der Pruefstand der App: zwoelf Fragen quer durch alle Themen, Punkte fuer
+     Treffer und Tempo, am Ende die Frage, wo die Punkte blieben. Die Uhr wird
+     gestellt (page.clock), damit eine abgelaufene Frage keine fuenfzehn echten
+     Sekunden kostet - und damit der Test die Formel wirklich nachrechnet statt
+     nur zu schauen, ob irgendeine Zahl erscheint. */
+  {
+    const qctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const qp = await qctx.newPage();
+    await qp.clock.install();
+    await qp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    check('der Reiter heisst Quiz', /Quiz/.test(await qp.locator('.nav-btn[data-view="duel"]').innerText()));
+    await qp.locator('.nav-btn[data-view="duel"]').click();
+    await qp.waitForSelector('#quizGo');
+    check('ohne Runde gibt es keinen Bestwert', /^0 \//.test(await qp.locator('#quizBest').innerText()),
+      await qp.locator('#quizBest').innerText());
+    await qp.locator('#quizGo').click();
+    await qp.waitForSelector('.opt');
+    check('der Punktestand steht ueber der Frage', (await qp.locator('#quizStand').innerText()) === '0');
+    check('die Blitz-Pille ist zu Beginn sichtbar', !/\baus\b/.test(await qp.locator('#blitz').getAttribute('class')));
+
+    const frageText = () => qp.locator('h1.q').innerText();
+    /* Die richtige Antwort kennt nur die Sammlung. Gesucht wird die Karte mit
+       diesem Fragetext, deren Antwort auch unter den Knoepfen steht - falls
+       zwei Themen dieselbe Frage tragen. */
+    const antworte = async (richtig) => {
+      const frage = await frageText();
+      const werte = await qp.locator('.opt:not([disabled])').evaluateAll(bs => bs.map(b => b.dataset.v));
+      const karte = CARDS.find(c => c.q === frage && werte.includes(c.a));
+      if (!karte) throw new Error(`Karte nicht gefunden: ${frage}`);
+      const wert = richtig ? karte.a : werte.find(v => v !== karte.a);
+      await qp.locator(`.opt[data-v="${wert.replace(/"/g, '\\"')}"]`).click();
+      return karte;
+    };
+    const urteil = async () => { await qp.waitForSelector('.verdict'); return qp.locator('.verdict').innerText(); };
+    const weiter = async () => {
+      await qp.waitForSelector('#next');
+      await qp.waitForTimeout(FUSS_TAUB);
+      await qp.locator('#next').click();
+      await qp.waitForSelector('.opt:not([disabled]), #quizPunkte');
+    };
+
+    // 1: richtig und schnell -> 15
+    const erste = await antworte(true);
+    check('ein schneller Treffer bringt 15 Punkte', /\+15/.test(await urteil()), await urteil());
+    await weiter();
+    check('der Punktestand zaehlt mit', (await qp.locator('#quizStand').innerText()) === '15');
+    // 2: die Uhr laeuft ab -> zu langsam, 0
+    const zweiteFrage = await frageText();
+    const langsam = CARDS.find(c => c.q === zweiteFrage);
+    await qp.clock.runFor(16000);
+    const abgelaufen = await urteil();
+    check('eine abgelaufene Frage heisst so und bringt nichts',
+      /abgelaufen/.test(abgelaufen) && /0 Punkte/.test(abgelaufen), abgelaufen);
+    await weiter();
+    // 3: falsch -> 0
+    const falsch = await antworte(false);
+    check('ein Fehlgriff bringt nichts', /0 Punkte/.test(await urteil()), await urteil());
+    await weiter();
+    // 4: richtig, aber nach der Blitzfrist -> 10
+    await qp.clock.runFor(6000);
+    await qp.waitForTimeout(200);
+    check('die Blitz-Pille verblasst nach fuenf Sekunden', /\baus\b/.test(await qp.locator('#blitz').getAttribute('class')));
+    await antworte(true);
+    check('ein Treffer nach der Frist bringt 10 Punkte', /\+10/.test(await urteil()), await urteil());
+    await weiter();
+    // 5 bis 12: richtig und schnell
+    for (let i = 4; i < 12; i++) { await antworte(true); await weiter(); }
+
+    await qp.waitForSelector('#quizPunkte');
+    const punkte = (await qp.locator('#quizPunkte').innerText()).replace(/\s+/g, ' ');
+    check('das Ergebnisbild rechnet 15 + 0 + 0 + 10 + 8 x 15 = 145 von 180',
+      /^145\s*\/\s*180$/.test(punkte), punkte);
+    const verlust = (await qp.locator('#quizVerlust').innerText()).replace(/\s+/g, ' ');
+    check('die Verluste stehen getrennt nach falsch, zu langsam und ohne Blitz',
+      /15 falsch/.test(verlust) && /15 zu langsam/.test(verlust) && /5 ohne Blitz/.test(verlust), verlust);
+    const pcts = await qp.locator('#quizFelder .pct').allInnerTexts();
+    const verloren = pcts.map(t => { const [p, m] = t.split('/').map(Number); return m - p; });
+    check('jedes der neun Themen hat eine Zeile', pcts.length === 9, pcts.join(' '));
+    check('die Themen stehen nach verlorenen Punkten sortiert',
+      verloren.every((v, i) => i === 0 || v <= verloren[i - 1]), pcts.join(' '));
+    const felder = await qp.locator('#quizFelder').innerText();
+    check('die Marken nennen falsch und zu langsam', /1 falsch/.test(felder) && /1 zu langsam/.test(felder));
+    check('die verfehlten Karten stehen hinter einem Griff',
+      (await qp.locator('[data-merk]').count()) === 2, String(await qp.locator('[data-merk]').count()));
+
+    await qp.waitForTimeout(600);              // Speichern ist gebuendelt
+    const st = await qp.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
+    const r = (st.quizRunden || [])[0] || {};
+    check('die Runde ist gespeichert', st.quizRunden?.length === 1 && r.p === 145 && r.m === 180 && r.l === 1 && r.f === 1 && r.r === 10,
+      JSON.stringify(st.quizRunden));
+    check('der Bestwert steht', st.quizBest === 145, String(st.quizBest));
+    const tag = Object.keys(st.days || {})[0] || '';
+    const [y, mo, d] = tag.split('-').map(Number);
+    const heute = Math.floor(Date.UTC(y, mo - 1, d) / 86400000);
+    const zustand = (c) => st.cards?.[c.id];
+    check('die abgelaufene Karte ist heute faellig, obwohl sie nie gelernt war',
+      zustand(langsam) && zustand(langsam).seen >= 1 && zustand(langsam).due <= heute, JSON.stringify(zustand(langsam)));
+    check('die falsche Karte ebenso', zustand(falsch) && zustand(falsch).seen >= 1 && zustand(falsch).due <= heute,
+      JSON.stringify(zustand(falsch)));
+    check('ein Treffer im Quiz benotet die Karte nicht', !zustand(erste), JSON.stringify(zustand(erste)));
+    check('Quizantworten zaehlen als Zeit unter Druck, nicht als Tagestraining',
+      (st.days[tag]?.duel || 0) === 12 && (st.days[tag]?.done || 0) === 0 && (st.totalAnswers || 0) === 0,
+      JSON.stringify(st.days[tag]));
+
+    await qp.locator('#again').click();
+    await qp.waitForSelector('.opt');
+    check('„Noch eine Runde" startet wieder ein Quiz', (await qp.locator('#quizStand').count()) === 1);
+    await qp.locator('#quit').click();
+    await qp.waitForSelector('.hero');
+    await qp.locator('.nav-btn[data-view="duel"]').click();
+    await qp.waitForSelector('#quizBest');
+    check('der Startbildschirm zeigt den Bestwert', /^145 \//.test(await qp.locator('#quizBest').innerText()),
+      await qp.locator('#quizBest').innerText());
+    check('der Startbildschirm nennt das schwaechste Thema', /Punkte lässt du zuletzt in/.test(await qp.locator('.card').first().innerText()));
+    await qctx.close();
   }
 
   group('Layout');

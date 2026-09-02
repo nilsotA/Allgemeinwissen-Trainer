@@ -218,7 +218,15 @@ gegen den alten Stand fehlschlägt.
 - **Themen** – ein Gebiet am Stück üben oder ein einzelnes Teilgebiet gezielt: Tippen auf
   „Sport“ öffnet die dreizehn Teilgebiete von Trainingslehre bis Rekorde, jedes mit eigenem
   Fortschritt. Vor einer Klausur in Bewegungslehre übt man genau diese Karten.
-- **Duell** – zehn Fragen, 15 Sekunden pro Frage. Trainiert Tempo für Quizduelle.
+- **Quiz** – der Prüfstand der App: zwölf Fragen quer durch alle Themen, 15 Sekunden pro
+  Frage, zehn Punkte je Treffer und fünf dazu, wenn die Antwort in den ersten fünf Sekunden
+  kommt. Gezogen wird auch, was nie gelernt wurde – ein Quizspiel fragt nicht nur nach dem
+  Gelernten. Am Ende zeigt das Ergebnisbild, **wo die Punkte blieben**: getrennt nach falsch,
+  zu langsam und ohne Blitzbonus, und je Thema. Jede verfehlte Frage – falsch *oder*
+  abgelaufen – landet im nächsten Tagestraining. Die Entscheidungen dahinter stehen unten
+  unter „Der Quizmodus".
+- **Duell** – zehn Fragen aus dem Gelernten, 15 Sekunden pro Frage. Die Probe aufs Gelernte,
+  wo das Quiz die Probe aufs Ganze ist. Beide teilen sich Uhr, Reiter und Zähler.
   Fehler landen automatisch im nächsten Tagestraining. Die Antworten zählen **getrennt**:
   Sie füllen weder den Tagesfortschritt noch die Wissensquote, weil unter Zeitdruck
   naturgemäß geraten wird – drei Duelle ließen den Tagesbogen sonst auf 71 % springen,
@@ -399,8 +407,8 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 109 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 149 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm test           # 127 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 174 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 29 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -1143,6 +1151,58 @@ den sie gedacht war: Eine reine Zahl darf am Anfang stehen, damit „100" auf �
 Nebenbei: `data/quizprobe.json` ist von der Versionskennung ausgenommen – wie `package.json`.
 Sonst böte jede Erweiterung des Prüfsatzes allen Nutzern ein Update an, das nichts ändert.
 
+### Der Quizmodus – ein Prüfstand, kein Spielzeug
+
+Bis hierhin trainierte die App Abruf in Ruhe: eine Karte, eine Antwort, so viel Zeit wie nötig.
+Das Duell brachte Zeitdruck, zog aber aus dem Gelernten. Ein Quizspiel macht beides anders –
+es fragt **alles**, unter der Uhr, und rechnet in Punkten. Genau das ist der Quizmodus. Er
+baut auf dem Duell auf statt daneben: dieselbe Uhr (die nur sichtbare Zeit zählt), derselbe
+Fragebildschirm, derselbe Rückfluss in den Plan. Neu sind Ziehung, Punkte und Ergebnisbild.
+
+**Die Ziehung** (`assets/js/quizmodus.js`, rein, Zufall und Kartenstand als Parameter): zwölf
+Fragen, jedes aktive Thema mindestens einmal, drei Themen zweimal – welche, entscheidet der
+Zufall. Die Schwierigkeit steigt wie im Quiz: vier Basis, vier Solide, vier Profi. Die drei
+Zusatzplätze bevorzugen bekannte Karten, die wackeln – das ist die Duell-Regel „woran man unter
+Zeitdruck scheiterte, muss unter Zeitdruck wiederkommen". Pausierte Themen bleiben draußen: Wer
+Mathematik unter Mehr abgeschaltet hat, will sie auch im Quiz nicht (das Themen-Duell hält es
+anders, weil dort das Thema ausdrücklich gewählt wird).
+
+**Die Punkteformel in einem Satz:** Zehn Punkte für jeden Treffer, fünf dazu, wenn die Antwort in
+den ersten fünf Sekunden kommt. 180 sind das Maximum. Der Bonus ist bewusst kleiner als der
+Treffer – ein Quiz belohnt Wissen, Tempo ist die Zugabe. Über der Frage steht der Punktestand,
+rechts daneben die Blitz-Pille, die nach fünf Sekunden verblasst: Man sieht die Formel beim
+Spielen, nicht erst im Ergebnis.
+
+**Der Rückfluss in den Plan** war die eine Stelle, an der das Duell nicht reichte. Eine
+gelernte Karte, die im Quiz fällt, bekommt die Deckelung aus `nachDuellFehler()`. Eine **nie
+gelernte** Karte, die im Quiz fällt, ließ das Duell liegen („steht ohnehin in der Neu-Liste") –
+im Quiz ist sie eine *entdeckte Lücke* und soll morgen drankommen, nicht erst, wenn die Leiter
+der neuen Karten sie irgendwann erreicht. Sie bekommt `seen: 1` und ist heute fällig. Keine
+Note, kein Aussetzer: Man kann nicht vergessen, was man nie gelernt hat. Und nicht `seen: 0`
+mit Termin – ein solcher Zustand stünde in beiden Listen zugleich (siehe `dueCards()`). Ein
+Treffer im Quiz benotet die Karte nicht – wie im Duell, weil unter Zeitdruck geraten wird.
+
+**Die Zähler:** Quizantworten laufen in dieselben Zähler wie Duellantworten (`d.duel`,
+`duelAnswers`, `duelMs`), getrennt vom Tagestraining. Es ist dieselbe Größe – Antworten unter
+15 Sekunden – und sechs weitere Felder samt Zusammenführungsregel hätten nichts gemessen, was
+diese nicht messen. Die Startseite sagt deshalb jetzt „unter Zeitdruck" statt „im Duell".
+Neu gespeichert werden nur die Runden selbst: `quizRunden` (die letzten dreißig, beim
+Zusammenführen zweier Tabs **vereinigt** über den Zeitstempel, denn Runden werden nur angehängt)
+und `quizBest` (ein Rekord, fällt nie). Beides geht durch den Säuberer – auch beim Laden, weil
+Listen sonst ungeprüft aus dem Speicher kämen und eine kaputte Runde das Ergebnisbild träfe.
+
+**Das Ergebnisbild** beantwortet nicht „wie gut war ich", sondern „wo habe ich verloren": drei
+Kacheln (falsch, zu langsam, ohne Blitz), darunter die Themen nach verlorenen Punkten sortiert,
+darunter die verfehlten Karten – hinter dem Griff, wie überall in dieser App. Der Reiter heißt
+jetzt **Quiz**; das Duell bleibt dort als zweite Wahl.
+
+**Geprüft:** elf reine Tests über Ziehung, Formel und Auswertung mit festem Zufall; der
+Sicherungs-Rundlauf und der Säuberer (ohne die zwei Säuberer-Zeilen scheitern nachweislich
+zwei Tests); zwei Tabs, die je eine Runde spielen, haben hinterher beide; und ein Durchlauftest
+mit gestellter Uhr (`page.clock`), der eine Runde spielt – ein Blitztreffer, eine abgelaufene,
+eine falsche, ein Treffer nach der Frist, acht Blitztreffer – und **145 von 180** nachrechnet,
+statt nur zu schauen, ob eine Zahl erscheint.
+
 ### Zwei Fehler im Vergleicher, gefunden beim Prüfen von Karten
 
 Die Handwerksprüfung der 39 neuen Karten hat nicht geschätzt, sondern mit dem echten
@@ -1507,9 +1567,10 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 79 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
-die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups und
-den Vergleich freier Eingaben ab.
+Die 127 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups, den
+Vergleich freier Eingaben und den Quizmodus (Ziehung, Punkteformel, Auswertung, Runden über
+zwei Tabs) ab.
 
 Beim freien Abrufen ist der schlimmste denkbare Fehler, eine falsche Eingabe abzunicken – dann
 lernt man die Falschantwort als richtig. Ein Test tippt deshalb jeden der rund 4.000 Ablenker

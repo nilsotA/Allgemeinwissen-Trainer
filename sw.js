@@ -1,10 +1,11 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-432c526054';
+const VERSION = 'wissenswerk-ad24d03730';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",
   "./assets/js/fassung.js",
   "./assets/js/quiz.js",
+  "./assets/js/quizmodus.js",
   "./assets/js/session.js",
   "./assets/js/srs.js",
   "./assets/js/store.js",

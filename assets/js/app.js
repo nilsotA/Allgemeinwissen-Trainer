@@ -4,11 +4,13 @@ import FACTS from '../../data/facts.js';
 import * as store from './store.js';
 import { S, settings, setSetting, save, cardState, putCard, today, todayNum, dayKey,
          numToKey, liveStreak, touchStreak, isFlagged, toggleFlag, setSaveErrorHandler,
-         installFlush, setBusyCheck, setFremdStandHandler } from './store.js';
+         installFlush, setBusyCheck, setFremdStandHandler, merkeQuizRunde } from './store.js';
 import { schedule, strength, preview, isLeech, nachDuellFehler, fresh as freshState, AGAIN, HARD, GOOD, EASY } from './srs.js';
 import { options, bewerte, normalize, shuffle } from './quiz.js';
 import { FASSUNG } from './fassung.js';
 import * as sess from './session.js';
+import { punkte, auswertung, rundenEintrag, schwaechstesFeld,
+         FRIST_MS, BLITZ_MS, MAX_JE_FRAGE, PUNKTE_BLITZ, FRAGEN_JE_RUNDE } from './quizmodus.js';
 
 const app = document.getElementById('app');
 const nav = document.getElementById('nav');
@@ -325,11 +327,11 @@ function renderHome() {
     <div class="seg-lab">
       <span class="tiny">${d.done
         ? `${d.done} heute geschafft · ${Math.round((d.correct / Math.max(1, d.done)) * 100)} % richtig${
-            d.duel ? ` · dazu ${d.duel} im Duell` : ''}`
+            d.duel ? ` · dazu ${d.duel} unter Zeitdruck` : ''}`
         : d.duel
           // „Noch nichts gelernt" waere gelogen, wenn schon vierzig Duellfragen
           // beantwortet sind - der Tagesplan steht nur eben noch offen.
-          ? `${d.duel} Duellfragen heute – der Tagesplan wartet noch.`
+          ? `${d.duel} Fragen unter Zeitdruck heute – der Tagesplan wartet noch.`
           : 'Noch nichts gelernt heute – die erste Karte ist die leichteste.'}</span>
       ${d.done ? `<b>${Math.round(pct * 100)} %</b>` : ''}
     </div>
@@ -479,21 +481,44 @@ function bindeTeilgebiete() {
   });
 }
 
+/* Quiz und Duell teilen sich den Bildschirm und die Uhr. Das Quiz ist der
+   Pruefstand: zwoelf Fragen quer durch alles, auch Ungelerntes, mit Punkten.
+   Das Duell bleibt die Probe aufs Gelernte - zehn Fragen aus dem Bekannten. */
+const QUIZ_MAX = FRAGEN_JE_RUNDE * MAX_JE_FRAGE;
 function renderDuelStart() {
   const st = S();
+  const runden = st.quizRunden || [];
+  const letzte = runden.slice(-10);
+  const best = st.quizBest || 0;
+  const schwach = schwaechstesFeld(runden);
+  const mittel = letzte.length ? Math.round(letzte.reduce((a, r) => a + r.p, 0) / letzte.length) : 0;
   app.innerHTML = `
-    <h1 class="vh">Duell-Modus</h1>
-    <p class="muted">Zehn Fragen, 15 Sekunden pro Frage. Trainiert genau das, was im Quizduell zählt: schnelles Erkennen unter Druck.</p>
+    <h1 class="vh">Quiz</h1>
+    <p class="muted">Zwölf Fragen quer durch alle Themen, 15 Sekunden pro Frage. Zehn Punkte für jeden Treffer, fünf dazu, wenn die Antwort in den ersten fünf Sekunden kommt.</p>
     <div class="card" style="margin-top:16px">
-      <div class="row between"><span>Bestleistung</span><b>${st.duelBest || 0} / 10</b></div>
-      <div class="row between" style="margin-top:8px"><span>Trefferquote im Duell</span><b>${st.duelAnswers ? Math.round(st.duelCorrect / st.duelAnswers * 100) : 0} %</b></div>
-      ${st.duelTimed ? `<div class="row between" style="margin-top:8px"><span>Ø Zeit bis zur richtigen Antwort</span><b>${sekunden(st.duelMs / st.duelTimed)} s</b></div>` : ''}
-      <p class="tiny" style="margin-top:9px">Unter Zeitdruck liegt sie naturgemäß unter der Quote im Tagestraining – deshalb wird sie getrennt geführt.</p>
+      <div class="row between"><span>Bestwert</span><b id="quizBest">${best} / ${QUIZ_MAX}</b></div>
+      ${letzte.length ? `
+      <div class="runden" aria-hidden="true">${letzte.map((r, i) =>
+        `<i style="height:${Math.max(6, Math.round((r.p / Math.max(1, r.m)) * 100))}%" class="${r.p === best ? 'best' : ''} ${i === letzte.length - 1 ? 'last' : ''}"></i>`).join('')}</div>
+      <p class="tiny" style="margin-top:7px">Letzte Runde ${letzte[letzte.length - 1].p} von ${letzte[letzte.length - 1].m}${
+        letzte.length > 1 ? ` · im Schnitt ${mittel} über die letzten ${letzte.length}` : ''}</p>
+      ${schwach ? `<p class="tiny" style="margin-top:6px">Die meisten Punkte lässt du zuletzt in <b>${esc(CAT_BY_ID[schwach.cat]?.name || schwach.cat)}</b> liegen.</p>` : ''}`
+      : `<p class="tiny" style="margin-top:9px">Noch keine Runde gespielt. Die erste zeigt dir, wo du stehst.</p>`}
     </div>
     <div class="btn-stack" style="margin-top:14px">
-      <button class="btn primary" id="duelGo">${ico('duell')}Duell starten</button>
+      <button class="btn primary" id="quizGo">${ico('duell')}Quizrunde starten</button>
+      <button class="btn" id="duelGo">Duell – zehn Fragen aus dem Gelernten</button>
     </div>
-    <p class="tiny center" style="margin-top:14px">Fehler aus dem Duell landen automatisch im nächsten Tagestraining – so schließt sich die Lücke sofort.</p>`;
+    <h2 class="sec">Unter Zeitdruck</h2>
+    <div class="card">
+      <div class="row between"><span>Bestes Duell</span><b>${st.duelBest || 0} / 10</b></div>
+      <div class="row between" style="margin-top:8px"><span>Trefferquote unter Zeitdruck</span><b>${st.duelAnswers ? Math.round(st.duelCorrect / st.duelAnswers * 100) : 0} %</b></div>
+      ${st.duelTimed ? `<div class="row between" style="margin-top:8px"><span>Ø Zeit bis zur richtigen Antwort</span><b>${sekunden(st.duelMs / st.duelTimed)} s</b></div>` : ''}
+      <p class="tiny" style="margin-top:9px">Quiz und Duell zählen hier zusammen – und getrennt vom Tagestraining, weil unter Zeitdruck naturgemäß geraten wird.</p>
+    </div>
+    <p class="tiny center" style="margin-top:14px">Falsche und abgelaufene Fragen landen in deinem nächsten Tagestraining – so schließt sich die Lücke sofort.</p>`;
+  document.getElementById('quizGo').onclick = () =>
+    startRun(sess.buildQuiz(), 'quiz', () => sess.buildQuiz());
   document.getElementById('duelGo').onclick = () =>
     startRun(sess.buildDuel(10), 'duel', () => sess.buildDuel(10));
 }
@@ -678,6 +703,18 @@ function renderStats() {
       <div class="row between" style="margin-top:9px"><span>Karten gefestigt</span><b>${o.mature} / ${o.total}</b></div>
       <div class="row between" style="margin-top:9px"><span>Noch nie gesehen</span><b>${o.total - o.seen}</b></div>
     </div>
+
+    ${(st.quizRunden || []).length ? (() => {
+      const runden = st.quizRunden.slice(-5);
+      const schnitt = Math.round(runden.reduce((a, r) => a + r.p, 0) / runden.length);
+      const schwach = schwaechstesFeld(st.quizRunden);
+      return `
+    <h2 class="sec">Quiz</h2>
+    <div class="card">
+      <div class="row between"><span>Bestwert</span><b>${st.quizBest || 0} / ${QUIZ_MAX}</b></div>
+      <div class="row between" style="margin-top:9px"><span>Ø der letzten ${runden.length} Runden</span><b>${schnitt}</b></div>
+      ${schwach ? `<div class="row between" style="margin-top:9px"><span>Meiste Punkte verloren</span><b>${esc(CAT_BY_ID[schwach.cat]?.name || schwach.cat)}</b></div>` : ''}
+    </div>`; })() : ''}
 
     <h2 class="sec">Nach Stufe</h2>
     <div class="tlist">
@@ -1170,7 +1207,8 @@ function startRun(queue, mode, weiter = null) {
     done: 0, correct: 0, start: Date.now(),
     total: queue.length, added: 0,
     wrong: [], undo: null,
-    nochmal: new Map()          // Karte -> wie oft in dieser Einheit schon nachgereicht
+    nochmal: new Map(),         // Karte -> wie oft in dieser Einheit schon nachgereicht
+    quiz: mode === 'quiz' ? { antworten: [], punkte: 0 } : null   // Punktestand der Quizrunde
   };
   topbar.hidden = true; nav.hidden = true;
   app.classList.add('full');
@@ -1183,6 +1221,14 @@ function endRun() {
   const secs = Math.round((Date.now() - r.start) / 1000);
   today().sec = (today().sec || 0) + secs;
   if (r.mode === 'duel') S().duelBest = Math.max(S().duelBest || 0, r.correct);
+  if (r.mode === 'quiz') {
+    /* Der Bestwert von VOR dieser Runde entscheidet, ob sie ein neuer ist -
+       deshalb erst lesen, dann ablegen. merkeQuizRunde holt den fremden Stand
+       ein, damit eine im anderen Tab gespielte Runde nicht verdraengt wird. */
+    r.quiz.vorherBest = S().quizBest || 0;
+    r.quiz.aw = auswertung(r.quiz.antworten, CATS.map(c => c.id));
+    merkeQuizRunde(rundenEintrag(r.quiz.aw, Date.now()));
+  }
   save(true);
 
   const pctv = r.done ? Math.round(r.correct / r.done * 100) : 0;
@@ -1194,7 +1240,7 @@ function endRun() {
   // Doppelte entfernen: dieselbe Karte kann mehrfach falsch gewesen sein
   const missed = [...new Map(r.wrong.map(c => [c.id, c])).values()];
 
-  app.innerHTML = `
+  app.innerHTML = r.mode === 'quiz' ? quizRueckblick(r, missed, min) : `
     <div class="done-wrap fade">
       ${ring(pctv / 100)}
       <h1>${praise}</h1>
@@ -1206,21 +1252,7 @@ function endRun() {
       <div class="kpi"><b>${today().done}</b><span>heute gelernt</span></div>
       <div class="kpi"><b>${sess.overview().due}</b><span>noch fällig</span></div>
     </div>
-    ${missed.length ? `
-      <h2 class="sec">Das saß noch nicht (${missed.length})</h2>
-      <div class="tlist">
-        ${missed.slice(0, 12).map(c => `<div class="card" style="padding:13px 14px">
-          <span class="qcat">${catIcon(c.cat, 's')}<span>${esc(c.sub)}</span></span>
-          <p style="font-weight:650;margin:5px 0 4px;font-size:15px">${esc(c.q)}</p>
-          <div id="rb-${esc(c.id)}" hidden>
-            <p class="muted" style="color:var(--ok);font-weight:650">${esc(c.a)}</p>
-            ${c.t ? `<p class="tiny" style="margin-top:5px">${esc(c.t)}</p>` : ''}
-          </div>
-          <button class="btn ghost sm" style="margin-top:8px" data-merk="rb-${esc(c.id)}"
-            aria-expanded="false" aria-controls="rb-${esc(c.id)}">Erst überlegen – dann aufdecken</button>
-        </div>`).join('')}
-      </div>
-      <p class="tiny center" style="margin-top:10px">Diese Karten kommen morgen wieder – sie sind schon eingeplant.</p>` : ''}
+    ${fehlerListe(missed)}
     <div class="btn-stack" style="margin-top:18px">
       <button class="btn primary" id="again">Weitermachen</button>
       <button class="btn ghost" id="home">Zur Übersicht</button>
@@ -1238,6 +1270,70 @@ function endRun() {
   rueckblickOffen = true;
   holeUpdateNach();
   paintChrome();
+}
+
+/* Die verfehlten Karten nach einer Runde - hinter einem Griff, siehe endRun. */
+function fehlerListe(missed) {
+  if (!missed.length) return '';
+  return `
+      <h2 class="sec">Das saß noch nicht (${missed.length})</h2>
+      <div class="tlist">
+        ${missed.slice(0, 12).map(c => `<div class="card" style="padding:13px 14px">
+          <span class="qcat">${catIcon(c.cat, 's')}<span>${esc(c.sub)}</span></span>
+          <p style="font-weight:650;margin:5px 0 4px;font-size:15px">${esc(c.q)}</p>
+          <div id="rb-${esc(c.id)}" hidden>
+            <p class="muted" style="color:var(--ok);font-weight:650">${esc(c.a)}</p>
+            ${c.t ? `<p class="tiny" style="margin-top:5px">${esc(c.t)}</p>` : ''}
+          </div>
+          <button class="btn ghost sm" style="margin-top:8px" data-merk="rb-${esc(c.id)}"
+            aria-expanded="false" aria-controls="rb-${esc(c.id)}">Erst überlegen – dann aufdecken</button>
+        </div>`).join('')}
+      </div>
+      <p class="tiny center" style="margin-top:10px">Diese Karten kommen morgen wieder – sie sind schon eingeplant.</p>`;
+}
+
+/* Das Ergebnisbild einer Quizrunde. Die Frage danach ist nicht „wie gut war
+   ich", sondern „wo habe ich verloren": erst die drei Verlustarten, dann die
+   Themen nach verlorenen Punkten, dann die Karten selbst. */
+function quizRueckblick(r, missed, min) {
+  const aw = r.quiz.aw;
+  const n = r.quiz.antworten.length;
+  const neuerBestwert = aw.punkte > r.quiz.vorherBest && aw.punkte > 0;
+  const satz = aw.punkte === aw.max ? 'Fehlerfrei und schnell – das ist Quizform.'
+    : neuerBestwert ? 'Neuer Bestwert!'
+    : aw.langsam > aw.falsch ? 'Du weißt mehr, als die Uhr zuließ – Tempo ist die Baustelle.'
+    : aw.falsch ? 'Die Lücken stehen unten – sie kommen im nächsten Training.'
+    : 'Alles richtig – nur ein paar Sekunden zu langsam für den Bonus.';
+  return `
+    <div class="done-wrap fade">
+      <p class="quiz-punkte" id="quizPunkte">${aw.punkte}<small>/ ${aw.max}</small></p>
+      <h1>${satz}</h1>
+      <p class="muted">${aw.richtig} von ${n} richtig · ${min} Min.${r.quiz.vorherBest ? ` · Bestwert ${Math.max(aw.punkte, r.quiz.vorherBest)}` : ''}</p>
+    </div>
+    <h2 class="sec">Wo die Punkte blieben</h2>
+    <div class="verlust" id="quizVerlust">
+      <div class="kpi"><b>${aw.verlorenFalsch}</b><span>falsch</span></div>
+      <div class="kpi"><b>${aw.verlorenLangsam}</b><span>zu langsam</span></div>
+      <div class="kpi"><b>${aw.verlorenBlitz}</b><span>ohne Blitz</span></div>
+    </div>
+    <div class="tlist" style="margin-top:11px" id="quizFelder">
+      ${aw.felder.map(f => `<div class="trow schmal quiz-feld" style="pointer-events:none" data-cat="${esc(f.cat)}">
+        <span class="tico">${catIcon(f.cat)}</span>
+        <span class="grow">
+          <h3>${esc(CAT_BY_ID[f.cat]?.name || f.cat)}</h3>
+          <span class="marken">${f.richtig ? `<span class="marke ok">${f.richtig} richtig</span>` : ''}${
+            f.falsch ? `<span class="marke falsch">${f.falsch} falsch</span>` : ''}${
+            f.langsam ? `<span class="marke langsam">${f.langsam} zu langsam</span>` : ''}</span>
+          <span class="bar${f.verloren ? '' : ' ok'}"><i style="width:${((f.punkte / Math.max(1, f.max)) * 100).toFixed(0)}%"></i></span>
+        </span>
+        <span class="pct">${f.punkte}/${f.max}</span>
+      </div>`).join('')}
+    </div>
+    ${fehlerListe(missed)}
+    <div class="btn-stack" style="margin-top:18px">
+      <button class="btn primary" id="again">Noch eine Runde</button>
+      <button class="btn ghost" id="home">Zur Übersicht</button>
+    </div>`;
 }
 
 function beep(ok) {
@@ -1345,7 +1441,7 @@ function step() {
   const item = run.queue[run.i];
   const card = item.card;
   const cs = cardState(card.id);
-  if (run.mode === 'duel') return askDuel(card);
+  if (run.mode === 'duel' || run.mode === 'quiz') return askDuel(card);
   if (useRecall(card, cs)) return askRecall(card, item.fresh, cs);
   return askChoice(card, item.fresh, cs);
 }
@@ -1642,11 +1738,16 @@ function commit(card, grade, ok, isFresh, behauptet) {
 }
 
 /* ---- Duell: schnell, mit Zeitdruck ---- */
+/* Der Punktestand ueber der Frage, rechts die Blitz-Pille: Sie verblasst nach
+   fuenf Sekunden - so sieht man die Formel beim Spielen, nicht erst im Ergebnis. */
+const quizStand = () => `<div class="quiz-stand"><span>Punkte <b id="quizStand">${run.quiz.punkte}</b></span><span class="pill blitz" id="blitz">Blitz +${PUNKTE_BLITZ}</span></div>`;
+
 function askDuel(card) {
   const opts = options(card);
-  const LIMIT = 15000;
+  const LIMIT = FRIST_MS;
+  const quiz = run.mode === 'quiz';
   shell(
-    qkarte(head(card, false)) + `<div class="opts">${
+    (quiz ? quizStand() : '') + qkarte(head(card, false)) + `<div class="opts">${
       opts.map((o, i) => `<button class="opt" data-v="${esc(o)}">
         <span class="k">${'ABCD'[i]}</span><span>${esc(o)}</span></button>`).join('')
     }</div>`,
@@ -1663,11 +1764,14 @@ function askDuel(card) {
   stopDuelTimer();
   const verstrichen = sichtbareZeit();
   let gewarnt = false;
+  const blitz = document.getElementById('blitz');
+  let blitzAus = false;
   duelTimer = setInterval(() => {
     if (!run || !document.getElementById('clock')) return stopDuelTimer();
     const left = Math.max(0, 1 - verstrichen() / LIMIT);
     bar.style.width = (left * 100).toFixed(1) + '%';
     bar.style.background = left < 0.3 ? 'linear-gradient(90deg,#ff6b6b,#ffb454)' : '';
+    if (blitz && !blitzAus && verstrichen() > BLITZ_MS) { blitzAus = true; blitz.classList.add('aus'); }
     // Einmalig, nicht im Takt: eine Live-Region, die zehnmal je Sekunde
     // schreibt, macht das Vorlesen der Frage unmoeglich.
     if (!gewarnt && left > 0 && verstrichen() > LIMIT - 5000) { gewarnt = true; announce('Noch fünf Sekunden.'); }
@@ -1682,14 +1786,21 @@ function askDuel(card) {
     const gebraucht = Math.min(LIMIT, verstrichen());
     verstrichen.beenden();
     const ok = chosen === card.a;
+    let pts = 0;
+    if (quiz) {
+      pts = punkte(ok, gebraucht);
+      run.quiz.punkte += pts;
+      run.quiz.antworten.push({ card, ok, abgelaufen: chosen === null, ms: gebraucht, punkte: pts });
+    }
     markiereOptionen(app, card.a, chosen);
     beep(ok);
-    announce(ok ? 'Richtig.' : `Falsch. Die Antwort lautet: ${card.a}`);
+    announce((ok ? 'Richtig.' : `Falsch. Die Antwort lautet: ${card.a}`) + (quiz ? ` ${pts} Punkte.` : ''));
     const body = app.querySelector('.sess-body');
     const div = document.createElement('div');
     div.className = 'fade';
-    div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ico(ok ? 'haken' : chosen === null ? 'uhr' : 'schliessen')}<span>${
-      ok ? 'Richtig' : chosen === null ? 'Zeit abgelaufen' : 'Leider falsch'}</span></p>${answerBlock(card)}`;
+    const urteil = ok ? 'Richtig' : chosen === null ? 'Zeit abgelaufen' : 'Leider falsch';
+    const punkteText = quiz ? ` · ${pts ? '+' + pts : '0'} Punkte${pts === MAX_JE_FRAGE ? ' · Blitz' : ''}` : '';
+    div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ico(ok ? 'haken' : chosen === null ? 'uhr' : 'schliessen')}<span>${urteil}${punkteText}</span></p>${answerBlock(card)}`;
     body.appendChild(div);
     zurAntwort(body, div);
     app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
@@ -1726,6 +1837,19 @@ function askDuel(card) {
             const grund = (aktuell && aktuell.seen > 0) ? aktuell : cs;
             return nachDuellFehler(grund);
           });
+        } else if (quiz) {
+          /* Im Quiz ist eine nie gelernte Karte, die fehlt, eine ENTDECKTE
+             Luecke - sie kommt ins naechste Tagestraining und nicht erst,
+             wenn die Leiter der neuen Karten sie irgendwann erreicht. Das
+             Duell laesst solche Karten liegen, weil es ohnehin aus dem
+             Gelernten zieht. seen: 1 und nicht ein Zustand mit seen 0: Der
+             stuende in beiden Listen zugleich (siehe dueCards). Keine Note,
+             kein Aussetzer - man kann nicht vergessen, was man nie gelernt
+             hat. Ueber aendereKarte, falls der andere Tab sie inzwischen
+             gelernt hat: dann gilt die Deckelung wie bei jeder Bekannten. */
+          store.aendereKarte(card.id, (aktuell) => (aktuell && aktuell.seen > 0)
+            ? nachDuellFehler(aktuell)
+            : { ...freshState(), seen: 1, due: todayNum(), last: Date.now() });
         }
       }
       save();

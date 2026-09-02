@@ -34,8 +34,22 @@ const DEFAULTS = {
   duelAnswers: 0,
   duelCorrect: 0,
   duelMs: 0,             // aufsummierte Antwortzeit richtiger Duell-Antworten
-  duelTimed: 0           // wie viele Antworten in duelMs stecken
+  duelTimed: 0,          // wie viele Antworten in duelMs stecken
+  quizBest: 0,           // beste Punktzahl einer Quizrunde
+  quizRunden: []         // die letzten Quizrunden: { t, p, m, r, f, l, k } - siehe quizmodus.js
 };
+
+/* Quizrunden werden nur angehaengt, nie geaendert. Deshalb reicht beim
+   Zusammenfuehren zweier Tabs die Vereinigung ueber den Zeitstempel - jede
+   Runde gibt es genau einmal, egal in welchem Tab sie gespielt wurde. Mehr als
+   RUNDEN_MAX werden nicht aufgehoben: Der Speicher ist der einzige Ort, und die
+   Frage nach der Runde ist „wo verliere ich zuletzt", nicht „wie war es im Mai". */
+const RUNDEN_MAX = 30;
+export function mischeRunden(a, b) {
+  const nachT = new Map();
+  for (const r of [...(a || []), ...(b || [])]) if (r && r.t && !nachT.has(r.t)) nachT.set(r.t, r);
+  return [...nachT.values()].sort((x, y) => x.t - y.t).slice(-RUNDEN_MAX);
+}
 
 function deepMerge(base, add) {
   const out = Array.isArray(base) ? base.slice() : { ...base };
@@ -120,6 +134,9 @@ function load() {
     }
     normalisiereFlags(zustand);
     flagUhrNachziehen(zustand);
+    // Listen kommen ungeprueft aus dem Speicher - eine kaputte Runde darf das
+    // Ergebnisbild nicht zum Absturz bringen.
+    zustand.quizRunden = saeubereRunden(zustand.quizRunden);
     return zustand;
   } catch (e) {
     // Bewusst console.error: hier landet auch ein Programmierfehler, und der
@@ -179,9 +196,10 @@ function zusammenfuehren(fremd, eigen) {
   }
   for (const k of ['totalAnswers', 'totalCorrect', 'best', 'duelBest',
                    'duelAnswers', 'duelCorrect', 'duelMs', 'duelTimed', 'lastExport',
-                   'claims', 'claimsMiss']) {
+                   'claims', 'claimsMiss', 'quizBest']) {
     z[k] = groesser(z[k], fremd[k]);
   }
+  z.quizRunden = mischeRunden(z.quizRunden, saeubereRunden(fremd.quizRunden));
   /* streak darf hier NICHT das Maximum sein: touchStreak() setzt die Serie nach
      einer Pause bewusst auf 1 zurueck: Der zweite Tab hob sie sonst wieder auf
      den alten Wert, und die Startseite zeigte eine Serie, die es nicht mehr gab.
@@ -222,6 +240,15 @@ function holeFremdenStand() {
     state = zusammenfuehren(fremd, state);
     return true;
   } catch (e) { return false; }   // unlesbar ist so gut wie nicht vorhanden
+}
+
+/** Eine Quizrunde ablegen - auf dem juengsten Stand, damit eine im anderen Tab
+    gespielte Runde nicht verdraengt wird (dieselbe Regel wie bei aendereKarte). */
+export function merkeQuizRunde(eintrag) {
+  holeFremdenStand();
+  state.quizRunden = mischeRunden(state.quizRunden, [eintrag]);
+  state.quizBest = Math.max(state.quizBest || 0, eintrag.p || 0);
+  save(true);
 }
 
 /** Eine Karte auf dem juengsten Stand veraendern – fuer Aenderungen, die auf
@@ -460,6 +487,22 @@ const zahl = (v, min, max, standard) => {
   return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : standard;
 };
 
+function saeubereRunden(liste) {
+  if (!Array.isArray(liste)) return [];
+  const rein = [];
+  for (const r of liste) {
+    if (!r || typeof r !== 'object' || !(Number(r.t) > 0)) continue;
+    const k = {};
+    for (const [cat, v] of Object.entries(r.k && typeof r.k === 'object' ? r.k : {})) {
+      if (!Array.isArray(v)) continue;
+      k[cat] = [zahl(v[0], 0, 1e6, 0), zahl(v[1], 0, 1e6, 0)];
+    }
+    rein.push({ t: zahl(r.t, 1, 1e15, 1), p: zahl(r.p, 0, 1e6, 0), m: zahl(r.m, 0, 1e6, 0),
+                r: zahl(r.r, 0, 1e6, 0), f: zahl(r.f, 0, 1e6, 0), l: zahl(r.l, 0, 1e6, 0), k });
+  }
+  return mischeRunden(rein, []);
+}
+
 function saeubern(roh) {
   const rein = structuredClone(DEFAULTS);
   if (roh.settings && typeof roh.settings === 'object') {
@@ -504,6 +547,8 @@ function saeubern(roh) {
   rein.duelCorrect = zahl(roh.duelCorrect, 0, 1e8, 0);
   rein.duelMs = zahl(roh.duelMs, 0, 1e12, 0);
   rein.duelTimed = zahl(roh.duelTimed, 0, 1e8, 0);
+  rein.quizBest = zahl(roh.quizBest, 0, 1e6, 0);
+  rein.quizRunden = saeubereRunden(roh.quizRunden);
   rein.totalAnswers = zahl(roh.totalAnswers, 0, 1e8, 0);
   rein.totalCorrect = zahl(roh.totalCorrect, 0, 1e8, 0);
   rein.gen = zahl(roh.gen, 0, 1e9, 0);

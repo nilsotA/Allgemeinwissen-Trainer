@@ -465,3 +465,25 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appeara
    --on-acc, damit sie in beiden Schemata traegt (heller Ton auf dunklem Ziegel,
    dunkler Ton auf hellem Bernstein). */
 :root{--on-toast:#f6efe6}
+
+/* ---- Quizmodus ---- */
+/* Der Stand ueber der Frage: Punkte links, rechts die Blitz-Pille, die nach
+   fuenf Sekunden verblasst - so sieht man die Formel beim Spielen, nicht erst
+   im Ergebnis. */
+.quiz-stand{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;font-size:13.5px;color:var(--dim)}
+.quiz-stand b{font-family:var(--serif);font-size:19px;color:var(--txt)}
+.pill.blitz{color:var(--warn);background:var(--warn-soft);transition:opacity .35s}
+.pill.blitz.aus{opacity:0}
+.quiz-punkte{font-family:var(--serif);font-size:46px;font-weight:600;line-height:1;letter-spacing:-.01em}
+.quiz-punkte small{font-size:17px;color:var(--dim2);font-weight:600;margin-left:5px}
+.marken{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
+.marke{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 8px;background:var(--bg2);color:var(--dim2)}
+.marke.ok{color:var(--ok);background:var(--ok-soft)}
+.marke.falsch{color:var(--bad);background:var(--bad-soft)}
+.marke.langsam{color:var(--warn);background:var(--warn-soft)}
+.verlust{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:11px}
+.verlust .kpi b{font-size:19px}
+.runden{display:flex;gap:4px;align-items:flex-end;height:46px;margin-top:9px}
+.runden i{flex:1;background:var(--track);border-radius:3px 3px 0 0;display:block;min-height:3px}
+.runden i.best{background:linear-gradient(180deg,var(--grad1),var(--grad2))}
+.runden i.last{outline:2px solid var(--acc);outline-offset:1px}

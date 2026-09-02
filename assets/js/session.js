@@ -5,6 +5,7 @@ import { S, settings, cardState, today, todayNum, isFlagged, uebernimmVorgaenger
          setNachErsatz } from './store.js';
 import { isDue, isNew, strength, isLeech } from './srs.js';
 import { shuffle } from './quiz.js';
+import { ziehung } from './quizmodus.js';
 
 /* Umformulierte Karten erben den Stand ihrer frueheren Fassung. Muss laufen,
    bevor irgendjemand Kartenstaende liest - deshalb hier und nicht spaeter. Und
@@ -184,6 +185,13 @@ export function buildDuel(n = 10, cat = null) {
   const gewaehlt = [...schwach, ...rest];
   const neu = shuffle(pool.filter(c => !gewaehlt.includes(c))).slice(0, n - gewaehlt.length);
   return shuffle([...gewaehlt, ...neu]).map(c => ({ card: c, fresh: false }));
+}
+
+/** Quizrunde: quer durch alle aktiven Themen, auch Ungelerntes - siehe quizmodus.js.
+    Pausierte Themen bleiben draussen: Wer Mathematik unter Mehr abgeschaltet hat,
+    will sie auch im Quiz nicht - anders als beim ausdruecklich gewaehlten Themen-Duell. */
+export function buildQuiz() {
+  return ziehung(CARDS.filter(c => inScope(c)), { stand: cardState });
 }
 
 /** Kennzahlen für Startseite und Statistik. */
