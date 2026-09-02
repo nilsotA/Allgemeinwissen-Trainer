@@ -17,13 +17,23 @@
    Pruefsatz geschrieben hat; aussagekraeftig ist die Veraenderung ueber die
    Zeit, nicht die Hoehe.
 
-   Aufruf: node scripts/abdeckung.mjs [--fehlend]                              */
+   ZWEITER SATZ: Sobald Karten gezielt gegen die Luecken eines Satzes
+   geschrieben wurden, misst dieser Satz nur noch, ob das Abschreiben geklappt
+   hat. Ein weiterer, vorher eingefrorener Satz laesst sich mit --satz messen.
+   Mit --json kommt je Frage die deckende Kartenkennung mit - damit laesst sich
+   nach einer Ergaenzung nachrechnen, welche Treffer wirklich von NEUEN Karten
+   stammen (Kennungen, die in data/kennungen.json vor der Ergaenzung fehlten).
+
+   Aufruf: node scripts/abdeckung.mjs [--fehlend] [--json] [--satz data/quizprobe2.json] */
 import { readFileSync } from 'node:fs';
 import { CARDS } from '../data/index.js';
 import { normalize } from '../assets/js/quiz.js';
 
-const PROBE = JSON.parse(readFileSync(new URL('../data/quizprobe.json', import.meta.url), 'utf8'));
+const argSatz = process.argv.indexOf('--satz');
+const SATZ = argSatz >= 0 && process.argv[argSatz + 1] ? process.argv[argSatz + 1] : 'data/quizprobe.json';
+const PROBE = JSON.parse(readFileSync(new URL('../' + SATZ.replace(/^\.\//, ''), import.meta.url), 'utf8'));
 const zeigeFehlend = process.argv.includes('--fehlend');
+const alsJson = process.argv.includes('--json');
 
 /* Praepositionen und Artikel weg: „Aus Japan" und „Japan" sind dieselbe Antwort. */
 const kern = (t) => normalize(t).replace(/^(aus|seit|im|in|vom|zum|zur|bei|nach|auf|mit)\s+/, '');
@@ -61,19 +71,24 @@ for (const c of CARDS) {
 
 const proGebiet = new Map();
 const fehlend = [];
+const abgedeckt = [];
 for (const p of PROBE) {
   if (!proGebiet.has(p.gebiet)) proGebiet.set(p.gebiet, { ab: 0, ges: 0 });
   const g = proGebiet.get(p.gebiet);
   g.ges++;
   const gesucht = folge(p.antwort);
   const treffer = kartenAntworten.find((k) => passt(k.f, gesucht));
-  if (treffer) g.ab++;
+  if (treffer) { g.ab++; abgedeckt.push({ ...p, karte: treffer.c.id }); }
   else fehlend.push(p);
 }
 
 const ges = PROBE.length;
 const ab = ges - fehlend.length;
-console.log(`Quizabdeckung: ${ab} von ${ges} (${Math.round((100 * ab) / ges)} %) – fester Pruefsatz, ${CARDS.length} Karten\n`);
+if (alsJson) {
+  console.log(JSON.stringify({ satz: SATZ, karten: CARDS.length, abgedeckt, fehlend }, null, 1));
+  process.exit(0);
+}
+console.log(`Quizabdeckung: ${ab} von ${ges} (${Math.round((100 * ab) / ges)} %) – fester Pruefsatz ${SATZ}, ${CARDS.length} Karten\n`);
 for (const [gebiet, g] of [...proGebiet].sort((a, b) => a[1].ab / a[1].ges - b[1].ab / b[1].ges)) {
   const balken = '█'.repeat(Math.round((10 * g.ab) / g.ges)).padEnd(10, '·');
   console.log(`  ${gebiet.padEnd(18)} ${balken} ${String(g.ab).padStart(2)}/${g.ges}`);
