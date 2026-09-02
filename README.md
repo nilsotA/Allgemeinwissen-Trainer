@@ -1143,6 +1143,37 @@ den sie gedacht war: Eine reine Zahl darf am Anfang stehen, damit „100" auf �
 Nebenbei: `data/quizprobe.json` ist von der Versionskennung ausgenommen – wie `package.json`.
 Sonst böte jede Erweiterung des Prüfsatzes allen Nutzern ein Update an, das nichts ändert.
 
+### Zwei Fehler im Vergleicher, gefunden beim Prüfen von Karten
+
+Die Handwerksprüfung der 39 neuen Karten hat nicht geschätzt, sondern mit dem echten
+`bewerte()` aus `assets/js/quiz.js` gemessen — und dabei zwei Fehler freigelegt, die gar nichts
+mit den Karten zu tun hatten.
+
+**Ein einleitendes Verhältniswort machte richtige Antworten falsch.** Die Lösung „Aus
+Sojabohnen"; wer „Sojabohnen" tippt, hat recht und bekam 0,60 — abgelehnt. Artikel erledigte
+`FUELLWOERTER` längst, die Verhältniswörter fehlten dort. **75 der 2.048 Karten** waren
+betroffen, quer durch alle Themen. Die Reparatur sitzt bewusst nicht in `FUELLWOERTER`: Dort
+verschwände das Wort überall, auch in der Eingabe, und „Vor Christus" wäre dasselbe wie „Nach
+Christus". Stattdessen zählt jetzt eine zusätzliche Vergleichsfassung der *Lösung* ohne ihr
+erstes Wort — die volle Lösung gilt weiter. Danach: 75 → 0, ohne dass ein einziger Ablenker
+durchrutscht.
+
+**Der zweite Fehler war der schwerere: eine Übereinstimmung aus dem Nichts.** Getippt „Lehre"
+gegen die Lösung „Mit werden" ergab **0,95**. Der Grund: Links fällt „Lehre" als Klassifikator
+weg, rechts „werden" als Bindewort — übrig bleibt auf beiden Seiten nichts, und die Abkürzung
+für knappe Eingaben meldete trotzdem Beinahe-Sicherheit. Gemessen galten so zehn völlig fremde
+Eingaben auf der Karte „Wie viele Zeitzonen hat China?" als richtig.
+
+Die Abkürzung braucht einen **Beleg**: Mindestens ein getipptes Wort muss in der Lösung
+wiedergefunden worden sein. „Pythagoras" auf „Satz des Pythagoras" erfüllt das, „Lehre" auf
+„Mit werden" nicht. Gemessen über den ganzen Bestand mit zehn Unsinnseingaben je Karte: **19
+Fehlannahmen vorher, 0 nachher.** Der Fehler steckte schon im Bestand, lange vor diesen Karten
+— gefunden hat ihn erst, dass jemand die Zahlen wirklich ausgerechnet hat statt sie zu schätzen.
+
+Nebenbefund derselben Messung: Genau eine Antwort im Bestand — „Nur eine" — schrumpft in
+`normalize()` auf „nur", weil „eine" ein Füllwort ist. Die naheliegende Eingabe „Eine" fiel
+damit auf 0. Diese Karte hat jetzt `az`.
+
 ### 65 auf 102 – und warum der Prüfsatz damit verbraucht ist
 
 Der Prüfsatz hatte **39 offene Fragen** benannt. Genau dagegen sind 39 Karten geschrieben
@@ -1156,6 +1187,31 @@ aufgebraucht; die nächste belastbare Messung braucht einen neuen, unabhängig g
 der wieder eingefroren wird, bevor auch nur eine Karte dazukommt.
 
 Der Sprung von 65 auf 102 heißt also: *diese 39 Wissenslücken sind geschlossen.* Nicht mehr.
+
+Die 39 Karten sind, wie jeder neue Satz, durch **zwei unabhängig unterrichtete Prüfungen**
+gelaufen — eine auf Wahrheit mit Webrecherche, eine auf Handwerk. Zusammen kamen **36 Befunde**
+zurück, alle bestätigt und behoben:
+
+*Sachlich:* Grönland ist gut dreißigmal Bayern, nicht achtzigmal (Faktor 2,6 daneben). Die Umra
+*ist* eine Pilgerfahrt nach Mekka und taugte so nicht als Ablenker — die Frage nennt jetzt die
+fünf Säulen. „Überflüssig" führt der Duden ausdrücklich als zweite Bedeutung von *obsolet*, war
+also ein richtiger Ablenker. Der offizielle Name des Dortmunder Stadions ist seit 2005 ein
+anderer, und „Rote Erde" ist bis heute BVB-Heimstätte — beides zog die Karte schief. Dazu die
+roten Blattfarbstoffe (werden im Herbst neu gebildet, waren nicht „längst da"), die
+Reichstagskuppel (kostenlos, aber nur mit Anmeldung), die D-Mark (nie parallel gültig), der
+Stanley Cup (ältester Pokal *Nordamerikas*, und volle Ringe wandern ins Museum) und die
+Herkunft des Fettnäpfchens.
+
+*Handwerklich:* Sechs Kontexttexte verrieten die Antwort einer **anderen** Karte — die
+Donau-Karte gleich drei auf einmal. Eine Karte widersprach sich selbst: Antwort „Das Römische
+Reich", Kontext „Genauer die Römische Republik" — wer das Genauere tippte, galt als falsch.
+Eine Mario-Karte lehrte „Zimmermann", während die Bestandskarte „Zimmermann" ausdrücklich als
+Quizfalle führt. Dazu Formverrat: 159 als einzige krumme Zahl neben 100/200/250; „Die Aorta"
+als einziges Fremdwort neben drei Ablenkern auf *-schlagader*; drei erfundene Filmpreise neben
+einem echten.
+
+Der Prüfer hat die Freitext-Befunde nicht geschätzt, sondern mit dem echten `bewerte()`
+nachgerechnet — und dabei die beiden Vergleicherfehler oben mit ausgegraben.
 
 **Die letzten zwei Lücken bleiben absichtlich offen.** Der Prüfsatz fragt „Was ist ein
 Euphemismus?" und erwartet „eine beschönigende Umschreibung". Die Karten fragen andersherum:

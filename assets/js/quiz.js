@@ -246,6 +246,17 @@ const kennwoerter = (t) => {
    Eingaben werden deshalb auch gegen die Loesung ohne den Zusatz gemessen. */
 const OHNE_ZUSATZ = /\s*\([^()]*\)\s*$/;
 
+/* Dasselbe gilt fuer ein einleitendes Verhaeltniswort. „Woraus wird Tofu
+   hergestellt?" hat die Loesung „Aus Sojabohnen" – wer „Sojabohnen" tippt, hat
+   recht und bekam trotzdem nur 0,60. Artikel erledigt schon FUELLWOERTER, die
+   Verhaeltniswoerter fehlten dort; gemessen waren davon 75 Karten betroffen.
+
+   Warum hier und nicht in FUELLWOERTER: Dort wuerde das Wort ueberall im Satz
+   verschwinden, auch in der Eingabe. „Vor Christus" und „Nach Christus" waeren
+   dann dasselbe. Hier faellt nur das ERSTE Wort der Loesung weg, und auch das
+   nur als zusaetzliche Vergleichsfassung – die volle Loesung zaehlt weiter. */
+const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber)\s+/i;
+
 /* Bewertet eine getippte Eingabe gegen eine ganze Karte statt gegen eine
    einzelne Zeichenkette: Zugelassene Nebenschreibweisen zaehlen mit, und bei
    Karten mit ug (ungeordnet) zaehlt die Reihenfolge nicht.
@@ -267,11 +278,14 @@ export function bewerte(card, eingabe) {
 const sortiert = (t) => normalize(t).split(' ').filter(Boolean).sort().join(' ');
 
 export function similarity(input, answer) {
-  const knapp = String(answer).replace(OHNE_ZUSATZ, '').trim();
-  if (knapp && knapp.length >= 3 && knapp !== String(answer).trim()) {
-    return Math.max(vergleich(input, answer), vergleich(input, knapp));
+  const voll = String(answer).trim();
+  const fassungen = new Set([voll]);
+  for (const f of [voll, voll.replace(OHNE_ZUSATZ, '').trim()]) {
+    if (f.length >= 3) fassungen.add(f);
+    const kurz = f.replace(OHNE_VORWORT, '').trim();
+    if (kurz.length >= 3) fassungen.add(kurz);
   }
-  return vergleich(input, answer);
+  return Math.max(...[...fassungen].map(f => vergleich(input, f)));
 }
 
 function vergleich(input, answer) {
@@ -311,9 +325,19 @@ function vergleich(input, answer) {
   // sondern drumherum geredet – sonst ginge „Bayern ist es nicht, sondern Hessen" durch.
   const zuLang = a.length > b.length * 1.7 + 10;
 
+  // Beide Filter zusammen konnten eine Uebereinstimmung aus dem Nichts erzeugen:
+  // Getippt „Lehre" gegen die Loesung „Mit werden" fiel links als Klassifikator
+  // weg und rechts als Bindewort - uebrig blieb auf beiden Seiten nichts, und
+  // die Abkuerzung unten meldete trotzdem 0,95. Gemessen galten so zehn
+  // Unsinnseingaben auf „Nur eine" als richtig. Eine Abkuerzung braucht einen
+  // Beleg: Mindestens ein getipptes Wort muss in der Loesung wiedergefunden
+  // worden sein. „Pythagoras" auf „Satz des Pythagoras" erfuellt das, „Lehre"
+  // auf „Mit werden" nicht.
+  const etwasErkannt = ueberzaehlig.length < woerter(a).length;
+
   // Eine kürzere Eingabe zählt nur, wenn sie nichts Bedeutungstragendes auslässt
   // und nichts Fremdes hinzufügt. Einordnende Wörter wie „Satz" dürfen fehlen.
-  if (!zuLang && !extra.length && !bindungGetauscht && fehlt.every(w => KLASSIFIKATOREN.has(w))) {
+  if (etwasErkannt && !zuLang && !extra.length && !bindungGetauscht && fehlt.every(w => KLASSIFIKATOREN.has(w))) {
     if (fehlt.length === 0) return 0.95;
     if (b.includes(a) || a.length >= Math.max(4, b.length * 0.4)) return 0.9;
   }

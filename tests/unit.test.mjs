@@ -809,3 +809,45 @@ test('Durch, mal und wurzel gelten nur dort als Rechenzeichen, wo Zahlen stehen'
   assert.ok(bewerte({ a: 'Grundseite mal Höhe geteilt durch 2' },
     'Grundseite geteilt Höhe geteilt durch 2') <= 0.5);
 });
+
+test('Eine Abkuerzung braucht einen Beleg: leere Uebereinstimmung gilt nicht', () => {
+  /* Zwei Filter zusammen konnten eine Uebereinstimmung aus dem Nichts erzeugen.
+     Getippt „Lehre" gegen die Loesung „Mit werden": links faellt „Lehre" als
+     Klassifikator weg, rechts „werden" als Bindewort - uebrig bleibt auf beiden
+     Seiten nichts, und die Abkuerzung meldete trotzdem 0,95. Gemessen galten so
+     zehn voellig fremde Eingaben auf der Karte „Nur eine" als richtig. */
+  assert.ok(bewerte({ a: 'Mit „werden“' }, 'Lehre') < 0.8,
+    '„Lehre" ist keine Antwort auf „Mit werden"');
+  for (const unsinn of ['Lehre', 'Satz', 'Regel', 'Formel', 'Gesetz', 'Prinzip'])
+    assert.ok(bewerte({ a: 'Nur eine' }, unsinn) < 0.8, `„${unsinn}" ist keine Antwort auf „Nur eine"`);
+
+  // Die Abkuerzung selbst muss weiter greifen - dort ist der Beleg vorhanden.
+  assert.ok(bewerte({ a: 'Satz des Pythagoras' }, 'Pythagoras') >= 0.9,
+    'das tragende Wort wurde wiedergefunden, der Klassifikator darf fehlen');
+  assert.ok(bewerte({ a: 'Das Gesetz von Ohm' }, 'Ohm') >= 0.9);
+  assert.ok(bewerte({ a: 'Die Regel von Sarrus' }, 'Sarrus') >= 0.9);
+
+  /* Nebenbefund derselben Messung: „Nur eine" schrumpft in normalize() auf
+     „nur" - „eine" ist ein Fuellwort. Die naheliegende Eingabe fiel damit auf 0.
+     Betroffen war genau eine Karte im ganzen Bestand, sie hat jetzt az. */
+  const china = BY_ID ? [...CARDS].find(c => c.a === 'Nur eine') : null;
+  assert.ok(china && bewerte(china, 'Eine') >= 0.9, '„Eine" muss auf „Nur eine" zaehlen');
+  assert.ok(bewerte(china, '1') >= 0.9, '„1" muss auf „Nur eine" zaehlen');
+});
+
+test('Ein einleitendes Verhaeltniswort der Loesung darf fehlen', () => {
+  /* „Woraus wird Tofu hergestellt?" hat die Loesung „Aus Sojabohnen". Wer
+     „Sojabohnen" tippt, hat recht und bekam trotzdem 0,60. Artikel erledigte
+     FUELLWOERTER laengst, die Verhaeltniswoerter fehlten dort - gemessen waren
+     davon 75 der 2048 Karten betroffen. */
+  for (const [loesung, kurz] of [['Aus Sojabohnen', 'Sojabohnen'], ['Aus Italien', 'Italien'],
+                                 ['Auf dem Sinai', 'dem Sinai'], ['Mit einer Steinschleuder', 'einer Steinschleuder'],
+                                 ['An seiner extremen Härte', 'seiner extremen Härte']])
+    assert.ok(bewerte({ a: loesung }, kurz) >= 0.8, `„${kurz}" gilt nicht als „${loesung}"`);
+
+  /* Warum das hier sitzt und nicht in FUELLWOERTER: Dort verschwaende das Wort
+     ueberall, auch in der Eingabe - „Vor Christus" und „Nach Christus" waeren
+     dann dasselbe. Hier faellt nur das erste Wort der LOESUNG weg. */
+  assert.ok(bewerte({ a: 'Vor Christus' }, 'Nach Christus') < 0.8,
+    'das Verhaeltniswort der Eingabe zaehlt weiter');
+});
