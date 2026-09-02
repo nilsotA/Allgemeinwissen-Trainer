@@ -37,26 +37,70 @@ const FUELLTYP = new RegExp('\\d|^(aus|seit|im|in|vom|zum|zur|bei|nach|ueber|üb
   + '|jeden|jede|alle|keine|beide|unendlich|etwa|rund|mehr|weniger|nur|erst|dann)\\b'
   + '|^(der |die |das )?(rot|blau|gelb|gruen|grün|schwarz|weiss|weiß|braun|grau)\\b', 'i');
 
+/* Zweite Quelle: die KONTEXTTEXTE. Die zweite Messung zeigte, dass 16 von 38
+   Fehlschlaegen Fakten betrafen, die in der Sammlung stehen - nur im t-Feld
+   statt auf der Antwortposition. Groenland, Zloty, Bismarck, die Bastille: alle
+   da, keiner je Antwort. Das schaerfere Muster dahinter heisst „eine Entitaet,
+   nur eine Frageachse": Zur Pflanze gibt es den Chloroplast, aber nicht das
+   Chlorophyll; zum Kaiserreich das Gruendungsjahr, aber nicht den Reichskanzler.
+   Das Thema gilt als erledigt, das Quiz fragt die andere Achse. */
+const ausText = (t) => {
+  const raus = [];
+  // Eigennamen: grossgeschriebene Woerter, die nicht am Satzanfang stehen.
+  const woerter = String(t || '').split(/\s+/);
+  for (let i = 1; i < woerter.length; i++) {
+    const roh = woerter[i].replace(/^[„"(]+|[.,;:!?"“)]+$/g, '');
+    if (!/^[A-ZÄÖÜ][a-zäöüß]{3,}$/.test(roh)) continue;
+    if (/[.!?:]$/.test(woerter[i - 1])) continue;      // Satzanfang, kein Eigenname
+    raus.push(roh);
+  }
+  return raus;
+};
+
 const zaehler = new Map();
+for (const c of CARDS) {
+  for (const w of ausText(c.t)) {
+    const k = kern(w);
+    if (!k || istAntwort.has(k) || FUELLTYP.test(w)) continue;
+    if (!zaehler.has(k)) zaehler.set(k, { text: w, mal: 0, cats: new Set(), woher: 'Kontext' });
+    const e = zaehler.get(k);
+    e.mal++;
+    e.cats.add(c.cat);
+  }
+}
 for (const c of CARDS) {
   for (const w of c.w || []) {
     const k = kern(w);
     if (!k || istAntwort.has(k) || FUELLTYP.test(w) || w.split(/\s+/).length > 4) continue;
     const ohneArtikel = w.replace(/^(Der|Die|Das|Den|Dem|Ein|Eine)\s+/, '');
     if (!/^[A-ZÄÖÜ]/.test(ohneArtikel)) continue;      // nur Eigennamen und Begriffe
-    if (!zaehler.has(k)) zaehler.set(k, { text: w, mal: 0, cats: new Set() });
+    if (!zaehler.has(k)) zaehler.set(k, { text: w, mal: 0, cats: new Set(), woher: 'Ablenker' });
     const e = zaehler.get(k);
     e.mal++;
     e.cats.add(c.cat);
+    if (e.woher === 'Kontext') e.woher = 'beides';     // steht als Ablenker UND im Kontext
   }
 }
 
-const liste = [...zaehler.values()].sort((a, b) => b.mal - a.mal || a.text.localeCompare(b.text, 'de'));
+/* Im Deutschen ist jedes Substantiv grossgeschrieben - „Jahre", „Welt", „Stadt"
+   sehen aus wie Eigennamen und ueberschwemmten die Liste. Der Unterschied liegt
+   in der Streuung: Ein Allerweltswort taucht quer durch alle Themen auf, ein
+   Eigenname bleibt bei seinem. Ab drei Themen gilt ein Begriff als Fuellwort. */
+const liste = [...zaehler.values()]
+  .filter((e) => e.cats.size <= 2)
+  .sort((a, b) => {
+    // Wer in BEIDEN Rollen auftaucht, ist der aussichtsreichste Kandidat.
+    const rang = (x) => (x.woher === 'beides' ? 0 : 1);
+    return rang(a) - rang(b) || b.mal - a.mal || a.text.localeCompare(b.text, 'de');
+  });
 const ablenker = CARDS.reduce((n, c) => n + (c.w || []).length, 0);
 
-console.log(`${ablenker} Ablenker in ${CARDS.length} Karten.`);
-console.log(`${liste.length} Begriffe stehen nur als Ablenker da – Ideenquelle, keine Bedarfsanalyse:`);
-console.log(`gemessene Ausbeute der Regel: 38 % (16 brauchbare Karten aus 42 Kandidaten).\n`);
+const beides = liste.filter((e) => e.woher === 'beides').length;
+console.log(`${CARDS.length} Karten, ${ablenker} Ablenker.`);
+console.log(`${liste.length} Begriffe kommen vor, ohne je Antwort zu sein – davon ${beides} in beiden Rollen.`);
+console.log(`Die Liste ist eine Ideenquelle, keine Bedarfsanalyse:`);
+console.log(`gemessene Ausbeute der Ablenker-Regel: 38 % (16 brauchbare Karten aus 42 Kandidaten).`);
+console.log(`Wer in beiden Rollen auftaucht, ist der aussichtsreichste Kandidat.\n`);
 for (const e of liste.slice(0, wieViele)) {
-  console.log(`  ${String(e.mal).padStart(2)}x  ${e.text.slice(0, 44).padEnd(46)} [${[...e.cats].sort().join(' ')}]`);
+  console.log(`  ${String(e.mal).padStart(2)}x  ${e.text.slice(0, 40).padEnd(42)} ${e.woher.padEnd(9)} [${[...e.cats].sort().join(' ')}]`);
 }

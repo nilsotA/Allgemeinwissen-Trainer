@@ -187,4 +187,8 @@ export default [
 /* ---------- Gemessene Quizluecken geschlossen ---------- */
 {q:"Wer schrieb die tragische Komödie „Der Besuch der alten Dame“?",a:"Friedrich Dürrenmatt",s:"Literatur",d:2,t:"Uraufführung am 29. Januar 1956 in Zürich: Die Milliardärin Claire Zachanassian kehrt in ihr verarmtes Heimatstädtchen Güllen zurück und bietet eine Milliarde für den Tod ihres früheren Geliebten. Vom selben Schweizer Autor stammt auch „Die Physiker“.",w:["Max Frisch","Bertolt Brecht","Carl Zuckmayer"]},
 {q:"Wer schrieb den Roman „Homo faber“?",a:"Max Frisch",s:"Literatur",d:2,t:"Der Bericht von 1957 zeigt einen Ingenieur, der nur an Technik und Statistik glaubt und ausgerechnet vom Zufall eingeholt wird. Vom selben Schweizer stammen die Dramen „Andorra“ und „Biedermann und die Brandstifter“.",w:["Klaus Mann","Paul Celan","Karl Kraus"]},
+
+/* ---------- Zweite Messung: neue Luecken ---------- */
+{q:"Was bedeutet die Redewendung „jemandem einen Bären aufbinden“?",a:"Ihn belügen",s:"Sprache",d:2,t:"Die Herkunft ist nicht sicher geklärt; wahrscheinlich steckt ein altes Wort für Last und Abgabe dahinter, das später zum Tier umgedeutet wurde. Nicht zu verwechseln mit dem Bärendienst, der gut gemeinten Schaden meint.",w:["Ihn drängen","Ihn warnen","Ihn loben"]},
+{q:"Was bedeutet die Redewendung „die Flinte ins Korn werfen“?",a:"Aufgeben",s:"Sprache",d:2,t:"Meist erklärt mit fliehenden Söldnern, die ihr schweres Gewehr im Getreidefeld zurückließen, weil die Schlacht verloren schien. Das Wort Flinte geht auf den Flintstein der alten Steinschlossgewehre zurück.",w:["Zaudern","Prahlen","Streiten"]},
 ];

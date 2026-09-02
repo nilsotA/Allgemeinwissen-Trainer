@@ -213,4 +213,9 @@ export default [
 
 /* ---------- Gemessene Quizluecken geschlossen ---------- */
 {q:"Wie viel Gramm hat ein Pfund in Deutschland?",a:"500",s:"Alltag",d:1,t:"Der Deutsche Zollverein vereinheitlichte das Maß 1858; amtlich gilt es längst nicht mehr, im Handel und in Rezepten hält es sich trotzdem. Das amerikanische Pound wiegt dagegen nur rund 454 Gramm.",w:["250","750","200"]},
+
+/* ---------- Zweite Messung: neue Luecken ---------- */
+{q:"Welche Beere gibt Gin sein typisches Aroma?",a:"Wacholderbeere",s:"Essen & Trinken",d:2,t:"In der EU darf sich ein Destillat nur dann Gin nennen, wenn dieses Aroma vorherrscht. Der Name geht über das niederländische Wort jenever auf das lateinische iuniperus zurück. Weitere typische Zutaten sind Koriander, Angelikawurzel und Zitrusschalen.",w:["Holunderbeere","Preiselbeere","Vogelbeere"]},
+{q:"Welches Gewürz ist nach Gewicht das teuerste der Welt?",a:"Safran",s:"Essen & Trinken",d:1,t:"Für ein Kilogramm braucht es die von Hand gezupften Narben von rund 150.000 Krokusblüten; je nach Qualität kostet das mehrere tausend Euro (Stand 2026). Der weitaus größte Teil der Welternte stammt aus dem Iran.",w:["Muskat","Nelken","Ingwer"]},
+{q:"Wie heißt das jüdische Lichterfest?",a:"Chanukka",s:"Religion",d:2,t:"Acht Tage lang kommt jeden Abend ein Licht dazu, bis alle acht Kerzen des Leuchters Chanukkia brennen; entzündet werden sie von der Dienerkerze Schamasch. Erinnert wird an die Wiedereinweihung des Tempels in Jerusalem im 2. Jahrhundert vor Christus.",w:["Pessach","Sukkot","Purim"]},
 ];

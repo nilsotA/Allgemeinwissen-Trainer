@@ -199,4 +199,7 @@ export default [
 {q:"An welchem Datum wurde die DDR gegründet?",a:"7. Oktober 1949",s:"Moderne",d:2,t:"Gut vier Monate nach dem Grundgesetz setzte der Deutsche Volksrat die Verfassung in Kraft und erklärte sich zur provisorischen Volkskammer. Der Jahrestag hieß dort Tag der Republik und war bis 1989 Nationalfeiertag.",w:["23. Mai 1949","8. Mai 1945","17. Juni 1953"]},
 {q:"Wer war der letzte Zar Russlands?",a:"Nikolaus II.",s:"Moderne",d:2,t:"Er dankte im März 1917 nach der Februarrevolution ab und wurde im Juli 1918 mit seiner Familie in Jekaterinburg erschossen. Damit endete die Herrschaft der Romanows nach gut 300 Jahren.",w:["Alexander I.","Nikolaus I.","Peter III."]},
 {q:"Auf welcher Insel starb Napoleon in der Verbannung?",a:"St. Helena",s:"Neuzeit",d:2,t:"Er kam im Oktober 1815 dort an und starb am 5. Mai 1821 im Longwood House. Die britische Insel liegt rund 1.900 Kilometer vor der afrikanischen Küste im Südatlantik – weit genug, dass eine zweite Rückkehr wie zuvor von Elba ausgeschlossen war.",w:["Elba","Korsika","Malta"]},
+
+/* ---------- Zweite Messung: neue Luecken ---------- */
+{q:"Welcher englische König hatte nacheinander sechs Ehefrauen?",a:"Heinrich VIII.",s:"Neuzeit",d:2,t:"Er löste England 1534 von Rom, weil der Papst seine erste Ehe nicht auflöste, und machte sich zum Oberhaupt der anglikanischen Kirche. Zwei seiner Frauen ließ er hinrichten; der englische Merkspruch lautet: geschieden, geköpft, gestorben, geschieden, geköpft, überlebt.",w:["Heinrich VII.","Richard III.","Eduard VI."]},
 ];

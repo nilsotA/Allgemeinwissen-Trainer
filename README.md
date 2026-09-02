@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**1.999 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.009 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (282 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -573,7 +573,7 @@ dachte – zerlegt `normalize()` den Text jetzt in Grundbuchstabe plus Zeichen u
 Zeichen weg. **Nach** der deutschen Umschrift: „Öl" bleibt `oel` und wird nicht zu `ol`.
 Umlaute kann man auf einer deutschen Tastatur schließlich tippen – „Konigs" statt „Königs" ist
 ein Schreibfehler, kein Tastaturproblem, und dafür ist die Fehlertoleranz zuständig. Ein Test
-prüft alle 1999 Antworten daraufhin durch.
+prüft alle 2009 Antworten daraufhin durch.
 
 ### „Weitermachen" wechselte still das Thema
 
@@ -1105,6 +1105,57 @@ Weltmeister 2006, Newtons Apfel, Raffaels „Schule von Athen", Berninis Kolonna
 Wildnis", die Niere. Und eine Karte kam mit einer **Frage im Kontextfeld** aus der Prüfung –
 offenbar ein durchgereichter Formulierungsvorschlag. Sie ist vor dem Einpflegen aufgefallen,
 weil ein kurzer Selbsttest über alle neuen Karten lief; ohne den wäre sie durchgerutscht.
+
+### Zweite Messung – und warum „61 % auf 76 %" nicht stimmt
+
+Nach 58 gezielt ergänzten Karten lag die Frage nahe: Hat das die Abdeckung gehoben? Also
+dieselbe Messung noch einmal, mit **frischen** Fragen. Damit sie etwas wert ist, wurden drei
+Vorkehrungen eingebaut: Die Prüfer mussten ihre zwanzig Fragen aufschreiben, **bevor** sie in
+die Sammlung sahen; jede abgedeckte Frage brauchte die **deckende Karte** als Beleg; und die
+Schlussbilanz musste ausdrücklich beantworten, ob die Verbesserung ein Artefakt sein kann.
+
+Das Rohergebnis: **122 von 160, 76 %** gegenüber 97 von 160 beim ersten Mal.
+
+**Diese Zahlen belegen keinen Fortschritt.** Zwei verschiedene Fragensätze, keine gemeinsame
+Teilmenge, keine Schwierigkeitskontrolle – belegt ist nur, dass Garnitur 2 zu 76 % beantwortet
+wurde. Die Belege erlauben aber eine schärfere Rechnung: Von den 122 deckenden Karten sind
+**nur 10 unter den 58 neuen**. Ohne sie stünde dieselbe Garnitur bei 112 von 160 = 70 %. Der
+Sammlung zurechenbar sind also **+6 Punkte**, nicht +15. Die restlichen neun Punkte sind
+Unterschied zwischen den Fragensätzen.
+
+Ein Indiz spricht trotzdem für echte Wirkung, und es ist ein hübsches: **Alltag & Welt bekam im
+Lückenschluss fast nichts** – eine einzige Karte – und steht exakt still bei 11/20. Die Zuwächse
+liegen genau dort, wo nachgeliefert wurde: Geografie +5, Politik +5, Unterhaltung +5. Eine
+leichtere zweite Garnitur hätte alle Gebiete gehoben, nicht die bearbeiteten. Ein
+Kontrollgebiet, das sich nicht bewegt, ist mehr wert als jede Gesamtzahl.
+
+| Gebiet | 1. Messung | 2. Messung |
+|---|---|---|
+| Politik & Wirtschaft | 13/20 | 18/20 |
+| Naturwissenschaft | 15/20 | 17/20 |
+| Unterhaltung | 12/20 | 17/20 |
+| Geografie | 11/20 | 16/20 |
+| Geschichte | 15/20 | 16/20 |
+| Sprache & Literatur | 12/20 | 15/20 |
+| Sport | 8/20 | 12/20 |
+| **Alltag & Welt** | **11/20** | **11/20** |
+
+Bei zwanzig Fragen je Gebiet sind ±2 Rauschen; Geschichte 15→16 zeigt nichts.
+
+**Das neue Muster ist schärfer als das alte.** Beim ersten Mal hieß es: „Der Begriff steht nur
+als Ablenker, nie als Antwort." Jetzt lautet es **eine Entität, nur eine Frageachse**: Zur
+Pflanze gibt es den Chloroplast, aber nicht das Chlorophyll. Zum Kaiserreich das Gründungsjahr,
+aber nicht den ersten Reichskanzler. Zum größten See den *Süßwasser*-Rekord, aber nicht den
+Flächenrekord. Das Thema gilt als erledigt, das Quiz fragt die andere Achse. 16 der 38
+Fehlschläge sind von dieser Sorte.
+
+Deshalb liest `npm run luecken` jetzt auch die **Kontexttexte** – dort standen Grönland, Zloty,
+Bismarck und die Bastille, alle nie Antwort. Der erste Versuch ertrank allerdings im Rauschen:
+Im Deutschen ist jedes Substantiv großgeschrieben, „Jahre", „Welt" und „Stadt" sehen aus wie
+Eigennamen. Der Filter, der es löst, ist die **Streuung**: Ein Allerweltswort taucht quer durch
+alle neun Themen auf, ein Eigenname bleibt bei seinem. Ab drei Themen gilt ein Begriff als
+Füllwort. Danach steht oben, was oben stehen soll – Donau, Bundesrat, Pythagoras, Renaissance,
+Ägypten, Alpen.
 
 ### Wenn der Fehler wandert, muss die Schranke mitwandern
 
