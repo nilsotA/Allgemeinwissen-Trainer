@@ -494,7 +494,8 @@ function renderDuelStart() {
   const mittel = letzte.length ? Math.round(letzte.reduce((a, r) => a + r.p, 0) / letzte.length) : 0;
   app.innerHTML = `
     <h1 class="vh">Quiz</h1>
-    <p class="muted">Zwölf Fragen quer durch alle Themen, 15 Sekunden pro Frage. Zehn Punkte für jeden Treffer, fünf dazu, wenn die Antwort in den ersten fünf Sekunden kommt.</p>
+    <p class="muted">Zwölf Fragen quer durch alle Themen, 15 Sekunden pro Frage. Zehn Punkte für jeden Treffer, fünf dazu, wenn die Antwort in den ersten fünf Sekunden kommt.${
+      settings().quizLehrerwissen ? '' : ' Gefragt wird wie am Spieleabend – Lehrerwissen bleibt dem Tagestraining vorbehalten.'}</p>
     <div class="card" style="margin-top:16px">
       <div class="row between"><span>Bestwert</span><b id="quizBest">${best} / ${QUIZ_MAX}</b></div>
       ${letzte.length ? `
@@ -1005,6 +1006,10 @@ function renderSettings() {
         <span class="switch"><input type="checkbox" id="tnk" ${s.trotzdemNeu ? 'checked' : ''}><i></i></span>
       </div>
       <div class="setrow">
+        <div><label for="qlw">Lehrerwissen in der Quizrunde</label><p class="tiny">Aus: Die Quizrunde fragt wie ein Spieleabend – Analysis, Stochastik, Trainingslehre und Sportdidaktik bleiben dem Tagestraining vorbehalten.</p></div>
+        <span class="switch"><input type="checkbox" id="qlw" ${s.quizLehrerwissen ? 'checked' : ''}><i></i></span>
+      </div>
+      <div class="setrow">
         <div><label for="thm">Farbschema</label><p class="tiny">Hell ist draußen bei Sonne besser lesbar.</p></div>
         <select id="thm">
           <option value="system" ${(s.theme || 'system') === 'system' ? 'selected' : ''}>Wie das System</option>
@@ -1076,6 +1081,7 @@ function renderSettings() {
   document.getElementById('snd').onchange = e => setSetting('sound', e.target.checked);
   document.getElementById('thm').onchange = e => { setSetting('theme', e.target.value); applyTheme(); };
   document.getElementById('tnk').onchange = e => setSetting('trotzdemNeu', e.target.checked);
+  document.getElementById('qlw').onchange = e => setSetting('quizLehrerwissen', e.target.checked);
 
   app.querySelectorAll('[data-fok]').forEach(b => b.onclick = () => {
     const cur = new Set(settings().focus || []);

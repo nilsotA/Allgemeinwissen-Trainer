@@ -13,6 +13,7 @@ const DEFAULTS = {
     level: 'ladder',      // ladder = leicht zuerst | mixed
     theme: 'system',      // system | dark | light
     trotzdemNeu: false,   // neue Karten auch bei grossem Rueckstand einfuehren
+    quizLehrerwissen: false, // Lehrerwissen (Analysis, Trainingslehre, ...) auch in der Quizrunde
     cats: null,           // null = alle Kategorien aktiv, sonst Array von IDs
     focus: null           // Schwerpunktthemen: bekommen doppelt so viele neue Karten
   },
@@ -521,6 +522,7 @@ function saeubern(roh) {
     rein.settings.theme = ['system', 'dark', 'light'].includes(s.theme) ? s.theme : 'system';
     rein.settings.sound = !!s.sound;
     rein.settings.trotzdemNeu = !!s.trotzdemNeu;
+    rein.settings.quizLehrerwissen = !!s.quizLehrerwissen;
     rein.settings.cats = Array.isArray(s.cats) ? s.cats.filter(x => typeof x === 'string').slice(0, 50) : null;
     rein.settings.focus = Array.isArray(s.focus) ? s.focus.filter(x => typeof x === 'string').slice(0, 50) : null;
   }

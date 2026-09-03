@@ -190,8 +190,21 @@ export function buildDuel(n = 10, cat = null) {
 /** Quizrunde: quer durch alle aktiven Themen, auch Ungelerntes - siehe quizmodus.js.
     Pausierte Themen bleiben draussen: Wer Mathematik unter Mehr abgeschaltet hat,
     will sie auch im Quiz nicht - anders als beim ausdruecklich gewaehlten Themen-Duell. */
+/* Teilgebiete, die Lehrerwissen sind und kein Spieleabend-Wissen. Die Quizrunde
+   ist die Simulation eines Quizspiels - und am Spieleabend fragt niemand nach der
+   Ableitung von x hoch drei oder dem Doppelauftrag des Schulsports. Diese Karten
+   bleiben im Tagestraining und in den Themenrunden voll dabei; nur der Pruefstand
+   laesst sie aus, solange die Einstellung „Lehrerwissen in der Quizrunde" aus ist.
+   Anatomie, Regelkunde, Mathegeschichte, Olympia bleiben drin: Die fragt ein Quiz. */
+const LEHRERWISSEN = {
+  mat: new Set(['Grundlagen', 'Schulmathe', 'Analysis', 'Stochastik', 'Lineare Algebra', 'Mathedidaktik', 'Verfahren erkennen']),
+  spo: new Set(['Sportdidaktik', 'Trainingslehre', 'Bewegungslehre', 'Sportpsychologie', 'Sportmedizin', 'Verfahren erkennen']),
+};
+export const istLehrerwissen = (c) => !!LEHRERWISSEN[c.cat]?.has(c.sub);
+
 export function buildQuiz() {
-  return ziehung(CARDS.filter(c => inScope(c)), { stand: cardState });
+  const mitLehrerwissen = !!settings().quizLehrerwissen;
+  return ziehung(CARDS.filter(c => inScope(c) && (mitLehrerwissen || !istLehrerwissen(c))), { stand: cardState });
 }
 
 /** Kennzahlen für Startseite und Statistik. */

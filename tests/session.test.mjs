@@ -893,3 +893,21 @@ test('der Bestwert kennt die Runde des anderen Tabs', async () => {
   assert.equal(store.S().quizBest, 170, 'und 150 darf ihn nicht senken');
   assert.ok(150 <= vorher, 'die Runde ist damit kein neuer Bestwert');
 });
+
+/* Die Quizrunde ist die Spieleabend-Simulation. Vorher zog sie auch „Was ist die
+   Ableitung von x hoch drei?" und den Doppelauftrag des Schulsports - Lehrerwissen,
+   das am Spieleabend niemand fragt. Es bleibt im Tagestraining, nur der
+   Pruefstand laesst es aus, solange die Einstellung aus ist. */
+test('die Quizrunde fragt wie ein Spieleabend, nicht wie ein Staatsexamen', () => {
+  const gezogen = [];
+  for (let i = 0; i < 30; i++) gezogen.push(...sess.buildQuiz().map(x => x.card));
+  const lehrer = gezogen.filter(sess.istLehrerwissen);
+  assert.equal(lehrer.length, 0, `Lehrerwissen in der Quizrunde: ${lehrer.slice(0, 3).map(c => c.cat + '/' + c.sub).join(', ')}`);
+  assert.ok(gezogen.some(c => c.cat === 'mat') && gezogen.some(c => c.cat === 'spo'),
+    'Mathe und Sport bleiben trotzdem dabei - mit Mathegeschichte, Anatomie, Regelkunde');
+  // Wer es will, bekommt es: dann kommt Lehrerwissen in 360 Ziehungen praktisch sicher vor.
+  store.setSetting('quizLehrerwissen', true);
+  const mit = [];
+  for (let i = 0; i < 30; i++) mit.push(...sess.buildQuiz().map(x => x.card));
+  assert.ok(mit.some(sess.istLehrerwissen), 'mit Einstellung muss Lehrerwissen wieder gezogen werden');
+});
