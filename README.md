@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.048 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.073 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (294 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
@@ -585,7 +585,7 @@ dachte – zerlegt `normalize()` den Text jetzt in Grundbuchstabe plus Zeichen u
 Zeichen weg. **Nach** der deutschen Umschrift: „Öl" bleibt `oel` und wird nicht zu `ol`.
 Umlaute kann man auf einer deutschen Tastatur schließlich tippen – „Konigs" statt „Königs" ist
 ein Schreibfehler, kein Tastaturproblem, und dafür ist die Fehlertoleranz zuständig. Ein Test
-prüft alle 2048 Antworten daraufhin durch.
+prüft alle 2073 Antworten daraufhin durch.
 
 ### „Weitermachen" wechselte still das Thema
 
@@ -1237,7 +1237,7 @@ mit gestellter Uhr (`page.clock`), der eine Runde spielt – ein Blitztreffer, e
 eine falsche, ein Treffer nach der Frist, acht Blitztreffer – und **145 von 180** nachrechnet,
 statt nur zu schauen, ob eine Zahl erscheint.
 
-### Der zweite Prüfsatz – und die ehrliche Zahl: 69 %
+### Der zweite Prüfsatz – und die ehrliche Zahl: 63 %
 
 Der erste Prüfsatz meldet **102 von 104 (98 %)**. Diese Zahl ist wertlos geworden: Die letzten
 39 Karten wurden gegen genau seine Lücken geschrieben. Sie misst, ob das Abschreiben geklappt
@@ -1279,6 +1279,56 @@ melden als eine zu wenig.
 
 Die 98 % des ersten Satzes und die 69 % des zweiten sind kein Widerspruch, sondern derselbe
 Befund aus zwei Richtungen.
+
+### 65 auf 94 – getrennt nach dem, was es wirklich war
+
+Die Lücken des zweiten Satzes wurden geschlossen, aber die Zahl allein sagt wieder wenig.
+Deshalb hier die Zuordnung, nachgerechnet über die deckenden Kartenkennungen gegen den
+Bestand vor der Ergänzung (`data/kennungen.json`):
+
+| Woher der Treffer kommt | Fragen |
+|---|---|
+| Stand vor jeder Änderung (nach Reparatur des Messgeräts) | 65 |
+| Zwei Schreibweisen an Bestandskarten („Sonic", „Gelb") | +2 |
+| 25 **neue** Karten, jede zweifach geprüft | +25 |
+| 3 Bestandskarten **gedreht** – der Begriff wurde zur Antwort, der Lernstand blieb (`p`) | +3 |
+| Eine Schreibweise an einer Bestandskarte („NaCl" für Natriumchlorid) | +1 |
+| **Summe** | **94** |
+| Bewusst offen gelassen | 6 |
+
+**Die Kartenprüfung hat das Maß selbst korrigiert.** 35 Karten gingen durch zwei getrennte
+Prüfungen – Wahrheit mit Webrecherche, Handwerk mit dem echten `bewerte()` – und kamen mit
+**107 Befunden** zurück. Zehn der zwölf schweren waren dieselbe Sache: **Rollenverwechslung.**
+Die Sammlung kannte Armstrong, Hastings, Carter, Maastricht, Sarajevo, Uruguay, Hattrick,
+Palindrom, Hyperbel und DAX längst – als *Frage*, nicht als Antwort. „Was geschah 1066 bei
+Hastings?" trägt Hastings im Fragetext; ein Prüfsatz, der nach der Schlacht fragt, zählt das
+als Lücke. Die gemessenen 63 % unterschätzten also, was die App lehrt.
+
+Daraus folgten drei Sorten von Entscheidung statt einer:
+
+- **Sieben Karten kamen nicht hinein.** Wo die Bestandskarte die gesuchte Antwort schon im
+  Fragetext trägt (Hastings, Carter) oder in der eigenen Antwort (Sarajevo, Maastricht,
+  Uruguay), wäre die neue Karte geschenkt. Beim Hattrick widersprachen sich die beiden
+  Fassungen sogar – die Bestandskarte führt die strenge deutsche Bedeutung, die neue die
+  internationale. Diese sechs Lücken bleiben **absichtlich offen**; das Maß meldet sie
+  weiter, und das ist richtig so.
+- **Drei Bestandskarten wurden gedreht.** „Was ist ein Palindrom?" mit einer Definition als
+  Antwort ist beim freien Abrufen kaum tippbar; „Wie nennt man ein Wort wie Anna oder
+  Rentner?" mit „Ein Palindrom" schon. Dieselbe Regel wie bei Euphemismus und Pleonasmus
+  weiter oben – nur galt sie dort für neue Karten, hier für alte. Der Lernstand wandert über
+  das `p`-Feld mit.
+- **Fünf Bestandskarten verrieten Antworten**, die sie nicht verraten dürfen: Der
+  Kilimandscharo stand „in Tansania", die Mondlandung nannte Armstrong, Aldrin und Collins,
+  Star Wars trug „ab 1977", der Grand Slam verriet „Rasen". Alle entschärft – die Regel „ein
+  Kontexttext verrät nicht die Antwort einer anderen Karte" galt schon, nur hatte sie hier
+  niemand geprüft.
+
+Und die Wahrheitsprüfung fand, was sie immer findet: Der Kilimandscharo ist kein
+*erloschener*, sondern ein *ruhender* Vulkan (Fumarolen im Gipfelkrater). Die Mayflower ging
+nicht bei Plymouth an Land, sondern vor Cape Cod. Schumacher ist in Hürth geboren, nicht in
+Kerpen, und seine 91 Siege sind seit 2020 kein Rekord mehr. Cameron ist nicht „der Einzige mit
+mehreren" Zwei-Milliarden-Filmen, sondern der Einzige mit dreien. „Schlagfertig" steht im Duden
+als Synonym von *eloquent* – und war als Ablenker gedacht.
 
 ### Zwei Fehler im Vergleicher, gefunden beim Prüfen von Karten
 
