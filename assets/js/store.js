@@ -246,9 +246,16 @@ function holeFremdenStand() {
     gespielte Runde nicht verdraengt wird (dieselbe Regel wie bei aendereKarte). */
 export function merkeQuizRunde(eintrag) {
   holeFremdenStand();
+  /* Erst NACH dem Einholen des fremden Stands ablesen und zurueckgeben:
+     Waehrend einer Runde verwirft der Tab die Meldungen des anderen
+     (setBusyCheck), der eigene quizBest kann also veraltet sein. Vorher meldete
+     ein Tab „Neuer Bestwert!" fuer eine Punktzahl, die der andere laengst
+     ueberboten hatte. */
+  const vorher = state.quizBest || 0;
   state.quizRunden = mischeRunden(state.quizRunden, [eintrag]);
-  state.quizBest = Math.max(state.quizBest || 0, eintrag.p || 0);
+  state.quizBest = Math.max(vorher, eintrag.p || 0);
   save(true);
+  return vorher;
 }
 
 /** Eine Karte auf dem juengsten Stand veraendern – fuer Aenderungen, die auf

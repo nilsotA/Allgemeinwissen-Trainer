@@ -876,3 +876,20 @@ test('die Quizrunde fragt jedes aktive Thema und laesst pausierte weg', () => {
   assert.deepEqual([...new Set(drei.map(x => x.card.cat))].sort(), ['geo', 'ges', 'spo']);
   assert.equal(new Set(drei.map(x => x.card.id)).size, 12, 'keine Karte doppelt');
 });
+
+/* Die Gegnerpruefung des Quizmodus fand: Der Bestwert wurde gelesen, BEVOR
+   merkeQuizRunde ueber holeFremdenStand() den Stand des anderen Tabs einholte.
+   Waehrend einer laufenden Runde verwirft ein Tab die Meldungen des anderen,
+   der eigene quizBest ist also womoeglich veraltet - und der Rueckblick meldete
+   „Neuer Bestwert!" fuer eine Punktzahl, die der andere Tab laengst ueberboten
+   hatte. merkeQuizRunde gibt den Bestwert deshalb selbst zurueck, nach dem
+   Einholen. */
+test('der Bestwert kennt die Runde des anderen Tabs', async () => {
+  const B = await import('../assets/js/store.js?quiz-best');
+  store.merkeQuizRunde({ t: 1000, p: 100, m: 180, r: 7, f: 3, l: 2, k: {} });
+  B.merkeQuizRunde({ t: 2000, p: 170, m: 180, r: 12, f: 0, l: 0, k: {} });   // anderer Tab, hoeher
+  const vorher = store.merkeQuizRunde({ t: 3000, p: 150, m: 180, r: 10, f: 1, l: 1, k: {} });
+  assert.equal(vorher, 170, 'der zurueckgegebene Bestwert muss den fremden Tab kennen');
+  assert.equal(store.S().quizBest, 170, 'und 150 darf ihn nicht senken');
+  assert.ok(150 <= vorher, 'die Runde ist damit kein neuer Bestwert');
+});

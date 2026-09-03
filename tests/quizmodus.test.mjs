@@ -132,3 +132,21 @@ test('das schwaechste Feld ist das mit den meisten verlorenen Punkten', () => {
   assert.equal(q.schwaechstesFeld([]), null);
   assert.equal(q.schwaechstesFeld([{ t: 3, k: { geo: [30, 30] } }]), null, 'nichts verloren, nichts zu sagen');
 });
+
+test('eine abgebrochene Runde ist an ihrer Antwortzahl erkennbar', () => {
+  /* Die Gegnerpruefung fand: endRun legte JEDE Runde mit mindestens einer
+     Antwort ab. Nach einer Frage abgebrochen ergab das den Eintrag {p:15,m:15} -
+     der Rueckblick lobte „Fehlerfrei und schnell", der Balkenverlauf zeigte sie
+     voll ausgeschlagen neben einer echten 145/180, und der Schnitt mittelte
+     rohe Punkte ueber Runden mit verschiedenem Maximum. Die Unterscheidung
+     haengt allein daran, dass max proportional zur Antwortzahl waechst. */
+  const eine = q.auswertung([{ card: { cat: 'geo' }, ok: true, abgelaufen: false, punkte: 15 }], ['geo']);
+  assert.equal(eine.max, q.MAX_JE_FRAGE, 'eine Antwort ergibt ein Maximum von 15');
+  assert.notEqual(eine.max, q.FRAGEN_JE_RUNDE * q.MAX_JE_FRAGE,
+    'eine abgebrochene Runde darf nicht wie eine volle aussehen');
+  const voll = q.auswertung(Array.from({ length: q.FRAGEN_JE_RUNDE },
+    () => ({ card: { cat: 'geo' }, ok: true, abgelaufen: false, punkte: 15 })), ['geo']);
+  assert.equal(voll.max, 180);
+  assert.equal(q.rundenEintrag(eine, 1).m, 15);
+  assert.equal(q.rundenEintrag(voll, 1).m, 180);
+});

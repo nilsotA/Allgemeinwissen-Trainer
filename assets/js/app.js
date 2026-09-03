@@ -499,7 +499,7 @@ function renderDuelStart() {
       <div class="row between"><span>Bestwert</span><b id="quizBest">${best} / ${QUIZ_MAX}</b></div>
       ${letzte.length ? `
       <div class="runden" aria-hidden="true">${letzte.map((r, i) =>
-        `<i style="height:${Math.max(6, Math.round((r.p / Math.max(1, r.m)) * 100))}%" class="${r.p === best ? 'best' : ''} ${i === letzte.length - 1 ? 'last' : ''}"></i>`).join('')}</div>
+        `<i style="height:${Math.max(6, Math.round((r.p / Math.max(1, r.m)) * 100))}%" class="${best > 0 && r.p === best ? 'best' : ''} ${i === letzte.length - 1 ? 'last' : ''}"></i>`).join('')}</div>
       <p class="tiny" style="margin-top:7px">Letzte Runde ${letzte[letzte.length - 1].p} von ${letzte[letzte.length - 1].m}${
         letzte.length > 1 ? ` · im Schnitt ${mittel} über die letzten ${letzte.length}` : ''}</p>
       ${schwach ? `<p class="tiny" style="margin-top:6px">Die meisten Punkte lässt du zuletzt in <b>${esc(CAT_BY_ID[schwach.cat]?.name || schwach.cat)}</b> liegen.</p>` : ''}`
@@ -712,7 +712,7 @@ function renderStats() {
     <h2 class="sec">Quiz</h2>
     <div class="card">
       <div class="row between"><span>Bestwert</span><b>${st.quizBest || 0} / ${QUIZ_MAX}</b></div>
-      <div class="row between" style="margin-top:9px"><span>Ø der letzten ${runden.length} Runden</span><b>${schnitt}</b></div>
+      <div class="row between" style="margin-top:9px"><span>${runden.length === 1 ? 'Letzte Runde' : `Ø der letzten ${runden.length} Runden`}</span><b>${schnitt}</b></div>
       ${schwach ? `<div class="row between" style="margin-top:9px"><span>Meiste Punkte verloren</span><b>${esc(CAT_BY_ID[schwach.cat]?.name || schwach.cat)}</b></div>` : ''}
     </div>`; })() : ''}
 
@@ -1222,12 +1222,21 @@ function endRun() {
   today().sec = (today().sec || 0) + secs;
   if (r.mode === 'duel') S().duelBest = Math.max(S().duelBest || 0, r.correct);
   if (r.mode === 'quiz') {
-    /* Der Bestwert von VOR dieser Runde entscheidet, ob sie ein neuer ist -
-       deshalb erst lesen, dann ablegen. merkeQuizRunde holt den fremden Stand
-       ein, damit eine im anderen Tab gespielte Runde nicht verdraengt wird. */
-    r.quiz.vorherBest = S().quizBest || 0;
     r.quiz.aw = auswertung(r.quiz.antworten, CATS.map(c => c.id));
-    merkeQuizRunde(rundenEintrag(r.quiz.aw, Date.now()));
+    /* Nur eine ZU ENDE gespielte Runde wird abgelegt. Eine nach einer Frage
+       abgebrochene ergab sonst den Eintrag {p:15, m:15}: Der Rueckblick lobte
+       „Fehlerfrei und schnell", der Balkenverlauf zeigte sie voll ausgeschlagen
+       neben einer echten 145/180, und der Schnitt mittelte rohe Punkte ueber
+       Runden mit verschiedenem Maximum. Das Ergebnisbild erscheint weiter - nur
+       in die Wertung geht es nicht, so wie ein abgebrochenes Duell auch nicht
+       in duelBest wandert.
+       Der Bestwert wird NACH dem Ablegen gelesen: merkeQuizRunde holt ueber
+       holeFremdenStand() erst den Stand des anderen Tabs ein, und der kann
+       einen hoeheren Bestwert tragen als der, den dieser Tab noch kennt. */
+    r.quiz.vollstaendig = r.quiz.antworten.length === r.queue.length;
+    r.quiz.vorherBest = r.quiz.vollstaendig
+      ? merkeQuizRunde(rundenEintrag(r.quiz.aw, Date.now()))
+      : (S().quizBest || 0);
   }
   save(true);
 
@@ -1786,12 +1795,14 @@ function askDuel(card) {
     const gebraucht = Math.min(LIMIT, verstrichen());
     verstrichen.beenden();
     const ok = chosen === card.a;
-    let pts = 0;
-    if (quiz) {
-      pts = punkte(ok, gebraucht);
-      run.quiz.punkte += pts;
-      run.quiz.antworten.push({ card, ok, abgelaufen: chosen === null, ms: gebraucht, punkte: pts });
-    }
+    /* Nur ausrechnen, noch nicht buchen. Gebucht wird die Antwort in next(),
+       zusammen mit allem anderen - Fehlerliste, Faelligstellung, Zaehler.
+       Vorher stand die Punktebuchung hier oben und alles Uebrige in next():
+       Wer die letzte Frage falsch beantwortete und dann auf X tippte statt auf
+       „Weiter", bekam ein Ergebnisbild mit „165 von 180" und dem Satz „Die
+       Luecken stehen unten" - waehrend die Liste leer blieb, die Karte nie
+       faellig gestellt wurde und die Zaehler elf statt zwoelf Antworten sahen. */
+    const pts = quiz ? punkte(ok, gebraucht) : 0;
     markiereOptionen(app, card.a, chosen);
     beep(ok);
     announce((ok ? 'Richtig.' : `Falsch. Die Antwort lautet: ${card.a}`) + (quiz ? ` ${pts} Punkte.` : ''));
@@ -1800,11 +1811,19 @@ function askDuel(card) {
     div.className = 'fade';
     const urteil = ok ? 'Richtig' : chosen === null ? 'Zeit abgelaufen' : 'Leider falsch';
     const punkteText = quiz ? ` · ${pts ? '+' + pts : '0'} Punkte${pts === MAX_JE_FRAGE ? ' · Blitz' : ''}` : '';
+    /* Der Stand oben zeigte bis zur naechsten Frage noch den alten Wert -
+       ueber der Rueckmeldung „Richtig · +15 Punkte" stand „Punkte 0". */
+    const standAnzeige = document.getElementById('quizStand');
+    if (standAnzeige) standAnzeige.textContent = run.quiz.punkte + pts;
     div.innerHTML = `<p class="verdict ${ok ? 'good' : 'bad'}">${ico(ok ? 'haken' : chosen === null ? 'uhr' : 'schliessen')}<span>${urteil}${punkteText}</span></p>${answerBlock(card)}`;
     body.appendChild(div);
     zurAntwort(body, div);
     app.querySelector('.sess-foot').innerHTML = `<button class="btn primary" id="next">Weiter</button>`;
     const next = () => {
+      if (quiz) {
+        run.quiz.punkte += pts;
+        run.quiz.antworten.push({ card, ok, abgelaufen: chosen === null, ms: gebraucht, punkte: pts });
+      }
       const st = S(), d = today();
       // Duell-Antworten zaehlen getrennt. Sie in denselben Topf zu werfen hiess:
       // Drei Duelle lassen den Tagesfortschritt auf 71 Prozent springen, obwohl
@@ -1847,9 +1866,16 @@ function askDuel(card) {
              kein Aussetzer - man kann nicht vergessen, was man nie gelernt
              hat. Ueber aendereKarte, falls der andere Tab sie inzwischen
              gelernt hat: dann gilt die Deckelung wie bei jeder Bekannten. */
+          const warUnberuehrt = !cardState(card.id) || cardState(card.id).seen === 0;
           store.aendereKarte(card.id, (aktuell) => (aktuell && aktuell.seen > 0)
             ? nachDuellFehler(aktuell)
             : { ...freshState(), seen: 1, due: todayNum(), last: Date.now() });
+          /* Die Karte gilt ab jetzt als begonnen und steht damit unter den
+             faelligen, nicht unter den neuen. Ohne diese Zeile umginge sie das
+             Tagesbudget newPerDay vollstaendig: Mehrere Quizrunden koennten
+             dutzende unberuehrte Karten in den Plan schieben, ohne dass der
+             Zaehler fuer neue Karten sie je gesehen haette. */
+          if (warUnberuehrt) d.newC = (d.newC || 0) + 1;
         }
       }
       save();

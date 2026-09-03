@@ -225,8 +225,10 @@ gegen den alten Stand fehlschlägt.
   zu langsam und ohne Blitzbonus, und je Thema. Jede verfehlte Frage – falsch *oder*
   abgelaufen – landet im nächsten Tagestraining. Die Entscheidungen dahinter stehen unten
   unter „Der Quizmodus".
-- **Duell** – zehn Fragen aus dem Gelernten, 15 Sekunden pro Frage. Die Probe aufs Gelernte,
-  wo das Quiz die Probe aufs Ganze ist. Beide teilen sich Uhr, Reiter und Zähler.
+- **Duell** – zehn Fragen mit Schwerpunkt auf dem Gelernten, aufgefüllt mit Neuem, 15 Sekunden
+  pro Frage. Beide teilen sich Uhr, Reiter und Zähler. Der Unterschied liegt nicht in der
+  Ziehung – auch das Duell greift in den Gesamtbestand, wenn das Gelernte nicht reicht –,
+  sondern darin, was danach passiert: Das Quiz plant eine entdeckte Lücke aktiv ein.
   Fehler landen automatisch im nächsten Tagestraining. Die Antworten zählen **getrennt**:
   Sie füllen weder den Tagesfortschritt noch die Wissensquote, weil unter Zeitdruck
   naturgemäß geraten wird – drei Duelle ließen den Tagesbogen sonst auf 71 % springen,
@@ -407,8 +409,8 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 127 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 174 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm test           # 130 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 182 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 29 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -1177,10 +1179,18 @@ Spielen, nicht erst im Ergebnis.
 gelernte Karte, die im Quiz fällt, bekommt die Deckelung aus `nachDuellFehler()`. Eine **nie
 gelernte** Karte, die im Quiz fällt, ließ das Duell liegen („steht ohnehin in der Neu-Liste") –
 im Quiz ist sie eine *entdeckte Lücke* und soll morgen drankommen, nicht erst, wenn die Leiter
-der neuen Karten sie irgendwann erreicht. Sie bekommt `seen: 1` und ist heute fällig. Keine
-Note, kein Aussetzer: Man kann nicht vergessen, was man nie gelernt hat. Und nicht `seen: 0`
-mit Termin – ein solcher Zustand stünde in beiden Listen zugleich (siehe `dueCards()`). Ein
-Treffer im Quiz benotet die Karte nicht – wie im Duell, weil unter Zeitdruck geraten wird.
+der neuen Karten sie irgendwann erreicht. Sie bekommt `seen: 1` und ist heute fällig. Nicht
+`seen: 0` mit Termin – ein solcher Zustand stünde in beiden Listen zugleich (siehe
+`dueCards()`). Ein Treffer im Quiz benotet die Karte nicht – wie im Duell, weil unter Zeitdruck
+geraten wird.
+
+Genau formuliert, weil eine frühere Fassung dieses Absatzes „keine Note, kein Aussetzer"
+behauptete und das nur halb stimmte: Der **Scheduler** rührt die Karte nicht an – `ef`, `iv`
+und `lapses` bleiben unberührt, es läuft kein `schedule()`. Der `strength()`-Wert sinkt aber
+sehr wohl, denn `seen: 1` bei `ok: 0` heißt: einmal gefragt, nicht gewusst. Das ist auch richtig
+so – der Lernende hat sie eben nicht gewusst –, nur ist es keine Nullbuchung, und so steht es
+jetzt hier. Die Karte zählt außerdem gegen das Tagesbudget neuer Karten: Ohne das könnten
+mehrere Quizrunden dutzende unberührte Karten in den Plan schieben, an `newPerDay` vorbei.
 
 **Die Zähler:** Quizantworten laufen in dieselben Zähler wie Duellantworten (`d.duel`,
 `duelAnswers`, `duelMs`), getrennt vom Tagestraining. Es ist dieselbe Größe – Antworten unter
@@ -1195,6 +1205,30 @@ Listen sonst ungeprüft aus dem Speicher kämen und eine kaputte Runde das Ergeb
 Kacheln (falsch, zu langsam, ohne Blitz), darunter die Themen nach verlorenen Punkten sortiert,
 darunter die verfehlten Karten – hinter dem Griff, wie überall in dieser App. Der Reiter heißt
 jetzt **Quiz**; das Duell bleibt dort als zweite Wahl.
+
+**Die Gegnerprüfung fand sieben echte Fehler in diesem ausgelieferten Code** – fünf Sucher mit
+verschiedenen Blickwinkeln, jeder Befund von zwei Skeptikern angefochten, die ihn zu widerlegen
+hatten. Vierzehn Befunde überlebten beide Anfechtungen, mit wenigen gemeinsamen Wurzeln:
+
+- **Die Buchung war gespalten.** `finish()` schrieb die Punkte, `next()` alles andere – die
+  Fehlerliste, die Fälligstellung der Karte, die Zähler. Der Beenden-Knopf bleibt im
+  Auflösungsbildschirm aber aktiv. Wer die letzte Frage verfehlte und dann X tippte statt
+  „Weiter", bekam ein Ergebnisbild über **zwölf** Antworten samt dem Satz „Die Lücken stehen
+  unten – sie kommen im nächsten Training", während die Liste leer blieb und die Karte nie
+  fällig gestellt wurde. Genau die Zusage, mit der der Modus committet worden war. Jetzt wird
+  eine Antwort an einer einzigen Stelle gebucht.
+- **Jede abgebrochene Runde galt als volle Runde.** Eine nach einer Frage abgebrochene ergab
+  `{p:15, m:15}`: Der Rückblick lobte „Fehlerfrei und schnell", der Balkenverlauf zeigte sie
+  voll ausgeschlagen neben einer echten 145/180, und der Schnitt mittelte rohe Punkte über
+  Runden mit verschiedenem Maximum. Abgelegt wird jetzt nur, was zu Ende gespielt wurde – wie
+  ein abgebrochenes Duell auch nicht in `duelBest` wandert.
+- **Der Bestwert wurde gelesen, bevor der fremde Stand eingeholt war.** Während einer Runde
+  verwirft ein Tab die Meldungen des anderen; der Rückblick meldete „Neuer Bestwert!" für eine
+  Punktzahl, die der zweite Tab längst überboten hatte.
+- Dazu: der Punktestand über der Frage zog nicht nach (über „Richtig · +15 Punkte" stand
+  „Punkte 0"), die Bestwert-Markierung im Balkenverlauf verglich rohe Punkte gegen normierte
+  Höhen (der höchste Balken trug keinen Anstrich), und die Statistik schrieb „Ø der letzten
+  1 Runden".
 
 **Geprüft:** elf reine Tests über Ziehung, Formel und Auswertung mit festem Zufall; der
 Sicherungs-Rundlauf und der Säuberer (ohne die zwei Säuberer-Zeilen scheitern nachweislich
@@ -1610,7 +1644,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 127 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 130 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups, den
 Vergleich freier Eingaben und den Quizmodus (Ziehung, Punkteformel, Auswertung, Runden über
 zwei Tabs) ab.

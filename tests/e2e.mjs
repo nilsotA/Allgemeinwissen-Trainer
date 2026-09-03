@@ -1471,6 +1471,68 @@ try {
     await qctx.close();
   }
 
+  group('Quiz: Abbruch im Aufloesungsbildschirm laesst nichts Halbes zurueck');
+  /* Gefunden von der Gegnerpruefung: Die Punkte wurden in finish() gebucht,
+     alles Uebrige - Fehlerliste, Faelligstellung der Karte, Zaehler - erst in
+     next(), also beim Tipp auf „Weiter". Der Beenden-Knopf bleibt im
+     Aufloesungsbildschirm aber aktiv. Wer die letzte Frage verfehlte und dann X
+     tippte, bekam ein Ergebnisbild mit vollen Punkten fuer zwoelf Antworten und
+     dem Satz „Die Luecken stehen unten" - waehrend die Liste leer blieb und die
+     Karte nie faellig gestellt wurde. Und jede abgebrochene Runde wurde als
+     vollwertige abgelegt: {p:15, m:15} stand im Balkenverlauf neben 145/180. */
+  {
+    const actx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const ap = await actx.newPage();
+    await ap.clock.install();
+    await ap.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await ap.locator('.nav-btn[data-view="duel"]').click();
+    await ap.locator('#quizGo').click();
+    await ap.waitForSelector('.opt');
+
+    const antworte = async (richtig) => {
+      const frage = await ap.locator('h1.q').innerText();
+      const werte = await ap.locator('.opt:not([disabled])').evaluateAll(bs => bs.map(b => b.dataset.v));
+      const karte = CARDS.find(c => c.q === frage && werte.includes(c.a));
+      const wert = richtig ? karte.a : werte.find(v => v !== karte.a);
+      await ap.locator(`.opt[data-v="${wert.replace(/"/g, '\\"')}"]`).click();
+      return karte;
+    };
+    // Erste Frage sauber durchspielen, damit run.done > 0 ist und der Abbruch ueber endRun laeuft.
+    await antworte(true);
+    await ap.waitForSelector('#next');
+    await ap.waitForTimeout(FUSS_TAUB);
+    await ap.locator('#next').click();
+    await ap.waitForSelector('.opt:not([disabled])');
+    // Zweite Frage falsch - und dann NICHT „Weiter", sondern X.
+    const verfehlt = await antworte(false);
+    await ap.waitForSelector('#next');
+    check('der Beenden-Knopf ist im Aufloesungsbildschirm erreichbar',
+      await ap.locator('#quit').isVisible());
+    await ap.locator('#quit').click();
+    await ap.waitForSelector('#quizPunkte, .hero');
+
+    const punkte = (await ap.locator('#quizPunkte').innerText()).replace(/\s+/g, ' ');
+    check('das Ergebnisbild rechnet nur die zu Ende gebrachten Antworten',
+      /^15\s*\/\s*15$/.test(punkte), punkte);
+    const verlust = (await ap.locator('#quizVerlust').innerText()).replace(/\s+/g, ' ');
+    check('es behauptet keinen Verlust, den es nicht auflisten kann',
+      /0 falsch/.test(verlust) && /0 zu langsam/.test(verlust), verlust);
+    check('und verspricht keine Fehlerliste, die leer waere',
+      (await ap.locator('[data-merk]').count()) === 0);
+
+    await ap.waitForTimeout(600);
+    const st = await ap.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
+    check('eine abgebrochene Runde wandert nicht in die Wertung',
+      (st.quizRunden || []).length === 0, JSON.stringify(st.quizRunden));
+    check('und setzt keinen Bestwert', (st.quizBest || 0) === 0, String(st.quizBest));
+    check('die verworfene Antwort stellt auch keine Karte faellig',
+      !st.cards?.[verfehlt.id], JSON.stringify(st.cards?.[verfehlt.id]));
+    const tag = Object.values(st.days || {})[0] || {};
+    check('und zaehlt genau die eine Antwort, die zu Ende gebracht wurde',
+      (tag.duel || 0) === 1, JSON.stringify(tag));
+    await actx.close();
+  }
+
   group('Layout');
   check('kein waagerechter Überlauf',
     (await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)) === 0);
