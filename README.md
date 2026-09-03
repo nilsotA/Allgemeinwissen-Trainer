@@ -1203,6 +1203,45 @@ mit gestellter Uhr (`page.clock`), der eine Runde spielt – ein Blitztreffer, e
 eine falsche, ein Treffer nach der Frist, acht Blitztreffer – und **145 von 180** nachrechnet,
 statt nur zu schauen, ob eine Zahl erscheint.
 
+### Der zweite Prüfsatz – und die ehrliche Zahl: 69 %
+
+Der erste Prüfsatz meldet **102 von 104 (98 %)**. Diese Zahl ist wertlos geworden: Die letzten
+39 Karten wurden gegen genau seine Lücken geschrieben. Sie misst, ob das Abschreiben geklappt
+hat, nicht die Sammlung. Ein Maß, das man optimiert, hört auf, ein Maß zu sein.
+
+`data/quizprobe2.json` ist deshalb ein **zweiter, unabhängig geschriebener Satz**. Die Autoren
+durften genau eine Datei im Repository lesen – den ersten Prüfsatz, um Wiederholungen zu
+vermeiden. `data/*.js` und diese README waren tabu. Jede Frage lief danach **einzeln** durch
+eine Faktenprüfung mit Webrecherche: richtig, eindeutig, zeitfest, quiztaugliche Antwortform.
+Wo eine Frage zwei vertretbare Antworten zuließ, wurde sie geschärft – „Welcher Fluss bildet
+den größten Teil der Grenze zu Polen?" etwa fiel durch, weil die Neiße dort länger ist als die
+Oder.
+
+**Ausgangswert, gemessen vor jeder Kartenänderung: 36 von 52 (69 %).**
+
+| Gebiet | | Gebiet | |
+|---|---|---|---|
+| Geografie | 12/13 | Geschichte | 7/13 |
+| Naturwissenschaft | 11/13 | Unterhaltung | 6/13 |
+
+**Die erste Messung sagte 34, und sie war falsch – am Messgerät, nicht an der Sammlung.**
+`abdeckung.mjs` hielt eine eigene Kopie der Verhältniswörter, die es beim Vergleich abstreift,
+und die Kopie war längst veraltet: „an" fehlte. Die Karte *„An Oder und Neiße"* galt deshalb
+nicht als Antwort auf eine Frage nach „Oder und Neiße". Den Klammerzusatz kannte die Kopie gar
+nicht, also zählte *„Stickstoff (78 %)"* nicht als „Stickstoff". Zwei der 18 gemeldeten Lücken
+waren keine. Beide Muster sind jetzt aus `quiz.js` **exportiert** statt kopiert – dieselben, die
+die App benutzt, wenn sie eine getippte Antwort bewertet. Wo die App nachsichtig ist, muss es
+die Messung auch sein, sonst misst sie etwas anderes als das, was der Nutzer erlebt. Ein Test
+hält die Muster jetzt fest.
+
+Nicht behoben, bewusst: Der Prüfsatz erwartet „Sonic", die Karte antwortet *„Sonic the
+Hedgehog"*. Eine allgemeine Nachsicht für kürzere Wortfolgen ist weiter oben schon einmal
+gemessen und **durchgefallen** – sie erfand zwei von drei Zugewinnen. Lieber eine Lücke zu viel
+melden als eine zu wenig.
+
+Die 98 % des ersten Satzes und die 69 % des zweiten sind kein Widerspruch, sondern derselbe
+Befund aus zwei Richtungen.
+
 ### Zwei Fehler im Vergleicher, gefunden beim Prüfen von Karten
 
 Die Handwerksprüfung der 39 neuen Karten hat nicht geschätzt, sondern mit dem echten

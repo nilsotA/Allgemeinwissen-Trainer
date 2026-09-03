@@ -7,7 +7,7 @@ globalThis.localStorage = { getItem: () => null, setItem: () => {}, removeItem: 
 const { schedule, strength, preview, isDue, isNew, isLeech, nachDuellFehler, fresh,
         AGAIN, HARD, GOOD, EASY } = await import('../assets/js/srs.js');
 const { todayNum } = await import('../assets/js/store.js');
-const { options, similarity, bewerte, normalize, shuffle } = await import('../assets/js/quiz.js');
+const { options, similarity, bewerte, normalize, shuffle, OHNE_ZUSATZ, OHNE_VORWORT } = await import('../assets/js/quiz.js');
 const { CARDS, BY_ID } = await import('../data/index.js');
 const { execFileSync } = await import('node:child_process');
 const { writeFileSync, mkdtempSync } = await import('node:fs');
@@ -850,4 +850,18 @@ test('Ein einleitendes Verhaeltniswort der Loesung darf fehlen', () => {
      dann dasselbe. Hier faellt nur das erste Wort der LOESUNG weg. */
   assert.ok(bewerte({ a: 'Vor Christus' }, 'Nach Christus') < 0.8,
     'das Verhaeltniswort der Eingabe zaehlt weiter');
+});
+
+test('Messgeraet und App teilen dieselbe Nachsicht', () => {
+  /* scripts/abdeckung.mjs hielt eine eigene Kopie der Verhaeltniswoerter und
+     kannte den Klammerzusatz gar nicht. Die Kopie war laengst veraltet: „an"
+     fehlte. Gemessen waren zwei von 18 gemeldeten Luecken deshalb gar keine -
+     die Karten „An Oder und Neisse" und „Stickstoff (78 %)" gab es laengst.
+     Die Muster sind jetzt exportiert, damit es nur eine Quelle gibt. */
+  assert.ok(OHNE_ZUSATZ instanceof RegExp && OHNE_VORWORT instanceof RegExp,
+    'beide Muster muessen exportiert bleiben - sonst faellt die Messung zurueck auf eine Kopie');
+  assert.equal('Stickstoff (78 %)'.replace(OHNE_ZUSATZ, ''), 'Stickstoff');
+  for (const w of ['an', 'aus', 'auf', 'mit', 'nach', 'bei', 'vor', 'unter'])
+    assert.ok(OHNE_VORWORT.test(`${w} Oder und Neiße`), `„${w}" fehlt in OHNE_VORWORT`);
+  assert.ok(!OHNE_VORWORT.test('Anden'), 'nur ganze Woerter, nicht Wortanfaenge');
 });

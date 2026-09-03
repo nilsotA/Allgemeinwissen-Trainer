@@ -27,7 +27,11 @@
    Aufruf: node scripts/abdeckung.mjs [--fehlend] [--json] [--satz data/quizprobe2.json] */
 import { readFileSync } from 'node:fs';
 import { CARDS } from '../data/index.js';
-import { normalize } from '../assets/js/quiz.js';
+import { normalize, OHNE_ZUSATZ, OHNE_VORWORT } from '../assets/js/quiz.js';
+
+/* normalize() hat Artikel schon entfernt; uebrig bleiben die Verhaeltniswoerter.
+   Der Bezug auf die Quelle in quiz.js haelt beide Listen zusammen. */
+const OHNE_VORWORT_KERN = new RegExp(OHNE_VORWORT.source, 'i');
 
 const argSatz = process.argv.indexOf('--satz');
 const SATZ = argSatz >= 0 && process.argv[argSatz + 1] ? process.argv[argSatz + 1] : 'data/quizprobe.json';
@@ -35,8 +39,18 @@ const PROBE = JSON.parse(readFileSync(new URL('../' + SATZ.replace(/^\.\//, ''),
 const zeigeFehlend = process.argv.includes('--fehlend');
 const alsJson = process.argv.includes('--json');
 
-/* Praepositionen und Artikel weg: „Aus Japan" und „Japan" sind dieselbe Antwort. */
-const kern = (t) => normalize(t).replace(/^(aus|seit|im|in|vom|zum|zur|bei|nach|auf|mit)\s+/, '');
+/* Praepositionen, Artikel und ein nachgestellter Klammerzusatz weg: „Aus Japan"
+   und „Japan" sind dieselbe Antwort, „Stickstoff (78 %)" und „Stickstoff" auch.
+
+   Die Listen stehen bewusst NICHT noch einmal hier, sondern kommen aus
+   quiz.js - dieselben, die die App beim Bewerten einer getippten Antwort
+   benutzt. Vorher war es eine Kopie, und sie war laengst auseinandergelaufen:
+   „an" fehlte, also galt die Karte „An Oder und Neisse" nicht als Antwort auf
+   eine Frage nach „Oder und Neisse", und der Klammerzusatz fehlte ganz. Zwei
+   von 18 gemeldeten Luecken waren so gar keine, sondern Fehler des Messgeraets.
+   Wo die App nachsichtig ist, muss es die Messung auch sein - sonst misst sie
+   etwas anderes als das, was der Nutzer erlebt. */
+const kern = (t) => normalize(String(t).replace(OHNE_ZUSATZ, '')).replace(OHNE_VORWORT_KERN, '');
 
 /* Verglichen wird woertlich - mit EINER Ausnahme: Eine reine Zahl darf am Anfang
    einer laengeren Antwort stehen. „Bei welcher Temperatur siedet Wasser?" wird

@@ -244,7 +244,7 @@ const kennwoerter = (t) => {
 /* Ein nachgestellter Klammerzusatz erlaeutert die Antwort, er ist nicht die
    Antwort: Wer auf „Stickstoff (78 %)" nur „Stickstoff" tippt, hat recht. Solche
    Eingaben werden deshalb auch gegen die Loesung ohne den Zusatz gemessen. */
-const OHNE_ZUSATZ = /\s*\([^()]*\)\s*$/;
+export const OHNE_ZUSATZ = /\s*\([^()]*\)\s*$/;
 
 /* Dasselbe gilt fuer ein einleitendes Verhaeltniswort. „Woraus wird Tofu
    hergestellt?" hat die Loesung „Aus Sojabohnen" – wer „Sojabohnen" tippt, hat
@@ -255,7 +255,7 @@ const OHNE_ZUSATZ = /\s*\([^()]*\)\s*$/;
    verschwinden, auch in der Eingabe. „Vor Christus" und „Nach Christus" waeren
    dann dasselbe. Hier faellt nur das ERSTE Wort der Loesung weg, und auch das
    nur als zusaetzliche Vergleichsfassung – die volle Loesung zaehlt weiter. */
-const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber)\s+/i;
+export const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber)\s+/i;
 
 /* Bewertet eine getippte Eingabe gegen eine ganze Karte statt gegen eine
    einzelne Zeichenkette: Zugelassene Nebenschreibweisen zaehlen mit, und bei
