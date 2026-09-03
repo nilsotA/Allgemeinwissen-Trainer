@@ -4,7 +4,7 @@ import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
-import { CARDS } from '../data/index.js';
+import { CARDS, CAT_BY_ID } from '../data/index.js';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const PORT = 8123;
@@ -1438,6 +1438,9 @@ try {
     check('die Marken nennen falsch und zu langsam', /1 falsch/.test(felder) && /1 zu langsam/.test(felder));
     check('die verfehlten Karten stehen hinter einem Griff',
       (await qp.locator('[data-merk]').count()) === 2, String(await qp.locator('[data-merk]').count()));
+    const obersteZeile = await qp.locator('#quizFelder .quiz-feld').first().getAttribute('data-cat');
+    check('das Ergebnisbild bietet das Thema mit dem groessten Verlust zum Nachlegen an',
+      (await qp.locator('#quizNachlegen').getAttribute('data-cat')) === obersteZeile, String(obersteZeile));
 
     await qp.waitForTimeout(600);              // Speichern ist gebuendelt
     const st = await qp.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
@@ -1468,6 +1471,13 @@ try {
     check('der Startbildschirm zeigt den Bestwert', /^145 \//.test(await qp.locator('#quizBest').innerText()),
       await qp.locator('#quizBest').innerText());
     check('der Startbildschirm nennt das schwaechste Thema', /Punkte lässt du zuletzt in/.test(await qp.locator('.card').first().innerText()));
+    const katNach = await qp.locator('#quizNachlegen').getAttribute('data-cat');
+    await qp.locator('#quizNachlegen').click();
+    await qp.waitForSelector('.opt');
+    check('„im Duell nachlegen" startet ein Duell genau in diesem Thema',
+      (await qp.locator('#quizStand').count()) === 0
+        && (await qp.locator('.qcat').first().innerText()).includes(CAT_BY_ID[katNach].name),
+      `${katNach}: ${await qp.locator('.qcat').first().innerText()}`);
     await qctx.close();
   }
 

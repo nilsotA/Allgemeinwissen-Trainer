@@ -1206,6 +1206,12 @@ Kacheln (falsch, zu langsam, ohne Blitz), darunter die Themen nach verlorenen Pu
 darunter die verfehlten Karten – hinter dem Griff, wie überall in dieser App. Der Reiter heißt
 jetzt **Quiz**; das Duell bleibt dort als zweite Wahl.
 
+Ein Prüfstand, der nur sagt, wo es hakt, ist erst die Hälfte. Deshalb führt das Ergebnisbild
+von dort **in die Werkstatt**: Unter den Themen steht ein Knopf „Geografie im Duell nachlegen"
+– zehn Fragen unter Zeitdruck, genau im Thema mit dem größten Verlust. Derselbe Knopf steht auf
+dem Startbildschirm unter dem Satz, wo die Punkte zuletzt liegen blieben. Vorher führte der Weg
+dorthin über Themen, Thema suchen, „Thema im Duell" – drei Tipps, die niemand macht.
+
 **Die Gegnerprüfung fand sieben echte Fehler in diesem ausgelieferten Code** – fünf Sucher mit
 verschiedenen Blickwinkeln, jeder Befund von zwei Skeptikern angefochten, die ihn zu widerlegen
 hatten. Vierzehn Befunde überlebten beide Anfechtungen, mit wenigen gemeinsamen Wurzeln:

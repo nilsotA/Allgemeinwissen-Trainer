@@ -502,7 +502,8 @@ function renderDuelStart() {
         `<i style="height:${Math.max(6, Math.round((r.p / Math.max(1, r.m)) * 100))}%" class="${best > 0 && r.p === best ? 'best' : ''} ${i === letzte.length - 1 ? 'last' : ''}"></i>`).join('')}</div>
       <p class="tiny" style="margin-top:7px">Letzte Runde ${letzte[letzte.length - 1].p} von ${letzte[letzte.length - 1].m}${
         letzte.length > 1 ? ` · im Schnitt ${mittel} über die letzten ${letzte.length}` : ''}</p>
-      ${schwach ? `<p class="tiny" style="margin-top:6px">Die meisten Punkte lässt du zuletzt in <b>${esc(CAT_BY_ID[schwach.cat]?.name || schwach.cat)}</b> liegen.</p>` : ''}`
+      ${schwach ? `<p class="tiny" style="margin-top:6px">Die meisten Punkte lässt du zuletzt in <b>${esc(CAT_BY_ID[schwach.cat]?.name || schwach.cat)}</b> liegen.</p>
+      <button class="btn ghost sm" id="quizNachlegen" data-cat="${esc(schwach.cat)}" style="margin-top:8px">${ico('duell')}${esc(CAT_BY_ID[schwach.cat]?.name || schwach.cat)} im Duell nachlegen</button>` : ''}`
       : `<p class="tiny" style="margin-top:9px">Noch keine Runde gespielt. Die erste zeigt dir, wo du stehst.</p>`}
     </div>
     <div class="btn-stack" style="margin-top:14px">
@@ -521,6 +522,18 @@ function renderDuelStart() {
     startRun(sess.buildQuiz(), 'quiz', () => sess.buildQuiz());
   document.getElementById('duelGo').onclick = () =>
     startRun(sess.buildDuel(10), 'duel', () => sess.buildDuel(10));
+  bindeNachlegen();
+}
+
+/* Der Pruefstand sagt, wo die Punkte liegen bleiben - und fuehrt von dort in die
+   Werkstatt: zehn Fragen im Duell, genau in diesem Thema. Vorher stand das
+   schwaechste Thema als Satz da, und der Weg dorthin fuehrte ueber Themen,
+   Thema suchen, „Thema im Duell". */
+function bindeNachlegen() {
+  document.getElementById('quizNachlegen')?.addEventListener('click', (e) => {
+    const cat = e.currentTarget.dataset.cat;
+    startRun(sess.buildDuel(10, cat), 'duel', () => sess.buildDuel(10, cat));
+  });
 }
 
 /* Trefferquoten liegen fast immer zwischen 60 und 85 Prozent. Als Balken ab
@@ -1275,6 +1288,7 @@ function endRun() {
     q.length ? startRun(q, r.mode, r.weiter) : show('home');
   };
   document.getElementById('home').onclick = () => show('home');
+  bindeNachlegen();
   run = null;
   rueckblickOffen = true;
   holeUpdateNach();
@@ -1338,6 +1352,8 @@ function quizRueckblick(r, missed, min) {
         <span class="pct">${f.punkte}/${f.max}</span>
       </div>`).join('')}
     </div>
+    ${aw.felder[0] && aw.felder[0].verloren > 0 ? `
+    <button class="btn" id="quizNachlegen" data-cat="${esc(aw.felder[0].cat)}" style="margin-top:11px">${ico('duell')}${esc(CAT_BY_ID[aw.felder[0].cat]?.name || aw.felder[0].cat)} im Duell nachlegen</button>` : ''}
     ${fehlerListe(missed)}
     <div class="btn-stack" style="margin-top:18px">
       <button class="btn primary" id="again">Noch eine Runde</button>
