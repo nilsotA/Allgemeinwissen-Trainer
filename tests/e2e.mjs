@@ -1471,6 +1471,55 @@ try {
     await qctx.close();
   }
 
+  group('Quiz: der Blitzbonus zaehlt nur sichtbare Zeit');
+  /* Die Formel verspricht fuenf Sekunden SICHTBARER Zeit - ein Anruf darf den
+     Bonus nicht kosten. Die Uhr wird gestellt und die Seite dabei versteckt:
+     Sechs Sekunden im Hintergrund, und der Treffer danach muss noch Blitz sein.
+     Dazu die zwei Zugaenglichkeitsbefunde: Wer nicht sieht, hoerte bei Ablauf
+     „Falsch", und die verblasste Pille versprach im Baum weiter einen Bonus. */
+  {
+    const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const bp = await bctx.newPage();
+    await bp.clock.install();
+    await bp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await bp.locator('.nav-btn[data-view="duel"]').click();
+    await bp.locator('#quizGo').click();
+    await bp.waitForSelector('.opt');
+    const sichtbarkeit = (wert) => bp.evaluate((v) => {
+      Object.defineProperty(document, 'visibilityState', { get: () => v, configurable: true });
+      Object.defineProperty(document, 'hidden', { get: () => v === 'hidden', configurable: true });
+      document.dispatchEvent(new Event('visibilitychange'));
+    }, wert);
+    const antworte = async (richtig) => {
+      const frage = await bp.locator('h1.q').innerText();
+      const werte = await bp.locator('.opt:not([disabled])').evaluateAll(bs => bs.map(b => b.dataset.v));
+      const karte = CARDS.find(c => c.q === frage && werte.includes(c.a));
+      const wert = richtig ? karte.a : werte.find(v => v !== karte.a);
+      await bp.locator(`.opt[data-v="${wert.replace(/"/g, '\\"')}"]`).click();
+    };
+    await sichtbarkeit('hidden');
+    await bp.clock.runFor(6000);
+    await sichtbarkeit('visible');
+    await bp.waitForTimeout(250);
+    check('nach sechs Sekunden im Hintergrund ist die Blitz-Pille noch da',
+      !/\baus\b/.test(await bp.locator('#blitz').getAttribute('class')));
+    await antworte(true);
+    await bp.waitForSelector('.verdict');
+    const urteil = await bp.locator('.verdict').innerText();
+    check('und der Treffer danach ist noch ein Blitz', /\+15/.test(urteil) && /Blitz/.test(urteil), urteil);
+    await bp.waitForTimeout(FUSS_TAUB);
+    await bp.locator('#next').click();
+    await bp.waitForSelector('.opt:not([disabled])');
+    await bp.clock.runFor(16000);
+    await bp.waitForSelector('.verdict');
+    check('die Ansage sagt „Zeit abgelaufen", nicht „Falsch"',
+      /abgelaufen/.test(await bp.locator('#live').innerText()) && !/^Falsch/.test(await bp.locator('#live').innerText()),
+      await bp.locator('#live').innerText());
+    check('die verblasste Pille ist aus dem Zugaenglichkeitsbaum',
+      (await bp.locator('#blitz').getAttribute('aria-hidden')) === 'true');
+    await bctx.close();
+  }
+
   group('Quiz: Abbruch im Aufloesungsbildschirm laesst nichts Halbes zurueck');
   /* Gefunden von der Gegnerpruefung: Die Punkte wurden in finish() gebucht,
      alles Uebrige - Fehlerliste, Faelligstellung der Karte, Zaehler - erst in

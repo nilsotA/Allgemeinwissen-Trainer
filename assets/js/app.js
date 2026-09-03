@@ -1780,7 +1780,13 @@ function askDuel(card) {
     const left = Math.max(0, 1 - verstrichen() / LIMIT);
     bar.style.width = (left * 100).toFixed(1) + '%';
     bar.style.background = left < 0.3 ? 'linear-gradient(90deg,#ff6b6b,#ffb454)' : '';
-    if (blitz && !blitzAus && verstrichen() > BLITZ_MS) { blitzAus = true; blitz.classList.add('aus'); }
+    if (blitz && !blitzAus && verstrichen() > BLITZ_MS) {
+      blitzAus = true;
+      blitz.classList.add('aus');
+      // Verblasst heisst weg: Sonst versprach die Pille im Zugaenglichkeitsbaum
+      // weiter einen Bonus, den es nicht mehr gibt.
+      blitz.setAttribute('aria-hidden', 'true');
+    }
     // Einmalig, nicht im Takt: eine Live-Region, die zehnmal je Sekunde
     // schreibt, macht das Vorlesen der Frage unmoeglich.
     if (!gewarnt && left > 0 && verstrichen() > LIMIT - 5000) { gewarnt = true; announce('Noch fünf Sekunden.'); }
@@ -1805,7 +1811,10 @@ function askDuel(card) {
     const pts = quiz ? punkte(ok, gebraucht) : 0;
     markiereOptionen(app, card.a, chosen);
     beep(ok);
-    announce((ok ? 'Richtig.' : `Falsch. Die Antwort lautet: ${card.a}`) + (quiz ? ` ${pts} Punkte.` : ''));
+    /* Wer nicht sieht, hoerte bei abgelaufener Zeit „Falsch" - genau die
+       Unterscheidung, die das Ergebnisbild aufmacht, fiel in der Ansage weg. */
+    announce((ok ? 'Richtig.' : `${chosen === null ? 'Zeit abgelaufen' : 'Falsch'}. Die Antwort lautet: ${card.a}`)
+      + (quiz ? ` ${pts} Punkte.` : ''));
     const body = app.querySelector('.sess-body');
     const div = document.createElement('div');
     div.className = 'fade';
