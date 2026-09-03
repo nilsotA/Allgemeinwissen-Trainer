@@ -310,5 +310,293 @@
   "frage": "Wie hieß der erste abendfüllende Zeichentrickfilm der Disney-Studios?",
   "antwort": "Schneewittchen und die sieben Zwerge",
   "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer schrieb den Roman „1984“?",
+  "antwort": "George Orwell",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Aus welcher Feder stammt die Tragödie „Romeo und Julia“?",
+  "antwort": "William Shakespeare",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Welcher Schriftsteller erfand die Figur des Meisterdetektivs Sherlock Holmes?",
+  "antwort": "Arthur Conan Doyle",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wie nennt man ein Wort, das vorwärts wie rückwärts gelesen gleich lautet?",
+  "antwort": "Ein Palindrom",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wie viele Fälle kennt die deutsche Grammatik?",
+  "antwort": "4",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wie heißt das bekannteste deutsche Rechtschreibwörterbuch?",
+  "antwort": "Der Duden",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wer schrieb den Roman „Die Blechtrommel“?",
+  "antwort": "Günter Grass",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wie viele Verse hat ein Sonett?",
+  "antwort": "14",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Welcher deutsche Dichter schrieb das Drama „Die Räuber“?",
+  "antwort": "Friedrich Schiller",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Wie nennt man in der Rhetorik das Stilmittel der bewussten Übertreibung?",
+  "antwort": "Die Hyperbel",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Was bedeutet das Fremdwort „eloquent“?",
+  "antwort": "Redegewandt",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "frage": "Die Überschreitung welches Flusses steht sprichwörtlich für einen unumkehrbaren Entschluss?",
+  "antwort": "Der Rubikon",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?",
+  "antwort": "Konrad Adenauer",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie heißt der Amtssitz des US-Präsidenten in Washington?",
+  "antwort": "Das Weiße Haus",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie heißt die Währung Japans?",
+  "antwort": "Der Yen",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie heißt die heilige Schrift des Islam?",
+  "antwort": "Der Koran",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie heißt der Staat, in dem der Papst residiert?",
+  "antwort": "Die Vatikanstadt",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie heißt der wichtigste deutsche Aktienindex?",
+  "antwort": "DAX",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "In welchem Jahr trat das Grundgesetz der Bundesrepublik Deutschland in Kraft?",
+  "antwort": "1949",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Auf wie viele Mitgliedstaaten schrumpfte die Europäische Union durch den Austritt Großbritanniens?",
+  "antwort": "27",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "In welcher Stadt hat das Bundesverfassungsgericht seinen Sitz?",
+  "antwort": "Karlsruhe",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "In welcher Stadt sitzt die Europäische Zentralbank?",
+  "antwort": "Frankfurt am Main",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "Wie heißt das Parlament Israels?",
+  "antwort": "Knesset",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "frage": "In welcher niederländischen Stadt wurde 1992 der Vertrag über die Europäische Union unterzeichnet?",
+  "antwort": "Maastricht",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "In welcher italienischen Stadt wurde die Pizza erfunden?",
+  "antwort": "Neapel",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Aus welchem Land stammt das Reisgericht Paella?",
+  "antwort": "Aus Spanien",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Aus welcher Frucht wird Guacamole hauptsächlich zubereitet?",
+  "antwort": "Avocado",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Aus welcher Pflanze wird Tequila gebrannt?",
+  "antwort": "Aus der Agave",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Welche Nummer wählt man in Deutschland, um den Rettungsdienst zu rufen?",
+  "antwort": "112",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "An welchem Tag im Dezember bringt der Nikolaus traditionell seine Gaben?",
+  "antwort": "Am 6. Dezember",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Aus der Milch welchen Tieres wird der französische Käse Roquefort hergestellt?",
+  "antwort": "Aus Schafsmilch",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie viele Stundenkilometer beträgt die Richtgeschwindigkeit auf deutschen Autobahnen?",
+  "antwort": "130",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie viele Zähne hat ein erwachsener Mensch samt Weisheitszähnen?",
+  "antwort": "32",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Welche Blutgruppe gilt mit Rhesusfaktor als Universalspender bei der Blutspende?",
+  "antwort": "0 negativ",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Aus welchem Land stammt das Farbenfest Holi?",
+  "antwort": "Indien",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "frage": "Wie viele Meter hat eine Seemeile?",
+  "antwort": "1852",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie viele Spieler einer Fußballmannschaft stehen beim Anpfiff auf dem Feld?",
+  "antwort": "11",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Welcher aus dem Cricket stammende Begriff bezeichnet im Fußball drei Tore eines Spielers in einem Spiel?",
+  "antwort": "Hattrick",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Welche deutsche Stadt war Gastgeber der Olympischen Sommerspiele 1972?",
+  "antwort": "München",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Welches Grand-Slam-Turnier wird auf Rasen in London ausgetragen?",
+  "antwort": "Wimbledon",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Welche Farbe hat das Trikot des Gesamtführenden bei der Tour de France?",
+  "antwort": "Gelb",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Aus welchem Land stammt der Ringkampf Sumo?",
+  "antwort": "Japan",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "In welcher Stadt fanden 1896 die ersten Olympischen Spiele der Neuzeit statt?",
+  "antwort": "Athen",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Welcher deutsche Formel-1-Fahrer gewann siebenmal den Weltmeistertitel?",
+  "antwort": "Michael Schumacher",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Aus wie vielen Löchern besteht eine komplette Golfrunde?",
+  "antwort": "18",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Wie viele Punkte bringt ein Touchdown im American Football?",
+  "antwort": "6",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Über wie viele Runden geht ein Weltmeisterschaftskampf im Profiboxen höchstens?",
+  "antwort": "12",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "frage": "Welches Land gewann 1930 die erste Fußball-Weltmeisterschaft?",
+  "antwort": "Uruguay",
+  "schwierigkeit": "schwer"
  }
 ]

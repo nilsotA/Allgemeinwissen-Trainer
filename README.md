@@ -1217,12 +1217,16 @@ Wo eine Frage zwei vertretbare Antworten zuließ, wurde sie geschärft – „We
 den größten Teil der Grenze zu Polen?" etwa fiel durch, weil die Neiße dort länger ist als die
 Oder.
 
-**Ausgangswert, gemessen vor jeder Kartenänderung: 36 von 52 (69 %).**
+**Ausgangswert, gemessen vor jeder Kartenänderung: 63 von 100 (63 %).**
 
 | Gebiet | | Gebiet | |
 |---|---|---|---|
-| Geografie | 12/13 | Geschichte | 7/13 |
+| Geografie | 12/13 | Literatur · Sport · Geschichte | je 7 |
 | Naturwissenschaft | 11/13 | Unterhaltung | 6/13 |
+| Gesellschaft | 8/12 | Alltag | 5/12 |
+
+Die Gebiete sind nicht die neun Themen der App, sondern die acht Kategorien, in denen
+Quizspiele fragen – deshalb 12 oder 13 Fragen je Gebiet und keine glatte Zehn.
 
 **Die erste Messung sagte 34, und sie war falsch – am Messgerät, nicht an der Sammlung.**
 `abdeckung.mjs` hielt eine eigene Kopie der Verhältniswörter, die es beim Vergleich abstreift,
