@@ -1330,6 +1330,27 @@ Kerpen, und seine 91 Siege sind seit 2020 kein Rekord mehr. Cameron ist nicht �
 mehreren" Zwei-Milliarden-Filmen, sondern der Einzige mit dreien. „Schlagfertig" steht im Duden
 als Synonym von *eloquent* – und war als Ablenker gedacht.
 
+### Eine Schranke gegen Antwortverrat – gemessen und verworfen
+
+Fünf der vierzehn bestätigten Quizmodus-Befunde und ein gutes Dutzend der Kartenbefunde hatten
+dasselbe Muster: Ein Kontexttext verrät die Antwort einer *anderen* Karte. Das schreit nach
+einer Schranke in `check-content.mjs`. Also gemessen, bevor gebaut: Für jede Karte, ob ihr
+Kontext- oder Fragetext die vollständige, normalisierte Antwort einer anderen Karte enthält –
+mindestens fünf Zeichen, keine reine Zahl, als ganze Wortfolge.
+
+**Ergebnis: 298 Treffer im selben Teilgebiet, 170 in derselben Kategorie, 638 quer.** Und die
+Stichprobe zeigt, warum das keine Schranke werden kann: „Athen" steht in jeder zweiten
+griechischen Geschichtsfrage, ohne dass eine davon verrät, welche Stadt als Wiege der
+Demokratie gilt. Die Punischen Kriege nennen die Phönizier, ohne zu verraten, dass sie Europa
+das Alphabet weitergaben. Das Wort ist da – der *Fakt*, den die andere Karte abfragt, ist es
+nicht. Ein echter Verrat („5.895 m in Tansania" auf einer Karte, deren Nachbarin fragt, zu
+welchem Land der Berg gehört) unterscheidet sich vom bloßen Vorkommen des Worts nur semantisch,
+und das misst kein Zeichenkettenvergleich. Eine Schranke mit ein paar hundert Fehlalarmen wird
+nicht gelesen; dann ist sie schlimmer als keine.
+
+Die Regel bleibt eine Prüferregel – beide Kartenprüfungen fragen sie ausdrücklich ab, und beide
+haben sie zuletzt gefunden. Das ist der Platz dafür.
+
 ### Zwei Fehler im Vergleicher, gefunden beim Prüfen von Karten
 
 Die Handwerksprüfung der 39 neuen Karten hat nicht geschätzt, sondern mit dem echten
