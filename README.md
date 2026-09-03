@@ -1286,6 +1286,43 @@ melden als eine zu wenig.
 Die 98 % des ersten Satzes und die 69 % des zweiten sind kein Widerspruch, sondern derselbe
 Befund aus zwei Richtungen.
 
+### Der dritte Prüfsatz: was eine Sport- und Mathelehrkraft können muss – 41 %
+
+Das Ziel wurde präzisiert: vor allem am Spieleabend glänzen, dazu das Basiswissen einer Sport-
+und Mathelehrkraft. Das Erste misst der zweite Prüfsatz (94 %). Für das Zweite gab es noch
+keine Zahl – die Kategorien Sport und Mathematik haben 296 und 289 Karten, aber niemand hatte
+je gefragt, ob das *das* Wissen ist, das ein Fachleiter im Staatsexamen abfragt.
+
+`data/quizprobe3.json`: je 51 Fragen Sport und Mathe, geschrieben in der Rolle eines
+Fachleiters am Studienseminar, ohne Blick in die Sammlung, danach jede einzeln geprüft. Mathe
+war fehlerfrei; sechs Formulierungen wurden geschärft (Hilbert trug in Paris nur zehn seiner
+23 Probleme vor). Sport brauchte vier Korrekturen: Das Kniegelenk hat vier gleichwertige
+Lehrbuchnamen, „größter Muskel" ist ohne Kriterium mehrdeutig (Volumen: Gluteus, Fläche:
+Latissimus), und „nach Blume/Hirtz" zählt je nach Autor sieben oder fünf koordinative
+Fähigkeiten. Vierzig Fragen führen Zweitschreibweisen – „ad − bc" ist dieselbe Determinante
+wie „a·d − b·c"; das ist Notation, nicht Inhalt.
+
+**Ausgangswert, vor jeder Kartenänderung: 42 von 102 (41 %) – Sport 18/51, Mathe 24/51.**
+
+**Die Messung fand vorher einen Fehler, der jeden Nutzer trifft.** Getipptes `^2` und
+gesetztes `²` waren verschiedene Wörter: „3x^2" auf „3x²" ergab 0,33, „x^3" auf „x³" 0,25,
+„sqrt(2)" auf „√2" 0,38, die Produktregel mit ASCII-Strich 0,59. Kein deutsches Tastenfeld hat
+ein ², ³ oder √ – **ein Mathelehrer, der am Handy seine Ableitung tippt, galt als falsch.** Jetzt
+gehen beide Formen in dieselbe Ziffer (nur ein Exponent, der keine Ziffer ist, bleibt „hoch":
+e^x ist nicht ex), `sqrt` ist Wurzel, der Ableitungsstrich U+2032 ein Strich, und ein
+Formelkopf wie „A =" zählt nicht zur Antwort – wer „π·r²" tippt, hat die Kreisfläche gewusst.
+Gemessen: Satz 3 von 35 auf 41 allein dadurch, Sätze 1 und 2 unverändert, also keine
+Falschtreffer. Zwei Tests halten es fest.
+
+**Und die 60 Lücken sind zu zwei Dritteln dasselbe Muster wie beim zweiten Satz.** Die
+Sammlung kennt Superkompensation, Grobkoordination, Maximalkraft, Kreatinphosphat – aber als
+*Frage* („Was versteht man unter Superkompensation?") oder als *Aufzählung* („Welche Kraftarten
+unterscheidet die Trainingslehre?"). Ein Prüfer fragt umgekehrt: Definition gegeben, Begriff
+gesucht. Das ist die Richtung, die im Examen drankommt, und beim freien Abrufen die einzige,
+die sich tippen lässt. Von 60 Lücken stecken 13 in Aufzählungskarten und 23 im Frage- oder
+Kontexttext einer Karte; 24 fehlen wirklich. Die fehlende Richtung wird ergänzt – als eigene
+Karten, weil eine Definition→Begriff-Karte etwas anderes prüft als ihre Umkehrung.
+
 ### 65 auf 94 – getrennt nach dem, was es wirklich war
 
 Die Lücken des zweiten Satzes wurden geschlossen, aber die Zahl allein sagt wieder wenig.
