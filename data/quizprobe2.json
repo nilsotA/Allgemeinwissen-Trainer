@@ -1,0 +1,314 @@
+[
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt die Hauptstadt von Australien?",
+  "antwort": "Canberra",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welcher Fluss fließt durch Köln?",
+  "antwort": "Der Rhein",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welches Land wird als „Land der tausend Seen“ bezeichnet?",
+  "antwort": "Finnland",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welches deutsche Bundesland ist flächenmäßig das größte?",
+  "antwort": "Bayern",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Durch welchen Kanal gelangen Schiffe vom Mittelmeer ins Rote Meer?",
+  "antwort": "Der Suezkanal",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt der höchste Berg der Alpen?",
+  "antwort": "Der Mont Blanc",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welche Stadt ist die Hauptstadt Kanadas?",
+  "antwort": "Ottawa",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie heißt der tiefste See der Erde?",
+  "antwort": "Der Baikalsee",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "In welchem Land liegt der Kilimandscharo?",
+  "antwort": "Tansania",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Welche Meerenge trennt Europa von Afrika?",
+  "antwort": "Die Straße von Gibraltar",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Auf welcher Insel liegt der Vulkan Ätna?",
+  "antwort": "Sizilien",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Nach welchen beiden Flüssen ist die Grenze zwischen Deutschland und Polen benannt?",
+  "antwort": "Oder und Neiße",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "frage": "Wie viele Kantone hat die Schweiz?",
+  "antwort": "26",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "In welchem Jahr erreichte Christoph Kolumbus Amerika?",
+  "antwort": "1492",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wer betrat 1969 als erster Mensch den Mond?",
+  "antwort": "Neil Armstrong",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wer war der erste Präsident der Vereinigten Staaten?",
+  "antwort": "George Washington",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "In welchem Jahr sank die Titanic?",
+  "antwort": "1912",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "In welcher Schlacht erlitt Napoleon 1815 seine endgültige Niederlage?",
+  "antwort": "Waterloo",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wie nennt man die deutsche Republik der Jahre 1918 bis 1933?",
+  "antwort": "Die Weimarer Republik",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "In welcher Stadt wurde 1914 der österreichische Thronfolger Franz Ferdinand ermordet?",
+  "antwort": "Sarajevo",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wie hieß das Schiff, mit dem die Pilgerväter 1620 nach Amerika segelten?",
+  "antwort": "Die Mayflower",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Unter welchem römischen Kaiser brannte Rom im Jahr 64 n. Chr.?",
+  "antwort": "Nero",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Wie heißt der Friedensschluss von 1648, der den Dreißigjährigen Krieg beendete?",
+  "antwort": "Der Westfälische Friede",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Welcher britische Archäologe entdeckte 1922 das Grab des Tutanchamun?",
+  "antwort": "Howard Carter",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "In welcher Schlacht besiegte Wilhelm der Eroberer 1066 die Angelsachsen?",
+  "antwort": "Hastings",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "frage": "Welcher deutsche König ging 1077 zum Bußgang nach Canossa?",
+  "antwort": "Heinrich IV.",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welcher Planet wird wegen seiner Farbe auch „der Rote Planet“ genannt?",
+  "antwort": "Mars",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie viele Knochen hat das Skelett eines erwachsenen Menschen?",
+  "antwort": "206",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welches Metall ist bei Zimmertemperatur flüssig?",
+  "antwort": "Quecksilber",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wer entdeckte 1928 das Penicillin?",
+  "antwort": "Alexander Fleming",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welches Gas macht rund 78 Prozent der Luft aus?",
+  "antwort": "Stickstoff",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welches Organ des Menschen produziert das Hormon Insulin?",
+  "antwort": "Die Bauchspeicheldrüse",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Nach welchem Wissenschaftler ist die Einheit der elektrischen Spannung benannt?",
+  "antwort": "Alessandro Volta",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welches ist das größte heute lebende Tier der Erde?",
+  "antwort": "Der Blauwal",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welcher Physiker entdeckte 1895 die nach ihm benannten Strahlen?",
+  "antwort": "Wilhelm Conrad Röntgen",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wer erfand das Dynamit?",
+  "antwort": "Alfred Nobel",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie lautet die chemische Formel von Kochsalz?",
+  "antwort": "NaCl",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Welches Vitamin bildet der Körper mithilfe von Sonnenlicht?",
+  "antwort": "Vitamin D",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "frage": "Wie heißt der sonnennächste Stern?",
+  "antwort": "Proxima Centauri",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welcher Schauspieler spielte die Titelrolle in „Forrest Gump“?",
+  "antwort": "Tom Hanks",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welche schwedische Band landete mit „Dancing Queen“ einen Welthit?",
+  "antwort": "ABBA",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welcher Regisseur drehte 1997 den Film „Titanic“?",
+  "antwort": "James Cameron",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wer war der erste James-Bond-Darsteller im Kino?",
+  "antwort": "Sean Connery",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wie heißt der blaue Igel, der als Maskottchen von Sega bekannt wurde?",
+  "antwort": "Sonic",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "In welchem Jahr kam der erste „Star Wars“-Film in den USA in die Kinos?",
+  "antwort": "1977",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Aus welchem Land stammt die Rockband AC/DC?",
+  "antwort": "Australien",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welcher Schauspieler verkörpert Iron Man in den Marvel-Filmen?",
+  "antwort": "Robert Downey Jr.",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wer sang den Schlagerhit „Atemlos durch die Nacht“?",
+  "antwort": "Helene Fischer",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wie nennt man den wichtigsten Fernsehpreis der USA?",
+  "antwort": "Der Emmy",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Welches Unternehmen stellt die Spielkonsole PlayStation her?",
+  "antwort": "Sony",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wer spielte im „Tatort“ den Kommissar Horst Schimanski?",
+  "antwort": "Götz George",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "frage": "Wie hieß der erste abendfüllende Zeichentrickfilm der Disney-Studios?",
+  "antwort": "Schneewittchen und die sieben Zwerge",
+  "schwierigkeit": "schwer"
+ }
+]
