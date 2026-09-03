@@ -561,7 +561,7 @@ test('uebliche Schreibvarianten einer richtigen Antwort gelten', () => {
     ['Punkt am Ende', (a) => a + '.'],
     ['ohne Artikel vorn', (a) => a.replace(/^(Der|Die|Das|Ein|Eine|Den|Dem)\s+/, '')],
     ['Umlaute umschrieben', (a) => a.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')],
-    ['ohne nachgestellten Klammerzusatz', (a) => a.replace(/\s*\([^()]*\)\s*$/, '').trim()],
+    ['ohne nachgestellten Klammerzusatz', (a) => a.replace(OHNE_ZUSATZ, '').trim()],
   ];
   for (const [name, wandeln] of varianten) {
     const daneben = [];
@@ -892,4 +892,20 @@ test('Der Formelkopf ist keine Antwort: „A = π · r²" gilt auch als „π·r
   assert.ok(bewerte({ a: 'V = (4/3) · π · r³' }, '4/3*pi*r^3') >= 0.8);
   assert.ok(bewerte({ a: 'A = π · r²' }, '2*pi*r') < 0.8, 'der Umfang ist nicht die Flaeche');
   assert.ok(OHNE_FORMELKOPF instanceof RegExp, 'das Muster muss exportiert bleiben - das Messgeraet teilt es');
+});
+
+test('getipptes Bindestrich-Minus vor einem Buchstaben ist ein Vorzeichen, kein Trennzeichen', () => {
+  // Vieta: x1·x2 = q. Wer „-q" tippt, meint den Ablenker −q und darf nicht als richtig gelten.
+  assert.ok(bewerte({ a: 'q' }, '-q') < 0.8, '„-q" gilt nicht als „q"');
+  assert.ok(bewerte({ a: '−q' }, '-q') >= 0.8, '„-q" gilt als „−q"');
+  assert.ok(bewerte({ a: '−1' }, '-1') >= 0.8, 'Ziffern wie bisher');
+  assert.ok(bewerte({ a: 'Yerkes-Dodson-Gesetz' }, 'Yerkes-Dodson Gesetz') >= 0.8, 'Bindestriche im Wort bleiben Trenner');
+});
+
+test('eine Klammer, die am Wort klebt, ist Teil der Formel und kein Zusatz', () => {
+  // „a^(m+n)" endet mit einer Klammer, aber „a^" ist keine Antwort. Nur ein
+  // durch Leerzeichen abgesetzter Zusatz wie „Erythropoetin (EPO)" ist freiwillig.
+  assert.ok(similarity('a^', 'a^(m+n)') < 0.8, '„a^" darf nicht als „a^(m+n)" gelten');
+  assert.ok(similarity('P(AnB)/P', 'P(A∩B)/P(B)') < 0.8, 'abgeschnittene Formel gilt nicht');
+  assert.ok(similarity('Erythropoetin', 'Erythropoetin (EPO)') >= 0.8, 'abgesetzter Zusatz bleibt freiwillig');
 });

@@ -85,7 +85,7 @@ const ZEICHEN = [
   [/\^(\d)/g, '$1'],
   [/\bsqrt\b/gi, ' wurzel '],
   [/=/g, ' gleich '], [/\+/g, ' plus '], [/−/g, ' minus '], [/\^/g, ' hoch '],
-  [/(^|\s)-(?=\s|$|\d)/g, ' minus '],
+  [/(^|\s)-(?=\s|$|\d|[a-zäöüß])/gi, ' minus '],
   [/ℕ/g, ' n '], [/ℤ/g, ' z '], [/ℚ/g, ' q '], [/ℝ/g, ' r '], [/ℂ/g, ' c '],
   [/±/g, ' plusminus '], [/[≈~]/g, ' rund '], [/≤/g, ' hoechstens '], [/≥/g, ' mindestens '],
   [/∞/g, ' unendlich '], [/€/g, ' euro '], [/%/g, ' prozent '], [/&/g, ' und '],
@@ -253,7 +253,7 @@ const kennwoerter = (t) => {
 /* Ein nachgestellter Klammerzusatz erlaeutert die Antwort, er ist nicht die
    Antwort: Wer auf „Stickstoff (78 %)" nur „Stickstoff" tippt, hat recht. Solche
    Eingaben werden deshalb auch gegen die Loesung ohne den Zusatz gemessen. */
-export const OHNE_ZUSATZ = /\s*\([^()]*\)\s*$/;
+export const OHNE_ZUSATZ = /\s+\([^()]*\)\s*$/;
 
 /* Dasselbe gilt fuer ein einleitendes Verhaeltniswort. „Woraus wird Tofu
    hergestellt?" hat die Loesung „Aus Sojabohnen" – wer „Sojabohnen" tippt, hat

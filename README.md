@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.073 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.127 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (294 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (289 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (326 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (313 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -409,7 +409,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 130 Einheitentests plus Inhaltsprüfung
+npm test           # 135 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 188 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 29 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
@@ -1322,6 +1322,52 @@ gesucht. Das ist die Richtung, die im Examen drankommt, und beim freien Abrufen 
 die sich tippen lässt. Von 60 Lücken stecken 13 in Aufzählungskarten und 23 im Frage- oder
 Kontexttext einer Karte; 24 fehlen wirklich. Die fehlende Richtung wird ergänzt – als eigene
 Karten, weil eine Definition→Begriff-Karte etwas anderes prüft als ihre Umkehrung.
+
+### 42 auf 102 – die fehlende Richtung, zweifach geprüft
+
+Gegen die 60 Lücken des dritten Satzes haben zwei Autoren geschrieben, die nur den Prüfsatz
+kannten: 27 Mathe- und 33 Sportkarten. Jede Karte ging danach durch zwei getrennt gebriefte
+Prüfungen – Wahrheit mit Webrecherche, Handwerk mit dem echten `bewerte()` gegen den Bestand.
+Die Zuordnung, nachgerechnet über die deckenden Kartenkennungen gegen `data/kennungen.json`
+vor der Ergänzung:
+
+| Woher der Treffer kommt | Fragen |
+|---|---|
+| Stand vor jeder Änderung | 42 |
+| 54 **neue** Karten (24 Mathe, 30 Sport), jede zweifach geprüft | +54 |
+| Sechs **Bestandskarten** mit Zweitschreibweisen statt einer Dublette | +6 |
+| **Summe** | **102** |
+
+**Sechs Karten wurden nicht eingepflegt, obwohl sie Lücken geschlossen hätten.** Die
+Handwerksprüfung fand sie als Dubletten in gleicher Richtung: „Die erste Ableitung ist null"
+stand schon da, nur nicht als Formel; „log(a) + log(b)" stand da, der Prüfsatz fragte mit x und
+y; die Quotientenregel stand in Worten, „Bei 4 mmol pro Liter", „Der große Gesäßmuskel" und
+„Erziehung zum und durch Sport" ebenso. Die Lücke war jeweils Notation, nicht Wissen. Also
+bekam die Bestandskarte die Schreibweise (`az`), und die neue Karte blieb draußen – sonst
+lernte jemand dieselbe Sache zweimal und das Maß zählte es als Fortschritt.
+
+**Die Wahrheitsprüfung fand einen echten Fehler und elf Präzisierungen.** Feynman nannte nicht
+die Eulersche Identität „unser Juwel", sondern die allgemeine Formel (Lectures I, Kap. 22).
+Hochmuth formulierte 1967 fünf Prinzipien, nicht sechs – das sechste kam 1981. Der Handball-
+Torraum ist kein Halbkreis, sondern zwei Viertelkreise mit einem geraden Stück; im Badminton
+galten bis 2006 im Dameneinzel 11 Punkte, nicht 15; der Prozentschlüssel der Bundesjugendspiele
+ist nicht von 2023, sondern von 2001. Alles nach Beleg korrigiert, nichts geschätzt.
+
+**Die Handwerksprüfung fand zwei Fehler im Messgerät, die nichts mit den neuen Karten zu tun
+hatten.** Ein getipptes „-q" galt als „q": Der Bindestrich wurde nur vor Ziffern zum Minus, vor
+Buchstaben fiel er weg – bei Vieta war damit der Ablenker „−q" richtig. Und eine Klammer, die am
+Wort klebt, wurde als freiwilliger Zusatz gestrichen: aus „a^(m+n)" wurde „a^". Beides mit
+Test festgehalten, der erst rot war; die drei Prüfsätze messen danach unverändert. Gestrichen
+wurde außerdem eine Karte, die beim freien Abrufen den falschen Ablenker mit 1,00 durchließ:
+„¬B ⇒ ¬A" wird nach der Normalisierung zu „B A", genau wie die Umkehrung „B ⇒ A". Die
+Kontraposition steht jetzt in Worten da, „nicht B ⇒ nicht A", und die Umkehrung misst 0,56.
+Beim Doppelauftrag des Schulsports war es dasselbe: „durch Sport" verliert sein Verhältniswort,
+„im Sport" auch – 1,00 für den Ablenker. Die Karte ist draußen, die Bestandskarte trägt die
+Langform.
+
+Dazu kamen Schreibweisen, die gemessen unter 0,8 lagen (die Kettenregel ohne Malpunkt,
+„np(1 − p)", „E + F = K + 2", „slow twitch", „106,7 cm"); entfernt wurden die, die nach der
+Normalisierung der Antwort glichen, und fünf Fragen kamen unter 160 Zeichen.
 
 ### 65 auf 94 – getrennt nach dem, was es wirklich war
 
