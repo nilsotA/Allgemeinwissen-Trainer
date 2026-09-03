@@ -27,7 +27,7 @@
    Aufruf: node scripts/abdeckung.mjs [--fehlend] [--json] [--satz data/quizprobe2.json] */
 import { readFileSync } from 'node:fs';
 import { CARDS } from '../data/index.js';
-import { normalize, OHNE_ZUSATZ, OHNE_VORWORT } from '../assets/js/quiz.js';
+import { normalize, OHNE_ZUSATZ, OHNE_VORWORT, OHNE_FORMELKOPF } from '../assets/js/quiz.js';
 
 /* normalize() hat Artikel schon entfernt; uebrig bleiben die Verhaeltniswoerter.
    Der Bezug auf die Quelle in quiz.js haelt beide Listen zusammen. */
@@ -50,7 +50,7 @@ const alsJson = process.argv.includes('--json');
    von 18 gemeldeten Luecken waren so gar keine, sondern Fehler des Messgeraets.
    Wo die App nachsichtig ist, muss es die Messung auch sein - sonst misst sie
    etwas anderes als das, was der Nutzer erlebt. */
-const kern = (t) => normalize(String(t).replace(OHNE_ZUSATZ, '')).replace(OHNE_VORWORT_KERN, '');
+const kern = (t) => normalize(String(t).replace(OHNE_ZUSATZ, '').replace(OHNE_FORMELKOPF, '')).replace(OHNE_VORWORT_KERN, '');
 
 /* Verglichen wird woertlich - mit EINER Ausnahme: Eine reine Zahl darf am Anfang
    einer laengeren Antwort stehen. „Bei welcher Temperatur siedet Wasser?" wird
@@ -90,8 +90,11 @@ for (const p of PROBE) {
   if (!proGebiet.has(p.gebiet)) proGebiet.set(p.gebiet, { ab: 0, ges: 0 });
   const g = proGebiet.get(p.gebiet);
   g.ges++;
-  const gesucht = folge(p.antwort);
-  const treffer = kartenAntworten.find((k) => passt(k.f, gesucht));
+  /* Ein Pruefsatz darf Zweitschreibweisen derselben Antwort fuehren - „ad - bc"
+     ist dieselbe Determinante wie „a*d - b*c", und wer sie so tippt, hat sie
+     gewusst. Das ist Notation, nicht Inhalt; der Inhalt bleibt eingefroren. */
+  const formen = [p.antwort, ...(p.alternativen || [])].map(folge).filter(f => f.length);
+  const treffer = kartenAntworten.find((k) => formen.some(gesucht => passt(k.f, gesucht)));
   if (treffer) { g.ab++; abgedeckt.push({ ...p, karte: treffer.c.id }); }
   else fehlend.push(p);
 }

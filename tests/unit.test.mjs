@@ -7,7 +7,7 @@ globalThis.localStorage = { getItem: () => null, setItem: () => {}, removeItem: 
 const { schedule, strength, preview, isDue, isNew, isLeech, nachDuellFehler, fresh,
         AGAIN, HARD, GOOD, EASY } = await import('../assets/js/srs.js');
 const { todayNum } = await import('../assets/js/store.js');
-const { options, similarity, bewerte, normalize, shuffle, OHNE_ZUSATZ, OHNE_VORWORT } = await import('../assets/js/quiz.js');
+const { options, similarity, bewerte, normalize, shuffle, OHNE_ZUSATZ, OHNE_VORWORT, OHNE_FORMELKOPF } = await import('../assets/js/quiz.js');
 const { CARDS, BY_ID } = await import('../data/index.js');
 const { execFileSync } = await import('node:child_process');
 const { writeFileSync, mkdtempSync } = await import('node:fs');
@@ -864,4 +864,32 @@ test('Messgeraet und App teilen dieselbe Nachsicht', () => {
   for (const w of ['an', 'aus', 'auf', 'mit', 'nach', 'bei', 'vor', 'unter'])
     assert.ok(OHNE_VORWORT.test(`${w} Oder und Neiße`), `„${w}" fehlt in OHNE_VORWORT`);
   assert.ok(!OHNE_VORWORT.test('Anden'), 'nur ganze Woerter, nicht Wortanfaenge');
+});
+
+test('Getippte Formeln zaehlen wie gesetzte: ^2 ist ², sqrt ist Wurzel, der Strich ein Strich', () => {
+  /* Kein deutsches Tastenfeld hat ², ³, √ oder den Ableitungsstrich U+2032. Die
+     Karten setzen sie, der Nutzer tippt ^2, sqrt und '. Vorher wurde ² zur
+     Ziffer und ^ zu „hoch" - dieselbe Potenz in zwei Woertern. Gemessen vor der
+     Reparatur: „3x^2" auf „3x²" 0,33, „x^3" auf „x³" 0,25, „sqrt(2)" auf „√2"
+     0,38, die Produktregel mit ASCII-Strich 0,59. Ein Mathelehrer, der am Handy
+     seine Ableitung tippt, galt als falsch. */
+  for (const [a, tipp] of [['3x²', '3x^2'], ['a² + b² = c²', 'a^2 + b^2 = c^2'], ['x³', 'x^3'],
+                           ['√2', 'sqrt(2)'], ['u′·v + u·v′', "u'*v + u*v'"], ['f′(x₀) = 0', "f'(x0) = 0"],
+                           ['371.000 km²', '371000 km^2'], ['371.000 km²', '371000 km2']])
+    assert.ok(bewerte({ a }, tipp) >= 0.8, `„${tipp}" gilt nicht als „${a}"`);
+  // Ein Exponent, der keine Ziffer ist, bleibt „hoch" - e^x ist nicht ex.
+  assert.ok(bewerte({ a: 'e^x' }, 'e hoch x') >= 0.8);
+  assert.ok(bewerte({ a: 'e^x' }, 'ex') < 0.8, '„ex" ist nicht e hoch x');
+  // Die Rechenzeichen tragen weiter Bedeutung.
+  assert.ok(bewerte({ a: 'a² + b² = c²' }, 'a^2 - b^2 = c^2') < 0.8, 'minus ist nicht plus');
+});
+
+test('Der Formelkopf ist keine Antwort: „A = π · r²" gilt auch als „π·r²"', () => {
+  /* Der Kopf benennt die Groesse, die Formel ist die Antwort. Wer die
+     Kreisflaeche als „pi*r^2" tippt, hat sie gewusst - und bekam 0,17. */
+  assert.ok(bewerte({ a: 'A = π · r²' }, 'π·r²') >= 0.8);
+  assert.ok(bewerte({ a: 'A = π · r²' }, 'pi*r^2') >= 0.8);
+  assert.ok(bewerte({ a: 'V = (4/3) · π · r³' }, '4/3*pi*r^3') >= 0.8);
+  assert.ok(bewerte({ a: 'A = π · r²' }, '2*pi*r') < 0.8, 'der Umfang ist nicht die Flaeche');
+  assert.ok(OHNE_FORMELKOPF instanceof RegExp, 'das Muster muss exportiert bleiben - das Messgeraet teilt es');
 });

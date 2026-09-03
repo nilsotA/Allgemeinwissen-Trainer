@@ -75,6 +75,15 @@ const ZEICHEN = [
   [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '], [/[·×*]/g, ' mal '],
   // Rechenzeichen tragen Bedeutung: ohne sie waere „a² − b² = c²" nicht von
   // „a² + b² = c²" zu unterscheiden – die falsche Formel galte als richtig.
+  /* Ein getipptes ^2 und ein hochgestelltes ² sind dieselbe Potenz. Vorher wurde
+     ² zur Ziffer und ^ zu „hoch" - „3x²" hiess „3x2", getipptes „3x^2" hiess
+     „3x hoch 2", und die richtige Ableitung galt als falsch (gemessen 0,33).
+     Kein deutsches Tastenfeld hat ein ²; wer eine Potenz tippt, tippt ^. Die
+     Hochzahl geht deshalb in dieselbe Form wie ² - die blosse Ziffer - und nur
+     ein Exponent, der keine Ziffer ist (e^x), bleibt „hoch". So passt auch
+     „km^2" auf „km²". */
+  [/\^(\d)/g, '$1'],
+  [/\bsqrt\b/gi, ' wurzel '],
   [/=/g, ' gleich '], [/\+/g, ' plus '], [/−/g, ' minus '], [/\^/g, ' hoch '],
   [/(^|\s)-(?=\s|$|\d)/g, ' minus '],
   [/ℕ/g, ' n '], [/ℤ/g, ' z '], [/ℚ/g, ' q '], [/ℝ/g, ' r '], [/ℂ/g, ' c '],
@@ -83,7 +92,7 @@ const ZEICHEN = [
   [/[–—]/g, ' '],
   // Der Ableitungsstrich traegt Bedeutung: ohne ihn waere die Produktregel
   // „u' · v + u · v'" nicht von „u · v + u' · v'" zu unterscheiden.
-  [/[’´`']/g, ' strich '],
+  [/[’´`'′]/g, ' strich '],
   // é, à, ç und ñ standen hier einmal einzeln. Sie erledigt jetzt die
   // Zerlegung in normalize() zusammen mit allen anderen Diakritika - eine
   // Liste von Hand haette immer nur die Zeichen gekannt, an die jemand dachte.
@@ -255,6 +264,11 @@ export const OHNE_ZUSATZ = /\s*\([^()]*\)\s*$/;
    verschwinden, auch in der Eingabe. „Vor Christus" und „Nach Christus" waeren
    dann dasselbe. Hier faellt nur das ERSTE Wort der Loesung weg, und auch das
    nur als zusaetzliche Vergleichsfassung – die volle Loesung zaehlt weiter. */
+/* „A = π · r²": Der Kopf benennt die Groesse, die Formel ist die Antwort. Wer
+   „π·r²" tippt, hat die Kreisflaeche gewusst - und bekam 0,50. Nur ein bis zwei
+   Buchstaben vor dem Gleichheitszeichen zaehlen als Kopf; „x = (−b ± …)/(2a)"
+   verliert dadurch nichts, denn die Loesungsformel ohne „x =" ist dieselbe. */
+export const OHNE_FORMELKOPF = /^[A-Za-z]{1,2}\s*=\s*(?=\S)/;
 export const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber)\s+/i;
 
 /* Bewertet eine getippte Eingabe gegen eine ganze Karte statt gegen eine
@@ -284,6 +298,8 @@ export function similarity(input, answer) {
     if (f.length >= 3) fassungen.add(f);
     const kurz = f.replace(OHNE_VORWORT, '').trim();
     if (kurz.length >= 3) fassungen.add(kurz);
+    const formel = f.replace(OHNE_FORMELKOPF, '').trim();
+    if (formel !== f && formel.length >= 3) fassungen.add(formel);
   }
   return Math.max(...[...fassungen].map(f => vergleich(input, f)));
 }
