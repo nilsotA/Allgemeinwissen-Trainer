@@ -1419,6 +1419,131 @@ Kerpen, und seine 91 Siege sind seit 2020 kein Rekord mehr. Cameron ist nicht �
 mehreren" Zwei-Milliarden-Filmen, sondern der Einzige mit dreien. „Schlagfertig" steht im Duden
 als Synonym von *eloquent* – und war als Ablenker gedacht.
 
+### Nicht mehr Karten, sondern richtige: der Bestand auf Wahrheit geprüft
+
+Alle drei Prüfsätze messen **Abdeckung**. Keiner misst, ob das, was dasteht, auch
+stimmt. Der Großteil der 2.127 Karten entstand, bevor es die Regel „zwei getrennt
+gebriefte Prüfer je Karte" gab. Deshalb diesmal keine neuen Karten, sondern eine
+Prüfung des Bestands.
+
+**Zuerst die Vorauswahl.** Eine vollständige Wahrheitsprüfung von 2.127 Karten wäre
+nicht zu bezahlen, also musste sie dorthin, wo Fehler wohnen: 880 Karten tragen eine
+Jahreszahl, einen Superlativ, eine Zuschreibung („geht zurück auf"), einen Zahlenwert
+in der Antwort oder eine verderbliche Angabe. Jedes Paket aus zehn Karten bekam einen
+eigenen Prüfer mit Webrecherche; jede Beanstandung ging danach an **zwei unabhängige
+Widerleger** – einer prüft den Beleg, einer die Verhältnismäßigkeit. Beide sind darauf
+angesetzt, die Beanstandung zu kippen, nicht sie zu bestätigen.
+
+**Was dabei herauskam – 33 Korrekturen.** Die wertvollste Sorte sind Ablenker, die in
+Wahrheit richtig sind. Sie bestrafen ausgerechnet den, der mehr weiß:
+
+| Karte | Der Ablenker, der stimmte |
+|---|---|
+| Skulptur „David" in Florenz | Donatellos Bronze-David steht ebenfalls in Florenz |
+| Erster Film mit elf Oscars | „Titanic" hat auch elf – der Kontexttext sagt es selbst |
+| Größter Muskel | nach Fläche ist es der Latissimus, der danebenstand |
+| Matrizenmultiplikation | „beide quadratisch und gleich groß" geht immer |
+| Bester Fußballer des Jahres | trifft auch die FIFA-Ehrung, die danebenstand |
+| Punkte pro Dart-„Wurf" | ein Dart oder eine Aufnahme: 60 oder 180, beide standen da |
+
+Dazu Sachfehler, die eine Lernkarte nicht haben darf: Churchill hat den „Eisernen
+Vorhang" nicht geprägt, sondern 1946 weltbekannt gemacht – der Ausdruck stand schon im
+Februar 1945 in der NS-Zeitung „Das Reich". Die Osterregel stammt nicht von Nicäa 325.
+Der Fackellauf wurde von Carl Diem ersonnen, nicht vom NS-Regime, das ihn inszeniert
+hat. Die Meisterschale ist nicht versilbert, sondern massives Sterlingsilber. Beethoven
+war 1824 nicht „fast", sondern völlig taub. Und die imaginäre Einheit wurde nicht wegen
+x² + 1 = 0 eingeführt – erzwungen haben sie die kubischen Gleichungen.
+
+**Der Merkanker „Warum Eis schwimmt" beantwortete seine eigene Frage nicht.** Er
+erklärte die Dichteanomalie bei 4 °C, und die erklärt, warum ein See von oben zufriert –
+nicht, warum Eis schwimmt. Das tut es wegen des offenen Kristallgitters. Der Text
+zementierte genau die Verwechslung, gegen die er half.
+
+**Und eine Korrektur an einer Gesundheitsangabe:** Der Anker sagte, Ruhepuls und
+Blutdruck messe man „beide morgens im Liegen – dann sind sie vergleichbar". Der
+Blutdruck wird sitzend gemessen; alle Grenzwerte beziehen sich darauf.
+
+### Die Gegenprüfung hat einmal geschlossen danebengelegen
+
+Ein Befund kam doppelt bestätigt zurück: Die Bundesjugendspiele verteilten Urkunden nur
+nach Punktegrenzen, nie nach einer Quote – die Karte mit ihren 20/50/30 sei falsch.
+Beide Widerleger stimmten zu, einer mit einer langen Indizienkette über GitHub-Quelltext.
+
+**Nachgeschlagen: Es gibt beides.** Im *Wettbewerb* gilt der Schlüssel 20/50/30, im
+*Wettkampf* gelten Punktegrenzen. Die Karte beginnt mit „Im Wettbewerb" und ist damit
+richtig. Nicht geändert.
+
+Der Grund steht in den Prüfberichten selbst: Beide Widerleger meldeten gesperrten
+Netzzugang – das Suchbudget des Laufs war aufgebraucht, der Proxy wies jeden Abruf ab.
+Sie urteilten aus dem Gedächtnis und irrten in dieselbe Richtung. **Zwei Prüfer sind
+keine zwei Prüfer, wenn beide dieselbe Quelle haben: sich selbst.** Gemessen: 9 von 29
+Agenten der Merkankerprüfung und 12 von 42 der Sportprüfung meldeten den Ausfall.
+
+Konsequenz für dieses Projekt: Ein Befund kommt nur in die Sammlung, wenn er entweder
+zwei Widerleger mit Beleg überstanden hat **oder** hier selbst nachgeschlagen bzw.
+nachgerechnet wurde. Die 72er-Zinsregel etwa wurde nachgerechnet – 70 trifft bis
+4 Prozent besser, 72 ab 6 Prozent –, die Meisterschale, der Eiserne Vorhang und die
+Einwohnerzahl wurden nachgeschlagen.
+
+### Was die Prüfung des Bestands nicht gefunden hat
+
+Vier Messungen über alle 2.127 Karten, alle ohne Befund. Sie stehen hier, damit sie
+niemand ein zweites Mal macht:
+
+| Gemessen | Ergebnis |
+|---|---|
+| Widersprüche zwischen zwei Karten (zwei Verfahren) | 19 Kandidaten, alle Fehlalarm |
+| Doppelte Karten | 72 Paare mit gleicher Antwort, höchste Fragenähnlichkeit 0,33 |
+| Ratbarkeit über gemeinsame Wortstämme | 26,0 % gegen 25 % Zufall |
+| Aufbau: Ablenkerzahl, Kontexttexte, Teilgebietsgrößen | 0 Lücken bei 55 Teilgebieten |
+
+Ebenfalls selbst nachgeschlagen und **unverändert gelassen**, weil verderbliche Angaben
+zuerst kaputtgehen: der 100-Meter-Weltrekord (Bolt, 9,58), Hochsprung (Sotomayor, 2,45),
+Weitsprung (Powell, 8,95), Speerwurf (über 98 m), Jan Ullrich als einziger deutscher
+Tour-Sieger (2026 gewann Pogačar), Dortmund als letzter deutscher Champions-League-Sieger
+neben Bayern (2025 und 2026 gewann Paris), Deutschland viermal Weltmeister (2026 gewann
+Spanien) und Messi mit acht Ballon d'Or.
+
+### Was von dieser Prüfung offen bleibt
+
+Die Prüfung ist **nicht vollständig**, und das gehört in die Bilanz:
+
+| Bereich | Geplant | Tatsächlich geprüft |
+|---|---|---|
+| Merkanker | 141 | 141 – vollständig |
+| Sport und Mathematik | 217 | 217 – vollständig |
+| Geschichte, Politik, Geografie, Natur | 365 | 365 geprüft, aber nur ein Befund gerettet |
+| Kultur, Sprache, Alltag | 298 | 30 – dann war das Nutzungslimit erreicht |
+| Stichprobe aus den 1.247 unmarkierten Karten | 104 | 0 – nicht gestartet |
+
+Zwei Ausfälle, beide außerhalb der Sammlung: Der Container hat den Arbeitsstand während
+des Laufs dreimal auf den Ursprungs-Commit zurückgesetzt und dabei die Prüfberichte
+gelöscht – von der größten Gruppe blieb nur der Befund übrig, der in der Benachrichtigung
+stand. Und die letzte Gruppe lief nach drei von dreißig Paketen ins Nutzungslimit.
+
+Was daraus folgt: Die 33 Korrekturen sind belastbar, jede einzeln nachvollzogen. Aber
+**„der Bestand ist geprüft" wäre gelogen** – geprüft und ausgewertet sind 358 der 880
+auffälligen Karten plus alle 141 Merkanker. Der Rest wartet. Die Vorauswahl selbst ist
+ebenfalls ungeprüft: Ob die 1.247 Karten ohne Jahreszahl, Superlativ oder Zuschreibung
+wirklich harmloser sind, sollte eine Stichprobe zeigen – sie steht noch aus.
+
+### Zwei Tore, die diese Fehlerklassen künftig abfangen
+
+Der Durchlauf über alle Karten hat zwei Muster gefunden, die bisher nur Handarbeit
+verhinderte. Beide sind jetzt Teil der Inhaltsprüfung:
+
+**Ein Ablenker, der beim freien Abrufen als richtige Eingabe gilt.** Zwei Karten tragen
+ihre Antwort in der Schreibung selbst: „SsW" gegen „SSW" und „ss" gegen „ß". Nach der
+Normalisierung ist das dasselbe Wort – gemessen 1,00 für den falschen Ablenker. Beide
+waren längst als reine Auswahlfragen gekennzeichnet, aber nichts hielt fest, dass das
+nötig ist. Gegenprobe: Kennzeichen entfernt → 1 Fehler mit Namen und Messwert.
+
+**Die Antwort steht wörtlich in der Frage.** 64 Karten teilen ein Wort mit ihrer Antwort,
+63 davon zu Recht – bei „Wie viele Liter Blut …" steht die Einheit in beiden. Eine war
+defekt: „Welches Instrument ist kein Streichinstrument: Bratsche, Cello, Oboe,
+Kontrabass?" nannte alle vier Optionen im Fragetext. Das Tor greift deshalb nur, wenn die
+**ganze** Antwort als zusammenhängende Wortfolge in der Frage steht.
+
 ### Eine Schranke gegen Antwortverrat – gemessen und verworfen
 
 Fünf der vierzehn bestätigten Quizmodus-Befunde und ein gutes Dutzend der Kartenbefunde hatten
