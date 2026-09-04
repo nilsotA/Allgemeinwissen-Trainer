@@ -1,7 +1,7 @@
 /* Geografie */
 export default [
 /* ---------- Deutschland ---------- */
-{q:"Wie viele Bundesländer hat Deutschland?",a:"16",s:"Deutschland",d:1,t:"Drei davon sind Stadtstaaten: Berlin, Hamburg, Bremen. Merkhilfe: 16 Länder, 16 Landtage.",w:["11","12","14"]},
+{q:"Wie viele Bundesländer hat Deutschland?",a:"16",s:"Deutschland",d:1,t:"Drei davon sind Stadtstaaten: Berlin, Hamburg, Bremen. Jedes Land hat ein Parlament – 13 heißen Landtag, Hamburg und Bremen Bürgerschaft, Berlin Abgeordnetenhaus.",w:["11","12","14"]},
 {q:"Welches Bundesland ist flächenmäßig das größte?",a:"Bayern",s:"Deutschland",d:1,t:"70.500 km². Bevölkerungsreichstes Land ist dagegen Nordrhein-Westfalen mit knapp 18 Millionen.",w:["Niedersachsen","Nordrhein-Westfalen","Baden-Württemberg"]},
 {q:"Welches Bundesland hat die meisten Einwohner?",a:"Nordrhein-Westfalen",s:"Deutschland",d:1,t:"Rund 18 Millionen – etwa jeder fünfte Deutsche. Landeshauptstadt ist Düsseldorf, nicht Köln.",w:["Bayern","Baden-Württemberg","Niedersachsen"]},
 {q:"Wie heißt der höchste Berg Deutschlands?",a:"Zugspitze",s:"Deutschland",d:1,t:"2.962 m, im Wettersteingebirge an der Grenze zu Österreich.",w:["Watzmann","Feldberg","Brocken"]},
@@ -25,7 +25,7 @@ export default [
 {q:"Wie heißt die Hauptstadt von Norwegen?",a:"Oslo",s:"Europa",d:1,t:"Hier wird als einziger Nobelpreis der Friedensnobelpreis verliehen – alle anderen in Stockholm.",w:["Bergen","Stockholm","Helsinki"]},
 {q:"Wie heißt die Hauptstadt der Schweiz?",a:"Bern",s:"Europa",d:1,t:"Nicht Zürich! Offiziell heißt Bern „Bundesstadt“, die Schweiz kennt keine formale Hauptstadt.",w:["Zürich","Genf","Basel"]},
 {q:"Wie heißt die Hauptstadt von Kroatien?",a:"Zagreb",s:"Europa",d:2,t:"Kroatien ist seit 2013 in der EU, seit 2023 im Euro- und Schengenraum.",w:["Split","Ljubljana","Sarajevo"]},
-{q:"Wie heißt die Hauptstadt von Ungarn?",a:"Budapest",s:"Europa",d:1,t:"Entstand 1873 aus Buda und Pest zu beiden Seiten der Donau.",w:["Bukarest","Bratislava","Belgrad"]},
+{q:"Wie heißt die Hauptstadt von Ungarn?",a:"Budapest",s:"Europa",d:1,t:"Entstand 1873 aus Buda, Óbuda und Pest zu beiden Seiten der Donau.",w:["Bukarest","Bratislava","Belgrad"]},
 {q:"Wie heißt die Hauptstadt von Rumänien?",a:"Bukarest",s:"Europa",d:2,t:"Nicht mit Budapest verwechseln – Bukarest liegt weiter südöstlich, an der Dâmbovița.",w:["Budapest","Sofia","Chișinău"]},
 {q:"Wie heißt die Hauptstadt von Irland?",a:"Dublin",s:"Europa",d:1,t:"Am Fluss Liffey. Bekanntestes Getränk: Guinness; Nationalfeiertag: St. Patrick's Day, 17. März.",w:["Belfast","Cork","Galway"]},
 {q:"Welcher ist der längste Fluss Europas?",a:"Die Wolga",s:"Europa",d:2,t:"3.531 km, komplett in Russland, mündet ins Kaspische Meer. Die Donau ist mit 2.850 km die Nummer zwei.",w:["Die Donau","Der Rhein","Der Dnepr"]},
