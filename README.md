@@ -59,9 +59,10 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
 Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt rund 101 Karten pro Tag,
-Spitzenlast etwa 140, gut 12 Minuten täglich. Nach einem halben Jahr sitzen rund 1.360 der
-1.671 Karten fest (über mehrere Läufe zwischen 1.333 und 1.395). Der Deckel für Wiederholungen sorgt dafür, dass die Tageslast nicht mit dem
-Kartenbestand mitwächst.
+Spitzenlast etwa 140, gut 12 Minuten täglich. Nach einem halben Jahr sind 1.608 der 2.127
+Karten angefangen, davon sitzen rund 1.366 fest. Der Deckel für Wiederholungen sorgt dafür,
+dass die Tageslast **nicht** mit dem Kartenbestand mitwächst – das ist der Punkt: Die Sammlung
+ist seit dieser Messung um 456 Karten gewachsen, die Tageslast ist es nicht.
 
 Die Simulation treibt bewusst den **echten** Code – den Scheduler, die Warteschlangen und den
 Speicher. Eine nachgebaute Rechnung prüft sonst nur sich selbst: In der früheren Fassung kam
