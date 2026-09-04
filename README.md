@@ -1504,6 +1504,30 @@ Tour-Sieger (2026 gewann Pogačar), Dortmund als letzter deutscher Champions-Lea
 neben Bayern (2025 und 2026 gewann Paris), Deutschland viermal Weltmeister (2026 gewann
 Spanien) und Messi mit acht Ballon d'Or.
 
+### Von Hand weitergeprüft: die Herkunftsgeschichten
+
+Solange keine Prüfagenten liefen, ging die Prüfung von Hand weiter – gezielt dort, wo
+die Merkankerprüfung die dichteste Fehlerader gefunden hatte: bei **Herkunftsgeschichten**.
+Wortherkünfte, „geht zurück auf", „erfunden von" – dort leben die hübschen, falschen
+Erzählungen. In den noch ungeprüften Kategorien Kultur, Sprache und Alltag tragen 65 von
+658 Karten so eine Behauptung.
+
+Der Befund ist erfreulich: Die meisten sind sauber, und viele hedgen schon von selbst
+richtig („soll", „meist erklärt mit", „der Überlieferung nach") – etwa bei der Pizza
+Margherita und der Flinte im Korn, wo genau das angebracht ist. Drei mussten korrigiert
+werden, jede mit Beleg nachgeschlagen:
+
+| Karte | Vorher | Nachgeschlagen |
+|---|---|---|
+| MacGuffin | „Der Begriff stammt von Hitchcock" | geprägt hat ihn Angus MacPhail, Hitchcock machte ihn berühmt |
+| Filmpreis Lola | nur Marlene Dietrichs Rolle | spielt auf drei Filme an: „Der blaue Engel", Fassbinders „Lola", „Lola rennt" |
+| „auf keine Kuhhaut gehen" | allgemein Pergament | ein Predigtmärlein: Der Teufel notiert die Sünden, die Kuhhaut reicht nicht |
+
+Der MacGuffin ist dasselbe Muster wie Churchill und der Eiserne Vorhang: **Wer etwas
+berühmt macht, gilt schnell als der, der es erfunden hat.** Das ist die häufigste
+Fehlerform in einer Allgemeinwissenssammlung – und sie fällt niemandem auf, weil alle
+sie glauben.
+
 ### Was von dieser Prüfung offen bleibt
 
 Die Prüfung ist **nicht vollständig**, und das gehört in die Bilanz:
