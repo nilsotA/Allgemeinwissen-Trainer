@@ -23,14 +23,15 @@ sondern sattelfest sein.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (21 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (15 – Reinheitsgebot,
-Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (7 – Penicillin, Dynamit,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (11 Quiz-Klassiker vom
-Wanderfalken bis zum blauen Krakenblut), acht Karten zu **Marken** (Adidas und Puma aus
-Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont) und sechs zu **Popmusik
-und ESC** (Lena, Nicole, Freddie Mercury, Falco).
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (23 – Reinheitsgebot,
+Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (9 – Penicillin, Dynamit,
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (13 Quiz-Klassiker vom
+Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
+und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
+Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
+Freddie Mercury, Falco).
 
-Ein eigenes Teilgebiet **Geld im Alltag** (41 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
+Ein eigenes Teilgebiet **Geld im Alltag** (45 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
 zählen und in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und
 Kündigungsfrist, Probezeit und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man
 trotzdem braucht. Dazu die Fristen, die man einmal falsch verstreichen lässt und dann nicht
@@ -1539,6 +1540,25 @@ widerlegt: Die Karte zur Chinesischen Mauer fragt nach dem Bauwerk, das „angeb
 einziges vom Mond aus sichtbar" sei, „was aber nicht stimmt", und die Chamäleon-Karte
 nennt den Tarnungs-Mythos beim Namen. Auch Edison steht richtig da: Er hat die Glühlampe
 nicht erfunden, sondern massentauglich gemacht.
+
+### Vier Zahlen im README waren falsch – jetzt prüft das die Inhaltsprüfung
+
+Beim Nachzählen für den Prüfbericht fiel auf, dass die Selbstbeschreibung der Sammlung nicht
+mehr stimmte: 41 Karten „Geld im Alltag", wo 45 lagen, 15 „Essen & Trinken" statt 23, 7
+„Erfindungen" statt 9, 11 „Tiere" statt 13. Dazu beschrieb der Text zwei Teilgebiete
+(„Marken", „Popmusik und ESC"), die es so gar nicht mehr gibt – die Karten liegen längst
+unter Wirtschaft und Musik.
+
+Das ist keine Kleinigkeit: Eine Doku, die eine Sammlung beschreibt, die es nicht gibt, ist
+schlimmer als keine. Und es fällt niemandem auf, weil niemand nachzählt.
+
+**Jetzt zählt die Inhaltsprüfung nach.** Neun Behauptungen aus dem README – Gesamtzahl, die
+beiden Schwerpunktfächer, die Merkanker und fünf namentlich genannte Teilgebiete – werden
+gegen die Sammlung geprüft. Zwei Gegenproben: eine Zahl verfälscht → `FEHLER README behauptet
+41 für „Geld im Alltag", gezaehlt sind 45`; den Satz so umgeschrieben, dass das Muster nicht
+mehr greift → `HINWEIS: die Zahl zu „Geld im Alltag" ist nicht mehr auffindbar`. Der zweite
+Fall ist der wichtigere: Er fängt ab, dass eine Prüfung still ins Leere läuft, nachdem jemand
+den Satz umformuliert hat.
 
 ### Was von dieser Prüfung offen bleibt
 

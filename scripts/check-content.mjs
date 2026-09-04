@@ -152,6 +152,37 @@ for (const c of CARDS) {
   }
 }
 
+/* Zahlen im README, die mit der Sammlung mitwachsen muessen. Sie sind es
+   mehrfach nicht: Da standen 41 Karten „Geld im Alltag", wo 45 lagen, und 15
+   „Essen & Trinken", wo 23 lagen. Das faellt niemandem auf, weil niemand
+   nachzaehlt – und dann beschreibt die Doku eine Sammlung, die es nicht gibt.
+   Geprueft wird nur, was sich eindeutig zuordnen laesst: die Gesamtzahl, die
+   beiden Schwerpunktfaecher, die Merkanker und die namentlich genannten
+   Teilgebiete. Findet ein Muster gar nichts mehr, ist das ebenfalls ein Befund –
+   dann wurde der Satz umgeschrieben und die Pruefung greift ins Leere. */
+const readme = existsSync('README.md') ? readFileSync('README.md', 'utf8') : null;
+if (readme) {
+  const tausend = (n) => n.toLocaleString('de-DE');
+  const jeKategorie = countByCat();
+  const teilgebiet = (name) => CARDS.filter((c) => c.sub === name).length;
+  const behauptungen = [
+    ['Gesamtzahl', /\*\*([\d.]+) Karten\*\* in neun Themen/, tausend(CARDS.length)],
+    ['Sport', /\*\*Sport\*\* \((\d+) Karten/, String(jeKategorie.spo)],
+    ['Mathematik', /\*\*Mathematik\*\* \((\d+) Karten/, String(jeKategorie.mat)],
+    ['Merkanker', /(\d+) Merkanker/, String(FACTS.length)],
+    ['Mythologie', /\*\*Mythologie\*\* \((\d+) Karten/, String(teilgebiet('Mythologie'))],
+    ['Essen & Trinken', /\*\*Essen & Trinken\*\* \((\d+) /, String(teilgebiet('Essen & Trinken'))],
+    ['Erfindungen', /\*\*Erfindungen\*\* \((\d+) /, String(teilgebiet('Erfindungen'))],
+    ['Tiere', /\*\*Tiere\*\* \((\d+) /, String(teilgebiet('Tiere'))],
+    ['Geld im Alltag', /\*\*Geld im Alltag\*\* \((\d+) Karten\)/, String(teilgebiet('Geld im Alltag'))],
+  ];
+  for (const [was, muster, ist] of behauptungen) {
+    const treffer = readme.match(muster);
+    if (!treffer) { warn(`README: die Zahl zu „${was}" ist nicht mehr auffindbar – Muster ${muster} greift ins Leere`); continue; }
+    if (treffer[1] !== ist) fail(`README behauptet ${treffer[1]} für „${was}", gezaehlt sind ${ist}`);
+  }
+}
+
 /* Ein Ablenker, der beim freien Abrufen als richtig durchgeht. Zwei Karten
    tragen ihre Antwort in der Schreibung selbst: „SsW" gegen „SSW" und „ss"
    gegen „ß". normalize() macht daraus dasselbe Wort, also galt der Ablenker als
