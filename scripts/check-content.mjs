@@ -136,6 +136,22 @@ for (const c of CARDS) {
   if (glieder.length < 2) fail(`${c.id}: als Menge gekennzeichnet, aber die Antwort ist keine Aufzaehlung – „${c.a}"`);
   if (c.mc) warn(`${c.id}: als Menge gekennzeichnet, laeuft aber nur als Auswahlfrage`);
 }
+/* Die Antwort steht woertlich in der Frage. Eine Karte fragte „Welches
+   Instrument ist kein Streichinstrument: Bratsche, Cello, Oboe, Kontrabass?" –
+   beim freien Abrufen las der Nutzer die vier Namen und schrieb einen ab. Der
+   Sonderfall ist eng gefasst: Getroffen wird nur, wenn die GANZE Antwort als
+   zusammenhaengende Wortfolge in der Frage steht. Dass Frage und Antwort ein
+   Wort teilen, ist dagegen normal und kein Befund – „Wie viele Liter Blut …" hat
+   die Einheit in beiden, und „Welche Schlacht …" die Gattung. */
+for (const c of CARDS) {
+  if (c.mc) continue;
+  const frage = ' ' + normalize(c.q) + ' ';
+  const antwort = normalize(c.a);
+  if (antwort.length >= 4 && frage.includes(' ' + antwort + ' ')) {
+    fail(`${c.id}: die Antwort „${c.a}" steht woertlich in der Frage – umformulieren oder mc: true`);
+  }
+}
+
 /* Ein Ablenker, der beim freien Abrufen als richtig durchgeht. Zwei Karten
    tragen ihre Antwort in der Schreibung selbst: „SsW" gegen „SSW" und „ss"
    gegen „ß". normalize() macht daraus dasselbe Wort, also galt der Ablenker als
