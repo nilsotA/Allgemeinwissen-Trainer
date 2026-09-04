@@ -909,3 +909,41 @@ test('eine Klammer, die am Wort klebt, ist Teil der Formel und kein Zusatz', () 
   assert.ok(similarity('P(AnB)/P', 'P(A∩B)/P(B)') < 0.8, 'abgeschnittene Formel gilt nicht');
   assert.ok(similarity('Erythropoetin', 'Erythropoetin (EPO)') >= 0.8, 'abgesetzter Zusatz bleibt freiwillig');
 });
+
+/* Das Werkzeug, mit dem geprüfte Korrekturen eingepflegt werden. Es fasst
+   Kartenzeilen als Text an – deshalb muss belegt sein, dass es das eine Feld
+   trifft und die übrigen unangetastet lässt. */
+const { ersetzeInZeile, kennung } = await import('../scripts/karte-aendern.mjs');
+const ZEILE = '{q:"Wie lang ist ein Marathon?",a:"42,195 km",s:"Rekorde",d:1,t:"Alt.",w:["40 km","42 km","45 km"]},';
+
+test('ändert genau ein Feld und lässt die anderen stehen', () => {
+  const neu = ersetzeInZeile(ZEILE, 't', 'Neuer Kontext.');
+  assert.ok(neu.includes('t:"Neuer Kontext."'), 't ist ersetzt');
+  assert.ok(neu.includes('a:"42,195 km"'), 'a bleibt');
+  assert.ok(neu.includes('w:["40 km","42 km","45 km"]'), 'w bleibt');
+  assert.equal(neu.split(',t:').length, 2, 't kommt genau einmal vor');
+});
+
+test('eine neue Frage hinterlegt den alten Wortlaut als p', () => {
+  // Ohne p bekäme die Karte eine neue Kennung und der Lernstand bliebe an der alten hängen.
+  const neu = ersetzeInZeile(ZEILE, 'q', 'Wie lang ist ein Marathonlauf?');
+  assert.ok(neu.startsWith('{q:"Wie lang ist ein Marathonlauf?",p:"Wie lang ist ein Marathon?",'));
+  assert.throws(() => ersetzeInZeile(neu, 'q', 'Noch anders'), /schon ein p/);
+});
+
+test('Nebenschreibweisen werden ergänzt, nicht ersetzt', () => {
+  const eins = ersetzeInZeile(ZEILE, 'az', ['42195 m']);
+  const zwei = ersetzeInZeile(eins, 'az', ['42,195 Kilometer', '42195 m']);
+  assert.ok(zwei.includes('az:["42195 m","42,195 Kilometer"]'), 'ergänzt und entdoppelt');
+});
+
+test('ein Ablenker darf nicht die Antwort sein und keiner doppelt', () => {
+  assert.throws(() => ersetzeInZeile(ZEILE, 'w', ['40 km', '42,195 km', '45 km']), /gleich der Antwort/);
+  assert.throws(() => ersetzeInZeile(ZEILE, 'w', ['40 km', '40 km', '45 km']), /zwei Ablenker sind gleich/);
+  assert.throws(() => ersetzeInZeile(ZEILE, 'w', ['40 km', '42 km']), /genau drei/);
+});
+
+test('die Kennung stimmt mit der aus data/index.js überein', () => {
+  const beispiel = CARDS[0];
+  assert.equal(kennung(beispiel.q, beispiel.cat), beispiel.id);
+});

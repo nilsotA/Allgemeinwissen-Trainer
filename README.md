@@ -409,11 +409,12 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 135 Einheitentests plus Inhaltsprüfung
+npm test           # 140 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 188 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 29 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
+npm run karte      # ein Feld einer Karte ändern, über ihre Kennung
 npm run abdeckung  # wie viele typische Quizfragen die Sammlung beantwortet
 npm run luecken    # Begriffe, die vorkommen, ohne je Antwort zu sein
 npm run simulate   # simuliert 180 Tage Lernverlauf
@@ -2027,8 +2028,28 @@ Normalisieren zusammen.
 Ohne `w` erzeugt die App die falschen Antworten selbst – aus dem Antwortpool desselben
 Teilgebiets, bei Jahreszahlen und Zahlen als knappe Beinahe-Treffer.
 IDs entstehen aus dem Fragetext, deshalb bleibt der Lernfortschritt beim Ergänzen erhalten.
-Umgekehrt heißt das: Wer eine Frage umformuliert, setzt den Fortschritt dieser einen Karte
-zurück.
+Wer eine Frage **umformuliert**, ändert damit ihre ID – der alte Wortlaut gehört dann als
+`p` an die Karte, dann wandert der Lernstand mit:
+
+```js
+{ q: "Neue Formulierung?", p: "Alte Formulierung?", a: "…" }
+```
+
+`p` nimmt auch eine Liste, wenn eine Karte schon mehrfach umformuliert wurde.
+
+**Einzelne Felder ändern** – nach einer Prüfrunde stehen leicht dreißig Korrekturen an,
+verteilt über neun Dateien:
+
+```bash
+npm run karte auftrag.json     # [{ "id": "spo-…", "feld": "t", "wert": "…" }, …]
+```
+
+Das Werkzeug sucht die Karte über ihre Kennung statt über die Zeilennummer, trifft genau
+ein Feld (`q`, `a`, `t`, `w`, `w0`–`w2`, `az`), hinterlegt bei einer neuen Frage
+automatisch das `p` und bricht ab, bevor es etwas Falsches schreibt: wenn ein Ablenker
+gleich der Antwort wäre, wenn zwei Ablenker gleich wären oder wenn die Karte schon ein `p`
+trägt. Von Hand gesucht und ersetzt geht irgendwann eine Zeile still kaputt – die Datei
+bleibt gültiges JavaScript, nur die Karte stimmt nicht mehr.
 
 Nach Änderungen `npm test` und `npm run build` laufen lassen.
 
