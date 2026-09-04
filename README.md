@@ -1437,7 +1437,7 @@ eigenen Prüfer mit Webrecherche; jede Beanstandung ging danach an **zwei unabh�
 Widerleger** – einer prüft den Beleg, einer die Verhältnismäßigkeit. Beide sind darauf
 angesetzt, die Beanstandung zu kippen, nicht sie zu bestätigen.
 
-**Was dabei herauskam – 33 Korrekturen.** Die wertvollste Sorte sind Ablenker, die in
+**Was dabei herauskam – 91 Korrekturen.** Die wertvollste Sorte sind Ablenker, die in
 Wahrheit richtig sind. Sie bestrafen ausgerechnet den, der mehr weiß:
 
 | Karte | Der Ablenker, der stimmte |
@@ -1448,6 +1448,10 @@ Wahrheit richtig sind. Sie bestrafen ausgerechnet den, der mehr weiß:
 | Matrizenmultiplikation | „beide quadratisch und gleich groß" geht immer |
 | Bester Fußballer des Jahres | trifft auch die FIFA-Ehrung, die danebenstand |
 | Punkte pro Dart-„Wurf" | ein Dart oder eine Aufnahme: 60 oder 180, beide standen da |
+| Bogart-Zitat | zwei Ablenker waren derselbe Film: „Der Malteser Falke" und „Die Spur des Falken" |
+| Längster Fluss | der Amazonas stand als Ablenker, während der Kontexttext ihn selbst als möglichen Sieger nennt |
+| Aktiver Flug | „Gleithörnchen" und „Flughörnchen" sind dasselbe Tier |
+| Nicht rechteckige Flagge | umgangssprachlich trifft das auch die quadratischen Flaggen der Schweiz und des Vatikans |
 
 Dazu Sachfehler, die eine Lernkarte nicht haben darf: Churchill hat den „Eisernen
 Vorhang" nicht geprägt, sondern 1946 weltbekannt gemacht – der Ausdruck stand schon im
@@ -1465,6 +1469,30 @@ zementierte genau die Verwechslung, gegen die er half.
 **Und eine Korrektur an einer Gesundheitsangabe:** Der Anker sagte, Ruhepuls und
 Blutdruck messe man „beide morgens im Liegen – dann sind sie vergleichbar". Der
 Blutdruck wird sitzend gemessen; alle Grenzwerte beziehen sich darauf.
+
+### Ein Muster, das die halbe Fehlerliste erklärt
+
+Bei sieben Karten stand derselbe Fehler, in sieben verschiedenen Themen: **Wer etwas
+berühmt gemacht hat, gilt als der, der es erfunden hat.**
+
+| Karte | Berühmt gemacht von | Tatsächlich von |
+|---|---|---|
+| „Eiserner Vorhang" | Churchill, 1946 in Fulton | älter; im Februar 1945 in der NS-Zeitung „Das Reich" |
+| MacGuffin | Hitchcock | Angus MacPhail |
+| Olympischer Fackellauf | vom NS-Regime inszeniert | ersonnen von Carl Diem |
+| Schwarz-Rot-Gold | 1848 offiziell geworden | Lützower Freikorps, Urburschenschaft |
+| Brasília | Oscar Niemeyer (Regierungsbauten) | Stadtplan von Lúcio Costa |
+| Pockenimpfung | Edward Jenner, 1796 | Benjamin Jesty impfte seine Familie 1774 |
+| Das Wort „Roboter" | Karel Čapek mit „R.U.R." | vorgeschlagen von seinem Bruder Josef |
+
+Dazu die Monogramm-Signatur (Dürer machte sie zum Markenzeichen, erfunden hatten sie Meister
+E. S. und Schongauer) und die Osterregel (nicht von Nicäa 325, sondern aus Alexandria).
+
+Das ist kein Zufall und keine Schlamperei des Autors: **Genau so wird Allgemeinwissen
+weitergegeben.** Die Anekdote mit dem bekannten Namen setzt sich durch, die richtige
+Zuschreibung ist unbekannt. Eine Lernkarte, die diesen Weg nimmt, verbreitet den Irrtum
+zuverlässiger als ein Stammtisch – deshalb bekommt dieses Muster in jeder künftigen
+Prüfrunde einen eigenen Absatz im Prüfauftrag.
 
 ### Die Gegenprüfung hat einmal geschlossen danebengelegen
 
@@ -1561,28 +1589,42 @@ mehr greift → `HINWEIS: die Zahl zu „Geld im Alltag" ist nicht mehr auffindb
 Fall ist der wichtigere: Er fängt ab, dass eine Prüfung still ins Leere läuft, nachdem jemand
 den Satz umformuliert hat.
 
-### Was von dieser Prüfung offen bleibt
+### Die Vorauswahl war falsch – gemessen, nicht vermutet
 
-Die Prüfung ist **nicht vollständig**, und das gehört in die Bilanz:
+Die Prüfung hatte sich auf 880 Karten beschränkt: die mit einer Jahreszahl, einem
+Superlativ, einer Zuschreibung, einem Zahlenwert in der Antwort oder einer verderblichen
+Angabe. Dahinter stand eine Annahme – die übrigen 1.247 seien harmloser.
 
-| Bereich | Geplant | Tatsächlich geprüft |
-|---|---|---|
-| Merkanker | 141 | 141 – vollständig |
-| Sport und Mathematik | 217 | 217 – vollständig |
-| Geschichte, Politik, Geografie, Natur | 365 | 365 geprüft, aber nur ein Befund gerettet |
-| Kultur, Sprache, Alltag | 298 | 30 – dann war das Nutzungslimit erreicht |
-| Stichprobe aus den 1.247 unmarkierten Karten | 104 | 0 – nicht gestartet |
+**Die Annahme ist widerlegt.** Eine Kontrollstichprobe von 104 unmarkierten Karten ergab
+**12 Beanstandungen**, dieselbe Größenordnung wie bei den markierten. Und es waren keine
+Kleinigkeiten: Der zweite Hauptsatz galt laut Karte „in geschlossenen Systemen" statt in
+abgeschlossenen, das Leibniz-Kriterium verlangte etwas Unerfüllbares (die *Glieder* einer
+alternierenden Reihe können nicht monoton fallen, nur ihre Beträge), und bei der
+Angebotspolitik kehrte eine verunglückte Ellipse die Aussage um.
 
-Zwei Ausfälle, beide außerhalb der Sammlung: Der Container hat den Arbeitsstand während
-des Laufs dreimal auf den Ursprungs-Commit zurückgesetzt und dabei die Prüfberichte
-gelöscht – von der größten Gruppe blieb nur der Befund übrig, der in der Benachrichtigung
-stand. Und die letzte Gruppe lief nach drei von dreißig Paketen ins Nutzungslimit.
+Der Grund ist im Nachhinein offensichtlich: Die Marker finden Karten, deren *Antwort*
+etwas Prüfbares enthält. Die Fehler sitzen aber überwiegend im **Kontexttext** – und der
+hat Jahreszahlen, Zuschreibungen und Superlative unabhängig davon, ob die Antwort welche
+hat. Die Triage hat nach dem falschen Feld gesucht.
 
-Was daraus folgt: Die 33 Korrekturen sind belastbar, jede einzeln nachvollzogen. Aber
-**„der Bestand ist geprüft" wäre gelogen** – geprüft und ausgewertet sind 358 der 880
-auffälligen Karten plus alle 141 Merkanker. Der Rest wartet. Die Vorauswahl selbst ist
-ebenfalls ungeprüft: Ob die 1.247 Karten ohne Jahreszahl, Superlativ oder Zuschreibung
-wirklich harmloser sind, sollte eine Stichprobe zeigen – sie steht noch aus.
+Bilanz der Prüfung:
+
+| Bereich | Karten | Befunde | übernommen |
+|---|---|---|---|
+| Merkanker („Wissen des Tages") | 141 | 15 | 13 |
+| Sport und Mathematik | 217 | 23 | 13 |
+| Geschichte, Politik, Geografie, Natur | 365 | 33 | 27 |
+| Kultur, Sprache, Alltag | 298 | 31 | 25 |
+| Herkunftsgeschichten, von Hand | 65 | 3 | 3 |
+| Kontrollstichprobe der unmarkierten Karten | 104 | 12 | 10 |
+| **Summe** | | **117** | **91** |
+
+Rund ein Viertel der Beanstandungen wurde **nicht** übernommen: Pedanterie, Randfälle ohne
+Folge für den Lernenden, und Ersatztexte, die einen neuen Fehler eingebaut hätten.
+
+**Was offen bleibt:** 1.143 unmarkierte Karten sind weiterhin ungeprüft. Nach dem Ergebnis
+der Stichprobe ist dort mit rund einem Befund je zehn Karten zu rechnen – das ist die
+nächste Runde, und sie kann sich diesmal keine Vorauswahl sparen.
 
 ### Zwei Tore, die diese Fehlerklassen künftig abfangen
 
