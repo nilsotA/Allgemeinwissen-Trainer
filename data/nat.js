@@ -36,13 +36,13 @@ export default [
 {q:"Bei welcher Temperatur siedet Wasser auf Meereshöhe?",a:"100 °C",s:"Chemie",d:1,t:"Bei geringerem Luftdruck früher: auf dem Mount Everest schon bei rund 70 °C.",w:["80 °C","90 °C","95 °C"]},
 {q:"Was entsteht bei einer Verbrennung von Kohlenstoff mit Sauerstoff?",a:"Kohlendioxid",s:"Chemie",d:1,t:"C + O₂ → CO₂. Bei Sauerstoffmangel entsteht das giftige Kohlenmonoxid CO.",w:["Methan","Ozon","Kohlensäure"]},
 {q:"Wie heißt das leichteste Edelgas?",a:"Helium",s:"Chemie",d:2,t:"Edelgase reagieren kaum, weil ihre Außenschale voll ist. Helium wurde zuerst in der Sonne entdeckt – daher der Name (helios).",w:["Neon","Argon","Wasserstoff"]},
-{q:"Was ist eine Legierung?",a:"Ein Gemisch aus Metallen",s:"Chemie",d:2,t:"Bronze = Kupfer + Zinn, Messing = Kupfer + Zink, Stahl = Eisen + Kohlenstoff.",w:["Ein reines Metall","Eine Säure-Base-Reaktion","Ein Kunststoff"]},
+{q:"Was ist eine Legierung?",a:"Ein metallischer Werkstoff aus mehreren Elementen",s:"Chemie",d:2,t:"Bronze = Kupfer + Zinn, Messing = Kupfer + Zink, Stahl = Eisen + Kohlenstoff.",w:["Ein chemisch reines Metall ohne Zusätze","Eine Reaktion zwischen Säure und Base","Ein Kunststoff mit metallischem Glanz"]},
 {q:"Woraus besteht Bronze?",a:"Kupfer und Zinn",s:"Chemie",d:2,t:"Namensgeber einer ganzen Epoche. Messing dagegen: Kupfer und Zink.",w:["Kupfer und Zink","Eisen und Kohlenstoff","Blei und Zinn"]},
 {q:"Welches Metall ist bei Zimmertemperatur flüssig?",a:"Quecksilber",s:"Chemie",d:1,t:"Chemisches Symbol Hg (hydrargyrum). Wegen seiner Giftigkeit heute kaum noch in Thermometern.",w:["Blei","Gallium","Zinn"]},
 {q:"Was beschreibt die Avogadro-Konstante?",a:"Die Teilchenzahl in einem Mol",s:"Chemie",d:3,t:"Ein Mol Wasser sind 18 g. Die Zahl verbindet die Atomwelt mit dem, was man wiegen kann.",w:["Die Lichtgeschwindigkeit","Die Gaskonstante","Die Atommasse von Kohlenstoff"]},
 {q:"Was ist Ozon?",a:"Sauerstoff mit drei Atomen",s:"Chemie",d:2,t:"In der Stratosphäre schützt es vor UV-Strahlung, am Boden ist es ein Reizgas.",w:["Reiner Stickstoff","Ein Edelgas","Wasserstoffperoxid"]},
 {q:"Welche Säure befindet sich im menschlichen Magen?",a:"Salzsäure",s:"Chemie",d:1,t:"HCl, pH etwa 1–2. Sie tötet Keime und aktiviert Verdauungsenzyme.",w:["Schwefelsäure","Essigsäure","Zitronensäure"]},
-{q:"Was passiert bei der Oxidation von Eisen?",a:"Es rostet",s:"Chemie",d:1,t:"Eisen reagiert mit Sauerstoff und Wasser zu Eisenoxid. Edelstahl enthält Chrom, das eine Schutzschicht bildet.",w:["Es schmilzt","Es wird magnetisch","Es wird leichter"]},
+{q:"Was passiert bei der Oxidation von Eisen?",a:"Es rostet",s:"Chemie",d:1,t:"Eisen reagiert mit Sauerstoff und Wasser zu Eisenoxid. Nichtrostender Stahl enthält mindestens 10,5 % Chrom, das eine schützende Passivschicht bildet.",w:["Es schmilzt","Es wird magnetisch","Es wird leichter"]},
 
 /* ---------- Physik ---------- */
 {q:"Wie schnell ist das Licht im Vakuum?",a:"300.000 km/s",s:"Physik",d:1,t:"Genau 299.792.458 m/s. In einer Sekunde siebenmal um die Erde.",w:["30.000 km/s","3.000.000 km/s","1.080 km/h"]},
