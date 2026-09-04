@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { CARDS, CATS, countByCat } from '../data/index.js';
 import FACTS from '../data/facts.js';
-import { options, normalize } from '../assets/js/quiz.js';
+import { options, normalize, bewerte } from '../assets/js/quiz.js';
 
 const norm = (t) => normalize(t);
 
@@ -136,6 +136,20 @@ for (const c of CARDS) {
   if (glieder.length < 2) fail(`${c.id}: als Menge gekennzeichnet, aber die Antwort ist keine Aufzaehlung – „${c.a}"`);
   if (c.mc) warn(`${c.id}: als Menge gekennzeichnet, laeuft aber nur als Auswahlfrage`);
 }
+/* Ein Ablenker, der beim freien Abrufen als richtig durchgeht. Zwei Karten
+   tragen ihre Antwort in der Schreibung selbst: „SsW" gegen „SSW" und „ss"
+   gegen „ß". normalize() macht daraus dasselbe Wort, also galt der Ablenker als
+   richtige Eingabe – gemessen 1,00. Beide sind deshalb mit mc gekennzeichnet und
+   laufen nur als Auswahlfrage. Das war Handarbeit und blieb ungeschuetzt: Die
+   naechste solche Karte faellt niemandem auf. Hier faellt sie auf. */
+for (const c of CARDS) {
+  if (c.mc) continue;
+  for (const w of c.w || []) {
+    const note = bewerte(c, w);
+    if (note >= 0.8) fail(`${c.id}: Ablenker „${w}" gilt beim freien Abrufen als richtige Antwort (${note.toFixed(2)}) – die Karte braucht mc: true oder eine andere Schreibung`);
+  }
+}
+
 /* Das Kontextfeld t ist inzwischen die Stelle, an der die Fehler sitzen: In der
    letzten Pruefrunde waren bei vier von sechs abgelehnten Karten Frage, Antwort
    und Ablenker sauber - beanstandet wurde der Beitext. Zwei Sorten lassen sich
