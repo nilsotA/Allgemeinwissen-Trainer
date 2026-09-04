@@ -1528,6 +1528,17 @@ berühmt macht, gilt schnell als der, der es erfunden hat.** Das ist die häufig
 Fehlerform in einer Allgemeinwissenssammlung – und sie fällt niemandem auf, weil alle
 sie glauben.
 
+**Gezielt nach den Klassikern gesucht – und nichts gefunden.** Es gibt eine Handvoll
+Irrtümer, die in Quizsammlungen fast immer als Tatsache stehen: Einstein sei in Mathe
+sitzengeblieben, Wikinger hätten Hörnerhelme getragen, das Chamäleon tarne sich, die
+Chinesische Mauer sei vom Mond aus sichtbar, wir nutzten zehn Prozent unseres Gehirns.
+Ein Durchlauf über alle 2.127 Karten nach diesen und einem Dutzend weiterer Mustern
+findet keinen einzigen davon als Behauptung. Zwei kommen vor – und werden ausdrücklich
+widerlegt: Die Karte zur Chinesischen Mauer fragt nach dem Bauwerk, das „angeblich als
+einziges vom Mond aus sichtbar" sei, „was aber nicht stimmt", und die Chamäleon-Karte
+nennt den Tarnungs-Mythos beim Namen. Auch Edison steht richtig da: Er hat die Glühlampe
+nicht erfunden, sondern massentauglich gemacht.
+
 ### Was von dieser Prüfung offen bleibt
 
 Die Prüfung ist **nicht vollständig**, und das gehört in die Bilanz:
