@@ -1215,3 +1215,31 @@ test('das Einheitswort hinter einer Zahl darf fehlen – aber nur fehlen', () =>
   assert.ok(bewerte({ a: 'Vier Jahre' }, 'Fünf') < 0.8);
   assert.ok(bewerte({ a: 'Vier Jahre' }, 'Fünf Jahre') < 0.8);
 });
+
+/* Drei Maengel am Kartenwerkzeug, alle beim Anwenden von 321 Korrekturen
+   aufgefallen – und zwar erst, als es zu spaet war: Der erste Lauf hatte 75
+   Aenderungen geschrieben und brach dann ab. */
+test('das Kartenwerkzeug haelt auch dem Ernstfall stand', async () => {
+  const MIT_P = '{q:"Neue Frage?",p:"Alte Frage?",a:"Antwort",s:"X",d:1,t:"K",w:["a","b","c"]},';
+
+  /* Die Nebenschreibweise wird hinter dem a-Feld eingefuegt, wo immer das steht.
+     Vorher verlangte das Muster, dass a unmittelbar auf q folgt – bei jeder
+     Karte, die schon einen alten Wortlaut traegt, steht der dazwischen. Der
+     Fehler kam als „Cannot read properties of null" heraus. */
+  const neu = ersetzeInZeile(MIT_P, 'az', ['Zweitname']);
+  assert.ok(neu.includes('a:"Antwort",az:["Zweitname"]'), 'az schliesst ans a-Feld an');
+  assert.ok(neu.includes('p:"Alte Frage?"'), 'der alte Wortlaut bleibt stehen');
+
+  /* Eine Schreibweise, die schon dasteht, ergibt dieselbe Zeile. aendereAlle
+     nimmt das als Normalfall hin, statt den ganzen Stapel abzubrechen. */
+  assert.equal(ersetzeInZeile(neu, 'az', ['Zweitname']), neu, 'schon vorhanden bleibt unveraendert');
+
+  /* Der Aufruf-Zweig darf nur starten, wenn DIESE Datei aufgerufen wurde. Sonst
+     laeuft er mit, sobald ein anderes Skript kennung() importiert und selbst ein
+     Argument hat – dann landet dessen Argument hier als Auftragsdatei. */
+  const ausgabe = execFileSync(process.execPath, [
+    '-e', "import('./scripts/karte-aendern.mjs').then(m => console.log(typeof m.kennung))",
+    '/tmp/gibt-es-nicht.json',
+  ], { encoding: 'utf8', cwd: new URL('..', import.meta.url).pathname });
+  assert.match(ausgabe, /function/, 'der Import bleibt ohne Nebenwirkung');
+});
