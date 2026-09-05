@@ -951,3 +951,33 @@ test('die Kennung stimmt mit der aus data/index.js überein', () => {
   const beispiel = CARDS[0];
   assert.equal(kennung(beispiel.q, beispiel.cat), beispiel.id);
 });
+
+/* Ein getipptes Minus direkt hinter einer Klammer ging verloren: „(-b" wurde zu
+   „b". Getroffen hat das die meistgetippte Formel der Schulmathematik – wer die
+   Mitternachtsformel am Handy eingab, bekam 0,50 und galt als falsch. Das
+   typografische Minus (U+2212) war nie betroffen, deshalb fiel es nie auf. */
+test('ein Minuszeichen hinter einer Klammer bleibt ein Vorzeichen', () => {
+  const mitternacht = { a: 'x = (−b ± √(b² − 4ac)) / (2a)' };
+  assert.ok(bewerte(mitternacht, 'x = (-b ± sqrt(b^2 - 4ac)) / (2a)') >= 0.8, 'ASCII-Fassung der Mitternachtsformel');
+  assert.ok(bewerte(mitternacht, '(-b +- sqrt(b^2 - 4ac))/(2a)') >= 0.8, 'ohne Formelkopf, mit „+-" statt ±');
+  assert.equal(normalize('(-5)'), 'minus 5');
+  // Bindestriche im Wort bleiben Trenner, auch direkt hinter einer Klammer.
+  assert.equal(normalize('(Nord-Süd)'), 'nord sued');
+});
+
+/* Ein Bindestrich zwischen zwei Zahlen ist mehrdeutig: „1618-1648" ist eine
+   Spanne, „b^2-4ac" ein Rechenzeichen. Die Sammlung entscheidet die Frage –
+   Spannen kommen vor, eng getippte Rechenzeichen nur in einer einzigen Formel,
+   und die traegt dafuer eine Nebenschreibweise. Ohne Leerzeichen heisst der
+   Strich deshalb „bis", mit Leerzeichen „minus". */
+test('ein Bindestrich zwischen Zahlen ist eine Spanne', () => {
+  const krieg = { a: '1618 bis 1648' };
+  for (const ein of ['1618-1648', '1618–1648', '1618 bis 1648']) {
+    assert.ok(bewerte(krieg, ein) >= 0.8, `„${ein}" gilt nicht als „1618 bis 1648"`);
+  }
+  // Und die Antwort muss auf sich selbst passen, egal welcher Strich getippt wird.
+  const bmi = { a: 'normal 18,5–24,9' };
+  assert.ok(bewerte(bmi, 'normal 18,5-24,9') >= 0.8, 'Bindestrich statt Halbgeviertstrich');
+  // Mit Luft drumherum bleibt es ein Rechenzeichen.
+  assert.equal(normalize('7 - 3'), '7 minus 3');
+});

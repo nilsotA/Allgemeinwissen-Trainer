@@ -84,8 +84,22 @@ const ZEICHEN = [
      „km^2" auf „km²". */
   [/\^(\d)/g, '$1'],
   [/\bsqrt\b/gi, ' wurzel '],
+  /* Zwischen zwei Zahlen ist ein Binde- oder Halbgeviertstrich fast immer eine
+     SPANNE, kein Rechenzeichen: „1618-1648", „18,5-24,9". Beide Seiten muessen
+     dabei gleich behandelt werden - sonst passt die Antwort nicht mehr auf sich
+     selbst, sobald jemand statt des Halbgeviertstrichs den Bindestrich tippt.
+     Ohne Leerzeichen, denn genau so schreibt man Spannen; ein Rechenzeichen
+     bekommt dagegen fast immer Luft: „b² − 4ac". */
+  [/(\d)[-–](?=\d)/g, '$1 bis '],
+  /* „+-" und „+/-" sind das getippte ±. Muss vor der Plus-Regel stehen, sonst
+     frisst die das Pluszeichen und uebrig bleibt „plus minus" mit Leerzeichen. */
+  [/\+\/?-/g, ' plusminus '],
   [/=/g, ' gleich '], [/\+/g, ' plus '], [/−/g, ' minus '], [/\^/g, ' hoch '],
-  [/(^|\s)-(?=\s|$|\d|[a-zäöüß])/gi, ' minus '],
+  /* Auch hinter einer oeffnenden Klammer ist ein getipptes "-" ein Vorzeichen:
+     „(-b" wurde sonst zu „b", und die Mitternachtsformel in der Fassung, die
+     man am Handy tippt, galt als falsch (gemessen 0,50). Die Klammer selbst
+     faellt weiter unten ohnehin weg. */
+  [/(^|[\s(\[])-(?=\s|$|\d|[a-zäöüß])/gi, ' minus '],
   [/ℕ/g, ' n '], [/ℤ/g, ' z '], [/ℚ/g, ' q '], [/ℝ/g, ' r '], [/ℂ/g, ' c '],
   [/±/g, ' plusminus '], [/[≈~]/g, ' rund '], [/≤/g, ' hoechstens '], [/≥/g, ' mindestens '],
   [/∞/g, ' unendlich '], [/€/g, ' euro '], [/%/g, ' prozent '], [/&/g, ' und '],
