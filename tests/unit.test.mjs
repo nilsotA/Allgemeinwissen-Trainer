@@ -1067,6 +1067,22 @@ test('Einheitenkuerzel gelten wie das ausgeschriebene Wort', () => {
   // „m" und „s" allein bleiben Formelzeichen und werden nicht zu Einheiten.
   assert.equal(normalize('m'), 'm');
   assert.equal(normalize('s'), 's');
+  /* Mit und ohne Leerzeichen muss dasselbe herauskommen. Zwischen Ziffer und
+     Buchstabe steht keine Wortgrenze, deshalb traf „9kcal" die Einheitenregel
+     nicht und blieb „9 kcal", waehrend „9 kcal" zu „9 kilokalorien" wurde – wer
+     enger tippt, bekam eine andere Lesart. Gefunden beim Lesen, nicht beim
+     Messen: In der Tippprobe kommt kein solcher Fall vor. */
+  for (const [eng, weit] of [['9kcal', '9 kcal'], ['12kg', '12 kg'], ['340m/s', '340 m/s']]) {
+    assert.equal(normalize(eng), normalize(weit), `„${eng}" liest sich anders als „${weit}"`);
+  }
+  // Und die Flaeche bleibt in allen drei Schreibweisen dieselbe.
+  assert.equal(normalize('371.000 km²'), normalize('371000 km2'));
+  assert.equal(normalize('371000 km^2'), normalize('371000 km2'));
+  /* Getrennt wird nur, wo VOR der Ziffer kein Buchstabe steht. Sonst gehoert
+     sie in eine Formel und nicht zu einem folgenden Wort: „H2O" wurde sonst zu
+     „h2 o", waehrend „H₂O" mit tiefgestellter Ziffer „h2o" blieb. */
+  assert.equal(normalize('H2O'), normalize('H₂O'));
+  assert.equal(normalize('H2O'), 'h2o');
 });
 
 /* Die Eins ist im Deutschen auch der unbestimmte Artikel. */

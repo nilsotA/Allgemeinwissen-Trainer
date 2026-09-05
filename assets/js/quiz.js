@@ -105,9 +105,6 @@ const ZEICHEN = [
   [/\bpkt\.?(?=\s|$)/gi, ' punkte '],
   // Das Gradzeichen ist oben schon zu „grad" geworden.
   [/\bgrad\s+c\b/gi, ' grad celsius '],
-  /* „8bit" ist „8 Bit". Zwischen Zahl und Wort faellt das Leerzeichen beim
-     Tippen oft weg; gesetzt steht es da. Beide Seiten gleich behandeln. */
-  [/(\d)(?=[a-zäöüß])/gi, '$1 '],
   /* Zwischen zwei Zahlen ist ein Binde- oder Halbgeviertstrich fast immer eine
      SPANNE, kein Rechenzeichen: „1618-1648", „18,5-24,9". Beide Seiten muessen
      dabei gleich behandelt werden - sonst passt die Antwort nicht mehr auf sich
@@ -123,7 +120,13 @@ const ZEICHEN = [
      „(-b" wurde sonst zu „b", und die Mitternachtsformel in der Fassung, die
      man am Handy tippt, galt als falsch (gemessen 0,50). Die Klammer selbst
      faellt weiter unten ohnehin weg. */
-  [/(^|[\s(\[])-(?=\s|$|\d|[a-zäöüß])/gi, ' minus '],
+  /* Was folgt, muss eine Ziffer oder ein EINZELNER Buchstabe sein - also ein
+     Operand. Vorher genuegte irgendein Buchstabe, und damit wurde der
+     Gedankenstrich, den man am Handy als Bindestrich tippt, zum Minus:
+     „Sieben - die Cheops-Pyramide" hiess „7 minus cheops pyramide", waehrend
+     dieselbe Antwort mit Halbgeviertstrich „7 cheops pyramide" ergab. Neun
+     Karten im Bestand tragen so einen Strich. */
+  [/(^|[\s(\[])-(?=\s*(?:\d|[a-zäöü](?![a-zäöü])|$))/gi, ' minus '],
   /* Ein Bindestrich zwischen zwei EINZELNEN Buchstaben oder Ziffern ist ein
      Rechenzeichen: „(a-b)", „a2-b2", „x-3". Zusammengesetzte Woerter sind es
      nicht, und der Unterschied ist die Laenge des Nachbarn: „Nord-Sued",
@@ -143,8 +146,7 @@ const ZEICHEN = [
   // Zerlegung in normalize() zusammen mit allen anderen Diakritika - eine
   // Liste von Hand haette immer nur die Zeichen gekannt, an die jemand dachte.
 ];
-// „den", „einer", „eines" fehlten: „Grand Canyon" galt deshalb nicht als Antwort
-// auf eine Karte, deren Loesung „Den Grand Canyon" lautet.
+
 /* Abkuerzungen, die man am Handy tippt. Sie stehen hier und nicht in einer
    Ersetzung nach dem Normalisieren, weil der Punkt sie erst erkennbar macht -
    nach dem Wegwerfen der Satzzeichen ist „u." von einem „u" als Variable nicht
@@ -159,6 +161,21 @@ const MONATE = ['januar', 'februar', 'maerz', 'april', 'mai', 'juni', 'juli',
   'august', 'september', 'oktober', 'november', 'dezember'];
 
 const ABKUERZUNGEN = [
+  /* Ganz nach vorn, weil es keine Ersetzung ist, sondern eine Feststellung
+     ueber den Text: Zwischen einer Ziffer und einem Buchstaben liegt eine
+     Wortgrenze, auch ohne Leerzeichen. Getippt faellt das Leerzeichen dort
+     staendig weg, gesetzt steht es da.
+
+     Vorher stand die Regel weiter hinten, und alles davor sah „753v. Chr." und
+     „1 Mio." ohne Leerzeichen als ein einziges Wort - `\b` trifft zwischen
+     Ziffer und Buchstabe nicht. Gemessen ueber den Bestand waren so 15
+     Antworten in der eng getippten Fassung etwas anderes als in der gesetzten.
+
+     Nur wo VOR der Ziffer kein Buchstabe steht. Sonst gehoert sie nicht zu
+     einem folgenden Wort, sondern in eine Formel: „H2O" wurde sonst zu „h2 o",
+     waehrend „H₂O" mit tiefgestellter Ziffer „h2o" blieb - dieselbe
+     Ungleichbehandlung, nur in die andere Richtung. */
+  [/(?<![a-zäöü])(\d)(?=[a-zäöüß])/gi, '$1 '],
   /* „9.11.1989" ist dasselbe Datum wie „9. November 1989". Muss vor allem
      anderen stehen, damit der Tausenderpunkt weiter unten nicht zuerst
      hineingreift. */
@@ -184,6 +201,9 @@ const ABKUERZUNGEN = [
   [/\bd\.(?=\s|$)/gi, ' der '], [/\bz\.(?=\s|$)/gi, ' zu '],
 ];
 
+// „den", „einer", „eines" fehlten: „Grand Canyon" galt deshalb nicht als Antwort
+// auf eine Karte, deren Loesung „Den Grand Canyon" lautet. „the" kam dazu, weil
+// „The Sopranos" sonst nicht als „Die Sopranos" galt.
 const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|im|in|von|vom|zu|zum|zur|und|the)\b/g;
 
 /* Wer „Wie viele Kontinente gibt es?" beantwortet, tippt „7" und nicht „Sieben".

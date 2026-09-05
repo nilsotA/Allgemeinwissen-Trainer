@@ -197,6 +197,39 @@ for (const c of CARDS) {
   }
 }
 
+/* Dieselbe Antwort, anders getippt, muss dasselbe ergeben. Auf einer deutschen
+   Handytastatur gibt es kein ², kein √, kein ± und keinen Halbgeviertstrich;
+   das Leerzeichen zwischen Zahl und Einheit faellt beim Tippen weg, und der
+   Schlusspunkt kommt manchmal mit. Alles davon ist dieselbe Antwort.
+
+   Geprueft wird nicht die Bewertung, sondern die NORMALISIERUNG - und zwar der
+   Antwort gegen sich selbst. Das ist schaerfer: Eine Abweichung heisst, dass
+   der Vergleich zwei Fassungen derselben Zeichenkette fuer verschiedene Dinge
+   haelt, und ob das im Einzelfall noch ueber 0,80 landet, ist Glueck.
+
+   Gemessen bei der Einfuehrung: 15 Antworten. Die groesste Gruppe war der
+   Gedankenstrich - „Sieben – die Cheops-Pyramide" hiess getippt „7 minus
+   cheops pyramide". Gefunden habe ich das beim Lesen; die Tippprobe enthaelt
+   keinen einzigen dieser Faelle, weil ihre Fassungen von Hand geschrieben
+   wurden und niemand so tippt, wenn er nachdenkt. */
+const TIPPVARIANTEN = {
+  'ohne Leerzeichen vor der Einheit': (t) => t.replace(/(\d)\s+(?=[a-zäöüA-ZÄÖÜ])/g, '$1'),
+  'Hochzahl als ^n': (t) => t.replace(/²/g, '^2').replace(/³/g, '^3'),
+  'Wurzel als sqrt': (t) => t.replace(/√/g, 'sqrt'),
+  'plusminus als +-': (t) => t.replace(/±/g, '+-'),
+  'Malpunkt als Stern': (t) => t.replace(/·/g, '*'),
+  'Halbgeviert als Bindestrich': (t) => t.replace(/[–—]/g, '-'),
+  'alles klein': (t) => t.toLowerCase(),
+  'Punkt am Ende': (t) => `${t}.`,
+};
+for (const c of CARDS) {
+  for (const [art, f] of Object.entries(TIPPVARIANTEN)) {
+    const v = f(c.a);
+    if (v === c.a || norm(v) === norm(c.a)) continue;
+    fail(`${c.id}: „${c.a}" liest sich ${art} anders – „${norm(v)}" statt „${norm(c.a)}"`);
+  }
+}
+
 /* Dieselbe Antwort mit vertauschten Woertern darf NICHT gelten. Im Deutschen
    traegt die Reihenfolge die Aussage: „Upcycling fuehrt Material zurueck,
    Recycling schafft daraus etwas Hoeherwertiges" ist zeichenweise zu ueber 90
