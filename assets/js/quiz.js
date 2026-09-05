@@ -280,6 +280,24 @@ const WEGLASSBAR = new Set([
 ]);
 const traegtBedeutung = (t) => !WEGLASSBAR.has(t);
 
+/* Das Einheitswort hinter einer Zahl. „Ab welchem Alter darf man waehlen?" hat
+   die Loesung „Ab 18 Jahren" – wer „Ab 18" tippt, hat geantwortet und bekam
+   0,42. Die Einheit steckt schon in der Frage, nur eben als „Alter" und nicht
+   als „Jahre", weshalb die Regel fuer wiederholte Fragewoerter hier nicht
+   greift.
+
+   Wie die einordnenden Woerter duerfen diese FEHLEN, aber nicht zusaetzlich
+   dastehen: „Ab 18 Jahren Haft" bleibt eine andere Antwort. Und nur, wenn in
+   der Loesung ueberhaupt eine Zahl steht – „Die Jahre des Wachstums" behaelt
+   seine Jahre. */
+const EINHEITEN = new Set([
+  'jahr', 'jahre', 'jahren', 'monat', 'monate', 'monaten', 'woche', 'wochen',
+  'tag', 'tage', 'tagen', 'stunde', 'stunden', 'minute', 'minuten',
+  'sekunde', 'sekunden', 'meter', 'metern', 'zentimeter', 'millimeter',
+  'kilometer', 'gramm', 'kilogramm', 'liter', 'grad', 'euro', 'cent',
+  'punkte', 'punkten', 'prozent',
+]);
+
 /* Zwei Wörter meinen dasselbe, wenn sie sich nur wie ein Tippfehler unterscheiden.
    Kurze Wörter müssen exakt stimmen – „Zinn"/„Zink", „XIV"/„XVI", „Au"/„Ag" liegen
    einen Buchstaben auseinander und meinen etwas völlig anderes. Bei längeren Wörtern
@@ -649,7 +667,9 @@ function vergleich(input, answer, bekannt = new Set()) {
     return gleicheReihenfolge ? roh : Math.min(roh, 0.6);
   }
 
-  const fehlt = fehlend.filter(w => traegtBedeutung(w) && !bekannt.has(w));
+  const mitZahl = /\d/.test(b);
+  const fehlt = fehlend.filter(w => traegtBedeutung(w) && !bekannt.has(w)
+    && !(mitZahl && EINHEITEN.has(w)));
   const extra = ueberzaehlig.filter(w => traegtBedeutung(w) && !KLASSIFIKATOREN.has(w));
   // Bindewörter dürfen fehlen, aber nicht ausgetauscht werden: „mit haben" und
   // „mit werden" unterscheiden sich genau in so einem Wort.

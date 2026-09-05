@@ -1199,3 +1199,19 @@ test('vertauschte Woerter bleiben vertauscht, auch wenn ein Fuellwort dazwischen
   // „wegen" und „wenn" leiten eine Antwort ein wie „aus" – sie duerfen fehlen.
   assert.ok(bewerte({ a: 'Wegen der Neigung der Erdachse' }, 'Neigung der Erdachse') >= 0.8);
 });
+
+/* Gefunden beim blinden Beantworten des ganzen Bestands: Auf „Ab welchem Alter
+   darf man waehlen?" antwortet man „Ab 18". Die Einheit steckt in der Frage,
+   aber als „Alter" und nicht als „Jahre" – die Regel fuer wiederholte
+   Fragewoerter greift dort deshalb nicht. */
+test('das Einheitswort hinter einer Zahl darf fehlen – aber nur fehlen', () => {
+  assert.ok(bewerte({ q: 'Ab welchem Alter darf man wählen?', a: 'Ab 18 Jahren' }, 'Ab 18') >= 0.8);
+  assert.ok(bewerte({ a: 'Zwei Stunden' }, 'Zwei') >= 0.8);
+  // Ein zusaetzliches Wort wiegt unveraendert schwer.
+  assert.ok(bewerte({ a: 'Ab 18 Jahren' }, 'Ab 18 Jahren Haft') < 0.8);
+  // Ohne Zahl in der Loesung traegt das Wort wieder Bedeutung.
+  assert.ok(bewerte({ a: 'Die Jahre des Wachstums' }, 'Das Wachstum') < 0.8);
+  // Und die Zahl selbst muss weiterhin stimmen.
+  assert.ok(bewerte({ a: 'Vier Jahre' }, 'Fünf') < 0.8);
+  assert.ok(bewerte({ a: 'Vier Jahre' }, 'Fünf Jahre') < 0.8);
+});
