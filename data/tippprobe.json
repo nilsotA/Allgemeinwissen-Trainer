@@ -1,0 +1,2756 @@
+[
+ {
+  "id": "all-1022bpl",
+  "q": "Was ist die Hauptzutat von Hummus?",
+  "a": "Kichererbsen",
+  "kurz": "Kichererbsen",
+  "eigene": "Hauptsaechlich Kichererbsen",
+  "gesprochen": "Das sind Kichererbsen",
+  "getippt": "kichererbsen"
+ },
+ {
+  "id": "all-12wwhwh",
+  "q": "Wie viele Sternzeichen kennt der Tierkreis?",
+  "a": "Zwölf",
+  "kurz": "Zwölf",
+  "eigene": "Ein Dutzend",
+  "gesprochen": "Zwölf Stück",
+  "getippt": "12"
+ },
+ {
+  "id": "all-13ccemg",
+  "q": "Aus welcher Pflanze wird Zucker in Deutschland hauptsächlich gewonnen?",
+  "a": "Aus der Zuckerrübe",
+  "kurz": "Zuckerrübe",
+  "eigene": "Zucker kommt hier aus der Zuckerrübe",
+  "gesprochen": "Aus Zuckerrüben",
+  "getippt": "aus der zuckerruebe"
+ },
+ {
+  "id": "all-147zcn8",
+  "q": "Welcher Wochentag ist nach dem Mond benannt?",
+  "a": "Der Montag",
+  "kurz": "Montag",
+  "eigene": "Der Mond-Tag, also Montag",
+  "gesprochen": "Der Montag natürlich",
+  "getippt": "montag"
+ },
+ {
+  "id": "all-1a403v9",
+  "q": "Warum sieht man bei Gewitter den Blitz vor dem Donner?",
+  "a": "Weil Licht viel schneller ist als Schall",
+  "kurz": "Licht schneller als Schall",
+  "eigene": "Weil der Schall langsamer ist als das Licht",
+  "gesprochen": "Weil Licht halt viel schneller unterwegs ist als der Schall",
+  "getippt": "licht is viel schneller als schall"
+ },
+ {
+  "id": "all-1di418u",
+  "q": "Wie heißt die Währung Japans?",
+  "a": "Yen",
+  "kurz": "Yen",
+  "eigene": "Japanischer Yen",
+  "gesprochen": "Der Yen",
+  "getippt": "yen"
+ },
+ {
+  "id": "all-1ge4996",
+  "q": "Welche Energiesparlampe ist heute Standard?",
+  "a": "Die LED",
+  "kurz": "LED",
+  "eigene": "Die Leuchtdiode",
+  "gesprochen": "Heute sind's die LEDs",
+  "getippt": "led"
+ },
+ {
+  "id": "all-1gmflg1",
+  "q": "In welcher Stadt wurde die Currywurst erfunden?",
+  "a": "In Berlin",
+  "kurz": "Berlin",
+  "eigene": "Die Currywurst stammt aus Berlin",
+  "gesprochen": "Na in Berlin",
+  "getippt": "berlin"
+ },
+ {
+  "id": "all-1mu5xux",
+  "q": "Welche Farben hat die Flagge Österreichs?",
+  "a": "Rot-Weiß-Rot waagerecht",
+  "kurz": "Rot-Weiß-Rot waagerecht",
+  "eigene": "Waagerecht rot, weiß, rot",
+  "gesprochen": "Rot-weiß-rot, die Streifen liegen quer",
+  "getippt": "rot-weiss-rot waagerecht"
+ },
+ {
+  "id": "all-1oubkwd",
+  "q": "Welches Gewürz ist nach Gewicht das teuerste der Welt?",
+  "a": "Safran",
+  "kurz": "Safran",
+  "eigene": "Das teuerste ist Safran",
+  "gesprochen": "Safran, klar",
+  "getippt": "safran"
+ },
+ {
+  "id": "all-1rgko95",
+  "q": "Welcher Aufklärer prägte die klassische Lehre von der Teilung der Staatsgewalt in drei Gewalten?",
+  "a": "Montesquieu",
+  "kurz": "Montesquieu",
+  "eigene": "Charles de Montesquieu",
+  "gesprochen": "Das war Montesquieu",
+  "getippt": "Montesquieu"
+ },
+ {
+  "id": "all-1t6k30x",
+  "q": "In welcher Stadt wurde Jesus nach den Evangelien geboren?",
+  "a": "In Bethlehem",
+  "kurz": "Bethlehem",
+  "eigene": "Er wurde in Bethlehem geboren",
+  "gesprochen": "In Bethlehem halt",
+  "getippt": "bethlehem"
+ },
+ {
+  "id": "all-1v234h3",
+  "q": "Wer prägte den Begriff „Paradigmenwechsel“ für Umbrüche in der Wissenschaft?",
+  "a": "Thomas S. Kuhn",
+  "kurz": "Kuhn",
+  "eigene": "Thomas Kuhn",
+  "gesprochen": "Der Thomas Kuhn war das",
+  "getippt": "Thomas S. Kuhn"
+ },
+ {
+  "id": "all-1y17ton",
+  "q": "Was meinte Nietzsche mit „Gott ist tot“?",
+  "a": "Dass verbindliche religiöse Sinngebung ihre Kraft verloren hat",
+  "kurz": "Verbindliche religiöse Sinngebung hat ihre Kraft verloren",
+  "eigene": "Dass der Glaube als allgemein verbindliche Sinnquelle nicht mehr trägt",
+  "gesprochen": "Dass Religion als verbindlicher Sinnstifter einfach nicht mehr zieht",
+  "getippt": "dass verbindl. relig. Sinngebung ihre Kraft verloren hat"
+ },
+ {
+  "id": "all-47i2nw",
+  "q": "Wie viele Augen hat ein Standardwürfel auf gegenüberliegenden Seiten zusammen?",
+  "a": "Sieben",
+  "kurz": "Sieben",
+  "eigene": "Zusammen immer sieben Augen",
+  "gesprochen": "Gegenüber ergibt zusammen immer sieben",
+  "getippt": "7"
+ },
+ {
+  "id": "all-9pvale",
+  "q": "In welcher Stadt liegt der Ursprung des Croissants?",
+  "a": "In Wien",
+  "kurz": "Wien",
+  "eigene": "Das Croissant hat seinen Ursprung in Wien",
+  "gesprochen": "Kommt urspruenglich aus Wien",
+  "getippt": "wien"
+ },
+ {
+  "id": "all-c60u01",
+  "q": "Was bedeutet die Angabe „mindestens haltbar bis“?",
+  "a": "Das Lebensmittel ist danach oft noch genießbar",
+  "kurz": "danach oft noch genießbar",
+  "eigene": "Nach dem Datum ist das Lebensmittel meist noch essbar",
+  "gesprochen": "Heißt nicht, dass es schlecht ist – danach kann man das oft noch essen",
+  "getippt": "danach oft noch geniessbar"
+ },
+ {
+  "id": "all-eksqum",
+  "q": "Welche sind die fünf großen Weltreligionen?",
+  "a": "Christentum, Islam, Hinduismus, Buddhismus, Judentum",
+  "kurz": "Christentum, Islam, Hinduismus, Buddhismus, Judentum",
+  "eigene": "Judentum, Christentum und Islam sowie Hinduismus und Buddhismus",
+  "gesprochen": "Also Christentum, Islam, Hinduismus, Buddhismus und Judentum",
+  "getippt": "christentum, islam, hinduismus, buddhismus, judentum"
+ },
+ {
+  "id": "all-hbu7yb",
+  "q": "Welcher jüdische Feiertag gilt als höchster Fest- und Fasttag des Jahres?",
+  "a": "Jom Kippur",
+  "kurz": "Jom Kippur",
+  "eigene": "Der Versöhnungstag Jom Kippur",
+  "gesprochen": "Jom Kippur, der Versöhnungstag halt",
+  "getippt": "Jom Kippur"
+ },
+ {
+  "id": "all-hnzbt9",
+  "q": "Warum haben Weingläser einen langen Stiel?",
+  "a": "Damit die Handwärme den Wein nicht erwärmt",
+  "kurz": "Damit die Handwärme den Wein nicht erwärmt",
+  "eigene": "Damit man das Glas halten kann, ohne den Wein mit der Handwärme aufzuwärmen",
+  "gesprochen": "Damit man den Wein nicht mit der Hand warm macht",
+  "getippt": "damit die Handwaerme den Wein nicht erwaermt"
+ },
+ {
+  "id": "all-ijit40",
+  "q": "Wie heißt die Versammlung der Kardinäle zur Wahl eines neuen Papstes?",
+  "a": "Das Konklave",
+  "kurz": "Konklave",
+  "eigene": "Das Kardinalskonklave",
+  "gesprochen": "Das nennt man Konklave",
+  "getippt": "Konklave"
+ },
+ {
+  "id": "all-it2v44",
+  "q": "Was bedeutet der Begriff „CO₂-Fußabdruck“?",
+  "a": "Die Menge Treibhausgase, die eine Aktivität verursacht",
+  "kurz": "Menge Treibhausgase einer Aktivität",
+  "eigene": "Wie viel Treibhausgas durch eine bestimmte Aktivität entsteht",
+  "gesprochen": "Wie viele Treibhausgase das verursacht, was man so macht",
+  "getippt": "menge treibhausgase die eine aktivitaet verursacht"
+ },
+ {
+  "id": "all-jztafs",
+  "q": "Wer gilt als Begründer der abendländischen Philosophie-Trias?",
+  "a": "Sokrates, Platon, Aristoteles",
+  "kurz": "Sokrates, Platon, Aristoteles",
+  "eigene": "Die Reihe Sokrates - sein Schüler Platon - dessen Schüler Aristoteles",
+  "gesprochen": "Sokrates, Platon und Aristoteles halt",
+  "getippt": "sokrates, platon, aristoteles"
+ },
+ {
+  "id": "all-kq8ifu",
+  "q": "Wie viele Sekunden hat ein Tag?",
+  "a": "86.400",
+  "kurz": "86.400",
+  "eigene": "86.400 Sekunden, also 24 mal 60 mal 60",
+  "gesprochen": "Sechsundachtzigtausendvierhundert Sekunden",
+  "getippt": "86400"
+ },
+ {
+  "id": "all-obz73n",
+  "q": "Wie viele Kalorien hat ein Gramm Fett?",
+  "a": "9 Kilokalorien",
+  "kurz": "9 Kilokalorien",
+  "eigene": "Neun kcal pro Gramm",
+  "gesprochen": "Neun Kilokalorien pro Gramm",
+  "getippt": "9 kcal"
+ },
+ {
+  "id": "all-osp95f",
+  "q": "Welche Papiere braucht man beim Autofahren in Deutschland?",
+  "a": "Führerschein und Fahrzeugschein",
+  "kurz": "Führerschein und Fahrzeugschein",
+  "eigene": "Die Fahrerlaubnis und die Zulassungsbescheinigung Teil I, also Führerschein und Fahrzeugschein",
+  "gesprochen": "Führerschein und Fahrzeugschein musst du dabeihaben",
+  "getippt": "fuehrerschein + fahrzeugschein"
+ },
+ {
+  "id": "all-q1ni3x",
+  "q": "Welche Notrufnummer ruft in Deutschland die Polizei?",
+  "a": "110",
+  "kurz": "110",
+  "eigene": "Die 110",
+  "gesprochen": "Man wählt die 110",
+  "getippt": "110"
+ },
+ {
+  "id": "all-q3k8lt",
+  "q": "Welches christliche Fest wird am 6. Januar gefeiert und beendet die Weihnachtszeit?",
+  "a": "Das Dreikönigsfest",
+  "kurz": "Dreikönigsfest",
+  "eigene": "Epiphanias, das Fest der Heiligen Drei Könige",
+  "gesprochen": "Heilige Drei Könige, also das Dreikönigsfest",
+  "getippt": "Dreikoenigsfest"
+ },
+ {
+  "id": "all-r3gzed",
+  "q": "Welches Nahrungsmittel verdirbt praktisch nie?",
+  "a": "Honig",
+  "kurz": "Honig",
+  "eigene": "Bienenhonig",
+  "gesprochen": "Honig, der hält ewig",
+  "getippt": "honig"
+ },
+ {
+  "id": "all-rkf81i",
+  "q": "Wie viele Sterne hat die Europaflagge?",
+  "a": "Zwölf",
+  "kurz": "Zwölf",
+  "eigene": "Es sind zwölf Sterne",
+  "gesprochen": "Zwölf Sterne sind das",
+  "getippt": "12"
+ },
+ {
+  "id": "all-waign",
+  "q": "Wie heißt die Nationalhymne Frankreichs?",
+  "a": "Die Marseillaise",
+  "kurz": "Marseillaise",
+  "eigene": "La Marseillaise",
+  "gesprochen": "Die heißt Marseillaise",
+  "getippt": "Marseillaise"
+ },
+ {
+  "id": "all-wi8csd",
+  "q": "Wie viele Stunden Schlaf braucht ein Erwachsener im Schnitt?",
+  "a": "Sieben bis neun Stunden",
+  "kurz": "Sieben bis neun",
+  "eigene": "Zwischen sieben und neun Stunden",
+  "gesprochen": "So sieben bis neun Stunden",
+  "getippt": "7-9 std"
+ },
+ {
+  "id": "all-wwx472",
+  "q": "Wie viele Zähne hat ein erwachsener Mensch normalerweise?",
+  "a": "32",
+  "kurz": "32",
+  "eigene": "Zweiunddreißig Zähne",
+  "gesprochen": "Normalerweise 32 Zähne",
+  "getippt": "32"
+ },
+ {
+  "id": "all-yz5api",
+  "q": "Wie viele Bücher hat die Bibel im protestantischen Kanon?",
+  "a": "66",
+  "kurz": "66",
+  "eigene": "Sechsundsechzig Bücher",
+  "gesprochen": "66 Stück sind das",
+  "getippt": "66"
+ },
+ {
+  "id": "geo-101borj",
+  "q": "Wie viele Kontinente gibt es nach dem gängigen Modell?",
+  "a": "Sieben",
+  "kurz": "Sieben",
+  "eigene": "7 Stueck",
+  "gesprochen": "Sieben sind es",
+  "getippt": "7"
+ },
+ {
+  "id": "geo-10nisz7",
+  "q": "Welche Ruinenstadt der Inka liegt hoch in den Anden Perus?",
+  "a": "Machu Picchu",
+  "kurz": "Machu Picchu",
+  "eigene": "Die Inkastadt Machu Picchu",
+  "gesprochen": "Machu Picchu, oben in den Anden",
+  "getippt": "Machu Picchu"
+ },
+ {
+  "id": "geo-12mf3vc",
+  "q": "Welcher Kontinent ist der flächengrößte?",
+  "a": "Asien",
+  "kurz": "Asien",
+  "eigene": "Der Kontinent Asien",
+  "gesprochen": "Asien ist der groesste",
+  "getippt": "asien"
+ },
+ {
+  "id": "geo-15ouqw",
+  "q": "Warum gibt es Jahreszeiten?",
+  "a": "Wegen der Neigung der Erdachse",
+  "kurz": "Neigung der Erdachse",
+  "eigene": "Weil die Erdachse geneigt ist",
+  "gesprochen": "Weil die Erde schraeg auf ihrer Achse steht",
+  "getippt": "wg. neigung der erdachse"
+ },
+ {
+  "id": "geo-15reqsm",
+  "q": "Wie heißt die Hauptstadt von Sachsen?",
+  "a": "Dresden",
+  "kurz": "Dresden",
+  "eigene": "Sachsens Hauptstadt ist Dresden",
+  "gesprochen": "Dresden natürlich",
+  "getippt": "dresden"
+ },
+ {
+  "id": "geo-15td2bw",
+  "q": "Welche Region Spaniens hat eine eigene Sprache und die Hauptstadt Barcelona?",
+  "a": "Katalonien",
+  "kurz": "Katalonien",
+  "eigene": "Gemeint ist die Region Katalonien",
+  "gesprochen": "Katalonien halt",
+  "getippt": "katalonien"
+ },
+ {
+  "id": "geo-16qw3lw",
+  "q": "Wie heißt die Hauptstadt der Schweiz?",
+  "a": "Bern",
+  "kurz": "Bern",
+  "eigene": "Die Schweizer Hauptstadt ist Bern",
+  "gesprochen": "Bern",
+  "getippt": "bern"
+ },
+ {
+  "id": "geo-16vlc3v",
+  "q": "Welcher Fluss fließt durch Köln?",
+  "a": "Der Rhein",
+  "kurz": "Rhein",
+  "eigene": "Durch Köln fließt der Rhein",
+  "gesprochen": "Der Rhein, klar",
+  "getippt": "durch koeln fliesst der rhein"
+ },
+ {
+  "id": "geo-17c2nx7",
+  "q": "Welche Wüste ist die größte Heißwüste der Welt?",
+  "a": "Die Sahara",
+  "kurz": "Sahara",
+  "eigene": "Die Sahara in Nordafrika",
+  "gesprochen": "Die Sahara",
+  "getippt": "sahara"
+ },
+ {
+  "id": "geo-17sb70t",
+  "q": "Wie heißt die Hauptstadt von Peru?",
+  "a": "Lima",
+  "kurz": "Lima",
+  "eigene": "Die Hauptstadt heisst Lima",
+  "gesprochen": "Lima ist das",
+  "getippt": "Lima"
+ },
+ {
+  "id": "geo-19qh2f3",
+  "q": "Welches Land hat die längste Küstenlinie Europas?",
+  "a": "Norwegen",
+  "kurz": "Norwegen",
+  "eigene": "Kein Land in Europa hat eine längere Küstenlinie als Norwegen",
+  "gesprochen": "Norwegen, ganz klar",
+  "getippt": "norwegen"
+ },
+ {
+  "id": "geo-1h2gf29",
+  "q": "Welche Gemeinde ist die südlichste Deutschlands?",
+  "a": "Oberstdorf",
+  "kurz": "Oberstdorf",
+  "eigene": "Die suedlichste Gemeinde ist Oberstdorf",
+  "gesprochen": "Oberstdorf, das ist ganz unten im Sueden",
+  "getippt": "Oberstdorf"
+ },
+ {
+  "id": "geo-1j7dws9",
+  "q": "Wie heißt der größte See, der ganz in Deutschland liegt?",
+  "a": "Die Müritz",
+  "kurz": "Müritz",
+  "eigene": "Das ist die Müritz",
+  "gesprochen": "Die Müritz",
+  "getippt": "mueritz"
+ },
+ {
+  "id": "geo-1jvha82",
+  "q": "Wie heißt die Hauptstadt von Mexiko?",
+  "a": "Mexiko-Stadt",
+  "kurz": "Mexiko-Stadt",
+  "eigene": "Ciudad de México, also Mexiko-Stadt",
+  "gesprochen": "Mexico City",
+  "getippt": "mexiko-stadt"
+ },
+ {
+  "id": "geo-1jxjvy1",
+  "q": "Wie heißt die Hauptstadt von Hessen?",
+  "a": "Wiesbaden",
+  "kurz": "Wiesbaden",
+  "eigene": "Die Landeshauptstadt von Hessen ist Wiesbaden",
+  "gesprochen": "Das ist Wiesbaden",
+  "getippt": "wiesbaden"
+ },
+ {
+  "id": "geo-1kmp82q",
+  "q": "Wie heißt das Viergespann auf dem Brandenburger Tor?",
+  "a": "Die Quadriga",
+  "kurz": "Quadriga",
+  "eigene": "Das Viergespann heisst Quadriga",
+  "gesprochen": "Das ist die Quadriga",
+  "getippt": "Quadriga"
+ },
+ {
+  "id": "geo-1n3a3s8",
+  "q": "Welches europäische Meer hat den geringsten Salzgehalt und gilt als größtes Brackwassermeer?",
+  "a": "Die Ostsee",
+  "kurz": "Ostsee",
+  "eigene": "Das ist die Ostsee",
+  "gesprochen": "Na die Ostsee",
+  "getippt": "Ostsee"
+ },
+ {
+  "id": "geo-1oisbyz",
+  "q": "Wie heißt die Hauptstadt von Polen?",
+  "a": "Warschau",
+  "kurz": "Warschau",
+  "eigene": "Polens Hauptstadt heißt Warschau",
+  "gesprochen": "Warschau",
+  "getippt": "warschau"
+ },
+ {
+  "id": "geo-1py9myp",
+  "q": "Wie nennt man den warmen Meeresstrom, der Europas Klima mild hält?",
+  "a": "Der Golfstrom",
+  "kurz": "Golfstrom",
+  "eigene": "Die warme Meeresstroemung Golfstrom",
+  "gesprochen": "Der Golfstrom",
+  "getippt": "golfstrom"
+ },
+ {
+  "id": "geo-1qatqsj",
+  "q": "Welches Meer ist so salzig, dass man mühelos darin treibt?",
+  "a": "Das Tote Meer",
+  "kurz": "Totes Meer",
+  "eigene": "Gemeint ist das Tote Meer",
+  "gesprochen": "Na, das Tote Meer",
+  "getippt": "das tote meer"
+ },
+ {
+  "id": "geo-1vj2zde",
+  "q": "Welche deutsche Millionenstadt trägt liebevoll-spöttisch den Beinamen „Millionendorf“?",
+  "a": "München",
+  "kurz": "Muenchen",
+  "eigene": "Das ist Muenchen",
+  "gesprochen": "Muenchen natuerlich",
+  "getippt": "Muenchen"
+ },
+ {
+  "id": "geo-1x81haj",
+  "q": "Wie nennt man tropische Wirbelstürme im Atlantik und im westlichen Nordpazifik?",
+  "a": "Hurrikan und Taifun",
+  "kurz": "Hurrikan, Taifun",
+  "eigene": "Im Atlantik spricht man von Hurrikanen, im westlichen Nordpazifik von Taifunen",
+  "gesprochen": "Im Atlantik heißen die Hurrikan, im Pazifik Taifun",
+  "getippt": "hurrikan u. taifun"
+ },
+ {
+  "id": "geo-2tjwcs",
+  "q": "Was ist der Äquator?",
+  "a": "Der Breitenkreis 0° um die Erdmitte",
+  "kurz": "Breitenkreis 0°",
+  "eigene": "Die Linie mit 0 Grad geografischer Breite, die mittig um die Erde laeuft",
+  "gesprochen": "Das ist die Null-Grad-Linie, die genau mittig um die Erde geht",
+  "getippt": "breitenkreis 0 grad um die erdmitte"
+ },
+ {
+  "id": "geo-83ixyz",
+  "q": "Welche deutsche Insel ist die größte?",
+  "a": "Rügen",
+  "kurz": "Rügen",
+  "eigene": "Die Insel Rügen",
+  "gesprochen": "Das ist Rügen",
+  "getippt": "ruegen"
+ },
+ {
+  "id": "geo-88shr9",
+  "q": "Wie nennt man geschmolzenes Gestein, solange es noch im Erdinneren ist?",
+  "a": "Magma",
+  "kurz": "Magma",
+  "eigene": "Man nennt es Magma",
+  "gesprochen": "Solange es noch drin ist, heisst das Magma",
+  "getippt": "Magma"
+ },
+ {
+  "id": "geo-aeflnj",
+  "q": "Welcher Berg ist der höchste Afrikas?",
+  "a": "Der Kilimandscharo",
+  "kurz": "Kilimandscharo",
+  "eigene": "Afrikas höchster Berg ist der Kilimandscharo",
+  "gesprochen": "Der Kilimandscharo",
+  "getippt": "kilimandscharo"
+ },
+ {
+  "id": "geo-b71ctw",
+  "q": "Welcher ist der längste Fluss Europas?",
+  "a": "Die Wolga",
+  "kurz": "Wolga",
+  "eigene": "Das ist die Wolga",
+  "gesprochen": "Die Wolga, klar",
+  "getippt": "wolga"
+ },
+ {
+  "id": "geo-dlj12t",
+  "q": "Welche deutsche Stadt hat den größten Seehafen?",
+  "a": "Hamburg",
+  "kurz": "Hamburg",
+  "eigene": "Der größte deutsche Seehafen liegt in Hamburg",
+  "gesprochen": "Hamburg natürlich",
+  "getippt": "hamburg"
+ },
+ {
+  "id": "geo-etdqsa",
+  "q": "Welches Land grenzt an die meisten anderen Länder?",
+  "a": "China und Russland (je 14)",
+  "kurz": "China und Russland, je 14",
+  "eigene": "Russland und China, beide mit jeweils 14 Nachbarlaendern",
+  "gesprochen": "China und Russland, die haben beide 14 Nachbarn",
+  "getippt": "china + russland, je 14"
+ },
+ {
+  "id": "geo-fsmivg",
+  "q": "Wie viele Bundesländer hat Deutschland?",
+  "a": "16",
+  "kurz": "16",
+  "eigene": "Sechzehn",
+  "gesprochen": "Sechzehn sind es",
+  "getippt": "16"
+ },
+ {
+  "id": "geo-k9lyqz",
+  "q": "Wie heißt die Hauptstadt von Australien?",
+  "a": "Canberra",
+  "kurz": "Canberra",
+  "eigene": "Die Hauptstadt heisst Canberra",
+  "gesprochen": "Canberra, nicht Sydney",
+  "getippt": "canberra"
+ },
+ {
+  "id": "geo-ncuvn0",
+  "q": "Welches Land nennt man „Land der tausend Seen“?",
+  "a": "Finnland",
+  "kurz": "Finnland",
+  "eigene": "Das nordeuropaeische Land Finnland",
+  "gesprochen": "Finnland natuerlich",
+  "getippt": "finnland"
+ },
+ {
+  "id": "geo-prl4ln",
+  "q": "Welche Meerenge trennt in Istanbul Europa von Asien?",
+  "a": "Der Bosporus",
+  "kurz": "Bosporus",
+  "eigene": "Die Meerenge Bosporus",
+  "gesprochen": "Das ist der Bosporus",
+  "getippt": "bosporus"
+ },
+ {
+  "id": "geo-rnj5yi",
+  "q": "In welches Meer mündet die Donau?",
+  "a": "In das Schwarze Meer",
+  "kurz": "Schwarzes Meer",
+  "eigene": "Sie muendet ins Schwarze Meer",
+  "gesprochen": "Ins Schwarze Meer",
+  "getippt": "ins Schwarze Meer"
+ },
+ {
+  "id": "ges-12deuai",
+  "q": "Wer eroberte als makedonischer König ein Reich bis nach Indien?",
+  "a": "Alexander der Große",
+  "kurz": "Alexander der Große",
+  "eigene": "Alexander III. von Makedonien",
+  "gesprochen": "das war Alexander der Große",
+  "getippt": "Alexander der Grosse"
+ },
+ {
+  "id": "ges-12y8bpj",
+  "q": "Wie hieß der bekannteste römische Grenzwall in Britannien?",
+  "a": "Der Hadrianswall",
+  "kurz": "Hadrianswall",
+  "eigene": "Der Wall des Hadrian",
+  "gesprochen": "Der Hadrianswall halt",
+  "getippt": "hadrianswall"
+ },
+ {
+  "id": "ges-1359l1s",
+  "q": "Wer stand 1953 zusammen mit dem Sherpa Tenzing Norgay als Erster auf dem Mount Everest?",
+  "a": "Edmund Hillary",
+  "kurz": "Edmund Hillary",
+  "eigene": "Das war Edmund Hillary",
+  "gesprochen": "Edmund Hillary war das",
+  "getippt": "edmund hillary"
+ },
+ {
+  "id": "ges-14jvx7t",
+  "q": "In welchem Jahr geschahen die Terroranschläge auf das World Trade Center?",
+  "a": "2001",
+  "kurz": "2001",
+  "eigene": "Im Jahr 2001",
+  "gesprochen": "Das war 2001",
+  "getippt": "2001"
+ },
+ {
+  "id": "ges-14t9mh4",
+  "q": "Wie viele Menschen wurden im Holocaust ermordet?",
+  "a": "Etwa sechs Millionen Juden",
+  "kurz": "Ca. 6 Mio. Juden",
+  "eigene": "Ungefähr sechs Millionen jüdische Menschen",
+  "gesprochen": "So um die sechs Millionen Juden",
+  "getippt": "ungefaehr 6 Mio. Juden"
+ },
+ {
+  "id": "ges-15p5n3e",
+  "q": "Wer entdeckte um 1000 n. Chr. als Europäer Nordamerika?",
+  "a": "Leif Eriksson",
+  "kurz": "Leif Eriksson",
+  "eigene": "der Wikinger Leif Eriksson",
+  "gesprochen": "Leif Eriksson, der Wikinger",
+  "getippt": "Leif Eriksson"
+ },
+ {
+  "id": "ges-160hnf8",
+  "q": "Wer gründete den Buddhismus?",
+  "a": "Siddhartha Gautama",
+  "kurz": "Siddhartha Gautama",
+  "eigene": "Siddhartha Gautama, besser bekannt als Buddha",
+  "gesprochen": "Der Buddha halt, also Siddhartha Gautama",
+  "getippt": "Siddhartha Gautama (Buddha)"
+ },
+ {
+  "id": "ges-16iq4ub",
+  "q": "Seit wann dürfen Frauen in Deutschland wählen?",
+  "a": "Seit 1918/19",
+  "kurz": "1918/19",
+  "eigene": "Ab 1918/19",
+  "gesprochen": "Seit 1918/19 duerfen die waehlen",
+  "getippt": "seit 1918/19"
+ },
+ {
+  "id": "ges-18l2suh",
+  "q": "Wann endete der Zweite Weltkrieg in Europa?",
+  "a": "8. Mai 1945",
+  "kurz": "8. Mai 1945",
+  "eigene": "Am achten Mai 1945",
+  "gesprochen": "Am 8. Mai 45",
+  "getippt": "8.5.1945"
+ },
+ {
+  "id": "ges-19i24sd",
+  "q": "Wer musste 1633 vor der Inquisition seiner Lehre abschwören?",
+  "a": "Galileo Galilei",
+  "kurz": "Galilei",
+  "eigene": "Der Astronom Galileo Galilei",
+  "gesprochen": "Das war Galileo Galilei",
+  "getippt": "G. Galilei"
+ },
+ {
+  "id": "ges-1aan1b1",
+  "q": "Wann fiel Konstantinopel an die Osmanen?",
+  "a": "1453",
+  "kurz": "1453",
+  "eigene": "im Jahr 1453",
+  "gesprochen": "1453 war das",
+  "getippt": "1453"
+ },
+ {
+  "id": "ges-1c0m77e",
+  "q": "Welche britische Premierministerin trug den Beinamen „Eiserne Lady“?",
+  "a": "Margaret Thatcher",
+  "kurz": "Thatcher",
+  "eigene": "Das war Margaret Thatcher",
+  "gesprochen": "Margaret Thatcher",
+  "getippt": "margaret thatcher"
+ },
+ {
+  "id": "ges-1e88wb9",
+  "q": "Wer leitete die erste Weltumsegelung, ohne sie selbst zu überleben?",
+  "a": "Ferdinand Magellan",
+  "kurz": "Magellan",
+  "eigene": "Der Seefahrer Ferdinand Magellan",
+  "gesprochen": "Magellan war das",
+  "getippt": "F. Magellan"
+ },
+ {
+  "id": "ges-1kyf16m",
+  "q": "Welcher Herrscher erließ um 1750 v. Chr. eine der ältesten Gesetzessammlungen?",
+  "a": "Hammurabi",
+  "kurz": "Hammurabi",
+  "eigene": "Es war Hammurabi",
+  "gesprochen": "Hammurabi, der mit der Gesetzessammlung",
+  "getippt": "Hammurabi"
+ },
+ {
+  "id": "ges-1n09wqc",
+  "q": "Wann zerfiel die Sowjetunion?",
+  "a": "1991",
+  "kurz": "1991",
+  "eigene": "Im Jahr 1991",
+  "gesprochen": "Einundneunzig, also 1991",
+  "getippt": "1991"
+ },
+ {
+  "id": "ges-1n393uk",
+  "q": "Welcher römische Kaiser machte 313 n. Chr. das Christentum zur erlaubten Religion?",
+  "a": "Konstantin der Große",
+  "kurz": "Konstantin der Große",
+  "eigene": "Kaiser Konstantin I.",
+  "gesprochen": "Konstantin der Große war das",
+  "getippt": "Konstantin der Grosse"
+ },
+ {
+  "id": "ges-1oqz9i5",
+  "q": "In welchem Jahr wurde das Deutsche Kaiserreich gegründet?",
+  "a": "1871",
+  "kurz": "1871",
+  "eigene": "im Jahr 1871",
+  "gesprochen": "1871",
+  "getippt": "1871"
+ },
+ {
+  "id": "ges-1ow9t20",
+  "q": "In welcher indischen Stadt gründete Mutter Teresa ihren Orden?",
+  "a": "In Kalkutta",
+  "kurz": "Kalkutta",
+  "eigene": "In Kolkata",
+  "gesprochen": "In Kalkutta",
+  "getippt": "kalkutta"
+ },
+ {
+  "id": "ges-1pq5ntf",
+  "q": "Wann fiel die Berliner Mauer?",
+  "a": "9. November 1989",
+  "kurz": "9. November 1989",
+  "eigene": "Am neunten November 1989",
+  "gesprochen": "Am 9. November 89",
+  "getippt": "9.11.1989"
+ },
+ {
+  "id": "ges-1qhbcpq",
+  "q": "Welcher Kongress ordnete 1814/15 Europa nach Napoleon neu?",
+  "a": "Der Wiener Kongress",
+  "kurz": "Wiener Kongress",
+  "eigene": "der Kongress von Wien",
+  "gesprochen": "der Wiener Kongress war das",
+  "getippt": "Wiener Kongress"
+ },
+ {
+  "id": "ges-1qrqyss",
+  "q": "Wie hieß das Verfahren, mit dem die Athener einen zu mächtigen Mitbürger für zehn Jahre verbannen konnten?",
+  "a": "Das Scherbengericht",
+  "kurz": "Scherbengericht",
+  "eigene": "Der Ostrakismos",
+  "gesprochen": "Das Scherbengericht, also Ostrakismos",
+  "getippt": "Scherbengericht (Ostrakismos)"
+ },
+ {
+  "id": "ges-1vlc2pk",
+  "q": "Welche Kaiserin regierte im 18. Jahrhundert Österreich?",
+  "a": "Maria Theresia",
+  "kurz": "Maria Theresia",
+  "eigene": "Die Habsburgerin Maria Theresia",
+  "gesprochen": "Maria Theresia war das",
+  "getippt": "Maria Theresia"
+ },
+ {
+  "id": "ges-1y8d4ze",
+  "q": "Wer gründete im 13. Jahrhundert das Mongolenreich?",
+  "a": "Dschingis Khan",
+  "kurz": "Dschingis Khan",
+  "eigene": "Der Mongolenherrscher Dschingis Khan",
+  "gesprochen": "Das war Dschingis Khan",
+  "getippt": "Dschingis Khan"
+ },
+ {
+  "id": "ges-1y9js7j",
+  "q": "Welcher Frieden beendete 1648 den Dreißigjährigen Krieg?",
+  "a": "Der Westfälische Friede",
+  "kurz": "Westfälischer Friede",
+  "eigene": "der Friedensschluss von Münster und Osnabrück",
+  "gesprochen": "der Westfälische Friede",
+  "getippt": "Westfaelischer Friede"
+ },
+ {
+  "id": "ges-5uoakh",
+  "q": "In welchem Jahr wurde Rom der Sage nach gegründet?",
+  "a": "753 v. Chr.",
+  "kurz": "753 v. Chr.",
+  "eigene": "im Jahr 753 vor Christus",
+  "gesprochen": "753 vor Christus",
+  "getippt": "753 v.Chr."
+ },
+ {
+  "id": "ges-anaeqs",
+  "q": "Welcher Vertrag begründete 1992 die Europäische Union?",
+  "a": "Der Vertrag von Maastricht",
+  "kurz": "Vertrag von Maastricht",
+  "eigene": "Der Maastrichter Vertrag",
+  "gesprochen": "Das war Maastricht, der Vertrag von Maastricht",
+  "getippt": "Vertrag v. Maastricht"
+ },
+ {
+  "id": "ges-d6slh9",
+  "q": "Welche griechische Stadt gilt als Wiege der Demokratie?",
+  "a": "Athen",
+  "kurz": "Athen",
+  "eigene": "die Stadt Athen",
+  "gesprochen": "Athen natürlich",
+  "getippt": "Athen"
+ },
+ {
+  "id": "ges-imlt70",
+  "q": "Was geschah 1066 bei Hastings?",
+  "a": "Wilhelm der Eroberer besiegte die Angelsachsen",
+  "kurz": "Wilhelm der Eroberer besiegte die Angelsachsen",
+  "eigene": "Die Angelsachsen wurden von Wilhelm dem Eroberer geschlagen",
+  "gesprochen": "Wilhelm der Eroberer hat die Angelsachsen besiegt",
+  "getippt": "Wilhelm d. Eroberer besiegte d. Angelsachsen"
+ },
+ {
+  "id": "ges-ir3wfe",
+  "q": "Welche drei Stände bildeten die mittelalterliche Ständeordnung?",
+  "a": "Klerus, Adel und Bauern",
+  "kurz": "Klerus, Adel, Bauern",
+  "eigene": "Geistlichkeit, Adel und Bauernstand",
+  "gesprochen": "Die Geistlichen, der Adel und die Bauern",
+  "getippt": "klerus, adel u. bauern"
+ },
+ {
+  "id": "ges-jauuln",
+  "q": "Wann trat die Bundesrepublik der NATO bei?",
+  "a": "1955",
+  "kurz": "1955",
+  "eigene": "Im Jahr 1955",
+  "gesprochen": "Fünfundfünfzig, also 1955",
+  "getippt": "1955"
+ },
+ {
+  "id": "ges-o14c2e",
+  "q": "Wann wurde die Volksrepublik China ausgerufen?",
+  "a": "1949",
+  "kurz": "1949",
+  "eigene": "Im Jahr 1949",
+  "gesprochen": "1949 war das",
+  "getippt": "1949"
+ },
+ {
+  "id": "ges-p6xhl6",
+  "q": "Welcher Vertrag beendete 1919 formal den Ersten Weltkrieg?",
+  "a": "Der Versailler Vertrag",
+  "kurz": "Versailler Vertrag",
+  "eigene": "Der Friedensvertrag von Versailles",
+  "gesprochen": "Na, der Vertrag von Versailles",
+  "getippt": "Vertrag v. Versailles"
+ },
+ {
+  "id": "ges-swci0r",
+  "q": "Welcher Vertrag teilte 843 das Frankenreich in drei Teile?",
+  "a": "Der Vertrag von Verdun",
+  "kurz": "Vertrag von Verdun",
+  "eigene": "Der Verduner Vertrag",
+  "gesprochen": "Der Vertrag von Verdun war das",
+  "getippt": "Vertrag v. Verdun"
+ },
+ {
+  "id": "ges-z57mm3",
+  "q": "Wer war Südafrikas erster schwarzer Präsident?",
+  "a": "Nelson Mandela",
+  "kurz": "Mandela",
+  "eigene": "Nelson Mandela",
+  "gesprochen": "Das war Nelson Mandela",
+  "getippt": "N. Mandela"
+ },
+ {
+  "id": "kul-11c5dr9",
+  "q": "Welches der drei großen europäischen Filmfestivals ist das älteste?",
+  "a": "Venedig",
+  "kurz": "Venedig",
+  "eigene": "Die Filmfestspiele von Venedig",
+  "gesprochen": "Venedig, das ist das älteste",
+  "getippt": "venedig"
+ },
+ {
+  "id": "kul-124nyvx",
+  "q": "Welche Filmreihe spielt in einer weit entfernten Galaxis?",
+  "a": "Star Wars",
+  "kurz": "Star Wars",
+  "eigene": "Die Star-Wars-Reihe, auf Deutsch Krieg der Sterne",
+  "gesprochen": "Star Wars, klar",
+  "getippt": "star wars"
+ },
+ {
+  "id": "kul-133et2i",
+  "q": "Welches Spiel von 1993 gilt als Durchbruch des Ego-Shooters zum Massenphänomen?",
+  "a": "Doom",
+  "kurz": "Doom",
+  "eigene": "Das Spiel Doom",
+  "gesprochen": "Doom natürlich",
+  "getippt": "doom"
+ },
+ {
+  "id": "kul-19perag",
+  "q": "Wie nennt man in der Oper den sprechgesangartigen Teil zwischen den Arien?",
+  "a": "Das Rezitativ",
+  "kurz": "Rezitativ",
+  "eigene": "Man nennt das Rezitativ",
+  "gesprochen": "Das heisst Rezitativ",
+  "getippt": "rezitativ"
+ },
+ {
+  "id": "kul-1ajglry",
+  "q": "In welchem Museum hängt Picassos „Guernica“?",
+  "a": "Museo Reina Sofía in Madrid",
+  "kurz": "Reina Sofía, Madrid",
+  "eigene": "Im Reina-Sofía-Museum in Madrid",
+  "gesprochen": "Im Reina Sofia in Madrid haengt das",
+  "getippt": "museo reina sofia madrid"
+ },
+ {
+  "id": "kul-1cc6vte",
+  "q": "Wie viele Töne hat eine Oktave in der westlichen Musik (chromatisch)?",
+  "a": "Zwölf Halbtöne",
+  "kurz": "Zwölf Halbtöne",
+  "eigene": "Eine Oktave umfasst zwölf Halbtonschritte",
+  "gesprochen": "Zwölf, also zwölf Halbtöne",
+  "getippt": "12 halbtoene"
+ },
+ {
+  "id": "kul-1ee70gn",
+  "q": "Wofür steht der Bandname ABBA?",
+  "a": "Für die Vornamen der vier Mitglieder",
+  "kurz": "Vornamen der vier Mitglieder",
+  "eigene": "Es steht für die Vornamen aller vier Bandmitglieder",
+  "gesprochen": "Das sind einfach die Vornamen von den vier Bandmitgliedern",
+  "getippt": "vornamen der 4 mitglieder"
+ },
+ {
+  "id": "kul-1gd7fy8",
+  "q": "Was ist ein Metronom?",
+  "a": "Ein Taktgeber für das Tempo",
+  "kurz": "Taktgeber fürs Tempo",
+  "eigene": "Ein Gerät, das den Takt und damit das Tempo vorgibt",
+  "gesprochen": "So ein Ding, das den Takt vorgibt, damit du im Tempo bleibst",
+  "getippt": "taktgeber fuers tempo"
+ },
+ {
+  "id": "kul-1k2qenm",
+  "q": "Wie viele Arbeiten musste Herakles verrichten?",
+  "a": "Zwölf",
+  "kurz": "Zwölf",
+  "eigene": "Zwölf Aufgaben",
+  "gesprochen": "Zwölf Stück, die zwölf Taten halt",
+  "getippt": "12"
+ },
+ {
+  "id": "kul-1kiffww",
+  "q": "Wie hieß das erste weit verbreitete Fotoverfahren von 1839?",
+  "a": "Daguerreotypie",
+  "kurz": "Daguerreotypie",
+  "eigene": "Das Daguerreotypie-Verfahren",
+  "gesprochen": "Die Daguerreotypie war das",
+  "getippt": "daguerreotypie"
+ },
+ {
+  "id": "kul-1mkeekg",
+  "q": "Wer schuf das Gemälde „Der Schrei“?",
+  "a": "Edvard Munch",
+  "kurz": "Edvard Munch",
+  "eigene": "Das Bild stammt von Edvard Munch",
+  "gesprochen": "Das ist von Edvard Munch",
+  "getippt": "edvard munch"
+ },
+ {
+  "id": "kul-1rigf2u",
+  "q": "Welcher Film beendete 1927 die Zeit des Stummfilms?",
+  "a": "Der Jazzsänger",
+  "kurz": "Der Jazzsänger",
+  "eigene": "The Jazz Singer, auf Deutsch Der Jazzsänger",
+  "gesprochen": "Der Jazzsänger war das",
+  "getippt": "der jazzsaenger"
+ },
+ {
+  "id": "kul-1s0q0my",
+  "q": "Aus welchem Land stammt das Arcade-Spiel Pac-Man?",
+  "a": "Aus Japan",
+  "kurz": "Japan",
+  "eigene": "Es kommt aus Japan",
+  "gesprochen": "Aus Japan kommt das",
+  "getippt": "japan"
+ },
+ {
+  "id": "kul-1s4gv3b",
+  "q": "Welches Bauwerk in Paris war 1889 zur Weltausstellung umstritten?",
+  "a": "Der Eiffelturm",
+  "kurz": "Eiffelturm",
+  "eigene": "Die Tour Eiffel, also der Eiffelturm",
+  "gesprochen": "Der Eiffelturm",
+  "getippt": "eiffelturm"
+ },
+ {
+  "id": "kul-1srcsyg",
+  "q": "Was bedeutet „a cappella“?",
+  "a": "Gesang ohne Instrumente",
+  "kurz": "Gesang ohne Instrumente",
+  "eigene": "Singen ohne instrumentale Begleitung",
+  "gesprochen": "Wenn nur gesungen wird, ganz ohne Instrumente",
+  "getippt": "gesang ohne instr."
+ },
+ {
+  "id": "kul-1sse01c",
+  "q": "Welche Serie über eine Mafiafamilie in New Jersey gilt als Beginn des modernen Serienzeitalters?",
+  "a": "Die Sopranos",
+  "kurz": "Sopranos",
+  "eigene": "Die Serie „The Sopranos“",
+  "gesprochen": "Na die Sopranos halt",
+  "getippt": "the sopranos"
+ },
+ {
+  "id": "kul-1th7pkr",
+  "q": "In welchem Land steht das Taj Mahal?",
+  "a": "Indien",
+  "kurz": "Indien",
+  "eigene": "In Indien",
+  "gesprochen": "Das steht in Indien",
+  "getippt": "indien"
+ },
+ {
+  "id": "kul-1w6e5ni",
+  "q": "Wo steht der Louvre?",
+  "a": "In Paris",
+  "kurz": "Paris",
+  "eigene": "Er steht in Paris",
+  "gesprochen": "Der steht in Paris",
+  "getippt": "in paris"
+ },
+ {
+  "id": "kul-1wqlwld",
+  "q": "Wer komponierte die Musik zum Musical „West Side Story“?",
+  "a": "Leonard Bernstein",
+  "kurz": "Leonard Bernstein",
+  "eigene": "Bernstein, Leonard",
+  "gesprochen": "Die Musik ist von Leonard Bernstein",
+  "getippt": "leonard bernstein"
+ },
+ {
+  "id": "kul-3hn8qj",
+  "q": "Was bezeichnet der Begriff „Binge-Watching“?",
+  "a": "Mehrere Folgen einer Serie am Stück sehen",
+  "kurz": "Mehrere Folgen am Stück sehen",
+  "eigene": "Viele Episoden einer Serie direkt hintereinander schauen",
+  "gesprochen": "Dass man mehrere Folgen einer Serie hintereinander weg guckt",
+  "getippt": "mehrere folgen einer serie am stueck gucken"
+ },
+ {
+  "id": "kul-5lijqn",
+  "q": "Wer malte die Mona Lisa?",
+  "a": "Leonardo da Vinci",
+  "kurz": "Leonardo da Vinci",
+  "eigene": "Gemalt hat sie Leonardo da Vinci",
+  "gesprochen": "Das war Leonardo da Vinci",
+  "getippt": "leonardo da vinci"
+ },
+ {
+  "id": "kul-763r6j",
+  "q": "In welcher Stadt findet die Gamescom statt?",
+  "a": "In Köln",
+  "kurz": "Köln",
+  "eigene": "Sie findet in Köln statt",
+  "gesprochen": "In Köln ist die",
+  "getippt": "koeln"
+ },
+ {
+  "id": "kul-gnj78v",
+  "q": "Welches Wesen hauste im Labyrinth von Knossos?",
+  "a": "Der Minotaurus",
+  "kurz": "Minotaurus",
+  "eigene": "Der Minotauros",
+  "gesprochen": "Der Minotaurus hat da gehaust",
+  "getippt": "minotaurus"
+ },
+ {
+  "id": "kul-h8oy02",
+  "q": "Welcher Architekt entwarf das Wohnhaus „Fallingwater“ über einem Wasserfall?",
+  "a": "Frank Lloyd Wright",
+  "kurz": "Frank Lloyd Wright",
+  "eigene": "Wright, Frank Lloyd",
+  "gesprochen": "Das war Frank Lloyd Wright",
+  "getippt": "frank lloyd wright"
+ },
+ {
+  "id": "kul-m4u4j4",
+  "q": "Wer spielte die Hauptrolle in „Der Pate“ als Don Vito Corleone?",
+  "a": "Marlon Brando",
+  "kurz": "Marlon Brando",
+  "eigene": "Brando, Marlon",
+  "gesprochen": "Das war der Marlon Brando",
+  "getippt": "marlon brando"
+ },
+ {
+  "id": "kul-n7jfjp",
+  "q": "Welches Versetzungszeichen erhöht einen Ton um einen Halbton?",
+  "a": "Das Kreuz",
+  "kurz": "Kreuz",
+  "eigene": "Das Erhoehungszeichen Kreuz",
+  "gesprochen": "Das Kreuz macht den Ton einen Halbton hoeher",
+  "getippt": "kreuz (#)"
+ },
+ {
+  "id": "kul-qum4lo",
+  "q": "Wie viele deutsche Filme haben den Auslands-Oscar gewonnen?",
+  "a": "Vier",
+  "kurz": "Vier",
+  "eigene": "Vier deutsche Filme",
+  "gesprochen": "Vier Stueck sind es",
+  "getippt": "4"
+ },
+ {
+  "id": "kul-s23vwr",
+  "q": "Welcher Filmpreis wird in Hollywood jährlich vergeben?",
+  "a": "Der Oscar",
+  "kurz": "Oscar",
+  "eigene": "Der Academy Award, also der Oscar",
+  "gesprochen": "Der Oscar natürlich",
+  "getippt": "oscar"
+ },
+ {
+  "id": "kul-vm183n",
+  "q": "Welche Zeichentrickserie ist die am längsten laufende Serie der USA zur besten Sendezeit?",
+  "a": "Die Simpsons",
+  "kurz": "Simpsons",
+  "eigene": "The Simpsons",
+  "gesprochen": "Die Simpsons natürlich",
+  "getippt": "die simpsons"
+ },
+ {
+  "id": "kul-w12tij",
+  "q": "In welcher Stadt wurde 2019 das Grüne Gewölbe ausgeraubt?",
+  "a": "Dresden",
+  "kurz": "Dresden",
+  "eigene": "In Dresden",
+  "gesprochen": "Das war in Dresden",
+  "getippt": "dresden"
+ },
+ {
+  "id": "kul-w95emj",
+  "q": "Wie viele Sinfonien schrieb Beethoven?",
+  "a": "Neun",
+  "kurz": "Neun",
+  "eigene": "Er schrieb neun Sinfonien",
+  "gesprochen": "Neun Stück",
+  "getippt": "9"
+ },
+ {
+  "id": "kul-wpa13l",
+  "q": "Welcher Maler der Romantik schuf den „Wanderer über dem Nebelmeer“?",
+  "a": "Caspar David Friedrich",
+  "kurz": "Caspar David Friedrich",
+  "eigene": "Gemalt wurde er von Caspar David Friedrich",
+  "gesprochen": "Das war Caspar David Friedrich",
+  "getippt": "caspar david friedrich"
+ },
+ {
+  "id": "kul-ynyba4",
+  "q": "Wer spielte 1997 in „Titanic“ die männliche Hauptrolle Jack Dawson?",
+  "a": "Leonardo DiCaprio",
+  "kurz": "Leonardo DiCaprio",
+  "eigene": "Die Rolle spielte Leonardo DiCaprio",
+  "gesprochen": "Das war Leo DiCaprio",
+  "getippt": "leonardo dicaprio"
+ },
+ {
+  "id": "kul-yy32ho",
+  "q": "Wie heißt die griechische Göttin des Sieges?",
+  "a": "Nike",
+  "kurz": "Nike",
+  "eigene": "Die Siegesgöttin Nike",
+  "gesprochen": "Nike, wie die Schuhe",
+  "getippt": "nike"
+ },
+ {
+  "id": "mat-11oq89n",
+  "q": "Wer gilt als „Fürst der Mathematiker“ und ziert die alte 10-DM-Note?",
+  "a": "Carl Friedrich Gauß",
+  "kurz": "Carl Friedrich Gauß",
+  "eigene": "Gauß, Carl Friedrich",
+  "gesprochen": "Das war Gauß, Carl Friedrich Gauß",
+  "getippt": "carl friedrich gauss"
+ },
+ {
+  "id": "mat-11yj90a",
+  "q": "Was legt das Signifikanzniveau bei einem Test fest?",
+  "a": "Das erlaubte Risiko für den Fehler erster Art",
+  "kurz": "Erlaubtes Risiko für den Fehler erster Art",
+  "eigene": "Die Wahrscheinlichkeit, die man für einen Fehler erster Art höchstens zulässt",
+  "gesprochen": "Wie hoch das Risiko sein darf, dass man einen Fehler erster Art macht",
+  "getippt": "max. erlaubtes Risiko fuer Fehler 1. Art"
+ },
+ {
+  "id": "mat-14vd8iu",
+  "q": "Wie viele platonische Körper gibt es?",
+  "a": "Fünf",
+  "kurz": "Fünf",
+  "eigene": "Es sind fünf Stück",
+  "gesprochen": "Fünf, mehr gibt's nicht",
+  "getippt": "5"
+ },
+ {
+  "id": "mat-153l8o9",
+  "q": "Wer löste das Königsberger Brückenproblem?",
+  "a": "Leonhard Euler",
+  "kurz": "Leonhard Euler",
+  "eigene": "Der Mathematiker Leonhard Euler",
+  "gesprochen": "Das war Euler, Leonhard Euler",
+  "getippt": "L. Euler"
+ },
+ {
+  "id": "mat-17mqww7",
+  "q": "Wie lautet der Sinussatz für ein Dreieck mit den Seiten a, b, c und den gegenüberliegenden Winkeln α, β, γ?",
+  "a": "a/sin α = b/sin β = c/sin γ",
+  "kurz": "a/sin α = b/sin β = c/sin γ",
+  "eigene": "sin α/a = sin β/b = sin γ/c",
+  "gesprochen": "a durch Sinus Alpha gleich b durch Sinus Beta gleich c durch Sinus Gamma",
+  "getippt": "a/sin(alpha) = b/sin(beta) = c/sin(gamma)"
+ },
+ {
+  "id": "mat-1871hqf",
+  "q": "Was ist eine bedingte Wahrscheinlichkeit?",
+  "a": "Die Wahrscheinlichkeit von A, wenn B bereits eingetreten ist",
+  "kurz": "Wahrscheinlichkeit von A, wenn B schon eingetreten ist",
+  "eigene": "Die Chance für A unter der Voraussetzung, dass B bereits passiert ist",
+  "gesprochen": "Wie wahrscheinlich A ist, wenn B schon passiert ist",
+  "getippt": "P(A|B): Wkt. von A, wenn B schon eingetreten ist"
+ },
+ {
+  "id": "mat-18lj0f2",
+  "q": "Wie bestimmst du die Wahrscheinlichkeit für genau k Treffer bei n-mal Ziehen mit Zurücklegen?",
+  "a": "Mit der Binomialverteilung",
+  "kurz": "Binomialverteilung",
+  "eigene": "Ueber die Binomialverteilung",
+  "gesprochen": "Da nimmt man die Binomialverteilung",
+  "getippt": "binomialverteilung"
+ },
+ {
+  "id": "mat-19vkveu",
+  "q": "Warum ist die Frage „Wie viele Lösungen hat diese Gleichung?“ didaktisch wertvoll?",
+  "a": "Sie verlangt eine Begründung statt eines Rechenwegs",
+  "kurz": "Verlangt Begründung statt Rechenweg",
+  "eigene": "Weil man argumentieren muss und nicht nur einen Rechenweg abarbeitet",
+  "gesprochen": "Weil man da begründen muss und nicht einfach nur rechnet",
+  "getippt": "verlangt Begruendung statt Rechenweg"
+ },
+ {
+  "id": "mat-1aikmc1",
+  "q": "Wie viele Grad hat die Winkelsumme im Dreieck?",
+  "a": "180°",
+  "kurz": "180°",
+  "eigene": "180 Grad",
+  "gesprochen": "Immer 180 Grad",
+  "getippt": "180 grad"
+ },
+ {
+  "id": "mat-1bjky01",
+  "q": "Welchen Wert hat sin(30°)?",
+  "a": "0,5",
+  "kurz": "0,5",
+  "eigene": "1/2",
+  "gesprochen": "Ein halb, also 0,5",
+  "getippt": "0.5"
+ },
+ {
+  "id": "mat-1e2raan",
+  "q": "Wie heißen die Zahlen bei einer Division?",
+  "a": "Dividend geteilt durch Divisor ergibt Quotient",
+  "kurz": "Dividend : Divisor = Quotient",
+  "eigene": "Der Dividend wird durch den Divisor geteilt, das Ergebnis heisst Quotient",
+  "gesprochen": "Dividend durch Divisor, und raus kommt der Quotient",
+  "getippt": "dividend / divisor = quotient"
+ },
+ {
+  "id": "mat-1gqf20h",
+  "q": "Was unterscheidet einen Flüchtigkeitsfehler von einem systematischen Fehler?",
+  "a": "Der systematische Fehler folgt einer falschen Regel",
+  "kurz": "Systematischer Fehler folgt einer falschen Regel",
+  "eigene": "Beim systematischen Fehler steckt eine falsch gelernte Regel dahinter",
+  "gesprochen": "Der systematische kommt daher, dass man immer wieder ne falsche Regel anwendet",
+  "getippt": "syst. Fehler folgt einer falschen Regel"
+ },
+ {
+  "id": "mat-1ic9uvd",
+  "q": "Wie bestimmt man den Winkel zwischen zwei Vektoren?",
+  "a": "Über das Skalarprodukt geteilt durch das Produkt der Beträge",
+  "kurz": "Skalarprodukt durch Produkt der Beträge",
+  "eigene": "Man teilt das Skalarprodukt der beiden Vektoren durch das Produkt ihrer Längen",
+  "gesprochen": "Skalarprodukt ausrechnen und dann durch die beiden Beträge teilen",
+  "getippt": "Skalarprodukt / (|a|*|b|)"
+ },
+ {
+  "id": "mat-1li1ic",
+  "q": "Wie lautet die dritte binomische Formel?",
+  "a": "(a + b)(a − b) = a² − b²",
+  "kurz": "(a + b)(a − b) = a² − b²",
+  "eigene": "a² − b² = (a + b) · (a − b)",
+  "gesprochen": "a plus b mal a minus b ergibt a Quadrat minus b Quadrat",
+  "getippt": "(a+b)*(a-b)=a^2-b^2"
+ },
+ {
+  "id": "mat-1ltfkqi",
+  "q": "Was sichert der Mittelwertsatz der Differentialrechnung zu?",
+  "a": "Es gibt eine Stelle mit der Steigung der Sekante",
+  "kurz": "Eine Stelle mit der Sekantensteigung",
+  "eigene": "Es existiert ein Punkt, an dem die Steigung genau die der Sekante ist",
+  "gesprochen": "Irgendwo dazwischen ist die Steigung genau so groß wie die von der Sekante",
+  "getippt": "es gibt eine Stelle mit Steigung = Sekantensteigung"
+ },
+ {
+  "id": "mat-1nahg3p",
+  "q": "Welche Regel brauchst du, um (x + 1)/(x − 1) abzuleiten?",
+  "a": "Quotientenregel",
+  "kurz": "Quotientenregel",
+  "eigene": "Die Ableitungsregel fuer Brueche, also die Quotientenregel",
+  "gesprochen": "Na klar, die Quotientenregel",
+  "getippt": "quotientenregel"
+ },
+ {
+  "id": "mat-1quqhai",
+  "q": "Was ist eine transzendente Zahl?",
+  "a": "Eine Zahl, die keine Nullstelle eines Polynoms mit ganzzahligen Koeffizienten ist",
+  "kurz": "Zahl, die keine Nullstelle eines Polynoms mit ganzzahligen Koeffizienten ist",
+  "eigene": "Eine Zahl, zu der es kein Polynom mit ganzzahligen Koeffizienten gibt, das sie als Nullstelle hat",
+  "gesprochen": "Eine Zahl, die keine Lösung von irgendeiner Polynomgleichung mit ganzen Zahlen als Koeffizienten ist",
+  "getippt": "Zahl, die keine Nullst. eines Polynoms mit ganzzahl. Koeff. ist"
+ },
+ {
+  "id": "mat-1qviykh",
+  "q": "Was wird aus dem Differenzenquotienten beim Grenzübergang?",
+  "a": "Der Differentialquotient",
+  "kurz": "Der Differentialquotient",
+  "eigene": "Die Ableitung, also der Differentialquotient",
+  "gesprochen": "Daraus wird der Differentialquotient, sprich die Ableitung",
+  "getippt": "Diff.quotient (Ableitung)"
+ },
+ {
+  "id": "mat-1szfgm2",
+  "q": "Was sagt der Satz des Thales?",
+  "a": "Jeder Winkel im Halbkreis über dem Durchmesser ist ein rechter Winkel",
+  "kurz": "Winkel im Halbkreis über dem Durchmesser = 90°",
+  "eigene": "Jeder Punkt auf dem Halbkreis über dem Durchmesser bildet dort einen 90-Grad-Winkel",
+  "gesprochen": "Wenn der Punkt auf dem Halbkreis über dem Durchmesser liegt, hast du da immer einen rechten Winkel",
+  "getippt": "jeder winkel im halbkreis ueber dem durchmesser = 90 grad"
+ },
+ {
+  "id": "mat-1tpknd4",
+  "q": "Was fordert das genetische Prinzip nach Wagenschein?",
+  "a": "Begriffe so entwickeln, wie sie entstanden sind",
+  "kurz": "Begriffe entwickeln wie sie entstanden sind",
+  "eigene": "Man soll Begriffe so aufbauen, wie sie historisch entstanden sind",
+  "gesprochen": "Dass man Begriffe so beibringt, wie sie damals entstanden sind",
+  "getippt": "begriffe so entwickeln wie sie entstanden sind"
+ },
+ {
+  "id": "mat-1wxq4oq",
+  "q": "Wie lautet die zweite binomische Formel?",
+  "a": "(a − b)² = a² − 2ab + b²",
+  "kurz": "(a − b)² = a² − 2ab + b²",
+  "eigene": "a² − 2ab + b² = (a − b)²",
+  "gesprochen": "a minus b in Klammern zum Quadrat ist a Quadrat minus 2ab plus b Quadrat",
+  "getippt": "(a-b)^2=a^2-2ab+b^2"
+ },
+ {
+  "id": "mat-1y64hhd",
+  "q": "Was ist 15 % von 80?",
+  "a": "12",
+  "kurz": "12",
+  "eigene": "Zwölf",
+  "gesprochen": "Zwölf",
+  "getippt": "12"
+ },
+ {
+  "id": "mat-8nkq9r",
+  "q": "Was ist die Ableitung von x²?",
+  "a": "2x",
+  "kurz": "2x",
+  "eigene": "2 mal x",
+  "gesprochen": "Zwei x",
+  "getippt": "2*x"
+ },
+ {
+  "id": "mat-c217wo",
+  "q": "Was ist eine lineare Funktion?",
+  "a": "Eine Funktion der Form y = mx + b",
+  "kurz": "y = mx + b",
+  "eigene": "Eine Funktion mit der Gleichung y = m·x + b",
+  "gesprochen": "Eine, die die Form y gleich m x plus b hat",
+  "getippt": "funktion der form y=mx+b"
+ },
+ {
+  "id": "mat-cvvtmv",
+  "q": "Was ist der Unterschied zwischen Prozent und Prozentpunkten?",
+  "a": "Prozentpunkte sind die Differenz zweier Prozentwerte",
+  "kurz": "Prozentpunkte = Differenz zweier Prozentwerte",
+  "eigene": "Ein Prozentpunkt bezeichnet den Abstand zwischen zwei Prozentangaben",
+  "gesprochen": "Prozentpunkte sind einfach der Unterschied zwischen zwei Prozentzahlen",
+  "getippt": "Prozentpkt. = Differenz von 2 Prozentwerten"
+ },
+ {
+  "id": "mat-e8mi4n",
+  "q": "Was ist eine Basis eines Vektorraums?",
+  "a": "Ein linear unabhängiges Erzeugendensystem",
+  "kurz": "Linear unabhängiges Erzeugendensystem",
+  "eigene": "Eine Menge von Vektoren, die linear unabhängig ist und den Raum erzeugt",
+  "gesprochen": "Vektoren, die linear unabhängig sind und trotzdem den ganzen Raum aufspannen",
+  "getippt": "lin. unabh. Erzeugendensystem"
+ },
+ {
+  "id": "mat-ecmbwt",
+  "q": "Wie lauten die drei Rechengesetze der Grundschulmathematik?",
+  "a": "Kommutativ-, Assoziativ- und Distributivgesetz",
+  "kurz": "Kommutativ-, Assoziativ-, Distributivgesetz",
+  "eigene": "Vertauschungsgesetz, Verbindungsgesetz und Verteilungsgesetz",
+  "gesprochen": "Das Kommutativgesetz, das Assoziativgesetz und das Distributivgesetz",
+  "getippt": "Kommutativ-, Assoziativ- u. Distributivges."
+ },
+ {
+  "id": "mat-hs7mav",
+  "q": "Was berechnet ein Integral über eine Änderungsrate?",
+  "a": "Den gesamten Zuwachs im Intervall",
+  "kurz": "Gesamter Zuwachs im Intervall",
+  "eigene": "Die gesamte Zunahme über das betrachtete Intervall",
+  "gesprochen": "Wie viel insgesamt in dem Intervall dazugekommen ist",
+  "getippt": "ges. Zuwachs im Intervall"
+ },
+ {
+  "id": "mat-oa4itv",
+  "q": "Wie löst man die Klammer in a − (b − c) auf?",
+  "a": "a − b + c",
+  "kurz": "a − b + c",
+  "eigene": "a minus b plus c",
+  "gesprochen": "Das Minus dreht die Vorzeichen um, also a minus b plus c",
+  "getippt": "a-b+c"
+ },
+ {
+  "id": "mat-qurzko",
+  "q": "Wofür steht das EIS-Prinzip nach Bruner?",
+  "a": "Für enaktiv, ikonisch und symbolisch",
+  "kurz": "Enaktiv, ikonisch, symbolisch",
+  "eigene": "Enaktiv (handelnd), ikonisch (bildhaft) und symbolisch (mit Zeichen)",
+  "gesprochen": "Enaktiv, ikonisch und symbolisch – also selber machen, dann als Bild, dann mit Zeichen",
+  "getippt": "enaktiv, ikonisch, symbolisch"
+ },
+ {
+  "id": "mat-r7hovq",
+  "q": "Wie bringst du x² + 6x + 5 in die Scheitelpunktform?",
+  "a": "Durch quadratische Ergänzung",
+  "kurz": "Quadratische Ergänzung",
+  "eigene": "Indem man quadratisch ergänzt",
+  "gesprochen": "Man ergänzt quadratisch, also quadratische Ergänzung",
+  "getippt": "quadratische Ergaenzung"
+ },
+ {
+  "id": "mat-x5ipig",
+  "q": "Wie funktioniert ein Beweis durch Widerspruch?",
+  "a": "Man nimmt das Gegenteil an und führt es zum Widerspruch",
+  "kurz": "Gegenteil annehmen und zum Widerspruch führen",
+  "eigene": "Man setzt voraus, dass die Behauptung falsch ist, und leitet daraus einen Widerspruch her",
+  "gesprochen": "Du nimmst einfach an, dass das Gegenteil stimmt, und fährst das dann gegen die Wand – also bis ein Widerspruch rauskommt",
+  "getippt": "Gegenteil annehmen + zum Widerspruch fuehren"
+ },
+ {
+  "id": "mat-yd73cq",
+  "q": "Was ist eine Stammfunktion?",
+  "a": "Eine Funktion, deren Ableitung die Ausgangsfunktion ist",
+  "kurz": "Funktion, deren Ableitung die Ausgangsfunktion ist",
+  "eigene": "Eine Funktion F, die abgeleitet wieder die ursprüngliche Funktion f ergibt",
+  "gesprochen": "Wenn man sie ableitet, kommt die ursprüngliche Funktion wieder raus",
+  "getippt": "F mit F' = f, also Ableitung = Ausgangsfunktion"
+ },
+ {
+  "id": "mat-zb0nqx",
+  "q": "Wer war die erste Frau, die die Fields-Medaille erhielt?",
+  "a": "Maryam Mirzakhani",
+  "kurz": "Maryam Mirzakhani",
+  "eigene": "Mirzakhani, Maryam",
+  "gesprochen": "Maryam Mirzakhani war das",
+  "getippt": "maryam mirzakhani"
+ },
+ {
+  "id": "nat-143ym4b",
+  "q": "Welches Säugetier ist das größte Tier der Erde?",
+  "a": "Der Blauwal",
+  "kurz": "Blauwal",
+  "eigene": "Der Blauwal ist das groesste Tier",
+  "gesprochen": "Der Blauwal klar, der ist das groesste Tier",
+  "getippt": "blauwal"
+ },
+ {
+  "id": "nat-15kx6na",
+  "q": "Wie viele Knochen hat ein erwachsener Mensch?",
+  "a": "206",
+  "kurz": "206",
+  "eigene": "zweihundertsechs Knochen",
+  "gesprochen": "206 Knochen sind das",
+  "getippt": "206"
+ },
+ {
+  "id": "nat-198pr6",
+  "q": "Was besagt Newtons drittes Gesetz?",
+  "a": "Actio gleich Reactio",
+  "kurz": "Actio = Reactio",
+  "eigene": "Kraft gleich Gegenkraft",
+  "gesprochen": "Jede Kraft hat ne gleich grosse Gegenkraft, actio gleich reactio",
+  "getippt": "actio = reactio"
+ },
+ {
+  "id": "nat-1bjsu5y",
+  "q": "Zwischen welchen Planeten liegt der Asteroidengürtel?",
+  "a": "Zwischen Mars und Jupiter",
+  "kurz": "Mars und Jupiter",
+  "eigene": "Er liegt zwischen den Bahnen von Mars und Jupiter",
+  "gesprochen": "Der liegt zwischen Mars und Jupiter",
+  "getippt": "zw. Mars u. Jupiter"
+ },
+ {
+  "id": "nat-1c3heem",
+  "q": "In welchem Sternbild steht der Polarstern?",
+  "a": "Kleiner Bär",
+  "kurz": "Kleiner Bär",
+  "eigene": "Im Sternbild Ursa Minor, dem Kleinen Bären",
+  "gesprochen": "Im Kleinen Bären, also dem Sternbild mit dem Kleinen Wagen drin",
+  "getippt": "kleiner baer"
+ },
+ {
+  "id": "nat-1cuec5v",
+  "q": "Welche zwei Stoffe braucht eine Pflanze neben Licht für die Fotosynthese?",
+  "a": "Wasser und Kohlendioxid",
+  "kurz": "Wasser und Kohlendioxid",
+  "eigene": "H2O und CO2",
+  "gesprochen": "Wasser und CO2 braucht sie noch",
+  "getippt": "wasser + co2"
+ },
+ {
+  "id": "nat-1hce0g5",
+  "q": "Was gibt die Dichte eines Stoffes an?",
+  "a": "Masse pro Volumen",
+  "kurz": "Masse pro Volumen",
+  "eigene": "Wie viel Masse in einem bestimmten Volumen steckt",
+  "gesprochen": "Wie viel Masse auf ein bestimmtes Volumen kommt, also Masse geteilt durch Volumen",
+  "getippt": "m/V, also masse pro volumen"
+ },
+ {
+  "id": "nat-1jshel0",
+  "q": "Was bedeutet 1 Byte?",
+  "a": "8 Bit",
+  "kurz": "8 Bit",
+  "eigene": "Acht Bit",
+  "gesprochen": "Das sind acht Bit",
+  "getippt": "8bit"
+ },
+ {
+  "id": "nat-1kwceoz",
+  "q": "Welches Organ entgiftet den Körper und speichert Zucker?",
+  "a": "Die Leber",
+  "kurz": "Leber",
+  "eigene": "Das ist die Leber",
+  "gesprochen": "Das macht die Leber",
+  "getippt": "Leber"
+ },
+ {
+  "id": "nat-1ln35l4",
+  "q": "Was passiert bei einem Phishing-Angriff?",
+  "a": "Jemand gibt sich als vertrauenswürdig aus, um Daten zu erbeuten",
+  "kurz": "Vortäuschen von Vertrauenswürdigkeit, um Daten zu erbeuten",
+  "eigene": "Ein Angreifer täuscht eine seriöse Identität vor, um an Daten zu kommen",
+  "gesprochen": "Einer tut so, als wäre er vertrauenswürdig, nur um an deine Daten zu kommen",
+  "getippt": "gibt sich als vertrauenswuerdig aus, um Daten zu erbeuten"
+ },
+ {
+  "id": "nat-1m1monz",
+  "q": "Welches Element ist im Universum am zweithäufigsten?",
+  "a": "Helium",
+  "kurz": "Helium",
+  "eigene": "Das Edelgas Helium",
+  "gesprochen": "Das ist Helium",
+  "getippt": "He"
+ },
+ {
+  "id": "nat-1no15jn",
+  "q": "Zu welchem Galaxientyp gehört die Milchstraße?",
+  "a": "Balkenspiralgalaxie",
+  "kurz": "Balkenspiralgalaxie",
+  "eigene": "Sie ist eine Spiralgalaxie mit Balken",
+  "gesprochen": "Das ist ne Spiralgalaxie, die so nen Balken in der Mitte hat",
+  "getippt": "balkenspiralgalaxie"
+ },
+ {
+  "id": "nat-1qt5fo0",
+  "q": "Wie funktioniert ein Elektromotor im Kern?",
+  "a": "Ein stromdurchflossener Leiter erfährt im Magnetfeld eine Kraft",
+  "kurz": "Stromdurchflossener Leiter erfährt im Magnetfeld eine Kraft",
+  "eigene": "Auf einen Leiter, durch den Strom fließt, wirkt im Magnetfeld eine Kraft",
+  "gesprochen": "Durch den Draht fließt Strom, und im Magnetfeld wirkt dann eine Kraft auf ihn",
+  "getippt": "stromdurchflossener Leiter erfaehrt im Magnetfeld e. Kraft"
+ },
+ {
+  "id": "nat-1sixwpl",
+  "q": "Wie heißt das Gemisch aus Salzsäure und Salpetersäure, das Gold auflöst?",
+  "a": "Königswasser",
+  "kurz": "Königswasser",
+  "eigene": "Aqua Regia",
+  "gesprochen": "Königswasser, auf Latein Aqua Regia",
+  "getippt": "koenigswasser"
+ },
+ {
+  "id": "nat-1tbz94y",
+  "q": "Was ist eine Ionenbindung?",
+  "a": "Anziehung zwischen positiv und negativ geladenen Ionen",
+  "kurz": "Anziehung zwischen positiven und negativen Ionen",
+  "eigene": "Entgegengesetzt geladene Ionen ziehen sich gegenseitig an",
+  "gesprochen": "Da ziehen sich positiv und negativ geladene Ionen gegenseitig an",
+  "getippt": "Anziehung zw. + und - geladenen Ionen"
+ },
+ {
+  "id": "nat-1tq46ic",
+  "q": "Wodurch entstehen eineiige Zwillinge?",
+  "a": "Eine befruchtete Eizelle teilt sich",
+  "kurz": "Teilung einer befruchteten Eizelle",
+  "eigene": "Eine befruchtete Eizelle spaltet sich in zwei",
+  "gesprochen": "Da teilt sich einfach eine befruchtete Eizelle in zwei",
+  "getippt": "befruchtete eizelle teilt sich in 2"
+ },
+ {
+  "id": "nat-1vyz4x6",
+  "q": "Was ist Mitose?",
+  "a": "Die Zellteilung mit identischem Erbgut",
+  "kurz": "Zellteilung mit identischem Erbgut",
+  "eigene": "Eine Teilung einer Zelle, bei der zwei Zellen mit gleichem Erbgut entstehen",
+  "gesprochen": "Da teilt sich eine Zelle, und die beiden neuen haben genau das gleiche Erbgut",
+  "getippt": "Zellteilung m. identischem Erbgut"
+ },
+ {
+  "id": "nat-1x3yz3h",
+  "q": "Wie alt ist das Universum ungefähr?",
+  "a": "13,8 Milliarden Jahre",
+  "kurz": "13,8 Mrd. Jahre",
+  "eigene": "Rund 13,8 Milliarden Jahre alt",
+  "gesprochen": "So um die 13,8 Milliarden Jahre",
+  "getippt": "ca. 13,8 mrd jahre"
+ },
+ {
+  "id": "nat-1xdvchl",
+  "q": "Warum wechseln Chamäleons hauptsächlich ihre Farbe?",
+  "a": "Zur Kommunikation und je nach Stimmung",
+  "kurz": "Zur Kommunikation und je nach Stimmung",
+  "eigene": "Um sich untereinander zu verständigen und weil sich ihre Stimmung ändert",
+  "gesprochen": "Um miteinander zu quatschen und weil sich ihre Laune ändert",
+  "getippt": "zur kommunikation + je nach stimmung"
+ },
+ {
+  "id": "nat-1yiu484",
+  "q": "Was ist ein Ökosystem?",
+  "a": "Lebewesen und ihre unbelebte Umwelt als Wirkungsgefüge",
+  "kurz": "Lebewesen und unbelebte Umwelt als Wirkungsgefuege",
+  "eigene": "Das Zusammenspiel von Organismen mit der unbelebten Natur um sie herum",
+  "gesprochen": "Alle Lebewesen an einem Ort zusammen mit der unbelebten Umwelt, die wirken alle aufeinander",
+  "getippt": "lebewesen + unbelebte umwelt als wirkungsgefuege"
+ },
+ {
+  "id": "nat-1yr1264",
+  "q": "Aus welchem Land stammte der Jeans-Fabrikant Levi Strauss?",
+  "a": "Aus Deutschland",
+  "kurz": "Deutschland",
+  "eigene": "Er war Deutscher",
+  "gesprochen": "Der kam aus Deutschland",
+  "getippt": "deutschland"
+ },
+ {
+  "id": "nat-5fh8z1",
+  "q": "Welches Metall ist bei Zimmertemperatur flüssig?",
+  "a": "Quecksilber",
+  "kurz": "Quecksilber",
+  "eigene": "Quecksilber, das Element Hg",
+  "gesprochen": "Quecksilber, das ist bei Zimmertemperatur fluessig",
+  "getippt": "quecksilber"
+ },
+ {
+  "id": "nat-7s6ni7",
+  "q": "Wer baute 1885 mit Wilhelm Maybach das erste Motorrad?",
+  "a": "Gottlieb Daimler",
+  "kurz": "Gottlieb Daimler",
+  "eigene": "Daimler, Gottlieb",
+  "gesprochen": "Das war Gottlieb Daimler",
+  "getippt": "gottlieb daimler"
+ },
+ {
+  "id": "nat-8m8l5a",
+  "q": "Was besagt der zweite Hauptsatz der Thermodynamik anschaulich?",
+  "a": "Wärme fließt von selbst nur vom warmen zum kalten Körper",
+  "kurz": "Wärme fließt von selbst nur von warm zu kalt",
+  "eigene": "Von allein geht Wärme immer nur vom wärmeren zum kälteren Körper, nie umgekehrt",
+  "gesprochen": "Wärme geht von alleine immer nur von warm nach kalt, nie andersrum",
+  "getippt": "waerme fliesst von selbst nur vom warmen zum kalten koerper"
+ },
+ {
+  "id": "nat-amcbi5",
+  "q": "Wie schnell breitet sich Schall in Luft ungefähr aus?",
+  "a": "Etwa 340 Meter pro Sekunde",
+  "kurz": "340 m/s",
+  "eigene": "Ungefähr 340 Meter in der Sekunde",
+  "gesprochen": "So ungefähr 340 Meter pro Sekunde",
+  "getippt": "ca. 340 m/s"
+ },
+ {
+  "id": "nat-aynek9",
+  "q": "Was misst der pH-Wert?",
+  "a": "Wie sauer oder basisch eine Lösung ist",
+  "kurz": "Saeure- oder Basengrad einer Loesung",
+  "eigene": "Den Saeuregrad bzw. die Alkalitaet einer Loesung",
+  "gesprochen": "Ob eine Loesung sauer oder basisch ist",
+  "getippt": "wie sauer/basisch eine loesung ist"
+ },
+ {
+  "id": "nat-c8b9f2",
+  "q": "Wer war die erste Frau im Weltall?",
+  "a": "Walentina Tereschkowa",
+  "kurz": "Walentina Tereschkowa",
+  "eigene": "Valentina Tereshkova",
+  "gesprochen": "Walentina Tereschkowa, die Russin",
+  "getippt": "valentina tereschkowa"
+ },
+ {
+  "id": "nat-dt96qa",
+  "q": "Was ist Symbiose?",
+  "a": "Ein Zusammenleben zum Nutzen beider Partner",
+  "kurz": "Zusammenleben zum Nutzen beider Partner",
+  "eigene": "Zwei Lebewesen leben zusammen und profitieren beide davon",
+  "gesprochen": "Zwei leben zusammen und beide haben was davon",
+  "getippt": "Zusammenleben z. Nutzen beider Partner"
+ },
+ {
+  "id": "nat-kvggp9",
+  "q": "Welcher Planet wird „roter Planet“ genannt?",
+  "a": "Mars",
+  "kurz": "Mars",
+  "eigene": "Der Planet Mars",
+  "gesprochen": "Der Mars natuerlich",
+  "getippt": "mars"
+ },
+ {
+  "id": "nat-tajmq2",
+  "q": "Welches Gas ist hauptverantwortlich für den menschengemachten Treibhauseffekt?",
+  "a": "Kohlendioxid",
+  "kurz": "Kohlendioxid",
+  "eigene": "Kohlenstoffdioxid",
+  "gesprochen": "Vor allem das CO2, also Kohlendioxid",
+  "getippt": "CO2"
+ },
+ {
+  "id": "nat-vkvqi7",
+  "q": "Was beschreibt das Ohmsche Gesetz?",
+  "a": "U = R · I",
+  "kurz": "U = R · I",
+  "eigene": "Spannung gleich Widerstand mal Stromstaerke",
+  "gesprochen": "U ist R mal I",
+  "getippt": "U=R*I"
+ },
+ {
+  "id": "nat-wcnpl6",
+  "q": "Wer entdeckte die Röntgenstrahlen?",
+  "a": "Wilhelm Conrad Röntgen",
+  "kurz": "Roentgen",
+  "eigene": "Der Physiker Wilhelm Conrad Roentgen",
+  "gesprochen": "Der Roentgen halt, Wilhelm Conrad Roentgen",
+  "getippt": "W. C. Roentgen"
+ },
+ {
+  "id": "nat-xajkkf",
+  "q": "Wie viele Chromosomen hat ein Mensch?",
+  "a": "46",
+  "kurz": "46",
+  "eigene": "sechsundvierzig Chromosomen",
+  "gesprochen": "46 Stueck, also 23 Paare",
+  "getippt": "46"
+ },
+ {
+  "id": "nat-zlmjc4",
+  "q": "Was ist ein Hebel und wofür nutzt man ihn?",
+  "a": "Eine Kraftübersetzung über unterschiedliche Hebelarme",
+  "kurz": "Kraftübersetzung über unterschiedliche Hebelarme",
+  "eigene": "Über unterschiedlich lange Hebelarme wird Kraft übersetzt",
+  "gesprochen": "Über einen langen und einen kurzen Hebelarm übersetzt man damit Kraft",
+  "getippt": "Kraftuebersetzung ueber unterschiedl. Hebelarme"
+ },
+ {
+  "id": "pol-115nhs0",
+  "q": "Was ist ein konstruktives Misstrauensvotum?",
+  "a": "Die Abwahl des Kanzlers nur mit gleichzeitiger Wahl eines Nachfolgers",
+  "kurz": "Abwahl des Kanzlers nur mit gleichzeitiger Wahl eines Nachfolgers",
+  "eigene": "Der Bundestag kann den Kanzler nur absetzen, wenn er zugleich einen Nachfolger wählt",
+  "gesprochen": "Man kann den Kanzler nur rauswerfen, wenn man gleichzeitig einen neuen wählt",
+  "getippt": "Abwahl d. Kanzlers nur mit gleichzeitiger Wahl e. Nachfolgers"
+ },
+ {
+  "id": "pol-115ygqw",
+  "q": "Welche drei zentralen Organe hat die EU im Gesetzgebungsverfahren?",
+  "a": "Kommission, Parlament und Ministerrat",
+  "kurz": "Kommission, Parlament, Ministerrat",
+  "eigene": "EU-Kommission, Europäisches Parlament und Rat der EU",
+  "gesprochen": "Die Kommission, das Parlament und der Ministerrat",
+  "getippt": "Kommission, Parlament + Ministerrat"
+ },
+ {
+  "id": "pol-11irzk1",
+  "q": "Was bedeutet die Unschuldsvermutung?",
+  "a": "Jeder gilt bis zur rechtskräftigen Verurteilung als unschuldig",
+  "kurz": "Bis zur rechtskräftigen Verurteilung gilt jeder als unschuldig",
+  "eigene": "Solange kein rechtskräftiges Urteil vorliegt, wird jeder als unschuldig behandelt",
+  "gesprochen": "Man ist unschuldig, solange man nicht rechtskräftig verurteilt ist",
+  "getippt": "jeder gilt bis zur rechtskraeftigen Verurteilung als unschuldig"
+ },
+ {
+  "id": "pol-1228rdj",
+  "q": "Was bedeutet „Angebot und Nachfrage“?",
+  "a": "Der Preis pendelt sich dort ein, wo beide sich treffen",
+  "kurz": "Preis pendelt sich ein, wo beide sich treffen",
+  "eigene": "Der Preis stellt sich im Schnittpunkt von Angebot und Nachfrage ein",
+  "gesprochen": "Der Preis landet genau da, wo Angebot und Nachfrage zusammenkommen",
+  "getippt": "Preis pendelt sich da ein, wo Angebot u. Nachfrage sich treffen"
+ },
+ {
+  "id": "pol-137dhym",
+  "q": "Wie lange dauert eine Amtszeit des US-Präsidenten?",
+  "a": "Vier Jahre, maximal zwei Amtszeiten",
+  "kurz": "Vier Jahre, max. zwei Amtszeiten",
+  "eigene": "Eine Amtsperiode dauert vier Jahre, höchstens zwei davon sind erlaubt",
+  "gesprochen": "Vier Jahre am Stück, und höchstens zweimal darf man ran",
+  "getippt": "4 Jahre, max. 2 Amtszeiten"
+ },
+ {
+  "id": "pol-13aahx4",
+  "q": "Wofür ist die WHO zuständig?",
+  "a": "Für die weltweite Gesundheit",
+  "kurz": "Weltweite Gesundheit",
+  "eigene": "Für die globale Gesundheit",
+  "gesprochen": "Die kümmert sich um die Gesundheit weltweit",
+  "getippt": "fuer die weltweite Gesundheit"
+ },
+ {
+  "id": "pol-148tpjs",
+  "q": "Was wählt man mit Erst- und Zweitstimme?",
+  "a": "Erststimme den Wahlkreiskandidaten, Zweitstimme die Partei",
+  "kurz": "Erststimme Wahlkreiskandidat, Zweitstimme Partei",
+  "eigene": "Mit der Erststimme den Direktkandidaten im Wahlkreis, mit der Zweitstimme eine Partei",
+  "gesprochen": "Mit der Erststimme wählst du den Kandidaten bei dir im Wahlkreis und mit der Zweitstimme die Partei",
+  "getippt": "1. stimme wahlkreiskandidat, 2. stimme partei"
+ },
+ {
+  "id": "pol-14p3xyq",
+  "q": "Welche fünf Staaten haben ein Vetorecht im UN-Sicherheitsrat?",
+  "a": "USA, Russland, China, Frankreich, Großbritannien",
+  "kurz": "USA, Russland, China, Frankreich, Großbritannien",
+  "eigene": "Frankreich, Großbritannien, China, Russland und die Vereinigten Staaten",
+  "gesprochen": "Die USA, Russland, China, Frankreich und Großbritannien",
+  "getippt": "USA, Russland, China, Frankreich, GB"
+ },
+ {
+  "id": "pol-154a21h",
+  "q": "Wie nennt man einen anhaltenden Rückgang des allgemeinen Preisniveaus?",
+  "a": "Deflation",
+  "kurz": "Deflation",
+  "eigene": "Deflation",
+  "gesprochen": "Das nennt man Deflation",
+  "getippt": "Deflation"
+ },
+ {
+  "id": "pol-16hlqfm",
+  "q": "Wie lange gilt die gesetzliche Gewährleistung bei Neuware?",
+  "a": "Zwei Jahre",
+  "kurz": "Zwei Jahre",
+  "eigene": "24 Monate",
+  "gesprochen": "Zwei Jahre lang",
+  "getippt": "2 Jahre"
+ },
+ {
+  "id": "pol-1cwa7sy",
+  "q": "Was ist der Unterschied zwischen einem Landtag und dem Bundestag?",
+  "a": "Der Landtag ist das Parlament eines Bundeslandes",
+  "kurz": "Landtag = Parlament eines Bundeslandes",
+  "eigene": "Ein Landtag ist die Volksvertretung eines einzelnen Bundeslandes",
+  "gesprochen": "Der Landtag ist halt das Parlament von einem Bundesland",
+  "getippt": "Landtag = Parlament von 1 Bundesland"
+ },
+ {
+  "id": "pol-1kmna35",
+  "q": "Wer vertritt den Bundespräsidenten bei Verhinderung?",
+  "a": "Der Bundesratspräsident",
+  "kurz": "Bundesratspräsident",
+  "eigene": "Der Präsident des Bundesrates",
+  "gesprochen": "Der Bundesratspräsident, also der Chef vom Bundesrat",
+  "getippt": "Bundesratspraesident"
+ },
+ {
+  "id": "pol-1p2hfuj",
+  "q": "Was ist das Subsidiaritätsprinzip?",
+  "a": "Aufgaben sollen auf der kleinstmöglichen Ebene gelöst werden",
+  "kurz": "Aufgaben auf der kleinstmöglichen Ebene lösen",
+  "eigene": "Was die kleinere Einheit selbst erledigen kann, soll auch dort erledigt werden",
+  "gesprochen": "Alles wird möglichst weit unten geregelt, auf der kleinsten Ebene, die das kann",
+  "getippt": "Aufgaben auf d. kleinstmoeglichen Ebene loesen"
+ },
+ {
+  "id": "pol-1qeh2x7",
+  "q": "Was ist ein Zustimmungsgesetz im Gesetzgebungsverfahren?",
+  "a": "Ein Gesetz, das ohne den Bundesrat nicht in Kraft tritt",
+  "kurz": "Gesetz, das ohne Bundesrat nicht in Kraft tritt",
+  "eigene": "Ein Gesetz, dem der Bundesrat zustimmen muss, sonst kommt es nicht zustande",
+  "gesprochen": "Ein Gesetz, bei dem der Bundesrat Ja sagen muss, sonst wird da nichts draus",
+  "getippt": "Gesetz, das ohne Zustimmung des Bundesrats nicht in Kraft tritt"
+ },
+ {
+  "id": "pol-1vcssw",
+  "q": "Aus welchem Land stammt Lego?",
+  "a": "Aus Dänemark",
+  "kurz": "Dänemark",
+  "eigene": "Lego kommt aus Dänemark",
+  "gesprochen": "Das ist dänisch, kommt aus Dänemark",
+  "getippt": "aus Daenemark"
+ },
+ {
+  "id": "pol-23rg23",
+  "q": "Wie heißen die vier Phasen des Konjunkturzyklus?",
+  "a": "Aufschwung, Boom, Abschwung und Tiefphase",
+  "kurz": "Aufschwung, Boom, Abschwung, Tiefphase",
+  "eigene": "Erholung, Hochkonjunktur, Rezession und Depression",
+  "gesprochen": "Erst Aufschwung, dann Boom, dann Abschwung und dann die Tiefphase",
+  "getippt": "Aufschwung, Boom, Abschwung + Tiefphase"
+ },
+ {
+  "id": "pol-2eycmm",
+  "q": "Muss ein Mieter beim Auszug streichen, wenn er unrenoviert eingezogen ist?",
+  "a": "Nein, dann bleibt der Vermieter zuständig",
+  "kurz": "Nein, Vermieter bleibt zuständig",
+  "eigene": "Nein, das Streichen bleibt Sache des Vermieters",
+  "gesprochen": "Nee, dann ist der Vermieter dran",
+  "getippt": "nein, Vermieter zustaendig"
+ },
+ {
+  "id": "pol-3zjzgd",
+  "q": "Was bedeutet Demokratie wörtlich?",
+  "a": "Herrschaft des Volkes",
+  "kurz": "Volksherrschaft",
+  "eigene": "Herrschaft durch das Volk",
+  "gesprochen": "Das Volk herrscht",
+  "getippt": "Herrschaft d. Volkes"
+ },
+ {
+  "id": "pol-5haulf",
+  "q": "Was ist ein Widerspruch gegen einen Bescheid?",
+  "a": "Der Einspruch bei der Behörde, bevor man klagt",
+  "kurz": "Einspruch bei der Behörde vor der Klage",
+  "eigene": "Man legt zuerst bei der Behörde selbst Einspruch ein, bevor es vor Gericht geht",
+  "gesprochen": "Man sagt der Behörde erstmal selber, dass man nicht einverstanden ist, bevor man klagt",
+  "getippt": "Einspruch bei der Behoerde, bevor man klagt"
+ },
+ {
+  "id": "pol-8pttl3",
+  "q": "Wie viel Geld ist pro Bank und Kunde gesetzlich abgesichert?",
+  "a": "100.000 Euro",
+  "kurz": "100.000 Euro",
+  "eigene": "Einhunderttausend Euro",
+  "gesprochen": "Hunderttausend Euro",
+  "getippt": "100000 EUR"
+ },
+ {
+  "id": "pol-aynlre",
+  "q": "Wer gründete 1994 den Online-Händler Amazon?",
+  "a": "Jeff Bezos",
+  "kurz": "Bezos",
+  "eigene": "Amazon wurde von Jeff Bezos gegründet",
+  "gesprochen": "Das war Jeff Bezos",
+  "getippt": "jeff bezos"
+ },
+ {
+  "id": "pol-fb3uvt",
+  "q": "Was steht in Artikel 1 des Grundgesetzes?",
+  "a": "Die Würde des Menschen ist unantastbar",
+  "kurz": "Menschenwürde ist unantastbar",
+  "eigene": "Dass die Würde jedes Menschen unantastbar ist",
+  "gesprochen": "Da steht, dass die Würde des Menschen unantastbar ist",
+  "getippt": "die wuerde des menschen ist unantastbar"
+ },
+ {
+  "id": "pol-gmo93d",
+  "q": "Was besagt die Faustregel „Diversifikation“ bei der Geldanlage?",
+  "a": "Nicht alles auf eine Karte setzen",
+  "kurz": "Nicht alles auf eine Karte setzen",
+  "eigene": "Das Geld auf mehrere Anlagen verteilen statt alles in eine zu stecken",
+  "gesprochen": "Man soll halt nicht alles auf eine Karte setzen, sondern streuen",
+  "getippt": "nicht alles auf 1 Karte setzen"
+ },
+ {
+  "id": "pol-h27aoq",
+  "q": "Was ist ein Petitionsrecht?",
+  "a": "Das Recht, sich mit Bitten und Beschwerden an Behörden und Parlament zu wenden",
+  "kurz": "Recht, sich mit Bitten und Beschwerden an Behörden und Parlament zu wenden",
+  "eigene": "Das Recht, Anliegen und Beschwerden bei Ämtern und beim Parlament einzureichen",
+  "gesprochen": "Man darf sich mit Bitten oder Beschwerden an Behörden und ans Parlament wenden",
+  "getippt": "Recht, sich m. Bitten u. Beschwerden an Behoerden u. Parlament zu wenden"
+ },
+ {
+  "id": "pol-hu7n85",
+  "q": "Wie hoch ist ungefähr die gesetzliche Wochenarbeitszeit-Höchstgrenze in Deutschland?",
+  "a": "48 Stunden im Durchschnitt",
+  "kurz": "48 Stunden im Durchschnitt",
+  "eigene": "Durchschnittlich höchstens 48 Wochenstunden",
+  "gesprochen": "So um die 48 Stunden pro Woche im Schnitt",
+  "getippt": "48 h im Schnitt"
+ },
+ {
+  "id": "pol-jzltdh",
+  "q": "Was ist der Grundfreibetrag bei der Einkommensteuer?",
+  "a": "Der Teil des Einkommens, der steuerfrei bleibt",
+  "kurz": "Steuerfreier Teil des Einkommens",
+  "eigene": "Der Anteil am Einkommen, auf den keine Einkommensteuer anfällt",
+  "gesprochen": "Der Teil vom Einkommen, für den man einfach keine Steuern zahlt",
+  "getippt": "der Teil vom Einkommen, der steuerfrei bleibt"
+ },
+ {
+  "id": "pol-n0jeci",
+  "q": "Was ist eine Rezession?",
+  "a": "Ein Rückgang der Wirtschaftsleistung in zwei Quartalen in Folge",
+  "kurz": "Rückgang der Wirtschaftsleistung in zwei Quartalen in Folge",
+  "eigene": "Die Wirtschaftsleistung schrumpft zwei Quartale hintereinander",
+  "gesprochen": "Wenn die Wirtschaftsleistung zwei Quartale in Folge zurückgeht",
+  "getippt": "Rueckgang der Wirtschaftsleistung in 2 Quartalen in Folge"
+ },
+ {
+  "id": "pol-ro5pgi",
+  "q": "Was gehört bei einer Wohnung zu den Nebenkosten?",
+  "a": "Umlagefähige Betriebskosten wie Heizung, Wasser und Müll",
+  "kurz": "Umlagefähige Betriebskosten: Heizung, Wasser, Müll",
+  "eigene": "Betriebskosten, die der Vermieter umlegen darf, zum Beispiel Heizung, Wasser und Müllabfuhr",
+  "gesprochen": "Alles, was der Vermieter umlegen darf, also Heizung, Wasser und Müll",
+  "getippt": "umlagefaehige Betriebskosten, zb Heizung, Wasser, Muell"
+ },
+ {
+  "id": "pol-tkleje",
+  "q": "Wie lässt sich ein Handyvertrag nach der Mindestlaufzeit kündigen?",
+  "a": "Jederzeit mit einem Monat Frist",
+  "kurz": "Jederzeit, ein Monat Frist",
+  "eigene": "Nach der Mindestlaufzeit ist die Kündigung jederzeit möglich, mit einer Frist von einem Monat",
+  "gesprochen": "Danach kannst du jederzeit kündigen, einen Monat vorher",
+  "getippt": "jederzeit, 1 Monat Frist"
+ },
+ {
+  "id": "pol-uqrsto",
+  "q": "Wie hoch ist der reguläre Mehrwertsteuersatz in Deutschland?",
+  "a": "19 %",
+  "kurz": "19 %",
+  "eigene": "neunzehn Prozent",
+  "gesprochen": "Neunzehn Prozent",
+  "getippt": "19%"
+ },
+ {
+  "id": "pol-vvovdi",
+  "q": "Wie wird die gesetzliche Rente in Deutschland finanziert?",
+  "a": "Im Umlageverfahren aus laufenden Beiträgen",
+  "kurz": "Umlageverfahren aus laufenden Beiträgen",
+  "eigene": "Über das Umlageverfahren: die laufenden Beiträge der Beschäftigten zahlen die Renten",
+  "gesprochen": "Im Umlageverfahren, die Beiträge von heute zahlen direkt die Renten von heute",
+  "getippt": "Umlageverfahren, aus laufenden Beitraegen"
+ },
+ {
+  "id": "pol-woruaw",
+  "q": "Wie hieß die Währung Italiens vor dem Euro?",
+  "a": "Lira",
+  "kurz": "Lira",
+  "eigene": "Die italienische Lira",
+  "gesprochen": "Die Lira war das, vor dem Euro",
+  "getippt": "lira"
+ },
+ {
+  "id": "pol-xj26g2",
+  "q": "Wer legt die Höhe des gesetzlichen Mindestlohns fest?",
+  "a": "Die Bundesregierung auf Vorschlag der Mindestlohnkommission",
+  "kurz": "Bundesregierung, auf Vorschlag der Mindestlohnkommission",
+  "eigene": "Die Mindestlohnkommission schlägt die Höhe vor, festgelegt wird sie von der Bundesregierung",
+  "gesprochen": "Die Bundesregierung legt ihn fest, aber nur so, wie die Mindestlohnkommission das vorschlägt",
+  "getippt": "Bundesreg. auf Vorschlag der Mindestlohnkommission"
+ },
+ {
+  "id": "pol-ybxda6",
+  "q": "Bis zu welchem Alter kann bei einer Tat noch Jugendstrafrecht gelten?",
+  "a": "Bis 20 Jahre",
+  "kurz": "Bis 20",
+  "eigene": "Bis zum Alter von 20 Jahren",
+  "gesprochen": "Bis man 20 ist",
+  "getippt": "bis 20 J."
+ },
+ {
+  "id": "spo-125pg0j",
+  "q": "Welche Kleiderordnung gilt in Wimbledon?",
+  "a": "Überwiegend weiße Kleidung",
+  "kurz": "Weisse Kleidung",
+  "eigene": "Die Spieler muessen ueberwiegend in Weiss antreten",
+  "gesprochen": "Da muss man in Weiss spielen, fast alles weiss",
+  "getippt": "ueberwiegend weisse Kleidung"
+ },
+ {
+  "id": "spo-12aherf",
+  "q": "Was ist der Deutsche Sportabzeichen-Test?",
+  "a": "Ein Fitnessabzeichen in vier Gruppen: Ausdauer, Kraft, Schnelligkeit, Koordination",
+  "kurz": "Fitnessabzeichen in vier Gruppen: Ausdauer, Kraft, Schnelligkeit, Koordination",
+  "eigene": "Eine Sportauszeichnung mit vier Bereichen: Ausdauer, Kraft, Schnelligkeit und Koordination",
+  "gesprochen": "Das ist so ein Fitnessabzeichen, da gibt es vier Gruppen: Ausdauer, Kraft, Schnelligkeit und Koordination",
+  "getippt": "Fitnessabzeichen, 4 Gruppen: Ausdauer, Kraft, Schnelligkeit, Koordination"
+ },
+ {
+  "id": "spo-12atet3",
+  "q": "Wann fanden die ersten Olympischen Spiele der Neuzeit statt?",
+  "a": "1896 in Athen",
+  "kurz": "1896 Athen",
+  "eigene": "In Athen im Jahr 1896",
+  "gesprochen": "1896 waren die, in Athen",
+  "getippt": "1896 Athen"
+ },
+ {
+  "id": "spo-15dhjgf",
+  "q": "Wie heißt die Einheit aus einem Motoneuron und den von ihm versorgten Muskelfasern?",
+  "a": "Die motorische Einheit",
+  "kurz": "Motorische Einheit",
+  "eigene": "Man spricht von der motorischen Einheit",
+  "gesprochen": "Das ist die motorische Einheit",
+  "getippt": "motorische einheit"
+ },
+ {
+  "id": "spo-16n6qgk",
+  "q": "Was ist intrinsische Motivation?",
+  "a": "Antrieb aus der Sache selbst heraus",
+  "kurz": "Antrieb aus der Sache selbst",
+  "eigene": "Der Anreiz kommt aus der Tätigkeit selbst heraus",
+  "gesprochen": "Man macht es, weil einen die Sache selbst antreibt",
+  "getippt": "antrieb kommt aus der sache selbst"
+ },
+ {
+  "id": "spo-17b9swx",
+  "q": "Was ist ein negativer Transfer beim Bewegungslernen?",
+  "a": "Eine gelernte Bewegung erschwert das Lernen einer neuen",
+  "kurz": "Gelernte Bewegung erschwert Lernen einer neuen",
+  "eigene": "Eine bereits beherrschte Bewegung behindert den Erwerb einer neuen Bewegung",
+  "gesprochen": "Wenn eine Bewegung, die man schon kann, einem das Lernen einer neuen schwerer macht",
+  "getippt": "alte gelernte bewegung erschwert das lernen einer neuen"
+ },
+ {
+  "id": "spo-186ewdd",
+  "q": "Wer erfand 1891 das Basketballspiel?",
+  "a": "James Naismith",
+  "kurz": "Naismith",
+  "eigene": "Erfunden hat es James Naismith",
+  "gesprochen": "Das war James Naismith",
+  "getippt": "J. Naismith"
+ },
+ {
+  "id": "spo-19spqf",
+  "q": "Was bewirkt ein Aufwärmen vor dem Sport?",
+  "a": "Höhere Muskeltemperatur, bessere Durchblutung und Reaktionsfähigkeit",
+  "kurz": "Hoehere Muskeltemperatur, bessere Durchblutung, bessere Reaktionsfaehigkeit",
+  "eigene": "Die Muskeln werden waermer und besser durchblutet, und man reagiert schneller",
+  "gesprochen": "Die Muskeln werden warm, das Blut fliesst besser und man reagiert schneller",
+  "getippt": "hoehere Muskeltemp., bessere Durchblutung + Reaktionsfaehigkeit"
+ },
+ {
+  "id": "spo-1bnbizp",
+  "q": "Was sind „sensible Phasen“ im Sport?",
+  "a": "Lebensabschnitte besonders guter Lernfähigkeit",
+  "kurz": "Phasen besonders guter Lernfaehigkeit",
+  "eigene": "Zeitfenster im Leben, in denen man besonders leicht lernt",
+  "gesprochen": "Das sind Zeiten im Leben, wo man was besonders gut lernen kann",
+  "getippt": "Lebensabschnitte mit bes. guter Lernfaehigkeit"
+ },
+ {
+  "id": "spo-1cwc8eh",
+  "q": "Ein Mitschüler steht griffbereit am Reck und greift nur bei einem Sturz ein – wie heißt diese Rolle?",
+  "a": "Sichern",
+  "kurz": "Sichern",
+  "eigene": "Das ist das Sichern",
+  "gesprochen": "Der sichert",
+  "getippt": "sichern"
+ },
+ {
+  "id": "spo-1e9934d",
+  "q": "Die Trainingsintensität soll über den Puls gesteuert werden, ohne Leistungsdiagnostik. Was hilft?",
+  "a": "Die Karvonen-Formel",
+  "kurz": "Karvonen-Formel",
+  "eigene": "Die Formel nach Karvonen",
+  "gesprochen": "Da nimmt man einfach die Karvonen-Formel",
+  "getippt": "karvonen formel"
+ },
+ {
+  "id": "spo-1gvz7r2",
+  "q": "Von wo aus muss im Feldhockey ein gültiges Tor erzielt werden?",
+  "a": "Aus dem Schusskreis",
+  "kurz": "Schusskreis",
+  "eigene": "Der Schuss muss aus dem Schusskreis kommen",
+  "gesprochen": "Man muss im Schusskreis sein, sonst zählt das Tor nicht",
+  "getippt": "aus dem schusskreis"
+ },
+ {
+  "id": "spo-1hs3n62",
+  "q": "Welcher Abflugwinkel ist beim Kugelstoßen optimal?",
+  "a": "Etwa 38 bis 42 Grad",
+  "kurz": "38 bis 42 Grad",
+  "eigene": "Ungefähr zwischen 38 und 42 Grad",
+  "gesprochen": "So um die 38 bis 42 Grad rum",
+  "getippt": "ca. 38-42 grad"
+ },
+ {
+  "id": "spo-1ikjig",
+  "q": "Wann finden die nächsten Olympischen Sommerspiele nach Paris 2024 statt?",
+  "a": "2028 in Los Angeles",
+  "kurz": "2028 Los Angeles",
+  "eigene": "In Los Angeles im Jahr 2028",
+  "gesprochen": "2028 in LA",
+  "getippt": "2028 LA"
+ },
+ {
+  "id": "spo-1qxae60",
+  "q": "Welche Schlafphase gilt für die körperliche Regeneration als besonders wichtig?",
+  "a": "Der Tiefschlaf",
+  "kurz": "Tiefschlaf",
+  "eigene": "Die Tiefschlafphase",
+  "gesprochen": "Der Tiefschlaf",
+  "getippt": "tiefschlaf"
+ },
+ {
+  "id": "spo-1rm2xse",
+  "q": "Welche Methode entwickelt die Sprungkraft über den Dehnungs-Verkürzungs-Zyklus?",
+  "a": "Reaktivkraftmethode",
+  "kurz": "Reaktivkraftmethode",
+  "eigene": "Die Methode des Reaktivkrafttrainings",
+  "gesprochen": "Das nennt sich Reaktivkraftmethode",
+  "getippt": "reaktivkraftmethode"
+ },
+ {
+  "id": "spo-1x06on4",
+  "q": "Was besagt das Prinzip der zeitlichen Koordination der Teilimpulse?",
+  "a": "Die Teilimpulse müssen zeitlich passend aufeinanderfolgen",
+  "kurz": "Teilimpulse zeitlich passend aufeinanderfolgend",
+  "eigene": "Die einzelnen Impulse müssen in der richtigen zeitlichen Abfolge nacheinander kommen",
+  "gesprochen": "Die Teilimpulse müssen zeitlich richtig hintereinander kommen",
+  "getippt": "teilimpulse muessen zeitl. passend aufeinander folgen"
+ },
+ {
+  "id": "spo-2bssgh",
+  "q": "Was kennzeichnet das spielgemäße Konzept der Sportspielvermittlung?",
+  "a": "Gelernt wird über vereinfachte Spielformen",
+  "kurz": "Lernen über vereinfachte Spielformen",
+  "eigene": "Man lernt anhand von vereinfachten Spielen",
+  "gesprochen": "Man spielt von Anfang an, halt mit vereinfachten Spielformen",
+  "getippt": "lernen ueber vereinfachte spielformen"
+ },
+ {
+  "id": "spo-32vtwm",
+  "q": "Welcher Verein gewann 1997 als bislang letzter deutscher Klub neben Bayern die Champions League?",
+  "a": "Borussia Dortmund",
+  "kurz": "Dortmund",
+  "eigene": "Der BVB aus Dortmund",
+  "gesprochen": "Das war Dortmund, also der BVB",
+  "getippt": "BVB Dortmund"
+ },
+ {
+  "id": "spo-8flfo6",
+  "q": "Was gehört zur Sicherheitsprüfung vor einer Sportstunde?",
+  "a": "Sichtkontrolle von Geräten, Boden und Halle",
+  "kurz": "Sichtkontrolle von Geräten, Boden, Halle",
+  "eigene": "Geräte, Boden und Halle vorher mit dem Blick überprüfen",
+  "gesprochen": "Man guckt sich vorher einmal die Geräte, den Boden und die Halle an",
+  "getippt": "sichtkontrolle geraete, boden, halle"
+ },
+ {
+  "id": "spo-coxndo",
+  "q": "Wie alt war Boris Becker bei seinem ersten Wimbledonsieg?",
+  "a": "17 Jahre",
+  "kurz": "17",
+  "eigene": "Mit siebzehn Jahren",
+  "gesprochen": "Der war da erst 17",
+  "getippt": "17 J."
+ },
+ {
+  "id": "spo-fv8o1e",
+  "q": "Was ist die kleinste funktionelle Einheit des Muskels?",
+  "a": "Das Sarkomer",
+  "kurz": "Sarkomer",
+  "eigene": "Das Sarkomer ist diese kleinste Funktionseinheit",
+  "gesprochen": "Das Sarkomer",
+  "getippt": "sarkomer"
+ },
+ {
+  "id": "spo-imvzb6",
+  "q": "Wie viele Punkte bringt ein einzelner Dart höchstens?",
+  "a": "60",
+  "kurz": "60",
+  "eigene": "Sechzig Punkte",
+  "gesprochen": "Hoechstens 60, mehr geht mit einem Pfeil nicht",
+  "getippt": "60 Pkt"
+ },
+ {
+  "id": "spo-iyax5i",
+  "q": "Welche Kraftarten unterscheidet die Trainingslehre?",
+  "a": "Maximalkraft, Schnellkraft, Kraftausdauer, Reaktivkraft",
+  "kurz": "Maximalkraft, Schnellkraft, Kraftausdauer, Reaktivkraft",
+  "eigene": "Reaktivkraft, Kraftausdauer, Schnellkraft und Maximalkraft",
+  "gesprochen": "Es gibt Maximalkraft, Schnellkraft, Kraftausdauer und Reaktivkraft",
+  "getippt": "Maximalkraft, Schnellkraft, Kraftausdauer, Reaktivkraft"
+ },
+ {
+  "id": "spo-kwdhlk",
+  "q": "Welche Doppelfunktion hat die ischiocrurale Muskulatur an der Oberschenkelrückseite?",
+  "a": "Sie beugt das Knie und streckt die Hüfte",
+  "kurz": "Knie beugen, Hüfte strecken",
+  "eigene": "Kniebeugung und Hüftstreckung",
+  "gesprochen": "Die beugt das Knie und streckt gleichzeitig die Hüfte",
+  "getippt": "beugt knie, streckt huefte"
+ },
+ {
+  "id": "spo-llpyxl",
+  "q": "Wie heißt das jährliche Endspiel der US-Footballliga NFL?",
+  "a": "Super Bowl",
+  "kurz": "Super Bowl",
+  "eigene": "Das Finale heißt Super Bowl",
+  "gesprochen": "Der Super Bowl",
+  "getippt": "superbowl"
+ },
+ {
+  "id": "spo-m8ly6k",
+  "q": "Wie viele Strafrunden gibt es beim Biathlon-Sprint pro Fehlschuss?",
+  "a": "Eine Runde von 150 Metern",
+  "kurz": "Eine Runde, 150 Meter",
+  "eigene": "Pro Fehlschuss eine Strafrunde ueber 150 Meter",
+  "gesprochen": "Fuer jeden Fehlschuss eine Strafrunde, so 150 Meter",
+  "getippt": "1 Runde, 150 m"
+ },
+ {
+  "id": "spo-mf7bqm",
+  "q": "Wie viele Runden im Stadion sind 5.000 Meter?",
+  "a": "12,5 Runden",
+  "kurz": "12,5",
+  "eigene": "Zwölfeinhalb Runden",
+  "gesprochen": "Zwölfeinhalb, also zwölf und eine halbe Runde",
+  "getippt": "12.5 Runden"
+ },
+ {
+  "id": "spo-msw7sq",
+  "q": "Was kennzeichnet das Taktik-Spiel-Modell der Sportspielvermittlung?",
+  "a": "Das Spielverständnis kommt vor der Technik",
+  "kurz": "Spielverständnis vor Technik",
+  "eigene": "Zuerst wird das Verständnis für das Spiel entwickelt, danach die Technik",
+  "gesprochen": "Erst mal kapieren, wie das Spiel läuft, und dann kommt die Technik",
+  "getippt": "spielverstaendnis vor technik"
+ },
+ {
+  "id": "spo-nc4w40",
+  "q": "Warum eignet sich Sport besonders für inklusiven Unterricht?",
+  "a": "Regeln und Geräte lassen sich frei anpassen",
+  "kurz": "Regeln und Geräte frei anpassbar",
+  "eigene": "Weil sich Regeln und Materialien beliebig verändern lassen",
+  "gesprochen": "Weil man die Regeln und die Geräte einfach so anpassen kann, wie man sie braucht",
+  "getippt": "regeln + geraete frei anpassbar"
+ },
+ {
+  "id": "spo-ndahgv",
+  "q": "Wer ist Rekordnationalspieler Deutschlands?",
+  "a": "Lothar Matthäus",
+  "kurz": "Matthäus",
+  "eigene": "Das ist Lothar Matthäus",
+  "gesprochen": "Lothar Matthäus natürlich",
+  "getippt": "Lothar Matthaeus"
+ },
+ {
+  "id": "spo-nwqey4",
+  "q": "Welche Kraftart bringt das Nerv-Muskel-System bei einer einzigen willkürlichen Anspannung gegen einen unüberwindlichen Widerstand auf?",
+  "a": "Maximalkraft",
+  "kurz": "Maximalkraft",
+  "eigene": "Die maximale Kraft",
+  "gesprochen": "Das ist die Maximalkraft",
+  "getippt": "maximalkraft"
+ },
+ {
+  "id": "spo-obtfuq",
+  "q": "Wie nennt man die körperliche Komponente der Wettkampfangst?",
+  "a": "Somatische Angst",
+  "kurz": "Somatische Angst",
+  "eigene": "Die körperliche Angstkomponente, also somatische Angst",
+  "gesprochen": "Das nennt man somatische Angst",
+  "getippt": "somatische angst"
+ },
+ {
+  "id": "spo-ocere0",
+  "q": "Was ist ein Sportherz?",
+  "a": "Ein durch Ausdauertraining vergrößertes Herz",
+  "kurz": "Durch Ausdauertraining vergrößertes Herz",
+  "eigene": "Ein Herz, das durch Ausdauersport an Größe zugenommen hat",
+  "gesprochen": "Ein Herz, das vom vielen Ausdauertraining größer geworden ist",
+  "getippt": "durch ausdauertraining vergroessertes herz"
+ },
+ {
+  "id": "spr-10237h1",
+  "q": "Was ist ein Kompositum?",
+  "a": "Ein zusammengesetztes Wort",
+  "kurz": "Zusammengesetztes Wort",
+  "eigene": "Ein Wort, das aus zwei oder mehr Wörtern zusammengesetzt ist",
+  "gesprochen": "Das ist ein Wort, das man aus mehreren Wörtern zusammengesetzt hat",
+  "getippt": "zusammengesetztes wort (aus 2 od. mehr Woertern)"
+ },
+ {
+  "id": "spr-113o9sv",
+  "q": "Welche Epoche folgte in der deutschen Literatur auf die Aufklärung?",
+  "a": "Der Sturm und Drang",
+  "kurz": "Sturm und Drang",
+  "eigene": "Die Epoche des Sturm und Drang",
+  "gesprochen": "Danach kam der Sturm und Drang",
+  "getippt": "Sturm u. Drang"
+ },
+ {
+  "id": "spr-12wevc2",
+  "q": "Was bezeichnet die Rechtschreibregel „das“ oder „dass“?",
+  "a": "„dass“ ist eine Konjunktion, „das“ ein Artikel oder Pronomen",
+  "kurz": "dass = Konjunktion, das = Artikel/Pronomen",
+  "eigene": "„dass“ ist ein Bindewort, „das“ dagegen ein Begleiter (Artikel) oder Stellvertreter (Pronomen) eines Nomens",
+  "gesprochen": "Also „dass“ ist die Konjunktion, und „das“ ist entweder der Artikel oder ein Pronomen",
+  "getippt": "dass = Konjunktion, das = Artikel od. Pronomen"
+ },
+ {
+  "id": "spr-13y87pv",
+  "q": "Wer schrieb „Das Parfum“?",
+  "a": "Patrick Süskind",
+  "kurz": "Süskind",
+  "eigene": "Der deutsche Autor Patrick Süskind",
+  "gesprochen": "Das war Patrick Süskind",
+  "getippt": "Patrick Sueskind"
+ },
+ {
+  "id": "spr-15umf8",
+  "q": "Muss vor einer Infinitivgruppe mit „um zu“ ein Komma stehen?",
+  "a": "Ja, immer",
+  "kurz": "Ja, immer",
+  "eigene": "Ja, das Komma ist dort verpflichtend",
+  "gesprochen": "Ja klar, da kommt immer ein Komma hin",
+  "getippt": "ja, immer"
+ },
+ {
+  "id": "spr-17akymu",
+  "q": "Woher stammt der Begriff „Torschlusspanik“?",
+  "a": "Von den abends schließenden Stadttoren des Mittelalters",
+  "kurz": "Von den abends schließenden Stadttoren im Mittelalter",
+  "eigene": "Im Mittelalter wurden die Stadttore am Abend geschlossen, daher kommt der Begriff",
+  "gesprochen": "Kommt daher, dass man im Mittelalter abends die Stadttore zugemacht hat",
+  "getippt": "von den abends schliessenden stadttoren im mittelalter"
+ },
+ {
+  "id": "spr-1amkfpc",
+  "q": "Wer schrieb den Roman „Moby Dick“?",
+  "a": "Herman Melville",
+  "kurz": "Herman Melville",
+  "eigene": "Melville, Herman",
+  "gesprochen": "Den hat Herman Melville geschrieben",
+  "getippt": "herman melville"
+ },
+ {
+  "id": "spr-1cxj7em",
+  "q": "Welcher deutsche Autor schrieb „Die Blechtrommel“?",
+  "a": "Günter Grass",
+  "kurz": "Grass",
+  "eigene": "Der Autor Günter Grass",
+  "gesprochen": "Günter Grass war das",
+  "getippt": "guenter grass"
+ },
+ {
+  "id": "spr-1e0gdk8",
+  "q": "Wer schrieb den Roman „Madame Bovary“?",
+  "a": "Gustave Flaubert",
+  "kurz": "Flaubert",
+  "eigene": "Gustave Flaubert",
+  "gesprochen": "Der Flaubert, Gustave Flaubert",
+  "getippt": "g. flaubert"
+ },
+ {
+  "id": "spr-1i5jfnb",
+  "q": "Welche drei Einheiten fordert die aristotelische Dramentheorie?",
+  "a": "Einheit von Ort, Zeit und Handlung",
+  "kurz": "Ort, Zeit, Handlung",
+  "eigene": "Einheit des Ortes, der Zeit und der Handlung",
+  "gesprochen": "Ort, Zeit und Handlung müssen einheitlich sein",
+  "getippt": "einheit v. ort, zeit u. handlung"
+ },
+ {
+  "id": "spr-1jll6ky",
+  "q": "Was bedeutet „Cogito, ergo sum“?",
+  "a": "Ich denke, also bin ich",
+  "kurz": "Ich denke, also bin ich",
+  "eigene": "Ich denke, folglich existiere ich",
+  "gesprochen": "Ich denk, also bin ich",
+  "getippt": "ich denke, also bin ich"
+ },
+ {
+  "id": "spr-1kek199",
+  "q": "Wer schrieb die Kinderbücher „Krabat“ und „Die kleine Hexe“?",
+  "a": "Otfried Preußler",
+  "kurz": "Preußler",
+  "eigene": "Otfried Preußler",
+  "gesprochen": "Das war der Preußler, Otfried Preußler",
+  "getippt": "otfried preussler"
+ },
+ {
+  "id": "spr-1kfchxd",
+  "q": "Wer schrieb „Stolz und Vorurteil“?",
+  "a": "Jane Austen",
+  "kurz": "Austen",
+  "eigene": "Die englische Schriftstellerin Jane Austen",
+  "gesprochen": "Jane Austen war das",
+  "getippt": "jane austen"
+ },
+ {
+  "id": "spr-1m0zd2j",
+  "q": "Wie heißt die japanische Silbenschrift, mit der vor allem Fremdwörter geschrieben werden?",
+  "a": "Katakana",
+  "kurz": "Katakana",
+  "eigene": "Die Silbenschrift Katakana",
+  "gesprochen": "Das ist Katakana",
+  "getippt": "katakana"
+ },
+ {
+  "id": "spr-1sq0dp",
+  "q": "Welche Sprache ist die Grundlage der romanischen Sprachen?",
+  "a": "Latein",
+  "kurz": "Latein",
+  "eigene": "Die lateinische Sprache",
+  "gesprochen": "Latein natürlich",
+  "getippt": "latein"
+ },
+ {
+  "id": "spr-1vq4x06",
+  "q": "Was ist ein Sonett?",
+  "a": "Ein Gedicht aus 14 Versen",
+  "kurz": "Gedicht aus 14 Versen",
+  "eigene": "Ein 14-zeiliges Gedicht",
+  "gesprochen": "So ein Gedicht mit 14 Zeilen",
+  "getippt": "gedicht m. 14 versen"
+ },
+ {
+  "id": "spr-1w6o45y",
+  "q": "Wer schrieb „Der Herr der Ringe“?",
+  "a": "J. R. R. Tolkien",
+  "kurz": "Tolkien",
+  "eigene": "John Ronald Reuel Tolkien",
+  "gesprochen": "Tolkien, klar",
+  "getippt": "jrr tolkien"
+ },
+ {
+  "id": "spr-1y6lj6r",
+  "q": "Wer schrieb „Faust“?",
+  "a": "Johann Wolfgang von Goethe",
+  "kurz": "Goethe",
+  "eigene": "J. W. von Goethe",
+  "gesprochen": "Das war der Goethe",
+  "getippt": "goethe"
+ },
+ {
+  "id": "spr-3r8gx7",
+  "q": "Welcher Preis wird seit 2005 jährlich für den besten deutschsprachigen Roman des Jahres vergeben?",
+  "a": "Der Deutsche Buchpreis",
+  "kurz": "Deutscher Buchpreis",
+  "eigene": "Es ist der Deutsche Buchpreis",
+  "gesprochen": "Das ist der Deutsche Buchpreis",
+  "getippt": "dt. buchpreis"
+ },
+ {
+  "id": "spr-47i5um",
+  "q": "Was bezeichnet ein Kreuzreim?",
+  "a": "Das Schema abab",
+  "kurz": "abab",
+  "eigene": "Das Reimschema abab, also Zeile 1 reimt auf 3 und Zeile 2 auf 4",
+  "gesprochen": "Das ist, wenn sich immer die übernächste Zeile reimt, also abab",
+  "getippt": "abab"
+ },
+ {
+  "id": "spr-4htzr7",
+  "q": "Welche Märchenfigur zerreißt sich vor Wut, als ihr Name erraten wird?",
+  "a": "Rumpelstilzchen",
+  "kurz": "Rumpelstilzchen",
+  "eigene": "Das Rumpelstilzchen aus dem gleichnamigen Märchen",
+  "gesprochen": "Das Rumpelstilzchen natürlich",
+  "getippt": "rumpelstilzchen"
+ },
+ {
+  "id": "spr-4r8zsk",
+  "q": "Was ist ein Synonym?",
+  "a": "Ein Wort mit gleicher oder ähnlicher Bedeutung",
+  "kurz": "Wort mit gleicher oder ähnlicher Bedeutung",
+  "eigene": "Ein bedeutungsgleiches oder bedeutungsähnliches Wort",
+  "gesprochen": "Ein anderes Wort, das das Gleiche oder fast das Gleiche bedeutet",
+  "getippt": "wort m. gleicher od. aehnlicher bedeutung"
+ },
+ {
+  "id": "spr-c2gh0a",
+  "q": "Mit welchem Hilfsverb bildet man im Deutschen das Vorgangspassiv?",
+  "a": "Mit „werden“",
+  "kurz": "werden",
+  "eigene": "Mit dem Hilfsverb werden",
+  "gesprochen": "Mit werden, also zum Beispiel „es wird gemacht“",
+  "getippt": "m. werden"
+ },
+ {
+  "id": "spr-c4moa",
+  "q": "Mit welchem Drama gelang dem jungen Schiller der Skandalerfolg, nach dem er fliehen musste?",
+  "a": "Die Räuber",
+  "kurz": "Die Räuber",
+  "eigene": "Mit seinem Drama „Die Räuber“",
+  "gesprochen": "Mit den Räubern",
+  "getippt": "Die Raeuber"
+ },
+ {
+  "id": "spr-cu2tw6",
+  "q": "Welcher Roman beschreibt eine Gesellschaft mit Alpha- und Epsilon-Menschen?",
+  "a": "„Schöne neue Welt“ von Aldous Huxley",
+  "kurz": "Schöne neue Welt, Huxley",
+  "eigene": "Aldous Huxleys Roman „Schöne neue Welt“",
+  "gesprochen": "Das ist Schöne neue Welt von Huxley",
+  "getippt": "schoene neue welt von aldous huxley"
+ },
+ {
+  "id": "spr-h4eq7w",
+  "q": "Was ist ein „falscher Freund“ in der Sprachwissenschaft?",
+  "a": "Ein Wort, das in zwei Sprachen ähnlich klingt, aber anderes bedeutet",
+  "kurz": "Wort, das in zwei Sprachen ähnlich klingt, aber anderes bedeutet",
+  "eigene": "Zwei Wörter aus verschiedenen Sprachen klingen fast gleich, haben aber verschiedene Bedeutungen",
+  "gesprochen": "So ein Wort, das in der anderen Sprache genauso klingt, aber was ganz anderes heißt",
+  "getippt": "Wort, das in 2 Sprachen aehnlich klingt, aber was anderes bedeutet"
+ },
+ {
+  "id": "spr-hatcyc",
+  "q": "Welche literarische Gattung umfasst Roman, Novelle und Kurzgeschichte?",
+  "a": "Die Epik",
+  "kurz": "Epik",
+  "eigene": "Die erzählende Dichtung, also die Epik",
+  "gesprochen": "Das ist die Epik, halt alles Erzählende",
+  "getippt": "epik"
+ },
+ {
+  "id": "spr-m3gu8v",
+  "q": "Wer begann 1838 das „Deutsche Wörterbuch“, das erst 1961 vollendet wurde?",
+  "a": "Die Brüder Grimm",
+  "kurz": "Brüder Grimm",
+  "eigene": "Jacob und Wilhelm Grimm",
+  "gesprochen": "Das waren die Brüder Grimm",
+  "getippt": "brueder grimm"
+ },
+ {
+  "id": "spr-mhw457",
+  "q": "Was bedeutet „Etwas auf die lange Bank schieben“?",
+  "a": "Etwas aufschieben",
+  "kurz": "aufschieben",
+  "eigene": "Etwas hinauszögern und erst später erledigen",
+  "gesprochen": "Dass man was immer weiter vor sich herschiebt, statt es zu machen",
+  "getippt": "etw. aufschieben"
+ },
+ {
+  "id": "spr-nm4m69",
+  "q": "Wie heißt die Erzähltechnik, die Gedanken einer Figur in dritter Person und Präteritum wiedergibt?",
+  "a": "Die erlebte Rede",
+  "kurz": "Erlebte Rede",
+  "eigene": "Das nennt man erlebte Rede",
+  "gesprochen": "Das ist die erlebte Rede",
+  "getippt": "erlebte rede"
+ },
+ {
+  "id": "spr-quev71",
+  "q": "Welches Satzglied ermittelt man mit der Frage „Wen oder was?“",
+  "a": "Das Akkusativobjekt",
+  "kurz": "Akkusativobjekt",
+  "eigene": "Das Objekt im Akkusativ",
+  "gesprochen": "Das ist das Akkusativobjekt",
+  "getippt": "Akk.-Objekt"
+ },
+ {
+  "id": "spr-rhmcmd",
+  "q": "Wer schrieb den Gesellschaftsroman „Effi Briest“?",
+  "a": "Theodor Fontane",
+  "kurz": "Fontane",
+  "eigene": "Theodor Fontane",
+  "gesprochen": "Den hat der Fontane geschrieben, Theodor Fontane",
+  "getippt": "th. fontane"
+ },
+ {
+  "id": "spr-ujow77",
+  "q": "Welche Autorin schuf die Detektive Hercule Poirot und Miss Marple?",
+  "a": "Agatha Christie",
+  "kurz": "Agatha Christie",
+  "eigene": "Die Krimiautorin Agatha Christie",
+  "gesprochen": "Na, die Agatha Christie",
+  "getippt": "agatha christie"
+ },
+ {
+  "id": "spr-vz59ol",
+  "q": "Welche Bedeutung hat „seit“ mit t am Ende?",
+  "a": "Es gibt eine Zeit an",
+  "kurz": "Zeitangabe",
+  "eigene": "Es bezeichnet etwas Zeitliches, gibt also einen Zeitpunkt oder Zeitraum an",
+  "gesprochen": "Das hat mit Zeit zu tun, also seit wann etwas so ist",
+  "getippt": "zeitangabe / gibt e. zeit an (temporal)"
+ }
+]

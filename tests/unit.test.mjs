@@ -1097,3 +1097,50 @@ test('„8bit" ist „8 Bit" und „2*x" ist „2x"', () => {
   // Zwischen zwei Zahlen bleibt das Malzeichen ein Rechenzeichen.
   assert.ok(bewerte({ a: '3 · 4' }, '3 4') < 0.8);
 });
+
+/* ---------------- Wie oft weist die App eine richtige Antwort ab? ----------------
+
+   Der Bewerter wurde immer nur von der einen Seite geprueft: Kein Ablenker darf
+   durchgehen. Die andere Seite blieb ungemessen – und sie trifft den Alltag
+   haerter, denn beim freien Abrufen tippt man, und jede zu Unrecht abgelehnte
+   Eingabe ist ein Moment, der demotiviert.
+
+   data/tippprobe.json enthaelt 306 Karten aus allen neun Kategorien, zu jeder
+   vier Fassungen, aufgeschrieben ohne Kenntnis des Bewerters. Gemessen werden
+   die beiden, die dem Tippen entsprechen: die knappste richtige Antwort und
+   die, die man am Handy eingibt.
+
+   Die App zeigt drei Rueckmeldungen (siehe revealRecall in app.js): ab 0,80
+   „passt", ab 0,60 „knapp daneben – vergleich genau", darunter „du hattest".
+   Die Note vergibt in jedem Fall der Nutzer selbst; falsch abgewiesen zu werden
+   kostet also kein Wissen, sondern Zutrauen. Rot ist trotzdem der teure Fall.
+
+   Der Test haelt einen Boden fest, keine Zielmarke. Besser darf es jederzeit
+   werden – schlechter nicht unbemerkt. */
+test('der Bewerter weist selten eine richtige Eingabe ab', async () => {
+  const { readFileSync } = await import('node:fs');
+  const proben = JSON.parse(readFileSync(new URL('../data/tippprobe.json', import.meta.url), 'utf8'));
+  assert.equal(proben.length, 306);
+
+  let n = 0, gruen = 0, rot = 0;
+  const verschwunden = [];
+  for (const p of proben) {
+    const karte = BY_ID[p.id];
+    if (!karte) { verschwunden.push(p.q); continue; }
+    for (const art of ['kurz', 'getippt']) {
+      if (typeof p[art] !== 'string' || !p[art].trim()) continue;
+      const punkte = bewerte(karte, p[art]);
+      n++;
+      if (punkte >= 0.8) gruen++; else if (punkte < 0.6) rot++;
+    }
+  }
+  /* Kennungen sind Streuwerte der Frage: Wer eine Frage umformuliert, loest den
+     Eintrag hier ab. Ein paar davon sind normal, ein Schwall heisst, dass die
+     Probe nicht mehr zum Bestand passt und neu gezogen werden muss. */
+  assert.ok(verschwunden.length <= 10,
+    `${verschwunden.length} Karten der Tippprobe gibt es nicht mehr:\n  ${verschwunden.slice(0, 12).join('\n  ')}`);
+
+  const anteil = (x) => (100 * x / n).toFixed(1);
+  assert.ok(gruen / n >= 0.77, `nur ${anteil(gruen)} % der getippten Antworten gelten (gemessen waren 78,9 %)`);
+  assert.ok(rot / n <= 0.08, `${anteil(rot)} % der getippten Antworten gelten als glatt falsch (gemessen waren 6,7 %)`);
+});

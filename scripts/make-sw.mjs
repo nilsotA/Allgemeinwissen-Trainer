@@ -26,10 +26,13 @@ files.sort();
    angeboten, das nichts aendert. kennungen.json wird ausserdem von
    „npm run check --kennungen" neu geschrieben, sodass die Reihenfolge der
    Bauschritte ueber die Versionskennung entschied. Dasselbe gilt fuer
+   data/tippprobe.json: 306 Karten mit je vier getippten Fassungen, aufgeschrieben
+   ohne Kenntnis des Bewerters. Damit misst der Test, wie oft die App eine
+   richtige Eingabe abweist - in der App selbst wird die Datei nie gebraucht.
    data/quizprobe.json: Das ist der feste Pruefsatz der Abdeckungsmessung, den
    die App nirgends importiert - waere er dabei, boete jede Erweiterung des
    Pruefsatzes allen Nutzern ein Update an, das nichts aendert. */
-const NUR_FUER_DIE_WERKSTATT = new Set(['./package.json', './data/kennungen.json', './data/quizprobe.json', './data/quizprobe2.json', './data/quizprobe3.json']);
+const NUR_FUER_DIE_WERKSTATT = new Set(['./package.json', './data/kennungen.json', './data/quizprobe.json', './data/quizprobe2.json', './data/quizprobe3.json', './data/tippprobe.json']);
 const uebrig = files.filter(f => NUR_FUER_DIE_WERKSTATT.has(f));
 if (uebrig.length !== NUR_FUER_DIE_WERKSTATT.size) {
   console.error('FEHLER  Werkstatt-Datei nicht gefunden – Liste in make-sw.mjs veraltet:'
