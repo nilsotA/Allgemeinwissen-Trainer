@@ -1182,3 +1182,20 @@ test('abgekuerzte Vornamen, „Std." und ein einleitendes „weil"', () => {
   // Der englische Artikel faellt wie der deutsche weg.
   assert.ok(bewerte({ a: 'Die Sopranos' }, 'The Sopranos') >= 0.8);
 });
+
+/* Gefunden beim Nachziehen der Liste einleitender Woerter, aber aelter als die
+   Aenderung: Die Abkuerzung auf 0,95 prueft, WELCHE Woerter vorkommen, nicht in
+   welcher Folge. Die Vertauschungssperre weiter oben greift nur, wenn nichts
+   fehlt und nichts uebrig ist – steht ein weglassbares Wort dazwischen, ist
+   „fehlend" nicht leer und die Sperre faellt aus. */
+test('vertauschte Woerter bleiben vertauscht, auch wenn ein Fuellwort dazwischensteht', () => {
+  const kontra = BY_ID[CARDS.find(c => c.a === 'nicht B ⇒ nicht A').id];
+  // Die Umkehrung ist gerade der Fehler, den diese Karte abfragt.
+  assert.ok(bewerte(kontra, 'nicht A ⇒ nicht B') < 0.8, 'Umkehrung statt Kontraposition');
+  // Alle zugelassenen Fassungen gelten unveraendert.
+  for (const gut of ['nicht B ⇒ nicht A', 'wenn nicht B, dann nicht A', 'aus nicht B folgt nicht A']) {
+    assert.ok(bewerte(kontra, gut) >= 0.8, `„${gut}" muss gelten`);
+  }
+  // „wegen" und „wenn" leiten eine Antwort ein wie „aus" – sie duerfen fehlen.
+  assert.ok(bewerte({ a: 'Wegen der Neigung der Erdachse' }, 'Neigung der Erdachse') >= 0.8);
+});

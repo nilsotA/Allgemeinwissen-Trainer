@@ -324,6 +324,19 @@ function zuordnen(eingabe, loesung) {
   return { fehlend, ueberzaehlig: frei };
 }
 
+/* Stehen die Woerter der Eingabe in der Loesung in derselben Folge? Verglichen
+   werden nur die bedeutungstragenden - Bindegewebe darf fehlen und verschieben. */
+function inReihenfolge(eingabe, loesung) {
+  const ziel = woerter(loesung).filter(traegtBedeutung);
+  let i = 0;
+  for (const w of woerter(eingabe).filter(traegtBedeutung)) {
+    while (i < ziel.length && !gleichesWort(ziel[i], w)) i++;
+    if (i >= ziel.length) return false;
+    i++;
+  }
+  return true;
+}
+
 /* Bei Antworten, deren Sinn an einer Zahl haengt, ist der Editierabstand
    ein schlechtes Mass: „3 Stunden" und „7 Stunden" unterscheiden sich in einem
    von neun Zeichen, „a2 plus b2" und „a2 minus b2" in vieren von elf. */
@@ -360,7 +373,7 @@ export const OHNE_ZUSATZ = /\s+\([^()]*\)\s*$/;
    Buchstaben vor dem Gleichheitszeichen zaehlen als Kopf; „x = (−b ± …)/(2a)"
    verliert dadurch nichts, denn die Loesungsformel ohne „x =" ist dieselbe. */
 export const OHNE_FORMELKOPF = /^[A-Za-z]{1,2}\s*=\s*(?=\S)/;
-export const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber|weil|denn)\s+/i;
+export const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber|weil|denn|wegen|wenn|falls|sobald)\s+/i;
 
 /* Bewertet eine getippte Eingabe gegen eine ganze Karte statt gegen eine
    einzelne Zeichenkette: Zugelassene Nebenschreibweisen zaehlen mit, und bei
@@ -658,7 +671,14 @@ function vergleich(input, answer, bekannt = new Set()) {
 
   // Eine kürzere Eingabe zählt nur, wenn sie nichts Bedeutungstragendes auslässt
   // und nichts Fremdes hinzufügt. Einordnende Wörter wie „Satz" dürfen fehlen.
-  if (etwasErkannt && !zuLang && !extra.length && !bindungGetauscht && fehlt.every(w => KLASSIFIKATOREN.has(w))) {
+  /* Und in derselben Reihenfolge. Die Abkuerzung prueft sonst nur, WELCHE
+     Woerter vorkommen, nicht in welcher Folge - und sobald ein weglassbares
+     Wort dazwischensteht, greift die Vertauschungssperre oben nicht mehr, weil
+     „fehlend" dann nicht leer ist. Gemessen: „nicht A ⇒ nicht B" bekam so 0,95
+     auf die Loesung „nicht B ⇒ nicht A". Das ist die Umkehrung und nicht die
+     Kontraposition - also gerade der Fehler, den die Karte abfragt. */
+  if (etwasErkannt && !zuLang && !extra.length && !bindungGetauscht
+      && fehlt.every(w => KLASSIFIKATOREN.has(w)) && inReihenfolge(a, b)) {
     if (fehlt.length === 0) return 0.95;
     if (b.includes(a) || a.length >= Math.max(4, b.length * 0.4)) return 0.9;
   }
