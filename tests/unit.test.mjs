@@ -732,13 +732,17 @@ test('bei Mengenantworten zaehlt die Reihenfolge nicht', () => {
   }
 });
 
+/* Die Karten stehen hier mit ihrem Fragetext. Das ist Absicht und keine
+   Nachlaessigkeit: Wird eine dieser Fragen umformuliert, faellt der Test aus und
+   zwingt dazu, die Reihenfolgeeigenschaft an der neuen Fassung nachzupruefen.
+   Genau das ist einmal passiert, als die Skatkarte ihre Richtungsangabe bekam. */
 test('bei Abfolgen bleibt die Reihenfolge die Antwort', () => {
   const abfolgen = [
     'Welche Schritte umfasst der Modellierungskreislauf?',
     'In welcher Reihenfolge schwimmt man die Lagen im Einzel-Lagenschwimmen?',
     'Welche Farben hat die deutsche Flagge von oben nach unten?',
     'Was ist die PECH-Regel bei Sportverletzungen?',
-    'Welche Rangfolge haben die Kartenfarben beim Skat?',
+    'Welche Rangfolge haben die Kartenfarben beim Skat, vom niedrigsten zum höchsten Grundwert?',
     'Wie lauten die ersten zehn Primzahlen?',
   ];
   for (const frage of abfolgen) {
