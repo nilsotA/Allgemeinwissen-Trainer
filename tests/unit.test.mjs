@@ -1141,8 +1141,8 @@ test('der Bewerter weist selten eine richtige Eingabe ab', async () => {
     `${verschwunden.length} Karten der Tippprobe gibt es nicht mehr:\n  ${verschwunden.slice(0, 12).join('\n  ')}`);
 
   const anteil = (x) => (100 * x / n).toFixed(1);
-  assert.ok(gruen / n >= 0.77, `nur ${anteil(gruen)} % der getippten Antworten gelten (gemessen waren 78,9 %)`);
-  assert.ok(rot / n <= 0.08, `${anteil(rot)} % der getippten Antworten gelten als glatt falsch (gemessen waren 6,7 %)`);
+  assert.ok(gruen / n >= 0.80, `nur ${anteil(gruen)} % der getippten Antworten gelten (gemessen waren 81,2 %)`);
+  assert.ok(rot / n <= 0.07, `${anteil(rot)} % der getippten Antworten gelten als glatt falsch (gemessen waren 6,0 %)`);
 });
 
 /* Das gelbe Band – „knapp daneben" – enthielt vier Muster, bei denen die

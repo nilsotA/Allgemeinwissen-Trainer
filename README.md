@@ -2111,6 +2111,73 @@ greift. Zeitwörter und Maßeinheiten hinter einer Zahl dürfen jetzt fehlen. Fe
 „Ab 18 Jahren Haft" bleibt eine andere Antwort, und ohne Zahl in der Lösung behält „Die Jahre
 des Wachstums" seine Jahre.
 
+### Was aus dem blinden Durchgang wurde: 321 Korrekturen
+
+Aus den 2.127 blind beantworteten Fragen gingen **498 Karten** in die Nachprüfung: alles, was
+als mehrdeutig gemeldet wurde, und alles, wo eine **sichere** Antwort danebenlag. Eine unsichere
+Fehlantwort ist kein Hinweis auf die Frage, sondern auf fehlendes Wissen — und genau dafür ist
+die Karte da.
+
+Eine schärfere Vorauswahl habe ich versucht und wieder verworfen. Die Wortüberlappung zwischen
+blinder und hinterlegter Antwort trennt nicht: „Ab 18" gegen „Ab 18 Jahren" liegt bei **null**
+Überlappung und ist trotzdem richtig, während „Vier Jahre" gegen „Vier Jahre, maximal zwei
+Amtszeiten" hoch überlappt und trotzdem unvollständig ist. Dieselbe Lehre wie bei der
+Wahrheitsprüfung: Die naheliegende Vorauswahl ist messbar falsch.
+
+42 Agenten haben triagiert, mit Recherchepflicht für jeden Eingriff an Frage oder Antwort.
+Danach **zwei unabhängige Widerleger je Paket** — einer auf den *Beleg*, einer auf das *Maß*.
+Angewandt wurde nur, was beide bestätigt haben: **321 von 438** Vorschlägen.
+
+Die Widerleger haben ihre Arbeit getan, und die verworfenen Vorschläge sind lehrreicher als die
+angenommenen:
+
+| verworfen | warum |
+|---|---|
+| „Gleichgewichtsorgan" auf „Welches Sinnesorgan misst das Gleichgewicht?" | Zirkelschluss — die Antwort schreibt die Frage ab. 0:2 |
+| „Zahlen kleiner als null" auf „Was sind negative Zahlen **anschaulich**?" | die wörtliche Bedeutung von „negativ", nicht die Anschauung, um die die Frage bittet |
+| eine neue Fassung der Apollo-11-Frage | hätte genau die Zeitzonen-Feinheit entfernt, die der Kontexttext zum Lernwert macht |
+| „England" statt „Großbritannien" bei Banksy | eine andere Genauigkeitsstufe, keine zweite Schreibweise |
+| 25 von 35 Fragenänderungen insgesamt | zu lang, zu umständlich, oder die Antwort verratend |
+
+Geblieben sind 311 Nebenschreibweisen und 10 Fragen. **Die zehn Fragen sind alle derselbe
+Mangel: Die Frage verlangt eines, die Antwort liefert zwei, und die Ablenker variieren gezielt
+das zweite.** „Wo fand die erste Fußball-WM statt?" mit der Antwort „1930 in Uruguay" und dem
+Ablenker „1930 in Italien" ist beim freien Abrufen nicht beantwortbar — wer „Uruguay" tippt, hat
+die gestellte Frage vollständig beantwortet und gilt trotzdem als falsch. Jetzt heißt sie „Wann
+und wo". Der alte Wortlaut steht als `p`, der Lernstand findet die Karten wieder.
+
+Gemessen an der Tippprobe, die von diesen Änderungen **unabhängig** ist — ihre Fassungen wurden
+aus der Antwort geschrieben, nicht aus einer blinden:
+
+| | gilt | knapp | abgewiesen |
+|---|---|---|---|
+| vor dieser Arbeit | 68,5 % | 17,8 % | 13,7 % |
+| jetzt | **81,2 %** | 12,7 % | **6,0 %** |
+
+Die blinde Probe selbst ist damit **verbraucht**, wie die drei Abdeckungsproben vor ihr. Ihre
+Trefferquote steigt von 65,0 auf 70,7 % — aber diese Zahl bedeutet nichts mehr, denn die
+Nebenschreibweisen wurden aus genau diesen Antworten abgeleitet. Wer sie erneut braucht, muss
+neu ziehen.
+
+### Drei Mängel am Kartenwerkzeug, gefunden im Ernstfall
+
+321 Korrekturen auf einmal haben `scripts/karte-aendern.mjs` an drei Stellen zerbrochen — und
+zwar erst, als es zu spät war: Der erste Lauf hatte 75 Änderungen geschrieben und brach dann ab.
+
+- **Der Aufrufzweig startete, sobald irgendein Argument dastand.** Damit lief er mit, sobald ein
+  anderes Skript `kennung()` importierte und selbst ein Argument hatte — meine Auswertungsdatei
+  landete so als Auftragsdatei im Werkzeug. Jetzt wird geprüft, ob *diese* Datei die aufgerufene
+  ist.
+- **„Alles oder nichts" stand im Kommentar, aber jede Änderung wurde sofort geschrieben.** Jetzt
+  wird im Speicher geändert und nur geschrieben, wenn alle Aufträge durchgehen.
+- **Eine Nebenschreibweise wurde hinter `q` und `a` eingefügt** und verlangte, dass beide
+  unmittelbar aufeinander folgen. Bei jeder Karte mit altem Wortlaut steht der dazwischen — 66
+  Karten haben einen. Der Fehler kam als „Cannot read properties of null" heraus und nicht als
+  Satz, der sagt, was los ist.
+
+Alle drei sind jetzt im Test festgehalten. Ein Werkzeug, das nur bei einer Änderung funktioniert,
+ist keins.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
