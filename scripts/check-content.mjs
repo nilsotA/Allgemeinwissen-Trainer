@@ -302,6 +302,22 @@ for (const f of FACTS) {
   if (reizGesehen.has(norm(r))) fail(`Zwei Merkanker mit demselben Hinweisreiz: „${r}"`);
   reizGesehen.set(norm(r), r);
 }
+/* Ein Merkanker ohne eigenes Feld f wird mit seiner UEBERSCHRIFT abgefragt
+   (factFrage in app.js: `f.f || f.t`). Das geht gut, solange die Ueberschrift
+   selbst eine Frage stellt – „Warum der Himmel blau ist" taugt als Abrufreiz.
+   Ein Nomen taugt nicht: Bei „Die Reihenfolge der Planeten" steht der Reiz da
+   wie eine Ueberschrift und nicht wie eine Aufgabe.
+
+   Die Zahl im Bericht las sich lange wie eine Luecke von 23 Ankern. Gemessen
+   war es einer. Sie sagt jetzt nichts anderes, aber danebensteht die Pruefung,
+   die den Unterschied kennt. */
+/* Dasselbe Fragewortmuster wie bei den Kartenfragen weiter oben – zwei Listen
+   waeren zwei Wahrheiten. */
+for (const f of FACTS) {
+  if (f.f || FRAGEWORT.test(String(f.t).trim())) continue;
+  fail(`Merkanker „${f.t}": die Ueberschrift ist keine Frage und dient trotzdem als Abrufreiz – f ergaenzen`);
+}
+
 const eigene = FACTS.filter(f => f.f).length;
 
 const byCat = countByCat();
