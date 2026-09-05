@@ -174,6 +174,7 @@ const ABKUERZUNGEN = [
   [/\bggf\.(?=\s|$)/gi, ' gegebenenfalls '], [/\bevtl\.(?=\s|$)/gi, ' eventuell '],
   [/\binkl\.(?=\s|$)/gi, ' inklusive '], [/\bexkl\.(?=\s|$)/gi, ' exklusive '],
   [/\bmind\.(?=\s|$)/gi, ' mindestens '], [/\bmax\.(?=\s|$)/gi, ' maximal '],
+  [/\bstd\.?(?=\s|$)/gi, ' stunden '], [/\bmin\.(?=\s|$)/gi, ' minuten '],
   [/\bca\.(?=\s|$)/gi, ' etwa '], [/\busw\.(?=\s|$)/gi, ' und so weiter '],
   /* Einbuchstabige Kuerzel ganz zum Schluss: „u." nach „u. a.", sonst bliebe
      dort ein „und a" stehen. Alle vier stehen fuer Fuellwoerter und fallen
@@ -183,7 +184,7 @@ const ABKUERZUNGEN = [
   [/\bd\.(?=\s|$)/gi, ' der '], [/\bz\.(?=\s|$)/gi, ' zu '],
 ];
 
-const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|im|in|von|vom|zu|zum|zur|und)\b/g;
+const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|im|in|von|vom|zu|zum|zur|und|the)\b/g;
 
 /* Wer „Wie viele Kontinente gibt es?" beantwortet, tippt „7" und nicht „Sieben".
    Ohne diese Zuordnung galt die richtige Antwort als falsch – bei 93 Karten,
@@ -274,7 +275,7 @@ const KLASSIFIKATOREN = new Set([
    galt „Ag" als richtige Antwort auf die Frage nach dem Symbol für Gold. */
 const WEGLASSBAR = new Set([
   'ist', 'sind', 'war', 'waren', 'wird', 'werden', 'hat', 'haben',
-  'man', 'sich', 'sie', 'es', 'auch', 'noch', 'schon', 'nur', 'sehr',
+  'man', 'sich', 'sie', 'es', 'auch', 'noch', 'schon', 'nur', 'sehr', 'viel',
   'etwa', 'rund', 'also', 'dann', 'dass', 'sowie', 'bzw',
 ]);
 const traegtBedeutung = (t) => !WEGLASSBAR.has(t);
@@ -359,7 +360,7 @@ export const OHNE_ZUSATZ = /\s+\([^()]*\)\s*$/;
    Buchstaben vor dem Gleichheitszeichen zaehlen als Kopf; „x = (−b ± …)/(2a)"
    verliert dadurch nichts, denn die Loesungsformel ohne „x =" ist dieselbe. */
 export const OHNE_FORMELKOPF = /^[A-Za-z]{1,2}\s*=\s*(?=\S)/;
-export const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber)\s+/i;
+export const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber|weil|denn)\s+/i;
 
 /* Bewertet eine getippte Eingabe gegen eine ganze Karte statt gegen eine
    einzelne Zeichenkette: Zugelassene Nebenschreibweisen zaehlen mit, und bei
@@ -444,6 +445,17 @@ function mehrdeutigeNachnamen() {
   return mehrdeutig;
 }
 
+/* „Galileo Galilei" -> „G. Galilei". Namenspartikel bleiben stehen, sie sind
+   kein Vorname: aus „Johann Wolfgang von Goethe" wird „J. W. von Goethe". */
+function mitInitialen(antwort) {
+  const w = String(antwort).trim().split(/\s+/);
+  if (w.length < 2) return null;
+  const kopf = w.slice(0, -1).map(t =>
+    NAMENSPARTIKEL.has(t.toLowerCase()) ? t : `${t[0]}.`);
+  const form = [...kopf, w[w.length - 1]].join(' ');
+  return form === String(antwort).trim() ? null : form;
+}
+
 export function nachnameAllein(card) {
   if (!card || !card.q || !PERSONENFRAGE.test(card.q)) return null;
   const n = namensform(card.a);
@@ -458,7 +470,12 @@ export function bewerte(card, eingabe) {
   const txt = String(eingabe || '').trim();
   if (!txt) return 0;
   const kurz = nachnameAllein(card);
-  const listen = [card.a, ...(card.az || []), ...(kurz ? [kurz] : [])];
+  /* Wo der Nachname allein zaehlt, zaehlt auch der abgekuerzte Vorname davor:
+     „G. Galilei", „N. Mandela". Ohne das gab die Abkuerzung 0,60 - schlechter
+     als der blosse Nachname, obwohl sie mehr weiss. Neue Karten laesst das
+     nicht durch: Es gilt nur dort, wo die Kurzform ohnehin schon erlaubt ist. */
+  const initialen = kurz ? mitInitialen(card.a) : null;
+  const listen = [card.a, ...(card.az || []), ...(kurz ? [kurz] : []), ...(initialen ? [initialen] : [])];
   let beste = Math.max(...listen.map(l => similarity(txt, l, card.q)));
   if (card.ug) beste = Math.max(beste, ...listen.map(l => similarity(sortiert(txt), sortiert(l), card.q)));
   return beste;

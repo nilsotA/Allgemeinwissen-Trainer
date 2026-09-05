@@ -1144,3 +1144,41 @@ test('der Bewerter weist selten eine richtige Eingabe ab', async () => {
   assert.ok(gruen / n >= 0.77, `nur ${anteil(gruen)} % der getippten Antworten gelten (gemessen waren 78,9 %)`);
   assert.ok(rot / n <= 0.08, `${anteil(rot)} % der getippten Antworten gelten als glatt falsch (gemessen waren 6,7 %)`);
 });
+
+/* Das gelbe Band – „knapp daneben" – enthielt vier Muster, bei denen die
+   Eingabe in Wahrheit richtig war. Gemessen an der Tippprobe: 88 gelbe
+   Eingaben vorher, 78 danach. */
+test('abgekuerzte Vornamen, „Std." und ein einleitendes „weil"', () => {
+  const finde = (antwort) => CARDS.find(c => c.a === antwort);
+
+  /* Wo der Nachname allein zaehlt, zaehlt auch der abgekuerzte Vorname davor.
+     Ohne das bekam „G. Galilei" 0,60 – weniger als das blosse „Galilei",
+     obwohl die Eingabe mehr weiss. */
+  for (const [voll, kurz] of [['Galileo Galilei', 'G. Galilei'], ['Nelson Mandela', 'N. Mandela'],
+                              ['Leonhard Euler', 'L. Euler']]) {
+    assert.ok(bewerte(finde(voll), kurz) >= 0.8, `„${kurz}" gilt nicht als „${voll}"`);
+  }
+  // Namenspartikel sind kein Vorname und bleiben stehen.
+  assert.ok(bewerte(finde('Johann Wolfgang von Goethe'), 'J. W. von Goethe') >= 0.8);
+  // Wo die Kurzform gesperrt ist, hilft auch die Abkuerzung nicht.
+  assert.ok(bewerte(finde('Alexander Fleming'), 'A. Fleming') < 0.8, 'zwei Flemings im Bestand');
+
+  // „Std." ist die Stunde, „viel" ein Steigerungswort wie „sehr".
+  assert.ok(bewerte({ a: 'Sieben bis neun Stunden' }, '7-9 std') >= 0.8);
+  assert.ok(bewerte({ a: 'Weil Licht viel schneller ist als Schall' }, 'Licht schneller als Schall') >= 0.8);
+  // Ein einleitendes „weil" ordnet die Antwort nur ein, so wie „aus" bei „Aus Sojabohnen".
+  assert.ok(bewerte({ a: 'Weil der Luftdruck sinkt' }, 'Der Luftdruck sinkt') >= 0.8);
+  /* Umgestellt bleibt es dagegen bei „knapp daneben": „geneigt ist" und „ist
+     geneigt" sind dieselben Woerter in anderer Reihenfolge, und genau davor
+     schuetzt die Regel, die „Upcycling fuehrt zurueck" von „Recycling schafft
+     Hoeherwertiges" trennt. Ein Preis, den sie hier zahlt. */
+  assert.ok(bewerte({ a: 'Weil die Erdachse geneigt ist' }, 'Die Erdachse ist geneigt') >= 0.6);
+  /* Was der Vergleich weiterhin nicht kann, und zwar grundsaetzlich: trennbare
+     Verben. „abkuehlt" und „kuehlt ... ab" sind fuer ihn zwei verschiedene
+     Woerter. Das steht hier, damit niemand es fuer einen Fehler haelt – es zu
+     beheben hiesse, Vorsilben zu zerlegen, und das trifft „umfahren" so gut
+     wie „umfahren". */
+  assert.ok(bewerte({ a: 'Weil sich Luft beim Aufsteigen abkühlt' }, 'Luft kühlt beim Aufsteigen ab') < 0.6);
+  // Der englische Artikel faellt wie der deutsche weg.
+  assert.ok(bewerte({ a: 'Die Sopranos' }, 'The Sopranos') >= 0.8);
+});
