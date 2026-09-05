@@ -2178,6 +2178,53 @@ zwar erst, als es zu spät war: Der erste Lauf hatte 75 Änderungen geschrieben 
 Alle drei sind jetzt im Test festgehalten. Ein Werkzeug, das nur bei einer Änderung funktioniert,
 ist keins.
 
+### Selbst nachgelesen: drei Lücken, die keine Messung gefunden hätte
+
+Der Vergleicher hat in dieser Runde rund fünfzehn Änderungen bekommen. Die Tore prüfen den
+Bestand gegen den Vergleicher — aber keine Logik, und keine Stichprobe deckt ab, woran niemand
+gedacht hat. Also einmal selbst durchgelesen.
+
+**Dieselbe Antwort, zwei Lesarten.** Die Frage, die dabei half: *Ergibt dieselbe Antwort, anders
+getippt, dasselbe?* Auf einer deutschen Handytastatur gibt es kein ², kein √, kein ± und keinen
+Halbgeviertstrich; das Leerzeichen vor der Einheit fällt weg, der Schlusspunkt kommt manchmal
+mit. Über alle 2.127 Antworten und acht solche Umschreibungen: **15 Abweichungen.**
+
+Die größte Gruppe war der Gedankenstrich. „Sieben – die Cheops-Pyramide" ergab getippt „7 minus
+cheops pyramide", weil die Minusregel hinter dem Strich nur nach einem Leerzeichen sah — und da
+steht immer eins. Sie verlangt jetzt einen Operanden: eine Ziffer oder einen einzelnen
+Buchstaben. „(-b" bleibt ein Vorzeichen, „7 - 3" bleibt eine Rechnung, „Ora et labora - bete und
+arbeite" ist ein Gedankenstrich.
+
+Die zweite Gruppe war „753v. Chr." und „1 Mio." ohne Leerzeichen: `\b` trifft zwischen Ziffer und
+Buchstabe nicht, also sah jede Regel davor ein einziges Wort. Die Trennung zwischen Zahl und Wort
+steht deshalb jetzt ganz vorn — sie ist keine Ersetzung, sondern eine Feststellung über den Text.
+Der erste Versuch davon war zu grob und zerriss `H₂O`: Dort steht die Ziffer **hinter** einem
+Buchstaben und gehört in die Formel. Der Test hat es gemeldet.
+
+Beides ist jetzt ein Tor. Geprüft wird die **Normalisierung**, nicht die Bewertung — ob eine
+Abweichung im Einzelfall noch über 0,80 landet, ist Glück.
+
+**Die Aushilfs-Ablenker waren ungeprüft.** Das Ablenker-Tor sah nur die drei Ablenker, die an
+der Karte stehen. `options()` greift aber auf Teilgebiet und Kategorie zurück, sobald eine Karte
+weniger als drei eigene hat — und die Grundprüfung lässt eine Karte ohne `w` ausdrücklich durch.
+Heute hat jede der 2.127 Karten ihre drei, der Pool wird also nie gezogen; genau deshalb fällt es
+niemandem auf, wenn irgendwann eine Karte ohne Ablenker dazukommt. Würde der Pool gezogen, gäbe
+es **26 Paare**, bei denen eine Aushilfe als richtige Antwort durchginge — „Zwölf" gegen die
+Antwort „12", „Die 2" gegen „Zwei". Im Quiz stünden dann zwei richtige Optionen zur Auswahl.
+
+**Eine Kennzahl, die wie eine Lücke aussah.** Der Bericht meldete „141 Merkanker — davon 118 mit
+eigener Abruffrage, 23 mit der Überschrift als Reiz". Das liest sich wie 23 fehlende Fragen.
+Nachgezählt war es **eine**: Ein Anker ohne eigenes Feld wird mit seiner Überschrift abgefragt,
+und „Warum der Himmel blau ist" taugt als Abrufreiz. 22 der 23 tun genau das. Der eine, der es
+nicht tat, hieß „Die Reihenfolge der Planeten" und stand da wie eine Überschrift statt wie eine
+Aufgabe. Statt die Zahl zu schönen prüft die Inhaltsprüfung jetzt den Unterschied.
+
+Jede der drei Lücken hat eine Gegenprobe: Nimmt man die Reparatur weg, meldet das Tor. Ein Tor,
+das nie anschlägt, wäre keins.
+
+Nebenbei gemessen und für gut befunden: Die Erstladung sind **404 KB gepackt** (1,0 MB roh) für
+2.127 Karten, 141 Anker und die ganze App — einmalig, danach läuft alles offline.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
