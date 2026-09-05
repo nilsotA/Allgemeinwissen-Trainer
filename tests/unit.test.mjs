@@ -1037,3 +1037,34 @@ test('bei einer Personenfrage gilt der Nachname allein', () => {
   // Eine Stadt ist kein Verein, auch wenn sie im Vereinsnamen steht.
   assert.ok(bewerte(finde('Bayern München'), 'München') < 0.8, 'München ist eine eigene Antwort');
 });
+
+/* Was schon in der Frage steht, wiederholt beim Antworten niemand. */
+test('ein Wort aus der Frage darf in der Antwort fehlen', () => {
+  const runden = { q: 'Wie viele Runden hat ein 5000-Meter-Lauf?', a: '12,5 Runden' };
+  assert.ok(bewerte(runden, '12,5') >= 0.8, '„12,5" auf eine Frage nach Runden');
+  const schlaf = { q: 'Wie viele Stunden Schlaf braucht ein Erwachsener?', a: 'Sieben bis neun Stunden' };
+  assert.ok(bewerte(schlaf, 'Sieben bis neun') >= 0.8);
+  // Fehlen darf es, ersetzt werden nicht: ein ueberzaehliges Wort wiegt weiter schwer.
+  const schwerer = { q: 'Was ist schwerer, Blei oder Eisen?', a: 'Blei' };
+  assert.ok(bewerte(schwerer, 'Eisen') < 0.8, 'das falsche der beiden genannten Dinge');
+  /* Nur Hauptwoerter, keine Formelzeichen: In „log(a) + log(b)" stehen „a" und
+     „b" auch in der Frage, und durften sie fehlen, galt „log(a + b)". */
+  const log = { q: 'Wie zerlegt man log(a · b)?', a: 'log(a) + log(b)' };
+  assert.ok(bewerte(log, 'log(a + b)') < 0.8, 'die falsche Zerlegung');
+});
+
+/* Einheiten tippt man abgekuerzt. */
+test('Einheitenkuerzel gelten wie das ausgeschriebene Wort', () => {
+  const paare = [
+    [{ a: 'Etwa 340 Meter pro Sekunde' }, '340 m/s'],
+    [{ a: '9 Kilokalorien' }, '9 kcal'],
+    [{ a: '371.000 km²' }, '371000 km2'],
+    [{ a: '371.000 km²' }, '371000 km^2'],
+  ];
+  for (const [karte, ein] of paare) {
+    assert.ok(bewerte(karte, ein) >= 0.8, `„${ein}" gilt nicht als „${karte.a}"`);
+  }
+  // „m" und „s" allein bleiben Formelzeichen und werden nicht zu Einheiten.
+  assert.equal(normalize('m'), 'm');
+  assert.equal(normalize('s'), 's');
+});

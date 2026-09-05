@@ -88,6 +88,19 @@ const ZEICHEN = [
      „km^2" auf „km²". */
   [/\^(\d)/g, '$1'],
   [/\bsqrt\b/gi, ' wurzel '],
+  /* Einheitenkuerzel. Sie sind eindeutig - anders als „m" oder „s" allein, die
+     in einer Formel die Masse und die Strecke waeren und deshalb hier fehlen.
+     Erst HIER, wenn beide Schreibweisen der Hochzahl schon eine Ziffer sind:
+     Sonst wurde „km²" zu „kilometer 2" und „km^2" zu „kilometer hoch 2",
+     waehrend das getippte „km2" ein „km2" blieb - und die Flaeche Deutschlands
+     galt in zwei von drei Schreibweisen als falsch. So endet alles auf „km2". */
+  [/\bm\s*\/\s*s\b/gi, ' meter pro sekunde '], [/\bkm\s*\/\s*h\b/gi, ' kilometer pro stunde '],
+  [/\bkcal\b/gi, ' kilokalorien '], [/\bkj\b/gi, ' kilojoule '],
+  [/\bkg\b/gi, ' kilogramm '], [/\bkm\b/gi, ' kilometer '],
+  [/\bcm\b/gi, ' zentimeter '], [/\bmm\b/gi, ' millimeter '],
+  [/\bpkt\.?(?=\s|$)/gi, ' punkte '],
+  // Das Gradzeichen ist oben schon zu „grad" geworden.
+  [/\bgrad\s+c\b/gi, ' grad celsius '],
   /* Zwischen zwei Zahlen ist ein Binde- oder Halbgeviertstrich fast immer eine
      SPANNE, kein Rechenzeichen: „1618-1648", „18,5-24,9". Beide Seiten muessen
      dabei gleich behandelt werden - sonst passt die Antwort nicht mehr auf sich
@@ -431,8 +444,8 @@ export function bewerte(card, eingabe) {
   if (!txt) return 0;
   const kurz = nachnameAllein(card);
   const listen = [card.a, ...(card.az || []), ...(kurz ? [kurz] : [])];
-  let beste = Math.max(...listen.map(l => similarity(txt, l)));
-  if (card.ug) beste = Math.max(beste, ...listen.map(l => similarity(sortiert(txt), sortiert(l))));
+  let beste = Math.max(...listen.map(l => similarity(txt, l, card.q)));
+  if (card.ug) beste = Math.max(beste, ...listen.map(l => similarity(sortiert(txt), sortiert(l), card.q)));
   return beste;
 }
 
@@ -512,7 +525,22 @@ function lesarten(eingabe, antwort) {
   return [...menge];
 }
 
-export function similarity(input, answer) {
+/* Woerter, die schon in der Frage stehen, wiederholt beim Antworten niemand.
+   Auf „Wie viele Runden hat ein 5000-Meter-Lauf?" tippt man „12,5" und nicht
+   „12,5 Runden" – und bekam dafuer 0,36. Sie duerfen deshalb in der Eingabe
+   fehlen, so wie einordnende Woerter („Satz des Pythagoras") es schon durften.
+
+   Fehlen duerfen sie, mehr nicht: Ein ueberzaehliges Wort wiegt unveraendert
+   schwer. Wer auf „Was ist schwerer, Blei oder Eisen?" das falsche der beiden
+   tippt, hat weiterhin ein Wort zu viel und ein Wort zu wenig. */
+/* Nur richtige Woerter, keine Formelzeichen: In „log(a) + log(b)" stehen „a",
+   „b" und „log" auch in der Frage, und durften sie fehlen, galt „log(a + b)"
+   als richtig (gemessen 0,95). Vier Buchstaben, keine Ziffern - damit bleibt
+   die Regel bei dem, wofuer sie gedacht ist: dem wiederholten Hauptwort. */
+const ausDerFrage = (frage) => new Set(
+  (frage ? woerter(normalize(frage)) : []).filter(w => /^[a-zäöü]{4,}$/.test(w)));
+
+export function similarity(input, answer, frage) {
   const voll = String(answer).trim();
   const fassungen = new Set([voll]);
   for (const f of [voll, voll.replace(OHNE_ZUSATZ, '').trim()]) {
@@ -523,10 +551,11 @@ export function similarity(input, answer) {
     if (formel !== f && formel.length >= 3) fassungen.add(formel);
   }
   const eingaben = lesarten(input, voll);
-  return Math.max(...[...fassungen].flatMap(f => eingaben.map(e => vergleich(e, f))));
+  const bekannt = ausDerFrage(frage);
+  return Math.max(...[...fassungen].flatMap(f => eingaben.map(e => vergleich(e, f, bekannt))));
 }
 
-function vergleich(input, answer) {
+function vergleich(input, answer, bekannt = new Set()) {
   const a = normalize(input), b = normalize(answer);
   if (!a || !b) return 0;
   if (a === b) return 1;
@@ -553,7 +582,7 @@ function vergleich(input, answer) {
     return gleicheReihenfolge ? roh : Math.min(roh, 0.6);
   }
 
-  const fehlt = fehlend.filter(traegtBedeutung);
+  const fehlt = fehlend.filter(w => traegtBedeutung(w) && !bekannt.has(w));
   const extra = ueberzaehlig.filter(w => traegtBedeutung(w) && !KLASSIFIKATOREN.has(w));
   // Bindewörter dürfen fehlen, aber nicht ausgetauscht werden: „mit haben" und
   // „mit werden" unterscheiden sich genau in so einem Wort.
