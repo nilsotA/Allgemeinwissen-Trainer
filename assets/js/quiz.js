@@ -339,10 +339,98 @@ export const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unt
 
    Diese Stelle gab es vorher dreimal – in der App, im Test und in jeder Messung.
    Jede Kopie konnte eine Regel verpassen. */
+/* ---------- Der Nachname allein ---------- */
+
+/* Auf „Wer schrieb den Faust?" antwortet man „Goethe" und nicht „Johann
+   Wolfgang von Goethe". Bei einer Personenfrage ist der Nachname die Antwort.
+
+   Verlockend waere die allgemeine Regel „das letzte Wort einer Antwort aus
+   lauter grossgeschriebenen Woertern zaehlt". Gemessen ist sie unbrauchbar: Sie
+   traefe auf 659 Karten zu und wuerde 86 Ablenker des Bestands durchwinken -
+   „Rechter Winkel" fuer „Stumpfer Winkel", „Das Rote Meer" fuer „Das Tote
+   Meer", „Fuenf Jahre" fuer „Vier Jahre". Im Deutschen steht die Unterscheidung
+   vorn, genau wie es die Kopfregel in gleichesWort() sagt.
+
+   Es braucht also drei Bedingungen zugleich, und uebrig bleiben 185 Karten:
+   die Frage fragt nach einer Person, die Antwort hat die Gestalt eines Namens,
+   und der Nachname ist eindeutig - weder trennt er die Karte von einem ihrer
+   eigenen Ablenker noch steht er im Bestand fuer zwei verschiedene Menschen
+   („Alexander Fleming" und „Ian Fleming", „Gerd Mueller" und „Herta Mueller"). */
+const NAMENSPARTIKEL = new Set(['von', 'van', 'de', 'del', 'della', 'di', 'du',
+  'la', 'le', 'dos', 'da', 'den', 'ter', 'ibn', 'al', 'zu']);
+const ROEMISCHE_ZAHL = /^[IVXLCDM]+\.?$/;
+/* „Wer …?" ist der klare Fall. Daneben fragt die Sammlung oft ueber die
+   Rolle - und dann stehen bis zu zwei Eigenschaftswoerter dazwischen:
+   „Welche BRITISCHE PREMIERMINISTERIN …", „Welcher DEUTSCHE AUTOR …". Ohne die
+   Luecke im Muster fiel „Thatcher" durch. */
+const ROLLEN = ['autor', 'dichter', 'komponist', 'maler', 'forscher', 'wissenschaftler',
+  'erfinder', 'philosoph', 'regisseur', 'schriftsteller', 'physiker', 'mathematiker',
+  'trainer', 'spieler', 'kanzler', 'praesident', 'präsident', 'premierminister',
+  'politiker', 'herrscher', 'feldherr', 'unternehmer', 'astronaut', 'entdecker',
+  'sportler', 'musiker', 'saenger', 'sänger', 'bildhauer', 'architekt', 'denker',
+  'kuenstler', 'künstler', 'nobelpreistraeger', 'nobelpreisträger', 'dramatiker',
+  'lyriker', 'journalist', 'moderator', 'dirigent', 'pianist', 'psychologe',
+  'paedagoge', 'pädagoge', 'biologe', 'chemiker', 'mediziner', 'reformator'];
+const PERSONENFRAGE = new RegExp(
+  `\\bwer\\b|\\bwelche[rsm]?\\s+(?:[a-zäöüß]+\\s+){0,2}(?:${ROLLEN.join('|')})(in|innen|s|en)?\\b`, 'i');
+const letztesWort = (t) => String(t).trim().split(/\s+/).pop().replace(/[.,;:]+$/, '');
+
+/* Die Gestalt eines Namens: zwei bis fuenf grossgeschriebene Woerter, dazwischen
+   hoechstens ein Partikel wie „von". Keine Ziffern (dann ist es eine Jahres-
+   oder Mengenangabe), keine roemische Zahl (sonst waere „Heinrich" die Antwort
+   auf jeden Heinrich), kein Komma (das ist eine Aufzaehlung und kein Name) und
+   kein Artikel am Anfang (dann traegt schon FUELLWOERTER den Rest). */
+function namensform(a) {
+  const t = String(a).trim();
+  if (/[,\d]/.test(t)) return null;
+  const w = t.split(/\s+/);
+  if (w.length < 2 || w.length > 5) return null;
+  if (/^(der|die|das|den|dem|des|ein|eine|einen|einem|einer)$/i.test(w[0])) return null;
+  for (const teil of w) {
+    if (NAMENSPARTIKEL.has(teil.toLowerCase())) continue;
+    if (ROEMISCHE_ZAHL.test(teil)) return null;
+    if (!/^[A-ZÄÖÜ]/.test(teil)) return null;
+  }
+  const letzt = letztesWort(t);
+  return letzt.length >= 3 && !NAMENSPARTIKEL.has(letzt.toLowerCase()) ? letzt : null;
+}
+
+/* Gezaehlt wird ueber die Antworten des Bestands, nicht ueber die Ablenker: Ein
+   erfundener Ablenker wie „Americus Magellan" ist kein zweiter Magellan und
+   duerfte die Kurzform nicht sperren. Die eigenen Ablenker der Karte pruefen
+   wir stattdessen einzeln - dort ist der Vorname ja gerade der Pruefstein. */
+let mehrdeutig = null;
+function mehrdeutigeNachnamen() {
+  if (mehrdeutig) return mehrdeutig;
+  const nach = new Map();
+  /* Ueber ALLE Antworten, nicht nur die namensfoermigen: „Muenchen" ist die
+     Antwort einer eigenen Karte, und deshalb darf es nicht zugleich die
+     Kurzform von „Bayern Muenchen" sein - eine Stadt ist kein Verein. */
+  for (const c of CARDS) {
+    const k = letztesWort(c.a).toLowerCase();
+    if (k.length < 3) continue;
+    if (!nach.has(k)) nach.set(k, new Set());
+    nach.get(k).add(String(c.a).trim());
+  }
+  mehrdeutig = new Set([...nach].filter(([, s]) => s.size > 1).map(([k]) => k));
+  return mehrdeutig;
+}
+
+export function nachnameAllein(card) {
+  if (!card || !card.q || !PERSONENFRAGE.test(card.q)) return null;
+  const n = namensform(card.a);
+  if (!n) return null;
+  const k = n.toLowerCase();
+  if (mehrdeutigeNachnamen().has(k)) return null;
+  for (const w of card.w || []) if (letztesWort(w).toLowerCase() === k) return null;
+  return n;
+}
+
 export function bewerte(card, eingabe) {
   const txt = String(eingabe || '').trim();
   if (!txt) return 0;
-  const listen = [card.a, ...(card.az || [])];
+  const kurz = nachnameAllein(card);
+  const listen = [card.a, ...(card.az || []), ...(kurz ? [kurz] : [])];
   let beste = Math.max(...listen.map(l => similarity(txt, l)));
   if (card.ug) beste = Math.max(beste, ...listen.map(l => similarity(sortiert(txt), sortiert(l))));
   return beste;

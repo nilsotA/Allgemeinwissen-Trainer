@@ -966,10 +966,8 @@ test('ein Minuszeichen hinter einer Klammer bleibt ein Vorzeichen', () => {
 });
 
 /* Ein Bindestrich zwischen zwei Zahlen ist mehrdeutig: „1618-1648" ist eine
-   Spanne, „b^2-4ac" ein Rechenzeichen. Die Sammlung entscheidet die Frage –
-   Spannen kommen vor, eng getippte Rechenzeichen nur in einer einzigen Formel,
-   und die traegt dafuer eine Nebenschreibweise. Ohne Leerzeichen heisst der
-   Strich deshalb „bis", mit Leerzeichen „minus". */
+   Spanne, „b^2-4ac" ein Rechenzeichen. Statt zu raten liest der Vergleich die
+   Eingabe in beiden Lesarten und nimmt die bessere – beides gilt gleichzeitig. */
 test('ein Bindestrich zwischen Zahlen ist eine Spanne', () => {
   const krieg = { a: '1618 bis 1648' };
   for (const ein of ['1618-1648', '1618–1648', '1618 bis 1648']) {
@@ -980,4 +978,62 @@ test('ein Bindestrich zwischen Zahlen ist eine Spanne', () => {
   assert.ok(bewerte(bmi, 'normal 18,5-24,9') >= 0.8, 'Bindestrich statt Halbgeviertstrich');
   // Mit Luft drumherum bleibt es ein Rechenzeichen.
   assert.equal(normalize('7 - 3'), '7 minus 3');
+});
+
+/* Am Handy wird abgekuerzt. Gemessen an 612 Eingaben, die ohne Kenntnis des
+   Bewerters aufgeschrieben wurden, war das die groesste Gruppe zu Unrecht
+   abgewiesener Antworten. */
+test('uebliche Abkuerzungen gelten als das ausgeschriebene Wort', () => {
+  const paare = [
+    [{ a: 'Der Vertrag von Verdun' }, 'Vertrag v. Verdun'],
+    [{ a: 'Klerus, Adel und Bauern' }, 'klerus, adel u. bauern'],
+    [{ a: 'Zwischen Mars und Jupiter' }, 'zw. Mars u. Jupiter'],
+    [{ a: 'Wegen der Neigung der Erdachse' }, 'wg. neigung der erdachse'],
+    [{ a: '13,8 Milliarden Jahre' }, '13,8 Mrd. Jahre'],
+    [{ a: 'Etwa sechs Millionen Juden' }, 'ca. 6 Mio. Juden'],
+  ];
+  for (const [karte, ein] of paare) {
+    assert.ok(bewerte(karte, ein) >= 0.8, `„${ein}" gilt nicht als „${karte.a}"`);
+  }
+  // Abgekuerzt wird nach Bequemlichkeit, nicht nach Duden: Solche Kuerzel loest
+  // der Vergleich an der Loesung selbst auf.
+  assert.ok(bewerte({ a: 'Der systematische Fehler folgt einer falschen Regel' },
+    'syst. Fehler folgt einer falschen Regel') >= 0.8, 'freie Abkuerzung am Wortstamm');
+  // Aber nur, wenn der volle Wortlaut in der Loesung wirklich vorkommt.
+  assert.ok(bewerte({ a: 'Der Bundesrat' }, 'Bundest.') < 0.8, 'erfundene Aufloesung');
+  /* Roemische Zahlen sehen aus wie Kuerzel und stehen mit Punkt. Als Kuerzel
+     gelesen waere „VII." ein Anfang von „VIII" – und der falsche Heinrich
+     bekaeme 1,00. */
+  assert.ok(bewerte({ a: 'Heinrich VIII.' }, 'Heinrich VII.') < 0.8, 'der falsche Heinrich');
+  /* Der Schlusspunkt eines Satzes ist keine Abkuerzung: „VO₂max." darf nicht
+     als „VO₂ maximal" gelesen werden, „Vitamin D." nicht als „Vitamin der". */
+  assert.ok(bewerte({ a: 'VO₂max' }, 'VO₂max.') >= 0.8, 'Punkt am Satzende');
+  assert.ok(bewerte({ a: 'Vitamin D' }, 'Vitamin D.') >= 0.8, 'Punkt am Satzende');
+});
+
+/* Ein Klammerzusatz darf auf beiden Seiten stehen – aber er darf nicht beide
+   Seiten gleichzeitig stutzen, sonst vergleichen sich zwei Ruempfe. */
+test('ein Klammerzusatz in der Eingabe ist erlaubt, stutzt aber nicht die Loesung', () => {
+  assert.ok(bewerte({ a: 'Das Scherbengericht' }, 'Scherbengericht (Ostrakismos)') >= 0.8);
+  assert.ok(bewerte({ a: '3 · (2x + 3)' }, '3 · (2x + 9)') < 0.8, 'falsche Zahl in der Klammer');
+});
+
+/* Auf „Wer schrieb den Faust?" antwortet man „Goethe". Die Regel ist eng
+   gefasst, weil die naheliegende weite Fassung gemessen unbrauchbar ist: „das
+   letzte Wort einer grossgeschriebenen Antwort" traefe auf 659 Karten zu und
+   wuerde 86 Ablenker des Bestands durchwinken. */
+test('bei einer Personenfrage gilt der Nachname allein', () => {
+  const gilt = (id, ein) => bewerte(BY_ID[id], ein);
+  const finde = (antwort) => CARDS.find(c => c.a === antwort);
+
+  assert.ok(gilt(finde('Johann Wolfgang von Goethe').id, 'Goethe') >= 0.8, 'Goethe');
+  assert.ok(gilt(finde('Margaret Thatcher').id, 'Thatcher') >= 0.8, 'Thatcher – Rollenfrage mit Eigenschaftswort');
+
+  // Zwei verschiedene Menschen mit demselben Nachnamen: dann zaehlt der Vorname.
+  for (const voll of ['Alexander Fleming', 'Gerd Müller']) {
+    const k = finde(voll);
+    assert.ok(bewerte(k, voll.split(' ').pop()) < 0.8, `„${voll}" ist ohne Vornamen nicht eindeutig`);
+  }
+  // Eine Stadt ist kein Verein, auch wenn sie im Vereinsnamen steht.
+  assert.ok(bewerte(finde('Bayern München'), 'München') < 0.8, 'München ist eine eigene Antwort');
 });
