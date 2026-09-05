@@ -1437,7 +1437,7 @@ eigenen Prüfer mit Webrecherche; jede Beanstandung ging danach an **zwei unabh�
 Widerleger** – einer prüft den Beleg, einer die Verhältnismäßigkeit. Beide sind darauf
 angesetzt, die Beanstandung zu kippen, nicht sie zu bestätigen.
 
-**Was dabei herauskam – 91 Korrekturen.** Die wertvollste Sorte sind Ablenker, die in
+**Was dabei herauskam – 185 Korrekturen.** Die wertvollste Sorte sind Ablenker, die in
 Wahrheit richtig sind. Sie bestrafen ausgerechnet den, der mehr weiß:
 
 | Karte | Der Ablenker, der stimmte |
@@ -1472,7 +1472,7 @@ Blutdruck wird sitzend gemessen; alle Grenzwerte beziehen sich darauf.
 
 ### Ein Muster, das die halbe Fehlerliste erklärt
 
-Bei sieben Karten stand derselbe Fehler, in sieben verschiedenen Themen: **Wer etwas
+Am Ende stand derselbe Fehler auf zwölf Karten quer durch alle Themen: **Wer etwas
 berühmt gemacht hat, gilt als der, der es erfunden hat.**
 
 | Karte | Berühmt gemacht von | Tatsächlich von |
@@ -1484,9 +1484,17 @@ berühmt gemacht hat, gilt als der, der es erfunden hat.**
 | Brasília | Oscar Niemeyer (Regierungsbauten) | Stadtplan von Lúcio Costa |
 | Pockenimpfung | Edward Jenner, 1796 | Benjamin Jesty impfte seine Familie 1774 |
 | Das Wort „Roboter" | Karel Čapek mit „R.U.R." | vorgeschlagen von seinem Bruder Josef |
+| „Der entscheidende Augenblick" | Cartier-Bresson | Kardinal de Retz; den Buchtitel wählte der Verleger |
+| „Soziale Marktwirtschaft" | Ludwig Erhard | Alfred Müller-Armack, 1946/47 |
+| Gewaltenteilung | Montesquieu | Locke unterschied sie schon 1689 |
+| Genietete Jeans | Levi Strauss | der Schneider Jacob Davis |
+| Buchdruck mit Metalllettern | Gutenberg um 1450 | in Korea 78 Jahre älter (Jikji, 1377) |
 
 Dazu die Monogramm-Signatur (Dürer machte sie zum Markenzeichen, erfunden hatten sie Meister
-E. S. und Schongauer) und die Osterregel (nicht von Nicäa 325, sondern aus Alexandria).
+E. S. und Schongauer), die Osterregel (nicht von Nicäa 325, sondern aus Alexandria) und
+Darwins Finken (den Anstoß gaben die Spottdrosseln; die Finken bestimmte erst Gould 1837).
+
+**Zwölf Karten, zwölf Themen, ein Fehler.**
 
 Das ist kein Zufall und keine Schlamperei des Autors: **Genau so wird Allgemeinwissen
 weitergegeben.** Die Anekdote mit dem bekannten Namen setzt sich durch, die richtige
@@ -1589,42 +1597,41 @@ mehr greift → `HINWEIS: die Zahl zu „Geld im Alltag" ist nicht mehr auffindb
 Fall ist der wichtigere: Er fängt ab, dass eine Prüfung still ins Leere läuft, nachdem jemand
 den Satz umformuliert hat.
 
-### Die Vorauswahl war falsch – gemessen, nicht vermutet
+### Die Vorauswahl war falsch – und danach wurde alles geprüft
 
-Die Prüfung hatte sich auf 880 Karten beschränkt: die mit einer Jahreszahl, einem
-Superlativ, einer Zuschreibung, einem Zahlenwert in der Antwort oder einer verderblichen
-Angabe. Dahinter stand eine Annahme – die übrigen 1.247 seien harmloser.
+Die Prüfung begann mit einer Abkürzung: 880 Karten, die eine Jahreszahl, einen Superlativ,
+eine Zuschreibung, einen Zahlenwert oder eine verderbliche Angabe tragen. Dahinter stand
+eine Annahme – die übrigen 1.247 seien harmloser.
 
-**Die Annahme ist widerlegt.** Eine Kontrollstichprobe von 104 unmarkierten Karten ergab
-**12 Beanstandungen**, dieselbe Größenordnung wie bei den markierten. Und es waren keine
-Kleinigkeiten: Der zweite Hauptsatz galt laut Karte „in geschlossenen Systemen" statt in
-abgeschlossenen, das Leibniz-Kriterium verlangte etwas Unerfüllbares (die *Glieder* einer
-alternierenden Reihe können nicht monoton fallen, nur ihre Beträge), und bei der
-Angebotspolitik kehrte eine verunglückte Ellipse die Aussage um.
+**Eine Kontrollstichprobe hat die Annahme widerlegt:** 104 unmarkierte Karten, 12
+Beanstandungen. Dieselbe Größenordnung wie bei den markierten, und keine Kleinigkeiten –
+der zweite Hauptsatz galt „in geschlossenen Systemen" statt in abgeschlossenen, das
+Leibniz-Kriterium verlangte etwas Unerfüllbares, und bei der Angebotspolitik kehrte eine
+verunglückte Ellipse die Aussage um.
 
-Der Grund ist im Nachhinein offensichtlich: Die Marker finden Karten, deren *Antwort*
+Der Grund ist im Nachhinein offensichtlich: Die Marker finden Karten, deren **Antwort**
 etwas Prüfbares enthält. Die Fehler sitzen aber überwiegend im **Kontexttext** – und der
-hat Jahreszahlen, Zuschreibungen und Superlative unabhängig davon, ob die Antwort welche
-hat. Die Triage hat nach dem falschen Feld gesucht.
+hat Jahreszahlen und Zuschreibungen unabhängig davon, ob die Antwort welche hat. Die
+Triage suchte im falschen Feld.
 
-Bilanz der Prüfung:
+Also wurde der Rest auch geprüft. Endstand:
 
 | Bereich | Karten | Befunde | übernommen |
 |---|---|---|---|
 | Merkanker („Wissen des Tages") | 141 | 15 | 13 |
-| Sport und Mathematik | 217 | 23 | 13 |
-| Geschichte, Politik, Geografie, Natur | 365 | 33 | 27 |
-| Kultur, Sprache, Alltag | 298 | 31 | 25 |
-| Herkunftsgeschichten, von Hand | 65 | 3 | 3 |
-| Kontrollstichprobe der unmarkierten Karten | 104 | 12 | 10 |
-| **Summe** | | **117** | **91** |
+| Auffällige Karten (Jahreszahl, Superlativ, Zuschreibung …) | 880 | 90 | 68 |
+| Herkunftsgeschichten, von Hand nachgeschlagen | 65 | 3 | 3 |
+| Kontrollstichprobe der unauffälligen Karten | 104 | 12 | 10 |
+| Alle übrigen Karten | 1.140 | 110 | 94 |
+| **Summe** | **2.268** | **227** | **185** |
 
-Rund ein Viertel der Beanstandungen wurde **nicht** übernommen: Pedanterie, Randfälle ohne
-Folge für den Lernenden, und Ersatztexte, die einen neuen Fehler eingebaut hätten.
+**Damit ist jede Karte und jeder Merkanker der Sammlung einmal auf Wahrheit geprüft.** Rund
+ein Fünftel der Beanstandungen wurde *nicht* übernommen: Pedanterie, Randfälle ohne Folge
+für den Lernenden, und Ersatztexte, die einen neuen Fehler eingebaut hätten.
 
-**Was offen bleibt:** 1.143 unmarkierte Karten sind weiterhin ungeprüft. Nach dem Ergebnis
-der Stichprobe ist dort mit rund einem Befund je zehn Karten zu rechnen – das ist die
-nächste Runde, und sie kann sich diesmal keine Vorauswahl sparen.
+Die Fehlerdichte war am Ende überall ähnlich – ein Befund je zehn bis sechzehn Karten,
+gleich ob markiert oder nicht. Wer eine Sammlung dieser Größe von Hand aufbaut, produziert
+diese Rate; sie sagt nichts über Sorgfalt, sondern etwas über den Umfang.
 
 ### Zwei Tore, die diese Fehlerklassen künftig abfangen
 
