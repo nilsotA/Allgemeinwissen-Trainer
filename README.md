@@ -2028,6 +2028,89 @@ den Boden: mindestens 77 % gelten, höchstens 8 % gelten als glatt falsch. Gegen
 den Vergleicher von vor dieser Arbeit schlägt es an (68,8 %) — ein Tor, das nie anschlägt,
 wäre keins.
 
+### Das gelbe Band – und ein Loch, das dabei aufging
+
+Nach dem roten Band das gelbe: „Knapp daneben — vergleich genau". Vier Muster darin waren in
+Wahrheit richtige Antworten. Das auffälligste: der abgekürzte Vorname. „G. Galilei" bekam
+0,60 und damit **weniger** als das bloße „Galilei", obwohl die Eingabe mehr weiß. Dazu „Std."
+für Stunden, das Steigerungswort „viel" (neben dem „sehr", das längst in der Liste stand), ein
+einleitendes „weil" und der englische Artikel.
+
+Danach eine Auszählung über den ganzen Bestand statt einer Vermutung: *Welches erste Wort einer
+Antwort verhindert, dass der Rest allein gilt?* Ergebnis — die einordnenden Wörter (Satz, Regel,
+Gesetz …) sind vollständig, aber „wegen" und „wenn" fehlten in der Liste der einleitenden
+Wörter. 14 Karten.
+
+Kaum eingetragen, meldete das Ablenker-Tor einen Treffer, und der lag tiefer als die Änderung.
+Die Abkürzung, die eine kürzere Eingabe mit 0,95 durchwinkt, prüfte nur, **welche** Wörter
+vorkommen — nicht in welcher Folge. Die Vertauschungssperre weiter oben fängt das normalerweise
+ab, aber sie greift nur, wenn nichts fehlt und nichts übrig ist; steht ein weglassbares Wort
+dazwischen, ist „fehlend" nicht leer und die Sperre fällt aus. Gemessen: `nicht A ⇒ nicht B`
+bekam **0,95** auf die Lösung `nicht B ⇒ nicht A` — die Umkehrung statt der Kontraposition, also
+genau der Fehler, den die Karte abfragt.
+
+Gefunden hat das der Zufall. Darauf ist kein Verlass, also gibt es dafür jetzt ein Tor: Die
+Inhaltsprüfung vertauscht die Wörter jeder Antwort auf vier feste Arten — rückwärts, rotiert,
+Rand getauscht, Nachbarn getauscht — und verlangt, dass keine davon noch als richtige Eingabe
+gilt. Karten mit `ug` sind ausgenommen, dort ist die Reihenfolge ausdrücklich egal.
+**Gegenprobe: mit der Reihenfolgeprüfung meldet das Tor nichts, ohne sie 20 Karten.** Der eine
+gefundene Fall war einer von zwanzig.
+
+Nebenbei fiel auf, dass die Inhaltsprüfung 48 Sekunden brauchte. 44 davon gingen an eine Zeile:
+Der Dublettenscan berechnete die normalisierte Antwort *innerhalb* der Doppelschleife, also
+zweimal für jedes der 2,3 Millionen Kartenpaare. Der Wert hängt nur von der Karte ab. Einmal
+vorab gerechnet: **5,2 statt 47,7 Sekunden**, gleiches Ergebnis.
+
+### Die Gegenprobe: der ganze Bestand blind beantwortet
+
+Die Tippprobe hat eine Schwäche, die in ihrer Anlage steckt: Ihre Fassungen wurden **aus der
+Antwort heraus** geschrieben. Sie misst, ob der Vergleicher dieselbe Antwort in anderer
+Schreibung erkennt — nicht, ob die Frage überhaupt auf diese eine Antwort zuläuft.
+
+Also derselbe Bestand noch einmal, von der anderen Seite: 71 Agenten haben **alle 2.127 Fragen
+beantwortet, ohne die Antwort zu kennen**. Jeder bekam eine Datei mit ausschließlich Kennung und
+Frage, ausdrücklich ohne Nachschlagen im Verzeichnis und ohne Websuche. Nachgeprüft im
+Protokoll: 71 × ein `Read` auf die eigene Paketdatei, 71 × die Rückgabe, kein einziger anderer
+Werkzeugaufruf. Neben der Antwort war die zweite Frage: *Lässt diese Frage, so wie sie dasteht,
+genau eine richtige Antwort zu?*
+
+| | getroffen | knapp | daneben |
+|---|---|---|---|
+| alle 2.127 | 65,0 % | 7,8 % | 27,2 % |
+| Frage laut Agent eindeutig (1.624) | 67,7 % | 7,3 % | 25,1 % |
+| Frage laut Agent mehrdeutig (503) | 56,5 % | 9,3 % | 34,2 % |
+
+Das ist keine Note für den Vergleicher — eine blinde Antwort daneben heißt meistens, dass die
+Karte etwas abfragt, das man wissen muss. Genau dafür ist sie da. Interessant sind zwei andere
+Dinge.
+
+**Der Schwierigkeitsgrad bedeutet etwas.** Das Feld `d` wurde beim Schreiben jeder Karte von
+Hand gesetzt und nie überprüft. Gegen eine Instanz, die die Antworten nicht kannte:
+
+| Grad | Karten | blind getroffen | selbst eingeschätzte Sicherheit |
+|---|---|---|---|
+| d = 1 | 651 | 77,7 % | 2,98 |
+| d = 2 | 1.043 | 62,0 % | 2,92 |
+| d = 3 | 433 | 53,1 % | 2,85 |
+
+Sauber monoton, in beiden Spalten. Die Einstufung von Hand war also nicht willkürlich.
+
+**Die Kategorien liegen weit auseinander.** Erdkunde 88,2 % und Kultur 88,6 % gegen Mathematik
+45,0 % und Politik 42,9 %. Das ist kein Qualitätsurteil: In Mathe und Politik sind die Antworten
+lange Definitionen, die man in eigenen Worten gibt — und genau die kann ein Zeichenkettenvergleich
+nicht erkennen. Es sagt aber, wo eine zugelassene Zweitschreibung am meisten wert ist.
+
+Als mehrdeutig gemeldet wurden **503 Fragen (23,6 %)**. Bei 284 davon traf die erste Antwort
+trotzdem die Karte — dort ist die „Mehrdeutigkeit" meist nur ein zweiter Name für dieselbe Sache
+(„Pankreas" neben „Bauchspeicheldrüse"). Der Rest geht in die Nachprüfung.
+
+Ein Fund ließ sich sofort abarbeiten: Auf „Ab welchem Alter darf man den Bundestag wählen?"
+antwortet man „Ab 18", und die Karte sagt „Ab 18 Jahren" — 0,42. Die Einheit steht in der Frage,
+aber als „Alter" und nicht als „Jahre", weshalb die Regel für wiederholte Fragewörter nicht
+greift. Zeitwörter und Maßeinheiten hinter einer Zahl dürfen jetzt fehlen. Fehlen, mehr nicht:
+„Ab 18 Jahren Haft" bleibt eine andere Antwort, und ohne Zahl in der Lösung behält „Die Jahre
+des Wachstums" seine Jahre.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
