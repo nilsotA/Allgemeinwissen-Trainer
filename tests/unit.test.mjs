@@ -1068,3 +1068,32 @@ test('Einheitenkuerzel gelten wie das ausgeschriebene Wort', () => {
   assert.equal(normalize('m'), 'm');
   assert.equal(normalize('s'), 's');
 });
+
+/* Die Eins ist im Deutschen auch der unbestimmte Artikel. */
+test('eine getippte Eins darf ein Artikel sein – aber nicht in einer Formel', () => {
+  const karte = { q: 'Welche Anlageregel steckt hinter der Streuung?', a: 'Nicht alles auf eine Karte setzen' };
+  assert.ok(bewerte(karte, 'nicht alles auf 1 Karte setzen') >= 0.8);
+  // Wo eine Zahl im Spiel ist, ist die Eins ein Zahlwert und bleibt es.
+  assert.ok(bewerte({ a: 'Etwa 1,5 Liter' }, 'Etwa 5 Liter') < 0.8, 'die Vorkommastelle');
+  // Und in einer Formel steht sie nicht vor einem Hauptwort.
+  assert.ok(bewerte({ a: 'e^(iπ) + 1 = 0' }, 'e^π + i = 0') < 0.8, 'die Eulersche Identitaet');
+  assert.ok(bewerte({ a: 'Eine Funktion der Form y = mx + b' }, 'Eine Funktion der Form y = 1/(mx + b)') < 0.8);
+});
+
+/* Ein Datum tippt man in Ziffern. */
+test('ein Datum in Ziffern gilt wie ein ausgeschriebenes', () => {
+  assert.ok(bewerte({ a: '9. November 1989' }, '9.11.1989') >= 0.8);
+  assert.ok(bewerte({ a: '8. Mai 1945' }, '8.5.1945') >= 0.8);
+  assert.ok(bewerte({ a: '9. November 1989' }, '9.12.1989') < 0.8, 'der falsche Monat');
+  // Der Tausenderpunkt bleibt davon unberuehrt.
+  assert.equal(normalize('3.600 Meter'), '3600 meter');
+});
+
+/* Zwischen Zahl und Wort faellt das Leerzeichen beim Tippen weg, und zwischen
+   Zahl und Variable ist das Malzeichen nur Schreibweise. */
+test('„8bit" ist „8 Bit" und „2*x" ist „2x"', () => {
+  assert.ok(bewerte({ a: '8 Bit' }, '8bit') >= 0.8);
+  assert.ok(bewerte({ a: '2x' }, '2*x') >= 0.8);
+  // Zwischen zwei Zahlen bleibt das Malzeichen ein Rechenzeichen.
+  assert.ok(bewerte({ a: '3 · 4' }, '3 4') < 0.8);
+});

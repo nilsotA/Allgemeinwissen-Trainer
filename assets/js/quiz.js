@@ -72,7 +72,11 @@ const ZEICHEN = [
   [/[⁵₅]/g, '5'], [/[⁶₆]/g, '6'], [/[⁷₇]/g, '7'], [/[⁸₈]/g, '8'], [/[⁹₉]/g, '9'],
   [/π/g, ' pi '], [/[αΑ]/g, ' alpha '], [/[βΒ]/g, ' beta '], [/[γΓ]/g, ' gamma '],
   [/[δΔ]/g, ' delta '], [/[λΛ]/g, ' lambda '], [/[σΣ]/g, ' sigma '], [/[ωΩ]/g, ' omega '],
-  [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '], [/[·×*]/g, ' mal '],
+  [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '], /* „2·x" und „2x" sind dasselbe Produkt: Zwischen Zahl und Variable ist das
+     Malzeichen nur Schreibweise. Zwischen zwei Zahlen oder zwei Variablen
+     bleibt es stehen – dort traegt es Bedeutung. */
+  [/(\d)\s*[·×*]\s*(?=[a-zäöüß]\b)/gi, '$1 '],
+  [/[·×*]/g, ' mal '],
   /* „(a + b)(a − b)": Zwischen zwei Klammern steht ein unsichtbares Malzeichen.
      Wer es mittippt, schrieb sonst ein Wort mehr als die Loesung und fiel damit
      durch die Kennwortpruefung auf 0,50. */
@@ -101,6 +105,9 @@ const ZEICHEN = [
   [/\bpkt\.?(?=\s|$)/gi, ' punkte '],
   // Das Gradzeichen ist oben schon zu „grad" geworden.
   [/\bgrad\s+c\b/gi, ' grad celsius '],
+  /* „8bit" ist „8 Bit". Zwischen Zahl und Wort faellt das Leerzeichen beim
+     Tippen oft weg; gesetzt steht es da. Beide Seiten gleich behandeln. */
+  [/(\d)(?=[a-zäöüß])/gi, '$1 '],
   /* Zwischen zwei Zahlen ist ein Binde- oder Halbgeviertstrich fast immer eine
      SPANNE, kein Rechenzeichen: „1618-1648", „18,5-24,9". Beide Seiten muessen
      dabei gleich behandelt werden - sonst passt die Antwort nicht mehr auf sich
@@ -148,7 +155,15 @@ const ZEICHEN = [
    Eingabe. „v." als „von" zu lesen waere in „753 v. Chr." falsch - aber weil
    dort zuerst die Regel fuer „v. Chr." greift, entsteht kein Schaden, und in
    „Vertrag v. Verdun" trifft sie zu. Mehrteiliges deshalb zuerst. */
+const MONATE = ['januar', 'februar', 'maerz', 'april', 'mai', 'juni', 'juli',
+  'august', 'september', 'oktober', 'november', 'dezember'];
+
 const ABKUERZUNGEN = [
+  /* „9.11.1989" ist dasselbe Datum wie „9. November 1989". Muss vor allem
+     anderen stehen, damit der Tausenderpunkt weiter unten nicht zuerst
+     hineingreift. */
+  [/\b(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})\b/g,
+    (ganz, tag, monat, jahr) => MONATE[+monat - 1] ? ` ${+tag} ${MONATE[+monat - 1]} ${jahr} ` : ganz],
   [/\bv\.?\s*chr\.?/gi, ' vor christus '], [/\bn\.?\s*chr\.?/gi, ' nach christus '],
   [/\bz\.\s*b\./gi, ' zum beispiel '], [/\bd\.\s*h\./gi, ' das heisst '],
   [/\bu\.\s*a\./gi, ' unter anderem '], [/\bu\.\s*ae\./gi, ' und aehnliches '],
@@ -555,8 +570,30 @@ export function similarity(input, answer, frage) {
   return Math.max(...[...fassungen].flatMap(f => eingaben.map(e => vergleich(e, f, bekannt))));
 }
 
+/* „ein" und „eine" sind im Deutschen beides zugleich: der unbestimmte Artikel
+   und die Zahl. Als Artikel wirft FUELLWOERTER sie weg, eine getippte „1" blieb
+   dagegen stehen und galt dann als abweichende Zahl – „Nicht alles auf 1 Karte
+   setzen" fiel auf 0,50.
+
+   Weggelassen wird die einzelne Eins deshalb nur, wenn auf der anderen Seite
+   ueberhaupt keine Zahl steht. Genau dann kann sie kein Zahlwert sein. Ohne
+   diese Einschraenkung galt „e^π + i = 0" als Eulersche Identitaet und „Etwa
+   5 Liter" als „Etwa 1,5 Liter" – dort ist die Eins die Vorkommastelle. */
+const ohneEinzelneEins = (t) => woerter(t).filter(w => w !== '1').join(' ');
+
 function vergleich(input, answer, bekannt = new Set()) {
-  const a = normalize(input), b = normalize(answer);
+  let a = normalize(input), b = normalize(answer);
+  if (!a || !b) return 0;
+  /* Und nur ausserhalb einer Formel: In „y = 1/(mx + b)" steht die Eins im
+     Zaehler und nicht vor einem Hauptwort. Weil dort sonst keine Ziffer
+     vorkommt, waere sie sonst weggefallen und der Ablenker haette 1,00
+     bekommen. Rechenzeichen auf einer der beiden Seiten genuegen als Hinweis;
+     dass „durch" und „mal" auch gewoehnliche Woerter sind, schadet hier nicht -
+     sie machen die Regel nur vorsichtiger. */
+  const formel = [a, b].some(t => woerter(t).some(w => OPERATOR.has(w)));
+  const zahlLinks = /\d/.test(a), zahlRechts = /\d/.test(b);
+  if (!formel && !zahlRechts) a = ohneEinzelneEins(a);
+  if (!formel && !zahlLinks) b = ohneEinzelneEins(b);
   if (!a || !b) return 0;
   if (a === b) return 1;
 
