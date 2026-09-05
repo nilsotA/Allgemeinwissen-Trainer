@@ -197,6 +197,36 @@ for (const c of CARDS) {
   }
 }
 
+/* Dieselbe Antwort mit vertauschten Woertern darf NICHT gelten. Im Deutschen
+   traegt die Reihenfolge die Aussage: „Upcycling fuehrt Material zurueck,
+   Recycling schafft daraus etwas Hoeherwertiges" ist zeichenweise zu ueber 90
+   Prozent dieselbe Zeichenkette wie ihr Gegenteil, und „nicht B ⇒ nicht A" ist
+   die Kontraposition, „nicht A ⇒ nicht B" die Umkehrung.
+
+   Der Vergleich hat dafuer eine Sperre, aber sie sass nur an einer Stelle, und
+   die Abkuerzung daneben pruefte die Reihenfolge nicht. Gefunden wurde das
+   durch Zufall - ein Ablenker, der bei einer ganz anderen Aenderung auffiel.
+   Vier feste Vertauschungen ueber den ganzen Bestand finden es kuenftig ohne
+   Zufall. Karten mit ug sind ausgenommen: Dort IST die Reihenfolge egal. */
+const VERTAUSCHUNGEN = {
+  rueckwaerts: (w) => [...w].reverse(),
+  rotiert: (w) => [...w.slice(1), w[0]],
+  randtausch: (w) => { const v = [...w]; [v[0], v[v.length - 1]] = [v[v.length - 1], v[0]]; return v; },
+  nachbartausch: (w) => { const v = [...w]; for (let i = 0; i + 1 < v.length; i += 2) [v[i], v[i + 1]] = [v[i + 1], v[i]]; return v; },
+};
+for (const c of CARDS) {
+  if (c.mc || c.ug) continue;
+  const w = normalize(c.a).split(' ').filter(Boolean);
+  if (w.length < 3) continue;
+  const gerade = w.join(' ');
+  for (const [art, f] of Object.entries(VERTAUSCHUNGEN)) {
+    const v = f(w).join(' ');
+    if (v === gerade) continue;
+    const note = bewerte(c, v);
+    if (note >= 0.8) fail(`${c.id}: die eigene Antwort gilt auch ${art} (${note.toFixed(2)}) – „${v}" – im Deutschen traegt die Reihenfolge die Aussage`);
+  }
+}
+
 /* Das Kontextfeld t ist inzwischen die Stelle, an der die Fehler sitzen: In der
    letzten Pruefrunde waren bei vier von sechs abgelehnten Karten Frage, Antwort
    und Ablenker sauber - beanstandet wurde der Beitext. Zwei Sorten lassen sich
@@ -366,7 +396,11 @@ const ueberlappung = (a, b) => {
   for (const w of a) if (b.has(w)) g++;
   return g / (a.size + b.size - g);
 };
-const fragen = CARDS.map(c => ({ c, q: wortmenge(c.q), a: wortmenge(c.a) }));
+/* Die normalisierte Antwort gehoert zur Karte und nicht ins Schleifeninnere:
+   Dort wurde sie fuer jedes der 2,3 Millionen Kartenpaare zweimal neu berechnet
+   – 4,5 Millionen Aufrufe, gemessen 44 der 48 Sekunden Laufzeit der ganzen
+   Pruefung. Einmal vorab gerechnet bleibt das Ergebnis dasselbe. */
+const fragen = CARDS.map(c => ({ c, q: wortmenge(c.q), a: wortmenge(c.a), na: norm(c.a) }));
 for (let i = 0; i < fragen.length; i++) {
   for (let j = i + 1; j < fragen.length; j++) {
     // Beides muss passen: „Wofuer steht die Abkuerzung X?" gibt es zu Recht
@@ -376,7 +410,7 @@ for (let i = 0; i < fragen.length; i++) {
     // der Summe aller Komponentenquadrate" gegen „Wurzel aus der Summe der
     // quadrierten Koordinaten"). Gemessen trennt 0,25 sauber – darueber
     // rutschte genau dieser Fall durch, darunter kaemen die Abkuerzungsfragen.
-    const gleicheAntwort = norm(fragen[i].c.a) === norm(fragen[j].c.a);
+    const gleicheAntwort = fragen[i].na === fragen[j].na;
     const fq = ueberlappung(fragen[i].q, fragen[j].q);
     /* Zwei Wege zur selben Feststellung. Der zweite kam dazu, weil die Schranke
        von 0,7 eine Luecke liess: „Wie lange gilt die gesetzliche Gewaehrleistung
