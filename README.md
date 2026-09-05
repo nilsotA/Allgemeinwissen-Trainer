@@ -1938,6 +1938,96 @@ damit niemand sie ein zweites Mal „findet":
 - *Fehlende Felder in einer eingelesenen Ergebnisdatei rutschten als Text „undefined" durch.*
   Falsch – `merge-cards.mjs` weist unvollständige Karten vorher ab.
 
+### Die andere Hälfte der Bewertung: Wie oft weist die App eine richtige Antwort ab?
+
+Der Vergleicher war immer nur von **einer** Seite gesichert. Jedes Tor, jeder Test, jede
+Messung fragte dasselbe: Kommt hier ein Ablenker durch? Die Gegenfrage stand nie im Raum,
+obwohl sie den Alltag härter trifft. Beim freien Abrufen tippt man die Antwort, und jede zu
+Unrecht abgelehnte Eingabe ist ein Moment, in dem man recht hatte und Unrecht bekam.
+
+Gemessen wurde so: 306 Karten, in allen neun Kategorien gleich verteilt, nur frei abgefragte.
+Zu jeder vier Fassungen — die knappste richtige Antwort, eine in eigenen Worten, eine
+gesprochene und die, die man am Handy eintippt. Geschrieben wurden sie **ohne Kenntnis des
+Vergleichers** und ohne die schon vorhandenen Nebenschreibweisen, damit niemand abschreiben
+konnte. Das Ergebnis liegt als `data/tippprobe.json` im Bestand.
+
+Bewertet werden nur die beiden Fassungen, die dem Tippen entsprechen — zusammen 612 Eingaben.
+Die anderen beiden stehen zum Vergleich daneben und sagen etwas anderes, dazu unten mehr.
+
+Die App kennt drei Rückmeldungen (`revealRecall` in `app.js`): ab 0,80 „Deine Eingabe passt",
+ab 0,60 „Knapp daneben — vergleich genau", darunter „Du hattest: …". **Die Note vergibt in
+jedem Fall der Nutzer selbst.** Falsch abgewiesen zu werden kostet also kein Wissen, sondern
+Zutrauen — der teure Fall ist trotzdem Rot, weil dort steht, man habe sich geirrt.
+
+| | gilt | knapp daneben | glatt falsch |
+|---|---|---|---|
+| vorher | 68,5 % | 17,8 % | **13,7 %** |
+| nachher | 78,9 % | 14,4 % | **6,7 %** |
+
+Jede der Ursachen war eine eigene Klasse, und jede wurde einzeln gegen den ganzen Bestand
+gewogen, bevor sie blieb:
+
+| Klasse | Beispiel | Lösung |
+|---|---|---|
+| Abkürzungen | „Vertrag v. Verdun", „zw. Mars u. Jupiter" | Liste der üblichen deutschen Kürzel |
+| freie Abkürzungen | „syst. Fehler", „Distributivges." | am Wortlaut der Lösung aufgelöst |
+| Nachname allein | „Goethe" statt „Johann Wolfgang von Goethe" | nur bei Personenfragen, nur wenn eindeutig |
+| Wort aus der Frage | „12,5" statt „12,5 Runden" | darf fehlen, so wie „Satz" bei „Satz des Pythagoras" |
+| Einheiten | „340 m/s", „9 kcal" | Kürzel gelten wie das Wort |
+| Rechenzeichen | „(a+b)*(a-b)=a^2-b^2" | unsichtbares Mal, Minus am Einzelbuchstaben |
+| mehrdeutiger Strich | „1618-1648" gegen „b^2-4ac" | beide Lesarten prüfen statt raten |
+| Datum in Ziffern | „9.11.1989" | gilt wie „9. November 1989" |
+| die Eins als Artikel | „auf 1 Karte setzen" | zählt nicht als Zahl — außerhalb von Formeln |
+
+### Was die Messung über die Methode gesagt hat
+
+Zwei Dinge sind dabei wichtiger als die Zahl selbst.
+
+**Die naheliegende Regel war die falsche.** „Der Nachname allein zählt" schien der offensichtliche
+Fall — man antwortet ja „Goethe". Die einfache Fassung davon lautet: Das letzte Wort einer
+Antwort aus lauter großgeschriebenen Wörtern gilt. Bevor ich sie geschrieben habe, habe ich
+gezählt, was sie anrichten würde: Sie träfe auf **659 Karten** zu und würde **86 Ablenker des
+Bestands** als richtig durchwinken — „Rechter Winkel" für „Stumpfer Winkel", „Das Rote Meer"
+für „Das Tote Meer", „Fünf Jahre" für „Vier Jahre". Im Deutschen steht die Unterscheidung
+vorn, genau wie es die Kopfregel im Wortvergleich seit jeher sagt. Übrig blieb eine Regel mit
+drei gleichzeitigen Bedingungen und 182 statt 659 Karten.
+
+**Die Tore haben fünfmal eingegriffen, und jedes Mal zu Recht.** Sie fanden, was ich nicht
+gesucht hätte:
+
+- „Heinrich VII." wurde als Abkürzung von „Heinrich VIII." gelesen — römische Zahlen sehen
+  aus wie Kürzel und stehen mit Punkt. Der falsche Heinrich bekam 1,00.
+- Ein Klammerzusatz in der Eingabe stutzte **beide** Seiten, und „3 · (2x + 9)" ging als
+  „3 · (2x + 3)" durch.
+- In einer Formel stehen die Variablen naturgemäß auch in der Frage — durften sie deshalb
+  fehlen, galt „log(a + b)" als Zerlegung von „log(a · b)".
+- „Etwa 5 Liter" galt als „Etwa 1,5 Liter", weil das Dezimalkomma beim Normalisieren zum
+  Trenner wird und die Eins allein stehen lässt.
+- „y = 1/(mx + b)" galt als „y = mx + b" — dort steht die Eins im Zähler, nicht vor einem Hauptwort.
+
+Dazu ein Fehler, den kein Tor abfangen konnte, weil er die Frage selbst betraf: Ein Schlusspunkt
+ist keine Abkürzung. „VO₂max." wurde als „VO₂ maximal" gelesen, „Vitamin D." als „Vitamin der".
+Den fand der Test, der diese beiden Karten längst kannte.
+
+### Was bewusst nicht behoben wurde
+
+Rund 40 der 612 Eingaben gelten weiter als falsch, und bei den meisten ist das richtig so.
+Der Vergleicher ist ein Zeichenkettenvergleich und kein Sprachverständnis. „Volksherrschaft"
+für „Herrschaft des Volkes", „Menschenwürde ist unantastbar" für „Die Würde des Menschen ist
+unantastbar", „Zeitangabe" für „Es gibt eine Zeit an" — das sind Umformulierungen, und sie
+anzunehmen hieße, jede Umstellung anzunehmen. Genau davor warnt die Regel, die „Upcycling
+führt Material zurück" von „Recycling schafft daraus etwas Höherwertiges" trennt.
+
+Das zeigen auch die beiden Fassungen, die **nicht** in die Wertung gehen. „In eigenen Worten"
+wird zu 81 % abgewiesen, „gesprochen" zu 61 % — mit Füllwörtern, Synonymen und ganzen Sätzen.
+Diese Zahlen sind keine Fehlerliste, sondern die Grenze des Verfahrens. Wer sie beheben wollte,
+bräuchte ein Sprachmodell zur Laufzeit; das steht ausdrücklich nicht auf dem Plan.
+
+Die Messung ist jetzt ein Tor. `data/tippprobe.json` liegt fest im Bestand, und ein Test hält
+den Boden: mindestens 77 % gelten, höchstens 8 % gelten als glatt falsch. Gegengeprobt gegen
+den Vergleicher von vor dieser Arbeit schlägt es an (68,8 %) — ein Tor, das nie anschlägt,
+wäre keins.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
