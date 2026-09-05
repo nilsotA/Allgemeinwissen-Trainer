@@ -12,6 +12,7 @@
    findet der Lernstand die umbenannte Karte wieder. */
 
 import { readFileSync, writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 
 const KATEGORIEN = ['ges', 'geo', 'nat', 'mat', 'spo', 'kul', 'spr', 'pol', 'all'];
 
@@ -70,35 +71,76 @@ export function ersetzeInZeile(zeile, feld, wert) {
     const neu = Array.isArray(wert) ? wert : [wert];
     const liste = [...new Set([...(vorhanden ? JSON.parse(vorhanden[1]) : []), ...neu])];
     if (vorhanden) return zeile.replace(vorhanden[0], `,az:${js(liste)}`);
-    const m = zeile.match(/(^\{q:(?:"(?:[^"\\]|\\.)*"),a:(?:"(?:[^"\\]|\\.)*"))/);
+    /* Angehaengt wird hinter dem a-Feld, wo immer das steht. Vorher verlangte
+       das Muster, dass a unmittelbar auf q folgt – bei jeder Karte, die schon
+       einen alten Wortlaut als p traegt, steht dazwischen aber genau der, und
+       das Muster fand nichts. Der Fehler kam als „Cannot read properties of
+       null" heraus und nicht als Satz, der sagt, was los ist. */
+    const m = zeile.match(/,a:(?:"(?:[^"\\]|\\.)*")/);
+    if (!m) throw new Error('kein a-Feld gefunden, an das az anschliessen koennte');
     return zeile.replace(m[0], `${m[0]},az:${js(liste)}`);
   }
 
   throw new Error(`unbekanntes Feld ${feld}`);
 }
 
-export function aendere(id, feld, wert) {
-  const kategorie = id.split('-')[0];
-  if (!KATEGORIEN.includes(kategorie)) throw new Error(`unbekannte Kategorie in ${id}`);
-  const pfad = `data/${kategorie}.js`;
-  const zeilen = readFileSync(pfad, 'utf8').split('\n');
-  for (let i = 0; i < zeilen.length; i++) {
-    const kopf = zeilen[i].match(/^\{q:("(?:[^"\\]|\\.)*")/);
-    if (!kopf || kennung(JSON.parse(kopf[1]), kategorie) !== id) continue;
-    const neu = ersetzeInZeile(zeilen[i], feld, wert);
-    if (neu === zeilen[i]) throw new Error(`${id}: die Ersetzung hat nichts geaendert (${feld})`);
-    zeilen[i] = neu;
-    writeFileSync(pfad, zeilen.join('\n'));
-    return `${pfad}:${i + 1}`;
+/* Wendet eine Liste von Auftraegen an – wirklich alles oder nichts. Vorher
+   stand hier ein Schreibvorgang je Aenderung; faellt der 80. Auftrag durch,
+   lagen 79 Aenderungen schon in den Dateien und der Rest nicht. Genau das ist
+   mir bei 321 Korrekturen passiert. Jetzt wird erst im Speicher geaendert und
+   nur geschrieben, wenn ALLE Auftraege durchgehen.
+
+   Rueckgabe: eine Zeile je Auftrag, damit sichtbar bleibt, was passiert ist. */
+export function aendereAlle(auftraege) {
+  const dateien = new Map();
+  const lade = (pfad) => {
+    if (!dateien.has(pfad)) dateien.set(pfad, readFileSync(pfad, 'utf8').split('\n'));
+    return dateien.get(pfad);
+  };
+  const berichte = [];
+  for (const { id, feld, wert } of auftraege) {
+    const kategorie = id.split('-')[0];
+    if (!KATEGORIEN.includes(kategorie)) throw new Error(`unbekannte Kategorie in ${id}`);
+    const pfad = `data/${kategorie}.js`;
+    const zeilen = lade(pfad);
+    let gefunden = false;
+    for (let i = 0; i < zeilen.length; i++) {
+      const kopf = zeilen[i].match(/^\{q:("(?:[^"\\]|\\.)*")/);
+      if (!kopf || kennung(JSON.parse(kopf[1]), kategorie) !== id) continue;
+      gefunden = true;
+      const neu = ersetzeInZeile(zeilen[i], feld, wert);
+      if (neu === zeilen[i]) {
+        /* Bei az ist das kein Fehler, sondern der Normalfall beim zweiten
+           Durchlauf: Die Schreibweise steht schon da, die Liste ist eine Menge.
+           Bei jedem anderen Feld heisst „nichts geaendert", dass der neue Wert
+           dem alten gleicht – und das ist fast immer ein Versehen. */
+        if (feld === 'az') { berichte.push(`${id} az -> ${pfad}:${i + 1} (stand schon da)`); break; }
+        throw new Error(`${id}: die Ersetzung hat nichts geaendert (${feld})`);
+      }
+      zeilen[i] = neu;
+      berichte.push(`${id} ${feld} -> ${pfad}:${i + 1}`);
+      break;
+    }
+    if (!gefunden) throw new Error(`Karte ${id} nicht gefunden`);
   }
-  throw new Error(`Karte ${id} nicht gefunden`);
+  for (const [pfad, zeilen] of dateien) writeFileSync(pfad, zeilen.join('\n'));
+  return berichte;
+}
+
+export function aendere(id, feld, wert) {
+  return aendereAlle([{ id, feld, wert }])[0];
 }
 
 /* Aufruf: node scripts/karte-aendern.mjs auftrag.json
    Die Datei enthaelt [{ id, feld, wert }, …]. Alles oder nichts: Ein Fehler
-   bricht ab, bevor die naechste Aenderung geschrieben wird. */
-if (process.argv[2]) {
+   bricht ab, bevor die naechste Aenderung geschrieben wird.
+
+   Geprueft wird, ob DIESE Datei aufgerufen wurde – nicht nur, ob irgendein
+   Argument dasteht. Sonst startet der Aufruf mit, sobald ein anderes Skript
+   kennung() oder aendere() importiert und selbst ein Argument hat; genau das
+   ist mir passiert, und die Auswertungsdatei landete als Auftragsdatei hier. */
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href && process.argv[2]) {
   const auftraege = JSON.parse(readFileSync(process.argv[2], 'utf8'));
-  for (const { id, feld, wert } of auftraege) console.log(`${id} ${feld} -> ${aendere(id, feld, wert)}`);
+  for (const zeile of aendereAlle(auftraege)) console.log(zeile);
   console.log(`${auftraege.length} Aenderungen – jetzt npm test und npm run build`);
 }

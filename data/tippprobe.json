@@ -1494,8 +1494,8 @@
   "getippt": "enaktiv, ikonisch, symbolisch"
  },
  {
-  "id": "mat-r7hovq",
-  "q": "Wie bringst du x² + 6x + 5 in die Scheitelpunktform?",
+  "id": "mat-bffo19",
+  "q": "Mit welchem Verfahren bringst du x² + 6x + 5 in die Scheitelpunktform?",
   "a": "Durch quadratische Ergänzung",
   "kurz": "Quadratische Ergänzung",
   "eigene": "Indem man quadratisch ergänzt",
@@ -2376,8 +2376,8 @@
   "getippt": "superbowl"
  },
  {
-  "id": "spo-m8ly6k",
-  "q": "Wie viele Strafrunden gibt es beim Biathlon-Sprint pro Fehlschuss?",
+  "id": "spo-p7dwt1",
+  "q": "Wie viele Strafrunden muss ein Biathlet im Sprint pro Fehlschuss laufen, und wie lang ist die Strafrunde?",
   "a": "Eine Runde von 150 Metern",
   "kurz": "Eine Runde, 150 Meter",
   "eigene": "Pro Fehlschuss eine Strafrunde ueber 150 Meter",
