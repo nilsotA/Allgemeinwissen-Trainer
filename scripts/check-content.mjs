@@ -1,6 +1,6 @@
 /* Prüft die Kartensammlung auf Vollständigkeit und die Antwortoptionen auf Plausibilität. */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { CARDS, CATS, countByCat } from '../data/index.js';
+import { CARDS, CATS, countByCat, POOL_SUB, POOL_CAT } from '../data/index.js';
 import FACTS from '../data/facts.js';
 import { options, normalize, bewerte } from '../assets/js/quiz.js';
 
@@ -189,11 +189,25 @@ if (readme) {
    richtige Eingabe – gemessen 1,00. Beide sind deshalb mit mc gekennzeichnet und
    laufen nur als Auswahlfrage. Das war Handarbeit und blieb ungeschuetzt: Die
    naechste solche Karte faellt niemandem auf. Hier faellt sie auf. */
+/* Geprueft werden nicht nur die eigenen Ablenker, sondern alle, die im Quiz
+   ueberhaupt auf dem Bildschirm landen koennen. options() greift auf das
+   Teilgebiet und die Kategorie zurueck, sobald eine Karte weniger als drei
+   eigene hat – und diese Aushilfe hat bisher niemand gegen die Karte geprueft.
+   Heute hat jede der 2.127 Karten ihre drei, der Pool wird also nie gezogen;
+   die Luecke ist deshalb theoretisch und genau deswegen leicht zu uebersehen,
+   wenn irgendwann eine Karte ohne w dazukommt. */
+const poolFuer = (c) => (c.w && c.w.length >= 3) ? [] :
+  [...new Set([...(POOL_SUB[`${c.cat}/${c.sub}`] || []), ...(POOL_CAT[c.cat] || [])])];
 for (const c of CARDS) {
   if (c.mc) continue;
   for (const w of c.w || []) {
     const note = bewerte(c, w);
     if (note >= 0.8) fail(`${c.id}: Ablenker „${w}" gilt beim freien Abrufen als richtige Antwort (${note.toFixed(2)}) – die Karte braucht mc: true oder eine andere Schreibung`);
+  }
+  for (const w of poolFuer(c)) {
+    if (w === c.a) continue;
+    const note = bewerte(c, w);
+    if (note >= 0.8) fail(`${c.id}: der Aushilfs-Ablenker „${w}" aus dem Teilgebiet gilt als richtige Antwort (${note.toFixed(2)}) – die Karte braucht drei eigene Ablenker`);
   }
 }
 
