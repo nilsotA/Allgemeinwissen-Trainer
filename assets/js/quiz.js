@@ -73,6 +73,10 @@ const ZEICHEN = [
   [/π/g, ' pi '], [/[αΑ]/g, ' alpha '], [/[βΒ]/g, ' beta '], [/[γΓ]/g, ' gamma '],
   [/[δΔ]/g, ' delta '], [/[λΛ]/g, ' lambda '], [/[σΣ]/g, ' sigma '], [/[ωΩ]/g, ' omega '],
   [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '], [/[·×*]/g, ' mal '],
+  /* „(a + b)(a − b)": Zwischen zwei Klammern steht ein unsichtbares Malzeichen.
+     Wer es mittippt, schrieb sonst ein Wort mehr als die Loesung und fiel damit
+     durch die Kennwortpruefung auf 0,50. */
+  [/\)\s*\(/g, ' mal '],
   // Rechenzeichen tragen Bedeutung: ohne sie waere „a² − b² = c²" nicht von
   // „a² + b² = c²" zu unterscheiden – die falsche Formel galte als richtig.
   /* Ein getipptes ^2 und ein hochgestelltes ² sind dieselbe Potenz. Vorher wurde
@@ -100,6 +104,14 @@ const ZEICHEN = [
      man am Handy tippt, galt als falsch (gemessen 0,50). Die Klammer selbst
      faellt weiter unten ohnehin weg. */
   [/(^|[\s(\[])-(?=\s|$|\d|[a-zäöüß])/gi, ' minus '],
+  /* Ein Bindestrich zwischen zwei EINZELNEN Buchstaben oder Ziffern ist ein
+     Rechenzeichen: „(a-b)", „a2-b2", „x-3". Zusammengesetzte Woerter sind es
+     nicht, und der Unterschied ist die Laenge des Nachbarn: „Nord-Sued",
+     „100-Meter-Lauf", „x-Achse", „E-Mail" und „G7-Staaten" haben auf mindestens
+     einer Seite ein ganzes Wort und bleiben deshalb unangetastet. Ohne die Regel
+     verlor „a^2-b^2" sein Minus komplett - die dritte binomische Formel, so
+     getippt wie man sie tippt, galt als falsch (gemessen 0,50). */
+  [/(?<![a-zäöü]{2})([a-zäöü]|\d)-(?=\d|[a-zäöü](?![a-zäöü]))/gi, '$1 minus '],
   [/ℕ/g, ' n '], [/ℤ/g, ' z '], [/ℚ/g, ' q '], [/ℝ/g, ' r '], [/ℂ/g, ' c '],
   [/±/g, ' plusminus '], [/[≈~]/g, ' rund '], [/≤/g, ' hoechstens '], [/≥/g, ' mindestens '],
   [/∞/g, ' unendlich '], [/€/g, ' euro '], [/%/g, ' prozent '], [/&/g, ' und '],
@@ -113,6 +125,36 @@ const ZEICHEN = [
 ];
 // „den", „einer", „eines" fehlten: „Grand Canyon" galt deshalb nicht als Antwort
 // auf eine Karte, deren Loesung „Den Grand Canyon" lautet.
+/* Abkuerzungen, die man am Handy tippt. Sie stehen hier und nicht in einer
+   Ersetzung nach dem Normalisieren, weil der Punkt sie erst erkennbar macht -
+   nach dem Wegwerfen der Satzzeichen ist „u." von einem „u" als Variable nicht
+   mehr zu unterscheiden.
+
+   Die Liste muss nicht sprachlich richtig sein, sondern auf BEIDEN Seiten
+   gleich wirken: normalize() laeuft ueber die Loesung genauso wie ueber die
+   Eingabe. „v." als „von" zu lesen waere in „753 v. Chr." falsch - aber weil
+   dort zuerst die Regel fuer „v. Chr." greift, entsteht kein Schaden, und in
+   „Vertrag v. Verdun" trifft sie zu. Mehrteiliges deshalb zuerst. */
+const ABKUERZUNGEN = [
+  [/\bv\.?\s*chr\.?/gi, ' vor christus '], [/\bn\.?\s*chr\.?/gi, ' nach christus '],
+  [/\bz\.\s*b\./gi, ' zum beispiel '], [/\bd\.\s*h\./gi, ' das heisst '],
+  [/\bu\.\s*a\./gi, ' unter anderem '], [/\bu\.\s*ae\./gi, ' und aehnliches '],
+  [/\bmrd\.?(?=\s|$)/gi, ' milliarden '], [/\bmio\.?(?=\s|$)/gi, ' millionen '],
+  [/\bjh\.(?=\s|$)/gi, ' jahrhundert '], [/\bjt\.(?=\s|$)/gi, ' jahrtausend '],
+  [/\bjhd?\.(?=\s|$)/gi, ' jahrhundert '], [/\bnr\.(?=\s|$)/gi, ' nummer '],
+  [/\bzw\.(?=\s|$)/gi, ' zwischen '], [/\bwg\.(?=\s|$)/gi, ' wegen '],
+  [/\bggf\.(?=\s|$)/gi, ' gegebenenfalls '], [/\bevtl\.(?=\s|$)/gi, ' eventuell '],
+  [/\binkl\.(?=\s|$)/gi, ' inklusive '], [/\bexkl\.(?=\s|$)/gi, ' exklusive '],
+  [/\bmind\.(?=\s|$)/gi, ' mindestens '], [/\bmax\.(?=\s|$)/gi, ' maximal '],
+  [/\bca\.(?=\s|$)/gi, ' etwa '], [/\busw\.(?=\s|$)/gi, ' und so weiter '],
+  /* Einbuchstabige Kuerzel ganz zum Schluss: „u." nach „u. a.", sonst bliebe
+     dort ein „und a" stehen. Alle vier stehen fuer Fuellwoerter und fallen
+     unten in FUELLWOERTER ohnehin weg - sie muessen nur aufhoeren, als
+     ueberzaehliges Wort zu zaehlen. */
+  [/\bu\.(?=\s|$)/gi, ' und '], [/\bv\.(?=\s|$)/gi, ' von '],
+  [/\bd\.(?=\s|$)/gi, ' der '], [/\bz\.(?=\s|$)/gi, ' zu '],
+];
+
 const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|im|in|von|vom|zu|zum|zur|und)\b/g;
 
 /* Wer „Wie viele Kontinente gibt es?" beantwortet, tippt „7" und nicht „Sieben".
@@ -131,6 +173,12 @@ export function normalize(s) {
   // NFC zuerst: Ein zerlegt eingegebenes „ä" (a + Trema) muss die deutsche
   // Umschrift unten genauso erreichen wie das zusammengesetzte Zeichen.
   let t = String(s).normalize('NFC').toLowerCase();
+  /* Der Schlusspunkt eines Satzes ist keine Abkuerzung. Er faellt weiter unten
+     mit allen Satzzeichen ohnehin weg - nur muss er VOR der Kuerzelliste weg
+     sein, sonst las die „VO₂max." als „VO₂ maximal" und „Vitamin D." als
+     „Vitamin der". Nur genau einer, damit „753 v. Chr." seinen behaelt. */
+  t = t.replace(/\.\s*$/, '');
+  for (const [re, ersatz] of ABKUERZUNGEN) t = t.replace(re, ersatz);
   for (const [re, ersatz] of ZEICHEN) t = t.replace(re, ersatz);
   /* Deutscher Tausenderpunkt raus, bevor das naechste Muster ihn zum Leerzeichen
      macht: Sonst wird aus „3.600" die Wortfolge „3 600", waehrend der Nutzer
@@ -305,6 +353,77 @@ export function bewerte(card, eingabe) {
    Cytosin" – und zwar unabhaengig davon, ob der Nutzer Kommas tippt. */
 const sortiert = (t) => normalize(t).split(' ').filter(Boolean).sort().join(' ');
 
+/* Ein Bindestrich zwischen zwei Ziffern ist echt mehrdeutig: „1618-1648" ist
+   eine Spanne, „b^2-4ac" eine Differenz. Beim Tippen sieht beides gleich aus,
+   und keine Regel kann von aussen entscheiden, was gemeint war. Statt zu raten
+   liest der Vergleich die Eingabe zweimal - einmal als Spanne (so steht es in
+   ZEICHEN), einmal als Rechenzeichen - und nimmt die bessere Lesart. Eine
+   zusaetzliche Lesart kann eine Bewertung nur anheben; dass dadurch nichts
+   Falsches durchgeht, sichern die Gegenproben in check-content.mjs ab. */
+const SPANNE = /(\d)[-–](?=\d)/;
+
+/* Am Handy kuerzt man ab, wo es gerade passt: „unterschiedl. Hebelarme",
+   „syst. Fehler", „Distributivges.". Eine feste Liste kann das nicht fangen,
+   denn abgekuerzt wird nach Bequemlichkeit und nicht nach Duden.
+
+   Aufgeloest wird deshalb am einzigen Kontext, der zur Verfuegung steht: an der
+   Loesung selbst. Steht dort ein laengeres Wort, das mit dem abgekuerzten Stamm
+   beginnt, war es gemeint. Das kann keine Uebereinstimmung erfinden - der volle
+   Wortlaut muss in der Loesung schon vorhanden sein -, und es bleibt streng
+   genug, weil mindestens drei Buchstaben stehen bleiben muessen. Bei einem
+   einzelnen Buchstaben waere „B." auf eine Loesung mit „Bundesrat" ein Treffer,
+   und damit haette ein Tastendruck die Antwort ersetzt. */
+const KUERZEL = /\b([a-zäöüß]{3,})\.(?![a-zäöüß])/gi;
+function aufgeloest(eingabe, antwort) {
+  const t = String(eingabe);
+  if (!/[a-zäöüß]{3,}\./i.test(t)) return null;
+  const vokabular = String(antwort).split(/[^a-zäöüßA-ZÄÖÜ]+/).filter(Boolean);
+  let getroffen = false;
+  const out = t.replace(KUERZEL, (ganz, stamm) => {
+    /* Roemische Zahlen sehen aus wie abgekuerzte Woerter und stehen mit Punkt:
+       „Heinrich VII." Als Kuerzel gelesen waere „VII." ein Anfang von „VIII" -
+       und der falsche Heinrich galt als richtige Antwort (gemessen 1,00). */
+    if (/^[ivxlcdm]+$/i.test(stamm)) return ganz;
+    const wort = vokabular.find(w => w.length > stamm.length
+      && w.toLowerCase().startsWith(stamm.toLowerCase()));
+    if (!wort) return ganz;
+    getroffen = true;
+    return wort;
+  });
+  return getroffen ? out : null;
+}
+
+/* Ein nachgestellter Klammerzusatz darf in der LOESUNG fehlen (OHNE_ZUSATZ) –
+   umgekehrt gilt dasselbe: Wer „Scherbengericht (Ostrakismos)" tippt, hat die
+   Antwort gewusst und den zweiten Namen dazugeschrieben. */
+const ZUSATZ_GETIPPT = /\s+\([^()]*\)\s*$/;
+
+/* Alle Lesarten einer Eingabe. Eine zusaetzliche Lesart kann eine Bewertung nur
+   anheben; dass dadurch nichts Falsches durchgeht, sichern die Gegenproben in
+   check-content.mjs ab. */
+function lesarten(eingabe, antwort) {
+  const menge = new Set([String(eingabe)]);
+  for (const t of [...menge]) {
+    /* Ein Bindestrich zwischen zwei Ziffern ist echt mehrdeutig: „1618-1648"
+       ist eine Spanne, „b^2-4ac" eine Differenz. Beim Tippen sieht beides
+       gleich aus, und keine Regel kann von aussen entscheiden, was gemeint war.
+       Statt zu raten wird beides gelesen und die bessere Lesart genommen. */
+    if (SPANNE.test(t)) menge.add(t.replace(new RegExp(SPANNE, 'g'), '$1 − '));
+  }
+  for (const t of [...menge]) {
+    const ohne = t.replace(ZUSATZ_GETIPPT, '').trim();
+    /* Nur wenn die Loesung selbst keinen Klammerzusatz hat. Sonst faellt die
+       Klammer auf BEIDEN Seiten weg und es vergleichen sich zwei Ruempfe:
+       „3 · (2x + 9)" wurde so zur richtigen Antwort auf „3 · (2x + 3)". Und was
+       stehen bleibt, muss noch ein Wort sein - „3 ·" ist keines. */
+    if (ohne.length >= 3 && ohne !== t
+        && !ZUSATZ_GETIPPT.test(antwort) && /[a-zäöüß]{3}/i.test(ohne)) menge.add(ohne);
+    const lang = aufgeloest(t, antwort);
+    if (lang) menge.add(lang);
+  }
+  return [...menge];
+}
+
 export function similarity(input, answer) {
   const voll = String(answer).trim();
   const fassungen = new Set([voll]);
@@ -315,7 +434,8 @@ export function similarity(input, answer) {
     const formel = f.replace(OHNE_FORMELKOPF, '').trim();
     if (formel !== f && formel.length >= 3) fassungen.add(formel);
   }
-  return Math.max(...[...fassungen].map(f => vergleich(input, f)));
+  const eingaben = lesarten(input, voll);
+  return Math.max(...[...fassungen].flatMap(f => eingaben.map(e => vergleich(e, f))));
 }
 
 function vergleich(input, answer) {
