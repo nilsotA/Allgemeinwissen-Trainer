@@ -4,7 +4,7 @@
    Eine nachgebaute Simulation prueft sonst nur sich selbst - die Bremse gegen den
    Rueckstau etwa kam in der frueheren Fassung ueberhaupt nicht vor.
 
-   Aufruf:  node scripts/simulate.mjs [--tage 180] [--neu 12] [--deckel 90] [--pausen]
+   Aufruf:  node scripts/simulate.mjs [--tage 180] [--neu 12] [--deckel 90] [--pausen] [--saat 20260105]
             --pausen legt zwei Abwesenheiten von je zwei Wochen ein. */
 
 const RealDate = Date;
@@ -19,6 +19,38 @@ globalThis.localStorage = {
   setItem: (k, v) => speicher.set(k, String(v)),
   removeItem: (k) => speicher.delete(k),
 };
+
+/* Ein eigener Zufall mit fester Saat statt Math.random(). Die Simulation ist
+   ein Messgeraet, und zwei Laeufe gaben bisher verschiedene Antworten: 132 und
+   138 Spitzenlast, 1584 und 1632 angefangene Karten. Das README nannte davon
+   einen Lauf als Tatsache. Wer eine Zahl mit einer frueheren vergleichen will,
+   braucht denselben Wuerfel - genauso, wie die Pruefsaetze eingefroren sind.
+
+   Mit --saat laesst sich der Wuerfel wechseln; mehrere Saaten zeigen, wie weit
+   die Zahlen streuen, und genau das gehoert ins README statt einer Nachkomma-
+   genauigkeit, die es nicht gibt. Der Algorithmus ist mulberry32: klein,
+   nachlesbar, und ohne Abhaengigkeit. */
+const argZahl = (name, standard) => {
+  const i = process.argv.indexOf('--' + name);
+  return i >= 0 && process.argv[i + 1] ? Number(process.argv[i + 1]) : standard;
+};
+const SAAT = argZahl('saat', 20260105);
+const wuerfel = (() => {
+  let a = SAAT >>> 0;
+  return () => {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+})();
+
+/* Auch der Wuerfel der App wird ersetzt, nicht nur der dieser Datei: Der
+   Scheduler streut die Intervalle (srs.js) und die Optionen werden gemischt
+   (quiz.js). Beides laeuft ueber Math.random, und ohne diese Zeile blieb die
+   Simulation trotz fester Saat von Lauf zu Lauf verschieden - gemessen 143 und
+   135 Spitzenlast. Muss vor den Importen weiter unten stehen. */
+Math.random = wuerfel;
 
 const arg = (name, standard) => {
   const i = process.argv.indexOf('--' + name);
@@ -57,8 +89,8 @@ for (let tag = 0; tag < TAGE; tag++) {
     for (let i = 0; i < warteschlange.length && i < 400; i++) {
       const { card, fresh: istNeu } = warteschlange[i];
       const cs = store.cardState(card.id) || fresh();
-      const ok = Math.random() < abruf(cs, t);
-      const g = !ok ? AGAIN : Math.random() < 0.18 ? HARD : Math.random() < 0.2 ? EASY : GOOD;
+      const ok = wuerfel() < abruf(cs, t);
+      const g = !ok ? AGAIN : wuerfel() < 0.18 ? HARD : wuerfel() < 0.2 ? EASY : GOOD;
       store.putCard(card.id, schedule(cs, g));
       antworten++; if (ok) richtig++;
       const d = store.today();
