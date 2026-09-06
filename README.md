@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.127 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.150 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (326 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (313 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (327 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (315 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -31,7 +31,7 @@ und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
 Freddie Mercury, Falco).
 
-Ein eigenes Teilgebiet **Geld im Alltag** (45 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
+Ein eigenes Teilgebiet **Geld im Alltag** (46 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
 zählen und in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und
 Kündigungsfrist, Probezeit und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man
 trotzdem braucht. Dazu die Fristen, die man einmal falsch verstreichen lässt und dann nicht
@@ -58,9 +58,9 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Kleine tägliche Dosis** | Standard: 12 neue Karten pro Tag. Das sind rund 9 Minuten – dauerhaft durchhaltbar. |
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
-Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt **101,9 Karten pro Tag**,
-Spitzenlast 136, gut 12 Minuten täglich. Nach einem halben Jahr sind 1.620 der 2.127 Karten
-angefangen, davon sitzen 1.376 fest. Der Deckel für Wiederholungen sorgt dafür, dass die
+Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt **100,5 Karten pro Tag**,
+Spitzenlast 142, gut 12 Minuten täglich. Nach einem halben Jahr sind 1.608 der 2.150 Karten
+angefangen, davon sitzen 1.350 fest. Der Deckel für Wiederholungen sorgt dafür, dass die
 Tageslast **nicht** mit dem Kartenbestand mitwächst – das ist der Punkt: Die Sammlung ist seit
 dieser Messung um 456 Karten gewachsen, die Tageslast ist es nicht.
 

@@ -240,4 +240,6 @@ export default [
 
 /* ---------- Zweiter Pruefsatz: gemessene Luecken, zweifach geprueft ---------- */
 {q:"Wie heißt das Parlament des Staates Israel?",a:"Knesset",s:"Politik EU",d:2,t:"Der Name stammt vom hebräischen Wort für Versammlung und erinnert an die „Große Versammlung“ des Altertums, die 120 Mitglieder hatte. Genauso viele Abgeordnete sitzen heute in Jerusalem – gewählt nach reinem Verhältniswahlrecht, weshalb dort viele kleine Parteien vertreten sind.",w:["Duma","Sejm","Riksdag"],az:["Knesseth","Keneset"]},
+/* ---------- Ergänzt: Lücken geschlossen ---------- */
+{q:"Bei wie viel Prozent liegt in Deutschland der reguläre Höchstsatz der Einkommensteuer, bevor der Reichensteuersatz greift?",a:"42 Prozent",s:"Geld im Alltag",d:3,t:"Dieser Wert ist seit 2005 unverändert und greift 2026 ab knapp 70.000 Euro zu versteuerndem Einkommen. Erst ab rund 278.000 Euro kommen drei Punkte Reichensteuer obendrauf, also 45 Prozent.",w:["38 Prozent","45 Prozent","50 Prozent"]},
 ];
