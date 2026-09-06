@@ -123,5 +123,18 @@ const spitzeStau = Math.max(...zeilen.map(r => r.rueckstand));
 const schnitt = aktiv.reduce((a, r) => a + r.antworten, 0) / aktiv.length;
 console.log(`\nSpitzenlast   : ${spitzeLast} Karten an einem Tag`);
 console.log(`Spitzenrueckstand: ${spitzeStau} faellige Karten`);
+/* Wie lange dauert es nach einer Pause, bis der Berg wieder abgetragen ist?
+   Das README behauptete „etwa vier Wochen", und die Tabelle springt in
+   Dreissig-Tage-Schritten – belegt war es damit nicht. Als abgetragen gilt der
+   Rueckstand, wenn er wieder unter dem Deckel liegt: Ab da schafft ein
+   normaler Tag ihn weg, und die Bremse laesst neue Karten wieder durch. */
+for (const [von, bis] of PAUSEN) {
+  const nach = zeilen.filter(r => r.tag > bis);
+  const frei = nach.find(r => r.rueckstand < DECKEL);
+  const dauer = frei ? frei.tag - bis : null;
+  const hoch = Math.max(...nach.slice(0, 40).map(r => r.rueckstand));
+  console.log(`Pause Tag ${von}-${bis}: Rueckstand danach bis ${hoch}, `
+    + (dauer === null ? 'nie wieder unter dem Deckel' : `nach ${dauer} Tagen wieder unter dem Deckel (${DECKEL})`));
+}
 console.log(`Schnitt       : ${schnitt.toFixed(1)} Karten/Tag · rund ${Math.round(schnitt * 7 / 60)} Minuten (7 s je Karte)`);
 console.log(`Nach ${TAGE} Tagen: ${bei(TAGE).fest} von ${CARDS.length} Karten gefestigt, ${bei(TAGE).angefangen} angefangen.`);

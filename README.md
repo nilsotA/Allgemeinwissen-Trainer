@@ -78,8 +78,14 @@ Speicher. Eine nachgebaute Rechnung prüft sonst nur sich selbst: In der früher
 die Bremse gegen den Rückstau überhaupt nicht vor, sie konnte also auch nichts über sie sagen.
 Mit `npm run simulate -- --pausen` kommen zwei Abwesenheiten von je zwei Wochen dazu. Dann
 staut sich der Rückstand auf 563 fällige Karten – die Bremse pausiert daraufhin die neuen
-Karten, und nach etwa vier Wochen ist der Berg abgetragen, ohne dass die Tageslast über den
-Deckel steigt.
+Karten, und nach **8 beziehungsweise 12 Tagen** liegt der Berg wieder unter dem Deckel, ohne
+dass die Tageslast über ihn steigt.
+
+Hier stand vorher „nach etwa vier Wochen". Das war nicht gemessen, sondern aus einer Tabelle
+geschätzt, die in Dreißig-Tage-Schritten springt – und es war deutlich zu pessimistisch. Die
+Simulation rechnet die Erholungszeit jetzt selbst aus und schreibt sie hin. Als abgetragen
+gilt der Rückstand, wenn er wieder unter dem Deckel liegt: Ab da schafft ein normaler Tag ihn
+weg, und die Bremse lässt neue Karten wieder durch.
 
 ### Woher die Methoden stammen – und was sie wirklich hergeben
 
