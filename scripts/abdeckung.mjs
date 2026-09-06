@@ -110,9 +110,40 @@ for (const [gebiet, g] of [...proGebiet].sort((a, b) => a[1].ab / a[1].ges - b[1
   const balken = '█'.repeat(Math.round((10 * g.ab) / g.ges)).padEnd(10, '·');
   console.log(`  ${gebiet.padEnd(18)} ${balken} ${String(g.ab).padStart(2)}/${g.ges}`);
 }
+/* Wo steckt die gesuchte Antwort sonst? Die Zaehlung bleibt streng - abgedeckt
+   ist nur, was eine Karte als ANTWORT traegt. Aber die Liste der Luecken war
+   irrefuehrend: Von den acht, die die ersten beiden Pruefsaetze am Ende noch
+   meldeten, war KEINE einzige eine echte Luecke.
+
+   Zweimal steckte die Antwort in einer laengeren Kartenantwort („Uruguay" in
+   „1930 in Uruguay"), sechsmal stand sie auf der ANDEREN SEITE einer Karte:
+   Die Sammlung fragt „Wie nennt man eine beschoenigende Umschreibung?" und
+   erwartet „Euphemismus", der Pruefsatz fragt umgekehrt. Wer die Lueckenliste
+   abarbeitet, ohne das zu wissen, schreibt Dubletten - und die Dublettenpruefung
+   in check-content faengt sie nicht, weil die Fragen verschieden sind.
+
+   Deshalb sagt die Liste jetzt dazu, wo der Stoff schon liegt. */
+const woSonst = (p) => {
+  const gesucht = folge(p.antwort);
+  if (!gesucht.length) return '';
+  const teilAntwort = kartenAntworten.find(k => gesucht.every(w => k.f.includes(w)));
+  if (teilAntwort) return `steckt in der Antwort von ${teilAntwort.c.id}: „${teilAntwort.c.a}"`;
+  const inFrage = CARDS.find(c => gesucht.every(w => folge(c.q).includes(w)));
+  if (inFrage) return `steht in der FRAGE von ${inFrage.id}: „${inFrage.q}" – die Karte fragt die andere Richtung`;
+  const imKontext = CARDS.find(c => c.t && gesucht.every(w => folge(c.t).includes(w)));
+  if (imKontext) return `steht nur im Kontexttext von ${imKontext.id}`;
+  return '';
+};
+
 if (zeigeFehlend) {
   console.log(`\n${fehlend.length} unbeantwortet:`);
-  for (const p of fehlend) console.log(`  [${p.gebiet}] ${p.frage}  →  ${p.antwort}`);
+  for (const p of fehlend) {
+    const wo = woSonst(p);
+    console.log(`  [${p.gebiet}] ${p.frage}  →  ${p.antwort}`);
+    if (wo) console.log(`      ${wo}`);
+  }
+  const echte = fehlend.filter(p => !woSonst(p)).length;
+  console.log(`\ndavon nirgends im Bestand: ${echte} – der Rest ist da, nur anders gefragt.`);
 } else if (fehlend.length) {
   console.log(`\n${fehlend.length} unbeantwortet – mit --fehlend auflisten.`);
 }
