@@ -2240,6 +2240,61 @@ das nie anschlägt, wäre keins.
 Nebenbei gemessen und für gut befunden: Die Erstladung sind **404 KB gepackt** (1,0 MB roh) für
 2.127 Karten, 141 Anker und die ganze App — einmalig, danach läuft alles offline.
 
+### Der vierte Prüfsatz – und die ehrliche Zahl: 60 %
+
+Die drei bisherigen Prüfsätze standen bei 98, 94 und 100 Prozent. Damit maßen sie nichts mehr;
+gegen sie war längst optimiert worden. Schlimmer noch: Von den acht Fragen, die sie am Ende
+noch als unbeantwortet meldeten, war **keine einzige** eine echte Lücke (siehe oben). Sie waren
+inhaltlich ausgeschöpft.
+
+Also ein vierter, und diesmal von Anfang an unabhängig. 30 Blickwinkel, 60 Agenten: einer
+schreibt zehn Fragen, ein zweiter prüft sie sachlich nach — 66 Websuchen, 22 korrigierte
+Antworten, 61 geschärfte Fragen. Aufgeschrieben **ohne Kenntnis der Sammlung**, nachgeprüft im
+Protokoll: null Zugriffe auf das Projektverzeichnis in 60 Agentenläufen. Wer die Sammlung
+kennt, schreibt Fragen, die sie beantwortet — und misst dann nur noch sich selbst.
+
+300 Fragen, nach Entdoppelung 286. Die Verteilung folgt dem, wofür die App da ist: Alltag 40,
+Sport 38, Mathematik 37, der Rest zwischen 27 und 30.
+
+| | |
+|---|---|
+| **Abdeckung** | **173 von 286 — 60 %** |
+| Erdkunde | 23/27 |
+| Naturwissenschaft | 24/29 |
+| Geschichte | 19/27 |
+| Unterhaltung | 20/30 |
+| Sport | 24/38 |
+| Mathematik | 22/37 |
+| Literatur | 15/28 |
+| Gesellschaft | 15/30 |
+| **Alltag** | **11/40** |
+
+Am dünnsten also ausgerechnet dort, wo es am meisten gebraucht wird.
+
+Die 113 Lücken zerfallen dank der neuen Lückenliste in vier Gruppen:
+
+| | |
+|---|---|
+| steckt in einer längeren Kartenantwort | 20 |
+| steht auf der anderen Seite einer Karte | 32 |
+| steht nur im Kontexttext | 17 |
+| steht in einem Merkanker | 3 |
+| **steht nirgends** | **41** |
+
+In irgendeiner Form kennt die Sammlung also 245 von 286 (86 %); **aktiv abrufen** lässt sich
+173. Der Unterschied ist der eigentliche Befund: Vieles ist da, aber nicht als Frage, auf die
+man die Antwort produzieren muss.
+
+Die Merkanker sah die Messung bisher gar nicht an. Sie zählen weiter nicht als Abdeckung — sie
+werden anders abgefragt und tragen keine Antwort im Sinne einer Karte —, aber wer die Lückenliste
+abarbeitet, muss wissen, dass der Stoff dort schon steht. Aufgefallen bei „3,05 Meter": Der Anker
+„Warum der Korb 3,05 m hängt" erzählt genau das.
+
+Der Satz ist eingefroren und wird nicht nachgebessert. Sobald Karten gegen seine Lücken
+geschrieben sind, misst er nur noch, ob das Abschreiben geklappt hat — das ist bei allen vier
+Sätzen so und der Grund, warum es überhaupt vier gibt. Die 60 % sind der ehrliche Stand vor der
+Ergänzung.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
