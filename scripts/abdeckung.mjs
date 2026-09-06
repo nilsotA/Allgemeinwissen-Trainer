@@ -124,8 +124,16 @@ for (const [gebiet, g] of [...proGebiet].sort((a, b) => a[1].ab / a[1].ges - b[1
    in check-content faengt sie nicht, weil die Fragen verschieden sind.
 
    Deshalb sagt die Liste jetzt dazu, wo der Stoff schon liegt. */
+/* Fuer die Frage „steht der Stoff irgendwo?" zaehlen unscharfe Zusaetze nicht
+   mit. Ein Widerleger hat es gefunden: „Etwa 23,5 Grad Nord" galt als echte
+   Luecke, obwohl „Er liegt bei 23,5 Grad Nord" im Kontexttext einer Karte
+   steht - allein weil dort kein „etwa" davorstand. Fuer die ZAEHLUNG bleibt es
+   streng; hier geht es nur darum, ob jemand die Karte schon geschrieben hat. */
+const UNSCHARF = new Set(['etwa', 'rund', 'ungefaehr', 'circa', 'ca', 'knapp', 'gut', 'mehr', 'als']);
+const kernWoerter = (t) => folge(t).filter(w => !UNSCHARF.has(w));
+
 const woSonst = (p) => {
-  const gesucht = folge(p.antwort);
+  const gesucht = kernWoerter(p.antwort);
   if (!gesucht.length) return '';
   const teilAntwort = kartenAntworten.find(k => gesucht.every(w => k.f.includes(w)));
   if (teilAntwort) return `steckt in der Antwort von ${teilAntwort.c.id}: „${teilAntwort.c.a}"`;
