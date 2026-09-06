@@ -27,6 +27,7 @@
    Aufruf: node scripts/abdeckung.mjs [--fehlend] [--json] [--satz data/quizprobe2.json] */
 import { readFileSync } from 'node:fs';
 import { CARDS } from '../data/index.js';
+import FACTS from '../data/facts.js';
 import { normalize, OHNE_ZUSATZ, OHNE_VORWORT, OHNE_FORMELKOPF } from '../assets/js/quiz.js';
 
 /* normalize() hat Artikel schon entfernt; uebrig bleiben die Verhaeltniswoerter.
@@ -132,6 +133,13 @@ const woSonst = (p) => {
   if (inFrage) return `steht in der FRAGE von ${inFrage.id}: „${inFrage.q}" – die Karte fragt die andere Richtung`;
   const imKontext = CARDS.find(c => c.t && gesucht.every(w => folge(c.t).includes(w)));
   if (imKontext) return `steht nur im Kontexttext von ${imKontext.id}`;
+  /* Die Merkanker gehoeren zur Sammlung und wurden bisher gar nicht angesehen.
+     Sie zaehlen nicht als Abdeckung - sie werden anders abgefragt und tragen
+     keine Antwort im Sinne einer Karte -, aber wer die Lueckenliste abarbeitet,
+     muss wissen, dass der Stoff dort schon steht. Gefunden bei „3,05 Meter":
+     Der Anker „Warum der Korb 3,05 m haengt" erzaehlt genau das. */
+  const anker = FACTS.find(f => gesucht.every(w => folge(`${f.t} ${f.x}`).includes(w)));
+  if (anker) return `steht im Merkanker „${anker.t}"`;
   return '';
 };
 
