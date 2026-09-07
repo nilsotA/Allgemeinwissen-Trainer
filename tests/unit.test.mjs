@@ -1259,3 +1259,35 @@ test('das Kartenwerkzeug haelt auch dem Ernstfall stand', async () => {
   ], { encoding: 'utf8', cwd: new URL('..', import.meta.url).pathname });
   assert.match(ausgabe, /function/, 'der Import bleibt ohne Nebenwirkung');
 });
+
+/* Der Vorladebestand des Service Workers darf NUR aus der App bestehen.
+   Aufgefallen beim ersten Deploy auf Vercel: Dort legt npm eine
+   package-lock.json an, und die stand prompt in der Liste. Der Service Worker
+   haette sie beim Installieren mit abgerufen – und scheitert ein einziger
+   Abruf in cache.addAll, schlaegt die ganze Installation fehl und die App hat
+   GAR KEINEN Offlinebestand. Ausserdem ging die fremde Datei in die
+   Fassungskennung ein: dieselbe Quelle, lokal aa1d814849, auf Vercel
+   2af30b3edc. */
+test('der Service Worker laedt nur Dateien der App vor', async () => {
+  const { readFileSync } = await import('node:fs');
+  const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
+  const liste = JSON.parse(sw.match(/const ASSETS = (\[[\s\S]*?\]);/)[1]);
+  assert.ok(liste.length > 20, 'die Liste ist unerwartet kurz');
+
+  const ERLAUBT = /^\.\/(assets\/|data\/|icons\/|index\.html$|manifest\.webmanifest$)/;
+  const fremd = liste.filter(f => !ERLAUBT.test(f));
+  assert.deepEqual(fremd, [], `fremde Dateien im Vorladebestand: ${fremd.join(', ')}`);
+
+  /* Und nichts, was nur der Werkstatt gehoert: Pruefsaetze und der
+     Kennungsnachweis werden von der App nirgends importiert. Stuenden sie
+     drin, boete jede Erweiterung eines Pruefsatzes allen Nutzern ein Update
+     an, das nichts aendert. */
+  const werkstatt = liste.filter(f => /(quizprobe|tippprobe|kennungen)\d*\.json$/.test(f));
+  assert.deepEqual(werkstatt, [], `Werkstatt-Dateien im Vorladebestand: ${werkstatt.join(', ')}`);
+
+  // Jede gelistete Datei muss es auch geben, sonst scheitert cache.addAll.
+  for (const f of liste) {
+    assert.doesNotThrow(() => readFileSync(new URL('../' + f.slice(2), import.meta.url)),
+      `${f} steht im Vorladebestand, existiert aber nicht`);
+  }
+});

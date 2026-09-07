@@ -4,25 +4,41 @@ import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 
-const SKIP = new Set(['node_modules', '.git', 'scripts', 'tests', '.netlify']);
-let files = [];
-(function walk(dir) {
-  for (const name of readdirSync(dir)) {
-    if (SKIP.has(name) || name.startsWith('.')) continue;
-    const p = join(dir, name);
-    if (statSync(p).isDirectory()) walk(p);
-    else if (/\.(html|css|js|json|webmanifest|png|svg)$/.test(name) && name !== 'sw.js') {
-      files.push('./' + p.replace(/^\.\//, ''));
-    }
+/* Gesucht wird nur in den Ordnern der App und bei einer Handvoll Dateien im
+   Wurzelverzeichnis – NICHT „alles, was herumliegt, ausser ein paar
+   Ausnahmen". Der Unterschied ist nicht kosmetisch: Beim Bauen auf Vercel legt
+   npm eine package-lock.json an, und die landete prompt in der Vorladeliste.
+   Der Service Worker haette sie beim Installieren mit abgerufen; scheitert ein
+   einziger Abruf in cache.addAll, schlaegt die ganze Installation fehl und die
+   App hat GAR KEINEN Offlinebestand. Ausserdem ging die fremde Datei in die
+   Fassungskennung ein: Dieselbe Quelle ergab lokal aa1d814849 und auf Vercel
+   2af30b3edc. Eine Liste, die von der Bauumgebung abhaengt, ist keine Liste. */
+const WURZELN = ['assets', 'data', 'icons'];
+const IM_STAMM = ['index.html', 'manifest.webmanifest'];
+const PASST = /\.(html|css|js|json|webmanifest|png|svg)$/;
+function sammeln() {
+  const raus = [];
+  for (const wurzel of WURZELN) {
+    (function walk(dir) {
+      for (const name of readdirSync(dir).sort()) {
+        if (name.startsWith('.')) continue;
+        const pfad = join(dir, name);
+        if (statSync(pfad).isDirectory()) walk(pfad);
+        else if (PASST.test(name)) raus.push('./' + pfad);
+      }
+    })(wurzel);
   }
-})('.');
-files.sort();
+  for (const name of IM_STAMM) raus.push('./' + name);
+  return raus.sort();
+}
+let files = sammeln();
 
-/* Nicht alles, was im Ordner liegt, gehoert zur App. package.json ist eine
-   Bau-Datei, data/kennungen.json ist der Bestandsnachweis fuer die
-   Inhaltspruefung – die App importiert beide nirgends. Ausgeliefert kosteten sie
-   26 KB beim ersten Besuch und, schlimmer, sie gingen in die Versionskennung
-   ein: Eine neue Zeile in package.json haette jedem Nutzer ein Update
+/* Nicht alles, was in data/ liegt, gehoert zur App. package.json war frueher
+   auch hier aufgefuehrt; seit nur noch die App-Ordner durchsucht werden, taucht
+   sie gar nicht mehr auf. data/kennungen.json ist der Bestandsnachweis fuer die
+   Inhaltspruefung – die App importiert ihn nirgends. Ausgeliefert kosteten diese
+   Dateien 26 KB beim ersten Besuch und, schlimmer, sie gingen in die
+   Versionskennung ein: Eine neue Zeile haette jedem Nutzer ein Update
    angeboten, das nichts aendert. kennungen.json wird ausserdem von
    „npm run check --kennungen" neu geschrieben, sodass die Reihenfolge der
    Bauschritte ueber die Versionskennung entschied. Dasselbe gilt fuer
@@ -32,7 +48,7 @@ files.sort();
    data/quizprobe.json: Das ist der feste Pruefsatz der Abdeckungsmessung, den
    die App nirgends importiert - waere er dabei, boete jede Erweiterung des
    Pruefsatzes allen Nutzern ein Update an, das nichts aendert. */
-const NUR_FUER_DIE_WERKSTATT = new Set(['./package.json', './data/kennungen.json', './data/quizprobe.json', './data/quizprobe2.json', './data/quizprobe3.json', './data/quizprobe4.json', './data/tippprobe.json']);
+const NUR_FUER_DIE_WERKSTATT = new Set(['./data/kennungen.json', './data/quizprobe.json', './data/quizprobe2.json', './data/quizprobe3.json', './data/quizprobe4.json', './data/tippprobe.json']);
 const uebrig = files.filter(f => NUR_FUER_DIE_WERKSTATT.has(f));
 if (uebrig.length !== NUR_FUER_DIE_WERKSTATT.size) {
   console.error('FEHLER  Werkstatt-Datei nicht gefunden – Liste in make-sw.mjs veraltet:'
