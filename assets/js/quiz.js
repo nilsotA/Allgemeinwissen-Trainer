@@ -102,7 +102,8 @@ const ZEICHEN = [
   [/\bkcal\b/gi, ' kilokalorien '], [/\bkj\b/gi, ' kilojoule '],
   [/\bkg\b/gi, ' kilogramm '], [/\bkm\b/gi, ' kilometer '],
   [/\bcm\b/gi, ' zentimeter '], [/\bmm\b/gi, ' millimeter '],
-  [/\bpkt\.?(?=\s|$)/gi, ' punkte '],
+  [/(?:\b|(?<=[a-zäöüß]))pkt\.?(?=\s|$)/gi, 'punkte '],
+  [/(\d)\s*j\.(?=\s|$)/gi, '$1 jahre '],
   // Das Gradzeichen ist oben schon zu „grad" geworden.
   [/\bgrad\s+c\b/gi, ' grad celsius '],
   /* Zwischen zwei Zahlen ist ein Binde- oder Halbgeviertstrich fast immer eine
@@ -115,6 +116,19 @@ const ZEICHEN = [
   /* „+-" und „+/-" sind das getippte ±. Muss vor der Plus-Regel stehen, sonst
      frisst die das Pluszeichen und uebrig bleibt „plus minus" mit Leerzeichen. */
   [/\+\/?-/g, ' plusminus '],
+  /* Zwischen zwei WOERTERN ist das Plus eine Aufzaehlung und das Gleich eine
+     Kopula, kein Rechenzeichen: „Wasser + CO2" heisst „Wasser und CO2",
+     „Landtag = Parlament eines Bundeslandes" heisst „Landtag IST das Parlament".
+     Beides sind Woerter, die eine knappe Eingabe weglassen darf – „und" als
+     Fuellwort, „ist" als Bindegewebe –, und genau so tippt man am Handy.
+
+     Beide Seiten muessen mindestens zwei Buchstaben haben. Beim ersten Versuch
+     ohne diese Schranke wurde aus dem Ablenker „a + b + c" ein „a b c" – und
+     das ist die richtige Antwort einer Mathekarte. Gemessen 0,95; das
+     Inhaltstor hat es sofort gemeldet. Einbuchstabige Variablen bleiben deshalb
+     aussen vor, und „E = mc²" oder „y = mx + b" rechnen weiter. */
+  [/([a-zäöüß]{2})\s*\+\s*(?=[a-zäöüA-ZÄÖÜ][a-zäöüßA-ZÄÖÜ])/g, '$1 und '],
+  [/([a-zäöüß]{2})\s*=\s*(?=[a-zäöüA-ZÄÖÜ][a-zäöüßA-ZÄÖÜ])/g, '$1 ist '],
   [/=/g, ' gleich '], [/\+/g, ' plus '], [/−/g, ' minus '], [/\^/g, ' hoch '],
   /* Auch hinter einer oeffnenden Klammer ist ein getipptes "-" ein Vorzeichen:
      „(-b" wurde sonst zu „b", und die Mitternachtsformel in der Fassung, die
@@ -187,6 +201,11 @@ const ABKUERZUNGEN = [
   [/\bmrd\.?(?=\s|$)/gi, ' milliarden '], [/\bmio\.?(?=\s|$)/gi, ' millionen '],
   [/\bjh\.(?=\s|$)/gi, ' jahrhundert '], [/\bjt\.(?=\s|$)/gi, ' jahrtausend '],
   [/\bjhd?\.(?=\s|$)/gi, ' jahrhundert '], [/\bnr\.(?=\s|$)/gi, ' nummer '],
+  [/(\d)\s*h(?=\s|$)/gi, '$1 stunden '], [/(\d)\s*min\.?(?=\s|$)/gi, '$1 minuten '],
+  [/(\d)\s*se[kc]\.?(?=\s|$)/gi, '$1 sekunden '],
+  [/\bwkt\.?(?=\s|$)/gi, ' wahrscheinlichkeit '], [/\bbzgl\.(?=\s|$)/gi, ' bezueglich '],
+  /* „v." allein ist „von" – „v. Chr." ist weiter oben schon erledigt. */
+  [/\bv\.(?=\s)/gi, ' von '],
   [/\bzw\.(?=\s|$)/gi, ' zwischen '], [/\bwg\.(?=\s|$)/gi, ' wegen '],
   [/\bggf\.(?=\s|$)/gi, ' gegebenenfalls '], [/\bevtl\.(?=\s|$)/gi, ' eventuell '],
   [/\binkl\.(?=\s|$)/gi, ' inklusive '], [/\bexkl\.(?=\s|$)/gi, ' exklusive '],
@@ -285,7 +304,7 @@ function levenshtein(a, b) {
    „Pythagoras" statt „Satz des Pythagoras" ist eine richtige Antwort. */
 const KLASSIFIKATOREN = new Set([
   'satz', 'regel', 'gesetz', 'prinzip', 'theorem', 'formel', 'begriff',
-  'verfahren', 'methode', 'lehre', 'effekt',
+  'verfahren', 'methode', 'lehre', 'effekt', 'schema', 'modell', 'ordnung',
 ]);
 
 /* Grammatisches Bindegewebe: darf in einer knappen Eingabe fehlen, ohne dass sich

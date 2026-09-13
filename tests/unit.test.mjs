@@ -1167,8 +1167,11 @@ test('der Bewerter weist selten eine richtige Eingabe ab', async () => {
     `${verschwunden.length} Karten der Tippprobe gibt es nicht mehr:\n  ${verschwunden.slice(0, 12).join('\n  ')}`);
 
   const anteil = (x) => (100 * x / n).toFixed(1);
-  assert.ok(gruen / n >= 0.80, `nur ${anteil(gruen)} % der getippten Antworten gelten (gemessen waren 81,2 %)`);
-  assert.ok(rot / n <= 0.07, `${anteil(rot)} % der getippten Antworten gelten als glatt falsch (gemessen waren 6,0 %)`);
+  /* Boden angehoben, nachdem vier Schreibweisen dazugekommen sind: „+" und „="
+     zwischen Woertern, die Abkuerzungen h/min/sek/J./Wkt./v./Pkt. und drei
+     weitere einordnende Woerter. 81,2 -> 82,7 % gruen, 6,0 -> 4,6 % rot. */
+  assert.ok(gruen / n >= 0.82, `nur ${anteil(gruen)} % der getippten Antworten gelten (gemessen waren 82,7 %)`);
+  assert.ok(rot / n <= 0.05, `${anteil(rot)} % der getippten Antworten gelten als glatt falsch (gemessen waren 4,6 %)`);
 });
 
 /* Das gelbe Band – „knapp daneben" – enthielt vier Muster, bei denen die
