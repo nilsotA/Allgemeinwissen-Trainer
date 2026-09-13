@@ -160,8 +160,16 @@ for (const c of CARDS) {
    beiden Schwerpunktfaecher, die Merkanker und die namentlich genannten
    Teilgebiete. Findet ein Muster gar nichts mehr, ist das ebenfalls ein Befund –
    dann wurde der Satz umgeschrieben und die Pruefung greift ins Leere. */
+/* Die Pruefung hing an `if (readme)`. Ein Commit hat den README versehentlich
+   geleert – die Datei war noch da, ihr Inhalt war leer, und leer ist falsy. Also
+   uebersprang dieser Block stillschweigend alle neun Behauptungen und meldete
+   „0 Fehler". Eine Pruefung, die beim Verschwinden ihres Pruefgegenstands
+   schweigt, ist schlimmer als keine: Sie behauptet Deckung, wo keine ist. Fehlt
+   oder leert sich der README, ist genau das der Befund. */
 const readme = existsSync('README.md') ? readFileSync('README.md', 'utf8') : null;
-if (readme) {
+if (readme === null) fail('README.md fehlt – die neun Zahlenpruefungen dagegen laufen ins Leere');
+else if (!readme.trim()) fail('README.md ist leer – die neun Zahlenpruefungen dagegen laufen ins Leere');
+else {
   const tausend = (n) => n.toLocaleString('de-DE');
   const jeKategorie = countByCat();
   const teilgebiet = (name) => CARDS.filter((c) => c.sub === name).length;

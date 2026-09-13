@@ -1291,3 +1291,35 @@ test('der Service Worker laedt nur Dateien der App vor', async () => {
       `${f} steht im Vorladebestand, existiert aber nicht`);
   }
 });
+
+/* Die Zahlenpruefung gegen den README hing an `if (readme)`. Ein Commit hat den
+   README versehentlich geleert – die Datei war noch da, ihr Inhalt war leer,
+   und leer ist falsy. Damit uebersprang die Inhaltspruefung alle neun
+   Behauptungen und meldete weiter „0 Fehler". Nach dem Wiederherstellen waren
+   vier davon falsch; die Pruefung hatte also nicht nur geschwiegen, sie hatte
+   waehrend des Schweigens etwas zu sagen gehabt. */
+test('eine leere oder fehlende README meldet die Inhaltsprüfung als Fehler', async () => {
+  const wurzel = new URL('..', import.meta.url).pathname;
+  const lauf = (dateiInhalt) => {
+    const ordner = mkdtempSync(join(tmpdir(), 'readme-'));
+    if (dateiInhalt !== null) writeFileSync(join(ordner, 'README.md'), dateiInhalt);
+    try {
+      execFileSync(process.execPath, [join(wurzel, 'scripts/check-content.mjs')],
+        { encoding: 'utf8', cwd: ordner });
+      return { code: 0, aus: '' };
+    } catch (e) {
+      return { code: e.status, aus: (e.stdout || '') + (e.stderr || '') };
+    }
+  };
+
+  const leer = lauf('');
+  assert.notEqual(leer.code, 0, 'eine leere README muss die Prüfung scheitern lassen');
+  assert.match(leer.aus, /README\.md ist leer/);
+
+  const nurWeiss = lauf('\n   \n');
+  assert.match(nurWeiss.aus, /README\.md ist leer/, 'auch reines Weiß zählt als leer');
+
+  const fehlt = lauf(null);
+  assert.notEqual(fehlt.code, 0, 'eine fehlende README muss die Prüfung scheitern lassen');
+  assert.match(fehlt.aus, /README\.md fehlt/);
+});
