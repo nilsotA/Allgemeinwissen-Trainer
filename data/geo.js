@@ -214,4 +214,6 @@ export default [
 /* ---------- Ergänzt: Lücken geschlossen ---------- */
 {q:"Wie nennt man eine schmale, steilwandige Meeresbucht, die ein Gletscher in den Fels gehobelt hat?",a:"Fjord",s:"Welt",d:2,t:"Der längste Fjord Europas ist der Sognefjord in Norwegen mit gut 200 Kilometern – an seiner tiefsten Stelle reicht er rund 1.300 Meter unter den Meeresspiegel.",w:["Ria","Lagune","Delta"]},
 {q:"Wie heisst der Wind, der zweimal im Jahr die Richtung wechselt und Südasien die Regenzeit bringt?",a:"Monsun",s:"Welt",d:2,t:"Das Wort kommt vom arabischen „mausim“ für Jahreszeit und kam über das Portugiesische nach Europa.",w:["Passat","Schirokko","Föhn"]},
+/* ---------- Ergänzt: Lücken geschlossen ---------- */
+{q:"Welche 1935 entwickelte Skala gibt die bei einem Erdbeben freigesetzte Energie an und ist im Alltag bis heute die bekannteste?",a:"Richterskala",s:"Welt",d:1,t:"Charles F. Richter entwickelte sie am Caltech aus der Ausschlaghöhe von Seismogrammen; bei sehr starken Beben sättigt sie, weshalb die Fachwelt heute die Momenten-Magnituden-Skala benutzt.",w:["Mercalliskala","Beaufortskala","Saffir-Simpson-Skala"]},
 ];
