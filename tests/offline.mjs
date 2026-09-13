@@ -8,13 +8,20 @@ import { extname, join, normalize } from 'node:path';
 const ROOT = new URL('..', import.meta.url).pathname;
 const PORT = 8124;
 
-let playwright;
+/* Derselbe Wachposten wie in tests/e2e.mjs, und derselbe Fehler: exit 0 heisst
+   „bestanden", auch wenn keine einzige Pruefung existiert hat. Ausgerechnet hier,
+   wo der Offlinebestand geprueft wird – das, wofuer die App gebaut ist. */
+let playwright, importFehler;
 for (const p of ['playwright', '/opt/node22/lib/node_modules/playwright/index.mjs']) {
-  try { playwright = await import(p); break; } catch { /* nächsten Pfad probieren */ }
+  try { playwright = await import(p); break; } catch (e) { importFehler = e; }
 }
 if (!playwright) {
-  console.error('Playwright nicht gefunden – Offline-Test übersprungen.');
-  process.exit(0);
+  const erlaubt = process.env.OHNE_BROWSER === '1';
+  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 29 Prüfungen gelaufen'}.`);
+  if (importFehler && importFehler.code !== 'ERR_MODULE_NOT_FOUND') {
+    console.log(`  Der Import scheiterte nicht am fehlenden Paket: ${importFehler.message}`);
+  }
+  process.exit(erlaubt ? 0 : 1);
 }
 const { chromium, devices } = playwright;
 
@@ -484,6 +491,14 @@ try {
 } finally {
   await browser.close();
   server.close();
+}
+
+// Boden unter der Zahl der Pruefungen – siehe tests/e2e.mjs.
+const MINDESTENS = 29;
+if (passed + failed < MINDESTENS) {
+  failed++;
+  console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
+    + 'ein Abschnitt ist ausgefallen, ohne zu scheitern.');
 }
 
 console.log(`\n${passed} bestanden, ${failed} fehlgeschlagen`);

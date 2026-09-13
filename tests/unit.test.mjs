@@ -1323,3 +1323,67 @@ test('eine leere oder fehlende README meldet die Inhaltsprüfung als Fehler', as
   assert.notEqual(fehlt.code, 0, 'eine fehlende README muss die Prüfung scheitern lassen');
   assert.match(fehlt.aus, /README\.md fehlt/);
 });
+
+/* Derselbe Fehler wie beim README, nur eine Datei weiter: Der Kennungsnachweis
+   stand unter einem Wachposten, und sein Verschwinden war kein Fehler, sondern
+   ein Hinweis – warn() zaehlt nicht in den Schlusscode. Damit liess sich die
+   einzige Pruefung, die eine verlorene Kennung meldet, durch Loeschen einer
+   Datei stilllegen. Zweiter stiller Weg: eine leere Liste. Dann ist weg =
+   [].filter(...) garantiert [], und weil alle Kennungen als „neu" gelten, kam
+   nicht einmal ein Hinweis heraus. Verliert eine Karte ihre Kennung, ist der
+   Lernstand dazu beim naechsten Start jedes Nutzers weg. */
+test('ein fehlender oder leerer Kennungsnachweis meldet sich als Fehler', async () => {
+  const { mkdirSync, copyFileSync, writeFileSync: schreib } = await import('node:fs');
+  const wurzel = new URL('..', import.meta.url).pathname;
+  const lauf = (inhalt) => {
+    const ordner = mkdtempSync(join(tmpdir(), 'kennung-'));
+    copyFileSync(join(wurzel, 'README.md'), join(ordner, 'README.md'));
+    mkdirSync(join(ordner, 'data'));
+    if (inhalt !== null) schreib(join(ordner, 'data/kennungen.json'), inhalt);
+    try {
+      execFileSync(process.execPath, [join(wurzel, 'scripts/check-content.mjs')],
+        { encoding: 'utf8', cwd: ordner });
+      return { code: 0, aus: '' };
+    } catch (e) { return { code: e.status, aus: (e.stdout || '') + (e.stderr || '') }; }
+  };
+
+  const fehlt = lauf(null);
+  assert.notEqual(fehlt.code, 0, 'ein fehlender Nachweis muss die Prüfung scheitern lassen');
+  assert.match(fehlt.aus, /kennungen\.json fehlt/);
+
+  const leer = lauf('[]');
+  assert.notEqual(leer.code, 0);
+  assert.match(leer.aus, /kennungen\.json ist leer/);
+
+  const nullBytes = lauf('');
+  assert.notEqual(nullBytes.code, 0, 'auch 0 Bytes darf nicht in einen Stacktrace laufen');
+  assert.match(nullBytes.aus, /kennungen\.json ist leer/);
+
+  /* Und der ausgeduennte Nachweis: Er existiert, ist nicht leer – und deckt den
+     Bestand trotzdem nicht mehr. Die Pruefkraft schrumpft dann still mit. */
+  const duenn = lauf(JSON.stringify(['spo-12atet3']));
+  assert.notEqual(duenn.code, 0);
+  assert.match(duenn.aus, /fuehrt nur 1 von \d+ Kennungen/);
+});
+
+/* Greift eines der neun README-Muster ins Leere, war das frueher nur ein
+   Hinweis – und ein Hinweis laesst das Tor offen. Damit liess sich jede der
+   neun Zahlenpruefungen durch blosses Umformulieren des Satzes daneben
+   abschalten, ohne dass irgendetwas rot wurde. */
+test('ein README-Muster, das ins Leere greift, ist ein Fehler', async () => {
+  const { readFileSync: lies, writeFileSync: schreib } = await import('node:fs');
+  const wurzel = new URL('..', import.meta.url).pathname;
+  const ordner = mkdtempSync(join(tmpdir(), 'muster-'));
+  const text = lies(join(wurzel, 'README.md'), 'utf8');
+  const umformuliert = text.replace('**Wissen des Tages** – ', '**Wissen des Tages**: ');
+  assert.notEqual(umformuliert, text, 'der Satz, an dem das Merkanker-Muster haengt, muss auffindbar sein');
+  schreib(join(ordner, 'README.md'), umformuliert);
+
+  let aus = '';
+  try {
+    execFileSync(process.execPath, [join(wurzel, 'scripts/check-content.mjs')],
+      { encoding: 'utf8', cwd: ordner });
+    assert.fail('die Prüfung hätte scheitern müssen');
+  } catch (e) { aus = (e.stdout || '') + (e.stderr || ''); }
+  assert.match(aus, /die Zahl zu „Merkanker" ist nicht mehr auffindbar/);
+});

@@ -14,13 +14,24 @@ const KEY = 'wissenswerk.v1';
    daran halten wie ein Mensch. */
 const FUSS_TAUB = 400;
 
-let playwright;
+/* Der Wachposten hat frueher mit process.exit(0) geendet – also mit „bestanden".
+   In package.json haengen die drei Laeufe mit && aneinander; fehlte Playwright,
+   meldete `npm run test:all` gruen, ohne dass eine einzige der 188 Pruefungen
+   gelaufen waere. Der Unterschied zwischen „alles geprueft" und „nichts geprueft"
+   war eine Zeile auf stderr, und stderr liest bei gruenem Lauf niemand.
+   Ueberspringen ist jetzt eine Entscheidung, die jemand ausdruecklich trifft. */
+let playwright, importFehler;
 for (const p of ['playwright', '/opt/node22/lib/node_modules/playwright/index.mjs']) {
-  try { playwright = await import(p); break; } catch { /* nächsten Pfad probieren */ }
+  try { playwright = await import(p); break; } catch (e) { importFehler = e; }
 }
 if (!playwright) {
-  console.error('Playwright nicht gefunden – E2E-Test übersprungen. (npm i -D playwright)');
-  process.exit(0);
+  const erlaubt = process.env.OHNE_BROWSER === '1';
+  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 188 Prüfungen gelaufen'}.`);
+  if (importFehler && importFehler.code !== 'ERR_MODULE_NOT_FOUND') {
+    console.log(`  Der Import scheiterte nicht am fehlenden Paket: ${importFehler.message}`);
+  }
+  if (!erlaubt) console.log('  npm i -D playwright – oder OHNE_BROWSER=1 setzen, wenn das Überspringen gewollt ist.');
+  process.exit(erlaubt ? 0 : 1);
 }
 const { chromium, devices } = playwright;
 
@@ -1602,6 +1613,17 @@ try {
 } finally {
   await browser.close();
   server.close();
+}
+
+/* Ein Boden unter der Zahl der Pruefungen. Ohne ihn kann die halbe Datei
+   ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
+   ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
+   README und wird dort geprueft; hier ist sie die Untergrenze. */
+const MINDESTENS = 188;
+if (passed + failed < MINDESTENS) {
+  failed++;
+  console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
+    + 'ein Abschnitt ist ausgefallen, ohne zu scheitern.');
 }
 
 console.log(`\n${passed} bestanden, ${failed} fehlgeschlagen`);

@@ -22,6 +22,15 @@ for (const c of CARDS) {
   if (c.w) {
     if (c.w.includes(c.a)) fail(`${c.id}: Ablenker enthält die richtige Antwort`);
     if (new Set(c.w).size !== c.w.length) fail(`${c.id}: doppelte Ablenker`);
+    /* options() zaehlt nicht die Ablenker, sondern die BRAUCHBAREN: Es wirft weg,
+       was leer ist, was der Antwort gleicht und was doppelt vorkommt – und greift
+       dann auf den Aushilfs-Pool des Teilgebiets zurueck. Die Pruefung der
+       Aushilfen (weiter unten) verlaesst sich auf w.length und uebersieht genau
+       das. Ein leerer Ablenker laesst w.length bei 3 und schickt die Karte
+       trotzdem in den Pool – ungeprueft. */
+    if (c.w.some(w => !String(w ?? '').trim())) {
+      fail(`${c.id}: leerer Ablenker – options() faellt damit auf den Aushilfs-Pool zurueck`);
+    }
   }
   if (qs.has(c.q)) fail(`Doppelte Frage: „${c.q}“ (${c.id} / ${qs.get(c.q)})`);
   qs.set(c.q, c.id);
@@ -177,7 +186,11 @@ else {
     ['Gesamtzahl', /\*\*([\d.]+) Karten\*\* in neun Themen/, tausend(CARDS.length)],
     ['Sport', /\*\*Sport\*\* \((\d+) Karten/, String(jeKategorie.spo)],
     ['Mathematik', /\*\*Mathematik\*\* \((\d+) Karten/, String(jeKategorie.mat)],
-    ['Merkanker', /(\d+) Merkanker/, String(FACTS.length)],
+    /* Frueher /(\d+) Merkanker/ – so weit, dass match() den ERSTEN Treffer im
+       ganzen Dokument nahm: einen Rueckblicksatz ueber „1.742 Karten und 141
+       Merkanker". Ein historischer Bericht, der sich nicht mitaendern darf, und
+       die lebende Angabe blieb ungeprueft. Jetzt an die Beschreibung gebunden. */
+    ['Merkanker', /\*\*Wissen des Tages\*\* – (\d+) kurze Merkanker/, String(FACTS.length)],
     ['Mythologie', /\*\*Mythologie\*\* \((\d+) Karten/, String(teilgebiet('Mythologie'))],
     ['Essen & Trinken', /\*\*Essen & Trinken\*\* \((\d+) /, String(teilgebiet('Essen & Trinken'))],
     ['Erfindungen', /\*\*Erfindungen\*\* \((\d+) /, String(teilgebiet('Erfindungen'))],
@@ -186,7 +199,10 @@ else {
   ];
   for (const [was, muster, ist] of behauptungen) {
     const treffer = readme.match(muster);
-    if (!treffer) { warn(`README: die Zahl zu „${was}" ist nicht mehr auffindbar – Muster ${muster} greift ins Leere`); continue; }
+    if (!treffer) {
+      fail(`README: die Zahl zu „${was}" ist nicht mehr auffindbar – Muster ${muster} greift ins Leere`);
+      continue;
+    }
     if (treffer[1] !== ist) fail(`README behauptet ${treffer[1]} für „${was}", gezaehlt sind ${ist}`);
   }
 }
@@ -393,6 +409,9 @@ for (const c of CARDS) {
   const max = Math.max(...alle.map(x => x.length));
   if (c.a.length === max && alle.filter(x => x.length === max).length === 1) laengsteGewinnt++;
 }
+/* Ohne Stichprobe ist quote NaN – und NaN > 32 ist falsch, also waere die
+   Schranke lautlos durchgelaufen und haette „NaN %" gemeldet. */
+if (!mitAblenkern) fail('Ratequote: keine Karte mit drei eigenen Ablenkern gefunden – die Schranke gegen „nimm die laengste Option" laeuft ins Leere');
 const quote = (laengsteGewinnt / mitAblenkern) * 100;
 console.log(`Ratequote    : ${quote.toFixed(1)} % mit „nimm die laengste Option" (Zufall waere 25 %)`);
 
@@ -437,7 +456,13 @@ for (const c of CARDS) {
   const sortiert = [...alle].sort((x, y) => x - y);
   if (alle[0] !== sortiert[0] && alle[0] !== sortiert[3]) inDerMitte++;
 }
-if (zahlkarten) {
+if (!zahlkarten) {
+  /* Der Wachposten verschluckte die Ausgabe gleich mit: keine Zahlenkarte
+     erkannt hiess keine Zeile, und kein Mensch vermisst eine Zeile, die er nicht
+     kennt. Die Bedingung haengt an der Schreibweise der Antworten, nicht am
+     geprueften Sachverhalt – sie kann bestandsweit brechen. */
+  fail('Klammerquote: keine einzige Zahlenkarte erkannt – die Schranke gegen „streich die beiden Extremwerte" laeuft ins Leere');
+} else {
   const mittig = (inDerMitte / zahlkarten) * 100;
   console.log(`Klammerquote : ${mittig.toFixed(1)} % der Zahlenkarten haben die Antwort zwischen den Ablenkern (Zufall waere 50 %)`);
   /* 70 statt der frueheren 85: Nach dem Handdurchgang liegt der Wert bei 61 %.
@@ -554,8 +579,24 @@ for (const c of CARDS) {
 if (process.argv.includes('--kennungen')) {
   writeFileSync(KENNUNGEN, JSON.stringify(jetzt, null, 0).replace(/","/g, '",\n "') + '\n');
   console.log(`${KENNUNGEN} auf ${jetzt.length} Kennungen gebracht`);
-} else if (existsSync(KENNUNGEN)) {
-  const frueher = JSON.parse(readFileSync(KENNUNGEN, 'utf8'));
+} else if (!existsSync(KENNUNGEN)) {
+  /* Frueher stand hier warn(). Damit war das Verschwinden des Nachweises kein
+     Fehler, sondern ein Hinweis – und die einzige Stelle, die eine verlorene
+     Kennung meldet, liess sich durch Loeschen einer Datei stilllegen. Genau der
+     README-Fall, nur eine Datei weiter. */
+  fail(`${KENNUNGEN} fehlt – der Kennungsvergleich laeuft ins Leere; einmal mit --kennungen anlegen`);
+} else {
+  const roh = readFileSync(KENNUNGEN, 'utf8').trim();
+  const frueher = roh ? JSON.parse(roh) : [];
+  /* Eine leere Liste ist der zweite stille Weg: existsSync stimmt, frueher ist [],
+     weg = [].filter(...) ist garantiert [] – und weil dann alle Kennungen als
+     „neu" gelten, kam nicht einmal ein Hinweis heraus. */
+  if (!Array.isArray(frueher) || !frueher.length) {
+    fail(`${KENNUNGEN} ist leer – der Kennungsvergleich laeuft ins Leere; mit --kennungen neu anlegen`);
+  } else if (frueher.length < jetzt.length * 0.9) {
+    fail(`${KENNUNGEN} fuehrt nur ${frueher.length} von ${jetzt.length} Kennungen – `
+      + 'der Vergleich deckt den Bestand nicht mehr');
+  }
   const heute = new Set(jetzt);
   const weg = frueher.filter(id => !heute.has(id) && !nachfolger.has(id));
   if (weg.length) {
@@ -565,8 +606,6 @@ if (process.argv.includes('--kennungen')) {
   }
   const neuHinzu = jetzt.filter(id => !new Set(frueher).has(id)).length;
   if (neuHinzu) console.log(`Kennungen    : ${neuHinzu} neu, ${frueher.length - weg.length} unveraendert`);
-} else {
-  warn(`${KENNUNGEN} fehlt – einmal mit --kennungen anlegen, dann faellt jede verlorene Kennung auf`);
 }
 
 console.log(`\n${errors} Fehler, ${warnings} Hinweise`);

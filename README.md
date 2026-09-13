@@ -432,7 +432,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 157 Einheitentests plus Inhaltsprüfung
+npm test           # 159 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 188 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 29 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
