@@ -2680,6 +2680,66 @@ Satz mit Fragezeichen ist, ist eine Frage. Doppelpunkt, Semikolon und Gedankenst
 eine Rückfrage mitten im Text ab, und die bleibt erlaubt.
 
 
+### Vier Schreibweisen mehr – und zwei Regeln, die die Messung verworfen hat
+
+Die Tippprobe stand nach allen Änderungen dieser Runde unverändert bei **81,2 / 12,7 / 6,0**.
+Keine Regression also. Aber die 37 abgewiesenen Eingaben zeigen Muster, und die waren
+abzuarbeiten.
+
+Dafür ein **Messstand**: jede Kandidatenregel einzeln in einer Kopie, gemessen an der
+Tippprobe *und* am Inhaltstor. Das zweite ist das Entscheidende – dort steht die Prüfung, ob
+ein Ablenker beim freien Abrufen als richtige Antwort durchgeht. Eine Lockerung des
+Vergleichers, die nur an der Tippprobe gemessen wird, misst nur die Hälfte.
+
+**Aufgenommen:**
+
+- **„+" und „=" zwischen zwei Wörtern** sind kein Rechenzeichen, sondern Aufzählung und
+  Kopula. „Wasser + CO2" heißt *Wasser und CO2*; „Landtag = Parlament eines Bundeslandes"
+  heißt *Landtag ist das Parlament*. Beides sind Wörter, die eine knappe Eingabe weglassen
+  darf – und genau so tippt man am Handy.
+- **Abkürzungen:** `h`, `min`, `sek`/`sec` nach einer Zahl; `J.` für Jahre; `Wkt.`, `bzgl.`,
+  und `v.` allein für *von* (`v. Chr.` war schon vorher erledigt); `Pkt.` jetzt auch am
+  Wortende, damit „Prozentpkt." zu *Prozentpunkte* wird.
+- **Drei weitere einordnende Wörter**, die fehlen dürfen: Schema, Modell, Ordnung. „abab" auf
+  die Lösung „Das Schema abab".
+
+| | vorher | nachher |
+|---|---|---|
+| grün | 81,2 % | **82,7 %** |
+| gelb | 12,7 % | 12,7 % |
+| rot | 6,0 % | **4,6 %** |
+
+Der Boden im Test steigt mit – auf 82 % grün und 5 % rot – und scheitert gegengeprobt gegen
+die alte Fassung.
+
+#### Was das Inhaltstor verhindert hat
+
+Der erste Versuch der Plus-Regel kannte die Schranke *„mindestens zwei Buchstaben auf beiden
+Seiten"* noch nicht. Damit wurde aus dem Ablenker **„a + b + c"** ein „a b c" – und das ist
+die **richtige Antwort einer Mathekarte**. Gemessen 0,95; das Tor meldete es beim ersten Lauf.
+Einbuchstabige Variablen bleiben deshalb außen vor, und „E = mc²" oder „y = mx + b" rechnen
+weiter.
+
+#### Zwei Regeln, gemessen und verworfen
+
+**Die Einheit darf auch überzählig sein.** „60 Pkt." auf die Lösung „60" ist dieselbe Antwort
+– die Einheit steht ja in der Frage. Sachlich richtig, aber: Es betrifft genau **einen von 612
+Fällen**, und es hätte `inReihenfolge()` anfassen müssen – die Funktion, die den
+Kontrapositions-Fehler abfängt („nicht A ⇒ nicht B" auf „nicht B ⇒ nicht A", gemessen 0,95).
+Ein Fall Gewinn gegen ein Risiko an der empfindlichsten Stelle des Vergleichers. Nicht
+geliefert.
+
+**Eine Eingabe, die die ganze Lösung wörtlich enthält, sollte gelten.** „Durch Köln fließt der
+Rhein" auf die Lösung „Der Rhein" – wer so antwortet, hat die Frage beantwortet. Gemessen:
+Das hätte **3 der 28 roten Fälle** gerettet. Und im Bestand stehen **9 Ablenker, die die
+Antwort ihrer eigenen Karte wörtlich enthalten** – darunter „−cos(x)" neben „cos(x)", „2π"
+neben „π" und „K · (1 + p/100) · n" neben „K · (1 + p/100)ⁿ". Neun falsche Antworten, die
+durchgingen, für drei richtige, die gälten. Verworfen.
+
+Das ist der Grund, warum der Messstand beide Seiten misst: Jede dieser Regeln sah auf der
+Tippprobe allein wie ein Gewinn aus.
+
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
