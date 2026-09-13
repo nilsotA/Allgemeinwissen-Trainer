@@ -2418,6 +2418,91 @@ sich der README, ist ab jetzt genau das der Befund – und ein Test hält beide 
 gegen die alte Fassung scheitert.
 
 
+### Die fehlende Richtung – und was die Blindprobe daran gefunden hat
+
+Beim Nachrechnen der Lückenliste stand ein Befund, der größer ist als die Lücke selbst.
+Von den 93 offenen Fragen des vierten Prüfsatzes sind **33 gar keine Wissenslücke**: Der
+Stoff ist da, die Karte fragt nur die andere Richtung. Und es sind ausgerechnet die
+Spieleabend-Klassiker.
+
+| gefragt wird | vorhanden ist |
+|---|---|
+| *Wie heißt der weiße Wal in Melvilles Roman?* → Moby Dick | eine Karte, die Moby Dick erklärt |
+| *Welches christliche Fest feiert die Auferstehung Jesu?* → Ostern | „Was feiern Christen an Ostern?" |
+| *Welcher römische Feldherr überschritt den Rubikon?* → Julius Caesar | eine Karte über den Rubikon |
+| *Wie heißt die Merkregel für Erste Hilfe bei Prellungen?* → PECH-Regel | eine Karte, die PECH auflöst |
+
+Die Sammlung **erklärt** diese Begriffe. Sie lässt sie nur nie **benennen**. Abrufen ist
+aber richtungsgebunden: Wer „Ostern = Auferstehung Jesu" geübt hat, produziert daraus nicht
+zuverlässig „Ostern", wenn nur die Auferstehung genannt wird. Im Quiz wird genau so gefragt.
+
+Systematisch gezählt: **178 Karten**, deren Begriff in der ganzen Sammlung nirgends als
+Antwort verlangt wird. 16 Pakete haben dazu die Benennrichtung geschrieben, je zwei
+unabhängige Widerleger – einer auf die Wahrheit mit Recherchepflicht, einer auf die Bauart,
+mit der Kernfrage: *oder ist das nur die alte Frage rückwärts gelesen?* 70 Kandidaten haben
+die Schreiber selbst verworfen, 109 Karten geschrieben, 5 kassiert.
+
+**95 Prozent Ausbeute** gegen 28 und 42 in den Vorrunden. Das ist kein Grund zum Feiern,
+sondern ein Verdacht: Entweder war die Aufgabe leichter – die Fakten stammen ja aus bereits
+geprüften Karten –, oder die Widerleger waren zu milde. Also dreifach nachgeprüft.
+
+**Erstens war der Zusammenführungsschritt fehlerhaft, und zwar meiner.** Er hat 75
+Nachbesserungen der Widerleger blind in die Kartenfelder geschrieben – auch die, die Prosa
+waren. In zehn Karten stand danach wörtlich Text wie `a: Misstrauensvotum, az: Konstruktives
+Misstrauensvotum` oder `Nirwana (auch: Nirvana, Nibbana)` im Antwortfeld. Eine weitere
+Nachbesserung fiel still unter den Tisch, weil sie das Feld `w` statt `w0`–`w2` nannte. Alle
+elf von Hand nachgezogen.
+
+**Zweitens laufen die mechanischen Tore sauber durch:** keine inhaltliche Dublette, keine
+Ablenkerkollision, kein Antwortverrat, keine Bewertungskollision. Sieben zu lange Fragen
+gekürzt. Die Ratequote sinkt sogar leicht – 25,9 auf 25,3 Prozent, bei 25 Prozent Zufall.
+
+**Drittens die eigentliche Gegenprobe: alle 104 Fragen blind beantwortet.** Zehn Probanden,
+jeder sah nur seine elf Fragen in einer Datei, die nichts als Fragen enthält – keine
+Antworten, keine Optionen, kein Bestand. Nachgewiesen im Protokoll: zehn Agenten, zehn
+Lesezugriffe, kein einziger ins Projektverzeichnis.
+
+Ergebnis: **104 von 104 richtig**, gemessen mit dem Bewerter der App selbst.
+
+Der Ertrag steckt nicht in den 100 Prozent – die Fragen sind für ein Sprachmodell leicht –,
+sondern im Rest: **79 Fragen, zu denen die Probanden Alternativen nannten**, und **40
+Einwände**.
+
+Siebzehn Einwände waren echte Mängel:
+
+- „dem sich die Glieder einer Folge **beliebig weit** annähern" muss *beliebig nahe kommen*
+  heißen. Das hatte ein Widerleger beim Nachbessern hineingeschrieben.
+- Laktat **misst** keine Belastungsintensität, es zeigt sie an – meine eigene Kürzung.
+- Eine Basis spannt **einen Vektorraum** auf, nicht „den Raum"; im Alltagssinn denkt man
+  sonst an den dreidimensionalen Anschauungsraum.
+- Ohne das Wort **nichtkonstant** löst jede Zahl die Polynomgleichung 0 = 0 – und wäre damit
+  transzendent.
+- Die Paralympics gibt es seit **1960**; 1988 begann nur die Austragung am selben Ort.
+- Am schönsten die Strahlensatz-Karte. Sie fragte nach der Baumhöhenmessung über den
+  Schatten – und erzählte im Kontexttext die Thales-Geschichte. Genau diese Verwechslung hat
+  ein Proband prompt gemeldet: Volkstümlich heißt die Schattenmessung „Satz des Thales",
+  gemeint ist der Strahlensatz. Die Karte hat die Verwechslung also selbst eingeübt. Jetzt
+  fragt sie präzise nach den Streckenverhältnissen, und der Kontext benennt den Unterschied.
+
+Die 170 genannten Alternativen sind die andere Hälfte der Bewertung: Wer das Richtige tippt
+und Rot bekommt, lernt Misstrauen gegen sich selbst. Vorher hätte der Bewerter 36 davon
+angenommen, jetzt **93 – von 21 auf 55 Prozent**. Die übrigen 77 sind einzeln abgelehnt, 38
+davon mit ausdrücklicher Begründung: *Konsequentialismus* ist die Oberfamilie des
+Utilitarismus, *Parinirvana* das Nirwana nach dem Tod, *Zirkelkanon* eine Bauform des Kanons,
+*Delta T* eine ganz andere Größe, *Gewinnausschüttung* der Vorgang statt des ausgeschütteten
+Teils.
+
+| | vorher | nachher |
+|---|---|---|
+| Karten | 2.164 | **2.268** |
+| Abdeckung Satz 4 | 193/286 (67 %) | **197/286 (69 %)** |
+| Tageslast | 101,1 | 102,8 |
+
+Die zwei Prozentpunkte Abdeckung sind Absicht und kein schwaches Ergebnis: Geschrieben wurde
+gegen die Lücken der **Sammlung**, nicht gegen die des Prüfsatzes. Was der Satz misst, ist
+nur der zufällige Überschneidungsanteil – und genau deshalb bleibt die Zahl ehrlich.
+
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
