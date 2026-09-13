@@ -17,7 +17,7 @@ for (const p of ['playwright', '/opt/node22/lib/node_modules/playwright/index.mj
 }
 if (!playwright) {
   const erlaubt = process.env.OHNE_BROWSER === '1';
-  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 29 Prüfungen gelaufen'}.`);
+  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 31 Prüfungen gelaufen'}.`);
   if (importFehler && importFehler.code !== 'ERR_MODULE_NOT_FOUND') {
     console.log(`  Der Import scheiterte nicht am fehlenden Paket: ${importFehler.message}`);
   }
@@ -119,8 +119,23 @@ try {
     swErsatz = marke ? ersetzen(swQuelle) : null;
     fassungErsatz = marke ? ersetzen(fassungQuelle) : null;
   };
-  const anzahl = JSON.parse(swQuelle.match(/const ASSETS = (\[[\s\S]*?\]);/)[1]).length;
-  check(`alle ${anzahl} Dateien im Bestand`, b1[namen1[0]] >= anzahl, JSON.stringify(b1));
+  /* Frueher nur ein Zaehlvergleich – und die Sollzahl kam aus derselben Datei
+     wie der Bestand. Schrumpft die Vorladeliste, schrumpft die Behauptung mit,
+     und beides bleibt gruen. Jetzt wird verglichen, WELCHE Pfade drinstehen. */
+  const soll = JSON.parse(swQuelle.match(/const ASSETS = (\[[\s\S]*?\]);/)[1])
+    .map(f => f.replace(/^\./, ''));
+  const istPfade = new Set(await page.evaluate(async () => {
+    const out = [];
+    for (const n of await caches.keys()) {
+      for (const r of await (await caches.open(n)).keys()) out.push(new URL(r.url).pathname);
+    }
+    return out;
+  }));
+  const fehlen = soll.filter(f => !istPfade.has(f) && !(f === '/index.html' && istPfade.has('/')));
+  check(`alle ${soll.length} Dateien im Bestand`, fehlen.length === 0, `es fehlen: ${fehlen.join(', ')}`);
+  /* Und ein Boden gegen die geschrumpfte Liste selbst: Der Vorladebestand fuehrt
+     index.html, das Stylesheet, die Oberflaeche und alle neun Kartendateien. */
+  check('der Vorladebestand ist nicht stillschweigend geschrumpft', soll.length >= 25, `${soll.length} Einträge`);
 
   group('Ohne Netz');
   await ctx.setOffline(true);
@@ -437,16 +452,24 @@ try {
        ueber alle Bestaende, ein vergifteter Eintrag in irgendeinem von ihnen kann
        also ausgeliefert werden. Und den ganzen Text ansehen - id="app" steht
        weit unten in index.html. */
-    const schlecht = await gp.evaluate(async () => {
-      const raus = [];
+    /* Die Schleife konnte nicht unterscheiden, ob nichts Fremdes drinsteht oder
+       ob ueberhaupt nichts drinsteht: `continue` bei fehlendem Eintrag, und am
+       Ende eine leere Liste. Waere der Bestand leer – genau der Schaden, den die
+       Pruefung daneben ausschliessen soll –, haette sie ihn gemeldet als waere
+       alles in Ordnung. Jetzt zaehlt sie mit, wie viele Eintraege sie ansah. */
+    const { schlecht, gesehen } = await gp.evaluate(async () => {
+      const raus = []; let gesehen = 0;
       for (const n of await caches.keys()) {
         const t = await (await caches.open(n)).match('./index.html');
         if (!t) continue;
+        gesehen++;
         const txt = await t.text();
         if (!txt.includes('id="app"')) raus.push(n + ': ' + txt.slice(0, 70).replace(/\s+/g, ' '));
       }
-      return raus;
+      return { schlecht: raus, gesehen };
     });
+    check('unter dem Gerüst-Schlüssel steht überhaupt etwas', gesehen >= 1,
+      'kein einziger Bestand führt index.html – die Prüfung darunter hätte nichts angesehen');
     check('in keinem Bestand steht Fremdes unter dem Gerüst-Schlüssel',
       schlecht.length === 0, schlecht.join(' | '));
 
@@ -494,7 +517,7 @@ try {
 }
 
 // Boden unter der Zahl der Pruefungen – siehe tests/e2e.mjs.
-const MINDESTENS = 29;
+const MINDESTENS = 31;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

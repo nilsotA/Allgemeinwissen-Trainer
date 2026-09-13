@@ -43,7 +43,26 @@ const zielDatei = (c) => {
 };
 
 const roh = JSON.parse(readFileSync(pfad, 'utf8'));
-const eingang = (roh.gebiete || []).flatMap(g => g.cards || []);
+/* Die beiden ||-Rueckfaelle machten aus jeder unerwarteten Dateiform eine leere
+   Liste: Die Pruefschleife lief null Mal und das Werkzeug meldete „0 Karten
+   ergaenzt, 0 abgewiesen" – dieselbe Zeile wie bei einer Datei, in der wirklich
+   nichts drinsteht. Wer eine Lieferung mit anderem Aufbau einpflegt, haelt das
+   fuer „schon erledigt". */
+if (!roh || !Array.isArray(roh.gebiete)) {
+  console.error(`${pfad}: erwartet { gebiete: [{ cards: [...] }] } – gefunden: `
+    + (Array.isArray(roh) ? 'ein Array' : Object.keys(roh || {}).join(', ') || 'nichts'));
+  process.exit(1);
+}
+const ohneCards = roh.gebiete.filter(g => !Array.isArray(g && g.cards)).length;
+if (ohneCards) {
+  console.error(`${pfad}: ${ohneCards} von ${roh.gebiete.length} Gebieten haben kein Feld cards`);
+  process.exit(1);
+}
+const eingang = roh.gebiete.flatMap(g => g.cards);
+if (!eingang.length) {
+  console.error(`${pfad}: enthaelt keine einzige Karte`);
+  process.exit(1);
+}
 const vorhanden = new Set(CARDS.map(c => c.q.trim()));
 
 /* Zuerst Weissraum einebnen, dann erst maskieren: Ein Zeilenumbruch im Text
@@ -61,7 +80,14 @@ const proDatei = new Map();
 const abgelehnt = [];
 for (const c of eingang) {
   const q = (c.q || '').trim();
-  if (!q || !c.a || !c.s || !Array.isArray(c.w) || c.w.length !== 3) { abgelehnt.push([q, 'unvollständig']); continue; }
+  /* d und t fehlten in dieser Aufzaehlung. Die Schlusspruefung darunter liest
+     die erzeugte Zeile nur auf SYNTAX – und `d:undefined` ist gueltiges
+     JavaScript. Eine Karte ohne Stufe kam so bis in data/*.js und fiel erst dem
+     Inhaltstor auf, nach dem Schreiben. */
+  if (!q || !c.a || !c.s || !Array.isArray(c.w) || c.w.length !== 3
+      || ![1, 2, 3].includes(c.d) || !String(c.t ?? '').trim()) {
+    abgelehnt.push([q, 'unvollständig']); continue;
+  }
   if (vorhanden.has(q)) { abgelehnt.push([q, 'Frage gibt es schon']); continue; }
   const { ziel, fehler } = zielDatei(c);
   if (fehler) { abgelehnt.push([q, fehler]); continue; }

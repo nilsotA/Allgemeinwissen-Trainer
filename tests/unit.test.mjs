@@ -10,7 +10,7 @@ const { todayNum } = await import('../assets/js/store.js');
 const { options, similarity, bewerte, normalize, shuffle, OHNE_ZUSATZ, OHNE_VORWORT, OHNE_FORMELKOPF } = await import('../assets/js/quiz.js');
 const { CARDS, BY_ID } = await import('../data/index.js');
 const { execFileSync } = await import('node:child_process');
-const { writeFileSync, mkdtempSync } = await import('node:fs');
+const { writeFileSync, mkdtempSync, readFileSync } = await import('node:fs');
 const { join } = await import('node:path');
 const { tmpdir } = await import('node:os');
 
@@ -225,9 +225,19 @@ test('zugelassene Nebenschreibweisen zählen als richtig, Ablenker nicht', () =>
 });
 
 test('Karten-IDs hängen nur an der Frage, nicht an der Position', async () => {
-  // Zwei Importe müssen dieselben IDs ergeben
-  const again = await import('../data/index.js');
-  assert.deepEqual(again.CARDS.map(c => c.id), CARDS.map(c => c.id));
+  /* Frueher: ein zweites import('../data/index.js') und deepEqual gegen das
+     erste. ES-Module werden zwischengespeichert – der zweite Import liefert
+     DASSELBE Objekt, der Test verglich das Kartenfeld also mit sich selbst und
+     haette auch bestanden, wenn die Kennung aus der Zeilennummer entstuende.
+     Jetzt wird die Kennung aus dem Fragetext nachgerechnet, unabhaengig von
+     data/index.js, und die Reihenfolge dabei ausdruecklich veraendert. */
+  const { kennung } = await import('../scripts/karte-aendern.mjs');
+  const gemischt = [...CARDS].reverse();
+  for (const c of gemischt.slice(0, 200)) {
+    assert.equal(c.id, kennung(c.q, c.cat),
+      `${c.id}: die Kennung stimmt nicht mit dem Fragetext ueberein`);
+  }
+  assert.equal(new Set(CARDS.map(c => c.id)).size, CARDS.length, 'doppelte Kennungen');
 });
 
 /* ---------------- Freie Eingabe ---------------- */
@@ -1253,11 +1263,24 @@ test('das Kartenwerkzeug haelt auch dem Ernstfall stand', async () => {
   /* Der Aufruf-Zweig darf nur starten, wenn DIESE Datei aufgerufen wurde. Sonst
      laeuft er mit, sobald ein anderes Skript kennung() importiert und selbst ein
      Argument hat – dann landet dessen Argument hier als Auftragsdatei. */
-  const ausgabe = execFileSync(process.execPath, [
-    '-e', "import('./scripts/karte-aendern.mjs').then(m => console.log(typeof m.kennung))",
-    '/tmp/gibt-es-nicht.json',
-  ], { encoding: 'utf8', cwd: new URL('..', import.meta.url).pathname });
+  /* Frueher mit `node -e`. Dort ist process.argv[1] leer, der Waechter faellt
+     schon an seiner ersten Bedingung – die Lage, gegen die er schuetzen soll,
+     wurde also gar nicht hergestellt. Jetzt laeuft ein wirklich FREMDES Skript
+     mit einer wirklich vorhandenen Auftragsdatei als Argument: genau der Fall,
+     in dem der Aufruf-Zweig frueher mitlief und fremde Daten als Auftrag las. */
+  const ordner = mkdtempSync(join(tmpdir(), 'fremd-'));
+  const auftrag = join(ordner, 'fremde-daten.json');
+  writeFileSync(auftrag, JSON.stringify([{ id: CARDS[0].id, feld: 't', wert: 'DARF NICHT GESCHRIEBEN WERDEN' }]));
+  const fremd = join(ordner, 'fremd.mjs');
+  const wurzel = new URL('..', import.meta.url).pathname;
+  writeFileSync(fremd, `import { kennung } from ${JSON.stringify(join(wurzel, 'scripts/karte-aendern.mjs'))};\n`
+    + 'console.log(typeof kennung);\n');
+  const vorher = readFileSync(join(wurzel, 'data', CARDS[0].cat + '.js'), 'utf8');
+  const ausgabe = execFileSync(process.execPath, [fremd, auftrag], { encoding: 'utf8', cwd: wurzel });
   assert.match(ausgabe, /function/, 'der Import bleibt ohne Nebenwirkung');
+  assert.doesNotMatch(ausgabe, /Aenderungen/, 'der Aufruf-Zweig darf nicht mitgelaufen sein');
+  assert.equal(readFileSync(join(wurzel, 'data', CARDS[0].cat + '.js'), 'utf8'), vorher,
+    'der Import eines fremden Skripts hat Kartendaten geschrieben');
 });
 
 /* Der Vorladebestand des Service Workers darf NUR aus der App bestehen.
@@ -1269,7 +1292,6 @@ test('das Kartenwerkzeug haelt auch dem Ernstfall stand', async () => {
    Fassungskennung ein: dieselbe Quelle, lokal aa1d814849, auf Vercel
    2af30b3edc. */
 test('der Service Worker laedt nur Dateien der App vor', async () => {
-  const { readFileSync } = await import('node:fs');
   const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
   const liste = JSON.parse(sw.match(/const ASSETS = (\[[\s\S]*?\]);/)[1]);
   assert.ok(liste.length > 20, 'die Liste ist unerwartet kurz');
@@ -1289,6 +1311,21 @@ test('der Service Worker laedt nur Dateien der App vor', async () => {
   for (const f of liste) {
     assert.doesNotThrow(() => readFileSync(new URL('../' + f.slice(2), import.meta.url)),
       `${f} steht im Vorladebestand, existiert aber nicht`);
+  }
+
+  /* Die Gegenrichtung fehlte: Die Pruefung fragte nur, ob etwas FREMDES
+     drinsteht, nie, ob etwas NOETIGES fehlt. Alle fuenf Icons, das Stylesheet,
+     jede Kartendatei haetten verschwinden koennen – die Liste waere kuerzer und
+     der Test gruen geblieben, und die App startet offline nicht mehr. Die
+     Sollmenge kommt aus index.html selbst, dann faengt sie auch Umbenennungen. */
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const verwiesen = [...html.matchAll(/(?:href|src)="(\.\/[^"#]+)"/g)].map(m => m[1]);
+  assert.ok(verwiesen.length >= 15, `nur ${verwiesen.length} Verweise in index.html gefunden`);
+  const fehlend = verwiesen.filter(f => !liste.includes(f) && !/icon-512/.test(f));
+  assert.deepEqual(fehlend, [],
+    `index.html verweist darauf, der Vorladebestand kennt es nicht: ${fehlend.join(', ')}`);
+  for (const pflicht of ['./index.html', './manifest.webmanifest', './assets/js/app.js', './assets/css/app.css']) {
+    assert.ok(liste.includes(pflicht), `${pflicht} fehlt im Vorladebestand`);
   }
 });
 

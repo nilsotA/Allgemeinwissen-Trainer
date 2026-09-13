@@ -130,6 +130,13 @@ console.log(`Spitzenrueckstand: ${spitzeStau} faellige Karten`);
    normaler Tag ihn weg, und die Bremse laesst neue Karten wieder durch. */
 for (const [von, bis] of PAUSEN) {
   const nach = zeilen.filter(r => r.tag > bis);
+  /* Liegt die Pause ganz ausserhalb des simulierten Zeitraums, ist nach leer –
+     und Math.max() ueber nichts ist -Infinity. Gedruckt wurde das trotzdem, als
+     waere es eine Messung. */
+  if (!nach.length) {
+    console.log(`Pause Tag ${von}-${bis}: liegt ausserhalb der ${TAGE} simulierten Tage – nicht gemessen`);
+    continue;
+  }
   const frei = nach.find(r => r.rueckstand < DECKEL);
   const dauer = frei ? frei.tag - bis : null;
   const hoch = Math.max(...nach.slice(0, 40).map(r => r.rueckstand));

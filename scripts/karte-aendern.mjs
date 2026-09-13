@@ -139,8 +139,22 @@ export function aendere(id, feld, wert) {
    Argument dasteht. Sonst startet der Aufruf mit, sobald ein anderes Skript
    kennung() oder aendere() importiert und selbst ein Argument hat; genau das
    ist mir passiert, und die Auswertungsdatei landete als Auftragsdatei hier. */
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href && process.argv[2]) {
-  const auftraege = JSON.parse(readFileSync(process.argv[2], 'utf8'));
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  /* Der Waechter auf process.argv[2] stand frueher im selben &&-Ausdruck: Ein
+     Aufruf ohne Auftragsdatei tat wortlos nichts und endete mit 0 – nicht zu
+     unterscheiden von „alles erledigt". Und eine leere Auftragsliste meldete
+     „0 Aenderungen – jetzt npm test und npm run build", also einen Erfolg. */
+  const pfad = process.argv[2];
+  if (!pfad) {
+    console.error('Aufruf: node scripts/karte-aendern.mjs <auftrag.json>');
+    console.error('  [{ "id": "spo-…", "feld": "t", "wert": "…" }, …]');
+    process.exit(1);
+  }
+  const auftraege = JSON.parse(readFileSync(pfad, 'utf8'));
+  if (!Array.isArray(auftraege) || !auftraege.length) {
+    console.error(`${pfad}: keine Auftraege – erwartet eine nicht leere Liste`);
+    process.exit(1);
+  }
   for (const zeile of aendereAlle(auftraege)) console.log(zeile);
   console.log(`${auftraege.length} Aenderungen – jetzt npm test und npm run build`);
 }

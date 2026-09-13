@@ -311,9 +311,20 @@ for (const c of CARDS) {
    Loesungen: Welche zwei Zahlen passen zu Summe und Produkt?"); getroffen wird
    nur, was von vorn bis hinten nichts als eine Frage ist. */
 const FRAGEWORT = /^(Wer|Was|Wie|Wo|Wann|Warum|Weshalb|Wieso|Welche[rsnm]?|Wieviel|Woher|Wohin|Wodurch|Wofuer|Wofür|Ist|Sind|War|Waren|Hat|Haben|Kann|Darf|Muss|Gibt|Nenne|Nennt)\b/;
+/* Die Kartenseite hing frueher mit an FRAGEWORT. Eine geschlossene Wortliste
+   entscheidet dann darueber, ob ein Fund gemeldet wird – „Erklaere den
+   Unterschied zwischen Masse und Gewicht?" faellt still durch, weil „Erklaere"
+   nicht draufsteht. Verlaengern hilft nicht: Dieselbe Liste wird weiter unten in
+   der GEGENRICHTUNG gebraucht, wo ein Treffer „in Ordnung" heisst; jedes Wort
+   mehr macht dort die Merkanker-Pruefung nachgiebiger.
+   Also die Gestalt statt der Woerter: Was von vorn bis hinten ein einziger Satz
+   mit Fragezeichen ist, ist eine Frage – ganz gleich, womit es anfaengt. Punkt,
+   Ausrufezeichen, Doppelpunkt, Semikolon und Gedankenstrich trennen eine
+   Rueckfrage MITTEN im Text ab, und die bleibt erlaubt. Gemessen ueber den
+   ganzen Bestand: derselbe Stand wie vorher, null neue Treffer. */
 for (const c of CARDS) {
   const t = String(c.t || '').trim();
-  if (t.endsWith('?') && FRAGEWORT.test(t) && !/[.!]/.test(t.slice(0, -1))) {
+  if (t.endsWith('?') && !/[.!:;–—]/.test(t.slice(0, -1))) {
     fail(`${c.id}: das Kontextfeld ist eine Frage, kein Kontext – „${t}"`);
   }
 }
@@ -485,9 +496,18 @@ for (const c of CARDS) {
   }
 }
 
-const wortmenge = (t) => new Set(norm(t).split(' ').filter(w => w.length > 4));
+/* Zwei Schwellen haben diese Pruefung blind gemacht. „Woerter laenger als vier
+   Zeichen" wirft bei kurzen Fragen fast alles weg, und „weniger als drei Woerter
+   -> Ueberlappung 0" macht daraus ein hartes Nein: 335 der 2.321 Karten (14 %)
+   konnten grundsaetzlich nicht als Dublette gemeldet werden, darunter „Wann fiel
+   Konstantinopel an die Osmanen?" und „Nach wem ist Amerika benannt?". Gemessen:
+   Mit laenger als drei Zeichen und einer leeren statt einer duennen Menge als
+   Ausschluss meldet die Pruefung ueber den ganzen Bestand keinen einzigen neuen
+   Treffer – aber eine eingebaute Dublette der Konstantinopel-Karte faengt sie,
+   die alte Fassung nicht. */
+const wortmenge = (t) => new Set(norm(t).split(' ').filter(w => w.length > 3));
 const ueberlappung = (a, b) => {
-  if (a.size < 3 || b.size < 3) return 0;
+  if (a.size === 0 || b.size === 0) return 0;
   let g = 0;
   for (const w of a) if (b.has(w)) g++;
   return g / (a.size + b.size - g);

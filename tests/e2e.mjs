@@ -26,7 +26,7 @@ for (const p of ['playwright', '/opt/node22/lib/node_modules/playwright/index.mj
 }
 if (!playwright) {
   const erlaubt = process.env.OHNE_BROWSER === '1';
-  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 188 Prüfungen gelaufen'}.`);
+  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 190 Prüfungen gelaufen'}.`);
   if (importFehler && importFehler.code !== 'ERR_MODULE_NOT_FOUND') {
     console.log(`  Der Import scheiterte nicht am fehlenden Paket: ${importFehler.message}`);
   }
@@ -55,6 +55,20 @@ await new Promise(r => server.listen(PORT, r));
 const URL_BASE = `http://localhost:${PORT}`;
 
 /* ---- Kleines Prüfgerüst ---- */
+const errs = [], absichtlicheFehler = [];
+/* Die beiden Horcher hingen frueher nur an der ersten Seite. Die Pruefung „keine
+   Fehler in der Konsole" am Dateiende sah damit 1 von 30 Seiten – jeder Fehler in
+   einem der Nebenkontexte blieb ungesehen. horche() haengt sie ueberall an.
+   Gleich beim ersten Lauf hat das zwei Meldungen ans Licht geholt, die beide
+   gewollt sind: Ein Abschnitt liefert absichtlich kaputtes JavaScript aus und
+   einer eine 404. Solche Seiten sagen das mit dem zweiten Argument an – und
+   werden dann daran gemessen, dass sie wirklich brechen. */
+const horche = (p, absichtlich = false) => {
+  const ziel = absichtlich ? absichtlicheFehler : errs;
+  p.on('pageerror', (e) => ziel.push('pageerror: ' + e.message));
+  p.on('console', (m) => { if (m.type() === 'error') ziel.push('console: ' + m.text()); });
+  return p;
+};
 let failed = 0, passed = 0;
 const check = (name, cond, extra = '') => {
   if (cond) { passed++; console.log(`  ok   ${name}`); }
@@ -64,10 +78,7 @@ const group = (t) => console.log(`\n${t}`);
 
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'allow' });
-const page = await ctx.newPage();
-const errs = [];
-page.on('pageerror', e => errs.push('pageerror: ' + e.message));
-page.on('console', m => { if (m.type() === 'error') errs.push('console: ' + m.text()); });
+const page = horche(horche(await ctx.newPage()));
 
 /* Laeuft im Browser: sucht Textknoten, loest den tatsaechlichen Hintergrund ueber
    die Elternkette auf (Verlaeufe eingeschlossen) und meldet alles unter der Schwelle. */
@@ -157,8 +168,13 @@ try {
     ? await page.locator('.opt.wrong .k use[href="#i-schliessen"]').count() === 1
     : true;
   check('falsch gewaehlte Option traegt ein Kreuz', falschMark);
+  /* every() ueber eine leere Liste ist wahr. Findet der Waehler .opt.dim
+     nichts mehr – umbenannte Klasse, geaenderte Rueckmeldung –, bestand die
+     Pruefung, ohne einen einzigen Buchstaben angesehen zu haben. */
+  const uebrig = await page.locator('.opt.dim .k').allInnerTexts();
   check('uebrige Optionen behalten ihren Buchstaben',
-    (await page.locator('.opt.dim .k').allInnerTexts()).every(t => /^[ABCD]$/.test(t.trim())));
+    uebrig.length >= 2 && uebrig.every(t => /^[ABCD]$/.test(t.trim())),
+    `${uebrig.length} gedimmte Optionen: ${uebrig.join(', ')}`);
   await page.click('#next');
   await settle();
   const s1 = await stored();
@@ -178,9 +194,17 @@ try {
   await page.keyboard.press('2');
   await page.waitForSelector('#next');
   check('Zifferntaste wählt eine Option', await page.locator('.opt[disabled]').count() === 4);
+  /* Hier stand check('Enter blättert weiter', true) – eine Konstante. Die
+     Tastensteuerung konnte vollstaendig tot sein: waitForSelector fand die
+     Auswahl der GERADE beantworteten Karte und lief sofort durch. Jetzt wird
+     gefragt, was gemeint war: Hat sich der Bildschirm bewegt? */
+  const qVorTaste = await page.locator('.q').innerText();
   await page.keyboard.press('Enter');
   await page.waitForSelector('.opt, #reveal, .done-wrap');
-  check('Enter blättert weiter', true);
+  await settle();
+  const weiter = await page.locator('.done-wrap').count() === 1
+    || (await page.locator('.q').innerText()) !== qVorTaste;
+  check('Enter blättert weiter', weiter, `Frage vorher und nachher: „${qVorTaste.slice(0, 40)}"`);
 
   group('Einheit beenden und Rückblick');
   for (let i = 0; i < 40 && !(await page.locator('.done-wrap').count()); i++) {
@@ -209,7 +233,16 @@ try {
     check('Aufdecken im Rueckblick zeigt die Loesung',
       await page.locator('[id^="rb-"]:not([hidden])').count() >= 1);
   } else {
-    check('Rueckblick ohne verfehlte Karten braucht keine Aufdecker', true);
+    /* Hier stand check(..., true) – eine Konstante, die als bestandene Pruefung
+       gezaehlt wurde und im Protokoll von einer echten nicht zu unterscheiden
+       war. Ob dieser Zweig ueberhaupt laeuft, haengt am Zufall: Die Schleife
+       darueber klickt blind. Jetzt stehen hier zwei echte Pruefungen, und zwar
+       genau zwei – sonst schwankt die Gesamtzahl zwischen den Durchlaeufen und
+       der Boden am Dateiende wuerde mal greifen, mal nicht. */
+    check('ohne verfehlte Karten fuehrt der Rueckblick keine Loesungszeile',
+      await page.locator('[id^="rb-"]').count() === 0);
+    check('der Abschlussbildschirm steht trotzdem',
+      await page.locator('.done-wrap').count() === 1);
   }
   await page.click('#home');
   await page.waitForSelector('.hero');
@@ -255,7 +288,11 @@ try {
     await page.evaluate(() => [...document.querySelectorAll('.sr-only')]
       .some(n => /Tagen gelernt/.test(n.textContent))));
   check('Fortschrittsbalken sind sichtbar',
-    (await page.evaluate(() => [...document.querySelectorAll('.trow .bar')].every(b => b.getBoundingClientRect().height > 4))));
+    (await page.evaluate(() => {
+      const b = [...document.querySelectorAll('.trow .bar')];
+      // Ohne die Mindestzahl ist die Behauptung bei null Balken trivial wahr.
+      return b.length >= 9 && b.every(x => x.getBoundingClientRect().height > 4);
+    })));
 
   group('Themen und Einstellungen');
   await page.click('[data-view="topics"]');
@@ -295,7 +332,7 @@ try {
      Markierte. */
   {
     const wctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const wp = await wctx.newPage();
+    const wp = horche(await wctx.newPage());
     await wp.goto(URL_BASE, { waitUntil: 'networkidle' });
     /* Das Tagespensum hochsetzen, sonst ist der Tagesplan nach zwanzig Karten
        aufgebraucht - „Weitermachen" fiele auf die Wackelkandidaten zurueck, und
@@ -367,8 +404,10 @@ try {
   check('Schwerpunkt lässt sich wieder abwählen', !(await stored()).settings.focus);
 
   check('Themenschalter melden ihren Zustand',
+    await page.locator('[data-tog]').count() === 9 &&
     await page.evaluate(() => [...document.querySelectorAll('[data-tog]')]
-      .every(b => b.getAttribute('aria-pressed') === String(b.classList.contains('on')))));
+      .every(b => b.getAttribute('aria-pressed') === String(b.classList.contains('on')))),
+    `${await page.locator('[data-tog]').count()} Schalter gefunden, erwartet 9`);
   await page.selectOption('#npd', '20');
   await settle();
   check('Einstellung wird sofort gespeichert', (await stored()).settings.newPerDay === 20);
@@ -382,7 +421,7 @@ try {
   {
     const octx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE',
       serviceWorkers: 'block' });
-    const op = await octx.newPage();
+    const op = horche(await octx.newPage());
     await op.goto(URL_BASE, { waitUntil: 'networkidle' });
     await op.waitForSelector('#app:not([hidden])', { timeout: 15000 });
     check('die App startet auch ohne Service Worker',
@@ -403,7 +442,7 @@ try {
      nach unten, obwohl unter fünfzehn Sekunden naturgemäß geraten wird. */
   {
     const dctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const dp = await dctx.newPage();
+    const dp = horche(await dctx.newPage());
     await dp.goto(URL_BASE, { waitUntil: 'networkidle' });
     const plan = await dp.locator('.hero h1').innerText();
     await dp.locator('.nav-btn[data-view="duel"]').click();
@@ -519,7 +558,7 @@ try {
      Pastelltoene auf weissem Grund bei 1,3:1 landeten. */
   for (const schema of ['light', 'dark']) {
     const kctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', colorScheme: schema });
-    const kpage = await kctx.newPage();
+    const kpage = horche(await kctx.newPage());
     await kpage.goto(URL_BASE, { waitUntil: 'networkidle' });
     await kpage.evaluate((k) => {
       const r = JSON.parse(localStorage.getItem(k) || '{}');
@@ -593,7 +632,7 @@ try {
     const funde = new Map();
     for (const schema of ['light', 'dark']) {
       const sctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', colorScheme: schema });
-      const spage = await sctx.newPage();
+      const spage = horche(await sctx.newPage());
       await spage.goto(URL_BASE, { waitUntil: 'networkidle' });
       const wege = [
         async () => {},
@@ -623,7 +662,7 @@ try {
      gibt - und die Einheit ist laenger als angekuendigt. */
   {
     const nctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const np = await nctx.newPage();
+    const np = horche(await nctx.newPage());
     await np.goto(URL_BASE, { waitUntil: 'networkidle' });
     await np.evaluate((k) => {                       // freies Abrufen erzwingen
       const st = JSON.parse(localStorage.getItem(k) || '{}');
@@ -670,7 +709,7 @@ try {
   {
     const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
     const uctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const up2 = await uctx2.newPage();
+    const up2 = horche(await uctx2.newPage());
     await up2.goto(URL_BASE, { waitUntil: 'networkidle' });
     await up2.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await up2.waitForSelector('.opts');
@@ -709,7 +748,7 @@ try {
      Rendern den Merkanker-Tag) ueberschrieb die ehrliche Meldung. */
   {
     const zctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const A = await zctx.newPage();
+    const A = horche(await zctx.newPage());
     await A.goto(URL_BASE, { waitUntil: 'networkidle' });
     await A.evaluate((k) => {
       const st = JSON.parse(localStorage.getItem(k) || '{}');
@@ -718,7 +757,7 @@ try {
       localStorage.setItem(k, JSON.stringify(st));
     }, KEY);
     await A.reload({ waitUntil: 'networkidle' });
-    const B = await zctx.newPage();
+    const B = horche(await zctx.newPage());
     await B.goto(URL_BASE, { waitUntil: 'networkidle' });
 
     await A.bringToFront();
@@ -754,7 +793,7 @@ try {
      getan haette. */
   {
     const rctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const R = await rctx.newPage();
+    const R = horche(await rctx.newPage());
     await R.goto(URL_BASE, { waitUntil: 'networkidle' });
     const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
     await R.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
@@ -772,7 +811,7 @@ try {
     await R.waitForSelector('#again', { timeout: 10000 });
     check('der Rueckblick steht nach der Runde', await R.locator('#again').count() === 1);
 
-    const Z = await rctx.newPage();                 // zweiter Tab schreibt
+    const Z = horche(await rctx.newPage());                 // zweiter Tab schreibt
     await Z.goto(URL_BASE, { waitUntil: 'networkidle' });
     await Z.locator('#searchBtn').click();
     await Z.waitForTimeout(400);
@@ -797,7 +836,7 @@ try {
      dagegen unmittelbar, ob die Pause angerechnet wurde. */
   {
     const dctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const dp2 = await dctx2.newPage();
+    const dp2 = horche(await dctx2.newPage());
     await dp2.goto(URL_BASE, { waitUntil: 'networkidle' });
     await dp2.locator('nav button[data-view="duel"]').click();
     await dp2.waitForTimeout(300);
@@ -836,7 +875,7 @@ try {
      DNA-Karten landeten auf Platz drei und vier. */
   {
     const sctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const sp = await sctx.newPage();
+    const sp = horche(await sctx.newPage());
     await sp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await sp.locator('#searchBtn').click();
     await sp.waitForSelector('#q');
@@ -871,8 +910,8 @@ try {
       ['kaputte Kartendatei', '**/data/spo.js', /nicht geladen/],
     ]) {
       const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'block' });
-      const bp = await bctx.newPage();
-      bp.on('pageerror', () => { /* genau darum geht es hier */ });
+      const bp = horche(await bctx.newPage(), true);   // bricht mit Absicht
+      const fehlerVorher = absichtlicheFehler.length;
       await bp.route(muster, (route) => {
         if (name === 'fehlende Datei') return route.fulfill({ status: 404, body: 'weg' });
         return route.fulfill({ status: 200, contentType: 'text/javascript', body: 'export default [ kein gueltiges JS' });
@@ -883,6 +922,13 @@ try {
       check(`${name}: der Startbildschirm sagt Bescheid`, erwartet.test(txt), txt.slice(0, 60));
       check(`${name}: es gibt einen Knopf zum Neuladen`, await bp.locator('#bootNeu').count() === 1);
       check(`${name}: kein falsches Versprechen mehr`, !/startet die App sofort/.test(txt));
+      /* Der Fehler wurde bisher nur verschluckt. Dass die Vorrichtung ueberhaupt
+         etwas kaputt macht, hat niemand geprueft – faellt die Umleitung eines
+         Tages aus, laedt die App normal und alle drei Pruefungen darueber messen
+         den Normalfall. */
+      check(`${name}: die Vorrichtung bricht wirklich etwas`,
+        absichtlicheFehler.length > fehlerVorher,
+        'kein einziger Konsolen- oder Seitenfehler – die Umleitung greift nicht');
       await bctx.close();
     }
   }
@@ -895,7 +941,7 @@ try {
      Runde zurueckgehalten: Mitten in der Runde kann es ohnehin nichts bewirken. */
   {
     const tctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const tp = await tctx.newPage();
+    const tp = horche(await tctx.newPage());
     await tp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await tp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await tp.waitForSelector('.sess-body');
@@ -943,7 +989,7 @@ try {
      war bis zum naechsten vollstaendigen Neuladen verschwunden. */
   {
     const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const bp = await bctx.newPage();
+    const bp = horche(await bctx.newPage());
     await bp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await bp.evaluate(() => {
       const d = document.createElement('div');
@@ -970,7 +1016,7 @@ try {
      gerade gelesen hat. Ohne Eingabe muss deshalb vorher eine Festlegung fallen. */
   {
     const fctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const fp = await fctx.newPage();
+    const fp = horche(await fctx.newPage());
     await fp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await fp.evaluate((k) => {
       const st = JSON.parse(localStorage.getItem(k) || '{}');
@@ -1021,7 +1067,7 @@ try {
      Tastendruck – und ein Anker von vor sieben Anzeigetagen kommt zurueck. */
   {
     const mctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const mp = await mctx.newPage();
+    const mp = horche(await mctx.newPage());
     await mp.goto(URL_BASE, { waitUntil: 'networkidle' });
     check('nur ein Merkanker, solange die Rueckschau nicht reicht',
       await mp.locator('.card.fact').count() === 1);
@@ -1061,7 +1107,7 @@ try {
   {
     const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
     const dctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const dp = await dctx.newPage();
+    const dp = horche(await dctx.newPage());
     await dp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await dp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await dp.waitForSelector('.sess-body');
@@ -1095,7 +1141,7 @@ try {
   {
     const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
     const uctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const up = await uctx.newPage();
+    const up = horche(await uctx.newPage());
     await up.goto(URL_BASE, { waitUntil: 'networkidle' });
     await up.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await up.waitForSelector('.sess-body');
@@ -1146,7 +1192,7 @@ try {
      beim ersten Aufruf im Zug wie abgestuerzt. */
   {
     const lctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'block' });
-    const lp = await lctx.newPage();
+    const lp = horche(await lctx.newPage());
     const cdp = await lctx.newCDPSession(lp);
     await cdp.send('Network.emulateNetworkConditions', {
       offline: false, latency: 300,
@@ -1171,7 +1217,7 @@ try {
      früh nerven noch stehenbleiben, nachdem gesichert wurde. */
   {
     const sctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', acceptDownloads: true });
-    const sp = await sctx.newPage();
+    const sp = horche(await sctx.newPage());
     await sp.goto(URL_BASE, { waitUntil: 'networkidle' });
     const setze = (patch) => sp.evaluate(([k, p]) => {
       const st = JSON.parse(localStorage.getItem(k) || '{}');
@@ -1250,7 +1296,7 @@ try {
      eine ungelesene Karte fest und deckte sie gleich auf. */
   {
     const dctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const dp = await dctx.newPage();
+    const dp = horche(await dctx.newPage());
     await dp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await dp.evaluate((k) => {
       const st = JSON.parse(localStorage.getItem(k) || '{}');
@@ -1284,7 +1330,7 @@ try {
      ist „10.3 s" schlicht falsch. */
   {
     const zctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const zp = await zctx.newPage();
+    const zp = horche(await zctx.newPage());
     await zp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await zp.evaluate((k) => {
       const st = JSON.parse(localStorage.getItem(k) || '{}');
@@ -1305,7 +1351,7 @@ try {
      reichte nicht: Nach fuenf Sekunden lernte man ahnungslos weiter. */
   {
     const vctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const vp = await vctx.newPage();
+    const vp = horche(await vctx.newPage());
     await vp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await vp.waitForSelector('[data-go="daily"]');
     await vp.evaluate((k) => {
@@ -1343,7 +1389,7 @@ try {
       isMobile: true, hasTouch: true, locale: 'de-DE',
       userAgent: devices['iPhone 13'].userAgent
     });
-    const kp = await kctx.newPage();
+    const kp = horche(await kctx.newPage());
     await kp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await kp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await kp.waitForSelector('.sess-body');
@@ -1372,7 +1418,7 @@ try {
      nur zu schauen, ob irgendeine Zahl erscheint. */
   {
     const qctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const qp = await qctx.newPage();
+    const qp = horche(await qctx.newPage());
     await qp.clock.install();
     await qp.goto(URL_BASE, { waitUntil: 'networkidle' });
     check('der Reiter heisst Quiz', /Quiz/.test(await qp.locator('.nav-btn[data-view="duel"]').innerText()));
@@ -1500,7 +1546,7 @@ try {
      „Falsch", und die verblasste Pille versprach im Baum weiter einen Bonus. */
   {
     const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const bp = await bctx.newPage();
+    const bp = horche(await bctx.newPage());
     await bp.clock.install();
     await bp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await bp.locator('.nav-btn[data-view="duel"]').click();
@@ -1552,7 +1598,7 @@ try {
      vollwertige abgelegt: {p:15, m:15} stand im Balkenverlauf neben 145/180. */
   {
     const actx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
-    const ap = await actx.newPage();
+    const ap = horche(await actx.newPage());
     await ap.clock.install();
     await ap.goto(URL_BASE, { waitUntil: 'networkidle' });
     await ap.locator('.nav-btn[data-view="duel"]').click();
@@ -1619,7 +1665,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 188;
+const MINDESTENS = 190;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

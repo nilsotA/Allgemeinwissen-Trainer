@@ -62,8 +62,17 @@ files = files.filter(f => !NUR_FUER_DIE_WERKSTATT.has(f));
    Startbildschirm legt, und an den Startbildschirm-Splash. Sie im Voraus zu
    laden verdoppelte beinahe die Datenmenge des ersten Besuchs. Wer sie doch
    anfordert, bekommt sie ueber den fetch-Handler und danach aus dem Bestand. */
-const NUR_BEI_BEDARF = /icon-512/;
-const vorab = files.filter(f => !NUR_BEI_BEDARF.test(f));
+/* Frueher ein Muster (/icon-512/). Passt der Name eines Tages nicht mehr –
+   umbenannt, neue Groesse, anderer Ordner –, wandern die 230 KB wortlos in die
+   Vorladeliste zurueck und der erste Besuch kostet das Doppelte. Ein Name, der
+   nicht mehr existiert, faellt jetzt auf. */
+const NUR_BEI_BEDARF = new Set(['./icons/icon-512.png', './icons/icon-512-maskable.png']);
+const fehlend = [...NUR_BEI_BEDARF].filter(f => !files.includes(f));
+if (fehlend.length) {
+  console.error(`Die Ausnahme „nur bei Bedarf" nennt Dateien, die es nicht gibt: ${fehlend.join(', ')}`);
+  process.exit(1);
+}
+const vorab = files.filter(f => !NUR_BEI_BEDARF.has(f));
 
 /* index.html ruft die Kartendateien vorab ab, damit der Browser sie nicht erst
    nach drei Runden Nachladen entdeckt. Diese Liste steht dort von Hand - also

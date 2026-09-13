@@ -73,6 +73,22 @@ test('das Tagesbudget für neue Karten wird eingehalten', () => {
   store.setSetting('newPerDay', 5);
   const q = sess.buildDaily();
   assert.ok(q.filter(x => x.fresh).length <= 5, `${q.filter(x => x.fresh).length} neue Karten trotz Budget 5`);
+
+  /* Der Test lief bisher nur auf frisch zurueckgesetztem Speicher, also mit
+     today().newC === 0. Dort ist newBudget() schlicht newPerDay, und 0 <= 5 zu
+     pruefen erreicht die eigentliche Mechanik gar nicht: den ABZUG der heute
+     schon gelernten Karten. Der Fall „heute schon welche gelernt" kam in keiner
+     der Pruefungen vor. */
+  store.today().newC = 4;
+  assert.equal(sess.newBudget(), 1, 'schon gelernte neue Karten müssen abgezogen werden');
+  assert.equal(sess.buildDaily().filter(x => x.fresh).length, 1,
+    'bei Budget 5 und 4 verbrauchten darf genau eine neue Karte kommen');
+
+  store.today().newC = 7;                       // mehr verbraucht als erlaubt
+  assert.equal(sess.newBudget(), 0, 'ein überschrittenes Budget darf nicht negativ werden');
+  assert.equal(sess.buildDaily().filter(x => x.fresh).length, 0,
+    'ist das Budget aufgebraucht, kommt keine neue Karte mehr');
+  store.today().newC = 0;
 });
 
 test('abgeschaltete Themen tauchen im Tagesplan nicht auf', () => {
@@ -154,6 +170,8 @@ test('ein abgeschaltetes Thema wirkt auch als Schwerpunkt nicht', () => {
   store.setSetting('focus', ['mat']);
   assert.equal(sess.focusCats(), null, 'pausiertes Thema zählt als Schwerpunkt');
   const q = sess.buildDaily();
+  // Ohne diese Zeile ist die Zusicherung bei leerem Plan trivial wahr.
+  assert.ok(q.length > 0, 'Tagesplan leer – die Zusicherung darüber wäre trivial');
   assert.ok(q.every(x => x.card.cat === 'spo'), 'fremdes Thema im Plan');
   store.setSetting('focus', null);
 });
@@ -175,16 +193,25 @@ test('Duell liefert genau zehn verschiedene Karten', () => {
 });
 
 test('Vorschau summiert sich zur Zahl der eingeplanten Wiederholungen', () => {
-  CARDS.slice(0, 40).forEach((c, i) => {
+  /* Frueher: due = heute + (i % 10). Das verteilt gleichmaessig, schliesst
+     Ueberfaellige aus – und geprueft wurde nur Laenge, Vorzeichen und Summe.
+     Damit haette forecast() alles in einen Tag legen oder die Tage vertauschen
+     koennen, ohne dass etwas auffaellt: der ganze Sinn einer Vorschau. Jetzt
+     steht ein unsymmetrischer Plan mit Ueberfaelligen dahinter, und verglichen
+     wird das ganze Feld. */
+  const versatz = [-3, -1, 0, 0, 0, 1, 1, 2, 4, 4, 4, 4, 6, 9, 12];
+  versatz.forEach((v, i) => {
     const cs = schedule(fresh(), GOOD);
-    cs.due = store.todayNum() + (i % 10);
-    store.putCard(c.id, cs);
+    cs.due = store.todayNum() + v;
+    store.putCard(CARDS[i].id, cs);
   });
   const fc = sess.forecast(7);
   assert.equal(fc.length, 7);
   assert.ok(fc.every(n => Number.isInteger(n) && n >= 0));
-  const erwartet = CARDS.slice(0, 40).filter((c, i) => (i % 10) < 7).length;
-  assert.equal(fc.reduce((a, b) => a + b, 0), erwartet);
+  // Ueberfaellige gehoeren auf den heutigen Tag, alles ab Tag 7 faellt heraus.
+  const soll = [0, 0, 0, 0, 0, 0, 0];
+  for (const v of versatz) if (v < 7) soll[Math.max(0, v)]++;
+  assert.deepEqual(fc, soll, `Vorschau ${fc.join(',')} statt ${soll.join(',')}`);
 });
 
 test('Übersicht bleibt in sich stimmig', () => {
@@ -193,6 +220,12 @@ test('Übersicht bleibt in sich stimmig', () => {
   assert.equal(o.total, CARDS.length);
   assert.ok(o.seen <= o.total && o.learned <= o.seen && o.mature <= o.learned);
   assert.ok(o.accuracy >= 0 && o.accuracy <= 1);
+  /* Die Ungleichungskette darueber besteht auch, wenn overview() durchweg 0
+     meldet – 0 <= 0 <= 0 <= 0. Sie sagt dann nichts mehr ueber die Zaehlung,
+     nur noch ueber die Reihenfolge dreier Nullen. Also erst die Zahlen selbst. */
+  assert.equal(o.seen, 20, `20 Karten angefangen, overview meldet ${o.seen}`);
+  assert.ok(o.learned > 0, 'nach einer guten Antwort muss mindestens eine Karte gelernt sein');
+  assert.ok(o.total > 2000, 'die Gesamtzahl muss der Sammlung entsprechen');
 });
 
 test('neue Karten liegen gleichmäßig verteilt, nicht als Block am Ende', () => {
@@ -899,6 +932,16 @@ test('der Bestwert kennt die Runde des anderen Tabs', async () => {
    das am Spieleabend niemand fragt. Es bleibt im Tagestraining, nur der
    Pruefstand laesst es aus, solange die Einstellung aus ist. */
 test('die Quizrunde fragt wie ein Spieleabend, nicht wie ein Staatsexamen', () => {
+  /* Zuerst das Sieb selbst messen. istLehrerwissen prueft c.sub gegen eine von
+     Hand gepflegte Namensliste, und buildQuiz filtert mit derselben Funktion –
+     der Test befragte also das Sieb mit dem Sieb. Faellt ein Name aus der Liste
+     heraus, weil ein Teilgebiet in data/*.js umbenannt wird, rutschen die Karten
+     durch buildQuiz UND gelten nicht mehr als Lehrerwissen: lehrer.length bleibt
+     0, und der Test besteht, waehrend genau das passiert, was er verhindern soll. */
+  const abgedeckt = new Set(CARDS.filter(sess.istLehrerwissen).map(c => c.cat + '/' + c.sub));
+  assert.equal(abgedeckt.size, 13,
+    `LEHRERWISSEN nennt Teilgebiete, die es im Bestand nicht mehr gibt – abgedeckt sind nur: ${[...abgedeckt].sort().join(', ')}`);
+
   const gezogen = [];
   for (let i = 0; i < 30; i++) gezogen.push(...sess.buildQuiz().map(x => x.card));
   const lehrer = gezogen.filter(sess.istLehrerwissen);
