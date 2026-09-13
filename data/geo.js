@@ -211,4 +211,7 @@ export default [
 {q:"In welchem Gebäude in Washington wohnt und arbeitet der US-Präsident?",a:"Das Weiße Haus",s:"Bauwerke",d:1,t:"Der zweite Präsident John Adams zog am 1. November 1800 als erster Bewohner ein – George Washington ist bis heute der Einzige, der nie dort gewohnt hat, denn er starb 1799. Den offiziellen Namen legte 1901 Theodore Roosevelt fest.",w:["Das Kapitol","Das Lincoln Memorial","Das Pentagon"],az:["Weißes Haus","Weisses Haus","White House","Whitehouse"]},
 /* ---------- Ergänzt: Lücken geschlossen ---------- */
 {q:"Auf welchem Breitengrad verläuft der nördliche Polarkreis?",a:"Etwa 66,5° Nord",s:"Welt",d:2,t:"Polarkreis und Wendekreis ergänzen sich zu 90 Grad, denn beide leiten sich aus der Achsneigung ab. Ab dieser Linie geht die Sonne zur Sonnenwende einen ganzen Tag lang nicht unter.",w:["Etwa 60,5° Nord","Etwa 71,5° Nord","Etwa 55,5° Nord"]},
+/* ---------- Ergänzt: Lücken geschlossen ---------- */
+{q:"Wie nennt man eine schmale, steilwandige Meeresbucht, die ein Gletscher in den Fels gehobelt hat?",a:"Fjord",s:"Welt",d:2,t:"Der längste Fjord Europas ist der Sognefjord in Norwegen mit gut 200 Kilometern – an seiner tiefsten Stelle reicht er rund 1.300 Meter unter den Meeresspiegel.",w:["Ria","Lagune","Delta"]},
+{q:"Wie heisst der Wind, der zweimal im Jahr die Richtung wechselt und Südasien die Regenzeit bringt?",a:"Monsun",s:"Welt",d:2,t:"Das Wort kommt vom arabischen „mausim“ für Jahreszeit und kam über das Portugiesische nach Europa.",w:["Passat","Schirokko","Föhn"]},
 ];
