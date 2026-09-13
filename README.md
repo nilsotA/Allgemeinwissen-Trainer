@@ -2567,6 +2567,119 @@ begrenzt die neuen Karten pro Tag, und die Wiederholungslast hängt daran, was a
 wurde – nicht daran, wie groß die Sammlung ist.
 
 
+### Prüfungen, die ohne Prüfgegenstand bestehen
+
+Der gelöschte README war kein Einzelfall, sondern das erste Exemplar einer Klasse: **eine
+Prüfung, die besteht, ohne etwas geprüft zu haben.** Sie ist schlimmer als gar keine, weil
+sie Deckung behauptet, wo keine ist – und weil niemand nachsieht, solange grün dasteht.
+
+Also das ganze Prüfwerk danach abgesucht: acht Blickwinkel (Wachposten, leere Menge, Muster
+ins Leere, triviale Behauptung, eigene Läufer, das große Tor, Werkzeuge, Bau und
+Auslieferung). Jeder Fund musste in einer Kopie **wirklich ausgelöst** werden, und danach
+griffen ihn drei unabhängige Skeptiker mit verschiedenen Linsen an: *Kann der Fall überhaupt
+eintreten? Ist der Durchgang wirklich still, oder fängt ihn ein anderes Tor? Wäre die
+Behebung schlimmer als der Fehler?*
+
+48 Meldungen, 40 nach Entdoppelung, **40 nachgestellt, 34 überleben** – 11 davon schwer.
+Sechs sind gefallen, und die Begründungen sind aufschlussreich: Der Abbruch in
+`make-icons.mjs` etwa ist **nicht still** – er schreibt eine Zeile und der Bau läuft weiter.
+Ein anderer Fall als exit 0 ohne Wort.
+
+#### Der Wachposten, der aus „nicht gelaufen" ein „bestanden" macht
+
+`tests/e2e.mjs` und `tests/offline.mjs` endeten mit `process.exit(0)`, wenn Playwright fehlt.
+In `package.json` hängen die drei Läufe mit `&&` zusammen – exit 0 heißt dort bestanden.
+`npm run test:all` meldete also grün, **ohne dass eine einzige der 190 + 31 Browserprüfungen
+gelaufen wäre**. Der Unterschied zwischen „alles geprüft" und „nichts geprüft" war eine Zeile
+auf stderr, und stderr liest bei grünem Lauf niemand.
+
+Jetzt endet der Lauf mit 1. Wer bewusst ohne Browser arbeitet, setzt `OHNE_BROWSER=1` –
+Überspringen ist eine Entscheidung, die jemand trifft, nicht der Ausgang eines
+fehlgeschlagenen Imports. Dazu ein **Boden unter beiden Läufen**: weniger Prüfungen als
+erwartet ist selbst ein Fehlschlag. Ohne ihn kann die halbe Datei ausfallen, ohne dass etwas
+rot wird – `passed` sinkt einfach.
+
+#### Der Kennungsnachweis, abschaltbar durch Löschen einer Datei
+
+Dieselbe Bauart wie beim README: ein `existsSync`-Wachposten, und im letzten Zweig `warn()`
+statt `fail()`. Warnungen zählen nicht in den Schlusscode. Zweiter stiller Weg: eine leere
+Liste – dann ist `weg = [].filter(…)` garantiert `[]`, und weil alle Kennungen als „neu"
+gelten, kam nicht einmal ein Hinweis heraus.
+
+Nachgestellt und belegt, mit einer wirklich verlorenen Kennung im Bestand: Datei weg → exit 0.
+Datei `[]` → exit 0. Das ist die **einzige** Stelle, die bemerkt, dass eine umformulierte
+Frage ihre Kennung wechselt. Schweigt sie, ist beim nächsten Start jedes Nutzers der Lernstand
+dieser Karte weg – ohne Meldung, ohne Weg zurück.
+
+#### Der Fund, der sich selbst bewiesen hat
+
+Das Konsolenfehler-Tor horchte auf **1 von 30 Seiten**. Beim ersten Lauf mit Horchern auf
+allen dreißig meldete es sofort zwei Fehler – und beide waren gewollt: Ein Abschnitt liefert
+absichtlich kaputtes JavaScript aus, einer eine 404. Die betroffenen Seiten sagen das jetzt an.
+
+Dabei fiel auf, dass **niemand je geprüft hat, ob die Kaputt-Vorrichtung überhaupt etwas
+kaputt macht.** Fällt die Umleitung eines Tages aus, lädt die App normal – und die drei
+Prüfungen darüber messen zufrieden den Normalfall. Das steht jetzt als eigene Prüfung da.
+
+#### Acht Prüfungen über Mengen, die leer sein dürfen
+
+`every()` über nichts ist wahr. Betroffen: *„übrige Optionen behalten ihren Buchstaben"*,
+*„Fortschrittsbalken sind sichtbar"*, *„Themenschalter melden ihren Zustand"*, *„ein
+abgeschaltetes Thema wirkt auch als Schwerpunkt nicht"*, *„in keinem Bestand steht Fremdes
+unter dem Gerüst-Schlüssel"*. Alle fünf verankern jetzt zuerst die Menge.
+
+Dazu zwei hartkodierte Wahrheiten: `check('Enter blättert weiter', true)` ließ eine
+vollständig tote Tastensteuerung durchgehen, weil `waitForSelector` die Auswahl der *gerade
+beantworteten* Karte fand und sofort durchlief. Und ein `else`-Zweig meldete eine bestandene
+Prüfung, ohne eine durchzuführen.
+
+#### Zwei Tests, die das Falsche gemessen haben
+
+*„Karten-IDs hängen nur an der Frage, nicht an der Position"* holte sich per zweitem `import()`
+dieselbe Datei und verglich mit `deepEqual`. ES-Module werden zwischengespeichert: Der zweite
+Import liefert **dasselbe Objekt**. Der Test verglich das Kartenfeld mit sich selbst und wäre
+auch grün geblieben, wenn die Kennung aus der Zeilennummer entstünde. Jetzt wird sie aus dem
+Fragetext nachgerechnet.
+
+*„Die Quizrunde fragt wie ein Spieleabend"* filterte mit `istLehrerwissen` und prüfte dann mit
+`istLehrerwissen` – das Sieb wurde mit dem Sieb befragt. Wird ein Teilgebiet in `data/*.js`
+umbenannt, rutschen seine Karten durch `buildQuiz` **und** gelten nicht mehr als Lehrerwissen:
+Der Zähler bleibt 0, der Test besteht, und genau das passiert, was er verhindern soll. Jetzt
+wird zuerst das Sieb selbst gemessen.
+
+#### Werkzeuge, die Erfolg meldeten, ohne etwas getan zu haben
+
+| | |
+|---|---|
+| `merge-cards.mjs` | machte aus jeder unerwarteten Dateiform eine leere Liste: „0 Karten ergänzt, 0 abgewiesen" – dieselbe Zeile wie bei einer wirklich leeren Datei |
+| | prüfte die erzeugten Zeilen nur auf **Syntax** – und `d:undefined` ist gültiges JavaScript. Eine Karte ohne Stufe kam bis in `data/*.js` |
+| `karte-aendern.mjs` | tat ohne Argument wortlos nichts und endete mit 0; eine leere Auftragsliste meldete „0 Änderungen – jetzt npm test" |
+| `make-sw.mjs` | hängte die Ausnahme „nur bei Bedarf laden" an ein Dateinamensmuster. Passt der Name nicht mehr, wandern 230 KB wortlos in die Vorladeliste |
+| `simulate.mjs` | druckte den Erholungsbericht auch, wenn die Pause außerhalb des simulierten Zeitraums lag: *„Rückstand danach bis −Infinity, nie wieder unter dem Deckel"* – eine erfundene Messung |
+
+#### Die Dublettenprüfung war für 14 % des Bestands blind
+
+Zwei Schwellen zusammen: „Wörter länger als vier Zeichen" wirft bei kurzen Fragen fast alles
+weg, und „weniger als drei Wörter → Überlappung 0" macht daraus ein hartes Nein. **335 der
+2.321 Karten** konnten grundsätzlich nicht als Dublette gemeldet werden – darunter „Wann fiel
+Konstantinopel an die Osmanen?" und „Nach wem ist Amerika benannt?".
+
+Gemessen, bevor geändert wurde: Mit *länger als drei* und einer *leeren* statt einer dünnen
+Menge als Ausschluss meldet die Prüfung über den ganzen Bestand **keinen einzigen neuen
+Treffer** – aber eine eingebaute Dublette der Konstantinopel-Karte fängt sie, die alte Fassung
+nicht.
+
+#### Und die Prüfung, die an einer Wortliste hing
+
+Ob ein Kontextfeld in Wahrheit eine Frage ist, entschied eine geschlossene Liste von
+Fragewörtern. „Erkläre den Unterschied zwischen Masse und Gewicht?" fiel still durch.
+Verlängern half nicht: Dieselbe Liste wird an anderer Stelle in der **Gegenrichtung** gebraucht,
+wo ein Treffer „in Ordnung" heißt – jedes Wort mehr hätte dort die Merkanker-Prüfung
+nachgiebiger gemacht. Jetzt entscheidet die Satzgestalt: Was von vorn bis hinten ein einziger
+Satz mit Fragezeichen ist, ist eine Frage. Doppelpunkt, Semikolon und Gedankenstrich trennen
+eine Rückfrage mitten im Text ab, und die bleibt erlaubt.
+
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
