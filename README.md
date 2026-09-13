@@ -2503,6 +2503,70 @@ gegen die Lücken der **Sammlung**, nicht gegen die des Prüfsatzes. Was der Sat
 nur der zufällige Überschneidungsanteil – und genau deshalb bleibt die Zahl ehrlich.
 
 
+### Zweiter Durchgang – und vier Ablenker, die auf ihre eigene Frage passten
+
+Die erste Suche war zu eng. Sie kannte nur die Frageform *„Was ist X?"*; dieselbe Klasse
+steckt auch in *„Was besagt X?"*, *„Was misst X?"*, *„Was macht X?"*, *„Wofür steht X?"*.
+77 weitere Karten, deren Begriff die Sammlung nirgends abfragt – Richterskala,
+Energieerhaltungssatz, Kernfusion, Wärmepumpe, Höhensatz, Goldbachsche Vermutung.
+
+55 geschrieben, **53 überlebt**, 23 gar nicht erst geschrieben. Die beiden Ablehnungen sind
+lehrreich: eine *verdeckte* Abkürzungsauflösung rückwärts (die Frage war Wort für Wort die
+deutsche Übersetzung von „Massively Multiplayer Online Role-Playing Game"), und ein
+Kontextsatz, der behauptete, nur Monotonie mache eine Funktion umkehrbar – was in beide
+Richtungen nicht stimmt.
+
+Der Zusammenführungsschritt ist repariert. Das Urteilsschema trennt jetzt Feld und Wert, und
+ein Wert, der nach Prosa aussieht, wird abgewiesen statt eingetragen. Das Ergebnisfeld
+`nachbesserungen_verworfen` blieb leer: Diesmal ist nichts Schiefes durchgekommen.
+
+Die Blindprobe – wieder beweisbar blind, sechs Agenten, sechs Lesezugriffe, keiner ins
+Projektverzeichnis – ergab erneut **53 von 53 richtig**. Aber 35 Einwände, deutlich schärfer
+als in Runde eins. **Neunzehn waren echte Mängel, und bei vieren passte ein Ablenker der
+Karte auf ihre eigene Frage:**
+
+- Die Richterskala-Karte fragte nach der *Stärke* von Erdbeben – genau das gibt auch die
+  **Mercalliskala** an, die als Ablenker danebenstand. Jetzt fragt sie nach der
+  freigesetzten Energie.
+- Der Augsburger Religionsfriede gab das Konfessionsrecht nicht *erstmals*; der **Passauer
+  Vertrag** von 1552 nahm es vorweg – und stand als Ablenker daneben. Jetzt nennt die Frage
+  das Jahr 1555.
+- Der Energieerhaltungssatz schloss eine Maschine aus, „ohne dass ihr von außen etwas
+  zugeführt wird". Das passt auch auf das Perpetuum mobile zweiter Art, und der
+  **Entropiesatz** stand als Ablenker daneben.
+- Die Unschärferelation sagte „nie gleichzeitig **bestimmbar**" und transportierte damit das
+  verbreitete Missverständnis, es gehe um die Störung durch die Messung – obwohl der eigene
+  Kontexttext genau das Gegenteil erklärt.
+
+Das ist die schärfste Form des Fehlers, den dieses Projekt kennt: Die Karte bestraft den, der
+mehr weiß. Und keine mechanische Prüfung findet ihn – die Ablenker sind ja sachlich falsch,
+sie passen nur auf eine ungenau gestellte Frage.
+
+Dazu fünfzehn weitere Korrekturen: Trägheit braucht die **resultierende** Kraft (auch
+Kräfte, die sich aufheben, ändern nichts); Archimedes gilt für Medien und nicht nur für
+Flüssigkeiten; das Pariser Abkommen **verpflichtet niemanden** auf zwei Grad, verbindlich
+sind nur die selbstgesetzten Ziele; Artikel 5 verpflichtet nicht zu Beistand, jeder
+Bündnispartner entscheidet selbst; und Flow entsteht nicht im *Gleichgewicht* von Anforderung
+und Können, sondern wenn die Anforderung es gerade eben übersteigt.
+
+Die Loschmidt-Zahl ist als Nebenschreibweise der Avogadro-Konstante wieder raus: Die
+Loschmidt-Konstante ist heute eine andere Größe – Teilchen je Volumen statt je Mol.
+
+Von 105 genannten Alternativen nimmt der Bewerter jetzt **68 statt 53 an, 50 auf 65 Prozent**.
+Die Schreiber hatten diesmal von sich aus großzügige `az`-Listen mitgeliefert – die Lehre aus
+Runde eins hat also schon beim Schreiben gewirkt.
+
+| | vorher | nachher |
+|---|---|---|
+| Karten | 2.268 | **2.321** |
+| Abdeckung Satz 4 | 197/286 (69 %) | **200/286 (70 %)** |
+| Tageslast | 102,8 | **101,2** |
+
+Die Tageslast ist bei 53 Karten mehr **gesunken**. Das ist kein Messfehler: Der Deckel
+begrenzt die neuen Karten pro Tag, und die Wiederholungslast hängt daran, was angefangen
+wurde – nicht daran, wie groß die Sammlung ist.
+
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
