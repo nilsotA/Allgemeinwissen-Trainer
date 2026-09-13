@@ -385,11 +385,11 @@ gegen den alten Stand fehlschlägt.
 
 ## Auf dem iPhone installieren
 
-1. Die Netlify-URL in **Safari** öffnen (nicht Chrome – nur Safari kann installieren).
+1. Die Adresse der veröffentlichten Seite in **Safari** öffnen (nicht Chrome – nur Safari kann installieren).
 2. Teilen-Symbol **⬆︎** → **Zum Home-Bildschirm**.
 3. Ab dann startet die App im Vollbild und funktioniert auch ohne Netz.
 
-## Auf Netlify veröffentlichen
+## Veröffentlichen – Netlify oder Vercel
 
 **Live:** <https://merry-mooncake-4ddc2a.netlify.app/>
 
@@ -409,6 +409,12 @@ Die App braucht keinen Build-Prozess und keine Abhängigkeiten.
 Achtung: So eine Seite holt sich **nie** etwas von GitHub. Sie bleibt für immer auf dem Stand
 des hochgeladenen Ordners, egal wie oft danach gepusht wird.
 
+**Auf Vercel:** Repository importieren, Branch wie oben wählen, sonst nichts einstellen –
+`vercel.json` bringt alles mit: Bauschritt `node scripts/make-sw.mjs`, Ausgabeverzeichnis `.`
+und dieselben Kopfzeilen wie `netlify.toml`. Falls im Projekt ein *Framework Preset* gesetzt
+ist, muss es **Other** heißen. Ohne `vercel.json` bricht der Deploy ab: Vercel sucht einen
+Ordner `public`, den es hier nicht gibt.
+
 ### Welche Fassung liegt gerade draußen?
 
 Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
@@ -426,7 +432,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 140 Einheitentests plus Inhaltsprüfung
+npm test           # 157 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 188 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 29 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
@@ -2294,6 +2300,123 @@ Der Satz ist eingefroren und wird nicht nachgebessert. Sobald Karten gegen seine
 geschrieben sind, misst er nur noch, ob das Abschreiben geklappt hat — das ist bei allen vier
 Sätzen so und der Grund, warum es überhaupt vier gibt. Die 60 % sind der ehrliche Stand vor der
 Ergänzung.
+
+### Die Lücken geschlossen: 41 → 18, in zwei Runden
+
+Der vierte Prüfsatz nannte 41 Fragen, deren Antwort **nirgends** im Bestand steht. Gegen
+die wurde in zwei Runden geschrieben – und der Vergleich der beiden ist lehrreicher als
+die Karten selbst.
+
+**Runde eins:** Zehn Agenten, je eine Karte zur Lücke und eine zum Nachbarfakt, danach
+zwei unabhängige Widerleger je Paket – einer auf die **Wahrheit**, mit Recherchepflicht,
+einer auf die **Bauart**. Von 82 geschriebenen Karten überlebten 23. Ausbeute **28 %**.
+
+Die Ablehnungen sind der eigentliche Ertrag:
+
+- Eine Karte erklärte 23,5 Grad als Neigung der Erdachse *gegen die Bahnebene*. Das ist
+  die Neigung gegen die Senkrechte darauf; gegen die Bahnebene sind es 66,5 Grad –
+  ausgerechnet der Wert, den die zweite Karte derselben Lieferung als Polarkreis lehrt.
+  Der Merksatz hätte beide Karten systematisch verwechselbar gemacht. 0:2.
+- „Schokoladenbomber" als Ablenker neben „Rosinenbomber": in Wahrheit ein zweiter
+  gebräuchlicher Name für dieselben Flugzeuge. Genau der Fehler, der den bestraft, der
+  mehr weiß.
+- Bei der Waterloo-Karte waren alle drei Ablenker Könige, die Frage fragte nach einem
+  Kaiser – die Antwort war die einzige formal mögliche Option.
+- „Auf welche **Atlantik**insel wurde er verbannt?" schloss den Ablenker „Elba" selbst aus.
+- Zwei Ablenker der Luftbrücken-Karte waren frei erfundene Begriffe. Wer einen
+  feststehenden Namen sucht, erkennt den echten an der Form.
+
+Ein Paket wurde vollständig verworfen, 16 von 16.
+
+**Runde zwei** änderte zwei Dinge: Die Schreiber durften in den Bestand sehen – die
+Blindheit war für den *Prüfsatz* nötig, fürs *Kartenschreiben* war sie schädlich –, und
+sie bekamen die acht Ablehnungsmuster aus Runde eins als Regeln. Statt 82 Karten wurden
+33 geschrieben, davon überlebten 14: **42 %** bei deutlich weniger Ausschuss. Ein
+Schreiber hat die Umkehrung einer vorhandenen Karte ausdrücklich *nicht* geschrieben und
+stattdessen den unbesetzten Nachbarfakt genommen – genau das war das Ziel.
+
+Die Widerleger sind trotzdem streng geblieben. Bestes Beispiel: eine Karte nach der
+Gradzahl des Wendekreises. Sachlich einwandfrei, Bauart sauber, und der Schreiber hatte
+selbst offengelegt, dass „23,5 Grad Nord" im Kontexttext einer vorhandenen Karte steht –
+und sie für unschädlich erklärt, weil keine Karte die Zahl *abfragt*. Beide Widerleger
+haben genau das kassiert: Gemessen wird der Bestand am Wissen, nicht an der Frageform.
+
+Daraus folgte eine Korrektur am Messgerät. „Etwa 23,5° Nord" galt als echte Lücke, obwohl
+die Zahl im Kontexttext steht – allein wegen des Wortes „etwa". Die Lückenliste lässt
+unscharfe Zusätze jetzt weg. Die *Zählung* der Abdeckung bleibt streng; hier geht es nur
+um die Frage, ob jemand die Karte schon geschrieben hat.
+
+| | nach Satz 4 | Runde 1 | Runde 2 |
+|---|---|---|---|
+| Abdeckung (von 286) | 173 (60 %) | 184 (64 %) | **193 (67 %)** |
+| echte Lücken | 41 | 29 | **18** |
+| Karten | 2.127 | 2.150 | **2.164** |
+| Alltag | 11/40 | 16/40 | **20/40** |
+
+Und die Zahl, auf die es dabei ankommt: Die **Tageslast ist nicht gestiegen** – 101,9 vor
+den Ergänzungen, 101,1 danach, bei 37 Karten mehr. Genau dafür ist der Deckel da.
+
+### Was der erste Bau auf Vercel sichtbar gemacht hat
+
+Der Deploy brach ab: *No Output Directory named „public" found*. Das war eine fehlende
+Angabe – Vercel sucht einen Ordner `public`, die App liegt im Wurzelverzeichnis.
+`vercel.json` sagt das jetzt und spiegelt im Übrigen `netlify.toml`: dieselben Kopfzeilen,
+derselbe Bauschritt, kein Umschreiben von Adressen (`cleanUrls` und `trailingSlash`
+ausdrücklich **aus**, denn der Service Worker legt exakte Pfade ab – ein umgeschriebener
+Pfad legte ihm untergeschobenes HTML als JS-Modul in den Bestand).
+
+Im Bauprotokoll stand aber noch etwas: **„27 Dateien vorgeladen"**, während es hier 25
+sind – und eine andere Fassungskennung, `2af30b3edc` gegen `aa1d814849`. Dieselbe Quelle,
+zwei Ergebnisse.
+
+Die Ursache: `make-sw.mjs` durchsuchte das *ganze* Verzeichnis und schloss eine Handvoll
+Namen aus. Beim Bauen legt npm eine `package-lock.json` an, und die stand damit prompt in
+der Vorladeliste. Das ist kein Schönheitsfehler: Der Service Worker ruft die Liste beim
+Installieren mit `cache.addAll` ab, und **scheitert dort ein einziger Abruf, schlägt die
+ganze Installation fehl** – die App hätte auf Vercel gar keinen Offlinebestand gehabt.
+Genau das, wofür sie gebaut ist.
+
+Gesucht wird jetzt nur noch in `assets/`, `data/` und `icons/` plus `index.html` und
+`manifest.webmanifest`. Gegengeprobt: Mit einer `package-lock.json`, einer `.npmrc` und
+einem `public/`-Ordner im Verzeichnis kommt dieselbe Liste und dieselbe Kennung heraus wie
+ohne. `package.json` steht dadurch nicht mehr in der Werkstattliste – sie wird gar nicht
+mehr eingesammelt, und der Werkstatt-Wächter hat das sofort gemeldet.
+
+Ein Test hält es fest: Jeder Eintrag der Liste muss unter `assets/`, `data/` oder `icons/`
+liegen oder eine der beiden Stammdateien sein, keine Werkstatt-Datei darf darin stehen,
+und jede gelistete Datei muss es wirklich geben.
+
+### Der README war weg – und die Prüfung dagegen schwieg
+
+Beim Aufräumen fiel auf, dass `README.md` **null Bytes** hatte. Commit `bf6a832` hatte die
+Datei gelöscht: 2.503 Zeilen, 169 KB, dieses ganze Protokoll. In der Commit-Nachricht steht
+davon kein Wort – sie handelt von 14 Karten. Kollateral eines `git add -A`.
+Wiederhergestellt aus dem letzten Stand davor.
+
+Schwerer wiegt die zweite Hälfte. Die Inhaltsprüfung prüft neun Zahlen dieses Dokuments
+gegen die Sammlung – dafür wurde sie eigens gebaut, nachdem hier viermal falsche Zahlen
+standen. Sie hing an:
+
+```js
+const readme = existsSync('README.md') ? readFileSync('README.md', 'utf8') : null;
+if (readme) { /* … neun Zahlen prüfen … */ }
+```
+
+Die Datei war nach dem Löschen noch da, ihr Inhalt war `''`. Und `''` ist falsy. Also
+übersprang der Block alle neun Behauptungen und meldete weiter **„0 Fehler, 0 Hinweise"**.
+Zwei Commits lang prüfte diese Zeile gegen nichts.
+
+Und während sie schwieg, hatte sie etwas zu sagen gehabt: Nach dem Wiederherstellen meldete
+dieselbe Prüfung sofort **vier falsche Zahlen** – 2.150 statt 2.164 Karten, 315 statt 316
+Mathematik, 23 statt 27 Essen & Trinken, 46 statt 47 Geld im Alltag. Alle vier waren die
+Karten der beiden Ergänzungsrunden.
+
+Das ist die unangenehmste Sorte Fehler, die dieses Projekt kennt: keine falsche Antwort,
+sondern eine **Prüfung, die beim Verschwinden ihres Prüfgegenstands schweigt**. Sie ist
+schlimmer als gar keine Prüfung, weil sie Deckung behauptet, wo keine ist. Fehlt oder leert
+sich der README, ist ab jetzt genau das der Befund – und ein Test hält beide Fälle fest, der
+gegen die alte Fassung scheitert.
+
 
 ### Qualitätssicherung
 
