@@ -171,8 +171,27 @@ setFremdStandHandler((uebernommen, sichtbar) => {
     : 'In einem anderen Tab gelernt – Stand zusammengeführt');
 });
 
+/* Die App liegt auf dem iPhone stunden- oder tagelang im Hintergrund und kommt
+   mit einem Tipp aufs Symbol zurueck – ohne Neuladen. Ist dabei die Tagesgrenze
+   (4 Uhr) ueberschritten worden, stand auf der Startseite noch der Stand von
+   gestern: „Heute ist alles erledigt", „0 faellig", und der Knopf hiess
+   „Extra-Runde ueben". Ein Tipp darauf startete 15 nicht faellige
+   Wackelkandidaten statt des Tagesplans.
+   Neu gezeichnet wird unter derselben Bedingung wie beim fremden Stand: nicht
+   waehrend einer Einheit und nicht ueber einen offenen Rueckblick hinweg. */
+let gezeichnetAmTag = dayKey();
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible') return;
+  const jetzt = dayKey();
+  if (jetzt === gezeichnetAmTag) return;
+  gezeichnetAmTag = jetzt;
+  if (run || rueckblickOffen) return;
+  render();
+});
+
 /* ================= Views ================= */
 function render() {
+  gezeichnetAmTag = dayKey();   // damit der Sichtbarkeitshorcher nicht doppelt zeichnet
   paintChrome();
   ({ home: renderHome, topics: renderTopics, duel: renderDuelStart,
      stats: renderStats, settings: renderSettings, lookup: renderLookup,
@@ -213,7 +232,13 @@ function wochenstreifen() {
   let s = '';
   for (let i = 0; i < 7; i++) {
     const tag = start + i;
-    const n = st.days[numToKey(tag)]?.done || 0;
+    /* done zaehlt nur das Tagestraining. Ein Tag, an dem nur Quiz oder Duell
+       lief, stand damit als „nichts gelernt" im Streifen – direkt unter der
+       Ueberschrift, die denselben Tag als Serientag fuehrt, und neben dem Satz
+       „12 Fragen unter Zeitdruck heute". Die Statistikseite bildet laengst
+       dieselbe Summe. */
+    const rec = st.days[numToKey(tag)];
+    const n = (rec?.done || 0) + (rec?.duel || 0);
     const cls = tag > t ? 'fut' : tag === t ? 'today' : '';
     // Vorgelesen wurde bisher nur "Mo Di Mi Do Fr Sa So" - der eigentliche
     // Inhalt, naemlich was an welchem Tag gelaufen ist, steckte allein in der
@@ -286,7 +311,15 @@ function bindeAufdecken() {
     const ziel = document.getElementById(b.dataset.merk);
     ziel.hidden = false;
     b.setAttribute('aria-expanded', 'true');
-    b.remove();
+    /* Frueher b.remove(): Das fokussierte Element verschwand aus dem Dokument,
+       der Fokus fiel auf <body>, und der Lesecursor sprang an den Seitenanfang
+       – die gerade aufgedeckte Loesung wurde nie angesagt. Jetzt wandert der
+       Fokus mit in den aufgedeckten Block, und der Knopf bleibt als stillgelegte
+       Marke stehen, damit die Stelle im Baum erhalten bleibt. */
+    ziel.setAttribute('tabindex', '-1');
+    ziel.focus({ preventScroll: true });
+    b.disabled = true;
+    b.hidden = true;
   });
 }
 
@@ -306,7 +339,15 @@ function renderHome() {
   const flags = sess.flaggedCount();
   const hour = new Date().getHours();
   const greet = hour < 11 ? 'Guten Morgen' : hour < 18 ? 'Servus' : 'Guten Abend';
-  const datum = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
+  /* Die App rechnet ueberall mit der Tagesgrenze um 4 Uhr (dayKey) – die
+     Datumszeile las die rohe Ortszeit. Zwischen Mitternacht und 4 Uhr nannte
+     die Kopfzeile deshalb schon den neuen Kalendertag, waehrend die Wochenreihe
+     direkt darunter noch den gestrigen als „heute" markierte und die vorige
+     Woche zeigte. Die Begruessung darf an der Uhr bleiben – wer um 1 Uhr lernt,
+     hoert „Guten Abend", und das stimmt. */
+  const heuteDatum = new Date();
+  if (heuteDatum.getHours() < 4) heuteDatum.setDate(heuteDatum.getDate() - 1);
+  const datum = heuteDatum.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
 
   const streak = liveStreak();
   // Die Ueberschrift traegt die Auskunft, nicht die Begruessung: Wer die App
@@ -1030,6 +1071,7 @@ function renderSettings() {
       <p class="tiny" style="margin-top:10px">Abgeschaltete Themen tauchen im Tagestraining nicht mehr auf.</p>
     </div>
 
+    ${sel.length > 1 ? `
     <h2 class="sec">Schwerpunkt</h2>
     <div class="card">
       <div class="row wrap" style="gap:8px">
@@ -1038,7 +1080,7 @@ function renderSettings() {
       <p class="tiny" style="margin-top:10px">Schwerpunktthemen bekommen doppelt so viele neue Karten pro Tag.
         ${fok.length ? `Zurzeit ${fok.length === 1 ? 'ist' : 'sind'} ${fok.map(id => esc(CAT_BY_ID[id].name)).join(' und ')} bevorzugt.`
           : 'Ohne Auswahl kommen alle Themen gleich oft dran.'}</p>
-    </div>
+    </div>` : ''}
 
     <h2 class="sec">Auf dem iPhone installieren</h2>
     <div class="card">
@@ -1093,7 +1135,11 @@ function renderSettings() {
   document.getElementById('qlw').onchange = e => setSetting('quizLehrerwissen', e.target.checked);
 
   app.querySelectorAll('[data-fok]').forEach(b => b.onclick = () => {
-    const cur = new Set(settings().focus || []);
+    /* Aus den aktiven Themen aufbauen, nicht aus der rohen Einstellung: Ein
+       abgeschaltetes Thema, das noch in focus stand, zaehlte sonst mit – bei
+       einem einzigen aktiven Thema war cur.size damit nie kleiner als
+       sel.length, und der Knopf liess sich ueberhaupt nicht einschalten. */
+    const cur = new Set((settings().focus || []).filter(x => sel.includes(x)));
     const id = b.dataset.fok;
     cur.has(id) ? cur.delete(id) : cur.add(id);
     // Alle als Schwerpunkt zu setzen hiesse: keiner. Dann lieber leeren.
@@ -1279,7 +1325,7 @@ function endRun() {
   stopDuelTimer();
   const r = run;
   const secs = Math.round((Date.now() - r.start) / 1000);
-  today().sec = (today().sec || 0) + secs;
+  store.zaehle('sec', secs);
   if (r.mode === 'duel') S().duelBest = Math.max(S().duelBest || 0, r.correct);
   if (r.mode === 'quiz') {
     r.quiz.aw = auswertung(r.quiz.antworten, CATS.map(c => c.id));
@@ -1368,7 +1414,11 @@ function fehlerListe(missed) {
 function quizRueckblick(r, missed, min) {
   const aw = r.quiz.aw;
   const n = r.quiz.antworten.length;
-  const neuerBestwert = aw.punkte > r.quiz.vorherBest && aw.punkte > 0;
+  /* Nur eine ZU ENDE gespielte Runde wird abgelegt (siehe endRun) – gefeiert
+     wurde der Bestwert aber unabhaengig davon. Eine nach einer Frage
+     abgebrochene Runde schrieb „Neuer Bestwert!" ueber „1 von 12 richtig", und
+     eine Beruehrung spaeter stand im Quizbildschirm wieder der alte Wert. */
+  const neuerBestwert = r.quiz.vollstaendig && aw.punkte > r.quiz.vorherBest && aw.punkte > 0;
   const satz = aw.punkte === aw.max ? 'Fehlerfrei und schnell – das ist Quizform.'
     : neuerBestwert ? 'Neuer Bestwert!'
     : aw.langsam > aw.falsch ? 'Du weißt mehr, als die Uhr zuließ – Tempo ist die Baustelle.'
@@ -1378,7 +1428,7 @@ function quizRueckblick(r, missed, min) {
     <div class="done-wrap fade">
       <p class="quiz-punkte" id="quizPunkte">${aw.punkte}<small>/ ${aw.max}</small></p>
       <h1>${satz}</h1>
-      <p class="muted">${aw.richtig} von ${n} richtig · ${min} Min.${r.quiz.vorherBest ? ` · Bestwert ${Math.max(aw.punkte, r.quiz.vorherBest)}` : ''}</p>
+      <p class="muted">${aw.richtig} von ${n} richtig · ${min} Min.${r.quiz.vorherBest ? ` · Bestwert ${neuerBestwert ? aw.punkte : r.quiz.vorherBest}` : ''}</p>
     </div>
     <h2 class="sec">Wo die Punkte blieben</h2>
     <div class="verlust" id="quizVerlust">
@@ -1774,8 +1824,8 @@ function commit(card, grade, ok, isFresh, behauptet) {
 
   const st = S();
   const d = today();
-  d.done++; if (ok) d.correct++;
-  if (isFresh) d.newC = (d.newC || 0) + 1;
+  store.zaehle('done'); if (ok) store.zaehle('correct');
+  if (isFresh) store.zaehle('newC');
   st.totalAnswers++; if (ok) st.totalCorrect++;
   /* Wer sich vor der Aufloesung festgelegt hat, bekommt gezaehlt, wie gut das
      Urteil war. Erst diese Rueckmeldung macht aus der Festlegung etwas Lernbares:
@@ -1917,7 +1967,7 @@ function askDuel(card) {
       // keine einzige geplante Karte dran war - und die Trefferquote sinkt,
       // weil unter fuenfzehn Sekunden Zeitdruck naturgemaess geraten wird.
       // Fuer die Serie zaehlt ein Duell trotzdem: geuebt ist geuebt.
-      d.duel = (d.duel || 0) + 1; if (ok) d.duelOk = (d.duelOk || 0) + 1;
+      store.zaehle('duel'); if (ok) store.zaehle('duelOk');
       st.duelAnswers = (st.duelAnswers || 0) + 1; if (ok) st.duelCorrect = (st.duelCorrect || 0) + 1;
       // Tempo ist im Quizduell die eigentliche Waehrung – es wurde bisher
       // gemessen und weggeworfen. Nur richtige Antworten zaehlen: Wie schnell
@@ -1962,7 +2012,7 @@ function askDuel(card) {
              Tagesbudget newPerDay vollstaendig: Mehrere Quizrunden koennten
              dutzende unberuehrte Karten in den Plan schieben, ohne dass der
              Zaehler fuer neue Karten sie je gesehen haette. */
-          if (warUnberuehrt) d.newC = (d.newC || 0) + 1;
+          if (warUnberuehrt) store.zaehle('newC');
         }
       }
       save();

@@ -1,6 +1,60 @@
 /* Persistenz + Nutzerzustand (localStorage) */
 const KEY = 'wissenswerk.v1';
 
+/* Tageszaehler waren das einzige, was zwei Tabs UNABHAENGIG hochzaehlen – und
+   sie wurden beim Zusammenfuehren ueber Math.max vereinigt. Das Maximum zweier
+   unabhaengig gewachsener Zahlen ist aber nicht ihre Summe: Nachgestellt wurden
+   aus acht gegebenen Antworten vier. Jeder Tab fuehrt deshalb seinen EIGENEN
+   Beitrag je Tag; der angezeigte Wert ist die Summe darueber. Je Tab waechst
+   sein Eintrag monoton, das Maximum je Schluessel ist also richtig, und die
+   Summe ueber die Schluessel ist der wahre Stand.
+
+   Die Kennung liegt im sessionStorage: Ein Neuladen derselben Seite behaelt
+   sie, ein zweiter Tab bekommt eine eigene. Damit waechst die Zahl der
+   Schluessel je Tag mit der Zahl der Tabs, die an diesem Tag gelernt haben –
+   also mit eins oder zwei, nicht mit jedem App-Start. */
+const TAB = (() => {
+  try {
+    const vorhanden = sessionStorage.getItem(KEY + '.tab');
+    if (vorhanden) return vorhanden;
+    const neu = Math.random().toString(36).slice(2, 10);
+    sessionStorage.setItem(KEY + '.tab', neu);
+    return neu;
+  } catch (e) { return 'einzeln'; }
+})();
+const TAGESZAEHLER = ['done', 'correct', 'newC', 'sec', 'duel', 'duelOk'];
+const tagesSumme = (days, feld) => Object.values(days || {})
+  .reduce((n, t) => n + (Number(t[feld]) || 0), 0);
+
+/* Ein Tagesbuch ohne „je" stammt aus der Zeit vor dieser Rechnung – sein
+   bisheriger Stand wird zum Beitrag eines gedachten frueheren Tabs. */
+function beitraege(tag) {
+  if (tag.je && typeof tag.je === 'object') return tag.je;
+  const alt = {};
+  for (const k of TAGESZAEHLER) if (Number(tag[k]) > 0) alt[k] = Number(tag[k]);
+  return Object.keys(alt).length ? { v1: alt } : {};
+}
+
+/** Summe der Beitraege in die sichtbaren Felder schreiben. */
+function summiere(tag) {
+  for (const k of TAGESZAEHLER) {
+    let n = 0;
+    for (const b of Object.values(tag.je || {})) n += Number(b[k]) || 0;
+    if (n || tag[k] !== undefined) tag[k] = n;
+  }
+  return tag;
+}
+
+/** Einen Tageszaehler erhoehen – im Beitrag dieses Tabs und in der Summe. */
+export function zaehle(feld, n = 1) {
+  const tag = today();
+  tag.je = beitraege(tag);
+  if (!tag.je[TAB]) tag.je[TAB] = {};
+  tag.je[TAB][feld] = (Number(tag.je[TAB][feld]) || 0) + n;
+  summiere(tag);
+  return tag[feld];
+}
+
 const DEFAULTS = {
   version: 1,
   rev: 0,                 // steigt bei jedem Schreiben – erkennt den anderen Tab
@@ -202,9 +256,21 @@ function zusammenfuehren(fremd, eigen) {
   }
   for (const [tag, f] of Object.entries(fremd.days || {})) {
     const e = z.days[tag] || {};
-    z.days[tag] = { done: groesser(e.done, f.done), correct: groesser(e.correct, f.correct),
-                    newC: groesser(e.newC, f.newC), sec: groesser(e.sec, f.sec),
-                    duel: groesser(e.duel, f.duel), duelOk: groesser(e.duelOk, f.duelOk) };
+    /* Je Tab das Maximum – sein eigener Beitrag waechst monoton, ein aelterer
+       Stand desselben Tabs kann also nichts Neues bringen. Und danach die
+       Summe: Frueher stand hier das Maximum der SUMMEN, und damit gingen die
+       Antworten des jeweils kleineren Tabs verloren. */
+    const je = { ...beitraege(e) };
+    for (const [wer, b] of Object.entries(beitraege(f))) {
+      const eigen = je[wer] || {};
+      const vereint = {};
+      for (const k of TAGESZAEHLER) {
+        const n = groesser(eigen[k], b[k]);
+        if (n) vereint[k] = n;
+      }
+      je[wer] = vereint;
+    }
+    z.days[tag] = summiere({ ...e, je });
   }
   for (const [id, f] of Object.entries(fremd.flags || {})) {
     const fremdStempel = alsStempel(f);
@@ -215,11 +281,24 @@ function zusammenfuehren(fremd, eigen) {
       z.flags[id] = fremdStempel;
     }
   }
-  for (const k of ['totalAnswers', 'totalCorrect', 'best', 'duelBest',
-                   'duelAnswers', 'duelCorrect', 'duelMs', 'duelTimed', 'lastExport',
+  for (const k of ['best', 'duelBest', 'duelMs', 'duelTimed', 'lastExport',
                    'claims', 'claimsMiss', 'quizBest']) {
     z[k] = groesser(z[k], fremd[k]);
   }
+  /* Die vier Gesamtzaehler wachsen ausschliesslich neben ihrem Tageszaehler
+     (app.js: d.done++ und st.totalAnswers++ stehen in derselben Zeile), und
+     Tage werden nie geloescht. Sie lassen sich also ableiten, statt sie ein
+     zweites Mal zusammenfuehren zu muessen – und damit teilen sie automatisch
+     die richtige Rechnung der Tagesbeitraege. */
+  /* Mit groesser() abgesichert: Ein Stand, dessen Gesamtzahl aelter ist als
+     seine Tagesbuecher – etwa aus einer eingelesenen Sicherung – faellt dadurch
+     nicht. Sobald die Summe ihn ueberholt, traegt sie. */
+  const ausTagen = (feld, eigen, fern) =>
+    groesser(groesser(eigen, fern), tagesSumme(z.days, feld));
+  z.totalAnswers = ausTagen('done', z.totalAnswers, fremd.totalAnswers);
+  z.totalCorrect = ausTagen('correct', z.totalCorrect, fremd.totalCorrect);
+  z.duelAnswers = ausTagen('duel', z.duelAnswers, fremd.duelAnswers);
+  z.duelCorrect = ausTagen('duelOk', z.duelCorrect, fremd.duelCorrect);
   z.quizRunden = mischeRunden(z.quizRunden, saeubereRunden(fremd.quizRunden));
   /* streak darf hier NICHT das Maximum sein: touchStreak() setzt die Serie nach
      einer Pause bewusst auf 1 zurueck: Der zweite Tab hob sie sonst wieder auf
@@ -578,11 +657,28 @@ function saeubern(roh) {
   }
   for (const [tag, d] of Object.entries(roh.days || {})) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(tag) || !d || typeof d !== 'object') continue;
-    rein.days[tag] = {
+    const sauber = {
       done: zahl(d.done, 0, 1e6, 0), correct: zahl(d.correct, 0, 1e6, 0),
       newC: zahl(d.newC, 0, 1e6, 0), sec: zahl(d.sec, 0, 1e8, 0),
       duel: zahl(d.duel, 0, 1e6, 0), duelOk: zahl(d.duelOk, 0, 1e6, 0),
     };
+    /* Die Beitraege je Tab kommen ungeprueft aus der Datei. Hoechstens acht
+       Schluessel je Tag – mehr Tabs lernen an einem Tag nicht, und eine
+       praeparierte Datei soll den Speicher nicht mit Schluesseln fluten. */
+    if (d.je && typeof d.je === 'object' && !Array.isArray(d.je)) {
+      const je = {};
+      for (const [wer, b] of Object.entries(d.je).slice(0, 8)) {
+        if (typeof wer !== 'string' || wer.length > 24 || !b || typeof b !== 'object') continue;
+        const eintrag = {};
+        for (const k of TAGESZAEHLER) {
+          const n = zahl(b[k], 0, k === 'sec' ? 1e8 : 1e6, 0);
+          if (n) eintrag[k] = n;
+        }
+        if (Object.keys(eintrag).length) je[wer] = eintrag;
+      }
+      if (Object.keys(je).length) { sauber.je = je; summiere(sauber); }
+    }
+    rein.days[tag] = sauber;
   }
   for (const [id, v] of Object.entries(roh.flags || {})) {
     if (typeof id !== 'string') continue;

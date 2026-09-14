@@ -1069,3 +1069,49 @@ test('ein unlesbarer Speicher wird gemeldet und die Rohdaten aufgehoben', async 
   assert.ok(ist.roh && ist.roh.includes('8000'),
     'die unlesbaren Rohdaten sind nicht aufgehoben – daraus liesse sich von Hand noch retten');
 });
+
+/* Tageszaehler waren das einzige, was zwei Tabs unabhaengig hochzaehlen – und
+   sie wurden beim Zusammenfuehren ueber Math.max vereinigt. Das Maximum zweier
+   unabhaengig gewachsener Zahlen ist nicht ihre Summe: Nachgestellt wurden aus
+   acht gegebenen Antworten vier, in der Tagesstatistik wie in der Gesamtzahl. */
+test('zwei Tabs verlieren keine Antwort aus der Zählung', async () => {
+  const sitzung = {};
+  globalThis.sessionStorage = { getItem: (k) => sitzung[k] ?? null, setItem: (k, v) => { sitzung[k] = String(v); } };
+  const A = await import('../assets/js/store.js?zwei-tabs-a');
+  // Der zweite Tab hat eine eigene Kennung – also einen leeren sessionStorage.
+  globalThis.sessionStorage = { getItem: () => null, setItem: () => {} };
+  const B = await import('../assets/js/store.js?zwei-tabs-b');
+  /* Erst beide auf denselben Stand bringen. Ein resetAll() traegt eine neue
+     Generationsnummer, und ein Stand hoeherer Generation wird UEBERNOMMEN statt
+     eingesammelt – der erste Zaehlschritt des anderen Tabs faellt dabei zu
+     Recht weg. Gemessen im ersten Anlauf: sieben statt acht. */
+  A.resetAll(); A.save(true); B.resetAll(); B.save(true);
+  A.save(true); B.save(true);
+
+  for (let i = 0; i < 4; i++) {
+    A.zaehle('done'); A.zaehle('correct'); A.save(true);
+    B.zaehle('done'); B.save(true);
+  }
+  const stand = JSON.parse(globalThis.localStorage.getItem('wissenswerk.v1'));
+  const tag = Object.values(stand.days)[0];
+  assert.equal(tag.done, 8, `acht Antworten gegeben, gezaehlt ${tag.done}`);
+  assert.equal(tag.correct, 4, `vier richtige gegeben, gezaehlt ${tag.correct}`);
+  assert.equal(stand.totalAnswers, 8, `Gesamtzahl ${stand.totalAnswers} statt 8`);
+  assert.equal(stand.totalCorrect, 4, `Gesamtrichtige ${stand.totalCorrect} statt 4`);
+  // Je Tab ein Eintrag – der Schluesselvorrat waechst mit den Tabs, nicht mit den Starts.
+  assert.equal(Object.keys(tag.je).length, 2, JSON.stringify(tag.je));
+});
+
+/* Ein Tagesbuch ohne „je" stammt aus der Zeit vor dieser Rechnung. Sein
+   bisheriger Stand darf nicht verschwinden, sobald der erste Tab wieder zaehlt. */
+test('alte Tagesbücher ohne Beitragsliste überleben', async () => {
+  globalThis.sessionStorage = { getItem: () => null, setItem: () => {} };
+  const C = await import('../assets/js/store.js?altbestand');
+  C.resetAll();
+  const heute = C.today();
+  heute.done = 17; heute.correct = 9;        // so sah es vor der Umstellung aus
+  delete heute.je;
+  C.zaehle('done');
+  assert.equal(C.today().done, 18, 'der alte Stand ist beim ersten Zaehlen verschwunden');
+  assert.equal(C.today().correct, 9, 'die alten Richtigen sind verschwunden');
+});

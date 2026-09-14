@@ -26,7 +26,7 @@ for (const p of ['playwright', '/opt/node22/lib/node_modules/playwright/index.mj
 }
 if (!playwright) {
   const erlaubt = process.env.OHNE_BROWSER === '1';
-  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 195 Prüfungen gelaufen'}.`);
+  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 196 Prüfungen gelaufen'}.`);
   if (importFehler && importFehler.code !== 'ERR_MODULE_NOT_FOUND') {
     console.log(`  Der Import scheiterte nicht am fehlenden Paket: ${importFehler.message}`);
   }
@@ -1092,8 +1092,19 @@ try {
     await mp.waitForTimeout(200);
     check('Aufdecken zeigt die Aufloesung',
       await mp.locator('.card.fact .merk-loesung').first().isVisible());
-    check('der Knopf verschwindet nach dem Aufdecken',
-      await mp.locator('[data-merk="merkHeute"]').count() === 0);
+    /* Der Knopf war frueher wirklich entfernt (b.remove()). Damit verschwand das
+       FOKUSSIERTE Element aus dem Dokument, der Fokus fiel auf <body> und der
+       Lesecursor sprang an den Seitenanfang – die gerade aufgedeckte Loesung
+       wurde nie angesagt. Jetzt bleibt er stillgelegt und unsichtbar stehen,
+       und der Fokus wandert in den aufgedeckten Block. Geprueft wird also die
+       Absicht: aus dem Weg und nicht mehr bedienbar – aber der Lesecursor steht
+       auf der Loesung. */
+    check('der Knopf ist nach dem Aufdecken aus dem Weg',
+      !await mp.locator('[data-merk="merkHeute"]').isVisible()
+      && await mp.locator('[data-merk="merkHeute"]').isDisabled());
+    check('und der Fokus steht auf der aufgedeckten Loesung',
+      await mp.evaluate(() => document.activeElement?.classList.contains('merk-loesung')
+        || document.activeElement?.closest('.merk-loesung') !== null));
 
     // Genug Anzeigetage – jetzt muss die Rueckschau dazukommen
     await mp.evaluate((k) => {
@@ -1784,7 +1795,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 195;
+const MINDESTENS = 196;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

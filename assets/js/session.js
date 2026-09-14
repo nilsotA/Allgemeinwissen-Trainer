@@ -220,7 +220,13 @@ export function overview() {
     // statt dass newCards() dafuer die ganze Warteschlange aufbaut.
     if (!s || !s.seen) { neuVorrat++; continue; }
     seenTotal++;
-    if (s.reps > 0) learned++;
+    /* Nicht ueber reps zaehlen: schedule() setzt die SM-2-Wiederholungszaehlung
+       bei „Nochmal" bewusst auf 0 zurueck. Damit fiel eine seit Monaten gelernte
+       Karte nach einem einzigen Aussetzer aus der Zaehlung, und der
+       Fortschrittsbalken auf der Startseite lief rueckwaerts – waehrend die
+       Statistikseite fuer dieselben Karten unveraendert weiterzaehlte. s.ok
+       waechst monoton und wird nie zurueckgesetzt. */
+    if (s.reps > 0 || s.ok > 0) learned++;
     if (strength(s) >= 0.6) mature++;
   }
   const due = dueCards().length;
