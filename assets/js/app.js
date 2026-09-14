@@ -148,6 +148,7 @@ function announce(msg) { if (live) live.textContent = msg; }
    Stunde weiterlernen, ohne dass etwas ankam. Der Aktionsbalken bleibt stehen,
    bis der Stand gesichert ist, und bietet das Sichern gleich an. */
 setSaveErrorHandler(() => speicherBalken());
+startFehlerBalken();
 
 /* Zwei offene Tabs: Der Speicher wird zusammengefuehrt, nicht ueberschrieben.
    Waehrend einer laufenden Einheit bleibt der Zustand unangetastet - sonst
@@ -1065,7 +1066,13 @@ function renderSettings() {
         <input type="file" id="impFile" accept="application/json" hidden>
         ${flags ? `<button class="btn" id="clrFlags">Alle ${flags} Markierungen löschen</button>` : ''}
         <button class="btn danger" id="rst">Alles zurücksetzen</button>
-        ${store.hatSicherung() ? `<button class="btn" id="undoImp">Letztes Einlesen rückgängig</button>` : ''}
+        ${(() => {
+          /* Die Beschriftung nennt, worauf der Knopf zurueckgeht. „Letztes
+             Einlesen rueckgaengig" stand auch noch Monate spaeter da, ohne
+             Datum und ohne Zahlen, zehn Pixel unter dem roten Knopf. */
+          const n = store.sicherungKennzahlen();
+          return n ? `<button class="btn" id="undoImp">Gesicherten Stand zurückholen (${n.karten} Karten)</button>` : '';
+        })()}
       </div>
       <p class="tiny" style="margin-top:10px">Alles liegt nur auf diesem Gerät – kein Konto, kein Server. Löschst du in Safari die Website-Daten, ist der Fortschritt weg. Sichere ihn gelegentlich.</p>
     </div>
@@ -1122,16 +1129,37 @@ function renderSettings() {
         + `Jetzt gespeichert: ${b.karten} Karten, ${b.antworten} Antworten, zuletzt ${tag(b.letzterTag)}\n\n`
         + `Wirklich ersetzen?`;
       if (!confirm(frage)) return toast('Nichts geändert');
-      try { store.importJSON(r.result); } catch (e) { return toast('Das ist kein Wissenswerk-Backup'); }
-      applyTheme(); toast('Fortschritt geladen – rückgängig unter „Mehr“'); show('home');
+      /* importJSON meldet jetzt, ob geschrieben wurde. Frueher stand bei vollem
+         Speicher „Fortschritt geladen" neben „Speicher voll" – und beim
+         naechsten Oeffnen war das Backup wieder weg. */
+      let geschrieben;
+      try { geschrieben = store.importJSON(r.result); }
+      catch (e) { return toast('Das ist kein Wissenswerk-Backup'); }
+      applyTheme();
+      toast(geschrieben
+        ? 'Fortschritt geladen – rückgängig unter „Mehr“'
+        : 'Der Speicher ist voll – der Stand konnte nicht abgelegt werden');
+      show('home');
     };
     r.onerror = () => toast('Datei ließ sich nicht lesen');
     r.readAsText(f);
   };
   document.getElementById('undoImp')?.addEventListener('click', () => {
-    // Das Netz unter Einlesen und Zuruecksetzen: der Stand davor liegt noch da.
-    if (!confirm('Den Stand von vor dem letzten Einlesen oder Zurücksetzen wiederherstellen?')) return;
-    if (store.sicherungZurueck()) { applyTheme(); toast('Vorheriger Stand wiederhergestellt'); show('home'); }
+    /* Das Netz unter Einlesen und Zuruecksetzen. Die Rueckfrage nannte frueher
+       keine Zahlen – und der Knopf steht Monate nach dem Einlesen unveraendert
+       da. Wer ihn dann antippt, warf drei Monate Lernen weg. Jetzt stellt die
+       Rueckfrage beide Staende gegenueber, genau wie der Einlesen-Dialog, und
+       der Griff ist umkehrbar: ein zweiter Tipp holt den jetzigen zurueck. */
+    const netz = store.sicherungKennzahlen();
+    if (!netz) return toast('Keine Sicherung vorhanden');
+    const jetzt = store.kennzahlen(S());
+    const tag = (d) => (d ? new Date(d).toLocaleDateString('de-DE') : 'noch nie');
+    const frage = 'Den gesicherten Stand wiederherstellen?\n\n'
+      + `Wiederhergestellt wird: ${netz.karten} Karten, ${netz.antworten} Antworten, zuletzt ${tag(netz.letzterTag)}\n`
+      + `Jetzt gespeichert:      ${jetzt.karten} Karten, ${jetzt.antworten} Antworten, zuletzt ${tag(jetzt.letzterTag)}\n\n`
+      + 'Der jetzige Stand wandert dabei in die Sicherung – du kommst also zurück.';
+    if (!confirm(frage)) return toast('Nichts geändert');
+    if (store.sicherungZurueck()) { applyTheme(); toast('Gesicherter Stand wiederhergestellt'); show('home'); }
     else toast('Keine Sicherung vorhanden');
   });
   document.getElementById('clrFlags')?.addEventListener('click', () => {
@@ -2085,6 +2113,25 @@ function updateBalken() {
    er eine laufende Runde nicht abwarten: Ab jetzt geht jede Antwort verloren,
    also muss der Nutzer es sofort erfahren. Ein bereits stehender Balken wird
    ersetzt, damit die dringendere Meldung gewinnt. */
+/* Ein unlesbarer Speicher war bisher unsichtbar: Die App startete mit einer
+   ganz normalen Startseite bei null. Jetzt sagt sie es, und die Rohdaten liegen
+   unter wissenswerk.v1.kaputt noch da. */
+function startFehlerBalken() {
+  const p = store.startProblem();
+  if (!p) return;
+  const d = document.createElement('div');
+  d.className = 'toast aktion speicher';
+  d.setAttribute('role', 'alert');
+  d.innerHTML = '<span>Der gespeicherte Stand war beim Start unlesbar – '
+    + (p.bytes ? 'die Rohdaten sind aufgehoben' : 'er liess sich nicht aufheben') + '</span>';
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = 'Verstanden';
+  b.onclick = () => d.remove();
+  d.appendChild(b);
+  document.body.appendChild(d);
+}
+
 function speicherBalken() {
   document.querySelector('.toast.aktion.speicher')?.remove();
   const d = document.createElement('div');

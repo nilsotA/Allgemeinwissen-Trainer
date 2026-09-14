@@ -119,6 +119,13 @@ function normalisiereFlags(z) {
   return z;
 }
 
+/* Was beim Start schiefging – app.js zeigt es einmal als Balken. Null heisst:
+   alles in Ordnung. VOR dem Aufruf erklaert: load() laeuft beim Modulstart und
+   schreibt hier hinein. Als Deklaration weiter unten laege der Name in seiner
+   Totzone – genau die Falle, in die `zahl` schon getappt ist. */
+let startFehler = null, kaputteRohdaten = 0;
+export const startProblem = () => (startFehler ? { grund: startFehler, bytes: kaputteRohdaten } : null);
+
 let state = load();
 
 function load() {
@@ -143,9 +150,22 @@ function load() {
     // Bewusst console.error: hier landet auch ein Programmierfehler, und der
     // wuerde sonst den gesamten Fortschritt still auf die Standardwerte setzen.
     console.error('Speicher unlesbar, starte neu', e);
+    /* Und der Nutzer sieht davon sonst NICHTS. Nachgestellt: 900 Karten, 8.000
+       Antworten, 200 Tage Serie, 94 kB im Speicher – ein fehlendes Byte genuegt,
+       und auf dem Schirm steht eine ganz normale Startseite mit „0 Tage in
+       Folge". Schlimmer: Schon das erste Zeichnen speichert, die 94 kB Rohdaten
+       sind nach 551 Bytes ersetzt, bevor er etwas antippen kann. Daraus liessen
+       sich Kartenstaende von Hand noch retten – also werden sie beiseitegelegt,
+       BEVOR irgendetwas schreibt, und die App sagt es. */
+    try {
+      const roh = localStorage.getItem(KEY);
+      if (roh) { localStorage.setItem(KEY + '.kaputt', roh); kaputteRohdaten = roh.length; }
+    } catch (e2) { /* voll: dann bleibt nur die Meldung */ }
+    startFehler = e && e.message ? String(e.message) : 'unbekannt';
     return structuredClone(DEFAULTS);
   }
 }
+
 
 let saveTimer = null;
 let quotaWarned = false;
@@ -283,6 +303,7 @@ export function save(now = false) {
       state.rev = vorherigeRev + 1;
       localStorage.setItem(KEY, JSON.stringify(state));
       quotaWarned = false;
+      return true;
     } catch (e) {
       state.rev = vorherigeRev;
       if (!quotaWarned) console.warn('Speichern fehlgeschlagen', e);
@@ -293,11 +314,18 @@ export function save(now = false) {
          den gibt es dann nie, und der Hinweis kam nie wieder. Der Empfaenger
          ist gegen Wiederholung unempfindlich. */
       onSaveError(e);
+      return false;
     }
   };
-  if (now) { clearTimeout(saveTimer); saveTimer = null; write(); return; }
+  /* Der Rueckgabewert zaehlt nur im Sofortfall: Nur dort wartet ein Aufrufer
+     auf die Antwort „ist es angekommen?". Das Einlesen meldete frueher
+     „Fortschritt geladen", waehrend daneben „Speicher voll" stand und im
+     Speicher noch der alte Stand lag – beim naechsten Oeffnen war das Backup
+     wieder weg. */
+  if (now) { clearTimeout(saveTimer); saveTimer = null; return write(); }
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => { saveTimer = null; write(); }, 250);
+  return true;
 }
 
 export const S = () => state;
@@ -465,12 +493,12 @@ function ersetzeZustand(neu) {
   neu.gen = Math.max(Number(state.gen) || 0, gespeicherteGen) + 1;
   state = neu;
   nachErsatz();
-  save(true);
+  return save(true);
 }
 
 export function resetAll() {
   sichereJetzigen();
-  ersetzeZustand(structuredClone(DEFAULTS));
+  return ersetzeZustand(structuredClone(DEFAULTS));
 }
 
 export function exportJSON() {
@@ -640,13 +668,32 @@ export function kennzahlen(z) {
 export function importJSON(txt) {
   const rein = pruefeBackup(txt);
   sichereJetzigen();
-  ersetzeZustand(rein);
+  return ersetzeZustand(rein);
 }
 
-function sichereJetzigen() {
-  // Darf nie den Import kippen: ist der Speicher voll, gibt es eben keine Sicherung.
-  try { localStorage.setItem(SICHERUNG, JSON.stringify(state)); }
-  catch (e) { console.warn('Sicherung vor dem Ueberschreiben fehlgeschlagen', e); }
+/* Das Netz unter Einlesen und Zuruecksetzen. Zwei Regeln stecken darin:
+
+   Erstens darf es den Vorgang nie kippen – ist der Speicher voll, gibt es eben
+   keine Sicherung.
+
+   Zweitens darf ein duennerer Stand keinen dickeren ueberschreiben. Nachgestellt:
+   Ein Jahr Fortschritt (1.400 Karten), ein Fehlgriff im Dateiwaehler liest eine
+   uralte Sicherung mit 15 Karten ein – das Jahr liegt jetzt im Netz. Der Nutzer
+   will den Fehlgriff loswerden und tippt „Alles zuruecksetzen": Das rief
+   sichereJetzigen() und schrieb die 15 Karten ueber das Jahr. Danach holte
+   „Letztes Einlesen rueckgaengig" genau den Fehlgriff zurueck, den er
+   loswerden wollte, und das Jahr war nirgends mehr.
+
+   Beim Tausch (sicherungZurueck) muss trotzdem geschrieben werden, auch wenn
+   der jetzige Stand duenner ist – sonst waere der Griff nicht umkehrbar. */
+function sichereJetzigen(erzwingen = false) {
+  try {
+    if (!erzwingen) {
+      const alt = localStorage.getItem(SICHERUNG);
+      if (alt && (kennzahlen(JSON.parse(alt)).antworten || 0) > (state.totalAnswers || 0)) return;
+    }
+    localStorage.setItem(SICHERUNG, JSON.stringify(state));
+  } catch (e) { console.warn('Sicherung vor dem Ueberschreiben fehlgeschlagen', e); }
 }
 
 export const hatSicherung = () => {
@@ -658,7 +705,21 @@ export function sicherungZurueck() {
   const roh = localStorage.getItem(SICHERUNG);
   if (!roh) return false;
   const rein = saeubern(JSON.parse(roh));
-  localStorage.removeItem(SICHERUNG);
+  /* Frueher: removeItem. Damit war der Griff einmalig und unumkehrbar – und er
+     steht unter „Mehr" auch noch Monate nach dem Einlesen, zehn Pixel unter dem
+     roten Knopf, ohne Datum und ohne Zahlen. Nachgestellt: drei Monate lernen
+     (900 Karten, 4.500 Antworten, Serie 90), ein Tipper, alles weg, kein Weg
+     zurueck. Jetzt wird getauscht statt weggeworfen: Der jetzige Stand wandert
+     ins Netz, ein zweiter Tipp holt ihn zurueck. */
+  sichereJetzigen(true);
   ersetzeZustand(rein);
   return true;
+}
+
+/** Kennzahlen des Netzes – damit die Rueckfrage sagen kann, worauf sie zurueckgeht. */
+export function sicherungKennzahlen() {
+  try {
+    const roh = localStorage.getItem(SICHERUNG);
+    return roh ? kennzahlen(JSON.parse(roh)) : null;
+  } catch (e) { return null; }
 }

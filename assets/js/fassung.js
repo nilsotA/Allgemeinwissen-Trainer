@@ -1,2 +1,2 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-export const FASSUNG = 'wissenswerk-6a2b23a1ba';
+export const FASSUNG = 'wissenswerk-5074742a48';

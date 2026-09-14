@@ -15,7 +15,12 @@ const sess = await import('../assets/js/session.js');
 const { CARDS } = await import('../data/index.js');
 const { fresh, schedule, GOOD } = await import('../assets/js/srs.js');
 
-beforeEach(() => { store.resetAll(); });
+/* Der Speicher wird MIT geleert, nicht nur der Zustand. Sonst reicht ein Test
+   sein Netz (wissenswerk.v1.vorher) an den naechsten weiter – und seit
+   sichereJetzigen() ein reicheres Netz nicht mehr ueberschreibt, entscheidet
+   die Reihenfolge der Tests darueber, was „Letztes Einlesen rueckgaengig"
+   zurueckholt. Ein frisches Geraet hat weder Zustand noch Netz. */
+beforeEach(() => { speicher.clear(); store.resetAll(); });
 
 test('eine umformulierte Frage nimmt ihren Lernstand mit', () => {
   // Die Kennung haengt am Fragetext. Ohne diese Uebernahme faengt eine Karte
@@ -991,4 +996,76 @@ test('eine gespeicherte Quizrunde überlebt den Neustart samt Einstellungen', as
   assert.equal(ist.n, 30, 'die Zahl neuer Karten pro Tag ist verlorengegangen');
   assert.deepEqual(ist.c, ['mat'], 'die Themenauswahl ist verlorengegangen');
   assert.equal(ist.r, 1, 'die gespeicherte Quizrunde ist verschwunden');
+});
+
+/* Vier Wege, auf denen der Lernfortschritt verschwand. Alle vier hat der
+   App-Pruefstand im Browser nachgestellt; hier stehen sie als Netz. */
+test('„Gesicherten Stand zurückholen" ist umkehrbar', () => {
+  // Stand A: ein Jahr Lernen. Dann ein Backup einlesen (Stand B, duenn).
+  store.putCard('probe-a', { ...fresh(), iv: 40, reps: 6, seen: 9, ok: 8 });
+  store.S().totalAnswers = 4500;
+  const duenn = JSON.stringify({ ...JSON.parse(store.exportJSON()), cards: {}, totalAnswers: 3 });
+  store.importJSON(duenn);
+  assert.equal(store.kennzahlen(store.S()).antworten, 3, 'das duenne Backup muss angekommen sein');
+
+  // Der Griff holt Stand A zurueck – und der duenne wandert ins Netz.
+  assert.equal(store.sicherungZurueck(), true);
+  assert.equal(store.kennzahlen(store.S()).antworten, 4500, 'Stand A kam nicht zurueck');
+  assert.ok(store.sicherungKennzahlen(), 'nach dem Zurueckholen fehlt das Netz – der Griff waere einmalig');
+
+  /* Und der Weg zurueck steht offen. Frueher loeschte sicherungZurueck() den
+     Schluessel: Wer den Knopf Monate nach dem Einlesen antippte – er steht dort
+     unveraendert, zehn Pixel unter dem roten –, verlor alles seither Gelernte
+     ohne jede Umkehr. */
+  assert.equal(store.sicherungZurueck(), true);
+  assert.equal(store.kennzahlen(store.S()).antworten, 3, 'der zweite Griff fuehrt nicht zurueck');
+});
+
+test('ein dünnerer Stand überschreibt kein reicheres Netz', () => {
+  // Ein Jahr Fortschritt, dann ein Fehlgriff im Dateiwaehler.
+  store.S().totalAnswers = 12000;
+  store.importJSON(JSON.stringify({ ...JSON.parse(store.exportJSON()), cards: {}, totalAnswers: 40 }));
+  assert.equal(store.sicherungKennzahlen().antworten, 12000, 'das Jahr muss im Netz liegen');
+
+  /* Jetzt „Alles zuruecksetzen", um den Fehlgriff loszuwerden. Frueher schrieb
+     das den Fehlgriff ueber das Jahr – und „rueckgaengig" holte danach genau
+     den Fehlgriff zurueck, den der Nutzer loswerden wollte. */
+  store.resetAll();
+  assert.equal(store.sicherungKennzahlen().antworten, 12000,
+    'das Zuruecksetzen hat das reichere Netz ueberschrieben');
+  store.sicherungZurueck();
+  assert.equal(store.kennzahlen(store.S()).antworten, 12000, 'das Jahr ist nicht mehr erreichbar');
+});
+
+test('Einlesen meldet nicht „geladen", wenn der Speicher voll ist', () => {
+  const echt = globalThis.localStorage.setItem;
+  const datei = JSON.stringify({ ...JSON.parse(store.exportJSON()), cards: {}, totalAnswers: 5000 });
+  globalThis.localStorage.setItem = (k) => {
+    if (k === 'wissenswerk.v1') { const e = new Error('voll'); e.name = 'QuotaExceededError'; throw e; }
+  };
+  try {
+    assert.equal(store.importJSON(datei), false,
+      'importJSON meldet Erfolg, obwohl nichts geschrieben wurde – der Stand waere beim naechsten Oeffnen weg');
+  } finally { globalThis.localStorage.setItem = echt; }
+});
+
+test('ein unlesbarer Speicher wird gemeldet und die Rohdaten aufgehoben', async () => {
+  const { execFileSync } = await import('node:child_process');
+  const wurzel = new URL('..', import.meta.url).pathname;
+  const skript = `
+    globalThis.localStorage = {
+      _d: { 'wissenswerk.v1': '{"rev":3,"totalAnswers":8000,"cards":{"a":{' },
+      getItem(k) { return this._d[k] ?? null; },
+      setItem(k, v) { this._d[k] = String(v); }, removeItem(k) { delete this._d[k]; },
+    };
+    const s = await import(${JSON.stringify(wurzel + 'assets/js/store.js')});
+    console.log(JSON.stringify({ p: !!s.startProblem(),
+      roh: globalThis.localStorage._d['wissenswerk.v1.kaputt'] || null }));
+  `;
+  const aus = execFileSync(process.execPath, ['--input-type=module', '-e', skript],
+    { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] });
+  const ist = JSON.parse(aus.trim().split('\n').pop());
+  assert.equal(ist.p, true, 'der Startfehler wird nicht gemeldet – die App startet stumm bei null');
+  assert.ok(ist.roh && ist.roh.includes('8000'),
+    'die unlesbaren Rohdaten sind nicht aufgehoben – daraus liesse sich von Hand noch retten');
 });
