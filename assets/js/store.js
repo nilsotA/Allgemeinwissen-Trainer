@@ -490,10 +490,22 @@ export function tageSeitSicherung() {
 }
 /* Ein eingelesenes Backup ist Fremdinhalt. Zahlenfelder landen unformatiert in der
    Oberfläche, deshalb wird hier auf Typen geprüft statt nur auf Vorhandensein. */
-const zahl = (v, min, max, standard) => {
+/* Funktionsdeklaration, kein const: load() laeuft beim Modulstart (Zeile 122)
+   und ruft ueber saeubereRunden() hierher – also lange bevor diese Zeile an der
+   Reihe waere. Als const lag der Name dann noch in seiner Totzone, load() warf
+   „Cannot access 'zahl' before initialization", der catch fing es als
+   „Speicher unlesbar" ab und die App startete mit den Standardwerten.
+   Ausgeloest hat das jede zu Ende gespielte Quizrunde: Erst dann steht in
+   quizRunden ein Eintrag, und erst dann kommt saeubereRunden() ueberhaupt an
+   diese Stelle. Die Kartenstaende kamen beim naechsten Speichern ueber das
+   Zusammenfuehren zurueck – die EINSTELLUNGEN nicht, denn zusammenfuehren()
+   behaelt bewusst die des eigenen Tabs. Farbschema, neue Karten pro Tag und
+   abgeschaltete Themen waren damit bei jedem Start wieder auf Anfang.
+   Deklarationen werden hochgezogen, Zuweisungen an const nicht. */
+function zahl(v, min, max, standard) {
   const n = Number(v);
   return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : standard;
-};
+}
 
 function saeubereRunden(liste) {
   if (!Array.isArray(liste)) return [];

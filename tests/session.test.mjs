@@ -954,3 +954,41 @@ test('die Quizrunde fragt wie ein Spieleabend, nicht wie ein Staatsexamen', () =
   for (let i = 0; i < 30; i++) mit.push(...sess.buildQuiz().map(x => x.card));
   assert.ok(mit.some(sess.istLehrerwissen), 'mit Einstellung muss Lehrerwissen wieder gezogen werden');
 });
+
+/* Eine zu Ende gespielte Quizrunde machte den gespeicherten Stand unlesbar.
+   load() laeuft beim Modulstart und ruft saeubereRunden(); dessen Helfer `zahl`
+   war ein const und lag zu diesem Zeitpunkt noch in seiner Totzone. Der catch
+   in load() fing den ReferenceError als „Speicher unlesbar" ab und die App
+   startete mit den Standardwerten. Die Kartenstaende kamen beim naechsten
+   Speichern ueber das Zusammenfuehren zurueck, die EINSTELLUNGEN nicht –
+   Farbschema, neue Karten pro Tag und abgeschaltete Themen waren bei jedem
+   Start wieder auf Anfang. Der Test laedt das Modul in einer frischen Lage mit
+   genau einer gespeicherten Runde. */
+test('eine gespeicherte Quizrunde überlebt den Neustart samt Einstellungen', async () => {
+  const abgelegt = {
+    rev: 5, totalAnswers: 42,
+    settings: { theme: 'dark', newPerDay: 30, cats: ['mat'] },
+    cards: {},
+    quizRunden: [{ t: 1767225600000, p: 9, m: 12, r: 9, f: 3, l: 4, k: { mat: [3, 4] } }],
+  };
+  const { execFileSync } = await import('node:child_process');
+  const wurzel = new URL('..', import.meta.url).pathname;
+  const skript = `
+    globalThis.localStorage = {
+      _d: { 'wissenswerk.v1': ${JSON.stringify(JSON.stringify(abgelegt))} },
+      getItem(k) { return this._d[k] ?? null; },
+      setItem(k, v) { this._d[k] = v; }, removeItem(k) { delete this._d[k]; },
+    };
+    const s = await import(${JSON.stringify(wurzel + 'assets/js/store.js')});
+    console.log(JSON.stringify({ a: s.S().totalAnswers, t: s.settings().theme,
+      n: s.settings().newPerDay, c: s.settings().cats, r: s.S().quizRunden.length }));
+  `;
+  const aus = execFileSync(process.execPath, ['--input-type=module', '-e', skript],
+    { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] });
+  const ist = JSON.parse(aus.trim().split('\n').pop());
+  assert.equal(ist.a, 42, 'der gespeicherte Stand wurde nicht geladen');
+  assert.equal(ist.t, 'dark', 'das Farbschema ist verlorengegangen');
+  assert.equal(ist.n, 30, 'die Zahl neuer Karten pro Tag ist verlorengegangen');
+  assert.deepEqual(ist.c, ['mat'], 'die Themenauswahl ist verlorengegangen');
+  assert.equal(ist.r, 1, 'die gespeicherte Quizrunde ist verschwunden');
+});
