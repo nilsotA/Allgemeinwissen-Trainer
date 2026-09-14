@@ -1115,3 +1115,35 @@ test('alte Tagesbücher ohne Beitragsliste überleben', async () => {
   assert.equal(C.today().done, 18, 'der alte Stand ist beim ersten Zaehlen verschwunden');
   assert.equal(C.today().correct, 9, 'die alten Richtigen sind verschwunden');
 });
+
+/* Der Deckel auf die Beitragsliste warf weg, statt zu deckeln: Die ersten acht
+   Schluessel blieben, der Rest fiel, und summiere() schrieb die kleinere Summe
+   in den Tag. Wer seine eigene Sicherung wieder einlas, verlor damit stillschweigend
+   Antworten – in genau dem Vorgang, der den Fortschritt retten soll.
+   Die Begruendung fuer die Acht war falsch: Auf dem iPhone bekommt jeder
+   Kaltstart der installierten App einen frischen sessionStorage und damit eine
+   neue Kennung. Zehn Starts an einem Tag sind zehn Schluessel. */
+test('eine Sicherung mit vielen Tagesbeiträgen kommt heil zurück', async () => {
+  globalThis.sessionStorage = { getItem: () => null, setItem: () => {} };
+  const S = await import('../assets/js/store.js?rundreise-je');
+  const je = {};
+  for (let i = 0; i < 10; i++) je['start' + i] = { done: 3, correct: 2 };
+  const datei = JSON.stringify({ rev: 1, cards: {}, days: { '2026-09-14': { done: 30, correct: 20, je } } });
+
+  const rein = S.pruefeBackup(datei);
+  const tag = rein.days['2026-09-14'];
+  assert.equal(tag.done, 30, `aus 30 Antworten wurden ${tag.done}`);
+  assert.equal(tag.correct, 20, `aus 20 richtigen wurden ${tag.correct}`);
+  assert.equal(Object.keys(tag.je).length, 10, 'Beitraege sind verschwunden');
+});
+
+test('eine präparierte Datei flutet den Speicher nicht – verliert aber auch nichts', async () => {
+  globalThis.sessionStorage = { getItem: () => null, setItem: () => {} };
+  const S = await import('../assets/js/store.js?flut');
+  const je = {};
+  for (let i = 0; i < 500; i++) je['k' + i] = { done: 1 };
+  const rein = S.pruefeBackup(JSON.stringify({ rev: 1, cards: {}, days: { '2026-09-14': { done: 500, je } } }));
+  const tag = rein.days['2026-09-14'];
+  assert.ok(Object.keys(tag.je).length <= 65, `${Object.keys(tag.je).length} Schluessel – der Deckel greift nicht`);
+  assert.equal(tag.done, 500, `die Summe ist von 500 auf ${tag.done} gefallen`);
+});

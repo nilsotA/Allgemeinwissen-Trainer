@@ -662,20 +662,36 @@ function saeubern(roh) {
       newC: zahl(d.newC, 0, 1e6, 0), sec: zahl(d.sec, 0, 1e8, 0),
       duel: zahl(d.duel, 0, 1e6, 0), duelOk: zahl(d.duelOk, 0, 1e6, 0),
     };
-    /* Die Beitraege je Tab kommen ungeprueft aus der Datei. Hoechstens acht
-       Schluessel je Tag – mehr Tabs lernen an einem Tag nicht, und eine
-       praeparierte Datei soll den Speicher nicht mit Schluesseln fluten. */
+    /* Die Beitraege je Tab kommen ungeprueft aus der Datei, also braucht es eine
+       Obergrenze gegen eine praeparierte Datei, die den Speicher mit Schluesseln
+       flutet. Die erste Fassung nahm dafuer die ersten acht und liess den Rest
+       FALLEN – mit der Begruendung, mehr als zwei Tabs lernten an einem Tag
+       ohnehin nicht. Die Begruendung war falsch: Auf dem iPhone bekommt jeder
+       Kaltstart der vom Home-Bildschirm gestarteten App einen frischen
+       sessionStorage und damit eine neue Kennung. Zehn Starts an einem Tag sind
+       zehn Schluessel. Nachgestellt wurden aus „30 heute geschafft" nach dem
+       Einlesen der EIGENEN Sicherung 24 – stiller Verlust in genau dem Vorgang,
+       der den Fortschritt retten soll.
+
+       Jetzt wird gedeckelt, ohne wegzuwerfen: Was ueber die Grenze hinausgeht,
+       wandert feldweise in einen Sammeleintrag. Die Schluesselzahl bleibt
+       begrenzt, die Tagessumme bleibt exakt – und weil der Wert IN der
+       Beitragsliste steht, ueberlebt er auch das naechste Zusammenfuehren, das
+       die Tageszahl ohnehin aus ihr neu berechnet. */
     if (d.je && typeof d.je === 'object' && !Array.isArray(d.je)) {
       const je = {};
-      for (const [wer, b] of Object.entries(d.je).slice(0, 8)) {
+      let n = 0;
+      for (const [wer, b] of Object.entries(d.je)) {
         if (typeof wer !== 'string' || wer.length > 24 || !b || typeof b !== 'object') continue;
-        const eintrag = {};
+        const ziel = n < 64 ? (je[wer] = je[wer] || {}) : (je.rest = je.rest || {});
+        let etwas = false;
         for (const k of TAGESZAEHLER) {
-          const n = zahl(b[k], 0, k === 'sec' ? 1e8 : 1e6, 0);
-          if (n) eintrag[k] = n;
+          const v = zahl(b[k], 0, k === 'sec' ? 1e8 : 1e6, 0);
+          if (v) { ziel[k] = (ziel[k] || 0) + v; etwas = true; }
         }
-        if (Object.keys(eintrag).length) je[wer] = eintrag;
+        if (etwas) n++; else if (n < 64) delete je[wer];
       }
+      for (const wer of Object.keys(je)) if (!Object.keys(je[wer]).length) delete je[wer];
       if (Object.keys(je).length) { sauber.je = je; summiere(sauber); }
     }
     rein.days[tag] = sauber;

@@ -26,7 +26,7 @@ for (const p of ['playwright', '/opt/node22/lib/node_modules/playwright/index.mj
 }
 if (!playwright) {
   const erlaubt = process.env.OHNE_BROWSER === '1';
-  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 196 Prüfungen gelaufen'}.`);
+  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 199 Prüfungen gelaufen'}.`);
   if (importFehler && importFehler.code !== 'ERR_MODULE_NOT_FOUND') {
     console.log(`  Der Import scheiterte nicht am fehlenden Paket: ${importFehler.message}`);
   }
@@ -190,6 +190,46 @@ try {
   check('Kartenzustand entfernt', Object.keys(s2.cards || {}).length === 0);
   check('dieselbe Frage steht wieder an', (await page.locator('.q').innerText()) === q1);
   check('Rückgängig ist danach gesperrt', await page.locator('#undo').isDisabled());
+
+  /* Der Fehler zeigte sich erst ab der ZWEITEN Antwort des Tages: snapshot()
+     kopierte das Tagesbuch flach, und das traegt seit der Tab-Trennung eine
+     verschachtelte Beitragsliste. Die Kopie teilte sie mit dem Original – das
+     Zuruecknehmen setzte die sichtbaren Zaehler zurueck, der Beitrag dieses Tabs
+     blieb stehen, und beim naechsten Zaehlen rechnete die App die Tageszahl aus
+     der Liste neu. Der zurueckgenommene Treffer war wieder da, samt verbrauchtem
+     Budget fuer neue Karten. */
+  for (let i = 0; i < 3; i++) {
+    if (!(await page.locator('.opt:not([disabled])').count())) break;
+    await page.locator('.opt:not([disabled])').first().click();
+    await page.waitForSelector('#next');
+    await page.click('#next');
+    await page.waitForTimeout(FUSS_TAUB);
+  }
+  const vorUndo = await stored();
+  await page.click('#undo');
+  await settle();
+  const nachUndo = await stored();
+  check('Zurücknehmen nimmt die Antwort wirklich aus der Tageszählung',
+    nachUndo.totalAnswers === vorUndo.totalAnswers - 1,
+    `${vorUndo.totalAnswers} -> ${nachUndo.totalAnswers}`);
+  const tagNach = Object.values(nachUndo.days || {})[0] || {};
+  const jeSumme = Object.values(tagNach.je || {}).reduce((n, b) => n + (b.done || 0), 0);
+  check('und auch aus der Beitragsliste dieses Tabs',
+    !tagNach.je || jeSumme === tagNach.done,
+    `Tag ${tagNach.done}, Beitraege ${jeSumme}`);
+  // Und die naechste Antwort darf den zurueckgenommenen Treffer nicht zurueckholen.
+  if (await page.locator('.opt:not([disabled])').count()) {
+    await page.locator('.opt:not([disabled])').first().click();
+    await page.waitForSelector('#next');
+    await page.click('#next');
+    await page.waitForTimeout(FUSS_TAUB);
+    const danach = await stored();
+    check('die naechste Antwort holt ihn nicht zurueck',
+      danach.totalAnswers === nachUndo.totalAnswers + 1,
+      `${nachUndo.totalAnswers} -> ${danach.totalAnswers}`);
+  } else {
+    check('die naechste Antwort holt ihn nicht zurueck', true, 'keine Karte mehr in der Einheit');
+  }
 
   group('Tastatursteuerung');
   await page.keyboard.press('2');
@@ -1795,7 +1835,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 196;
+const MINDESTENS = 199;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

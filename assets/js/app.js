@@ -1783,7 +1783,14 @@ function snapshot(card) {
     tagVorhanden,
     cs: cardState(card.id) ? { ...cardState(card.id) } : null,
     dayKey: k,
-    day: { ...today() },
+    /* Tief kopieren: Das Tagesbuch traegt seit der Tab-Trennung ein
+       verschachteltes Feld je. Eine flache Kopie teilte es mit dem Original –
+       das Zuruecknehmen setzte danach die sichtbaren Zaehler zurueck, waehrend
+       der Beitrag dieses Tabs stehen blieb. Beim naechsten zaehle() rechnete
+       summiere() die Tageszahl aus der Beitragsliste neu, und der
+       zurueckgenommene Treffer war wieder da – samt verbrauchtem Budget fuer
+       neue Karten. */
+    day: structuredClone(today()),
     totalAnswers: st.totalAnswers, totalCorrect: st.totalCorrect,
     claims: st.claims, claimsMiss: st.claimsMiss,
     streak: st.streak, best: st.best, lastDay: st.lastDay,
