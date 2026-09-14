@@ -89,6 +89,8 @@ function show(v) {
   onKey = null;
   stopDuelTimer();
   app.classList.remove('full');
+  // Die untere Leiste ist wieder da – der Hinweisbalken sitzt wieder darueber.
+  document.documentElement.style.removeProperty('--toast-b');
   app.hidden = false; topbar.hidden = false; nav.hidden = false;
   render();
   window.scrollTo(0, 0);
@@ -1259,10 +1261,21 @@ function startRun(queue, mode, weiter = null) {
   };
   topbar.hidden = true; nav.hidden = true;
   app.classList.add('full');
+  /* Ein bereits stehender Update-Balken blieb ueber der ersten Karte liegen.
+     .toast.aktion laesst Tipper zwar durch, sein Knopf aber nicht: Ein Tipp auf
+     die oberste Antwortmoeglichkeit landete auf „Laden". updateAnbieten() haelt
+     das Angebot waehrend einer Runde ohnehin zurueck – nur ein Balken, der
+     schon dastand, kam nie weg. holeUpdateNach() bringt ihn nach der Runde. */
+  const angebot = document.querySelector('.toast.aktion:not(.speicher)');
+  if (angebot) { angebot.remove(); updateWartet = true; }
+  // Waehrend einer Runde traegt der Fuss die Knoepfe – der Hinweisbalken rueckt hoch.
+  document.documentElement.style.setProperty('--toast-b', 'calc(var(--safe-b) + 128px)');
+  sperreStart();          // der zweite Tipp des Startknopfs trifft sonst die erste Antwort
   step();
 }
 
 function endRun() {
+  document.documentElement.style.removeProperty('--toast-b');
   stopDuelTimer();
   const r = run;
   const secs = Math.round((Date.now() - r.start) / 1000);
@@ -1469,6 +1482,18 @@ function zuFrueh() {
   return Date.now() < entprelltBis;
 }
 
+/* Eine eigene Uhr fuer den Start einer Runde. Der Zaehler oben gilt den
+   Fussknoepfen: Er laeuft bei jedem „Weiter" neu an, und die Antwortknoepfe
+   daran zu haengen machte sie nach JEDER Karte taub – ein Preis, den niemand
+   zahlen will. Geschuetzt werden muss nur der eine Fall: Der zweite Tipp eines
+   Doppeltipps auf „Tagestraining starten" landete auf der ersten
+   Antwortmoeglichkeit der nie gelesenen Karte. Die Loesung deckte auf, „Leider
+   falsch", und der einzige Weg vorwaerts buchte AGAIN – nachgestellt ef 2,5 auf
+   2,3, lapses 0 auf 1, und ein Platz des Tagesbudgets war verbraucht. */
+let startSperreBis = 0;
+const sperreStart = () => { startSperreBis = Date.now() + ENTPRELLZEIT; };
+const nachStart = () => Date.now() < startSperreBis;
+
 /* Die Frage liegt als eigenes Blatt auf dem Grund. Der Rest der Flaeche ist
    damit Buehne und nicht Leere – und der Knopf bleibt unten im Daumenbereich. */
 const qkarte = (inner, solo) => `<div class="qcard${solo ? ' solo' : ''}">${inner}</div>`;
@@ -1519,6 +1544,7 @@ function askChoice(card, isFresh, cs) {
     isFresh ? `<p class="tiny center">Neue Karte – rate ruhig, der Versuch selbst hilft beim Behalten.</p>` : ''
   );
   const pick = (b) => {
+    if (nachStart()) return;        // der zweite Tipp des Startknopfs
     const ok = b.dataset.v === card.a;
     const dt = verstrichen();
     verstrichen.beenden();
@@ -1845,6 +1871,8 @@ function askDuel(card) {
 
   function finish(chosen) {
     if (finished || !run) return;
+    if (chosen && nachStart()) return;    // Zeitablauf (chosen === null) zaehlt immer
+
     finished = true;
     stopDuelTimer();
     // Zeit vor dem Stoppen ablesen; abgelaufene Fragen zaehlen mit vollem Limit.
@@ -2134,6 +2162,13 @@ function startFehlerBalken() {
 
 function speicherBalken() {
   document.querySelector('.toast.aktion.speicher')?.remove();
+  /* Zwei Aktionsbalken liegen sonst gleichzeitig da – beide fixiert am selben
+     unteren Rand, beide z-index 60. Der spaeter angehaengte deckte den anderen
+     vollstaendig zu, und dessen unsichtbarer „Laden"-Knopf fing die Tipper ab,
+     die dem sichtbaren „Sichern" galten. Das Angebot wird deshalb
+     zurueckgestellt, nicht ueberdeckt; holeUpdateNach() bringt es wieder. */
+  const angebot = document.querySelector('.toast.aktion:not(.speicher)');
+  if (angebot) { angebot.remove(); updateWartet = true; }
   const d = document.createElement('div');
   d.className = 'toast aktion speicher';
   d.setAttribute('role', 'alert');

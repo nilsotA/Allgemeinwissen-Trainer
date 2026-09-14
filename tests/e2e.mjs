@@ -26,7 +26,7 @@ for (const p of ['playwright', '/opt/node22/lib/node_modules/playwright/index.mj
 }
 if (!playwright) {
   const erlaubt = process.env.OHNE_BROWSER === '1';
-  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 190 Prüfungen gelaufen'}.`);
+  console.log(`Playwright nicht gefunden – ${erlaubt ? 'übersprungen (OHNE_BROWSER=1)' : 'KEINE der 195 Prüfungen gelaufen'}.`);
   if (importFehler && importFehler.code !== 'ERR_MODULE_NOT_FOUND') {
     console.log(`  Der Import scheiterte nicht am fehlenden Paket: ${importFehler.message}`);
   }
@@ -142,6 +142,7 @@ try {
   const angesagt = Number((await page.locator('.hero h1').innerText()).match(/\d+/)?.[0] || 0);
   await page.click('[data-go="daily"]');
   await page.waitForSelector('.opt, #reveal');
+  await page.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
   const gestartet = Number((await page.locator('.sess-top .tiny').innerText()).split('/')[1]);
   check('gestartete Runde entspricht der Ansage', gestartet === angesagt,
     `${gestartet} Karten statt angesagter ${angesagt}`);
@@ -201,6 +202,7 @@ try {
   const qVorTaste = await page.locator('.q').innerText();
   await page.keyboard.press('Enter');
   await page.waitForSelector('.opt, #reveal, .done-wrap');
+  await page.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
   await settle();
   const weiter = await page.locator('.done-wrap').count() === 1
     || (await page.locator('.q').innerText()) !== qVorTaste;
@@ -319,6 +321,7 @@ try {
   const gewaehlt = await page.locator('[data-sub]').first().getAttribute('data-sub');
   await page.locator('[data-sub]').first().click();
   await page.waitForSelector('.sess-body');
+  await page.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
   const kat = await page.locator('.qcat').first().innerText();
   check('Übungsrunde kommt aus dem gewählten Teilgebiet',
     kat.includes(gewaehlt.split('|')[1]), `${kat} statt ${gewaehlt}`);
@@ -350,6 +353,7 @@ try {
     await wp.waitForSelector('#ganzesThema');
     await wp.click('#ganzesThema');
     await wp.waitForSelector('.sess-body');
+    await wp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
     let ausSport = 0, karten = 0;
     for (let i = 0; i < 40 && await wp.locator('.q').count(); i++) {
@@ -371,6 +375,7 @@ try {
     await wp.waitForSelector('#again', { timeout: 10000 });
     await wp.click('#again');
     await wp.waitForSelector('.sess-body', { timeout: 10000 });
+    await wp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     /* Mehrere Karten ansehen, nicht nur die erste: Ein gemischter Tagesplan
        faengt in einem von neun Faellen zufaellig auch mit Sport an - eine
        einzelne Karte beweist gar nichts. */
@@ -448,6 +453,7 @@ try {
     await dp.locator('.nav-btn[data-view="duel"]').click();
     await dp.locator('#duelGo').click();
     await dp.waitForSelector('.opt');
+    await dp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     for (let i = 0; i < 4; i++) {
       await dp.locator('.opt:not([disabled])').first().click();
       await dp.waitForSelector('#next', { timeout: 5000 });
@@ -672,6 +678,7 @@ try {
     await np.reload({ waitUntil: 'networkidle' });
     await np.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await np.waitForSelector('.sess-body');
+    await np.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     const stand = async () => (await np.locator('.sess-top .tiny').innerText()).split('/').map(Number);
     const [, vorrat] = await stand();
     const frage = await np.locator('.q').innerText();
@@ -713,6 +720,7 @@ try {
     await up2.goto(URL_BASE, { waitUntil: 'networkidle' });
     await up2.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await up2.waitForSelector('.opts');
+    await up2.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     const frage = (await up2.locator('.q').innerText()).trim();
     const richtig = ANTWORT.get(frage);
 
@@ -798,6 +806,7 @@ try {
     const ANTWORT = new Map(CARDS.map(c => [c.q.trim(), c.a]));
     await R.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await R.waitForSelector('.sess-body', { timeout: 10000 });
+    await R.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     // Eine Karte falsch beantworten, damit der Rueckblick etwas zu zeigen hat,
     // dann die Runde ueber den Beenden-Knopf abschliessen (run.done > 0).
     const q = (await R.locator('.q').innerText()).trim();
@@ -842,6 +851,7 @@ try {
     await dp2.waitForTimeout(300);
     await dp2.locator('#duelGo').click();
     await dp2.waitForSelector('.opts');
+    await dp2.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
 
     const balken = async () => Number(
       /width:\s*([\d.]+)%/.exec(await dp2.locator('#clock i').getAttribute('style') || '')?.[1] ?? -1);
@@ -945,6 +955,7 @@ try {
     await tp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await tp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await tp.waitForSelector('.sess-body');
+    await tp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
 
     // Einen bleibenden Hinweisbalken erzeugen, wie ihn eine neue Fassung zeigt
     await tp.evaluate(() => {
@@ -1026,6 +1037,7 @@ try {
     await fp.reload({ waitUntil: 'networkidle' });
     await fp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await fp.waitForSelector('.sess-body');
+    await fp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
 
     check('ohne Eingabe gibt es keinen blossen Aufdeck-Knopf',
       await fp.locator('#reveal').count() === 0);
@@ -1111,6 +1123,7 @@ try {
     await dp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await dp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await dp.waitForSelector('.sess-body');
+    await dp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     const ziel = (await dp.locator('.q').innerText()).trim();
     let gezeigt = 0, antworten = 0, fertig = false;
     for (let i = 0; i < 40; i++) {
@@ -1145,6 +1158,7 @@ try {
     await up.goto(URL_BASE, { waitUntil: 'networkidle' });
     await up.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await up.waitForSelector('.sess-body');
+    await up.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     const vorrat = async () => Number((await up.locator('.sess-top .tiny').innerText()).split('/')[1]);
     const start = await vorrat();
     const frage = (await up.locator('.q').innerText()).trim();
@@ -1306,6 +1320,7 @@ try {
     await dp.reload({ waitUntil: 'networkidle' });
     await dp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await dp.waitForSelector('.sess-body');
+    await dp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     await dp.waitForTimeout(FUSS_TAUB);
     await dp.locator('[data-hab="0"]').click();          // erste Karte: festlegen
     await dp.waitForSelector('[data-g]');
@@ -1363,6 +1378,7 @@ try {
     }, KEY);
     await vp.click('[data-go="daily"]');
     await vp.waitForSelector('.opt, #reveal');
+    await vp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     if (await vp.locator('.opt').count()) await vp.locator('.opt').first().click();
     else await vp.click('#reveal');
     // Geschrieben wird erst beim Weitergehen, nicht schon beim Antworten.
@@ -1393,6 +1409,7 @@ try {
     await kp.goto(URL_BASE, { waitUntil: 'networkidle' });
     await kp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
     await kp.waitForSelector('.sess-body');
+    await kp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     if (await kp.locator('.opt').count()) await kp.locator('.opt').first().click();
     else await kp.locator('.sess-foot button').first().click();
     await kp.waitForTimeout(700);
@@ -1428,6 +1445,7 @@ try {
       await qp.locator('#quizBest').innerText());
     await qp.locator('#quizGo').click();
     await qp.waitForSelector('.opt');
+    await qp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     check('der Punktestand steht ueber der Frage', (await qp.locator('#quizStand').innerText()) === '0');
     check('die Blitz-Pille ist zu Beginn sichtbar', !/\baus\b/.test(await qp.locator('#blitz').getAttribute('class')));
 
@@ -1450,6 +1468,7 @@ try {
       await qp.waitForTimeout(FUSS_TAUB);
       await qp.locator('#next').click();
       await qp.waitForSelector('.opt:not([disabled]), #quizPunkte');
+      await qp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     };
 
     // 1: richtig und schnell -> 15
@@ -1520,6 +1539,7 @@ try {
 
     await qp.locator('#again').click();
     await qp.waitForSelector('.opt');
+    await qp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     check('„Noch eine Runde" startet wieder ein Quiz', (await qp.locator('#quizStand').count()) === 1);
     await qp.locator('#quit').click();
     await qp.waitForSelector('.hero');
@@ -1531,6 +1551,7 @@ try {
     const katNach = await qp.locator('#quizNachlegen').getAttribute('data-cat');
     await qp.locator('#quizNachlegen').click();
     await qp.waitForSelector('.opt');
+    await qp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     check('„im Duell nachlegen" startet ein Duell genau in diesem Thema',
       (await qp.locator('#quizStand').count()) === 0
         && (await qp.locator('.qcat').first().innerText()).includes(CAT_BY_ID[katNach].name),
@@ -1552,6 +1573,7 @@ try {
     await bp.locator('.nav-btn[data-view="duel"]').click();
     await bp.locator('#quizGo').click();
     await bp.waitForSelector('.opt');
+    await bp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     const sichtbarkeit = (wert) => bp.evaluate((v) => {
       Object.defineProperty(document, 'visibilityState', { get: () => v, configurable: true });
       Object.defineProperty(document, 'hidden', { get: () => v === 'hidden', configurable: true });
@@ -1577,6 +1599,7 @@ try {
     await bp.waitForTimeout(FUSS_TAUB);
     await bp.locator('#next').click();
     await bp.waitForSelector('.opt:not([disabled])');
+    await bp.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     await bp.clock.runFor(16000);
     await bp.waitForSelector('.verdict');
     check('die Ansage sagt „Zeit abgelaufen", nicht „Falsch"',
@@ -1604,6 +1627,7 @@ try {
     await ap.locator('.nav-btn[data-view="duel"]').click();
     await ap.locator('#quizGo').click();
     await ap.waitForSelector('.opt');
+    await ap.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
 
     const antworte = async (richtig) => {
       const frage = await ap.locator('h1.q').innerText();
@@ -1619,6 +1643,7 @@ try {
     await ap.waitForTimeout(FUSS_TAUB);
     await ap.locator('#next').click();
     await ap.waitForSelector('.opt:not([disabled])');
+    await ap.waitForTimeout(FUSS_TAUB);   // der Startknopf sperrt die erste Antwort kurz
     // Zweite Frage falsch - und dann NICHT „Weiter", sondern X.
     const verfehlt = await antworte(false);
     await ap.waitForSelector('#next');
@@ -1649,6 +1674,100 @@ try {
     await actx.close();
   }
 
+  group('Kein Balken ueber den Antwortknoepfen');
+  {
+    /* Drei Wege, auf denen ein Tipp etwas anderes tat als angezeigt. Bei einem
+       Lernprogramm ist das nicht nur Aerger: Die Karte wird falsch gebucht. */
+    const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'block' });
+    const bp = horche(await bctx.newPage());
+    await bp.goto(URL_BASE, { waitUntil: 'load' });
+    await bp.waitForSelector('#app:not([hidden])');
+
+    // Einen Aktionsbalken herstellen, wie ihn das Update-Angebot erzeugt.
+    const balkenBauen = () => bp.evaluate(() => {
+      document.querySelector('.toast.aktion:not(.speicher)')?.remove();
+      const d = document.createElement('div');
+      d.className = 'toast aktion';
+      d.innerHTML = '<span>Neue Fassung bereit</span>';
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = 'Laden';
+      d.appendChild(b);
+      document.body.appendChild(d);
+    });
+
+    await balkenBauen();
+    await bp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await bp.waitForSelector('.sess-body');
+    await bp.waitForTimeout(FUSS_TAUB);
+    check('ein stehendes Update-Angebot wird beim Start der Runde weggeraeumt',
+      await bp.locator('.toast.aktion:not(.speicher)').count() === 0);
+
+    /* Der Balken sass fest auf Hoehe der unteren Leiste – gerechnet fuer
+       Bildschirme MIT Leiste. Waehrend einer Runde ist sie ausgeblendet und der
+       Fuss traegt die Notenknoepfe; derselbe Abstand legte den „Sichern"-Knopf
+       des Speicherhinweises dann ueber „Gut", und der nimmt Tipper an.
+       Geprueft wird der Mechanismus, nicht eine Pixelzahl: Waehrend einer Runde
+       traegt das Wurzelelement die Bodenhoehe, danach nicht mehr. Gemessen hat
+       der Fund 50 px Unterschied ergeben. */
+    const toastB = (wo) => bp.evaluate(() =>
+      getComputedStyle(document.documentElement).getPropertyValue('--toast-b').trim());
+    check('waehrend einer Runde rueckt der Hinweisbalken vom Fuss weg',
+      (await toastB()) !== '', `--toast-b: „${await toastB()}"`);
+    await bp.evaluate(() => document.querySelector('.toast.aktion')?.remove());
+    await bp.click('#quit');
+    await bp.waitForSelector('.done-wrap, .hero');
+    check('nach der Runde sitzt er wieder ueber der unteren Leiste',
+      (await toastB()) === '', `--toast-b: „${await toastB()}"`);
+    await bctx.close();
+  }
+
+  group('Die Karte bleibt nach dem Aufdecken ganz zu sehen');
+  {
+    const cctx = await browser.newContext({ ...devices['iPhone SE'], locale: 'de-DE', serviceWorkers: 'block' });
+    const cp = horche(await cctx.newPage());
+    /* „Immer frei" erzwingen: Ohne das haengt es vom Lernstand ab, ob ueberhaupt
+       eine Karte mit freier Eingabe kommt – und ein Zweig, der bei „keine
+       gefunden" bestanden meldet, ist genau die Behauptung, die nichts prueft. */
+    await cp.addInitScript((k) => localStorage.setItem(k,
+      JSON.stringify({ rev: 1, settings: { recallMode: 'recall' } })), KEY);
+    await cp.goto(URL_BASE, { waitUntil: 'load' });
+    await cp.waitForSelector('#app:not([hidden])');
+    await cp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await cp.waitForSelector('.sess-body');
+    await cp.waitForTimeout(FUSS_TAUB);
+
+    /* Nach dem Aufdecken wuchs der Inhalt ueber das Sichtfenster. Die Karte war
+       ein schrumpfbares Flex-Kind, fiel unter ihre Inhaltshoehe und schob – weil
+       sie mittig ausrichtet – die Haelfte des Ueberhangs nach OBEN aus dem Bild.
+       Themenzeile, „neu"-Marke und der Anfang der Frage waren weg, und kein
+       Scrollen brachte sie zurueck. */
+    /* Bei freier Eingabe kommt zuerst die Selbsteinschaetzung, dann die Loesung. */
+    check('mit „Immer frei" kommt auch wirklich eine Karte zum freien Abrufen',
+      await cp.locator('[data-hab]').count() === 2);
+    await cp.locator('[data-hab="1"]').click();
+    await cp.waitForSelector('[data-g]');
+    /* Der Ueberlauf wird erzwungen statt erhofft: Ob ein Kartentext lang genug
+       ist, haengt an der gezogenen Karte – und ein Test, der bei kurzem Text
+       stillschweigend besteht, prueft nichts. Eingesetzt wird derselbe Aufbau,
+       den eine Karte mit langer Antwort und langem Kontext erzeugt. */
+    const mass = await cp.evaluate(() => {
+      const k = document.querySelector('.qcard');
+      const p = document.createElement('p');
+      p.className = 'expl';
+      p.textContent = 'Kontext. '.repeat(120);
+      k.appendChild(p);
+      return { kasten: Math.round(k.getBoundingClientRect().height), inhalt: k.scrollHeight };
+    });
+    /* Gemessen vorher: Kasten 364 px, Inhalt 872 px – die Karte war ein
+       schrumpfbares Flex-Kind und fiel unter ihre Inhaltshoehe. Mittig
+       ausgerichtet schob sie die Haelfte des Ueberhangs nach oben aus dem Bild;
+       Themenzeile und Anfang der Frage waren weg und kein Scrollen brachte sie
+       zurueck. Nachher: 1.373 zu 1.390. */
+    check('die Karte behaelt nach dem Aufdecken ihre volle Hoehe',
+      mass.kasten + 24 >= mass.inhalt, `Kasten ${mass.kasten} px, Inhalt ${mass.inhalt} px`);
+    await cctx.close();
+  }
+
   group('Layout');
   check('kein waagerechter Überlauf',
     (await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)) === 0);
@@ -1665,7 +1784,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 190;
+const MINDESTENS = 195;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

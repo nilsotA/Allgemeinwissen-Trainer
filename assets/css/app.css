@@ -206,7 +206,12 @@ p,.muted,.tiny,.val,.expl,.lk-q,.q{text-wrap:pretty}
 .qcard::after{left:22px;right:22px;bottom:-19px;background:var(--bg2)}
 /* Steht die Karte allein auf dem Bildschirm, bekommt sie Hoehe: die Frage sitzt
    dann mittig im Blatt statt oben an einer leeren Flaeche. */
-.qcard.solo{min-height:min(45dvh,360px);display:flex;flex-direction:column;justify-content:center}
+/* flex:none ist hier das Entscheidende. Als schrumpfbares Flex-Kind von
+   .sess-body fiel die Karte nach dem Aufdecken unter ihre Inhaltshoehe
+   (gemessen: Kasten 364 px, Inhalt 576 px), und justify-content:center schob
+   die Haelfte des Ueberhangs nach OBEN aus dem Bild – Themenzeile, „neu"-Marke
+   und der Anfang der Frage waren weg und nicht mehr erreichbar. */
+.qcard.solo{min-height:min(45dvh,360px);flex:none;display:flex;flex-direction:column;justify-content:center}
 .qcard .verdict{margin-top:13px}
 .qmeta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:11px}
 .qcat{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:var(--dim)}
@@ -240,6 +245,10 @@ p,.muted,.tiny,.val,.expl,.lk-q,.q{text-wrap:pretty}
 .expl{margin-top:10px;font-size:14.5px;color:var(--dim);line-height:1.6}
 .expl b{color:var(--txt)}
 .verdict{font-size:15.5px;font-weight:700;display:flex;gap:9px;align-items:center}
+/* Ohne min-width:0 schrumpft ein Flexkind nicht unter seinen Inhalt: Ein
+   getipptes Wort ohne Trennstelle ragte 42 px aus der Karte, und .sess-body
+   scrollte waagerecht. */
+.verdict>span{min-width:0;overflow-wrap:anywhere}
 .verdict .ic{width:19px;height:19px;padding:5px;border-radius:50%;box-sizing:content-box}
 .verdict.good{color:var(--ok)} .verdict.good .ic{background:var(--ok-soft)}
 .verdict.bad{color:var(--bad)} .verdict.bad .ic{background:var(--bad-soft)}
@@ -347,7 +356,13 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appeara
 /* pointer-events:none ist hier kein Detail: Der Hinweis liegt fest ueber dem
    unteren Rand – also genau ueber den Antwort- und Notenknoepfen. Ohne die Regel
    schluckt sein Rechteck jeden Tipper, der darunter zielte. */
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + var(--safe-b) + 16px);
+/* Die Bodenhoehe ist eine Variable, weil sie zweierlei sein muss: Ausserhalb
+   einer Runde sitzt der Balken ueber der unteren Leiste. WAEHREND einer Runde
+   ist die Leiste ausgeblendet und der Fuss traegt die Notenknoepfe – dieselbe
+   Hoehe legte den „Sichern"-Knopf des Speicherhinweises dann genau ueber „Gut",
+   und der nimmt Tipper ausdruecklich an. Gemessen: das obere Drittel von „Gut"
+   war nicht mehr erreichbar. */
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:var(--toast-b, calc(var(--nav-h) + var(--safe-b) + 16px));
   background:var(--toast);color:var(--on-toast);border-radius:14px;padding:12px 18px;font-size:14.5px;font-weight:600;
   z-index:60;box-shadow:0 14px 34px -14px rgba(0,0,0,.7);animation:up .25s ease;max-width:calc(100vw - 40px);
   pointer-events:none}
