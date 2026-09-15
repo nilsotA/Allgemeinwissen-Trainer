@@ -12,7 +12,7 @@ globalThis.localStorage = {
 
 const store = await import('../assets/js/store.js');
 const { CARDS, CATS } = await import('../data/index.js');
-const { fresh } = await import('../assets/js/srs.js');
+const { fresh, strength, isLeech } = await import('../assets/js/srs.js');
 const q = await import('../assets/js/quizmodus.js');
 
 /* Ein kleiner linearer Kongruenzgenerator: derselbe Startwert, dieselbe Folge.
@@ -72,18 +72,107 @@ test('auch nie gesehene Karten werden gezogen - ein Quiz fragt alles', () => {
   assert.equal(runde.length, q.FRAGEN_JE_RUNDE);
 });
 
-test('die Zusatzplaetze holen Wackelkandidaten unter Zeitdruck zurueck', () => {
-  /* Ein Pool aus einem einzigen Thema: Nach dem ersten Platz ist jeder weitere
-     ein Zusatzplatz. Fuenf Karten wackeln - sie muessen alle in der Runde sein. */
-  const pool = CARDS.filter(c => c.cat === 'nat' && c.d === 3).slice(0, 40);
-  assert.ok(pool.length >= 20, 'der Test braucht genug Profi-Karten');
-  const wackler = new Set(pool.slice(10, 15).map(c => c.id));
-  const stand = (id) => wackler.has(id)
-    ? { ...fresh(), seen: 6, ok: 2, reps: 1, iv: 1, lapses: 4 }     // isLeech: lapses >= 4, strength < 0.45
-    : { ...fresh(), seen: 8, ok: 8, reps: 6, iv: 120 };              // sitzt fest
-  const runde = q.ziehung(pool, { zufall: festerZufall(2), stand });
-  const gezogen = new Set(runde.map(x => x.card.id));
-  for (const id of wackler) assert.ok(gezogen.has(id), `Wackelkandidat ${id} fehlt in der Runde`);
+/* Ein Lernstand wie nach zwei Wochen: ein Teil der Karten gesehen, ein Fuenftel
+   davon wacklig. Die Ziehung bekommt ihn als stand() herein. */
+function lernstand(pool, anteil, saat) {
+  const r = festerZufall(saat);
+  const stand = new Map();
+  for (const c of pool.slice().sort(() => r() - 0.5).slice(0, Math.round(pool.length * anteil))) {
+    stand.set(c.id, r() < 0.2
+      ? { ...fresh(), seen: 6, ok: 2, reps: 1, iv: 1, lapses: 4 }    // isLeech: lapses >= 4, strength < 0.45
+      : { ...fresh(), seen: 8, ok: 8, reps: 6, iv: 120 });           // sitzt fest
+  }
+  return stand;
+}
+const wackeltNach = (stand) => (c) => {
+  const s = stand.get(c.id);
+  return !!s && s.seen > 0 && (isLeech(s) || strength(s) < 0.6);
+};
+
+test('die Wackelplaetze holen Fehlgriffe zurueck - aber reihum, nicht immer dieselben', () => {
+  /* Zwei Plaetze je Runde sind fuer Wackler reserviert. Beide ziehen quer durch
+     den ganzen Bestand: Wer 94 wacklige Karten hat, darf nicht in jeder dritten
+     Runde dieselbe sehen, waehrend neunzig andere warten. */
+  const pool = CARDS.filter(c => c.cat === 'nat' || c.cat === 'ges' || c.cat === 'geo');
+  const stand = lernstand(pool, 0.24, 13);
+  const wackelt = wackeltNach(stand);
+  const wackler = pool.filter(wackelt);
+  assert.ok(wackler.length >= 30, `der Test braucht viele Wackler, hat ${wackler.length}`);
+
+  const RUNDEN = 200;
+  const zaehler = new Map();
+  let rundenMitWackel = 0;
+  for (let i = 0; i < RUNDEN; i++) {
+    const runde = q.ziehung(pool, { zufall: festerZufall(100 + i), stand: (id) => stand.get(id) || null });
+    let w = 0;
+    for (const { card } of runde) {
+      zaehler.set(card.id, (zaehler.get(card.id) || 0) + 1);
+      if (wackelt(card)) w++;
+    }
+    if (w > 0) rundenMitWackel++;
+  }
+  assert.ok(rundenMitWackel / RUNDEN >= 0.9,
+    `nur ${rundenMitWackel} von ${RUNDEN} Runden hatten einen Wackler`);
+  const haeufigster = Math.max(...wackler.map(c => (zaehler.get(c.id) || 0) / RUNDEN));
+  assert.ok(haeufigster <= 0.2,
+    `eine wacklige Karte kam in ${(haeufigster * 100).toFixed(0)} % der Runden - vor der Korrektur waren es 35 %`);
+});
+
+test('keine Karte bleibt liegen, auch nicht bei nur zwei aktiven Themen', () => {
+  /* Der Fall aus dem Alltag: zwei Themen eingeschaltet, zwei Wochen gelernt.
+     Vor der Korrektur blieben 87 von 222 Karten ungezogen, und eine kam in
+     jeder Runde vor. Der Test haelt beide Zahlen fest. */
+  const pool = CARDS.filter(c => c.cat === 'mat' || c.cat === 'spo');
+  const stand = lernstand(pool, 0.24, 7);
+  /* Genug Runden, damit "nie gezogen" etwas ueber die Ziehung sagt und nicht
+     ueber den Zufall: 800 Runden sind 9.600 Zuege auf 699 Karten, im Schnitt
+     knapp vierzehn je Karte. Wer da fehlt, wird ausgeschlossen, nicht uebersehen. */
+  const RUNDEN = 800;
+  const zaehler = new Map();
+  for (let i = 0; i < RUNDEN; i++)
+    for (const { card } of q.ziehung(pool, { zufall: festerZufall(500 + i), stand: (id) => stand.get(id) || null }))
+      zaehler.set(card.id, (zaehler.get(card.id) || 0) + 1);
+
+  const nie = pool.filter(c => !zaehler.has(c.id));
+  assert.equal(nie.length, 0, `${nie.length} von ${pool.length} Karten wurden nie gezogen`);
+  const schnitt = q.FRAGEN_JE_RUNDE / pool.length;
+  const faktor = Math.max(...pool.map(c => (zaehler.get(c.id) || 0) / RUNDEN)) / schnitt;
+  assert.ok(faktor <= 9, `die haeufigste Karte kam ${faktor.toFixed(1)}-mal so oft wie der Schnitt (vorher 18,5)`);
+});
+
+test('eine duenne Stufe zieht die Nachbarstufe hinzu, statt sich zu wiederholen', () => {
+  /* Ein gebauter Pool, damit der Test die Regel prueft und nicht den Bestand:
+     Thema A hat nur vier Basiskarten, dafuer reichlich Solide. Ohne die
+     Verbreiterung sind es genau diese vier in jeder zweiten Runde - genau der
+     Grund, warum im Alltagsfall oben Karten liegenblieben. */
+  const pool = [];
+  const bauen = (cat, d, n) => { for (let k = 0; k < n; k++) pool.push({ id: `${cat}${d}-${k}`, cat, d, q: 'x', a: 'y' }); };
+  bauen('a', 1, 4); bauen('a', 2, 60); bauen('a', 3, 60);
+  bauen('b', 1, 60); bauen('b', 2, 60); bauen('b', 3, 60);
+  const duenn = pool.filter(c => c.cat === 'a' && c.d === 1);
+  const zaehler = new Map();
+  const RUNDEN = 300;
+  for (let i = 0; i < RUNDEN; i++)
+    for (const { card } of q.ziehung(pool, { zufall: festerZufall(900 + i) }))
+      zaehler.set(card.id, (zaehler.get(card.id) || 0) + 1);
+  const haeufigster = Math.max(...duenn.map(c => (zaehler.get(c.id) || 0) / RUNDEN));
+  assert.ok(haeufigster <= 0.15,
+    `eine der vier Basiskarten kam in ${(haeufigster * 100).toFixed(0)} % der Runden - ohne Verbreiterung sind es 50 %`);
+  const nachbar = pool.filter(c => c.cat === 'a' && c.d === 2 && zaehler.has(c.id)).length;
+  assert.ok(nachbar >= 40, `nur ${nachbar} Karten der Nachbarstufe kamen ueberhaupt vor`);
+});
+
+test('die Runde steigt auch mit Wackelplaetzen von Basis nach Profi', () => {
+  /* Die Wackelplaetze ziehen quer durch alle Stufen. Damit die Runde sich
+     trotzdem wie ein Quiz anfuehlt, wird sie am Ende sortiert. */
+  const pool = CARDS.filter(c => c.cat === 'nat' || c.cat === 'ges' || c.cat === 'geo');
+  const stand = lernstand(pool, 0.4, 21);
+  for (let i = 0; i < 50; i++) {
+    const stufen = q.ziehung(pool, { zufall: festerZufall(700 + i), stand: (id) => stand.get(id) || null })
+      .map(x => x.card.d);
+    for (let k = 1; k < stufen.length; k++)
+      assert.ok(stufen[k] >= stufen[k - 1], `Runde ${i} faellt bei ${k}: ${stufen}`);
+  }
 });
 
 test('die Auswertung sagt, wo die Punkte verloren gingen', () => {

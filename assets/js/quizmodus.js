@@ -44,12 +44,17 @@ function mischen(arr, zufall) {
    - Jedes Thema im Pool kommt mindestens einmal dran; bei neun Themen und zwoelf
      Fragen sind drei Themen zweimal an der Reihe. Welche, entscheidet der Zufall.
    - Die Schwierigkeit steigt wie im Quiz: das erste Drittel Basis, dann Solide,
-     dann Profi. Fehlt einem Thema eine Stufe, nimmt es eine beliebige Karte.
+     dann Profi. Ist eine Stufe eines Themas duenn besetzt (unter acht freien
+     Karten), zaehlt die Nachbarstufe mit; erst danach das ganze Thema, erst
+     danach der ganze Pool. Ohne diese Verbreiterung zieht ein Thema mit vier
+     Basiskarten dieselben vier Karten in jeder zweiten Runde.
    - Auch nie gesehene Karten werden gezogen. Ein Quiz fragt nicht nur, was man
      schon gelernt hat - das ist der Unterschied zum Duell.
-   - Die Zusatzplaetze (ein Thema zum zweiten Mal) bevorzugen bekannte Karten,
-     die wackeln. Das ist die Regel aus dem Duell: Woran man unter Zeitdruck
-     scheiterte, muss unter Zeitdruck wiederkommen.
+   - Zwei Plaetze der Runde (ein Sechstel) sind fuer bekannte Karten reserviert,
+     die wackeln - quer durch alle Themen und Stufen. Das ist die Regel aus dem
+     Duell: Woran man unter Zeitdruck scheiterte, muss unter Zeitdruck
+     wiederkommen. Danach wird die Runde nach Schwierigkeit sortiert, damit sie
+     trotzdem von Basis nach Profi steigt.
 
    Der Rueckgabewert hat die Form der anderen Warteschlangen ({card, fresh}),
    damit startRun() ihn ohne Sonderfall annimmt. */
@@ -60,6 +65,7 @@ export function ziehung(pool, { n = FRAGEN_JE_RUNDE, zufall = Math.random, stand
     const s = stand(c.id);
     return !!s && s.seen > 0 && (isLeech(s) || strength(s) < 0.6);
   };
+  const zusatz = Math.min(Math.max(0, n - kategorien.length), Math.round(n / 6));
   const gewaehlt = new Set();
   const out = [];
   for (let i = 0; i < n; i++) {
@@ -67,17 +73,29 @@ export function ziehung(pool, { n = FRAGEN_JE_RUNDE, zufall = Math.random, stand
     const cat = kategorien[i % kategorien.length];
     const frei = (passt) => pool.filter(c => !gewaehlt.has(c.id) && passt(c));
     let kandidaten = frei(c => c.cat === cat && c.d === stufe);
+    if (kandidaten.length < 8) {
+      const weiter = frei(c => c.cat === cat && Math.abs(c.d - stufe) <= 1);
+      if (weiter.length > kandidaten.length) kandidaten = weiter;
+    }
     if (!kandidaten.length) kandidaten = frei(c => c.cat === cat);
     if (!kandidaten.length) kandidaten = frei(() => true);
     if (!kandidaten.length) break;
-    if (i >= kategorien.length) {
-      const schwach = kandidaten.filter(wackelt);
-      if (schwach.length) kandidaten = schwach;
+    if (i >= n - zusatz) {
+      /* Quer durch den ganzen Bestand, nicht nur durch die Scheibe dieses
+         Platzes: Sonst treffen die zwei Plaetze immer dieselben paar Wackler
+         der hoechsten Stufe, waehrend achtzig andere warten. Gemessen an 4.000
+         Runden faellt der haeufigste Wackler damit von 35 % auf 3 % der Runden. */
+      const ueberall = frei(wackelt);
+      if (ueberall.length) kandidaten = ueberall;
     }
     const card = kandidaten[Math.floor(zufall() * kandidaten.length)];
     gewaehlt.add(card.id);
     out.push({ card, fresh: false });
   }
+  /* Zuletzt nach Schwierigkeit ordnen. Die Wackelplaetze ziehen quer durch alle
+     Stufen, und auch eine duenne Scheibe kann eine leichtere Karte nachreichen -
+     ohne diese Zeile stolpert die Runde zwischen Basis und Profi hin und her. */
+  out.sort((a, b) => a.card.d - b.card.d);
   return out;
 }
 
