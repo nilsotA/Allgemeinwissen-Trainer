@@ -157,10 +157,19 @@ export function buildWeak(limit = 20) {
 }
 
 /** Duell: schnelle Multiple-Choice-Runde, wahlweise auf ein Thema begrenzt.
- *  Drei Toepfe: erst die schwaechsten bekannten Karten, dann weiteres
- *  Bekanntes, dann Neues. Ohne den ersten Topf kaeme ausgerechnet das, woran
- *  man unter Zeitdruck gescheitert ist, nie wieder unter Zeitdruck dran –
- *  eine Karte, die man in zwanzig Sekunden abruft, ist im Duell verloren. */
+ *  Zwei Toepfe: erst die schwaechsten bekannten Karten, dann weiteres
+ *  Bekanntes. Ohne den ersten Topf kaeme ausgerechnet das, woran man unter
+ *  Zeitdruck gescheitert ist, nie wieder unter Zeitdruck dran – eine Karte,
+ *  die man in zwanzig Sekunden abruft, ist im Duell verloren.
+ *
+ *  Nie gesehene Karten kommen nur dran, solange das Gelernte keine zehn Fragen
+ *  hergibt. Frueher fuellte ein dritter Topf pauschal auf, und zwar aus dem
+ *  ganzen Bestand: Nach zwei Wochen Lernen waren im Schnitt 3,7 von 10 Fragen
+ *  nie gesehen, und KEIN einziges Duell bestand nur aus Gelerntem - obwohl der
+ *  Knopf genau das verspricht. Schlimmer: Ein Fehler auf so einer Karte verfiel
+ *  spurlos, denn der Duellpfad in app.js laesst unberuehrte Karten liegen
+ *  („weil es ohnehin aus dem Gelernten zieht"). Ungelerntes unter Zeitdruck ist
+ *  die Aufgabe der Quizrunde, die ausdruecklich alles fragt. */
 export function buildDuel(n = 10, cat = null) {
   /* Ein ausdruecklich gewaehltes Thema haengt nicht am Tagestraining: Wer auf
      „Thema im Duell" tippt, will genau dieses Thema - auch wenn es unter Mehr
@@ -180,10 +189,15 @@ export function buildDuel(n = 10, cat = null) {
     .slice(0, Math.max(wieViele * 4, 12)))
     .slice(0, wieViele)
     .map(x => x.c);
-  const rest = shuffle(known.map(x => x.c).filter(c => !schwach.includes(c)))
-    .slice(0, Math.ceil(n * 0.6) - schwach.length);
+  const drin = new Set(schwach.map(c => c.id));
+  const rest = shuffle(known.map(x => x.c).filter(c => !drin.has(c.id))).slice(0, n - schwach.length);
   const gewaehlt = [...schwach, ...rest];
-  const neu = shuffle(pool.filter(c => !gewaehlt.includes(c))).slice(0, n - gewaehlt.length);
+  for (const c of gewaehlt) drin.add(c.id);
+  /* Erst wenn das Gelernte nicht reicht - in der ersten Woche also - wird mit
+     Unberuehrtem aufgefuellt, damit der Knopf ueberhaupt zehn Fragen hat. */
+  const neu = gewaehlt.length < n
+    ? shuffle(pool.filter(c => !drin.has(c.id))).slice(0, n - gewaehlt.length)
+    : [];
   return shuffle([...gewaehlt, ...neu]).map(c => ({ card: c, fresh: false }));
 }
 

@@ -197,6 +197,45 @@ test('Duell liefert genau zehn verschiedene Karten', () => {
   assert.equal(new Set(q.map(x => x.card.id)).size, 10);
 });
 
+test('das Duell fragt nur Gelerntes, sobald es zehn gelernte Karten gibt', () => {
+  /* Der Knopf verspricht „zehn Fragen aus dem Gelernten". Frueher fuellte ein
+     dritter Topf pauschal aus dem ganzen Bestand auf: Nach zwei Wochen waren im
+     Schnitt 3,7 von 10 Fragen nie gesehen, und kein einziges Duell hielt das
+     Versprechen. Ein Fehler auf so einer Karte verfiel dazu spurlos. */
+  const t = store.todayNum();
+  const bekannt = (anzahl) => {
+    store.resetAll();
+    for (let i = 0; i < anzahl; i++)
+      store.putCard(CARDS[i].id, { ...fresh(), seen: 6, ok: 4, reps: 3, iv: 5, due: t, last: t });
+    return new Set(CARDS.slice(0, anzahl).map(c => c.id));
+  };
+  const ids = bekannt(120);
+  for (let r = 0; r < 25; r++) {
+    const duell = sess.buildDuel(10);
+    assert.equal(duell.length, 10, 'das Duell muss zehn Fragen liefern');
+    const fremd = duell.filter(x => !ids.has(x.card.id));
+    assert.equal(fremd.length, 0,
+      `Runde ${r}: ${fremd.length} nie gesehene Karten im Duell (${fremd.map(x => x.card.q.slice(0, 30)).join(' | ')})`);
+  }
+});
+
+test('in der ersten Woche fuellt das Duell mit Unberuehrtem auf', () => {
+  /* Die Kehrseite der Regel: Wer erst sieben Karten gelernt hat, soll trotzdem
+     zehn Fragen bekommen - sonst waere der Knopf in der ersten Woche tot. */
+  const t = store.todayNum();
+  for (const wieViele of [0, 3, 7, 9]) {
+    store.resetAll();
+    for (let i = 0; i < wieViele; i++)
+      store.putCard(CARDS[i].id, { ...fresh(), seen: 4, ok: 3, reps: 2, iv: 3, due: t, last: t });
+    const duell = sess.buildDuel(10);
+    assert.equal(duell.length, 10, `${wieViele} bekannte Karten: nur ${duell.length} Fragen`);
+    assert.equal(new Set(duell.map(x => x.card.id)).size, 10, `${wieViele}: doppelte Karten`);
+    const bekannteDrin = duell.filter(x => (store.cardState(x.card.id)?.seen || 0) > 0).length;
+    assert.equal(bekannteDrin, wieViele,
+      `${wieViele} bekannte Karten, aber ${bekannteDrin} im Duell - das Gelernte kommt zuerst`);
+  }
+});
+
 test('Vorschau summiert sich zur Zahl der eingeplanten Wiederholungen', () => {
   /* Frueher: due = heute + (i % 10). Das verteilt gleichmaessig, schliesst
      Ueberfaellige aus – und geprueft wurde nur Laenge, Vorzeichen und Summe.
