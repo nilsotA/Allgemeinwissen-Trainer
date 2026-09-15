@@ -581,6 +581,107 @@ test('ein Zuruecksetzen ueberlebt den zweiten offenen Tab', async () => {
     'Tab B selbst muss den ersetzten Stand uebernommen haben');
 });
 
+test('zwei Tabs verschlucken keine Festlegung', async () => {
+  /* claims und claimsMiss wurden beim Zusammenfuehren mit dem Maximum
+     vereinigt - genau der Fehler, vor dem der Kommentar am Kopf von store.js
+     warnt. Zwei Tabs mit je einer Festlegung ergaben claims=1 statt 2: Die
+     Selbsteinschaetzung zeigte „5 / 19 - deutlich zu optimistisch", wahr waren
+     5 / 20 und „solide". Der Test faehrt zwei echte Modulinstanzen. */
+  const sitzung = {};
+  globalThis.sessionStorage = { getItem: (k) => sitzung[k] ?? null, setItem: (k, v) => { sitzung[k] = String(v); } };
+  const A = await import('../assets/js/store.js?festlegungen-a');
+  globalThis.sessionStorage = { getItem: () => null, setItem: () => {} };   // eigener Tab, eigene Kennung
+  const B = await import('../assets/js/store.js?festlegungen-b');
+  /* Erst beide auf denselben Stand: Ein resetAll() traegt eine neue
+     Generationsnummer, und ein hoeherer Stand wird uebernommen statt
+     eingesammelt - der erste Zaehlschritt fiele sonst weg. */
+  A.resetAll(); A.save(true); B.resetAll(); B.save(true);
+  A.save(true); B.save(true);
+
+  A.zaehle('claim'); A.zaehle('claimMiss');   // Tab A: eine Festlegung, daneben
+  A.S().claims = 1; A.S().claimsMiss = 1;
+  A.save(true);
+  B.zaehle('claim');                          // Tab B: eine Festlegung, richtig
+  B.S().claims = 1;
+  B.save(true);
+
+  const danach = JSON.parse(localStorage.getItem('wissenswerk.v1'));
+  assert.equal(danach.claims, 2, `zwei Festlegungen, gezaehlt: ${danach.claims}`);
+  assert.equal(danach.claimsMiss, 1, `ein Fehlgriff, gezaehlt: ${danach.claimsMiss}`);
+});
+
+test('eine zurueckgenommene Festlegung holt der andere Tab nicht zurueck', async () => {
+  /* Der zweite Weg in dasselbe Loch: Tab A legt sich fest und nimmt die
+     Antwort mit „Rueckgaengig" zurueck - claims faellt also von 1 auf 0. Beim
+     naechsten Schreiben von Tab B trug dessen Maximum die alte 1 wieder ein. */
+  const sitzung = {};
+  globalThis.sessionStorage = { getItem: (k) => sitzung[k] ?? null, setItem: (k, v) => { sitzung[k] = String(v); } };
+  const A = await import('../assets/js/store.js?zuruecknehmen-a');
+  globalThis.sessionStorage = { getItem: () => null, setItem: () => {} };
+  const B = await import('../assets/js/store.js?zuruecknehmen-b');
+  A.resetAll(); A.save(true); B.resetAll(); B.save(true);
+  A.save(true); B.save(true);
+
+  /* Genau der Ablauf aus app.js: erst den Tageseintrag tief kopieren (das tut
+     snapshot()), dann antworten, dann zuruecknehmen. */
+  const vorher = structuredClone(A.today());
+  A.zaehle('claim'); A.S().claims = 1;
+  A.save(true);
+  B.save(true);                              // Tab B holt den Stand mit der Festlegung
+  assert.equal(B.S().claims, 1, 'Tab B muss die Festlegung erst einmal kennen');
+
+  // undoLast(): Tageseintrag zurueck, Gesamtzahl zurueck, Ablage benachrichtigen.
+  A.S().days[A.dayKey()] = vorher;
+  A.S().claims = 0;
+  A.beitragZurueck(A.dayKey());
+  A.save(true);
+
+  B.zaehle('done');                          // Tab B beantwortet irgendeine Karte
+  B.save(true);
+  const danach = JSON.parse(localStorage.getItem('wissenswerk.v1'));
+  assert.equal(danach.claims, 0, `die zurueckgenommene Festlegung ist wieder da: ${danach.claims}`);
+});
+
+test('eine zurueckgenommene Antwort bleibt auch mit zweitem Tab zurueckgenommen', async () => {
+  /* Der allgemeine Fall derselben Luecke: Der Beitrag eines Tabs konnte nur
+     wachsen (Maximum je Feld), also kam jede Ruecknahme zurueck, sobald der
+     zweite Tab schrieb - samt verbrauchtem Budget fuer neue Karten. Jeder
+     Beitragsblock traegt jetzt eine eigene Fassungsnummer, und die juengere
+     gilt als Ganzes. */
+  const sitzung = {};
+  globalThis.sessionStorage = { getItem: (k) => sitzung[k] ?? null, setItem: (k, v) => { sitzung[k] = String(v); } };
+  const A = await import('../assets/js/store.js?ruecknahme-a');
+  globalThis.sessionStorage = { getItem: () => null, setItem: () => {} };
+  const B = await import('../assets/js/store.js?ruecknahme-b');
+  A.resetAll(); A.save(true); B.resetAll(); B.save(true);
+  A.save(true); B.save(true);
+
+  for (let i = 0; i < 3; i++) { A.zaehle('done'); A.zaehle('newC'); }
+  A.S().totalAnswers = 3;
+  A.save(true);
+  B.save(true);                              // Tab B kennt jetzt drei Antworten
+  const vorher = structuredClone(A.today());
+
+  A.zaehle('done'); A.zaehle('newC'); A.S().totalAnswers = 4;   // die vierte Antwort
+  A.save(true);
+  B.save(true);
+  assert.equal(JSON.parse(localStorage.getItem('wissenswerk.v1')).days[A.dayKey()].done, 4);
+
+  A.S().days[A.dayKey()] = vorher;           // undoLast()
+  A.S().totalAnswers = 3;
+  A.beitragZurueck(A.dayKey());
+  A.save(true);
+  B.zaehle('done'); B.S().totalAnswers = 1;  // Tab B beantwortet danach eine Karte
+  B.save(true);
+
+  const stand = JSON.parse(localStorage.getItem('wissenswerk.v1'));
+  assert.equal(stand.days[A.dayKey()].done, 4,
+    `drei aus Tab A plus eine aus Tab B, gezaehlt ${stand.days[A.dayKey()].done}`);
+  assert.equal(stand.days[A.dayKey()].newC, 3,
+    `die zurueckgenommene neue Karte ist wieder da: ${stand.days[A.dayKey()].newC} statt 3`);
+  assert.equal(stand.totalAnswers, 4, `Gesamtzahl ${stand.totalAnswers} statt 4`);
+});
+
 test('der Tagesplan ist bei jedem Aufruf anders sortiert', () => {
   // Genau deshalb darf die Startseite den Plan nicht zweimal bauen: Die Ansage
   // beschriebe sonst eine Runde, die beim Tippen verworfen wird. Die Laenge

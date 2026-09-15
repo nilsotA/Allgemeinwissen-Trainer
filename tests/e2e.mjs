@@ -1195,11 +1195,54 @@ try {
     check('danach stehen alle vier Noten bereit', await fp.locator('[data-g]').count() === 4);
 
     // „Hab ich" und dann doch „Nochmal" – genau das zaehlt die Selbsteinschaetzung.
+    // Die Frage JETZT lesen: Gleich ist diese Karte weg, und spaeter stuende
+    // hier die naechste - die Wiedervorlage waere dann nicht wiederzuerkennen.
+    const ersteFrage = (await fp.locator('.q').first().innerText()).trim();
     await fp.getByRole('button', { name: 'Nochmal' }).click();
     await fp.waitForTimeout(350);
     const z = await fp.evaluate((k) => JSON.parse(localStorage.getItem(k) || '{}'), KEY);
     check('die Festlegung wird gezaehlt', z.claims === 1, `claims=${z.claims}`);
     check('der Fehlgriff wird gezaehlt', z.claimsMiss === 1, `claimsMiss=${z.claimsMiss}`);
+
+    /* Die umgefallene Karte kommt in derselben Einheit noch einmal - und man
+       hat die Loesung eine Minute vorher gelesen. Voll mitgezaehlt brachte
+       jeder Aussetzer eine zusaetzliche, geschenkte Festlegung: Wer oft
+       umkippt, sammelte damit die beste Quote ein, und die Karte
+       „Selbsteinschaetzung" kehrte ihren Zweck um. */
+    /* Auf einen FRAGEbildschirm warten, nicht nur auf ein .q: Die Aufloesung
+       zeigt dieselbe Frage weiter. Ohne diesen Schritt las die Pruefung die
+       stehende Aufloesung als Wiedervorlage - und ging durch, ohne etwas
+       geprueft zu haben (gegengeprobt: sie bestand auch gegen den alten Stand). */
+    const frageAbwarten = async () => {
+      try {
+        await fp.waitForFunction(() => !!document.querySelector('.q') &&
+          !!(document.querySelector('[data-hab]') || document.querySelector('#reveal')),
+          null, { timeout: 4000 });
+      } catch { return null; }
+      return (await fp.locator('.q').first().innerText()).trim();
+    };
+    const aufdecken = async () => {
+      if (await fp.locator('[data-hab]').count()) await fp.locator('[data-hab="1"]').click();
+      else await fp.click('#reveal');
+      await fp.waitForSelector('[data-g]', { timeout: 4000 });
+      await fp.waitForTimeout(FUSS_TAUB);
+    };
+    const claims = () => fp.evaluate((k) => JSON.parse(localStorage.getItem(k) || '{}').claims || 0, KEY);
+    let davor = null, danach = null;
+    for (let i = 0; i < 14; i++) {
+      const frage = await frageAbwarten();
+      if (!frage) break;
+      const wiedervorlage = frage === ersteFrage;
+      if (wiedervorlage) davor = await claims();
+      await aufdecken();
+      await fp.locator('[data-g="3"]').click();        // „Leicht" – damit ist sie durch
+      await fp.waitForTimeout(400);
+      if (wiedervorlage) { danach = await claims(); break; }
+    }
+    check('die umgefallene Karte kam in derselben Einheit wieder', davor !== null,
+      'sie tauchte in vierzehn Karten nicht wieder auf');
+    check('der zweite Anlauf zaehlt nicht als weitere Festlegung', davor !== null && danach === davor,
+      `claims ${davor} -> ${danach}`);
     await fctx.close();
   }
 
@@ -1966,7 +2009,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 213;
+const MINDESTENS = 215;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

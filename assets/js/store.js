@@ -22,7 +22,7 @@ const TAB = (() => {
     return neu;
   } catch (e) { return 'einzeln'; }
 })();
-const TAGESZAEHLER = ['done', 'correct', 'newC', 'sec', 'duel', 'duelOk'];
+const TAGESZAEHLER = ['done', 'correct', 'newC', 'sec', 'duel', 'duelOk', 'claim', 'claimMiss'];
 const tagesSumme = (days, feld) => Object.values(days || {})
   .reduce((n, t) => n + (Number(t[feld]) || 0), 0);
 
@@ -45,12 +45,50 @@ function summiere(tag) {
   return tag;
 }
 
+/* Jeder Beitragsblock traegt eine eigene Fassungsnummer. Sie zaehlt nur fuer
+   den Tab, dem der Block gehoert - und der ist sein einziger Schreiber. Beim
+   Zusammenfuehren gewinnt damit die juengere Fassung des Blocks als GANZES,
+   statt Feld fuer Feld das Maximum zu nehmen.
+
+   Ohne sie konnte ein Beitrag nur wachsen, und genau daran scheiterte
+   „Rueckgaengig": Die zurueckgenommene Antwort stand noch im abgelegten Block
+   desselben Tabs, das Maximum holte sie zurueck, und beim naechsten Schreiben
+   des zweiten Tabs war sie wieder da - samt verbrauchtem Budget fuer neue
+   Karten. Nur mit dem Ersatzschluessel „einzeln" (kein sessionStorage, etwa im
+   privaten Modus) bleibt es beim Maximum: Dort teilen sich alle Zusammenhaenge
+   einen Schluessel, und keiner darf fuer die anderen sprechen. */
+const EIGENER_BLOCK = TAB !== 'einzeln';
+/* Waechst nur. Beim Zuruecknehmen bekommt dieser Tab seinen frueheren Block
+   zurueck - mitsamt dessen alter Fassungsnummer. Ohne diesen Merker stuende sie
+   danach gleichauf mit der abgelegten Kopie, und das Maximum je Feld holte die
+   zurueckgenommene Antwort wieder hervor. */
+let eigeneFassung = 0;
+function stemple(tag) {
+  if (!EIGENER_BLOCK || !tag.je || !tag.je[TAB]) return;
+  eigeneFassung = Math.max(eigeneFassung + 1, (Number(tag.je[TAB].n) || 0) + 1);
+  tag.je[TAB].n = eigeneFassung;
+}
+
+/* Nach einem Zuruecknehmen: Der wiederhergestellte Tageseintrag traegt den
+   Stand dieses Tabs von VOR der Antwort. Damit er sich gegen die abgelegte
+   Kopie durchsetzt, braucht er eine frische Fassungsnummer - und einen Block,
+   auch wenn der Tag vorher ueberhaupt keinen Eintrag hatte. */
+export function beitragZurueck(key) {
+  if (!EIGENER_BLOCK) return;
+  const tag = state.days[key] || (state.days[key] = { done: 0, correct: 0, newC: 0, sec: 0 });
+  tag.je = beitraege(tag);
+  if (!tag.je[TAB]) tag.je[TAB] = {};
+  stemple(tag);
+  summiere(tag);
+}
+
 /** Einen Tageszaehler erhoehen – im Beitrag dieses Tabs und in der Summe. */
 export function zaehle(feld, n = 1) {
   const tag = today();
   tag.je = beitraege(tag);
   if (!tag.je[TAB]) tag.je[TAB] = {};
   tag.je[TAB][feld] = (Number(tag.je[TAB][feld]) || 0) + n;
+  stemple(tag);
   summiere(tag);
   return tag[feld];
 }
@@ -262,12 +300,19 @@ function zusammenfuehren(fremd, eigen) {
        Antworten des jeweils kleineren Tabs verloren. */
     const je = { ...beitraege(e) };
     for (const [wer, b] of Object.entries(beitraege(f))) {
-      const eigen = je[wer] || {};
+      const hier = je[wer] || {};
+      /* Traegt einer der beiden Bloecke eine hoehere Fassungsnummer, gilt er
+         als Ganzes - nur so kann eine Ruecknahme ueberhaupt ankommen. Bei
+         gleicher Nummer (beide aus der Zeit davor) bleibt es beim Maximum je
+         Feld, damit alte Staende nichts verlieren. */
+      const nHier = Number(hier.n) || 0, nDort = Number(b.n) || 0;
+      if (nHier !== nDort) { je[wer] = nHier > nDort ? hier : b; continue; }
       const vereint = {};
       for (const k of TAGESZAEHLER) {
-        const n = groesser(eigen[k], b[k]);
+        const n = groesser(hier[k], b[k]);
         if (n) vereint[k] = n;
       }
+      if (nHier) vereint.n = nHier;
       je[wer] = vereint;
     }
     z.days[tag] = summiere({ ...e, je });
@@ -282,7 +327,7 @@ function zusammenfuehren(fremd, eigen) {
     }
   }
   for (const k of ['best', 'duelBest', 'duelMs', 'duelTimed', 'lastExport',
-                   'claims', 'claimsMiss', 'quizBest']) {
+                   'quizBest']) {
     z[k] = groesser(z[k], fremd[k]);
   }
   /* Die vier Gesamtzaehler wachsen ausschliesslich neben ihrem Tageszaehler
@@ -290,15 +335,38 @@ function zusammenfuehren(fremd, eigen) {
      Tage werden nie geloescht. Sie lassen sich also ableiten, statt sie ein
      zweites Mal zusammenfuehren zu muessen – und damit teilen sie automatisch
      die richtige Rechnung der Tagesbeitraege. */
-  /* Mit groesser() abgesichert: Ein Stand, dessen Gesamtzahl aelter ist als
-     seine Tagesbuecher – etwa aus einer eingelesenen Sicherung – faellt dadurch
-     nicht. Sobald die Summe ihn ueberholt, traegt sie. */
-  const ausTagen = (feld, eigen, fern) =>
-    groesser(groesser(eigen, fern), tagesSumme(z.days, feld));
+  /* Was die Tagesbuecher nicht erklaeren, traegt jede Seite als Sockel mit:
+     Eine eingelesene Sicherung bringt 4.972 Antworten und Tagesbuecher fuer die
+     letzten dreissig Tage – die restlichen 4.572 haengen an keinem Tag mehr und
+     duerfen trotzdem nicht verschwinden.
+
+     Frueher stand hier schlicht das Maximum aus beiden Gesamtzahlen und der
+     Tagessumme. Das hielt den Sockel, nahm aber auch jede Ruecknahme wieder
+     zurueck: Wer eine Antwort mit „Rueckgaengig" loeschte, bekam sie vom
+     zweiten offenen Tab zurueckgeschrieben, dessen Gesamtzahl noch die alte
+     war. Der Sockel trennt beides sauber - er ist der Teil, den die Buecher
+     NICHT belegen, und der Rest folgt der Summe nach oben wie nach unten.
+     Nebenwirkung, die zum Aufbau passt: Ginge ein Tagesbuch je verloren, waechst
+     der Sockel um genau dessen Beitrag, statt dass die Gesamtzahl faellt. */
+  const sockel = (feld, stand, gesamt) =>
+    Math.max(0, (Number(gesamt) || 0) - tagesSumme(stand.days, feld));
+  const ausTagen = (feld, eigenZahl, fernZahl) =>
+    Math.max(sockel(feld, eigen, eigenZahl), sockel(feld, fremd, fernZahl))
+    + tagesSumme(z.days, feld);
+  /* claims/claimsMiss standen frueher in der groesser()-Liste darueber - und
+     genau davor warnt der Kommentar am Kopf dieser Datei: Das Maximum zweier
+     unabhaengig gewachsener Zahlen ist nicht ihre Summe. Zwei offene Tabs mit je
+     einer Festlegung ergaben claims=1 statt 2; die Selbsteinschaetzung zeigte
+     „5 / 19 - deutlich zu optimistisch", wahr waren 5 / 20 und „solide". Und
+     eine mit „Rueckgaengig" zurueckgenommene Festlegung holte der andere Tab
+     wieder hervor, weil sein Maximum noch die alte Zahl trug. Jetzt tragen sie
+     dieselbe Rechnung wie die Tageszaehler. */
   z.totalAnswers = ausTagen('done', z.totalAnswers, fremd.totalAnswers);
   z.totalCorrect = ausTagen('correct', z.totalCorrect, fremd.totalCorrect);
   z.duelAnswers = ausTagen('duel', z.duelAnswers, fremd.duelAnswers);
   z.duelCorrect = ausTagen('duelOk', z.duelCorrect, fremd.duelCorrect);
+  z.claims = ausTagen('claim', z.claims, fremd.claims);
+  z.claimsMiss = ausTagen('claimMiss', z.claimsMiss, fremd.claimsMiss);
   z.quizRunden = mischeRunden(z.quizRunden, saeubereRunden(fremd.quizRunden));
   /* streak darf hier NICHT das Maximum sein: touchStreak() setzt die Serie nach
      einer Pause bewusst auf 1 zurueck: Der zweite Tab hob sie sonst wieder auf
@@ -689,6 +757,10 @@ function saeubern(roh) {
           const v = zahl(b[k], 0, k === 'sec' ? 1e8 : 1e6, 0);
           if (v) { ziel[k] = (ziel[k] || 0) + v; etwas = true; }
         }
+        // Die Fassungsnummer wird nicht addiert: Sie zaehlt Schreibvorgaenge,
+        // keine Antworten. Beim Zusammenlegen in „rest" gilt die hoechste.
+        const fassung = zahl(b.n, 0, 1e9, 0);
+        if (fassung && etwas) ziel.n = Math.max(Number(ziel.n) || 0, fassung);
         if (etwas) n++; else if (n < 64) delete je[wer];
       }
       for (const wer of Object.keys(je)) if (!Object.keys(je[wer]).length) delete je[wer];

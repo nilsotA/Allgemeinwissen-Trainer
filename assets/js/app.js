@@ -1848,6 +1848,11 @@ function undoLast() {
   if (u.cs) st.cards[u.id] = u.cs; else delete st.cards[u.id];
   if (u.tagVorhanden) st.days[u.dayKey] = u.day;
   else delete st.days[u.dayKey];            // der Tag hatte vorher keinen Eintrag
+  /* Der Ablage sagen, dass dieser Tab seinen Beitrag VERKLEINERT hat. Ohne
+     diese Zeile holte der zweite offene Tab die zurueckgenommene Antwort
+     wieder hervor: Sein abgelegter Stand trug den Beitrag von vorher, und beim
+     Zusammenfuehren gewinnt sonst die groessere Zahl. */
+  store.beitragZurueck(u.dayKey);
   st.totalAnswers = u.totalAnswers; st.totalCorrect = u.totalCorrect;
   st.claims = u.claims; st.claimsMiss = u.claimsMiss;
   st.streak = u.streak; st.best = u.best; st.lastDay = u.lastDay;
@@ -1865,9 +1870,11 @@ function undoLast() {
 function commit(card, grade, ok, isFresh, behauptet) {
   const undo = snapshot(card);
 
-  // Kippt dieselbe Karte in derselben Einheit erneut, ist das Nachlernen und
-  // kein zweiter Aussetzer – siehe schedule().
-  const nachlernen = grade === AGAIN && (run.nochmal.get(card.id) || 0) > 0;
+  /* Die Karte ist in dieser Einheit schon einmal umgefallen und kommt gerade
+     zum zweiten Mal - man hat die Loesung eine Minute vorher gelesen. */
+  const wiedervorlage = (run.nochmal.get(card.id) || 0) > 0;
+  // Kippt sie dabei erneut, ist das Nachlernen und kein zweiter Aussetzer – siehe schedule().
+  const nachlernen = grade === AGAIN && wiedervorlage;
   putCard(card.id, schedule(cardState(card.id) || freshState(), grade, { nachlernen }));
 
   const st = S();
@@ -1878,9 +1885,18 @@ function commit(card, grade, ok, isFresh, behauptet) {
   /* Wer sich vor der Aufloesung festgelegt hat, bekommt gezaehlt, wie gut das
      Urteil war. Erst diese Rueckmeldung macht aus der Festlegung etwas Lernbares:
      „Ich dachte, ich hab's" ist eine Beobachtung, die man sonst sofort vergisst. */
-  if (behauptet === true) {
+  /* Nicht beim Nachlernen: Faellt eine Karte um, schiebt commit() sie rund
+     fuenf Karten spaeter erneut in die Warteschlange. Bei „Immer frei" ist das
+     wieder ein freier Abruf mit denselben zwei Knoepfen - nur hat man die
+     Loesung eine Minute vorher gelesen. Voll mitgezaehlt brachte jeder
+     Aussetzer verlaesslich eine zusaetzliche, geschenkte Festlegung: Wer oft
+     umkippt, sammelte damit die beste Quote ein, und die Karte kehrte ihren
+     Zweck um. schedule() kennt die Unterscheidung laengst, die Zaehlung nicht.
+     Ueber zaehle(), damit zwei offene Tabs sich nicht gegenseitig ueberschreiben. */
+  if (behauptet === true && !wiedervorlage) {
     st.claims = (st.claims || 0) + 1;
-    if (grade === AGAIN) st.claimsMiss = (st.claimsMiss || 0) + 1;
+    store.zaehle('claim');
+    if (grade === AGAIN) { st.claimsMiss = (st.claimsMiss || 0) + 1; store.zaehle('claimMiss'); }
   }
   touchStreak();
 
