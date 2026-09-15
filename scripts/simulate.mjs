@@ -102,8 +102,17 @@ for (let tag = 0; tag < TAGE; tag++) {
   }
 
   const uebersicht = sess.overview();
+  /* Ein Messgeraet, das „undefined" anzeigt, ist kaputt und sagt es nicht. Genau
+     das passierte: overview() hiess das Feld einmal learned, spaeter nicht mehr,
+     und die Tabelle druckte danach eine Spalte voll undefined - samt dem Satz
+     „Nach 180 Tagen: ... undefined angefangen". Lieber laut abbrechen. */
+  for (const feld of ['seen', 'mature']) {
+    if (!Number.isFinite(uebersicht[feld])) {
+      throw new Error(`overview().${feld} ist keine Zahl (${uebersicht[feld]}) - die Simulation wuerde Unsinn drucken`);
+    }
+  }
   zeilen.push({ tag: tag + 1, pause, rueckstand: offen, antworten,
-    quote: antworten ? richtig / antworten : 0, angefangen: uebersicht.learned, fest: uebersicht.mature });
+    quote: antworten ? richtig / antworten : 0, angefangen: uebersicht.seen, fest: uebersicht.mature });
   NOW += 86400000;
 }
 
