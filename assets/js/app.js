@@ -1007,10 +1007,18 @@ function renderLookup() {
 
 function renderSettings() {
   const s = settings();
-  const sel = s.cats && s.cats.length ? s.cats : CATS.map(c => c.id);
+  /* Nur Kuerzel, die es wirklich gibt. Eine Sicherungsdatei kann 'sprache'
+     statt 'spr' tragen; session.js laesst solche Eintraege beim Rechnen aussen
+     vor, also darf dieser Bildschirm sie auch nicht als wirksam ausgeben.
+     Frueher stand hier zusaetzlich CAT_BY_ID[id].name ohne Fragezeichen - ein
+     erfundenes Kuerzel im Schwerpunkt liess den Bildschirm werfen, und mit ihm
+     waren die drei Notausgaenge (Einlesen, Rueckgaengig, Zuruecksetzen)
+     dauerhaft unerreichbar. */
+  const echte = (s.cats || []).filter(id => CAT_BY_ID[id]);
+  const sel = echte.length ? echte : CATS.map(c => c.id);
   // Nur aktive Themen koennen Schwerpunkt sein - ein abgeschaltetes zu bevorzugen
   // waere ein Widerspruch, den die App nicht anzeigen sollte.
-  const fok = (s.focus || []).filter(id => sel.includes(id));
+  const fok = (s.focus || []).filter(id => CAT_BY_ID[id] && sel.includes(id));
   const flags = sess.flaggedCount();
   const f = fassungGemerkt();
   const wartet = !!(swReg && swReg.waiting);
@@ -1078,7 +1086,7 @@ function renderSettings() {
         ${CATS.filter(c => sel.includes(c.id)).map(c => `<button type="button" class="chip ${fok.includes(c.id) ? 'on' : ''}" data-fok="${c.id}" aria-pressed="${fok.includes(c.id)}">${catIcon(c.id, 's')}${esc(c.name)}</button>`).join('')}
       </div>
       <p class="tiny" style="margin-top:10px">Schwerpunktthemen bekommen doppelt so viele neue Karten pro Tag.
-        ${fok.length ? `Zurzeit ${fok.length === 1 ? 'ist' : 'sind'} ${fok.map(id => esc(CAT_BY_ID[id].name)).join(' und ')} bevorzugt.`
+        ${fok.length ? `Zurzeit ${fok.length === 1 ? 'ist' : 'sind'} ${fok.map(id => esc(CAT_BY_ID[id]?.name || id)).join(' und ')} bevorzugt.`
           : 'Ohne Auswahl kommen alle Themen gleich oft dran.'}</p>
     </div>` : ''}
 
@@ -1148,7 +1156,10 @@ function renderSettings() {
   });
 
   app.querySelectorAll('[data-tog]').forEach(b => b.onclick = () => {
-    const cur = new Set(settings().cats && settings().cats.length ? settings().cats : CATS.map(c => c.id));
+    /* sel und nicht die rohe Einstellung: Ein erfundenes Kuerzel aus einer
+       Sicherungsdatei ueberlebte sonst jedes Umschalten, und die Knopfreihe
+       zeigte etwas anderes an, als gespeichert wurde. */
+    const cur = new Set(sel);
     const id = b.dataset.tog;
     cur.has(id) ? cur.delete(id) : cur.add(id);
     if (!cur.size) return toast('Mindestens ein Thema muss aktiv bleiben');

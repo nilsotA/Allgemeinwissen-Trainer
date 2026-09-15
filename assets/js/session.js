@@ -1,6 +1,6 @@
 /* Stellt die Lernwarteschlange zusammen: fällige Wiederholungen + neue Karten,
    verschränkt über die Kategorien (Interleaving). */
-import { CARDS, catCards } from '../../data/index.js';
+import { CARDS, CAT_BY_ID, catCards } from '../../data/index.js';
 import { S, settings, cardState, today, todayNum, isFlagged, uebernimmVorgaenger,
          setNachErsatz } from './store.js';
 import { isDue, isNew, strength, isLeech } from './srs.js';
@@ -16,9 +16,18 @@ export const migriereVorgaenger = () => uebernimmVorgaenger(VORGAENGER);
 migriereVorgaenger();
 setNachErsatz(migriereVorgaenger);
 
+/* Nur echte Kuerzel zaehlen. Eine Sicherungsdatei traegt, was in ihr steht -
+   ein Tipper ('sprache' statt 'spr') oder ein Kuerzel aus einer aelteren
+   Fassung kommt beim Einlesen ungeprueft durch, weil die Ablage nichts ueber
+   Themen wissen soll. Ungefiltert liegt dann kein einziges Thema mehr im
+   Umfang, und die Startseite meldet wortlos „Heute ist alles erledigt".
+   Bleibt nach dem Filtern nichts uebrig, gilt dasselbe wie bei leerer Liste:
+   alle Themen. */
 export function activeCats() {
   const sel = settings().cats;
-  return (!sel || !sel.length) ? null : new Set(sel);
+  if (!sel || !sel.length) return null;
+  const echt = sel.filter(id => CAT_BY_ID[id]);
+  return echt.length ? new Set(echt) : null;
 }
 
 function inScope(c) {
@@ -82,7 +91,7 @@ export function focusCats() {
   const f = settings().focus;
   if (!f || !f.length) return null;
   const a = activeCats();
-  const s = new Set(f.filter(id => !a || a.has(id)));
+  const s = new Set(f.filter(id => CAT_BY_ID[id] && (!a || a.has(id))));
   return s.size ? s : null;
 }
 

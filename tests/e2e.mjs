@@ -1446,6 +1446,47 @@ try {
     await vctx.close();
   }
 
+  group('Ein erfundenes Themenkuerzel sperrt die Notausgaenge nicht');
+  /* Eine von Hand bearbeitete Sicherung kann 'sprache' statt 'spr' tragen. Die
+     Ablage laesst das durch - sie weiss nichts ueber Themen. Vorher warf der
+     Einstellungsbildschirm daran, und genau dort liegen die drei Notausgaenge:
+     Einlesen, Rueckgaengig, Alles zuruecksetzen. Wer den Fehler einmal hatte,
+     kam mit Bordmitteln nie wieder heraus. */
+  {
+    const kctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const kp = horche(await kctx.newPage());
+    await kp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await kp.waitForSelector('[data-go="daily"]');
+    await kp.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.settings = { ...(st.settings || {}), cats: ['geo', 'sprache'], focus: ['sprache'] };
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await kp.reload({ waitUntil: 'networkidle' });
+    await kp.click('[data-view="settings"]');
+    await kp.waitForTimeout(400);
+    check('Einstellungen oeffnen sich trotz erfundenem Kuerzel',
+      await kp.locator('#npd').count() === 1);
+    for (const [id, was] of [['imp', 'Fortschritt einlesen'], ['rst', 'Alles zuruecksetzen']]) {
+      check(`Notausgang „${was}" ist da`, await kp.locator('#' + id).count() === 1);
+    }
+    const text = await kp.locator('body').innerText();
+    check('kein erfundenes Kuerzel wird als wirksam ausgegeben', !text.includes('sprache'));
+    /* Die Kehrseite: steht NUR ein erfundenes Kuerzel im Umfang, darf die
+       Startseite nicht wortlos „alles erledigt" melden. */
+    await kp.evaluate((k) => {
+      const st = JSON.parse(localStorage.getItem(k) || '{}');
+      st.settings = { ...(st.settings || {}), cats: ['sprache'], focus: null };
+      localStorage.setItem(k, JSON.stringify(st));
+    }, KEY);
+    await kp.reload({ waitUntil: 'networkidle' });
+    await kp.waitForSelector('.hero');
+    const heute = await kp.locator('body').innerText();
+    check('die Startseite hat weiter etwas zu tun', !/alles erledigt/i.test(heute),
+      heute.slice(0, 120).replace(/\n+/g, ' · '));
+    await kctx.close();
+  }
+
   group('Kleines Display');
   /* Ein iPhone SE ist 320 x 568 CSS-Pixel gross - die Lernkarte ist dort
      hoeher als das Fenster. Frueher scrollte in diesem Fall die Seite statt
@@ -1835,7 +1876,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 199;
+const MINDESTENS = 204;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

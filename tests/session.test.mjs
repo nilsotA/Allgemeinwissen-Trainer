@@ -313,7 +313,7 @@ test('ein manipuliertes Backup schmuggelt keine Zeichenketten in Zahlenfelder', 
     cards: { 'x': { ef: '<img src=x onerror=alert(1)>', iv: 'viel', due: {}, seen: [1], reps: null } },
     days: { '2026-01-01': { done: '<script>', correct: 'nein' }, 'kein-datum': { done: 5 } },
     streak: '<b>99</b>', best: Infinity, totalAnswers: 'tausend',
-    settings: { newPerDay: 'alle', recallMode: 'boeser-modus', theme: 'javascript:', cats: [1, 2, {}] },
+    settings: { newPerDay: 'alle', recallMode: 'boeser-modus', theme: 'javascript:', cats: [1, 2, {}, 'sprache'], focus: ['sprache'] },
     flags: { gut: true, 7: true },
   });
   store.importJSON(boesartig);
@@ -332,7 +332,27 @@ test('ein manipuliertes Backup schmuggelt keine Zeichenketten in Zahlenfelder', 
   assert.equal(s.settings.newPerDay, 12, 'unbrauchbarer Wert muss auf die Voreinstellung zurückfallen');
   assert.equal(s.settings.recallMode, 'auto');
   assert.equal(s.settings.theme, 'system');
-  assert.deepEqual(s.settings.cats, [], 'nur Zeichenketten dürfen als Kategorien überleben');
+  assert.deepEqual(s.settings.cats, ['sprache'], 'nur Zeichenketten dürfen als Kategorien überleben');
+  /* Die Ablage laesst ein erfundenes Kuerzel stehen - sie weiss nichts ueber
+     Themen. Wirksam werden darf es trotzdem nicht: Sonst liegt kein einziges
+     Thema mehr im Umfang und die Startseite meldet wortlos „alles erledigt". */
+  assert.equal(sess.activeCats(), null, 'ein erfundenes Kuerzel darf keinen Umfang aufspannen');
+  assert.equal(sess.focusCats(), null, 'und auch keinen Schwerpunkt');
+  assert.ok(sess.buildDaily().length > 0, 'es muss weiter etwas zu lernen geben');
+});
+
+test('ein erfundenes Themenkuerzel sperrt die Einstellungen nicht aus', () => {
+  /* Der Aussperrer: cats/focus mit einem Kuerzel, das es nicht gibt - ein
+     Tipper in einer von Hand bearbeiteten Sicherung. Vorher warf der Aufbau des
+     Einstellungsbildschirms, und mit ihm waren „Einlesen", „Rueckgaengig" und
+     „Alles zuruecksetzen" dauerhaft unerreichbar. */
+  store.resetAll();
+  store.setSetting('cats', ['geo', 'sprache']);
+  store.setSetting('focus', ['sprache']);
+  assert.deepEqual([...sess.activeCats()], ['geo'], 'nur das echte Kuerzel spannt den Umfang auf');
+  assert.equal(sess.focusCats(), null, 'ein erfundener Schwerpunkt wirkt nicht');
+  const q = sess.buildDaily();
+  assert.ok(q.length > 0 && q.every(x => x.card.cat === 'geo'), 'geuebt wird das echte Thema');
 });
 
 test('ein echtes Backup übersteht Export und Import unverändert', () => {
