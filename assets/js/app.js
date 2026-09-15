@@ -270,6 +270,9 @@ function dailyFact() {
     st.factDay = k;
     st.factIdx = (st.factIdx + 1) % FACTS.length;
     st.factSeen = (st.factSeen || 0) + 1;
+    /* Die letzten acht Anzeigetage mitschreiben: Nur damit laesst sich sagen,
+       wie lange der zurueckgeholte Anker wirklich her ist. */
+    st.factTage = [...(Array.isArray(st.factTage) ? st.factTage : []), k].slice(-(RUECKSCHAU + 1));
     save();
   }
   return FACTS[st.factIdx % FACTS.length];
@@ -280,13 +283,20 @@ function dailyFact() {
    unter den Karten; ohne Rueckschau werden sie genau einmal gelesen und nie
    wieder abgerufen. Gezaehlt werden Anzeigetage, nicht Kalendertage: Wer eine
    Woche aussetzt, bekommt trotzdem den siebten Anker zurueck und keinen, den er
-   nie gesehen hat. */
+   nie gesehen hat.
+
+   Die Ueberschrift nennt deshalb den WIRKLICHEN Abstand. „Vor sieben Tagen"
+   stand frueher fest da - wer die App nur alle paar Wochen aufmacht, las das
+   ueber einem Anker von vor 196 Tagen. */
 const RUECKSCHAU = 7;
 function factRecap() {
   const st = S();
   if ((st.factSeen || 0) <= RUECKSCHAU) return null;
   const n = FACTS.length;
-  return FACTS[(((st.factIdx - RUECKSCHAU) % n) + n) % n];
+  const tage = Array.isArray(st.factTage) ? st.factTage : [];
+  const damals = tage.length > RUECKSCHAU ? tage[tage.length - 1 - RUECKSCHAU] : null;
+  const her = damals ? store.keyToNum(dayKey()) - store.keyToNum(damals) : null;
+  return { fakt: FACTS[(((st.factIdx - RUECKSCHAU) % n) + n) % n], her };
 }
 
 /* Die Frage, die den Abruf ausloest. Die meisten Ueberschriften taugen selbst
@@ -356,7 +366,7 @@ function renderHome() {
   <section class="hero fade">
     <p class="tag-zeile">${greet} · ${esc(datum)}</p>
     <h1>${plan
-      ? `${plan} Karten stehen an`
+      ? `${plan} ${plan === 1 ? 'Karte steht' : 'Karten stehen'} an`
       : 'Heute ist alles erledigt'}</h1>
     <p class="muted">${plan
       ? `Etwa ${Math.max(2, Math.round(plan * 0.13))} Minuten${
@@ -385,7 +395,7 @@ function renderHome() {
     </div>
   </section>
 
-  <h2 class="sec">Deine Woche${streak ? ` · ${streak} Tage in Folge` : ''}</h2>
+  <h2 class="sec">Deine Woche${streak ? ` · ${streak} ${streak === 1 ? 'Tag' : 'Tage'} in Folge` : ''}</h2>
   <div class="card">
     ${wochenstreifen()}
   </div>
@@ -397,7 +407,9 @@ function renderHome() {
 
   <h2 class="sec">Wissen des Tages</h2>
   ${merkankerKarte(f, 'merkHeute', '')}
-  ${rueck ? merkankerKarte(rueck, 'merkRueck', 'Vor sieben Tagen – weißt du es noch?') : ''}
+  ${rueck ? merkankerKarte(rueck.fakt, 'merkRueck', rueck.her
+      ? `Vor ${rueck.her} ${rueck.her === 1 ? 'Tag' : 'Tagen'} – weißt du es noch?`
+      : 'Schon einmal gelesen – weißt du es noch?') : ''}
 
   <h2 class="sec">Dein Bestand</h2>
   <div class="kpis">
@@ -407,8 +419,8 @@ function renderHome() {
   </div>
   <div class="card" style="margin-top:10px">
     <div class="row between"><span>Karten insgesamt</span><b>${o.total}</b></div>
-    <div class="bar" style="margin:10px 0 7px"><i style="width:${((o.learned / o.total) * 100).toFixed(1)}%"></i></div>
-    <p class="tiny">${o.learned} angefangen · ${o.mature} gefestigt · ${o.total - o.seen} noch unberührt</p>
+    <div class="bar" style="margin:10px 0 7px"><i style="width:${((o.seen / o.total) * 100).toFixed(1)}%"></i></div>
+    <p class="tiny">${o.seen} angefangen · ${o.mature} gefestigt · ${o.total - o.seen} noch unberührt</p>
   </div>
   ${sicherungsHinweis()}`;
 
@@ -662,13 +674,14 @@ function renderStats() {
     return n < bezug * 0.45 ? 1 : n < bezug * 0.85 ? 2 : n < bezug * 1.25 ? 3 : 4;
   };
   let cells = '';
-  let aktiveTage = 0, vergangeneTage = 0;
+  let aktiveTage = 0, vergangeneTage = 0, imFenster = 0;
   for (let i = 0; i < WEEKS * 7; i++) {
     const day = start + i;
     if (day > t) { cells += '<i class="future"></i>'; continue; }
     const k = numToKey(day);
     const n = tagesSumme(st.days[k]);
     vergangeneTage++;
+    imFenster += n;
     if (n > 0) aktiveTage++;
     cells += `<i data-l="${stufe(n)}" class="${day === t ? 'today' : ''}" title="${k}: ${n} Antworten"></i>`;
   }
@@ -720,7 +733,12 @@ function renderStats() {
         <div class="heat-days"><span>Mo</span><span></span><span>Mi</span><span></span><span>Fr</span><span></span><span>So</span></div>
         <div class="heat grow">${cells}</div>
       </div>
-      <p class="sr-only">${aktiveTage} von ${vergangeneTage} Tagen gelernt, zusammen ${totalDone} Antworten.</p>
+      <!-- imFenster, nicht totalDone: Der Satz ersetzt genau diese 84 Zellen.
+           Mit der Gesamtzahl stand dort fuer einen Stand mit sieben Monaten
+           Verlauf „56 von 78 Tagen gelernt, zusammen 4.800 Antworten", waehrend
+           in den gezeigten Tagen 2.334 steckten - mehr als das Doppelte. Die
+           Gesamtzahl hat ihren Platz in der Kachel „Antworten" darueber. -->
+      <p class="sr-only">${aktiveTage} von ${vergangeneTage} Tagen gelernt, zusammen ${imFenster} Antworten.</p>
       <div class="legend" aria-hidden="true">wenig <i></i><i data-l="1"></i><i data-l="2"></i><i data-l="3"></i><i data-l="4"></i> viel</div>
     </div>
 
@@ -1046,9 +1064,17 @@ function renderSettings() {
      dauerhaft unerreichbar. */
   const echte = (s.cats || []).filter(id => CAT_BY_ID[id]);
   const sel = echte.length ? echte : CATS.map(c => c.id);
-  // Nur aktive Themen koennen Schwerpunkt sein - ein abgeschaltetes zu bevorzugen
-  // waere ein Widerspruch, den die App nicht anzeigen sollte.
-  const fok = (s.focus || []).filter(id => CAT_BY_ID[id] && sel.includes(id));
+  /* Nur aktive Themen koennen Schwerpunkt sein - ein abgeschaltetes zu
+     bevorzugen waere ein Widerspruch, den die App nicht anzeigen sollte. Und
+     deckt der Schwerpunkt ALLE aktiven Themen ab, ist er keiner: Jedes Thema
+     bekaeme zwei Zuege statt einem, rechnerisch dasselbe wie ohne Schwerpunkt.
+     Dieser Zustand entsteht von hinten - Schwerpunkt bei neun aktiven Themen
+     setzen, spaeter die uebrigen sieben abschalten -, und danach stand hier
+     „Zurzeit sind Mathematik und Sport bevorzugt", waehrend die Ziehung sie
+     gleich behandelte (gemessen: 6,00 / 6,00 neue Karten, wie ohne
+     Schwerpunkt). focusCats() in session.js rechnet mit derselben Regel. */
+  const gewaehlt = (s.focus || []).filter(id => CAT_BY_ID[id] && sel.includes(id));
+  const fok = gewaehlt.length < sel.length ? gewaehlt : [];
   const flags = sess.flaggedCount();
   const f = fassungGemerkt();
   const wartet = !!(swReg && swReg.waiting);
@@ -1309,8 +1335,12 @@ function stopDuelTimer() { if (duelTimer) { clearInterval(duelTimer); duelTimer 
    kein Horcher am Dokument haengen bleibt, wenn eine Frage ohne Antwort verlassen
    wird. */
 let laufendeMessung = null;
-function sichtbareZeit() {
-  if (laufendeMessung) laufendeMessung.beenden();
+/* eigenstaendig: eine Messung, die NICHT den Platz der laufenden Fragenmessung
+   einnimmt. Die Runde als Ganzes braucht das - sonst beendete die naechste
+   Frage die Rundenuhr, und ab da zaehlte sie auch die Zeit mit, in der die App
+   im Hintergrund lag. */
+function sichtbareZeit(eigenstaendig = false) {
+  if (!eigenstaendig && laufendeMessung) laufendeMessung.beenden();
   const start = Date.now();
   let versteckt = 0;
   let seit = document.visibilityState === 'hidden' ? start : 0;
@@ -1324,7 +1354,7 @@ function sichtbareZeit() {
     document.removeEventListener('visibilitychange', horcher);
     if (laufendeMessung === messen) laufendeMessung = null;
   };
-  laufendeMessung = messen;
+  if (!eigenstaendig) laufendeMessung = messen;
   return messen;
 }
 
@@ -1336,11 +1366,20 @@ function sichtbareZeit() {
    etwas anderes, ohne dass es irgendwo stand. */
 function startRun(queue, mode, weiter = null) {
   if (!queue.length) return toast('Nichts zu üben');
+  // Die Uhr der vorigen Runde abmelden, damit ihr Horcher am Dokument nicht
+  // haengen bleibt - abgebrochene Runden laufen nicht durch endRun().
+  run?.uhr?.beenden?.();
   rueckblickOffen = false;
   stopDuelTimer();
   run = {
     queue: queue.slice(), i: 0, mode, weiter,   // weiter(): Anschlussrunde fuer „Weitermachen"
-    done: 0, correct: 0, start: Date.now(),
+    done: 0, correct: 0,
+    /* Die Runde mit derselben sichtbarkeitsbewussten Uhr messen, die die
+       einzelnen Fragen schon benutzen. Mit der Wanduhr wurde aus einer Runde
+       von fuenfzehn Sekunden, unterbrochen von drei Stunden Pause, ein
+       Rueckblick „1 von 3 richtig · 180 Min." - und days[heute].sec bekam
+       10.803 Sekunden Lernzeit gutgeschrieben. */
+    uhr: sichtbareZeit(true),
     total: queue.length, added: 0,
     wrong: [], undo: null,
     nochmal: new Map(),         // Karte -> wie oft in dieser Einheit schon nachgereicht
@@ -1365,7 +1404,8 @@ function endRun() {
   document.documentElement.style.removeProperty('--toast-b');
   stopDuelTimer();
   const r = run;
-  const secs = Math.round((Date.now() - r.start) / 1000);
+  const secs = Math.round(r.uhr() / 1000);
+  r.uhr.beenden();
   store.zaehle('sec', secs);
   if (r.mode === 'duel') S().duelBest = Math.max(S().duelBest || 0, r.correct);
   if (r.mode === 'quiz') {
@@ -1548,7 +1588,11 @@ function shell(inner, foot) {
       <div class="sess-body fade">${inner}</div>
       <div class="sess-foot">${foot}</div>
     </div>`;
-  document.getElementById('quit').onclick = () => (run.done ? endRun() : show('home'));
+  document.getElementById('quit').onclick = () => {
+    if (run.done) return endRun();
+    run.uhr?.beenden?.();       // ohne eine einzige Antwort gibt es nichts zu zaehlen
+    show('home');
+  };
   document.getElementById('undo').onclick = undoLast;
   /* Jedes innerHTML zerstoert das fokussierte Element, der Fokus faellt auf
      body. Mit VoiceOver landete der Lesecursor damit bei JEDER Karte wieder

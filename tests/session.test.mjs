@@ -13,7 +13,7 @@ globalThis.localStorage = {
 const store = await import('../assets/js/store.js');
 const sess = await import('../assets/js/session.js');
 const { CARDS } = await import('../data/index.js');
-const { fresh, schedule, GOOD } = await import('../assets/js/srs.js');
+const { fresh, schedule, GOOD, AGAIN } = await import('../assets/js/srs.js');
 
 /* Der Speicher wird MIT geleert, nicht nur der Zustand. Sonst reicht ein Test
    sein Netz (wissenswerk.v1.vorher) an den naechsten weiter – und seit
@@ -262,14 +262,30 @@ test('Übersicht bleibt in sich stimmig', () => {
   CARDS.slice(0, 20).forEach(c => store.putCard(c.id, schedule(fresh(), GOOD)));
   const o = sess.overview();
   assert.equal(o.total, CARDS.length);
-  assert.ok(o.seen <= o.total && o.learned <= o.seen && o.mature <= o.learned);
+  assert.ok(o.seen <= o.total && o.mature <= o.seen);
   assert.ok(o.accuracy >= 0 && o.accuracy <= 1);
   /* Die Ungleichungskette darueber besteht auch, wenn overview() durchweg 0
-     meldet – 0 <= 0 <= 0 <= 0. Sie sagt dann nichts mehr ueber die Zaehlung,
+     meldet – 0 <= 0 <= 0. Sie sagt dann nichts mehr ueber die Zaehlung,
      nur noch ueber die Reihenfolge dreier Nullen. Also erst die Zahlen selbst. */
   assert.equal(o.seen, 20, `20 Karten angefangen, overview meldet ${o.seen}`);
-  assert.ok(o.learned > 0, 'nach einer guten Antwort muss mindestens eine Karte gelernt sein');
   assert.ok(o.total > 2000, 'die Gesamtzahl muss der Sammlung entsprechen');
+});
+
+test('ein Schwerpunkt ueber alle aktiven Themen ist keiner', () => {
+  /* Entsteht von hinten: Schwerpunkt bei neun aktiven Themen setzen, spaeter
+     die uebrigen sieben abschalten. newCards() gibt dann jedem aktiven Thema
+     zwei Zuege statt einem - rechnerisch dasselbe wie gar kein Schwerpunkt,
+     waehrend die Einstellungen „Zurzeit sind Mathematik und Sport bevorzugt"
+     versprachen. */
+  store.resetAll();
+  store.setSetting('cats', ['mat', 'spo']);
+  store.setSetting('focus', ['mat', 'spo']);
+  assert.equal(sess.focusCats(), null, 'beide aktiv und beide Schwerpunkt: kein Schwerpunkt');
+  store.setSetting('focus', ['mat']);
+  assert.deepEqual([...sess.focusCats()], ['mat'], 'eines von zweien bleibt ein Schwerpunkt');
+  store.setSetting('cats', null);                       // alle neun aktiv
+  store.setSetting('focus', ['mat', 'spo']);
+  assert.deepEqual([...sess.focusCats()].sort(), ['mat', 'spo'], 'zwei von neun ebenso');
 });
 
 test('neue Karten liegen gleichmäßig verteilt, nicht als Block am Ende', () => {

@@ -1,6 +1,6 @@
 /* Stellt die Lernwarteschlange zusammen: fällige Wiederholungen + neue Karten,
    verschränkt über die Kategorien (Interleaving). */
-import { CARDS, CAT_BY_ID, catCards } from '../../data/index.js';
+import { CARDS, CATS, CAT_BY_ID, catCards } from '../../data/index.js';
 import { S, settings, cardState, today, todayNum, isFlagged, uebernimmVorgaenger,
          setNachErsatz } from './store.js';
 import { isDue, isNew, strength, isLeech } from './srs.js';
@@ -92,7 +92,16 @@ export function focusCats() {
   if (!f || !f.length) return null;
   const a = activeCats();
   const s = new Set(f.filter(id => CAT_BY_ID[id] && (!a || a.has(id))));
-  return s.size ? s : null;
+  /* Deckt der Schwerpunkt alle aktiven Themen ab, ist er keiner: newCards()
+     gibt dann jedem Thema zwei Zuege statt einem - rechnerisch dasselbe wie
+     gar kein Schwerpunkt. Gemessen ueber 300 Tagesplaene mit Mathematik und
+     Sport als Schwerpunkt und nur diesen beiden aktiv: 6,00 / 6,00 neue Karten
+     - genau wie ohne Schwerpunkt, waehrend die Einstellungen „Zurzeit sind
+     Mathematik und Sport bevorzugt" versprachen. Die Einstellungsseite kennt
+     die Regel laengst (sie blendet den Abschnitt bei einem einzigen aktiven
+     Thema aus), das Modell nicht. */
+  const aktive = a ? a.size : CATS.length;
+  return s.size && s.size < aktive ? s : null;
 }
 
 /* Ab wann der Rueckstand so gross ist, dass neue Karten nur schaden.
@@ -236,26 +245,28 @@ export function overview() {
   // Alle Kennzahlen auf denselben Ausschnitt beziehen: sonst zeigte die Startseite
   // „3 faellig" (gefiltert) neben „400 sitzt fest" (ungefiltert).
   const pool = CARDS.filter(c => inScope(c));
-  let learned = 0, mature = 0, seenTotal = 0, neuVorrat = 0;
+  let mature = 0, seenTotal = 0, neuVorrat = 0;
   for (const c of pool) {
     const s = cardState(c.id);
     // Dieselbe Bedingung wie isNew - der Vorrat faellt in dieser Schleife mit ab,
     // statt dass newCards() dafuer die ganze Warteschlange aufbaut.
     if (!s || !s.seen) { neuVorrat++; continue; }
+    /* „Angefangen" ist genau „schon einmal abgefragt" - dieselbe Marke wie
+       oben. Frueher stand hier eine eigene Bedingung (reps oder ok groesser
+       null), und eine neue Karte, die beim ersten Mal umfiel, stand danach im
+       Speicher mit {seen:1, reps:0, ok:0}: weder angefangen noch unberuehrt.
+       Nach einer Runde ueber zwanzig neue Karten meldete die Startseite „10
+       angefangen · 0 gefestigt · 2.301 noch unberuehrt" bei 2.321 Karten - zehn
+       fehlten in der Rechnung. (Ueber reps allein ging es ohnehin nicht:
+       schedule() setzt sie bei „Nochmal" auf 0 zurueck, der Balken lief dann
+       rueckwaerts.) */
     seenTotal++;
-    /* Nicht ueber reps zaehlen: schedule() setzt die SM-2-Wiederholungszaehlung
-       bei „Nochmal" bewusst auf 0 zurueck. Damit fiel eine seit Monaten gelernte
-       Karte nach einem einzigen Aussetzer aus der Zaehlung, und der
-       Fortschrittsbalken auf der Startseite lief rueckwaerts – waehrend die
-       Statistikseite fuer dieselben Karten unveraendert weiterzaehlte. s.ok
-       waechst monoton und wird nie zurueckgesetzt. */
-    if (s.reps > 0 || s.ok > 0) learned++;
     if (strength(s) >= 0.6) mature++;
   }
   const due = dueCards().length;
   const st = S();
   return {
-    total: pool.length, seen: seenTotal, learned, mature, due,
+    total: pool.length, seen: seenTotal, mature, due,
     // Nicht nur das Budget, sondern auch der Vorrat: Sind alle Karten einmal
     // gesehen, stand auf der Startseite „12 neu frei" neben „alles erledigt".
     newLeft: Math.min(newBudget(due), neuVorrat),

@@ -972,6 +972,166 @@ try {
     await sctx.close();
   }
 
+  group('Die Rueckschau nennt den wahren Abstand');
+  /* Der zurueckgeholte Merkanker ist der von vor sieben ANZEIGETAGEN - das ist
+     Absicht, sonst bekaeme man nach einer Pause einen, den man nie gesehen hat.
+     Die Ueberschrift sagte aber fest „Vor sieben Tagen". Wer die App nur alle
+     paar Wochen aufmacht, las das ueber einem Anker von vor 196 Tagen. */
+  {
+    const rctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const rp = horche(await rctx.newPage());
+    await rp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await rp.waitForSelector('.hero');
+    const abstand = await rp.evaluate((k) => {
+      const z = JSON.parse(localStorage.getItem(k));
+      // Acht Anzeigetage im Abstand von vier Wochen, der letzte ist heute.
+      const tage = [];
+      const heute = Math.floor(Date.now() / 86400000);
+      const schluessel = (n) => {
+        const d = new Date(n * 86400000);
+        return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+      };
+      for (let i = 7; i >= 0; i--) tage.push(schluessel(heute - i * 28));
+      z.factSeen = 8; z.factIdx = 8; z.factDay = tage[tage.length - 1]; z.factTage = tage;
+      localStorage.setItem(k, JSON.stringify(z));
+      return 196;
+    }, KEY);
+    await rp.reload({ waitUntil: 'networkidle' });
+    await rp.waitForSelector('.hero');
+    const ueber = await rp.evaluate(() => {
+      const el = document.getElementById('merkRueck');
+      return el ? (el.closest('.card.fact')?.querySelector('p.tiny')?.innerText || '') : '(keine Rueckschau)';
+    });
+    check('die Rueckschau steht auf der Startseite', /weißt du es noch/.test(ueber), ueber);
+    check('und nennt den wahren Abstand, nicht „sieben Tagen"',
+      ueber.includes(String(abstand)), `„${ueber}" bei ${abstand} Tagen Abstand`);
+    await rctx.close();
+  }
+
+  group('Die 12-Wochen-Karte sagt vorgelesen dasselbe wie gezeichnet');
+  /* Das Bild ist aria-hidden - fuer Hilfsmittel ist der Satz darunter die
+     ganze Karte. Er nannte aber die Antworten ALLER Zeiten: Bei sieben Monaten
+     Verlauf stand dort „zusammen 4.800 Antworten", waehrend in den 84 gezeigten
+     Zellen 1.896 steckten. */
+  {
+    const wctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const wp = horche(await wctx.newPage());
+    await wp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await wp.waitForSelector('[data-go="daily"]');
+    const imFenster = await wp.evaluate(async () => {
+      const store = await import('/assets/js/store.js');
+      const heute = store.todayNum();
+      for (let i = 0; i < 200; i++) {
+        store.S().days[store.numToKey(heute - i)] = { done: 24, correct: 20, newC: 0, sec: 600 };
+      }
+      store.save(true);
+      // Dasselbe Fenster wie renderStats: 84 Zellen, die Zukunft zaehlt nicht.
+      const dowMon = (n) => (((n % 7) + 7) % 7 + 3) % 7;
+      const start = heute + (6 - dowMon(heute)) - 83;
+      let summe = 0;
+      for (let i = 0; i < 84; i++) {
+        const tag = start + i;
+        if (tag > heute) continue;
+        summe += store.S().days[store.numToKey(tag)]?.done || 0;
+      }
+      return summe;
+    });
+    await wp.reload({ waitUntil: 'networkidle' });
+    await wp.click('[data-view="stats"]');
+    await wp.waitForSelector('.heat');
+    const satz = await wp.evaluate(() => {
+      const p = [...document.querySelectorAll('.sr-only')].find(e => /Tagen gelernt/.test(e.innerText));
+      return p ? p.innerText.trim() : '';
+    });
+    const genannt = Number((satz.match(/zusammen (\d+) Antworten/) || [])[1]);
+    check('der Vorlesesatz nennt die Antworten der gezeigten Wochen',
+      genannt === imFenster, `„${satz}" – im Fenster stecken ${imFenster}`);
+    check('und nicht die des ganzen Verlaufs', genannt !== 4800, satz);
+    await wctx.close();
+  }
+
+  group('Eine Pause mitten in der Runde ist keine Lernzeit');
+  /* endRun() rechnete mit der Wanduhr: Wer die App mitten in der Runde
+     verlaesst und spaeter zurueckkommt, bekam die Pause als Lernzeit
+     gutgeschrieben - „1 von 3 richtig · 180 Min." fuer eine Runde von fuenfzehn
+     Sekunden. Die einzelnen Fragen rechnen laengst mit sichtbarer Zeit. */
+  {
+    const pctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const pp = horche(await pctx.newPage());
+    await pp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await pp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await pp.waitForSelector('.sess-body');
+    await pp.waitForTimeout(FUSS_TAUB);
+    const antworte = async () => {
+      if (await pp.locator('.opt').count()) await pp.locator('.opt').first().click();
+      else if (await pp.locator('[data-hab]').count()) await pp.locator('[data-hab="1"]').click();
+      else await pp.click('#reveal');
+      await pp.waitForTimeout(400);
+      if (await pp.locator('[data-g="3"]').count()) await pp.locator('[data-g="3"]').click();
+      else if (await pp.locator('#next').count()) await pp.click('#next');
+      await pp.waitForTimeout(400);
+    };
+    const verstecken = (wie) => pp.evaluate((zustand) => {
+      Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => zustand });
+      document.dispatchEvent(new Event('visibilitychange'));
+    }, wie);
+    await antworte();
+    await verstecken('hidden');
+    await pp.waitForTimeout(3000);          // drei Sekunden Anruf
+    await verstecken('visible');
+    await antworte();
+    await pp.click('#quit');
+    await pp.waitForTimeout(600);
+    const sek = await pp.evaluate((k) => {
+      const z = JSON.parse(localStorage.getItem(k) || '{}');
+      const tag = Object.values(z.days || {}).find(d => (d.sec || 0) > 0);
+      return tag ? tag.sec : 0;
+    }, KEY);
+    check('die Pause zaehlt nicht als Lernzeit', sek > 0 && sek < 3,
+      `${sek} s fuer eine Runde mit drei Sekunden Pause`);
+    await pctx.close();
+  }
+
+  group('Die Bestandsrechnung auf der Startseite geht auf');
+  /* „x angefangen · y gefestigt · z noch unberuehrt": Die erste und die dritte
+     Zahl muessen zusammen die Gesamtzahl ergeben. Frueher zaehlte „angefangen"
+     ueber reps/ok, „noch unberuehrt" aber ueber seen. Eine neue Karte, die beim
+     ersten Mal umfiel, steht danach mit {seen:1, reps:0, ok:0} im Speicher -
+     weder angefangen noch unberuehrt. Nach einer Runde ueber zwanzig neue
+     Karten meldete die Startseite „10 angefangen · 0 gefestigt · 2.301 noch
+     unberuehrt" bei 2.321 Karten. */
+  {
+    const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const bp = horche(await bctx.newPage());
+    await bp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await bp.waitForSelector('[data-go="daily"]');
+    // Zwanzig neue Karten, die Haelfte faellt beim ersten Mal um - ueber die
+    // App selbst, damit genau der Zustand entsteht, den „Nochmal" schreibt.
+    await bp.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      const srs = await import('/assets/js/srs.js');
+      for (let i = 0; i < 20; i++) {
+        store.putCard(daten.CARDS[i].id, srs.schedule(srs.fresh(), i % 2 === 0 ? srs.AGAIN : srs.GOOD, {}));
+      }
+      store.save(true);
+    });
+    await bp.reload({ waitUntil: 'networkidle' });
+    await bp.waitForSelector('.hero');
+    const zeile = await bp.evaluate(() => {
+      const p = [...document.querySelectorAll('p.tiny')].find(e => /angefangen/.test(e.innerText));
+      return p ? p.innerText : '';
+    });
+    const zahlen = (zeile.match(/\d+/g) || []).map(Number);
+    const gesamt = await bp.evaluate(async () => (await import('/data/index.js')).CARDS.length);
+    check('die Zeile nennt drei Zahlen', zahlen.length === 3, zeile);
+    check('angefangen und noch unberuehrt ergeben zusammen den ganzen Bestand',
+      zahlen.length === 3 && zahlen[0] + zahlen[2] === gesamt,
+      `${zeile} – zusammen ${zahlen[0] + zahlen[2]} von ${gesamt}`);
+    check('die zwanzig abgefragten Karten stehen auch drin', zahlen[0] === 20, zeile);
+    await bctx.close();
+  }
+
   group('Der erste Buchstabe in der Suche friert nichts ein');
   /* felder() rechnet die Einzelfelder aufgeschoben, „nur fuer Karten, die
      ueberhaupt treffen". Beim ERSTEN Buchstaben trifft aber fast alles: 'e'
@@ -1290,7 +1450,13 @@ try {
     check('ab dem achten Anzeigetag kommt die Rueckschau dazu',
       await mp.locator('.card.fact').count() === 2);
     const rueck = await mp.locator('.card.fact').nth(1).innerText();
-    check('die Rueckschau ist als solche beschriftet', /Vor sieben Tagen/.test(rueck), rueck.slice(0, 40));
+    /* Ohne Tagebuch der Anzeigetage (hier von Hand gesetzt, und so sieht auch
+       ein Stand aus, der von einer aelteren Fassung kommt) kann die Karte den
+       Abstand nicht beziffern - dann sagt sie das, statt „Vor sieben Tagen" zu
+       behaupten. Mit Tagebuch nennt sie die Zahl; das prueft die Gruppe
+       „Die Rueckschau nennt den wahren Abstand". */
+    check('die Rueckschau ist als solche beschriftet',
+      /weißt du es noch/.test(rueck) && !/Vor sieben Tagen/.test(rueck), rueck.slice(0, 44));
     check('auch die Rueckschau ist zuerst verdeckt',
       !(await mp.locator('#merkRueck').isVisible()));
     await mctx.close();
@@ -2009,7 +2175,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 215;
+const MINDESTENS = 223;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

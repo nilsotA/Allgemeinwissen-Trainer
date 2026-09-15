@@ -120,6 +120,7 @@ const DEFAULTS = {
   claims: 0,         // „Hab ich" vor der Aufloesung – wie oft behauptet
   claimsMiss: 0,     // ... und wie oft danach doch „Nochmal"
   factIdx: 0,
+  factTage: [],           // die letzten acht Anzeigetage – fuer „Vor N Tagen
   factSeen: 0,       // wie viele Merkanker schon gezeigt wurden (fuer die Rueckschau)
   totalAnswers: 0,       // nur geplantes Lernen – das Duell zaehlt getrennt
   totalCorrect: 0,
@@ -390,6 +391,7 @@ function zusammenfuehren(fremd, eigen) {
     z.factSeen = Number(fremd.factSeen) || 0;
     z.factIdx = Number(fremd.factIdx) || 0;
     if (fremd.factDay) z.factDay = fremd.factDay;
+    if (Array.isArray(fremd.factTage)) z.factTage = fremd.factTage.slice(-8);
   }
   z.rev = groesser(z.rev, fremd.rev);
   return z;                                  // Einstellungen bleiben die dieses Tabs
@@ -791,6 +793,8 @@ function saeubern(roh) {
   rein.factSeen = zahl(roh.factSeen, 0, 1e6, 0);
   rein.lastDay = /^\d{4}-\d{2}-\d{2}$/.test(roh.lastDay) ? roh.lastDay : null;
   rein.factDay = /^\d{4}-\d{2}-\d{2}$/.test(roh.factDay) ? roh.factDay : null;
+  rein.factTage = Array.isArray(roh.factTage)
+    ? roh.factTage.filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).slice(-8) : [];
   return rein;
 }
 
