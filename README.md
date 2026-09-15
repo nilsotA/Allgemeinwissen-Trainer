@@ -242,10 +242,10 @@ gegen den alten Stand fehlschlägt.
   zu langsam und ohne Blitzbonus, und je Thema. Jede verfehlte Frage – falsch *oder*
   abgelaufen – landet im nächsten Tagestraining. Die Entscheidungen dahinter stehen unten
   unter „Der Quizmodus".
-- **Duell** – zehn Fragen mit Schwerpunkt auf dem Gelernten, aufgefüllt mit Neuem, 15 Sekunden
-  pro Frage. Beide teilen sich Uhr, Reiter und Zähler. Der Unterschied liegt nicht in der
-  Ziehung – auch das Duell greift in den Gesamtbestand, wenn das Gelernte nicht reicht –,
-  sondern darin, was danach passiert: Das Quiz plant eine entdeckte Lücke aktiv ein.
+- **Duell** – zehn Fragen aus dem Gelernten, 15 Sekunden pro Frage. Beide teilen sich Uhr,
+  Reiter und Zähler. Der Unterschied liegt in der Ziehung – das Duell greift nur dann in den
+  Gesamtbestand, wenn noch keine zehn Karten gelernt sind – und darin, was danach passiert:
+  Das Quiz plant eine entdeckte Lücke aktiv ein.
   Fehler landen automatisch im nächsten Tagestraining. Die Antworten zählen **getrennt**:
   Sie füllen weder den Tagesfortschritt noch die Wissensquote, weil unter Zeitdruck
   naturgemäß geraten wird – drei Duelle ließen den Tagesbogen sonst auf 71 % springen,
@@ -263,10 +263,18 @@ gegen den alten Stand fehlschlägt.
   zufällig aus dem Gesamtbestand. Damit kam ausgerechnet das, woran man unter Zeitdruck
   gescheitert war, nie wieder unter Zeitdruck dran – ein Duell-Fehler landete nur im
   untimed Tagestraining. Wer eine Karte in zwanzig Sekunden abruft, hat den Quizduell-Punkt
-  trotzdem verloren. Jetzt füllt sich das Duell aus **drei Töpfen**: knapp ein Drittel die
-  schwächsten bekannten Karten (Wackelkandidaten zuerst), dann weiteres Bekanntes, dann
-  Neues. Dafür war kein neuer Zustand nötig – der Einbruch nach einem Duell-Fehler steckt
-  schon in `strength()`.
+  trotzdem verloren. Jetzt füllt sich das Duell aus **zwei Töpfen**: knapp ein Drittel die
+  schwächsten bekannten Karten (Wackelkandidaten zuerst), dann weiteres Bekanntes. Dafür war
+  kein neuer Zustand nötig – der Einbruch nach einem Duell-Fehler steckt schon in
+  `strength()`.
+
+  Einen dritten Topf gab es bis zuletzt: Er füllte pauschal auf, und zwar aus dem **ganzen**
+  Bestand. Gemessen an 500 Duellen je Lernstand waren nach zwei Wochen im Schnitt 3,7 von 10
+  Fragen nie gesehen, und **kein einziges** Duell bestand nur aus Gelerntem – obwohl der Knopf
+  genau das verspricht. Schlimmer: Ein Fehler auf so einer Karte verfiel spurlos, denn der
+  Duellpfad lässt unberührte Karten ausdrücklich liegen, „weil es ohnehin aus dem Gelernten
+  zieht". Jetzt sind es 0,0 von 10, und in 500 Duellen kommen alle bekannten Karten vor.
+  Ungelerntes unter Zeitdruck ist die Aufgabe der Quizrunde, die ausdrücklich alles fragt.
 
   Dazu kommt das **Themen-Duell**: Im Quizduell steht die Kategorie vor der Frage fest,
   und genau diese Lage ließ sich vorher nicht proben – Themen nur in Ruhe, Zeitdruck nur
@@ -432,8 +440,8 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 168 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 199 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm test           # 179 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 223 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -1186,12 +1194,28 @@ baut auf dem Duell auf statt daneben: dieselbe Uhr (die nur sichtbare Zeit zähl
 Fragebildschirm, derselbe Rückfluss in den Plan. Neu sind Ziehung, Punkte und Ergebnisbild.
 
 **Die Ziehung** (`assets/js/quizmodus.js`, rein, Zufall und Kartenstand als Parameter): zwölf
-Fragen, jedes aktive Thema mindestens einmal, drei Themen zweimal – welche, entscheidet der
-Zufall. Die Schwierigkeit steigt wie im Quiz: vier Basis, vier Solide, vier Profi. Die drei
-Zusatzplätze bevorzugen bekannte Karten, die wackeln – das ist die Duell-Regel „woran man unter
-Zeitdruck scheiterte, muss unter Zeitdruck wiederkommen". Pausierte Themen bleiben draußen: Wer
-Mathematik unter Mehr abgeschaltet hat, will sie auch im Quiz nicht (das Themen-Duell hält es
-anders, weil dort das Thema ausdrücklich gewählt wird).
+Fragen, jedes aktive Thema mindestens einmal, die übrigen Plätze reihum. Die Schwierigkeit
+steigt wie im Quiz, und zwei Plätze sind für bekannte Karten reserviert, die wackeln – das ist
+die Duell-Regel „woran man unter Zeitdruck scheiterte, muss unter Zeitdruck wiederkommen".
+Pausierte Themen bleiben draußen: Wer Mathematik unter Mehr abgeschaltet hat, will sie auch im
+Quiz nicht (das Themen-Duell hält es anders, weil dort das Thema ausdrücklich gewählt wird).
+
+Zwei Engstellen steckten lange darin, beide an 4.000 Runden mit festem Zufall gemessen. Erstens
+zog jeder Platz aus genau **einer** Scheibe (Thema × Stufe). Wer zwei Themen eingeschaltet hat,
+dessen Mathe-Basis besteht aus vier Karten – dieselben vier in jeder Runde, während **87 von
+222** Karten nie drankamen. Ist eine Scheibe dünn besetzt, zählt jetzt die Nachbarstufe mit.
+Zweitens suchten die Wackelplätze nur in der eigenen Scheibe: Bei neun Themen liegen sie alle
+auf *Profi*, also trafen sie immer dieselben paar schweren Wackler – die häufigste Karte kam in
+**35 %** aller Runden vor, während achtzig andere warteten. Jetzt ziehen sie quer durch den
+ganzen Bestand, und die Runde wird zum Schluss nach Schwierigkeit sortiert, damit sie trotzdem
+von Basis nach Profi steigt.
+
+| Ganzer Quizpool (1.844 Karten, Stand nach zwei Wochen) | vorher | nachher |
+|---|---|---|
+| häufigste Karte | 35,3 % der Runden (Faktor 54,3) | 3,8 % (Faktor 5,8) |
+| nie gezogen, bei zwei aktiven Themen | 87 von 222 | 0 |
+| Stufenmischung Basis/Solide/Profi | 33/33/33 | 36/44/20 (Bestand: 33/49/18) |
+| Runden mit mindestens einer wackligen Karte | 100 % | 100 % |
 
 **Die Punkteformel in einem Satz:** Zehn Punkte für jeden Treffer, fünf dazu, wenn die Antwort in
 den ersten fünf Sekunden kommt. 180 sind das Maximum. Der Bonus ist bewusst kleiner als der
