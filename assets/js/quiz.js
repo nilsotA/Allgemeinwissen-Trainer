@@ -72,7 +72,15 @@ const ZEICHEN = [
   [/[⁵₅]/g, '5'], [/[⁶₆]/g, '6'], [/[⁷₇]/g, '7'], [/[⁸₈]/g, '8'], [/[⁹₉]/g, '9'],
   [/π/g, ' pi '], [/[αΑ]/g, ' alpha '], [/[βΒ]/g, ' beta '], [/[γΓ]/g, ' gamma '],
   [/[δΔ]/g, ' delta '], [/[λΛ]/g, ' lambda '], [/[σΣ]/g, ' sigma '], [/[ωΩ]/g, ' omega '],
-  [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '], /* „2·x" und „2x" sind dasselbe Produkt: Zwischen Zahl und Variable ist das
+  [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '],
+  /* Zeichen, die auf Karten wirklich vorkommen und die kein deutsches
+     Tastenfeld hat. Ohne sie fiel die Eingabe ersatzlos weg: Wer beim
+     Nachschlagen ∫ eintippte, bekam nicht die vier Integralkarten, sondern
+     zwanzig zufaellige - die Suche hielt das Feld fuer leer. ∑ ist das
+     Summenzeichen (U+2211) und nicht das griechische Sigma eine Zeile darueber. */
+  [/∫/g, ' integral '], [/∑/g, ' summe '], [/≠/g, ' ungleich '],
+  [/≈/g, ' ungefaehr '], [/∞/g, ' unendlich '],
+  [/[≤]/g, ' kleiner gleich '], [/[≥]/g, ' groesser gleich '], /* „2·x" und „2x" sind dasselbe Produkt: Zwischen Zahl und Variable ist das
      Malzeichen nur Schreibweise. Zwischen zwei Zahlen oder zwei Variablen
      bleibt es stehen – dort traegt es Bedeutung. */
   [/(\d)\s*[·×*]\s*(?=[a-zäöüß]\b)/gi, '$1 '],

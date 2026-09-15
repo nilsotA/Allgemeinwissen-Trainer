@@ -947,7 +947,97 @@ try {
     await sp.waitForTimeout(450);
     const kopf = await sp.locator('#res .tiny').first().innerText();
     check('die Trefferzahl wird genannt', /\d+ Treffer/.test(kopf), kopf);
+
+    /* Zeichen, die kein deutsches Tastenfeld hat, stehen auf echten Karten.
+       Vorher liess normalize() sie ersatzlos fallen, die Suche hielt das Feld
+       fuer leer und legte zwanzig zufaellige Karten unter „Zufaellige Auswahl"
+       vor - waehrend das Zeichen sichtbar im Feld stand. */
+    await sp.locator('#q').fill('∫');
+    await sp.waitForTimeout(450);
+    const intKopf = await sp.locator('#res .tiny').first().innerText();
+    check('das Integralzeichen findet Integralkarten',
+      /[1-9]\d* Treffer/.test(intKopf) && await sp.locator('.lk-q').count() > 0, intKopf);
+    const intErste = await sp.locator('.lk-q').first().innerText();
+    check('und zwar der Sache nach', /[Ii]ntegr|∫/.test(intErste), intErste.slice(0, 55));
+
+    /* Eine Eingabe, von der nichts Suchbares uebrig bleibt, ist kein leeres
+       Feld: Die App darf nicht behaupten, man habe nichts eingetippt. */
+    await sp.locator('#q').fill('???');
+    await sp.waitForTimeout(450);
+    const nixKopf = await sp.locator('#res .tiny').first().innerText();
+    check('„???" behauptet nicht, das Feld sei leer',
+      !/Zufällige Auswahl|markierten Karten/.test(nixKopf), nixKopf);
+    check('„???" zeigt keine fremden Karten als Treffer',
+      await sp.locator('.lk').count() === 0, `${await sp.locator('.lk').count()} Karten`);
     await sctx.close();
+  }
+
+  group('Der erste Buchstabe in der Suche friert nichts ein');
+  /* felder() rechnet die Einzelfelder aufgeschoben, „nur fuer Karten, die
+     ueberhaupt treffen". Beim ERSTEN Buchstaben trifft aber fast alles: 'e'
+     alle 2.321 Karten, 'v' noch 1.538 - also wurde die ganze Rechnung in einem
+     Zug auf dem Hauptthread nachgeholt. Gemessen bei vierfacher Drosselung
+     (dieselbe Groessenordnung, die app.js selbst als „gedrosseltes iPhone"
+     ansetzt): 1.348 ms Stillstand, die Zeichen zwei bis sieben kamen danach im
+     Schwall. Mit dem Vorwaermen in Scheiben sind es 146-179 ms. */
+  {
+    const fctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const fp = horche(await fctx.newPage());
+    const cdp = await fctx.newCDPSession(fp);
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    await fp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await fp.locator('#searchBtn').click();
+    await fp.waitForSelector('#q');
+    await fp.waitForTimeout(2500);            // das Vorwaermen im Leerlauf abwarten
+    await fp.evaluate(() => {
+      window.__takt = []; let letzte = performance.now();
+      const schlag = () => { const t = performance.now(); window.__takt.push(t - letzte);
+        letzte = t; requestAnimationFrame(schlag); };
+      requestAnimationFrame(schlag);
+    });
+    await fp.locator('#q').click();
+    for (const ch of 'energie') { await fp.keyboard.type(ch); await fp.waitForTimeout(120); }
+    await fp.waitForTimeout(900);
+    const luecke = await fp.evaluate(() => Math.round(Math.max(...window.__takt)));
+    check('der Bildschirm steht beim Tippen nie lange still', luecke < 700,
+      `laengste Bildluecke ${luecke} ms (vorher 1348 ms, jetzt rund 160 ms)`);
+    const gefunden = await fp.locator('#res .tiny').first().innerText();
+    check('und das Wort ist trotzdem ganz angekommen',
+      (await fp.locator('#q').inputValue()) === 'energie' && /\d+ Treffer/.test(gefunden), gefunden);
+    await fctx.close();
+  }
+
+  group('Markierte Karten: die Liste sagt, wie viele es sind');
+  /* Der Nachschlage-Bildschirm ist der einzige Ort, an dem Markierungen wieder
+     wegzunehmen sind. Bei 85 Markierungen zeigte er stumm 60 Zeilen, waehrend
+     die Einstellungen „Alle 85 Markierungen loeschen" anboten - und weil CARDS
+     nach Themen sortiert ist, fielen immer dieselben hinteren Themen weg. */
+  {
+    const mctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const mp = horche(await mctx.newPage());
+    await mp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await mp.waitForSelector('#searchBtn');
+    /* Ueber die App selbst markieren, nicht ueber den Speicher: Beim Neuladen
+       schriebe der Ausstieg sonst den alten Stand wieder darueber. */
+    const zuletzt = await mp.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      const ids = daten.CARDS.map(c => c.id);
+      const schritt = Math.floor(ids.length / 85);
+      let letzte = null;
+      for (let i = 0; i < 85; i++) { store.toggleFlag(ids[i * schritt]); letzte = ids[i * schritt]; }
+      store.save(true);
+      return letzte;
+    });
+    await mp.locator('#searchBtn').click();
+    await mp.waitForSelector('#q');
+    await mp.waitForTimeout(400);
+    const mKopf = await mp.locator('#res .tiny').first().innerText();
+    check('die Kopfzeile nennt die volle Zahl', /85 markierte/.test(mKopf), mKopf);
+    check('und sagt, dass sie abschneidet', /ersten 60/.test(mKopf), mKopf);
+    const obenId = await mp.locator('.lk').first().getAttribute('data-id');
+    check('die zuletzt markierte Karte steht oben', obenId === zuletzt, `${obenId} statt ${zuletzt}`);
+    await mctx.close();
   }
 
   group('Wenn die App nicht laedt');
@@ -1876,7 +1966,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 204;
+const MINDESTENS = 213;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

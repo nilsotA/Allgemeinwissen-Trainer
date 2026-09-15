@@ -929,10 +929,21 @@ function renderLookup() {
   const paint = () => {
     const q = normalize(lookupQuery);
     const terms = q.split(' ').filter(Boolean);
+    /* Ob das Feld leer ist, entscheidet das Getippte - nicht das, was
+       normalize() davon uebrig laesst. Ein ∫, ∑ oder schlicht „???" ergibt
+       keinen Suchbegriff; vorher fiel die Suche dann in den Zweig fuers leere
+       Feld und legte markierte oder zufaellige Karten vor, als waeren sie das
+       Ergebnis - waehrend das Zeichen sichtbar im Feld stand. */
+    const getippt = lookupQuery.trim() !== '';
     let list;
     if (!terms.length) {
-      list = CARDS.filter(c => isFlagged(c.id));
-      if (!list.length) list = shuffle(CARDS).slice(0, 20);
+      /* Markierte zuletzt zuerst: Die Liste wird bei 60 abgeschnitten, und
+         CARDS steht nach Themen sortiert - bei 85 Markierungen fielen immer
+         die der hinteren Themen weg, also ausgerechnet die zuletzt gesetzten. */
+      const marken = S().flags || {};
+      list = getippt ? [] : CARDS.filter(c => isFlagged(c.id))
+        .sort((a, b) => (Number(marken[b.id]) || 0) - (Number(marken[a.id]) || 0));
+      if (!getippt && !list.length) list = shuffle(CARDS).slice(0, 20);
     } else {
       const idx = searchIndex();
       const muster = wortMuster(terms);
@@ -946,8 +957,9 @@ function renderLookup() {
     const shown = list.slice(0, 60);
     res.innerHTML = `
       <p class="tiny" style="margin:14px 2px 8px">${
-        !terms.length && list.some(c => isFlagged(c.id)) ? 'Deine markierten Karten'
-        : !terms.length ? 'Zufällige Auswahl – tippe etwas ein zum Suchen'
+        !terms.length && !getippt && list.some(c => isFlagged(c.id))
+          ? `Deine ${list.length} markierten Karten${list.length > 60 ? ' – die ersten 60' : ''}`
+        : !terms.length && !getippt ? 'Zufällige Auswahl – tippe etwas ein zum Suchen'
         : `${list.length} Treffer${list.length > 60 ? ', die ersten 60' : ''}`}</p>
       ${shown.map(c => {
         const cs = cardState(c.id);
@@ -998,11 +1010,29 @@ function renderLookup() {
     timer = setTimeout(paint, 120);
   });
   paint();
-  // Den Suchindex in der Leerlaufzeit aufbauen, nicht beim ersten Tastendruck:
-  // normalize() ueber alle Karten kostet hier 128 ms, auf einem gedrosselten
-  // iPhone rund eine halbe Sekunde - lang genug, dass die ersten Zeichen
-  // verschluckt werden. Bis zum ersten Buchstaben ist der Index jetzt warm.
-  (window.requestIdleCallback || ((f) => setTimeout(f, 0)))(() => searchIndex());
+  /* Den Suchindex in der Leerlaufzeit aufbauen, nicht beim ersten Tastendruck:
+     normalize() ueber alle Karten kostet hier 128 ms, auf einem gedrosselten
+     iPhone rund eine halbe Sekunde - lang genug, dass die ersten Zeichen
+     verschluckt werden.
+
+     Die Einzelfelder gehoeren in denselben Leerlauf. felder() rechnet sie
+     aufgeschoben, „nur fuer Karten, die ueberhaupt treffen" - und genau diese
+     Annahme faellt beim ERSTEN Buchstaben um: 'e' trifft alle 2.321 Karten,
+     'v' noch 1.538. Gemessen im iPhone-13-Viewport bei vierfacher Drosselung
+     stand der Bildschirm nach dem ersten Zeichen 1.298 ms still, die Zeichen
+     zwei bis sieben kamen danach im Schwall. In Scheiben zu 150 Karten bleibt
+     die laengste Luecke bei 169 ms, und felder() traegt den aufgeschobenen
+     Pfad weiter, falls jemand vor dem Ende des Vorwaermens tippt. */
+  const leerlauf = window.requestIdleCallback || ((f) => setTimeout(f, 0));
+  leerlauf(() => {
+    searchIndex();
+    const haeppchen = (i) => {
+      const bis = Math.min(CARDS.length, i + 150);
+      for (; i < bis; i++) felder(i);
+      if (i < CARDS.length) leerlauf(() => haeppchen(i));
+    };
+    haeppchen(0);
+  });
 }
 
 function renderSettings() {

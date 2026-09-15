@@ -249,6 +249,21 @@ test('normalize vereinheitlicht Umlaute, Satzzeichen und Füllwörter', () => {
   assert.equal(normalize('Straße'), 'strasse');
 });
 
+test('Zeichen ohne Taste werden zu Woertern, nicht zu nichts', () => {
+  /* Vorher fielen sie ersatzlos weg. Beim Nachschlagen hiess das: Wer ∫ eintippt,
+     bekommt nicht die Integralkarten, sondern zwanzig zufaellige - die Suche
+     hielt das Feld fuer leer. Alle diese Zeichen stehen auf echten Karten. */
+  assert.equal(normalize('∫'), 'integral');
+  assert.equal(normalize('∑'), 'summe');
+  assert.equal(normalize('≠'), 'ungleich');
+  assert.equal(normalize('≈'), 'ungefaehr');
+  assert.equal(normalize('∞'), 'unendlich');
+  assert.equal(normalize('a ≤ b'), 'a kleiner gleich b');
+  assert.equal(normalize('Σ'), 'sigma', 'das griechische Sigma bleibt Sigma');
+  // Eine Eingabe, von der nichts uebrig bleibt, ist und bleibt leer.
+  assert.equal(normalize('???'), '');
+});
+
 /* Ein deutsches Tastenfeld gibt í, ó, ø, ř oder ć gar nicht her - wer „Brasilia"
    tippt, hat die Hauptstadt gewusst. Bekannt waren nur é, à, ç und ñ; alles
    andere fiel dem Muster [^a-z0-9] zum Opfer und zerriss das Wort: Aus
