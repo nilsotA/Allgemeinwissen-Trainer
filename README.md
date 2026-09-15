@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.321 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.323 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (343 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (356 Karten: Grundlagen,
@@ -59,10 +59,10 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
 Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt **101,2 Karten pro Tag**,
-Spitzenlast 134, gut 12 Minuten täglich. Nach einem halben Jahr sind 1.632 der 2.321 Karten
+Spitzenlast 134, gut 12 Minuten täglich. Nach einem halben Jahr sind 1.632 der 2.323 Karten
 angefangen, davon sitzen 1.379 fest. Der Deckel für Wiederholungen sorgt dafür, dass die
 Tageslast **nicht** mit dem Kartenbestand mitwächst – das ist der Punkt: Die Sammlung ist seit
-der ersten dieser Messungen um 171 Karten gewachsen (2.150 → 2.321), die Tageslast um 0,7.
+der ersten dieser Messungen um 173 Karten gewachsen (2.150 → 2.323), die Tageslast um 0,7.
 
 Diese Zahlen sind reproduzierbar, weil der Würfel eine feste Saat hat. Vorher lief die
 Simulation über `Math.random`, und zwei Läufe gaben verschiedene Antworten – 132 und 138
@@ -1293,9 +1293,13 @@ statt nur zu schauen, ob eine Zahl erscheint.
 
 ### Der zweite Prüfsatz – und die ehrliche Zahl: 63 %
 
-Der erste Prüfsatz meldet **102 von 104 (98 %)**. Diese Zahl ist wertlos geworden: Die letzten
-39 Karten wurden gegen genau seine Lücken geschrieben. Sie misst, ob das Abschreiben geklappt
-hat, nicht die Sammlung. Ein Maß, das man optimiert, hört auf, ein Maß zu sein.
+Der erste Prüfsatz meldet inzwischen **104 von 104 (100 %)**. Diese Zahl ist wertlos geworden:
+Die letzten Karten wurden gegen genau seine Lücken geschrieben – die beiden letzten waren
+reine Richtungskarten („Was ist ein Euphemismus?" gab es nur als „Wie nennt man eine
+beschönigende Umschreibung?"). Sie misst, ob das Abschreiben geklappt hat, nicht die Sammlung.
+Ein Maß, das man optimiert, hört auf, ein Maß zu sein – und bei 100 % misst es gar nichts mehr:
+Es kann nicht mehr steigen und fällt nur noch, wenn jemand eine Karte löscht. Ab hier taugt es
+als **Regressionsschutz**, nicht als Fortschrittsanzeige.
 
 `data/quizprobe2.json` ist deshalb ein **zweiter, unabhängig geschriebener Satz**. Die Autoren
 durften genau eine Datei im Repository lesen – den ersten Prüfsatz, um Wiederholungen zu
@@ -2582,7 +2586,7 @@ Runde eins hat also schon beim Schreiben gewirkt.
 
 | | vorher | nachher |
 |---|---|---|
-| Karten | 2.268 | **2.321** |
+| Karten | 2.268 | **2.323** |
 | Abdeckung Satz 4 | 197/286 (69 %) | **200/286 (70 %)** |
 | Tageslast | 102,8 | **101,2** |
 
