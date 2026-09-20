@@ -424,7 +424,15 @@ for (const c of CARDS) {
    Schranke lautlos durchgelaufen und haette „NaN %" gemeldet. */
 if (!mitAblenkern) fail('Ratequote: keine Karte mit drei eigenen Ablenkern gefunden – die Schranke gegen „nimm die laengste Option" laeuft ins Leere');
 const quote = (laengsteGewinnt / mitAblenkern) * 100;
-console.log(`Ratequote    : ${quote.toFixed(1)} % mit „nimm die laengste Option" (Zufall waere 25 %)`);
+/* Mit dem Rauschband, nicht nackt: Eine Quote ist eine Stichprobe, und ohne
+   ihre Streuung liest sich jede Abweichung wie ein Befund. Bei p Prozent und N
+   Karten streut sie um sqrt(p*(100-p)/N) Prozentpunkte. Wer eine Zahl
+   innerhalb dieses Bandes „verbessert", baut Karten um und misst danach
+   denselben Zufall - nur mit anderem Vorzeichen. */
+const band = (p, n) => Math.sqrt((p * (100 - p)) / n);
+const rateBand = band(25, mitAblenkern);
+console.log(`Ratequote    : ${quote.toFixed(1)} % mit „nimm die laengste Option" `
+  + `(Zufall waere 25 % ± ${rateBand.toFixed(1)} bei ${mitAblenkern} Karten)`);
 
 /* Zweite Ratestrategie: „streich die beiden Extremwerte". Liegen die Ablenker
    symmetrisch um die richtige Antwort, bleiben nur zwei Optionen uebrig - 50 statt
@@ -475,7 +483,9 @@ if (!zahlkarten) {
   fail('Klammerquote: keine einzige Zahlenkarte erkannt – die Schranke gegen „streich die beiden Extremwerte" laeuft ins Leere');
 } else {
   const mittig = (inDerMitte / zahlkarten) * 100;
-  console.log(`Klammerquote : ${mittig.toFixed(1)} % der Zahlenkarten haben die Antwort zwischen den Ablenkern (Zufall waere 50 %)`);
+  const klammerBand = band(50, zahlkarten);
+  console.log(`Klammerquote : ${mittig.toFixed(1)} % der Zahlenkarten haben die Antwort zwischen den Ablenkern `
+    + `(Zufall waere 50 % ± ${klammerBand.toFixed(1)} bei ${zahlkarten} Zahlenkarten)`);
   /* 70 statt der frueheren 85: Nach dem Handdurchgang liegt der Wert bei 61 %.
      Die Schranke haelt den Stand fest, ohne die Karten zu verbieten, deren
      Ablenker die Antwort aus gutem Grund einklammern (Rechenfehler in Mathe,

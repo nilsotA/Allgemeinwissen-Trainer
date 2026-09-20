@@ -116,7 +116,7 @@ aber, eine gerade erst gesehene Karte schon am nächsten Tag zu tippen. Dass Mul
 überhaupt trägt, hängt an der Qualität der Ablenker (Little, Bjork, Bjork & Angello 2012):
 Nur wenn die falschen Optionen ernsthaft in Frage kommen, muss man beim Ausschließen
 tatsächlich Wissen abrufen. Genau deshalb steckt so viel Arbeit in den Ablenkern – die
-Ratequote von 27,0 % und die Klammerquote von 49,1 % oben sind keine Kosmetik, sondern die
+Ratequote von 25,3 % und die Klammerquote von 56,8 % oben sind keine Kosmetik, sondern die
 Voraussetzung dafür, dass die Auswahlfrage überhaupt eine Prüfung ist.
 
 **Selbstbewertung lädt zur Selbsttäuschung ein – deshalb kommt das Urteil zuerst.** Beim
@@ -2841,7 +2841,22 @@ den systematischen Fall ab, in dem Ablenker maschinell um die Antwort gelegt wer
 aber den erreichten Stand fest.
 
 Eine zweite Handdurchsicht hat die Quote später von 61,0 % auf **49,1 %** gebracht – also auf
-Zufallsniveau, „nimm die Mitte" verrät nichts mehr. Getauscht wurde wieder nur je ein Wert und
+Zufallsniveau, „nimm die Mitte" verrät nichts mehr.
+
+Seither ist die Sammlung gewachsen, und die Quote steht bei **56,8 %**. Das sieht nach einem
+Rückschritt aus, ist aber keiner: Es gibt 132 Zahlenkarten, und bei 132 Stichproben streut
+eine 50-Prozent-Quote um 4,4 Prozentpunkte. 56,8 % liegt 1,6 Streuungen daneben – im
+Rauschen. Wer daran „optimiert", baut neun Karten um und misst danach denselben Zufall mit
+anderem Vorzeichen. Damit das niemand versehentlich tut, drucken beide Quoten seit dieser
+Messung ihr eigenes Rauschband mit:
+
+```
+Ratequote    : 25.3 % mit „nimm die laengste Option" (Zufall waere 25 % ± 0.9 bei 2323 Karten)
+Klammerquote : 56.8 % der Zahlenkarten haben die Antwort zwischen den Ablenkern (Zufall waere 50 % ± 4.4 bei 132 Zahlenkarten)
+```
+
+Die Ratequote liegt mit 25,3 % gegen 25 % ± 0,9 genau auf dem Zufall. Die Schranken bleiben,
+wo sie sind: Sie fangen den systematischen Fall ab, nicht die Streuung. Getauscht wurde wieder nur je ein Wert und
 nur, wo er reiner Füllwert war; mehrfach kam etwas Lehrreicheres zurück: 9.999 statt 100.000
 Code-Möglichkeiten (der klassische Zählfehler von 0000 bis 9999), 225 statt 1024 für FF
 (die verführerische Rechnung 15 · 15), 55 statt 21 Dominosteine (das Doppel-Neun-Spiel),
