@@ -532,15 +532,58 @@ test('Bindestrichnamen bleiben unversehrt', () => {
    Vergleichs tat das bei 148 Karten – „Ag" galt als Symbol für Gold. */
 test('kein Ablenker im Bestand wird als richtige Eingabe durchgewunken', () => {
   const durchgerutscht = [];
+  let geprueft = 0, gelb = 0;
   for (const c of CARDS) {
     if (!c.w || c.mc) continue;
     for (const w of c.w) {
       // bewerte() statt similarity(): So laeuft der Rundumschlag durch denselben
       // Weg wie die App, samt Nebenschreibweisen und Mengenkarten.
-      if (bewerte(c, w) >= 0.8) durchgerutscht.push(`„${w}" galt als „${c.a}" (${c.id})`);
+      const punkte = bewerte(c, w);
+      geprueft++;
+      if (punkte >= 0.8) durchgerutscht.push(`„${w}" galt als „${c.a}" (${c.id})`);
+      else if (punkte >= 0.6) gelb++;
     }
   }
+  /* Ohne diese Zeile bestuende der Test auch dann, wenn gar keine Karte mehr
+     Ablenker haette - er prueft dann nichts und meldet trotzdem gruen. */
+  assert.ok(geprueft > 6000, `nur ${geprueft} Ablenker geprueft – die Gegenprobe liefe fast ins Leere`);
   assert.deepEqual(durchgerutscht, [], durchgerutscht.join('\n'));
+  /* Das gelbe Band mitdeckeln: „Nimmt er genug an?" allein bestuende auch eine
+     Fassung, die alles durchwinkt. Gemessen bei Einfuehrung: 8,6 % der Ablenker
+     landen bei „knapp daneben – vergleich genau". */
+  assert.ok(gelb / geprueft <= 0.12,
+    `${(100 * gelb / geprueft).toFixed(1)} % der Ablenker landen im gelben Band (gemessen waren 8,6 %)`);
+});
+
+/* Ein zweiter Blickwinkel auf dieselbe Frage: nicht der gebaute Ablenker,
+   sondern die Antwort einer ANDEREN Karte desselben Teilgebiets. Die ist
+   thematisch nah, sprachlich aehnlich gebaut und trotzdem falsch – und anders
+   als die Ablenker hat sie niemand als Gegenstueck entworfen. Gemessen: von
+   4.642 solchen Eingaben gilt keine als richtig. Ausgenommen sind Karten, die
+   sich eine Antwort wirklich teilen (zwei Fragen, beide „Norwegen"). */
+test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
+  const nachGebiet = new Map();
+  for (const c of CARDS) {
+    const k = c.cat + '/' + c.sub;
+    if (!nachGebiet.has(k)) nachGebiet.set(k, []);
+    nachGebiet.get(k).push(c);
+  }
+  let rnd = 4711;
+  const zufall = () => (rnd = (rnd * 1103515245 + 12345) % 2147483648) / 2147483648;
+  const durchgerutscht = [];
+  let geprueft = 0;
+  for (const c of CARDS) {
+    if (c.mc) continue;
+    const geschwister = nachGebiet.get(c.cat + '/' + c.sub).filter(x => x.id !== c.id && x.a !== c.a);
+    if (!geschwister.length) continue;
+    for (let i = 0; i < 2; i++) {
+      const fremd = geschwister[Math.floor(zufall() * geschwister.length)];
+      geprueft++;
+      if (bewerte(c, fremd.a) >= 0.8) durchgerutscht.push(`${c.id}: „${fremd.a}" galt als „${c.a}"`);
+    }
+  }
+  assert.ok(geprueft > 3000, `nur ${geprueft} fremde Antworten geprueft`);
+  assert.deepEqual(durchgerutscht, [], durchgerutscht.slice(0, 10).join('\n'));
 });
 
 /* Umgekehrt darf die Strenge nicht dazu führen, dass richtige Antworten mit

@@ -2767,6 +2767,39 @@ durchgingen, für drei richtige, die gälten. Verworfen.
 Das ist der Grund, warum der Messstand beide Seiten misst: Jede dieser Regeln sah auf der
 Tippprobe allein wie ein Gewinn aus.
 
+#### Drei weitere Versuche, gemessen und verworfen
+
+Das gelbe Band ist der auffälligste Rest: 78 von 612 Eingaben landen bei „knapp daneben", und
+liest man sie durch, sind fast alle **richtig** – „ins Schwarze Meer" gegen „In das Schwarze
+Meer", „Actio = Reactio" gegen „Actio gleich Reactio", „taktgeber fuers tempo" gegen „Ein
+Taktgeber für das Tempo". Alle stehen auf exakt 0,60, dem Deckel aus `vergleich()`. Drei
+naheliegende Lockerungen wurden gebaut und an beiden Seiten gemessen:
+
+| Versuch | Tippprobe | Ablenker | Urteil |
+|---|---|---|---|
+| **Wortstamm** – „beugt"/„beugen", „teilt"/„Teilung" als dasselbe Wort | 0 Eingaben besser, 0 schlechter | unverändert | wirkungslos |
+| **Reihenfolge-Boden** – gleiche Wörter in anderer Folge ergeben 0,60 statt roher Zeichenähnlichkeit | 1 besser | +0,4 Prozentpunkte im gelben Band | ein Fall Gewinn |
+| **Verschmolzene Vorwörter** als Füllwörter – ins, ans, fürs, beim … | 1 besser, **2 schlechter** | unverändert | Rückschritt |
+
+Der Wortstamm ist das lehrreichste Ergebnis: Er ändert den Wortvergleich nachweislich
+(„beugt"/„beugen" gilt danach als dasselbe Wort), aber **kein einziges Urteil**. Der Grund
+steht in `vergleich()`: Sobald dieselben Wörter in anderer Reihenfolge stehen, ist das
+Ergebnis die rohe Zeichenähnlichkeit – der Wortvergleich entscheidet dort gar nichts mehr.
+Wer das ändern wollte, müsste die Vertauschungssperre aufgeben, und die fängt genau den
+Fehler ab, den eine Karte abfragt („Upcycling führt Material zurück, Recycling schafft daraus
+etwas Höherwertiges" ist zeichenweise zu über 90 % dieselbe Aussage wie ihr Gegenteil).
+
+Die verschmolzenen Vorwörter scheitern an einer Asymmetrie: Wird „fürs" in der Eingabe zum
+Füllwort, fällt es weg – in der Lösung steht aber „für das", und das „für" bleibt stehen. Aus
+0,95 wird 0,60. Man müsste „für" mitnehmen, und das trägt in anderen Antworten Bedeutung.
+
+**Der Messstand hat seither eine zweite Gegenprobe**: Neben den 6.963 Ablenkern laufen jetzt
+4.642 *fremde Antworten* mit – die Lösung einer anderen Karte desselben Teilgebiets,
+thematisch nah und sprachlich ähnlich gebaut, aber von niemandem als Gegenstück entworfen.
+Keine davon gilt als richtig. Beide Gegenproben sichern sich zusätzlich gegen das
+Leerlaufen ab: Sie zählen, wie viel sie geprüft haben, und fallen durch, wenn die Stichprobe
+zusammenschrumpft.
+
 
 ### Qualitätssicherung
 
