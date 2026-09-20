@@ -906,10 +906,6 @@ function sichereJetzigen(erzwingen = false) {
   } catch (e) { console.warn('Sicherung vor dem Ueberschreiben fehlgeschlagen', e); }
 }
 
-export const hatSicherung = () => {
-  try { return !!localStorage.getItem(SICHERUNG); } catch (e) { return false; }
-};
-
 /** Holt den Stand von vor dem letzten Einlesen oder Zuruecksetzen zurueck. */
 export function sicherungZurueck() {
   const roh = localStorage.getItem(SICHERUNG);
