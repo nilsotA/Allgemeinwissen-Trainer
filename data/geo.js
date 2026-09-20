@@ -216,4 +216,7 @@ export default [
 {q:"Wie heisst der Wind, der zweimal im Jahr die Richtung wechselt und Südasien die Regenzeit bringt?",a:"Monsun",s:"Welt",d:2,t:"Das Wort kommt vom arabischen „mausim“ für Jahreszeit und kam über das Portugiesische nach Europa.",w:["Passat","Schirokko","Föhn"]},
 /* ---------- Ergänzt: Lücken geschlossen ---------- */
 {q:"Welche 1935 entwickelte Skala gibt die bei einem Erdbeben freigesetzte Energie an und ist im Alltag bis heute die bekannteste?",a:"Richterskala",s:"Welt",d:1,t:"Charles F. Richter entwickelte sie am Caltech aus der Ausschlaghöhe von Seismogrammen; bei sehr starken Beben sättigt sie, weshalb die Fachwelt heute die Momenten-Magnituden-Skala benutzt.",w:["Mercalliskala","Beaufortskala","Saffir-Simpson-Skala"]},
+/* ---------- Ergänzt: offene Fragen aus Prüfsatz 4 ---------- */
+{q:"Wie heißt der große aktive Vulkan auf Sizilien?",a:"Der Ätna",s:"Europa",d:2,t:"Der aktivste Vulkan Europas, seit 2013 UNESCO-Welterbe. Rund 3.400 m hoch (Messung 2024) – der Gipfel wächst und schrumpft mit jedem Ausbruch. Seine Ausbrüche sind seit rund 2.700 Jahren schriftlich belegt.",w:["Der Vesuv","Der Stromboli","Der Krakatau"]},
+{q:"Auf welchem Breitengrad liegt der nördliche Wendekreis?",a:"Etwa 23,5° Nord",s:"Welt",d:2,t:"Der Wert entspricht der Neigung der Erdachse. Am 21. Juni steht die Sonne hier senkrecht – nördlicher schafft sie das nie. Spiegelbildlich liegt das südliche Gegenstück bei 23,5° Süd.",w:["Etwa 27,5° Nord","Etwa 30,5° Nord","Etwa 33,5° Nord"]},
 ];

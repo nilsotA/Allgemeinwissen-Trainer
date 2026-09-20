@@ -572,9 +572,20 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
   const zufall = () => (rnd = (rnd * 1103515245 + 12345) % 2147483648) / 2147483648;
   const durchgerutscht = [];
   let geprueft = 0;
+  /* Zwei Antworten mit derselben Zahl sind KEIN Gegenbeispiel: „Elf" (Spieler
+     auf dem Feld) und „11 m" (Strafstoßpunkt) stehen beide im Teilgebiet
+     Fußball, und wer auf die Entfernungsfrage „elf" tippt, hat sie gewusst -
+     die Einheit steht in der Frage. Der Bewerter liegt dort richtig; nur die
+     Gegenprobe wuerde es als Durchrutscher zaehlen. */
+  const zahlen = (t) => normalize(t).match(/\d+/g) || [];
+  const gleicheZahl = (a, b) => {
+    const x = zahlen(a), y = zahlen(b);
+    return x.length === 1 && y.length === 1 && x[0] === y[0];
+  };
   for (const c of CARDS) {
     if (c.mc) continue;
-    const geschwister = nachGebiet.get(c.cat + '/' + c.sub).filter(x => x.id !== c.id && x.a !== c.a);
+    const geschwister = nachGebiet.get(c.cat + '/' + c.sub)
+      .filter(x => x.id !== c.id && x.a !== c.a && !gleicheZahl(x.a, c.a));
     if (!geschwister.length) continue;
     for (let i = 0; i < 2; i++) {
       const fremd = geschwister[Math.floor(zufall() * geschwister.length)];

@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.323 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.381 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (343 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (356 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (351 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (366 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -23,7 +23,7 @@ sondern sattelfest sein.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (21 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (27 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (28 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (9 – Penicillin, Dynamit,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (13 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
@@ -59,10 +59,10 @@ Der Aufbau folgt dem, was in der Lernforschung am zuverlässigsten wirkt:
 | **Bremse gegen den Rückstau** | Stauen sich die Wiederholungen, pausieren neue Karten von selbst, bis der Berg wieder kleiner ist. Ohne die Bremse wuchs der Rückstand nach zwei Pausen von je zwei Wochen auf über 800 Karten. |
 
 Eine Simulation über 180 Tage (`npm run simulate`) ergibt: im Schnitt **101,2 Karten pro Tag**,
-Spitzenlast 134, gut 12 Minuten täglich. Nach einem halben Jahr sind 1.632 der 2.323 Karten
+Spitzenlast 134, gut 12 Minuten täglich. Nach einem halben Jahr sind 1.632 der 2.381 Karten
 angefangen, davon sitzen 1.379 fest. Der Deckel für Wiederholungen sorgt dafür, dass die
 Tageslast **nicht** mit dem Kartenbestand mitwächst – das ist der Punkt: Die Sammlung ist seit
-der ersten dieser Messungen um 173 Karten gewachsen (2.150 → 2.323), die Tageslast um 0,7.
+der ersten dieser Messungen um 231 Karten gewachsen (2.150 → 2.381), die Tageslast um 0,7.
 
 Diese Zahlen sind reproduzierbar, weil der Würfel eine feste Saat hat. Vorher lief die
 Simulation über `Math.random`, und zwei Läufe gaben verschiedene Antworten – 132 und 138
@@ -2608,6 +2608,57 @@ Runde eins hat also schon beim Schreiben gewirkt.
 |---|---|---|
 | Karten | 2.268 | **2.323** |
 | Abdeckung Satz 4 | 197/286 (69 %) | **200/286 (70 %)** |
+
+### Die 86 offenen Fragen aus Prüfsatz 4, einzeln durchgegangen
+
+Prüfsatz 4 stand bei **200 von 286 (70 %)**. Die 86 offenen Fragen sind nicht 86 Lücken –
+das war die erste Erkenntnis. Jede wurde gegen den Bestand geprüft und eingeordnet:
+
+| Befund | Anzahl | was das heißt |
+|---|---|---|
+| **vorhanden** | 16 | Eine Karte beantwortet die Frage wirklich, das Messgerät hat sie nur nicht erkannt |
+| **Richtung** | 33 | Der Fakt steckt in einer Karte, aber nur in der Gegenrichtung |
+| **nur Kontext** | 19 | Der Fakt steht nur im Kontexttext und wird nie abgefragt |
+| **fehlt** | 18 | Kommt in der Sammlung gar nicht vor |
+
+Die größte Gruppe ist die Richtung: „Wie heißt der Fastenmonat im Islam?" steht als Antwort
+nirgends, obwohl eine Karte fragt, was Muslime am Ende des Ramadan feiern. Die zweitgrößte
+sind Fakten, die im Kontexttext mitlaufen, ohne je abgefragt zu werden – die Ewigkeitsklausel,
+der Wirkstoff in Aspirin, die Frequenz der Herzdruckmassage.
+
+**24 der 86 wurden abgelehnt**, mit Begründung und Kartenkennung: Für die Fünf-Prozent-Hürde,
+den Ramadan, die Körpertemperatur und zwanzig weitere gibt es längst eine Karte, die die Sache
+fragt. Eine zweite hätte nur Lernzeit gekostet.
+
+Die übrigen 62 Entwürfe liefen **zweifach gegengelesen** – einmal auf Fakten (mit
+Netzrecherche), einmal auf Form, Dubletten und Passung. Neun wurden beanstandet, und die
+Einwände waren keine Kosmetik:
+
+- Eine Karte fragte nach Caesar am Rubikon – und **verriet damit die Antwort** einer
+  bestehenden Karte („Welcher Fluss steht sprichwörtlich für …?").
+- Eine Frage baute ihre Antwort aus den eigenen Wörtern zusammen: „West-Berlin … aus der Luft
+  versorgt" ergibt „Berliner Luftbrücke". Die Inhaltsprüfung schlägt dort nicht an, weil sie
+  nur die zusammenhängende Wortfolge sucht.
+- Die Klavierkarte war eine **Dublette** zu „Welches Instrument hat 88 Tasten?".
+- Zwei Kontexttexte enthielten **falsche Angaben**: Sotomayor sei 1988 als Erster über 2,43 m
+  gesprungen (richtig: 1989 über 2,44 m), und ein Vorsitz endete 2016 statt 2017.
+
+**Vier Karten wurden verworfen**, fünf reparbar. Beim Vorsitz widersprachen sich die beiden
+Prüfungen – statt eine Seite zu wählen, ist der Satz jetzt draußen: Er war für die Sache
+ohnehin belanglos, und eine Karte, die eine Jahreszahl behauptet, die niemand belegen kann,
+lehrt Falsches.
+
+| | vorher | nachher |
+|---|---|---|
+| Karten | 2.323 | **2.381** |
+| Abdeckung Satz 4 | 200/286 (70 %) | **259/286 (91 %)** |
+| Ratequote | 25,3 % | 25,0 % (Zufall 25 % ± 0,9) |
+| Klammerquote | 56,8 % | 54,2 % (Zufall 50 % ± 4,2) |
+
+Damit ist auch Satz 4 als Maß verbraucht – wie Satz 1 und 3 vor ihm. Die verbleibenden 27
+offenen Fragen sind überwiegend die, die schon als „vorhanden" oder „lohnt nicht" eingestuft
+wurden; sie messen jetzt das Messgerät, nicht mehr die Sammlung. Die nächste ehrliche Zahl
+braucht einen neuen, blind geschriebenen Satz.
 | Tageslast | 102,8 | **101,2** |
 
 Die Tageslast ist bei 53 Karten mehr **gesunken**. Das ist kein Messfehler: Der Deckel
