@@ -977,6 +977,26 @@ Hilfsmittel schlicht leer. Jetzt sind die Bilder `aria-hidden` und tragen einen 
 daneben: „X von Y Tagen gelernt, zusammen N Antworten" bzw. die sieben Tageswerte im
 Klartext. Dasselbe Muster benutzte die Datei an zwei anderen Stellen längst.
 
+**Die Gliederung sprang von h1 auf h3.** Die Abschnittsmarke `.sec` ist genau deshalb ein
+`h2` – der Kommentar dazu steht seit langem in `app.css`. Auf der Themenseite gibt es keine
+solche Marke: Dort standen die neun Themen als `h3` direkt unter der Seitenüberschrift. Wer
+mit VoiceOver von Überschrift zu Überschrift springt, liest die Gliederung, und ein Sprung
+heißt dort „hier fehlt etwas". Die Themen sind jetzt `h2` – sie *sind* die Abschnitte dieser
+Seite.
+
+Nachgeprüft wurde dabei auch die Voraussetzung: Die Themenzeilen sind `<button>`, und eine
+Überschrift darin könnte von der Sprachausgabe verschluckt werden – dann wäre die Änderung
+reine Kosmetik. Im Barrierefreiheitsbaum des Browsers steht sie: `button „Geschichte 199
+Karten …"` mit einem `heading „Geschichte"` darin. Die Ebene wird also wirklich gelesen.
+
+Gefunden wurde das durch eine Messung über alle Hauptansichten, die gleich noch eine zweite
+Zahl mitbringt: **keine einzige Tippfläche liegt unter 44 × 44 Punkten**, dem Mindestmaß aus
+Apples Richtlinie. Beides steht jetzt als Prüfung im Durchlauf. Die erste Fassung dieser
+Prüfung war allerdings **flatterhaft** und meldete „99,313 × 44,000 ist zu klein": Der
+Bildschirm rechnet in Dritteln eines CSS-Pixels, und aus `min-height:44px` wird dabei
+43,999999999. Sie misst jetzt erst, wenn die Schrift steht, und lässt ein halbes Pixel
+Nachsicht – was wirklich zu klein ist, ist es um mehrere.
+
 **Ein Klassenname war doppelt vergeben – mit sichtbarer Folge.** `.merk` stylt eine
 kleine Marke am Zeilenende („pausiert"): 11 px, fett, Akzentfarbe, Pillenform. Dieselbe
 Klasse trug versehentlich auch den Auflösungstext der Merkanker. Ein mehrsätziger

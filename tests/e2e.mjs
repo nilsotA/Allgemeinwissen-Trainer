@@ -2182,6 +2182,87 @@ try {
     await cctx.close();
   }
 
+  group('Ueberschriften und Tippflaechen');
+  /* Zwei Dinge, die auf einem Telefon zaehlen:
+
+     Die Ueberschriftenfolge. Wer mit VoiceOver von Ueberschrift zu Ueberschrift
+     springt, liest die Gliederung - ein Sprung von h1 auf h3 heisst dort
+     „hier fehlt etwas". Die Abschnittsmarke .sec ist genau deshalb ein h2
+     (siehe app.css); auf der Themenseite gab es keine, und die Themen standen
+     als h3 direkt unter der Seitenueberschrift.
+
+     Die Tippflaechen. Apple nennt 44x44 Punkte als Mindestmass. Gemessen ueber
+     alle Hauptansichten: keine einzige darunter - das soll so bleiben. */
+  {
+    const uctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const up = horche(await uctx.newPage());
+    await up.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await up.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      const srs = await import('/assets/js/srs.js');
+      const heute = store.todayNum();
+      for (let i = 0; i < 120; i++) {
+        store.putCard(daten.CARDS[i].id, { ...srs.fresh(), seen: 6, ok: 5, reps: 3, iv: 10,
+          due: heute - 1, last: Date.now() });
+      }
+      for (let d = 0; d < 12; d++) {
+        store.S().days[store.numToKey(heute - d)] = { done: 18, correct: 14, newC: 5, sec: 400 };
+      }
+      store.save(true);
+    });
+    await up.reload({ waitUntil: 'networkidle' });
+    /* Erst messen, wenn die Schrift steht: Bis der Webfont getauscht ist,
+       fallen Zeilenhoehen und damit Knopfhoehen um Bruchteile kleiner aus - die
+       Zeitchips lagen dann bei 43,99 statt 44 px und die Pruefung meldete einen
+       Fehler, den es nach dem naechsten Bild nicht mehr gab. */
+    const pruefe = async () => {
+      await up.evaluate(() => document.fonts && document.fonts.ready);
+      await up.waitForTimeout(150);
+      return up.evaluate(() => {
+      const sichtbar = (el) => {
+        const r = el.getBoundingClientRect();
+        const st = getComputedStyle(el);
+        return r.width > 0 && r.height > 0 && st.visibility !== 'hidden' && st.display !== 'none' && st.opacity !== '0';
+      };
+      const folge = [...document.querySelectorAll('h1, h2, h3, h4')]
+        .filter(h => getComputedStyle(h).display !== 'none').map(h => Number(h.tagName[1]));
+      const spruenge = [];
+      for (let i = 1; i < folge.length; i++) if (folge[i] > folge[i - 1] + 1) spruenge.push(`${folge[i - 1]}->${folge[i]}`);
+      const klein = [];
+      /* Ein halbes Pixel Nachsicht. Der Bildschirm rechnet in Dritteln eines
+         CSS-Pixels, und aus min-height:44px wird dabei 43,999999999 - die
+         Pruefung meldete daraufhin „99,313 x 44,000" als zu klein. Ein halbes
+         Pixel ist auf keinem Daumen zu spueren; was wirklich zu klein ist,
+         ist es um mehrere. */
+      const MASS = 43.5;
+      for (const el of document.querySelectorAll('button, a[href], select, input, [role="button"]')) {
+        if (el.hidden || el.disabled || !sichtbar(el)) continue;
+        const r = el.getBoundingClientRect();
+        if (r.width < MASS || r.height < MASS) {
+          klein.push(`${r.width.toFixed(1)}x${r.height.toFixed(1)} ${(el.id || el.className || el.tagName)}`);
+        }
+      }
+      return { folge: folge.join(''), spruenge, klein };
+      });
+    };
+    for (const [name, hin] of [
+      ['Heute', async () => { await up.click('[data-view="home"]'); await up.waitForSelector('.hero'); }],
+      ['Themen', async () => { await up.click('[data-view="topics"]'); await up.waitForSelector('.trow'); }],
+      ['Quiz', async () => { await up.click('[data-view="duel"]'); await up.waitForTimeout(300); }],
+      ['Statistik', async () => { await up.click('[data-view="stats"]'); await up.waitForSelector('.heat'); }],
+      ['Mehr', async () => { await up.click('[data-view="settings"]'); await up.waitForSelector('#npd'); }],
+    ]) {
+      await hin();
+      const r = await pruefe();
+      check(`${name}: die Ueberschriften steigen ohne Sprung`, r.spruenge.length === 0,
+        `Folge ${r.folge}, Spruenge ${r.spruenge.join(', ')}`);
+      check(`${name}: jede Tippflaeche ist mindestens 44x44`, r.klein.length === 0,
+        r.klein.slice(0, 4).join(' | '));
+    }
+    await uctx.close();
+  }
+
   group('Layout');
   check('kein waagerechter Überlauf',
     (await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)) === 0);
@@ -2198,7 +2279,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 224;
+const MINDESTENS = 234;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

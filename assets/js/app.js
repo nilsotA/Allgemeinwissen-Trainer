@@ -465,10 +465,16 @@ function renderTopics() {
       ${CATS.map(c => {
         const s = p[c.id] || { pct: 0, n: 0, due: 0, fresh: 0 };
         const off = active && active.length && !active.includes(c.id);
+        /* h2 und nicht h3: Auf diesem Bildschirm gibt es keine
+           Abschnittsueberschrift dazwischen, die Themen sind die Abschnitte.
+           Mit h3 sprang die Ueberschriftenfolge von 1 auf 3, und wer mit
+           VoiceOver von Ueberschrift zu Ueberschrift geht, haelt das fuer
+           uebersprungenen Inhalt. Die anderen Listen derselben Bauart stehen
+           unter einer h2 und bleiben deshalb bei h3. */
         return `<button class="trow" data-cat="${c.id}" ${off ? 'style="opacity:.5"' : ''}>
           <span class="tico">${catIcon(c.id)}</span>
           <span class="grow">
-            <h3>${esc(c.name)}</h3>
+            <h2>${esc(c.name)}</h2>
             <span class="tiny">${s.n} Karten${s.due ? ` · ${s.due} fällig` : ''}${s.fresh ? ` · ${s.fresh} neu` : ''}${off ? ' · pausiert' : ''}</span>
             <span class="bar"><i style="width:${(s.pct * 100).toFixed(0)}%"></i></span>
           </span>
