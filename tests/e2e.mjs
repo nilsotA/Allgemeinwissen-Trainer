@@ -1161,6 +1161,29 @@ try {
     const luecke = await fp.evaluate(() => Math.round(Math.max(...window.__takt)));
     check('der Bildschirm steht beim Tippen nie lange still', luecke < 700,
       `laengste Bildluecke ${luecke} ms (vorher 1348 ms, jetzt rund 160 ms)`);
+    /* Dasselbe gilt fuers Aufgehen des Bildschirms: Der Leerlauf-Aufbau laeuft
+       direkt nach dem ersten Zeichnen an, und solange er den Index am Stueck
+       baute, stand das Bild 711 ms (4x) bzw. 1.099 ms (6x) still - bevor der
+       Nutzer ueberhaupt getippt hatte. */
+    const zctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const zp = horche(await zctx.newPage());
+    const zcdp = await zctx.newCDPSession(zp);
+    await zcdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    await zp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await zp.waitForSelector('#searchBtn');
+    await zp.evaluate(() => {
+      window.__takt2 = []; let letzte = performance.now();
+      const schlag = () => { const t = performance.now(); window.__takt2.push(t - letzte);
+        letzte = t; requestAnimationFrame(schlag); };
+      requestAnimationFrame(schlag);
+    });
+    await zp.locator('#searchBtn').click();
+    await zp.waitForSelector('#q');
+    await zp.waitForTimeout(2500);          // das Vorwaermen mitlaufen lassen
+    const auf = await zp.evaluate(() => Math.round(Math.max(...window.__takt2)));
+    check('auch das Oeffnen der Suche blockiert nicht', auf < 400,
+      `laengste Bildluecke beim Oeffnen ${auf} ms (vorher 711 ms)`);
+    await zctx.close();
     const gefunden = await fp.locator('#res .tiny').first().innerText();
     check('und das Wort ist trotzdem ganz angekommen',
       (await fp.locator('#q').inputValue()) === 'energie' && /\d+ Treffer/.test(gefunden), gefunden);
@@ -2175,7 +2198,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 223;
+const MINDESTENS = 224;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

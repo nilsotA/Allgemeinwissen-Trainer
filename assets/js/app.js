@@ -879,15 +879,27 @@ async function sichern() {
 let lookupQuery = '';
 
 /* Suchindex einmal aufbauen statt bei jedem Tastendruck über alle Karten zu normalisieren.
-   Bei über tausend Karten macht das den Unterschied zwischen ruckelnder und flüssiger Eingabe. */
+   Bei über tausend Karten macht das den Unterschied zwischen ruckelnder und flüssiger Eingabe.
+
+   In Scheiben aufbaubar, nicht nur am Stueck: normalize() ueber alle 2.323
+   Karten in einem Zug kostete auf einem vierfach gedrosselten Handy 711 ms und
+   auf einem sechsfach gedrosselten 1.099 ms - gemessen genau in dem Moment, in
+   dem der Nachschlage-Bildschirm aufgeht, weil der Leerlauf-Aufbau direkt nach
+   dem ersten Zeichnen anlief. indexTeil() fuellt nur, was noch fehlt; wer vor
+   dem Ende des Vorwaermens tippt, zahlt den Rest und nicht alles noch einmal. */
 let SEARCH_INDEX = null;
-function searchIndex() {
-  if (!SEARCH_INDEX) {
+function indexTeil(von, bis) {
+  if (!SEARCH_INDEX) SEARCH_INDEX = new Array(CARDS.length);
+  const ende = Math.min(bis, CARDS.length);
+  for (let i = von; i < ende; i++) {
+    if (SEARCH_INDEX[i]) continue;
+    const c = CARDS[i];
     // Genau der Text von vorher: Was frueher gefunden wurde, wird weiter gefunden.
-    SEARCH_INDEX = CARDS.map(c => ({
-      alles: normalize(`${c.q} ${c.a} ${c.sub} ${CAT_BY_ID[c.cat].name} ${c.t}`),
-    }));
+    SEARCH_INDEX[i] = { alles: normalize(`${c.q} ${c.a} ${c.sub} ${CAT_BY_ID[c.cat].name} ${c.t}`) };
   }
+}
+function searchIndex() {
+  indexTeil(0, CARDS.length);
   return SEARCH_INDEX;
 }
 
@@ -896,6 +908,7 @@ function searchIndex() {
    mitzurechnen kostete auf einem gedrosselten Handy fast eine Sekunde extra
    beim ersten Suchlauf, fuer Karten, die meist gar nicht in der Liste landen. */
 function felder(i) {
+  indexTeil(i, i + 1);            // der Eintrag kann noch fehlen, wenn erst ein Teil warm ist
   const e = SEARCH_INDEX[i];
   if (e.frage === undefined) {
     const c = CARDS[i];
@@ -1042,15 +1055,13 @@ function renderLookup() {
      die laengste Luecke bei 169 ms, und felder() traegt den aufgeschobenen
      Pfad weiter, falls jemand vor dem Ende des Vorwaermens tippt. */
   const leerlauf = window.requestIdleCallback || ((f) => setTimeout(f, 0));
-  leerlauf(() => {
-    searchIndex();
-    const haeppchen = (i) => {
-      const bis = Math.min(CARDS.length, i + 150);
-      for (; i < bis; i++) felder(i);
-      if (i < CARDS.length) leerlauf(() => haeppchen(i));
-    };
-    haeppchen(0);
-  });
+  const haeppchen = (i) => {
+    const bis = Math.min(CARDS.length, i + 150);
+    indexTeil(i, bis);
+    for (let k = i; k < bis; k++) felder(k);
+    if (bis < CARDS.length) leerlauf(() => haeppchen(bis));
+  };
+  leerlauf(() => haeppchen(0));
 }
 
 function renderSettings() {
