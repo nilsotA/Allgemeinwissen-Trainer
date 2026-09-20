@@ -700,6 +700,21 @@ function saeubereRunden(liste) {
   return mischeRunden(rein, []);
 }
 
+/* Zaehlerpaare, bei denen das eine eine Teilmenge des anderen ist. Jede Zahl
+   fuer sich kann im Rahmen liegen und das Paar trotzdem Unsinn ergeben: Eine
+   von Hand bearbeitete oder halb beschaedigte Sicherung mit „14 beantwortet,
+   18 richtig" trieb die Statistik auf 129 % Trefferquote in der Wochenkurve
+   und 179 % im Wissensstand - Zahlen, die es nicht geben kann. Gedeckelt wird
+   der Teil, nie das Ganze: Wer wirklich 14 beantwortet hat, hat hoechstens 14
+   richtig. */
+const TEILMENGEN = [['correct', 'done'], ['duelOk', 'duel'], ['claimMiss', 'claim']];
+function stimmig(z) {
+  for (const [teil, ganzes] of TEILMENGEN) {
+    if (z[teil] !== undefined && z[ganzes] !== undefined && z[teil] > z[ganzes]) z[teil] = z[ganzes];
+  }
+  return z;
+}
+
 function saeubern(roh) {
   const rein = structuredClone(DEFAULTS);
   if (roh.settings && typeof roh.settings === 'object') {
@@ -727,11 +742,11 @@ function saeubern(roh) {
   }
   for (const [tag, d] of Object.entries(roh.days || {})) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(tag) || !d || typeof d !== 'object') continue;
-    const sauber = {
-      done: zahl(d.done, 0, 1e6, 0), correct: zahl(d.correct, 0, 1e6, 0),
-      newC: zahl(d.newC, 0, 1e6, 0), sec: zahl(d.sec, 0, 1e8, 0),
-      duel: zahl(d.duel, 0, 1e6, 0), duelOk: zahl(d.duelOk, 0, 1e6, 0),
-    };
+    /* Aus TAGESZAEHLER abgeleitet, nicht von Hand aufgezaehlt: Die Liste hier
+       war eine zweite Wahrheit und lief auseinander, als claim/claimMiss
+       dazukamen - ein Tagesbuch ohne Beitragsliste verlor sie beim Einlesen. */
+    const sauber = {};
+    for (const k of TAGESZAEHLER) sauber[k] = zahl(d[k], 0, k === 'sec' ? 1e8 : 1e6, 0);
     /* Die Beitraege je Tab kommen ungeprueft aus der Datei, also braucht es eine
        Obergrenze gegen eine praeparierte Datei, die den Speicher mit Schluesseln
        flutet. Die erste Fassung nahm dafuer die ersten acht und liess den Rest
@@ -763,11 +778,13 @@ function saeubern(roh) {
         // keine Antworten. Beim Zusammenlegen in „rest" gilt die hoechste.
         const fassung = zahl(b.n, 0, 1e9, 0);
         if (fassung && etwas) ziel.n = Math.max(Number(ziel.n) || 0, fassung);
+        stimmig(ziel);
         if (etwas) n++; else if (n < 64) delete je[wer];
       }
       for (const wer of Object.keys(je)) if (!Object.keys(je[wer]).length) delete je[wer];
       if (Object.keys(je).length) { sauber.je = je; summiere(sauber); }
     }
+    stimmig(sauber);
     rein.days[tag] = sauber;
   }
   for (const [id, v] of Object.entries(roh.flags || {})) {
@@ -789,6 +806,11 @@ function saeubern(roh) {
   rein.gen = zahl(roh.gen, 0, 1e9, 0);
   rein.claims = zahl(roh.claims, 0, 1e7, 0);
   rein.claimsMiss = zahl(roh.claimsMiss, 0, 1e7, 0);
+  /* Dieselben Teilmengen wie im Tagesbuch, nur fuer die Gesamtzahlen: „43 von
+     24 richtig" hiess auf der Statistikseite 179 % Trefferquote. */
+  rein.totalCorrect = Math.min(rein.totalCorrect, rein.totalAnswers);
+  rein.duelCorrect = Math.min(rein.duelCorrect, rein.duelAnswers);
+  rein.claimsMiss = Math.min(rein.claimsMiss, rein.claims);
   rein.factIdx = zahl(roh.factIdx, 0, 1e5, 0);
   rein.factSeen = zahl(roh.factSeen, 0, 1e6, 0);
   rein.lastDay = /^\d{4}-\d{2}-\d{2}$/.test(roh.lastDay) ? roh.lastDay : null;

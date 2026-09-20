@@ -371,6 +371,38 @@ test('ein erfundenes Themenkuerzel sperrt die Einstellungen nicht aus', () => {
   assert.ok(q.length > 0 && q.every(x => x.card.cat === 'geo'), 'geuebt wird das echte Thema');
 });
 
+test('keine Trefferquote ueber hundert Prozent', () => {
+  /* Jede Zahl fuer sich kann im Rahmen liegen und das Paar trotzdem Unsinn
+     ergeben. Eine von Hand bearbeitete oder halb beschaedigte Sicherung mit
+     „14 beantwortet, 18 richtig" trieb die Wochenkurve der Statistik auf 129 %
+     und den Wissensstand auf 179 % - Zahlen, die es nicht geben kann. */
+  const heute = store.todayNum();
+  store.importJSON(JSON.stringify({
+    cards: {}, flags: {},
+    days: {
+      [store.numToKey(heute)]: { done: 14, correct: 18, newC: 2, sec: 300, duel: 4, duelOk: 9, claim: 2, claimMiss: 5 },
+      [store.numToKey(heute - 1)]: { done: 10, correct: 25, newC: 1, sec: 200 },
+    },
+    totalAnswers: 24, totalCorrect: 43, duelAnswers: 4, duelCorrect: 9,
+    claims: 2, claimsMiss: 5, streak: 2, best: 2, settings: {},
+  }));
+  const z = store.S();
+  for (const [tag, d] of Object.entries(z.days)) {
+    assert.ok(d.correct <= d.done, `${tag}: ${d.correct} richtig bei ${d.done} beantwortet`);
+    assert.ok((d.duelOk || 0) <= (d.duel || 0), `${tag}: Duell ${d.duelOk} von ${d.duel}`);
+    assert.ok((d.claimMiss || 0) <= (d.claim || 0), `${tag}: ${d.claimMiss} Fehlgriffe bei ${d.claim} Festlegungen`);
+  }
+  assert.ok(z.totalCorrect <= z.totalAnswers, `${z.totalCorrect} von ${z.totalAnswers}`);
+  assert.ok(z.duelCorrect <= z.duelAnswers);
+  assert.ok(z.claimsMiss <= z.claims);
+  assert.ok(sess.overview().accuracy <= 1, `Trefferquote ${sess.overview().accuracy}`);
+  /* Die Tageszaehler claim/claimMiss duerfen dabei nicht verschwinden: Die
+     Feldliste im Saeubern war von Hand gefuehrt und kannte sie nicht. */
+  const tag = z.days[store.numToKey(heute)];
+  assert.equal(tag.claim, 2, 'die Festlegungen des Tages muessen das Einlesen ueberstehen');
+  assert.equal(tag.claimMiss, 2);
+});
+
 test('ein echtes Backup übersteht Export und Import unverändert', () => {
   store.resetAll();
   store.setSetting('newPerDay', 20);
