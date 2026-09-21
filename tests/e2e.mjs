@@ -5,6 +5,7 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { CARDS, CAT_BY_ID } from '../data/index.js';
+import { hefteAn } from './abdeckung-sonde.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const PORT = 8123;
@@ -78,45 +79,7 @@ const group = (t) => console.log(`\n${t}`);
 
 const browser = await chromium.launch();
 
-/* ---- Optional: welche Wege der App dieser Lauf ueberhaupt betritt ----
-   Mit ABDECKUNG=1 haengt sich der Lauf an die V8-Abdeckung jeder Seite in jedem
-   Kontext und legt die Rohdaten ab; `npm run wege` wertet sie aus. Ohne die
-   Umgebungsvariable passiert hier nichts - der Durchlauftest soll nicht
-   langsamer werden, nur weil die Messung einmal gebraucht wurde.
-
-   Warum ueberhaupt: Der Boden unter der Pruefungszahl faengt Abschnitte ab, die
-   AUSFALLEN. Er sagt nichts ueber Wege, die NIE JEMAND GEGANGEN ist. Die erste
-   Messung fand 48 kalte Funktionen, 23 davon in app.js - und in zweien davon
-   steckte je ein Fehler. */
-const ABDECKUNG = process.env.ABDECKUNG === '1';
-const abdeckungsDaten = [];
-if (ABDECKUNG) {
-  const offen = new Set();
-  const ernten = async (p) => {
-    if (!offen.has(p)) return;
-    offen.delete(p);
-    try { abdeckungsDaten.push(...await p.coverage.stopJSCoverage()); } catch { /* nicht messbar */ }
-  };
-  const alterKontext = browser.newContext.bind(browser);
-  browser.newContext = async (...a) => {
-    const c = await alterKontext(...a);
-    const alteSeite = c.newPage.bind(c);
-    c.newPage = async (...b) => {
-      const p = await alteSeite(...b);
-      try { await p.coverage.startJSCoverage({ resetOnNavigation: false }); offen.add(p); } catch { /* nicht messbar */ }
-      const altesSchliessen = p.close.bind(p);
-      p.close = async (...z) => { await ernten(p); return altesSchliessen(...z); };
-      return p;
-    };
-    const altesKontextSchliessen = c.close.bind(c);
-    c.close = async (...z) => {
-      for (const p of [...offen]) if (!p.isClosed()) await ernten(p);
-      return altesKontextSchliessen(...z);
-    };
-    return c;
-  };
-  browser.__ernteAlles = async () => { for (const p of [...offen]) if (!p.isClosed()) await ernten(p); };
-}
+const sonde = hefteAn(browser);
 const ctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'allow' });
 const page = horche(horche(await ctx.newPage()));
 
@@ -3181,12 +3144,7 @@ try {
   failed++;
   console.error('\nAbbruch:', e.message);
 } finally {
-  if (ABDECKUNG) {
-    await browser.__ernteAlles();
-    const { writeFileSync } = await import('node:fs');
-    writeFileSync('abdeckung-roh.json', JSON.stringify(abdeckungsDaten));
-    console.log(`\nAbdeckung: ${abdeckungsDaten.length} Einträge in abdeckung-roh.json – auswerten mit npm run wege`);
-  }
+  if (sonde.aktiv) { await sonde.ernteAlles(); await sonde.schreibe('abdeckung-roh.json'); }
   await browser.close();
   server.close();
 }

@@ -9,3 +9,4 @@ node_modules/
 
 # Rohdaten der Abdeckungsmessung (ABDECKUNG=1 npm run test:e2e)
 abdeckung-roh.json
+abdeckung-roh-offline.json

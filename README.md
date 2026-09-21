@@ -443,7 +443,7 @@ npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 184 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 322 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
-npm run wege       # welche Funktionen der App der Durchlauftest nie betritt
+npm run wege       # welche Funktionen der App kein Browserlauf betritt
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
 npm run karte      # ein Feld einer Karte ändern, über ihre Kennung
@@ -2962,11 +2962,19 @@ Funktion für Funktion da, was gelaufen ist und was nicht.
 | | Funktionen gelaufen | kalt |
 |---|---|---|
 | vorher | 291 von 339 (85,8 %) | 48 |
-| jetzt | 332 von 348 (95,4 %) | 16 |
+| jetzt | 342 von 353 (96,9 %) | 11 |
 
-Die Messung ist kein Einmalstück: `npm run wege` lässt den Durchlauftest mit eingeschalteter
-V8-Abdeckung laufen und druckt Datei für Datei, welche Funktion nie an der Reihe war. Ohne
-`ABDECKUNG=1` hängt sich nichts ein – der normale Lauf wird davon nicht langsamer.
+Die Messung ist kein Einmalstück: `npm run wege` lässt **beide Browserläufe** mit
+eingeschalteter V8-Abdeckung laufen und druckt Datei für Datei, welche Funktion nie an der
+Reihe war. Ohne `ABDECKUNG=1` hängt sich nichts ein – die normalen Läufe werden davon nicht
+langsamer.
+
+Dass dort **beide** Läufe stehen, ist selbst ein Befund. Die erste Fassung maß nur
+`tests/e2e.mjs` und meldete daraufhin den Update-Balken samt seiner Knöpfe als ungeprüft. Er
+ist es nicht: `tests/offline.mjs` klickt ihn durch – dort gibt es den zweiten Service Worker,
+den er braucht. Eine Messung, die nur die Hälfte der Prüfwerke kennt, macht aus „woanders
+geprüft" ein „ungeprüft", und darauf hin räumt man an der falschen Stelle auf. Mit beiden
+Läufen sind in `app.js` nicht sechs, sondern **zwei** Funktionen wirklich kalt.
 
 Die 48 kalten Funktionen teilten sich sauber: 25 in `quiz.js`, `session.js` und `srs.js` –
 alle von den 184 Einheitentests gedeckt, sie brauchen keinen Browser. Und **23 in `app.js`**,
@@ -3048,11 +3056,10 @@ warum sie **paarweise** geprüft werden müssen: „richtig" gilt für alles au�
 verschobene Zuordnung fällt damit nur durch, wenn Taste 1 und Taste 3 zusammen gemessen
 werden.
 
-Kalt geblieben sind 16 Funktionen: neun Sonderwege des Vergleichs in `quiz.js` und ein
-Sortiervergleich in `session.js` – alle von Einheitentests gedeckt – sowie **sechs in
-`app.js`**: der Update-Balken (drei), zwei Wege am Offline-Speicher und der Fehlerfall beim
-Lesen einer Sicherungsdatei. Sie brauchen einen zweiten Service Worker oder ein Dateisystem,
-das beim Lesen abbricht; `tests/offline.mjs` deckt den Update-Weg von der anderen Seite ab.
+Kalt geblieben sind 11 Funktionen: neun Sonderwege des Vergleichs in `quiz.js`, alle von
+Einheitentests gedeckt – und **zwei in `app.js`**: der Fehlerfall beim Lesen einer
+Sicherungsdatei (er braucht ein Dateisystem, das mitten im Lesen abbricht) und der Knopf
+„erst sichern, dann laden" im Update-Balken.
 
 #### Drei Messungen, die nichts gefunden haben
 

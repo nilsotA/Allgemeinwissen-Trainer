@@ -4,6 +4,7 @@
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
+import { hefteAn } from './abdeckung-sonde.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const PORT = 8124;
@@ -68,6 +69,7 @@ const check = (name, cond, extra = '') => {
 const group = (t) => console.log(`\n${t}`);
 
 const browser = await chromium.launch();
+const sonde = hefteAn(browser);
 const ctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', serviceWorkers: 'allow' });
 const page = await ctx.newPage();
 
@@ -512,6 +514,7 @@ try {
     .then(() => check('nach vollständigem Update bleibt ein Bestand', true))
     .catch(async () => check('nach vollständigem Update bleibt ein Bestand', false, JSON.stringify(await bestand())));
 } finally {
+  if (sonde.aktiv) { await sonde.ernteAlles(); await sonde.schreibe('abdeckung-roh-offline.json'); }
   await browser.close();
   server.close();
 }

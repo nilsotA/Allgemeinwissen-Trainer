@@ -10,15 +10,30 @@
    Einheitentests; was dort kalt steht, ist wirklich ungeprueft. */
 import { readFileSync, existsSync } from 'node:fs';
 
-const DATEI = 'abdeckung-roh.json';
-if (!existsSync(DATEI)) {
-  console.error(`${DATEI} fehlt – erst „ABDECKUNG=1 node tests/e2e.mjs" laufen lassen (npm run wege macht beides).`);
+/* BEIDE Browserlaeufe, nicht nur der Durchlauftest. Die erste Messung las nur
+   tests/e2e.mjs und meldete daraufhin den Update-Balken als ungeprueft - er ist
+   es nicht, tests/offline.mjs klickt ihn durch. Fehlt eine der beiden Dateien,
+   ist der Bericht unvollstaendig, und das muss er sagen. */
+const DATEIEN = [
+  ['abdeckung-roh.json', 'tests/e2e.mjs'],
+  ['abdeckung-roh-offline.json', 'tests/offline.mjs'],
+];
+const roh = [];
+const fehlend = [];
+for (const [datei, woher] of DATEIEN) {
+  if (!existsSync(datei)) { fehlend.push(`${datei} (aus ${woher})`); continue; }
+  const teil = JSON.parse(readFileSync(datei, 'utf8'));
+  if (!Array.isArray(teil) || !teil.length) { fehlend.push(`${datei} ist leer`); continue; }
+  roh.push(...teil);
+}
+if (fehlend.length === DATEIEN.length) {
+  console.error(`Keine Rohdaten: ${fehlend.join(', ')}.`);
+  console.error('Erst „npm run wege" laufen lassen – das misst beide Browserlaeufe.');
   process.exit(1);
 }
-const roh = JSON.parse(readFileSync(DATEI, 'utf8'));
-if (!Array.isArray(roh) || !roh.length) {
-  console.error(`${DATEI} ist leer – der Lauf hat nichts gemessen.`);
-  process.exit(1);
+if (fehlend.length) {
+  console.error(`WARNUNG: ${fehlend.join(', ')} – der Bericht ist unvollstaendig `
+    + 'und meldet womoeglich Funktionen als kalt, die der fehlende Lauf betritt.');
 }
 
 /* Je Datei: Funktion -> hoechste Zaehlung ueber alle Seiten. Eine Funktion gilt
@@ -64,4 +79,5 @@ for (const [datei, tafel] of [...dateien].sort()) {
 }
 const warm = gesamt - kalt;
 console.log(`\nSumme: ${warm} von ${gesamt} Funktionen (${(warm / gesamt * 100).toFixed(1)} %), ${kalt} nie gelaufen.`);
+console.log('Gemessen ueber beide Browserlaeufe (Durchlauftest und Offline-Test).');
 console.log('Kalt in quiz.js, session.js, srs.js, store.js heisst nicht ungeprueft – dort messen die Einheitentests.');
