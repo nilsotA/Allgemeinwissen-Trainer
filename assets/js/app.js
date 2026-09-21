@@ -440,9 +440,17 @@ function renderHome() {
   // eine andere Warteschlange, und „N Karten, davon M neu" beschrieb eine
   // Runde, die beim Tippen verworfen wurde. Am deutlichsten bei den Kurzrunden:
   // slice(0, 20) schnitt aus einem frisch gemischten Plan.
-  const weiterTag = () => { const h = sess.buildDaily(); return h.length ? h : sess.buildWeak(15); };
+  /* Die Anschlussrunde behaelt die gewaehlte Laenge. Wer auf „3 Min" tippt, hat
+     sich fuer drei Minuten entschieden - „Weitermachen" reichte ihm danach den
+     GANZEN Tagesplan nach: aus einer Runde von 20 Karten wurde eine von 90. Der
+     grosse Startknopf bekommt keine Grenze, dort ist der ganze Plan gewollt. */
+  const weiterTag = (grenze = 0) => () => {
+    const h = sess.buildDaily();
+    const q = h.length ? h : sess.buildWeak(15);
+    return grenze ? q.slice(0, grenze) : q;
+  };
   app.querySelector('[data-go="daily"]').onclick = () => {
-    startRun(tagesplan.length ? tagesplan : sess.buildWeak(15), 'daily', weiterTag);
+    startRun(tagesplan.length ? tagesplan : sess.buildWeak(15), 'daily', weiterTag());
   };
   document.getElementById('trotzdem')?.addEventListener('click', () => {
     setSetting('trotzdemNeu', true);
@@ -450,7 +458,8 @@ function renderHome() {
     renderHome();
   });
   app.querySelectorAll('[data-short]').forEach(b => b.onclick = () => {
-    startRun(tagesplan.slice(0, Number(b.dataset.short)), 'daily', weiterTag);
+    const n = Number(b.dataset.short);
+    startRun(tagesplan.slice(0, n), 'daily', weiterTag(n));
   });
   /* Mit Fragezeichen wie beim Stern-Knopf daneben: Beide Knoepfe stehen nur da,
      wenn sie etwas zu tun haben, und am ersten Tag gibt es keinen von beiden. */

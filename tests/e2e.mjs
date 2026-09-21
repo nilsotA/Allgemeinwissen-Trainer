@@ -2610,6 +2610,70 @@ try {
     await uctx.close();
   }
 
+  group('Die Kurzrunde bleibt kurz - auch beim Weitermachen');
+  /* „3 Min" ist eine Entscheidung ueber die LAENGE, nicht nur ueber den
+     Einstieg. „Weitermachen" rief danach dieselbe Anschlussfunktion auf wie der
+     grosse Startknopf und reichte den ganzen Tagesplan nach: gemessen wurden 90
+     Karten nach einer Runde von 20. Die Chips stehen erst ab einem Plan von mehr
+     als 20 Karten da - am ersten Tag sieht sie niemand, und genau deshalb ist
+     dieser Weg nie gelaufen. Darum ein eigener Stand mit Rueckstand. */
+  {
+    const kuctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const kup = horche(await kuctx.newPage());
+    await kuctx.addInitScript(([k, ids]) => {
+      const heute = Math.floor(Date.now() / 86400000);
+      const cards = {};
+      for (const id of ids) cards[id] = { ef: 2.5, iv: 3, due: heute - 2, reps: 2,
+        lapses: 0, seen: 3, ok: 2, last: Date.now() - 86400000 };
+      localStorage.setItem(k, JSON.stringify({ version: 1,
+        settings: { recallMode: 'mc' }, cards, days: {}, flags: {} }));
+    }, [KEY, CARDS.slice(0, 400).map(c => c.id)]);
+    await kup.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await kup.waitForSelector('.hero');
+
+    const chips = (await kup.locator('[data-short]').allInnerTexts()).map(t => t.trim());
+    check('bei vollem Plan stehen die Kurzrunden bereit', chips.length === 3, chips.join(' | '));
+    const ansage = Number((await kup.locator('.hero h1').innerText()).match(/\d+/)?.[0] || 0);
+    check('und der Plan ist deutlich laenger als die kuerzeste davon', ansage > 40, `${ansage} Karten`);
+
+    const laenge = async () => Number(((await kup.locator('.sess-top .tiny').innerText()).trim()).split('/')[1]);
+    await kup.locator('[data-short="20"]').click();
+    await kup.waitForSelector('.opt');
+    await kup.waitForTimeout(FUSS_TAUB);
+    check('„3 Min" startet eine Runde ueber 20 Karten', (await laenge()) === 20, `${await laenge()} Karten`);
+
+    /* Richtig antworten: Nur dann wird keine Karte nachgereicht, die Runde ist
+       genau 20 Fragen lang und der Durchlauf bleibt kurz. Die richtige Antwort
+       kennt nur die Sammlung - gesucht wird die Karte mit diesem Fragetext,
+       deren Antwort auch unter den Knoepfen steht. */
+    const gelernt = new Set();
+    for (let i = 0; i < 20; i++) {
+      const frage = (await kup.locator('.q').first().innerText()).trim();
+      gelernt.add(frage);
+      const werte = await kup.locator('.opt:not([disabled])').evaluateAll(bs => bs.map(b => b.dataset.v));
+      const karte = CARDS.find(c => c.q === frage && werte.includes(c.a));
+      if (!karte) throw new Error(`Karte nicht gefunden: ${frage}`);
+      await kup.locator(`.opt[data-v="${karte.a.replace(/"/g, '\\"')}"]`).click();
+      await kup.waitForSelector('#next');
+      await kup.waitForTimeout(FUSS_TAUB);
+      await kup.locator('#next').click();
+      await kup.waitForSelector('.opt, #again');
+      if (await kup.locator('#again').count()) break;
+      await kup.waitForTimeout(FUSS_TAUB);
+    }
+    check('nach zwanzig richtigen Antworten steht das Ergebnis', await kup.locator('#again').count() === 1);
+
+    await kup.locator('#again').click();
+    await kup.waitForSelector('.opt');
+    await kup.waitForTimeout(FUSS_TAUB);
+    const weiter = await laenge();
+    check('„Weitermachen" bleibt bei der gewaehlten Laenge', weiter === 20,
+      `${weiter} Karten statt 20 – das ist der ganze Tagesplan`);
+    const naechste = (await kup.locator('.q').first().innerText()).trim();
+    check('und reicht neue Karten nach, nicht die eben gelernten', !gelernt.has(naechste), naechste);
+    await kuctx.close();
+  }
+
   group('Layout');
   check('kein waagerechter Überlauf',
     (await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)) === 0);
@@ -2626,7 +2690,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 265;
+const MINDESTENS = 271;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
