@@ -10,6 +10,7 @@
     "luecken": "node scripts/nie-antwort.mjs",
     "widersprueche": "node scripts/widersprueche.mjs",
     "vertipper": "node scripts/vertipper.mjs",
+    "rueckfrage": "node scripts/rueckfrage.mjs",
     "abdeckung": "node scripts/abdeckung.mjs",
     "wege": "ABDECKUNG=1 node tests/e2e.mjs && ABDECKUNG=1 node tests/offline.mjs && node scripts/wege.mjs",
     "karte": "node scripts/karte-aendern.mjs",

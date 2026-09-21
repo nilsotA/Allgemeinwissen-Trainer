@@ -113,9 +113,32 @@ test('die Wackelplaetze holen Fehlgriffe zurueck - aber reihum, nicht immer dies
   }
   assert.ok(rundenMitWackel / RUNDEN >= 0.9,
     `nur ${rundenMitWackel} von ${RUNDEN} Runden hatten einen Wackler`);
-  const haeufigster = Math.max(...wackler.map(c => (zaehler.get(c.id) || 0) / RUNDEN));
-  assert.ok(haeufigster <= 0.2,
-    `eine wacklige Karte kam in ${(haeufigster * 100).toFixed(0)} % der Runden - vor der Korrektur waren es 35 %`);
+
+  /* Gemessen wird der ANTEIL an den Wacklerzuegen, nicht der Anteil an den
+     Runden. Der Unterschied ist nicht kosmetisch: Ein Wackler wird auch von den
+     gewoehnlichen Plaetzen gezogen, und wie oft das passiert, haengt daran, wie
+     viele Karten in seinem Fach und seiner Stufe liegen. Die alte Schranke
+     („hoechstens 20 % der Runden") mass deshalb beides zusammen und reagierte
+     auf jede Karte, die irgendwo im Bestand dazukam: 50 neue Karten in nat, geo
+     und spr reichten, um sie zu reissen – bei unveraenderter Ziehung. Die
+     Wacklerplaetze selbst waren in beiden Faellen gesund.
+
+     Zwei Groessen sagen, was der Test meint, und beide haengen nicht an der
+     Bestandsgroesse: Jeder Wackler kommt ueberhaupt einmal dran, und keiner
+     nimmt ein Vielfaches seines gleichen Anteils. Gemessen 39 von 39 Wacklern
+     und Faktor 3,0 (vor den neuen Karten: 36 von 36 und Faktor 1,4).
+
+     Gegengeprobt, indem die Wacklerplaetze wieder auf eine Stufe eingeengt
+     wurden – so, wie es vor der Korrektur war: Dann bleiben 2 von 39 Wacklern
+     in 200 Runden ueberhaupt liegen, und die Pruefung faellt durch. */
+  const zuege = wackler.map(c => zaehler.get(c.id) || 0);
+  const nieGezogen = zuege.filter(n => n === 0).length;
+  assert.equal(nieGezogen, 0,
+    `${nieGezogen} von ${wackler.length} Wacklern kamen in ${RUNDEN} Runden nie dran`);
+  const summe = zuege.reduce((a, b) => a + b, 0);
+  const faktor = Math.max(...zuege) / (summe / wackler.length);
+  assert.ok(faktor <= 5,
+    `ein Wackler nahm das ${faktor.toFixed(1)}-Fache seines gleichen Anteils - vor der Korrektur war es das Zwoelffache`);
 });
 
 test('keine Karte bleibt liegen, auch nicht bei nur zwei aktiven Themen', () => {

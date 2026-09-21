@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.381 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.431 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (351 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (366 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (356 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (374 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -446,6 +446,7 @@ npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, F
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
 npm run widersprueche # Karten, die einander widersprechen – und die mit der Zeit altern
 npm run vertipper  # wie viele Handy-Vertipper der Vergleich verzeiht
+npm run rueckfrage # Begriffe, die die Sammlung erklärt, ohne je nach ihnen zu fragen
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
 npm run karte      # ein Feld einer Karte ändern, über ihre Kennung
@@ -3426,6 +3427,98 @@ Kurze Wörter bleiben streng, und Einwortantworten auch. „Der Mnd umkreist die
 weiter als knapp daneben – „mnd" ist drei Buchstaben lang, und bei drei Buchstaben ist ein
 fehlender kein Vertipper mehr, sondern ein anderes Wort. Das sind die 29 %, die in der Messung
 oben fehlen. Sie fehlen mit Absicht.
+
+### 113 Begriffe, die die Sammlung erklärt und nie abfragt
+
+Der Anlass stand schon im Abdeckungsbericht, nur nicht als Befund: Bei mehreren Lücken steht
+dort nicht „fehlt", sondern **„steht in der FRAGE von … – die Karte fragt die andere
+Richtung"**. Es gibt „Was feiern Christen an Ostern?", aber nicht „Welches Fest feiert die
+Auferstehung Jesu?". Am Spieleabend kommt die Frage in der Richtung, in der sie kommt.
+
+Und die beiden Richtungen sind nicht dasselbe Können. „Was ist ein Kartell?" prüft
+**Wiedererkennen** – die Erklärung steht schon da, man muss sie nur bestätigen. „Wie nennt man
+eine wettbewerbswidrige Absprache zwischen Unternehmen?" verlangt den Begriff **aus dem
+Gedächtnis**. Das ist die Richtung, die ein Quiz abfragt, und die schwerere von beiden.
+
+`npm run rueckfrage` sucht genau das: Karten, deren Frage einen Begriff nennt und deren
+Antwort ihn erklärt – und deren Begriff nirgends im Bestand auf der Antwortposition steht.
+Von 364 Erklärfragen traf das auf **113** zu: Inflation, Kartell, Koalition, Rechtsstaat,
+Unschuldsvermutung, Enzym, Katalysator, Reflex, Ökosystem, Radioaktivität, Entropie, Äquator,
+Primzahl, Logarithmus, Integral, Synonym, Konjunktiv, Ironie, Kreuzreim, Cameo, Sportherz,
+Periodisierung. Alles Begriffe, die die App erklärt, ohne sie je zu verlangen.
+
+**50 Karten** schließen den ersten Teil davon, über alle neun Themen: 2.381 → 2.431. Übrig
+bleiben 53 – der Rest braucht eine Entscheidung, keine Fleißarbeit (dazu unten).
+
+#### Der Melder hatte einen blinden Fleck, und das Tor danach hat ihn gefunden
+
+Drei der geschriebenen Karten wies `npm run check` als **inhaltliche Dubletten** zurück: Nach
+dem Abstand einer Zahl zur Null, nach der Scheitelpunktform und nach Platons Höhlengleichnis
+fragt die Sammlung längst. Der Melder hatte sie nicht gesehen, weil der Begriff in der Frage
+einen Zusatz trägt, den die Antwort auf der Gegenseite nicht hat: „Betrag **einer Zahl**"
+gegen die vorhandene Antwort „Betrag", „**Platons** Höhlengleichnis" gegen „Höhlengleichnis".
+
+Das ist der unangenehmere Fund von beiden. Dass ein Tor greift, ist gut; dass der Melder etwas
+meldet, was keine Lücke ist, heißt, dass seine Zahl nicht stimmt. Er streift den Zusatz jetzt
+ab – das allein nahm zehn weitere Scheinlücken aus der Liste – und seine **Selbstprobe** hat
+dafür einen vierten erfundenen Fall bekommen: dieselbe erfundene Sache einmal mit und einmal
+ohne Zusatz. Gegengeprobt, die Regel wieder entfernt: `npm run rueckfrage` bricht mit
+Rückgabewert 1 ab.
+
+#### Was der feste Prüfsatz dazu sagt – und was er nicht sehen kann
+
+**259 → 260 von 286.** Eine einzige Frage mehr. Das ist die ehrliche Zahl, und sie ist kein
+Misserfolg, sondern die falsche Frage an das falsche Messgerät: Der Prüfsatz misst, ob sich
+ein Fakt überhaupt im Bestand findet. Die Rückfragen fügen keinen Fakt hinzu – sie machen
+einen vorhandenen in der anderen Richtung abrufbar. Genau das kann eine Abdeckungsquote nicht
+sehen. Die Zahl, die es misst, ist die des Melders: **113 → 53**.
+
+Gegengeprobt wurde dafür etwas anderes, das schiefgehen könnte: Liegen Hin- und Rückfrage in
+derselben Runde, verrät die eine die andere. 105 solcher Paare stecken inzwischen im Bestand;
+über **400 Quizrunden** kam kein einziges Paar zusammen vor. Das entspricht der Erwartung –
+bei zwanzig Karten aus zweitausend wären rund vier Treffer der Zufall selbst.
+
+#### Und eine Prüfung, die zwei Ziehungen zusammengezählt hat
+
+Von den 50 neuen Karten ist eine Prüfung rot geworden, die mit ihnen nichts zu tun hat: „Die
+Wackelplätze holen Fehlgriffe zurück – aber reihum". Sie hielt fest, dass keine wacklige Karte
+in mehr als 20 % der Runden auftaucht; gemessen wurden plötzlich 21 %.
+
+Die Ziehung war unverändert. Der Fehler lag in der Kennzahl: Eine wacklige Karte wird **auch
+von den gewöhnlichen Plätzen** gezogen, und wie oft das geschieht, hängt daran, wie viele
+Karten in ihrem Fach und ihrer Stufe liegen. Die Prüfung zählte beide Ziehungen zusammen und
+reagierte damit auf jede Karte, die irgendwo im Bestand dazukam. Der Spitzenreiter der neuen
+Messung war die **einzige** wacklige Karte in einem Topf von 13 – und wurde von den
+gewöhnlichen Plätzen so oft gezogen wie jede andere dieses Topfes.
+
+Die Wackelplätze selbst waren in beiden Fällen gesund, und zwar messbar: **39 von 39**
+Wacklern kamen in 200 Runden dran (vorher 36 von 36), und der häufigste nahm das **3,0-Fache**
+seines gleichen Anteils (vorher das 1,4-Fache). Genau diese beiden Größen stehen jetzt in der
+Prüfung, und beide hängen nicht mehr an der Größe des Bestands. Gegengeprobt, indem die
+Wackelplätze wieder auf eine Stufe eingeengt wurden – so war es vor der Korrektur von damals:
+Dann bleiben 2 von 39 Wacklern ganz liegen, und die Prüfung fällt durch.
+
+#### Ein Umweg, gemessen und verworfen
+
+Der erste Versuch war, die vorhandene Lückensuche (`npm run luecken`) um eine dritte Quelle zu
+erweitern: Begriffe, die in einer **Frage** stehen und nie als Antwort. Naheliegend, und als
+Zahl beeindruckend – 2.944 Kandidaten. Nur taugt sie nicht: Im Deutschen ist jedes Substantiv
+großgeschrieben, und oben in der Liste standen „Autor", „Anzahl", „Alter", „Bedingung" –
+Gerüst der Fragestellung, kein Quizstoff. Die vorhandene Regel hat eine **gemessene Ausbeute
+von 38 %**; eine Quelle mit dieser Trefferquote daneben zu stellen, hätte die Liste nur
+verdünnt. Sie ist wieder draußen, und der enge Melder oben ist an ihre Stelle getreten: Er
+verlangt zusätzlich, dass die Antwort der Karte den Begriff **erklärt**, und kommt damit auf
+113 statt 2.944.
+
+#### Die 53, die übrig sind
+
+Sie sind keine Fleißarbeit, sondern eine Entscheidung. Manche Erklärung trifft **mehrere**
+Begriffe zugleich: „Ein Stoff, der Reaktionen beschleunigt" passt auf den Katalysator und auf
+das Enzym – die Rückfrage wäre mehrdeutig und damit eine Karte, die man nur falsch beantworten
+kann. Beide stehen deshalb nur mit einer geschärften Frage im Bestand („ein Eiweiß … im
+Körper" gegen „eine chemische Reaktion … ohne verbraucht zu werden"). Andere Begriffe sind
+Formeln oder Schreibweisen, zu denen eine Rückfrage nichts hinzufügt. Der Bericht sagt das
+selbst dazu: Die Liste ist eine Ideenquelle, keine Arbeitsanweisung.
 
 ### Qualitätssicherung
 

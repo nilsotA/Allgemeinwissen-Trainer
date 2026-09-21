@@ -219,4 +219,6 @@ export default [
 /* ---------- Ergänzt: offene Fragen aus Prüfsatz 4 ---------- */
 {q:"Wie heißt der große aktive Vulkan auf Sizilien?",a:"Der Ätna",s:"Europa",d:2,t:"Der aktivste Vulkan Europas, seit 2013 UNESCO-Welterbe. Rund 3.400 m hoch (Messung 2024) – der Gipfel wächst und schrumpft mit jedem Ausbruch. Seine Ausbrüche sind seit rund 2.700 Jahren schriftlich belegt.",w:["Der Vesuv","Der Stromboli","Der Krakatau"]},
 {q:"Auf welchem Breitengrad liegt der nördliche Wendekreis?",a:"Etwa 23,5° Nord",s:"Welt",d:2,t:"Der Wert entspricht der Neigung der Erdachse. Am 21. Juni steht die Sonne hier senkrecht – nördlicher schafft sie das nie. Spiegelbildlich liegt das südliche Gegenstück bei 23,5° Süd.",w:["Etwa 27,5° Nord","Etwa 30,5° Nord","Etwa 33,5° Nord"]},
+/* ---------- Rückfrage: erklärt, aber nie gefragt ---------- */
+{q:"Wie heißt der Breitenkreis 0°, der die Erde in Nord- und Südhalbkugel teilt?",a:"Der Äquator",s:"Welt",d:1,t:"Rund 40.075 Kilometer lang. Das senkrechte Gegenstück, der Bezugskreis für die geografische Länge, heißt Nullmeridian und läuft durch Greenwich.",w:["Der Nullmeridian","Der Wendekreis","Der Polarkreis"]},
 ];
