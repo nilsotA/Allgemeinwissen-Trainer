@@ -2610,6 +2610,135 @@ try {
     await uctx.close();
   }
 
+  group('Die drei Knoepfe der Startseite');
+  /* „Trotzdem neue Karten", „Wackelkandidaten" und „Markierte" stehen nur da,
+     wenn es etwas zu tun gibt - am ersten Tag also nicht, und genau deshalb hat
+     der Durchlauftest sie nie angetippt. Ein Stand mit Rueckstand und
+     Markierungen holt sie hervor. */
+  {
+    const hctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const MARKIERT = 25;
+    await hctx.addInitScript(([k, faellig, marken]) => {
+      const heute = Math.floor(Date.now() / 86400000);
+      const cards = {}, flags = {};
+      for (const id of faellig) cards[id] = { ef: 2.5, iv: 3, due: heute - 2, reps: 2,
+        lapses: 0, seen: 3, ok: 2, last: Date.now() - 86400000 };
+      let t = Date.now();
+      for (const id of marken) flags[id] = t--;
+      localStorage.setItem(k, JSON.stringify({ version: 1, settings: {}, cards, days: {}, flags }));
+    }, [KEY, CARDS.slice(0, 400).map(c => c.id), CARDS.slice(0, MARKIERT).map(c => c.id)]);
+    const hp = horche(await hctx.newPage());
+    await hp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await hp.waitForSelector('.hero');
+    const plan = async () => Number((await hp.locator('.hero h1').innerText()).match(/\d+/)?.[0] || 0);
+    const laenge = async () => Number(((await hp.locator('.sess-top .tiny').innerText()).trim()).split('/')[1]);
+    const einst = async () => (await hp.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}'), KEY)).settings || {};
+
+    check('bei Rueckstand steht der Hinweis „Erst mal aufholen"',
+      await hp.locator('#trotzdem').count() === 1);
+    const vorher = await plan();
+    await hp.locator('#trotzdem').click();
+    await hp.waitForTimeout(450);
+    check('„Trotzdem neue Karten" schaltet sie frei', (await einst()).trotzdemNeu === true);
+    check('der Plan waechst um die neuen Karten', (await plan()) > vorher, `${vorher} -> ${await plan()}`);
+    check('und der Hinweis ist weg', await hp.locator('#trotzdem').count() === 0);
+
+    await hp.getByRole('button', { name: 'Wackelkandidaten' }).click();
+    await hp.waitForSelector('.opt, #rin');
+    check('„Wackelkandidaten" startet eine Runde von hoechstens 20 Karten',
+      (await laenge()) > 0 && (await laenge()) <= 20, String(await laenge()));
+    /* Waehrend einer Runde ist die untere Leiste weg - der Weg zurueck fuehrt
+       ueber den Beenden-Knopf oben. Ohne eine einzige Antwort zaehlt er nichts. */
+    await hp.locator('#quit').click();
+    await hp.waitForSelector('.hero');
+
+    const sternKnopf = hp.locator('[data-go="flag"]');
+    check(`der Markierten-Knopf nennt die Zahl (${MARKIERT})`,
+      new RegExp(String(MARKIERT)).test(await sternKnopf.innerText()), await sternKnopf.innerText());
+    await sternKnopf.click();
+    await hp.waitForSelector('.opt, #rin');
+    check('„Markierte" startet eine Runde von 20 Karten', (await laenge()) === 20, String(await laenge()));
+    /* Und zwar aus den markierten - nicht irgendwelche. Die Frage auf dem
+       Schirm muss zu einer der markierten Karten gehoeren. */
+    const frage = (await hp.locator('.q').first().innerText()).trim();
+    const markierteFragen = new Set(CARDS.slice(0, MARKIERT).map(c => c.q));
+    check('und die Karten stammen wirklich aus den markierten', markierteFragen.has(frage), frage);
+    await hctx.close();
+  }
+
+  group('Der Quizblock in der Statistik');
+  /* Er erscheint erst, wenn eine Quizrunde zu Ende gespielt wurde - im
+     Durchlauftest kam er deshalb nie vor. Der Satz „Ø der letzten N Runden"
+     rechnet, und „Meiste Punkte verloren" nennt ein Thema: beides wird an
+     abgelegten Runden gemessen, deren Ergebnis von Hand nachgerechnet ist. */
+  {
+    const qsctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    /* Zwei Runden. Verlorene Punkte: mat 20+15=35, spo 5, geo 0, nat 10, kul 0.
+       Mathematik ist damit das schwaechste Feld, der Schnitt (95+120)/2 = 107,5
+       wird zu 108 gerundet, der Bestwert ist 120. */
+    const runden = [
+      { t: 1, p: 95, m: 180, r: 7, f: 3, l: 2, k: { mat: [10, 30], spo: [25, 30], geo: [30, 30] } },
+      { t: 2, p: 120, m: 180, r: 9, f: 2, l: 1, k: { mat: [15, 30], nat: [20, 30], kul: [30, 30] } },
+    ];
+    await qsctx.addInitScript(([k, runden]) => {
+      localStorage.setItem(k, JSON.stringify({ version: 1, settings: {}, cards: {}, days: {},
+        flags: {}, quizBest: 120, quizRunden: runden }));
+    }, [KEY, runden]);
+    const qsp = horche(await qsctx.newPage());
+    await qsp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await qsp.waitForSelector('.hero');
+    await qsp.locator('.nav-btn[data-view="stats"]').click();
+    await qsp.waitForTimeout(350);
+    const txt = (await qsp.locator('#app').innerText()).replace(/\n+/g, ' · ');
+    check('die Statistik zeigt den Quizblock', /Bestwert/.test(txt), txt.slice(0, 80));
+    check('mit dem Bestwert 120 von 180', /Bestwert · 120 \/ 180/.test(txt),
+      txt.slice(txt.indexOf('Bestwert'), txt.indexOf('Bestwert') + 60));
+    check('mit dem Schnitt der letzten zwei Runden (108)', /Ø der letzten 2 Runden · 108/.test(txt),
+      txt.slice(txt.indexOf('Ø der letzten'), txt.indexOf('Ø der letzten') + 50));
+    check('und nennt Mathematik als schwaechstes Feld',
+      /Meiste Punkte verloren · Mathematik/.test(txt),
+      txt.slice(txt.indexOf('Meiste Punkte'), txt.indexOf('Meiste Punkte') + 50));
+    await qsctx.close();
+  }
+
+  group('Das Farbschema folgt dem Geraet - aber nur, wenn es soll');
+  /* „Wie das System" haengt an einem Horcher auf der Medienabfrage. Er lief nie:
+     Der Durchlauftest startet jeden Kontext in einem festen Schema und wechselt
+     es nie. Wer abends die Anzeige umstellt, waehrend die App offen ist, geht
+     genau ueber diesen Weg. */
+  {
+    for (const [wahl, folgt] of [['system', true], ['dark', false]]) {
+      const tctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', colorScheme: 'light' });
+      await tctx.addInitScript(([k, wahl]) => localStorage.setItem(k,
+        JSON.stringify({ version: 1, settings: { theme: wahl }, cards: {}, days: {}, flags: {} })), [KEY, wahl]);
+      const tp = horche(await tctx.newPage());
+      await tp.goto(URL_BASE, { waitUntil: 'networkidle' });
+      await tp.waitForSelector('.hero');
+      const grund = () => tp.evaluate(() => getComputedStyle(document.body).backgroundColor);
+      const leiste = () => tp.evaluate(() => document.querySelector('meta[name="theme-color"]')?.content);
+      const hell = await grund(), hellLeiste = await leiste();
+      await tp.emulateMedia({ colorScheme: 'dark' });
+      await tp.waitForTimeout(250);
+      const dunkel = await grund(), dunkelLeiste = await leiste();
+      if (folgt) {
+        /* Die Flaechen wechseln schon durch die Medienabfrage im Stilblatt -
+           dafuer braucht es kein JavaScript (gegengeprobt: ohne den Horcher
+           bleibt diese Pruefung gruen). Die Leiste oben ist der Teil, den NUR
+           der Horcher umstellen kann: theme-color ist ein Metaeintrag, den
+           keine Medienabfrage erreicht. */
+        check('bei „Wie das System" wird die App mit dem Geraet dunkel', hell !== dunkel, `${hell} -> ${dunkel}`);
+        check('und die Leiste oben zieht mit - das kann nur der Horcher',
+          hellLeiste !== dunkelLeiste, `${hellLeiste} -> ${dunkelLeiste}`);
+      } else {
+        check('bei fester Wahl „Immer dunkel" aendert der Geraetewechsel nichts',
+          hell === dunkel && hellLeiste === dunkelLeiste, `${hell} -> ${dunkel}`);
+        check('und sie war von Anfang an dunkel, obwohl das Geraet hell stand',
+          hellLeiste === '#17120e', String(hellLeiste));
+      }
+      await tctx.close();
+    }
+  }
+
   group('Die Schalter unter „Mehr" greifen durch');
   /* Drei Schalter und zwei Knopfreihen waren nie angetippt worden - eine
      Abdeckungsmessung ueber den ganzen Durchlauf hat sie als kalt gemeldet.
@@ -2851,7 +2980,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 291;
+const MINDESTENS = 307;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
