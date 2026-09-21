@@ -360,6 +360,44 @@ test('vorn unterschiedene Woerter bleiben getrennt', () => {
   }
 });
 
+/* Die Kopfregel verzeiht einen Vertipper nur in der HINTEREN Worthaelfte – und
+   der Gegentest weiter unten mass ausgerechnet diese Haelfte: Er setzt den
+   Fehler bei 75 Prozent der Wortlaenge. Fuer die vordere Haelfte war die
+   Sammlung ungeprueft. Gemessen ueber alle frei abfragbaren Karten und die vier
+   Vertipperarten der Handytastatur kamen 39,9 Prozent auf „passt"; der Rest
+   landete fast vollstaendig bei „knapp daneben" – auch ein einzelner
+   ausgelassener Buchstabe in einem von sechs Woertern. */
+test('ein Vertipper vorn im Wort faellt nicht mehr durch, wenn der Rest stimmt', () => {
+  for (const [e, l] of [
+    ['Die Zgspitze in Bayern', 'Die Zugspitze in Bayern'],            // ausgelassen, zweites Zeichen
+    ['Der Ptersdom in Rom', 'Der Petersdom in Rom'],
+    ['Die Nordsse und die Ostsee', 'Die Nordsee und die Ostsee'],
+    ['Wien ist die Haupstadt von Oesterreich', 'Wien ist die Hauptstadt von Oesterreich'],
+    ['Die Kette aus Nucleotiden', 'Die Kette aus Nukleotiden'],       // Nachbartaste vorn
+  ]) {
+    assert.ok(similarity(e, l) >= 0.8, `„${e}" gegen „${l}" (${similarity(e, l).toFixed(2)})`);
+  }
+});
+
+/* Drei Bedingungen halten die Ausnahme eng. Jede ist einzeln gegengeprobt:
+   Nimmt man sie heraus, gilt die Zeile daneben als richtige Antwort. */
+test('die Ausnahme fuer den Vertipper bleibt eng', () => {
+  const zuWeit = [
+    // ohne Anker – eine Einwortantwort hat nichts, was den Rest festhaelt
+    ['Zgspitze', 'Zugspitze'],
+    // mehr als ein Buchstabe – das ist kein Vertipper mehr
+    ['Die Zgsptze in Bayern', 'Die Zugspitze in Bayern'],
+    // zu kurz – „Zinn" und „Zink" meinen etwas anderes, nicht dasselbe
+    ['Zinn und Kupfer', 'Zink und Kupfer'],
+    // ein Wort, das die Sammlung selbst als Antwort behauptet
+    ['Die erste Anleitung ist null', 'Die erste Ableitung ist null'],
+    ['Ein metallischer Wirkstoff aus mehreren Elementen', 'Ein metallischer Werkstoff aus mehreren Elementen'],
+  ];
+  for (const [e, l] of zuWeit) {
+    assert.ok(similarity(e, l) < 0.8, `„${e}" darf nicht als „${l}" gelten (${similarity(e, l).toFixed(2)})`);
+  }
+});
+
 test('similarity liefert nie Werte außerhalb von 0 bis 1', () => {
   const probe = ['', 'a', 'xyz', '1234', 'Ein sehr langer Satz mit vielen Wörtern darin'];
   for (const c of CARDS.slice(0, 200)) {
@@ -611,6 +649,31 @@ test('ein Tippfehler in der Antwort wird weit überwiegend verziehen', () => {
   }
   const quote = erkannt / (erkannt + abgelehnt);
   assert.ok(quote >= 0.9, `nur ${(quote * 100).toFixed(1)} % der Tippfehler wurden verziehen`);
+});
+
+/* Und derselbe Test noch einmal auf dem VORDEREN Viertel. Die Fassung oben
+   setzt den Fehler bei 75 Prozent der Wortlaenge und misst damit genau die
+   Haelfte, in der die Kopfregel aus quiz.js ohnehin nicht greift – sie stand
+   bei 92,8 Prozent, waehrend ein ausgelassener Buchstabe vorn im Wort zu
+   2,2 Prozent verziehen wurde. Ein Gegentest, der nur die leichte Haelfte
+   misst, meldet Gesundheit und prueft nichts.
+
+   Gemessen 1,4 -> 70,8 Prozent. Der Boden steht darunter, nicht darauf: Besser
+   darf es jederzeit werden. Die fehlenden 29 Prozent sind kein Versehen,
+   sondern die Grenze der Regel – Einwortantworten haben keinen Anker, und
+   kurze Woerter bleiben streng. */
+test('ein Tippfehler vorn im Wort wird ueberwiegend verziehen', () => {
+  let erkannt = 0, abgelehnt = 0;
+  for (const c of CARDS) {
+    const laengstes = c.a.split(' ').sort((x, y) => y.length - x.length)[0] || '';
+    if (laengstes.length < 8) continue;
+    const i = Math.floor(laengstes.length * 0.25);
+    const vertippt = c.a.replace(laengstes,
+      laengstes.slice(0, i) + (laengstes[i] === 'e' ? 'a' : 'e') + laengstes.slice(i + 1));
+    similarity(vertippt, c.a) >= 0.8 ? erkannt++ : abgelehnt++;
+  }
+  const quote = erkannt / (erkannt + abgelehnt);
+  assert.ok(quote >= 0.65, `nur ${(quote * 100).toFixed(1)} % der Tippfehler vorn wurden verziehen`);
 });
 
 /* Vertauschte Aussagen sind der häufigste Ablenkertyp der Sammlung. Sie stimmen

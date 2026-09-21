@@ -676,6 +676,18 @@ export function similarity(input, answer, frage) {
    5 Liter" als „Etwa 1,5 Liter" – dort ist die Eins die Vorkommastelle. */
 const ohneEinzelneEins = (t) => woerter(t).filter(w => w !== '1').join(' ');
 
+/* Alle Woerter, die irgendeine Karte als Antwort BEHAUPTET. Wird einmal
+   gebaut, wie mehrdeutigeNachnamen() weiter oben. */
+let wortschatz = null;
+const behauptet = (w) => {
+  if (!wortschatz) {
+    wortschatz = new Set();
+    for (const c of CARDS) for (const t of [c.a, ...(c.az || [])])
+      for (const x of normalize(t).split(' ')) wortschatz.add(x);
+  }
+  return wortschatz.has(w);
+};
+
 function vergleich(input, answer, bekannt = new Set()) {
   let a = normalize(input), b = normalize(answer);
   if (!a || !b) return 0;
@@ -748,6 +760,44 @@ function vergleich(input, answer, bekannt = new Set()) {
       && fehlt.every(w => KLASSIFIKATOREN.has(w)) && inReihenfolge(a, b)) {
     if (fehlt.length === 0) return 0.95;
     if (b.includes(a) || a.length >= Math.max(4, b.length * 0.4)) return 0.9;
+  }
+
+  /* Ein Wort mit einem falschen Buchstaben ist fuer zuordnen() ein FEHLENDES
+     Wort – und ein fehlendes tragendes Wort deckelt auf 0,60. Ein einziger
+     Vertipper in einem von sechs Woertern wog damit so schwer wie eine ganz
+     ausgelassene Angabe. Gemessen ueber alle frei abfragbaren Karten und die
+     vier Vertipperarten der Handytastatur – ausgelassener Buchstabe, Dreher,
+     Nachbartaste, Doppler – kamen nur 39,9 Prozent auf „passt"; fast alles
+     Uebrige landete bei „knapp daneben". Verantwortlich ist die Kopfregel in
+     gleichesWort(): Sie verzeiht einen Vertipper nur in der HINTEREN
+     Worthaelfte.
+
+     Die Kopfregel bleibt – ihre Gruende stehen dort und sind gemessen. Sie
+     bekommt nur eine Ausnahme MIT ANKER: Sitzt genau ein Wort daneben, stimmen
+     alle uebrigen tragenden Woerter der Loesung Wort fuer Wort, und ist der
+     Unterschied ein einziger Buchstabe, dann ist es ein Vertipper und kein
+     anderes Wort. Bei einer Einwortantwort gibt es diesen Anker nicht; dort
+     bleibt es streng, und genau dort sitzen die Paare, wegen derer es die
+     Kopfregel gibt („Bundesverfassungsgericht"/„Bundesverwaltungsgericht").
+
+     Die entscheidende Sperre: Das GETIPPTE Wort darf nicht selbst irgendwo in
+     der Sammlung als Antwort stehen. Was die Sammlung an anderer Stelle
+     behauptet, ist eine Aussage und kein Verschreiber – „Ableitung"/
+     „Anleitung", „Werkstoff"/„Wirkstoff", „oestlich"/„westlich" liegen alle
+     einen Buchstaben auseinander. Sie kostet fast nichts: Ueber alle vier
+     Vertipperarten sinkt die Quote von 72,5 auf 72,4 Prozent.
+
+     Eine Ziffernsperre stand hier auch einmal – „6 Sekunden" und „16 Sekunden"
+     sollten keine Vertipper voneinander sein. Sie ist wieder draussen, weil sie
+     nie etwas entschieden hat: kennwoerter() weiter oben springt schon ab,
+     sobald sich ein zifferntragendes Wort unterscheidet. Gemessen an 519.937
+     Eingaben – jede Auslassung und jede Ziffer an jeder Stelle jeder Antwort –
+     hing keine einzige Bewertung an ihr. */
+  if (fehlend.length === 1 && ueberzaehlig.length === 1) {
+    const f = fehlend[0], u = ueberzaehlig[0];
+    const anker = woerter(b).some(w => w !== f && traegtBedeutung(w));
+    if (anker && Math.max(f.length, u.length) >= 5
+        && !behauptet(u) && levenshtein(f, u) === 1) return roh;
   }
 
   // Fehlt ein tragendes Wort der Lösung, ist die Eingabe inhaltlich eine andere

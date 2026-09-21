@@ -440,11 +440,12 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 185 Einheitentests plus Inhaltsprüfung
+npm test           # 188 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 333 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
 npm run widersprueche # Karten, die einander widersprechen – und die mit der Zeit altern
+npm run vertipper  # wie viele Handy-Vertipper der Vergleich verzeiht
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
 npm run karte      # ein Feld einer Karte ändern, über ihre Kennung
@@ -3331,6 +3332,101 @@ keine Warnung –, dann drei weitere, und sie muss da sein. Gegengeprobt, alle d
 entfernt: sechs rote Prüfungen.
 
 
+### Der Vertipper vorn im Wort: 2,2 % verziehen
+
+Wer die Antwort weiß und sich auf dem Handy vertippt, hat sie gewusst. Sagt die App ihm
+trotzdem „Knapp daneben – vergleich genau", übt sie Zweifel ein, wo keiner hingehört. Wie oft
+das passiert, stand nirgends. Es gab einen Gegentest dafür, und der hat genau die falsche
+Hälfte gemessen: Er setzt den Fehler bei **75 % der Wortlänge** – also dort, wo die Kopfregel
+in `quiz.js` ohnehin nicht greift. Seine 96 % waren echt und sagten nichts über den Rest.
+
+`npm run vertipper` misst jetzt die vier Vertipper der **Tastatur** statt der des Zufalls –
+ein ausgelassener Buchstabe, zwei vertauschte, eine Nachbartaste, ein Doppler –, an jeder
+Stelle jeder frei abfragbaren Karte, 380.641 Eingaben. Und getrennt danach, ob der Fehler in
+der vorderen oder hinteren Hälfte seines Wortes sitzt:
+
+| Art | passt, Fehler **vorn** | passt, Fehler hinten |
+|---|---|---|
+| ausgelassener Buchstabe | **2,2 %** | 74,6 % |
+| zwei vertauschte | 73,0 % | 92,8 % |
+| Nachbartaste | **1,6 %** | 73,8 % |
+| Doppler | **8,1 %** | 84,0 % |
+
+Der Dreher fällt aus der Reihe, weil es für ihn schon eine Ausnahme gab. Für die anderen drei
+galt: In der vorderen Worthälfte wurde praktisch **kein** Vertipper verziehen. Der Grund ist
+keine Schlamperei, sondern eine gute Regel an ihrer Grenze. `gleichesWort()` verlangt, dass
+die vordere Hälfte stimmt, weil im Deutschen die Unterscheidung vorn sitzt – intra-/inter-,
+Impressionismus/Expressionismus, Bundesrats-/Bundestags-. Und ein Wort, das nicht als dasselbe
+durchgeht, ist für `zuordnen()` ein **fehlendes** Wort; ein fehlendes tragendes Wort deckelt
+auf 0,60. Ein einzelner Buchstabe in einem von sechs Wörtern wog damit so viel wie eine ganz
+ausgelassene Angabe.
+
+Die Kopfregel bleibt. Sie bekommt eine Ausnahme **mit Anker**: Sitzt genau ein Wort daneben,
+stimmen alle übrigen tragenden Wörter der Lösung Wort für Wort, und ist der Unterschied ein
+einziger Buchstabe – dann ist es ein Vertipper. Bei einer **Einwortantwort gibt es diesen
+Anker nicht**, und dort bleibt alles streng: Genau dort sitzen die Paare, wegen derer es die
+Kopfregel gibt.
+
+Dazu eine Sperre, die den Rest trägt: **Das getippte Wort darf nicht selbst irgendwo in der
+Sammlung als Antwort stehen.** Was die Sammlung an anderer Stelle behauptet, ist eine Aussage
+und kein Verschreiber – „Ableitung"/„Anleitung", „Werkstoff"/„Wirkstoff", „östlich"/„westlich"
+liegen alle einen Buchstaben auseinander. Gemessen kostet sie 0,1 Prozentpunkte.
+
+| | vorher | nachher |
+|---|---|---|
+| ausgelassener Buchstabe | 34,9 % | **70,8 %** |
+| zwei vertauschte | 79,9 % | 79,9 % |
+| Nachbartaste | 34,4 % | **70,9 %** |
+| Doppler | 42,3 % | **76,6 %** |
+| zusammen | 39,9 % | **72,5 %** |
+
+#### Was diese Zahl nicht heißt
+
+Die 32 Punkte sind eine **bedingte** Verbesserung: So oft wird ein Vertipper verziehen, *wenn*
+einer passiert. Wie oft er passiert, sagt der Bericht nicht – und die ehrlichste Antwort darauf
+steht schon im Bestand. `data/tippprobe.json` sind 306 Karten mit von Hand geschriebenen
+Eingaben, aufgeschrieben ohne Kenntnis des Vergleichers. Dort bewegt die Regel **eine einzige
+von 612 Eingaben**: „valentina tereschkowa" statt „Walentina Tereschkowa", 0,60 → 0,95. Die
+Quote steigt von 82,7 auf 82,8 %.
+
+Beides ist wahr, und beides gehört hierher. Wer sorgfältig tippt, merkt nichts. Wer sich
+vertippt – am Bahnsteig, mit einer Hand, im Halbdunkel –, bekam vorher in vier von fünf Fällen
+Gelb auf eine Antwort, die er wusste. Das war der teure Fall, und den gibt es jetzt seltener.
+
+#### Die Gegenproben
+
+Eine Regel, die großzügiger wird, muss von der anderen Seite geprüft werden – sonst kauft man
+Nachsicht mit Nachgiebigkeit:
+
+- **Ablenker:** Kein einziger der rund 4.000 Ablenker kommt neu durch.
+- **Fremde Antworten:** 138.628 Paare aus Karten desselben Teilgebiets – keine Antwort einer
+  anderen Karte gilt neu als richtig.
+- **Echte Wörter:** Der Bericht hat ein Gegenstück eingebaut: ein Wort der Antwort durch ein
+  völlig anderes gleicher Länge ersetzt. Das kommt zu **0,2 %** durch, gegen 72,5 % bei
+  Vertippern. Liegt es je über der Hälfte der Vertipperquote, bricht `npm run vertipper` mit
+  Fehler ab – eine Quote ohne Gegenstück sagt nichts.
+- **Jede Bedingung einzeln ausgebaut:** Anker weg → 1 rote Prüfung, Mindestlänge weg → 3,
+  Wortschatzsperre weg → 1, „genau ein Buchstabe" weg → 4, die ganze Regel weg → 1.
+
+Und ein Wachposten ist dazugekommen, der die alte Lücke schließt: derselbe Test wie bisher,
+nur mit dem Fehler beim **ersten** Viertel des Wortes statt beim letzten. 1,4 → 70,8 %.
+
+#### Eine Sperre, die nie etwas entschieden hat
+
+Die Regel hatte zuerst eine zweite Sperre: Ziffern sollten nicht mitzählen, „6 Sekunden" und
+„16 Sekunden" sind keine Vertipper voneinander. Sie ist wieder draußen. Nachgemessen an
+519.937 Eingaben – jede Auslassung und jede Ziffer an jeder Stelle jeder Antwort – hing
+**keine einzige** Bewertung an ihr: `kennwoerter()` eine Ebene höher springt schon ab, sobald
+sich ein zifferntragendes Wort unterscheidet. Eine Sperre, die man nicht zum Versagen bringen
+kann, beruhigt nur.
+
+#### Was nicht geht
+
+Kurze Wörter bleiben streng, und Einwortantworten auch. „Der Mnd umkreist die Erde" gilt
+weiter als knapp daneben – „mnd" ist drei Buchstaben lang, und bei drei Buchstaben ist ein
+fehlender kein Vertipper mehr, sondern ein anderes Wort. Das sind die 29 %, die in der Messung
+oben fehlen. Sie fehlen mit Absicht.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
@@ -3443,7 +3539,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 130 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 188 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups, den
 Vergleich freier Eingaben und den Quizmodus (Ziehung, Punkteformel, Auswertung, Runden über
 zwei Tabs) ab.
@@ -3455,8 +3551,8 @@ als Antwort auf seine eigene Karte; keiner davon darf durchgehen. Beim ersten La
 wie „kW ist Energie, kWh ist Leistung" kamen zeichenweise auf über 90 % Übereinstimmung.
 Der Vergleich achtet seither auf Wortreihenfolge, Vielfachheit und den Wortanfang – im
 Deutschen sitzt die Unterscheidung vorn (intra-/inter-, Impressionismus/Expressionismus).
-Ein Gegentest sichert die andere Richtung: ein Tippfehler in der Antwort wird weiterhin in
-96 % der Fälle verziehen, und übliche Schreibvarianten müssen durchgehen – klein geschrieben,
+Ein Gegentest sichert die andere Richtung – und zwar seit Kurzem in beiden Worthälften: ein
+Tippfehler hinten im Wort wird in 96 % der Fälle verziehen, einer vorn in 71 %, und übliche Schreibvarianten müssen durchgehen – klein geschrieben,
 mit Punkt am Ende, ohne den Artikel vorn, mit umschriebenen Umlauten und ohne einen
 nachgestellten Klammerzusatz. Der letzte Punkt kostete zuvor Treffer: Wer auf
 „Stickstoff (78 %)" nur „Stickstoff" tippte, bekam kein Häkchen, obwohl das die Antwort ist.
