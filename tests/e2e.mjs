@@ -1904,6 +1904,49 @@ try {
     await bctx.close();
   }
 
+  group('Abfrage-Art: der Schalter mit der groessten Lernwirkung');
+  /* „Freies Abrufen sitzt tiefer als Ankreuzen" steht im Menue direkt unter dem
+     Feld - geprueft war bisher nur, was der Kartenzustand daraus macht, nicht
+     ob das Feld selbst durchgreift. */
+  {
+    const actx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const ap = horche(await actx.newPage());
+    await ap.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await ap.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      const srs = await import('/assets/js/srs.js');
+      const heute = store.todayNum();
+      // Nur gelernte Karten: unberuehrte werden ohnehin angekreuzt.
+      for (let i = 0; i < 60; i++) {
+        store.putCard(daten.CARDS[i].id, { ...srs.fresh(), seen: 8, ok: 7, reps: 5, iv: 12,
+          due: heute - 1, last: Date.now() - i });
+      }
+      store.setSetting('newPerDay', 0);
+      store.save(true);
+    });
+    const erste = async (wahl) => {
+      await ap.reload({ waitUntil: 'networkidle' });
+      await ap.click('[data-view="settings"]');
+      await ap.waitForSelector('#rec');
+      await ap.selectOption('#rec', wahl);
+      await ap.waitForTimeout(300);
+      await ap.click('[data-view="home"]');
+      await ap.waitForSelector('.hero');
+      await ap.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+      await ap.waitForSelector('.sess-body');
+      await ap.waitForTimeout(FUSS_TAUB);
+      const art = await ap.locator('.opt').count() ? 'Auswahl'
+        : (await ap.locator('#rin, [data-hab]').count() ? 'frei' : 'weder noch');
+      await ap.click('#quit');
+      await ap.waitForTimeout(300);
+      return art;
+    };
+    check('„Immer Auswahl" fragt zum Ankreuzen', await erste('mc') === 'Auswahl');
+    check('„Immer frei" fragt zum Tippen', await erste('recall') === 'frei');
+    await actx.close();
+  }
+
   group('Farbschema und Markierungen loeschen');
   /* Zwei Schalter, die niemand von aussen angefasst hatte. „Immer hell" muss
      sich gegen ein dunkles System durchsetzen (drinnen bei Sonne ist die App
@@ -2537,7 +2580,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 258;
+const MINDESTENS = 260;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
