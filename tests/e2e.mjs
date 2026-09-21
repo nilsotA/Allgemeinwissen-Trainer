@@ -3103,6 +3103,118 @@ try {
     await uctx3.close();
   }
 
+  group('Was die Sprachausgabe zu hoeren bekommt');
+  /* Sechs Stellen der App sagen etwas nur fuer Hilfsmittel an - im sr-only
+     Bereich #live. Geprueft war davon genau eine (die abgelaufene Quizfrage).
+     Bricht eine der anderen, merkt es niemand, der hinsieht: Der Bildschirm
+     zeigt die Loesung weiter, nur wer die App hoert, bekommt nach seiner
+     Antwort gar nichts mehr. Genau deshalb gehoert das hier her. */
+  {
+    const lctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const bekannt = CARDS.slice(0, 40).map(c => c.id);
+    const seed = (modus) => ([k, ids, m]) => {
+      const heute = Math.floor(Date.now() / 86400000);
+      const cards = {};
+      for (const id of ids) cards[id] = { ef: 2.5, iv: 4, due: heute - 1, reps: 3,
+        lapses: 0, seen: 4, ok: 3, last: Date.now() - 86400000 };
+      localStorage.setItem(k, JSON.stringify({ version: 1, settings: { recallMode: m },
+        cards, days: {}, flags: {} }));
+    };
+    await lctx2.addInitScript(seed(), [KEY, bekannt, 'mc']);
+    const lp2 = horche(await lctx2.newPage());
+    const ansage = () => lp2.locator('#live').innerText();
+    await lp2.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await lp2.waitForSelector('.hero');
+    await lp2.locator('[data-go="daily"]').click();
+    await lp2.waitForSelector('.opt');
+    await lp2.waitForTimeout(FUSS_TAUB);
+    check('vor der Antwort steht dort nichts', (await ansage()).trim() === '');
+
+    /* Die richtige Antwort kennt nur die Sammlung - gesucht wird die Karte mit
+       diesem Fragetext, deren Antwort auch unter den Knoepfen steht. */
+    const antworte = async (richtig) => {
+      const frage = (await lp2.locator('.q').first().innerText()).trim();
+      const werte = await lp2.locator('.opt:not([disabled])').evaluateAll(bs => bs.map(b => b.dataset.v));
+      const karte = CARDS.find(c => c.q === frage && werte.includes(c.a));
+      if (!karte) throw new Error(`Karte nicht gefunden: ${frage}`);
+      const wert = richtig ? karte.a : werte.find(v => v !== karte.a);
+      await lp2.locator(`.opt[data-v="${wert.replace(/"/g, '\\"')}"]`).click();
+      await lp2.waitForSelector('#next');
+      return karte;
+    };
+    await antworte(true);
+    check('ein Treffer wird angesagt', /^Richtig\./.test(await ansage()), await ansage());
+    await lp2.waitForTimeout(FUSS_TAUB);
+    await lp2.locator('#next').click();
+    await lp2.waitForSelector('.opt');
+    await lp2.waitForTimeout(FUSS_TAUB);
+    const daneben = await antworte(false);
+    const beiFalsch = await ansage();
+    check('ein Fehlgriff auch', /^Falsch\./.test(beiFalsch), beiFalsch);
+    /* Und zwar MIT der Loesung: Wer die App hoert, sieht sie nicht daneben
+       stehen - ohne diesen Teil bliebe die Karte unbeantwortet im Ohr. */
+    check('und die Ansage nennt die Loesung', beiFalsch.includes(daneben.a), beiFalsch);
+    await lctx2.close();
+
+    /* Freies Abrufen sagt etwas anderes an: Dort steht nicht „richtig", sondern
+       ob die EINGABE passt - die Note vergibt der Nutzer danach selbst. */
+    const rctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    await rctx2.addInitScript(seed(), [KEY, bekannt, 'recall']);
+    const rp2 = horche(await rctx2.newPage());
+    await rp2.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await rp2.waitForSelector('.hero');
+    await rp2.locator('[data-go="daily"]').click();
+    await rp2.waitForSelector('#rin');
+    await rp2.waitForTimeout(FUSS_TAUB);
+    const frage = (await rp2.locator('.q').first().innerText()).trim();
+    const karte = CARDS.find(c => c.q === frage);
+    if (!karte) throw new Error(`Karte nicht gefunden: ${frage}`);
+    await rp2.locator('#rin').fill(karte.a);
+    await rp2.locator('#reveal').click();
+    await rp2.waitForSelector('[data-g]');
+    check('die getippte Antwort wird als passend angesagt',
+      /Eingabe passt/.test(await rp2.locator('#live').innerText()),
+      await rp2.locator('#live').innerText());
+    await rp2.waitForTimeout(FUSS_TAUB);
+    await rp2.locator('[data-g="3"]').click();
+    await rp2.waitForSelector('#rin');
+    await rp2.waitForTimeout(FUSS_TAUB);
+    const frage2 = (await rp2.locator('.q').first().innerText()).trim();
+    const karte2 = CARDS.find(c => c.q === frage2);
+    await rp2.locator('#rin').fill('völlig daneben getippt');
+    await rp2.locator('#reveal').click();
+    await rp2.waitForSelector('[data-g]');
+    check('daneben getippt wird die Loesung vorgelesen',
+      (await rp2.locator('#live').innerText()).includes(karte2.a),
+      await rp2.locator('#live').innerText());
+    await rctx2.close();
+  }
+
+  group('Die Warnung fuenf Sekunden vor Ablauf');
+  /* Der Balken laeuft sichtbar ab - wer die App hoert, sieht ihn nicht. Mit
+     gestellter Uhr, damit der Test keine zehn echten Sekunden wartet. */
+  {
+    const wctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const wp2 = horche(await wctx2.newPage());
+    await wp2.clock.install();
+    await wp2.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await wp2.locator('.nav-btn[data-view="duel"]').click();
+    await wp2.waitForSelector('#quizGo');
+    await wp2.locator('#quizGo').click();
+    await wp2.waitForSelector('.opt:not([disabled])');
+    check('zu Beginn der Frist wird nichts gewarnt',
+      !/fünf Sekunden/.test(await wp2.locator('#live').innerText()));
+    await wp2.clock.runFor(8000);
+    check('nach acht Sekunden immer noch nicht',
+      !/fünf Sekunden/.test(await wp2.locator('#live').innerText()),
+      await wp2.locator('#live').innerText());
+    await wp2.clock.runFor(3000);
+    check('bei fuenf verbleibenden Sekunden kommt die Warnung',
+      /fünf Sekunden/.test(await wp2.locator('#live').innerText()),
+      await wp2.locator('#live').innerText());
+    await wctx2.close();
+  }
+
   group('Die Kurzrunde bleibt kurz - auch beim Weitermachen');
   /* „3 Min" ist eine Entscheidung ueber die LAENGE, nicht nur ueber den
      Einstieg. „Weitermachen" rief danach dieselbe Anschlussfunktion auf wie der
@@ -3184,7 +3296,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 324;
+const MINDESTENS = 333;
 /* Die Zahl VOR dem eigenen Hochzaehlen nehmen: Sonst meldet der Wachposten
    „Nur 323 von mindestens 323 gelaufen" und zaehlt sich selbst zu den Laeufen -
    ein Satz, der sich widerspricht, ueber der einzigen Zeile, die sagt, dass

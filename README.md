@@ -441,7 +441,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 185 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 324 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 333 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
 npm run widersprueche # Karten, die einander widersprechen – und die mit der Zeit altern
@@ -3298,6 +3298,37 @@ Wachposten. Die Schätzung ist grob, und ausgerechnet die längste Karte ist ein
 (der Sinussatz mit vier fast gleichen Gleichungen), bei der ein Modell aus Wortzahlen ohnehin
 nichts taugt. Daraus eine Grenze zu machen hieße, eine Schätzung als Tatsache auszugeben. Die
 Zahl steht da, damit auffällt, wenn jemand eine Karte mit dreißig Sekunden Lesezeit ergänzt.
+
+
+### Was die Sprachausgabe zu hören bekommt
+
+Sechs Stellen der App sagen etwas an, das **nur Hilfsmittel** erreicht – der `sr-only`-Bereich
+`#live` mit `aria-live="polite"`. Geprüft war davon genau **eine**: die abgelaufene Quizfrage.
+
+Das ist die unangenehmste Sorte Lücke. Bricht eine der anderen fünf, merkt es niemand, der
+hinsieht – der Bildschirm zeigt die Lösung weiter, und nur wer die App *hört*, bekommt nach
+seiner Antwort gar nichts mehr. Ein Fehler, der genau die Nutzer trifft, die ihn am wenigsten
+umgehen können, und der beliebig lange unbemerkt bleibt.
+
+Nachgemessen tun alle sechs, was sie sollen – und stehen jetzt als Prüfung fest:
+
+| Stelle | Ansage |
+|---|---|
+| Auswahlkarte, Treffer | „Richtig." |
+| Auswahlkarte, Fehlgriff | „Falsch. Die Antwort lautet: …" |
+| freies Abrufen, Eingabe passt | „Deine Eingabe passt." |
+| freies Abrufen, daneben | „Die Antwort lautet: …" |
+| Duell und Quiz, fünf Sekunden vor Ablauf | „Noch fünf Sekunden." |
+| abgelaufene Quizfrage | „Zeit abgelaufen. Die Antwort lautet: …" (stand schon) |
+
+Zwei Dinge werden dabei mitgeprüft, die leicht durchrutschen: Vor der ersten Antwort steht
+dort **nichts** (eine stehengebliebene Ansage von vorhin wäre schlimmer als keine), und bei
+einem Fehlgriff enthält die Ansage die **Lösung wörtlich** – wer die App hört, sieht sie nicht
+daneben stehen, und ohne diesen Teil bliebe die Karte unbeantwortet im Ohr.
+
+Die Fünf-Sekunden-Warnung läuft mit gestellter Uhr (`page.clock`): erst acht Sekunden – noch
+keine Warnung –, dann drei weitere, und sie muss da sein. Gegengeprobt, alle drei Ansagen
+entfernt: sechs rote Prüfungen.
 
 
 ### Qualitätssicherung
