@@ -444,6 +444,7 @@ npm test           # 185 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 324 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
+npm run widersprueche # Karten, die einander widersprechen – und die mit der Zeit altern
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
 npm run karte      # ein Feld einer Karte ändern, über ihre Kennung
@@ -3178,6 +3179,76 @@ Flow?"). Im Tagestraining ist das gewollt, in einer Runde von zwölf Fragen wär
 gleiche. Geholt wurde jeweils die Frageform, die ein Quiz stellt – beim Widerspruchsbeweis
 also „Welches Beweisverfahren trägt den lateinischen Namen *reductio ad absurdum*?" und nicht
 „Wie funktioniert ein Beweis durch Widerspruch?".
+
+
+### Zwei Karten, die einander widersprechen
+
+Beim zweiten Gegenlesen fiel ein **Zahlenwiderspruch** auf: Der Kreatinphosphat-Speicher trug
+auf einer Karte „6–10 Sekunden", auf einer neueren „10–20 Sekunden". Gefunden hat ihn ein
+Mensch, der den Bestand von vorn bis hinten gelesen hat. Seither sind Hunderte Karten
+dazugekommen, und niemand liest 2.381 Karten noch einmal **paarweise** durch – das sind
+2,8 Millionen Paare.
+
+`npm run widersprueche` macht daraus eine Messung. Es sucht Kartenpaare, deren Fragen seltene
+Wörter teilen (Seltenheit zählt, nicht Anzahl: „kreatinphosphat" steht in genau zwei Karten,
+„wasser" in vierzig), deren Antworten beide Zahlen nennen – und deren Zahlen nicht
+übereinstimmen.
+
+**Die erste Fassung fand nichts, und das war wertlos.** Sie fand auch den bekannten Fall
+nicht, als er zum Gegenbeweis wieder eingebaut wurde. Zwei Fehler auf einmal:
+
+1. Sie verlangte **zwei** gemeinsame seltene Wörter. Das Paar teilt nur „kreatinphosphat" –
+   „speicher" und „belastung" fielen durch die Häufigkeitsgrenze, weil der Kontexttext
+   mitgezählt wurde.
+2. Sie sprang ab, sobald die Antworten **eine** Zahl gemeinsam hatten. „6 bis 10" und „10 bis
+   20" haben die 10 gemeinsam – genau der interessante Fall.
+
+Ein Paar, das nur ein einziges seltenes Wort teilt, trägt aber zu wenig Gewicht, um oben zu
+landen. Deshalb ein zweites Signal: **dieselbe Einheit in beiden Antworten.** „Etwa 6 bis 10
+Sekunden" und „Etwa 10 bis 20 Sekunden" teilen „Sekunden"; „776 v. Chr." und „1896 in Athen"
+teilen nichts. Damit steigen die Temperatur-, Breitengrad- und Formelpaare nach oben und die
+unverwandten Jahreszahlen fallen ab.
+
+**Der Bericht prüft sich selbst.** Er hängt ein erfundenes Widerspruchspaar an den Bestand,
+das dem bekannten Fall nachgebaut ist – die Fragen teilen nur das erfundene Wort, die
+Antworten haben eine Zahl gemeinsam – und **fällt mit Rückgabewert 1 durch**, wenn es das
+nicht unter die ersten zehn bringt. Ein Bericht, der nichts findet, ist erst dann eine
+Aussage. Gegengeprobt mit allen drei Fehlern einzeln:
+
+| eingebauter Fehler | Selbstprobe |
+|---|---|
+| zwei gemeinsame Wörter verlangt | „landet gar nicht in der Liste" |
+| Abbruch bei gemeinsamer Zahl | „landet gar nicht in der Liste" |
+| Einheitensignal entfernt | „landet erst auf Platz 58" |
+
+Stand jetzt: 11.822 Paare teilen ein seltenes Wort, 436 nennen verschiedene Zahlen, die
+25 auffälligsten von Hand gelesen – **kein einziger Widerspruch.** Alles echte
+Unterschiede: Siedepunkt gegen Dichtemaximum des Wassers, Polarkreis gegen Wendekreis,
+p-q-Formel gegen Mitternachtsformel, Antike gegen Neuzeit bei Olympia.
+
+#### Was mit der Zeit falsch wird
+
+Derselbe Lauf führt eine zweite Liste: **11 Karten**, deren Antwort altern kann. Die App hat
+keinen Server und kann nichts nachladen – wird ein Weltrekord gebrochen, lernt der Nutzer
+still das Falsche weiter, und am Spieleabend fällt es auf.
+
+- Weltrekorde: 100 m (Bolt, 9,58 s), Hochsprung (2,45 m), Weitsprung (8,95 m), Sotomayor
+- Rekordhalter: Fußball-Rekordweltmeister, Rekordnationalspieler, Rekordmeister, Rekordsieger
+  der Champions League
+- Nächste Olympische Sommerspiele (2028 in Los Angeles)
+- Elemente im Periodensystem („derzeit 118")
+- Oscar-Rekord („als erster elf Oscars")
+
+Diese Liste ist **nicht geprüft, sondern aufgestellt**: Ob einer der Werte inzwischen überholt
+ist, kann hier niemand feststellen – die App wird ohne Netz gebaut, und ein Sprachmodell kennt
+den Stand seines Trainings, nicht den von heute. Das ist genau der Punkt: Es braucht einen
+Menschen mit aktuellen Zahlen, und jetzt steht wenigstens fest, **welche elf Karten** er
+ansehen muss statt aller 2.381.
+
+Die Suche nach `nächste` musste dafür eingeengt werden. Ohne Einschränkung standen der
+sonnennächste Planet, die nächste Galaxie, der nächste Reiz im Training und das nächste Leben
+im Karma mit in der Liste – sechs von neunzehn Zeilen Unsinn, und eine Liste mit einem Drittel
+Unsinn liest beim dritten Mal niemand mehr.
 
 
 ### Qualitätssicherung
