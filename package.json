@@ -9,6 +9,7 @@
     "check": "node scripts/check-content.mjs",
     "luecken": "node scripts/nie-antwort.mjs",
     "abdeckung": "node scripts/abdeckung.mjs",
+    "wege": "ABDECKUNG=1 node tests/e2e.mjs && node scripts/wege.mjs",
     "karte": "node scripts/karte-aendern.mjs",
     "dev": "python3 -m http.server 8080",
     "simulate": "node scripts/simulate.mjs",
