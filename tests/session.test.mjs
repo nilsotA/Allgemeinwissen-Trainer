@@ -458,6 +458,37 @@ test('die Bremse lässt sich übersteuern', () => {
   assert.ok(sess.buildDaily().some(x => x.fresh));
 });
 
+test('„Grundlagen zuerst" holt wirklich zuerst die Grundlagen', () => {
+  /* Die Einstellung „Reihenfolge neuer Karten" war die einzige im Menue, deren
+     Wirkung nirgends geprueft war - und das README baut auf ihr auf: „Neue
+     Karten kommen standardmaessig leicht zuerst, damit Grundlagenluecken zuerst
+     schliessen." Eine Einstellung, die nichts tut, ist eine Luege im Menue.
+
+     Gemessen ueber 40 Tagesplaene zu je 20 neuen Karten: mit der Leiter 100 %
+     Basis, bunt gemischt 32 % - und der Bestand hat 29 % Basiskarten, die
+     Mischung folgt also dem Vorrat. */
+  const stufen = (modus) => {
+    store.resetAll();
+    store.setSetting('newPerDay', 20);
+    store.setSetting('level', modus);
+    const aus = [];
+    for (let i = 0; i < 40; i++) aus.push(...sess.buildDaily().filter(x => x.fresh).map(x => x.card.d));
+    return aus;
+  };
+  const anteilBasis = (a) => a.filter(d => d === 1).length / a.length;
+
+  const leiter = stufen('ladder');
+  assert.ok(leiter.length > 700, `zu wenig neue Karten gezogen: ${leiter.length}`);
+  assert.ok(anteilBasis(leiter) > 0.95,
+    `mit „Grundlagen zuerst" sind nur ${(anteilBasis(leiter) * 100).toFixed(0)} % der neuen Karten Basis`);
+
+  const bunt = stufen('mixed');
+  assert.ok(anteilBasis(bunt) > 0.15 && anteilBasis(bunt) < 0.55,
+    `bunt gemischt ergibt ${(anteilBasis(bunt) * 100).toFixed(0)} % Basis – erwartet der Anteil im Bestand (rund 29 %)`);
+  assert.ok(anteilBasis(leiter) - anteilBasis(bunt) > 0.3,
+    'die beiden Einstellungen muessen sich deutlich unterscheiden');
+});
+
 test('knapp unter der Schwelle laufen neue Karten weiter', () => {
   store.setSetting('maxReviews', 90);
   CARDS.slice(0, 60).forEach(c => {

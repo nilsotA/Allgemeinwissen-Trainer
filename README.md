@@ -440,7 +440,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 183 Einheitentests plus Inhaltsprüfung
+npm test           # 184 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 251 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
@@ -980,6 +980,14 @@ zurück – 400 Karten, 40 Tage, 25 Markierungen, alle Einstellungen, alle Zähl
 dürfen nur `rev` und `gen`, die Buchhaltung des Zusammenführens. Gegengeprobt gegen ein
 absichtlich kaputtes Einlesen, das die Markierungen fallen lässt: 25 Abweichungen, zwei
 Prüfungen rot.
+
+**Eine Einstellung ohne Prüfung.** Sieben Schalter im Menü hatten keine Durchlaufprüfung;
+nachgemessen wirken alle. „Neue Karten trotz Rückstand" (0 → 20 neue Karten bei 400 fälligen)
+und „Lehrerwissen in der Quizrunde" (0 → 92 Lehrerkarten im Quizvorrat) waren im Modell schon
+festgenagelt. Nur **„Reihenfolge neuer Karten"** war es nirgends – ausgerechnet die, auf der
+das Versprechen „Grundlagenlücken zuerst schließen" ruht. Gemessen über 40 Tagespläne zu je 20
+neuen Karten: mit der Leiter **100 % Basis**, bunt gemischt **32 %** – und der Bestand hat 29 %
+Basiskarten, die Mischung folgt also dem Vorrat. Beides steht jetzt als Test.
 
 Dasselbe gilt für den **zweiten Notausgang**: „Gesicherten Stand zurückholen (N Karten)". Wer
 die falsche Datei einliest, hat genau diesen Knopf – auch er war von außen nie angefasst
