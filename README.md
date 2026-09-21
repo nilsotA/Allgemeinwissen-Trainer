@@ -3381,6 +3381,11 @@ liegen alle einen Buchstaben auseinander. Gemessen kostet sie 0,1 Prozentpunkte.
 | Doppler | 42,3 % | **76,6 %** |
 | zusammen | 39,9 % | **72,5 %** |
 
+Beide Spalten sind am selben Bestand von 2.381 Karten gemessen. Wer `npm run vertipper` heute
+laufen lässt, sieht 72,1 % – die 50 Karten aus dem nächsten Abschnitt sind seither
+dazugekommen, und ein Teil davon sind Einwortantworten, bei denen die Regel bewusst nicht
+greift.
+
 #### Was diese Zahl nicht heißt
 
 Die 32 Punkte sind eine **bedingte** Verbesserung: So oft wird ein Vertipper verziehen, *wenn*
