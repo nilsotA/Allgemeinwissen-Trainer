@@ -106,6 +106,15 @@ svg{display:block;flex:none}
 /* Kein einzelnes Wort auf der letzten Zeile - gilt fuer alle Textbloecke,
    die ueber mehrere Zeilen laufen koennen. */
 p,.muted,.tiny,.val,.expl,.lk-q,.q{text-wrap:pretty}
+/* Ein Wort, das allein schon breiter ist als seine Zeile, bricht - statt
+   abgeschnitten zu werden. Gemessen ueber alle 2.381 Karten im Nachschlagen
+   traf das genau eine: „Donaudampfschifffahrtsgesellschaft" stand 67 px ueber
+   den Rand hinaus, und .lk schneidet mit overflow:hidden ab - die letzten
+   Buchstaben waren schlicht weg. break-word und nicht anywhere: Es greift nur,
+   wenn das Wort sonst nicht passt, und laesst die Breitenrechnung in Flex- und
+   Rasterkaesten unangetastet. Die Regel steht am Koerper, damit auch Karten,
+   die es noch nicht gibt, davon gedeckt sind. */
+body{overflow-wrap:break-word}
 .muted{color:var(--dim);font-size:14.5px}
 .tiny{color:var(--dim2);font-size:12.5px;line-height:1.45}
 .row{display:flex;align-items:center;gap:10px}

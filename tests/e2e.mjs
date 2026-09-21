@@ -2610,6 +2610,69 @@ try {
     await uctx.close();
   }
 
+  group('Das laengste Wort der Sammlung wird nicht abgeschnitten');
+  /* Der Sammler oben nimmt auf dem Nachschlage-Bildschirm eine ZUFAELLIGE
+     Auswahl von 20 Karten - er fand den Fehler, aber nur in etwa jedem dritten
+     Lauf. Gemessen ueber alle 2.381 Karten war genau eine betroffen: die Frage
+     nach der „Donaudampfschifffahrtsgesellschaft" stand 67 px ueber den Rand
+     hinaus, und .lk schneidet mit overflow:hidden ab. Diese Pruefung sucht sich
+     die laengsten ungebrochenen Woerter selbst aus der Sammlung und legt genau
+     die vor - sie kann nicht mehr aus Glueck bestehen. */
+  {
+    /* Umbruchstellen, die der Browser von sich aus nutzt: Leerzeichen, weiches
+       Trennzeichen, Binde- und Schraegstrich. Was dazwischen steht, muss als
+       Block passen - oder brechen. */
+    const stueck = (txt) => Math.max(0, ...String(txt).split(/[\s­\-–—/]+/).map(w => w.length));
+    const laengste = CARDS
+      .map(c => ({ c, n: Math.max(stueck(c.q), stueck(c.a), stueck(c.t || '')) }))
+      .sort((a, b) => b.n - a.n).slice(0, 20);
+    check('die Sammlung enthaelt wirklich lange Woerter', laengste[0].n >= 30,
+      `laengstes ungebrochenes Wort: ${laengste[0].n} Zeichen`);
+
+    const uctx3 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    /* Der Stand muss VOR dem ersten Skript der Seite stehen. Wird er per
+       evaluate() nachgetragen und die Seite danach neu geladen, liefert man
+       sich ein Wettrennen mit dem ersten Speichern der App: Beim Bauen dieser
+       Pruefung hat es sie verloren, die Markierungen waren weg, und das leere
+       Suchfeld legt dann eine ZUFALLSAUSWAHL von 20 Karten vor. Auch die war
+       20 Karten gross - die Pruefung bestand, ohne je eine der gesuchten
+       Karten gesehen zu haben. Die Kopfzeile wird deshalb mitgeprueft: Sie
+       nennt die Zufallsauswahl beim Namen. */
+    await uctx3.addInitScript(([k, ids]) => {
+      const flags = {}; let t = Date.now();
+      for (const id of ids) flags[id] = t--;
+      localStorage.setItem(k, JSON.stringify({ version: 1, settings: {}, cards: {}, days: {}, flags }));
+    }, [KEY, laengste.map(x => x.c.id)]);
+    const up3 = horche(await uctx3.newPage());
+    await up3.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await up3.waitForSelector('.hero');
+    await up3.locator('#searchBtn').click();
+    await up3.waitForSelector('#res .lk');
+    // Aufklappen: so werden auch Antwort und Kontext gemessen, nicht nur die Frage.
+    await up3.evaluate(() => document.querySelectorAll('[data-auf]').forEach(b => b.click()));
+    await up3.waitForTimeout(150);
+    const kopf = await up3.locator('#res p.tiny').first().innerText();
+    check('es liegen die markierten Karten vor, nicht die Zufallsauswahl',
+      /markierten Karten/.test(kopf), kopf);
+    check('genau diese Karten liegen vor', await up3.locator('#res .lk').count() === laengste.length);
+    check('das laengste Wort ist wirklich dabei',
+      (await up3.locator('#res').innerText()).includes(
+        laengste[0].c.q.split(/[\s]+/).find(w => w.length >= laengste[0].n) || laengste[0].c.q));
+    const beschnitten = await up3.evaluate(() => {
+      const raus = [];
+      for (const el of document.querySelectorAll('#res *')) {
+        const st = getComputedStyle(el);
+        if (st.display === 'none' || st.overflowX === 'auto' || st.overflowX === 'scroll') continue;
+        const ueber = el.scrollWidth - el.clientWidth;
+        if (ueber > 2) raus.push(`${(el.className || '').toString().slice(0, 16)} ${ueber}px: `
+          + (el.innerText || '').slice(0, 40).replace(/\n/g, ' '));
+      }
+      return raus;
+    });
+    check('kein Buchstabe wird abgeschnitten', beschnitten.length === 0, beschnitten.slice(0, 3).join(' | '));
+    await uctx3.close();
+  }
+
   group('Die Kurzrunde bleibt kurz - auch beim Weitermachen');
   /* „3 Min" ist eine Entscheidung ueber die LAENGE, nicht nur ueber den
      Einstieg. „Weitermachen" rief danach dieselbe Anschlussfunktion auf wie der
@@ -2690,7 +2753,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 271;
+const MINDESTENS = 276;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
