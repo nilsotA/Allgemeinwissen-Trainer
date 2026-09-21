@@ -2610,6 +2610,68 @@ try {
     await uctx.close();
   }
 
+  group('Ein Fehler im Duell deckelt das Intervall');
+  /* Die Regel steht in srs.js und ist dort auch gemessen - aber die VERDRAHTUNG
+     in app.js war nie gelaufen: der Rueckruf, der den abgelegten Kartenstand
+     einholt und erst diesen deckelt. Wer eine 30-Tage-Karte unter Zeitdruck
+     nicht abrufen kann, hat sie nicht dreissig Tage getragen, sondern so viele,
+     wie seit der letzten Abfrage wirklich vergangen sind. */
+  {
+    const dektx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const BEKANNT = CARDS.slice(0, 12);
+    await dektx.addInitScript(([k, ids]) => {
+      const heute = Math.floor(Date.now() / 86400000);
+      const cards = {};
+      /* Vor zehn Tagen abgefragt, Intervall 30, also in zwanzig Tagen wieder
+         faellig. Ein Fehler heute muss daraus ein Intervall von zehn Tagen
+         machen - und die Karte sofort faellig. */
+      for (const id of ids) cards[id] = { ef: 2.5, iv: 30, due: heute + 20, reps: 5,
+        lapses: 0, seen: 5, ok: 5, last: Date.now() - 10 * 86400000 };
+      localStorage.setItem(k, JSON.stringify({ version: 1, settings: {}, cards, days: {}, flags: {} }));
+    }, [KEY, BEKANNT.map(c => c.id)]);
+    const dep = horche(await dektx.newPage());
+    await dep.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await dep.waitForSelector('.hero');
+    await dep.locator('.nav-btn[data-view="duel"]').click();
+    await dep.getByRole('button', { name: /Duell/ }).click();
+    await dep.waitForSelector('.opt:not([disabled])');
+    await dep.waitForTimeout(FUSS_TAUB);
+
+    const frage = (await dep.locator('h1.q').innerText()).trim();
+    const werte = await dep.locator('.opt:not([disabled])').evaluateAll(bs => bs.map(b => b.dataset.v));
+    const karte = CARDS.find(c => c.q === frage && werte.includes(c.a));
+    check('das Duell fragt eine der bekannten Karten',
+      !!karte && BEKANNT.some(c => c.id === karte.id), frage);
+    if (!karte) { await dektx.close(); throw new Error('Duell-Deckelung: Karte nicht gefunden'); }
+
+    const falsch = werte.find(v => v !== karte.a);
+    await dep.locator(`.opt[data-v="${falsch.replace(/"/g, '\\"')}"]`).click();
+    await dep.waitForSelector('.opt.wrong');
+    /* Gebucht wird beim Tipp auf „Weiter", nicht beim Antworten: Solange die
+       Aufloesung steht, laesst sich die Runde noch abbrechen, ohne dass etwas
+       Halbes im Speicher liegt. Ohne diesen Schritt misst die Pruefung den
+       unveraenderten Stand und meldet einen Fehler, den es nicht gibt. */
+    await dep.waitForTimeout(FUSS_TAUB);
+    await dep.locator('#next').click();
+    await dep.waitForTimeout(600);        // Speichern ist um 250 ms gebuendelt
+    const stand = await dep.evaluate(([k, id]) => {
+      const z = JSON.parse(localStorage.getItem(k) || '{}');
+      return { karte: z.cards[id], heute: Math.floor(Date.now() / 86400000) };
+    }, [KEY, karte.id]);
+    check('der Fehler deckelt das Intervall auf die wirklich verstrichene Zeit',
+      stand.karte && stand.karte.iv === 10, JSON.stringify(stand.karte));
+    check('und macht die Karte sofort faellig',
+      stand.karte && stand.karte.due === stand.heute, `due ${stand.karte?.due} statt ${stand.heute}`);
+
+    /* Eine Karte, die nicht drankam, bleibt unberuehrt - gedeckelt wird nur,
+       woran man wirklich gescheitert ist. */
+    const andere = BEKANNT.find(c => c.id !== karte.id);
+    const unberuehrt = await dep.evaluate(([k, id]) => JSON.parse(localStorage.getItem(k) || '{}').cards[id], [KEY, andere.id]);
+    check('eine nicht gefragte Karte bleibt, wie sie war',
+      unberuehrt && unberuehrt.iv === 30, JSON.stringify(unberuehrt));
+    await dektx.close();
+  }
+
   group('Eine ganze Runde mit der Tastatur');
   /* Vier Tastaturhorcher waren nie gelaufen: Enter im Eingabefeld, die Zifferntaste
      auf den Bewertungsknoepfen, Enter im Aufloesungsbild der Quizrunde und die
@@ -3087,10 +3149,15 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 318;
-if (passed + failed < MINDESTENS) {
+const MINDESTENS = 322;
+/* Die Zahl VOR dem eigenen Hochzaehlen nehmen: Sonst meldet der Wachposten
+   „Nur 323 von mindestens 323 gelaufen" und zaehlt sich selbst zu den Laeufen -
+   ein Satz, der sich widerspricht, ueber der einzigen Zeile, die sagt, dass
+   etwas fehlt. */
+const gelaufen = passed + failed;
+if (gelaufen < MINDESTENS) {
   failed++;
-  console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
+  console.error(`\nNur ${gelaufen} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
     + 'ein Abschnitt ist ausgefallen, ohne zu scheitern.');
 }
 
