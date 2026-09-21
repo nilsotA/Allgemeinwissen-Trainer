@@ -1321,8 +1321,13 @@ try {
       d.innerHTML = '<span>Neue Fassung bereit</span><button type="button">Laden</button>';
       document.body.appendChild(d);
     });
-    // Ein frisches Profil hat keine Wackelkandidaten – der Knopf zeigt nur eine Meldung.
-    await bp.getByRole('button', { name: 'Wackelkandidaten' }).click();
+    /* Irgendeine Kurzmeldung, die auf einem frischen Profil sicher kommt: Der
+       Stern im Nachschlagen meldet „Markiert". Frueher stand hier der Knopf
+       „Wackelkandidaten", der auf einem frischen Profil nur „Nichts zu ueben"
+       sagte - den gibt es dort jetzt nicht mehr, eben weil er nichts konnte. */
+    await bp.click('#searchBtn');
+    await bp.waitForSelector('[data-flag]');
+    await bp.locator('[data-flag]').first().click();
     await bp.waitForTimeout(400);
     check('eine Kurzmeldung erscheint', await bp.locator('.toast:not(.aktion)').count() === 1);
     check('der Update-Balken ueberlebt die Kurzmeldung', await bp.locator('.toast.aktion').count() === 1);
@@ -1902,6 +1907,47 @@ try {
         JSON.stringify(nachher.settings));
     }
     await bctx.close();
+  }
+
+  group('Knoepfe, die nichts koennen, stehen nicht da');
+  /* Am ersten Tag gibt es keine abgefragte Karte - „Wackelkandidaten" konnte
+     dort nur „Nichts zu ueben" antworten. „Markierte" hielt sich laengst an die
+     Regel und erscheint erst mit dem ersten Stern. */
+  {
+    const kctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const kp = horche(await kctx.newPage());
+    await kp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await kp.waitForSelector('.hero');
+    check('am ersten Tag steht kein Wackelkandidaten-Knopf da',
+      await kp.locator('[data-go="weak"]').count() === 0);
+    check('und kein Markierte-Knopf', await kp.locator('[data-go="flag"]').count() === 0);
+
+    await kp.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      const srs = await import('/assets/js/srs.js');
+      store.putCard(daten.CARDS[0].id, { ...srs.fresh(), seen: 3, ok: 1, reps: 1, iv: 2,
+        due: store.todayNum(), lapses: 2, last: Date.now() });
+      store.save(true);
+    });
+    await kp.reload({ waitUntil: 'networkidle' });
+    await kp.waitForSelector('.hero');
+    check('mit der ersten abgefragten Karte kommt er zurueck',
+      await kp.locator('[data-go="weak"]').count() === 1);
+    check('der Markierte-Knopf bleibt weg, solange nichts markiert ist',
+      await kp.locator('[data-go="flag"]').count() === 0);
+
+    await kp.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      store.toggleFlag(daten.CARDS[5].id);
+      store.save(true);
+    });
+    await kp.reload({ waitUntil: 'networkidle' });
+    await kp.waitForSelector('.hero');
+    check('mit dem ersten Stern stehen beide da',
+      await kp.locator('[data-go="weak"]').count() === 1 && await kp.locator('[data-go="flag"]').count() === 1);
+    await kctx.close();
   }
 
   group('Abfrage-Art: der Schalter mit der groessten Lernwirkung');
@@ -2580,7 +2626,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 260;
+const MINDESTENS = 265;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

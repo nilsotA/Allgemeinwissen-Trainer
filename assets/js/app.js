@@ -400,10 +400,16 @@ function renderHome() {
     ${wochenstreifen()}
   </div>
 
-  <div class="${flags ? 'duo' : 'btn-stack'}" style="margin-top:11px">
-    <button class="btn" data-go="weak">Wackelkandidaten</button>
+  ${/* Beide Knoepfe nur, wenn sie etwas zu tun haben. „Markierte" hielt sich
+        daran laengst; „Wackelkandidaten" stand auch am ersten Tag da, an dem
+        es keine einzige abgefragte Karte gibt - ein Tipp darauf brachte nur
+        „Nichts zu ueben". Ein Knopf, der nichts kann, ist ein Versprechen,
+        das die App nicht haelt. */ ''}
+  ${o.seen || flags ? `
+  <div class="${o.seen && flags ? 'duo' : 'btn-stack'}" style="margin-top:11px">
+    ${o.seen ? '<button class="btn" data-go="weak">Wackelkandidaten</button>' : ''}
     ${flags ? `<button class="btn" data-go="flag">${ico('stern', 's')}Markierte · ${flags}</button>` : ''}
-  </div>
+  </div>` : ''}
 
   <h2 class="sec">Wissen des Tages</h2>
   ${merkankerKarte(f, 'merkHeute', '')}
@@ -446,7 +452,10 @@ function renderHome() {
   app.querySelectorAll('[data-short]').forEach(b => b.onclick = () => {
     startRun(tagesplan.slice(0, Number(b.dataset.short)), 'daily', weiterTag);
   });
-  app.querySelector('[data-go="weak"]').onclick = () => {
+  /* Mit Fragezeichen wie beim Stern-Knopf daneben: Beide Knoepfe stehen nur da,
+     wenn sie etwas zu tun haben, und am ersten Tag gibt es keinen von beiden. */
+  const wackelKnopf = app.querySelector('[data-go="weak"]');
+  if (wackelKnopf) wackelKnopf.onclick = () => {
     const q = sess.buildWeak(20);
     q.length ? startRun(q, 'weak', () => sess.buildWeak(20)) : toast('Erst ein paar Karten lernen');
   };

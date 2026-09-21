@@ -441,7 +441,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 184 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 260 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 265 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -987,6 +987,17 @@ Markierungen löschen"**. Beide tun, was sie versprechen. Beim Löschen misst di
 die App als markiert *ansieht*, nicht die Zahl der Schlüssel: Die bleiben als Grabsteine
 stehen, damit ein zweiter offener Tab die Sterne nicht zurückholt. Die erste Fassung der
 Messung zählte die Gräber und meldete „17 übrig" – ein Fehlalarm des Messgeräts.
+
+**Ein Knopf, der am ersten Tag nichts konnte.** Auf der Startseite stand „Wackelkandidaten"
+immer – auch am ersten Tag, an dem es keine einzige abgefragte Karte gibt. Ein Tipp darauf
+brachte nur eine Kurzmeldung. Der Knopf „Markierte" daneben hielt sich längst an die Regel und
+erscheint erst mit dem ersten Stern; jetzt tun es beide.
+
+Die erste Fassung dieser Änderung **hat die Startseite zerlegt**: Die Bindung darunter greift
+mit `querySelector(...).onclick` auf den Knopf zu, und der war nun weg – „Cannot set properties
+of null". Der Durchlauf meldete es doppelt: einmal über die Konsolenprüfung, einmal über die
+Mindestzahl der Prüfungen, weil ein ganzer Abschnitt ausfiel, ohne zu scheitern. Genau dafür
+steht die Zahl dort.
 
 #### Was „Grundlagen zuerst" für einen Sport- und Mathe-Studenten bedeutet
 
