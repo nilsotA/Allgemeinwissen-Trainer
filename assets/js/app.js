@@ -149,7 +149,7 @@ function announce(msg) { if (live) live.textContent = msg; }
    Schreiben fehl, kam bisher genau eine Kurzmeldung – danach konnte man eine
    Stunde weiterlernen, ohne dass etwas ankam. Der Aktionsbalken bleibt stehen,
    bis der Stand gesichert ist, und bietet das Sichern gleich an. */
-setSaveErrorHandler(() => speicherBalken());
+setSaveErrorHandler((e) => speicherBalken(e));
 startFehlerBalken();
 
 /* Zwei offene Tabs: Der Speicher wird zusammengefuehrt, nicht ueberschrieben.
@@ -2325,8 +2325,13 @@ function startFehlerBalken() {
   const d = document.createElement('div');
   d.className = 'toast aktion speicher';
   d.setAttribute('role', 'alert');
-  d.innerHTML = '<span>Der gespeicherte Stand war beim Start unlesbar – '
-    + (p.bytes ? 'die Rohdaten sind aufgehoben' : 'er liess sich nicht aufheben') + '</span>';
+  /* Dieselbe Unterscheidung wie unten: Ist der Speicher gesperrt, war nichts
+     „unlesbar" - es gab schlicht keinen Zugriff, und der Nutzer hat auch
+     nichts verloren. Er soll nur wissen, dass nichts bleibt. */
+  d.innerHTML = p.art && p.art !== 'QuotaExceededError' && /security|denied|insecure/i.test(p.art + ' ' + p.grund)
+    ? '<span>Dieser Browser gibt den Speicher nicht frei – der Fortschritt hält nur bis zum Schließen</span>'
+    : '<span>Der gespeicherte Stand war beim Start unlesbar – '
+      + (p.bytes ? 'die Rohdaten sind aufgehoben' : 'er liess sich nicht aufheben') + '</span>';
   const b = document.createElement('button');
   b.type = 'button';
   b.textContent = 'Verstanden';
@@ -2335,7 +2340,7 @@ function startFehlerBalken() {
   document.body.appendChild(d);
 }
 
-function speicherBalken() {
+function speicherBalken(grund) {
   document.querySelector('.toast.aktion.speicher')?.remove();
   /* Zwei Aktionsbalken liegen sonst gleichzeitig da – beide fixiert am selben
      unteren Rand, beide z-index 60. Der spaeter angehaengte deckte den anderen
@@ -2347,7 +2352,15 @@ function speicherBalken() {
   const d = document.createElement('div');
   d.className = 'toast aktion speicher';
   d.setAttribute('role', 'alert');
-  d.innerHTML = '<span>Speicher voll – neue Antworten gehen verloren</span>';
+  /* „Voll" nur, wenn es wirklich voll ist. Hat Safari die Website-Daten
+     gesperrt (Einstellung „Alle Cookies blockieren", oder ein privates
+     Fenster), wirft schon der Zugriff einen SecurityError - dann hilft
+     Platzschaffen nicht, und der Satz schickte den Nutzer auf die falsche
+     Suche. Der Knopf bleibt in beiden Faellen richtig: Der Stand liegt im
+     Arbeitsspeicher und laesst sich als Datei sichern. */
+  d.innerHTML = store.speicherVoll(grund)
+    ? '<span>Speicher voll – neue Antworten gehen verloren</span>'
+    : '<span>Dieser Browser darf nichts speichern – neue Antworten gehen verloren</span>';
   const b = document.createElement('button');
   b.type = 'button';
   b.textContent = 'Sichern';

@@ -1809,6 +1809,45 @@ try {
     await kctx.close();
   }
 
+  group('Gesperrter Websitespeicher');
+  /* Safari kann den Websitespeicher ganz sperren - Einstellung „Alle Cookies
+     blockieren", oder ein privates Fenster. Dann wirft schon der ZUGRIFF auf
+     localStorage einen SecurityError, nicht erst das Schreiben. Die App muss
+     trotzdem laufen (der Stand liegt im Arbeitsspeicher) und ehrlich sagen,
+     woran es liegt: „Speicher voll" schickte den Nutzer auf die falsche
+     Suche - Platz schaffen aendert dort nichts. */
+  {
+    const gctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const gp = horche(await gctx.newPage(), true);   // der SecurityError ist gewollt
+    await gp.addInitScript(() => {
+      Object.defineProperty(window, 'localStorage', { configurable: true,
+        get() { throw new DOMException('The operation is insecure.', 'SecurityError'); } });
+    });
+    await gp.goto(URL_BASE, { waitUntil: 'load' });
+    await gp.waitForSelector('[data-go="daily"]', { timeout: 15000 });
+    check('die App startet auch ohne Websitespeicher', true);
+    await gp.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+    await gp.waitForSelector('.sess-body');
+    await gp.waitForTimeout(FUSS_TAUB);
+    const erste = (await gp.locator('.q').first().innerText()).trim();
+    if (await gp.locator('.opt').count()) await gp.locator('.opt').first().click();
+    else if (await gp.locator('[data-hab]').count()) await gp.locator('[data-hab="1"]').click();
+    else await gp.click('#reveal');
+    await gp.waitForSelector('[data-g], #next');
+    await gp.waitForTimeout(FUSS_TAUB);
+    if (await gp.locator('[data-g="2"]').count()) await gp.locator('[data-g="2"]').click();
+    else await gp.click('#next');
+    await gp.waitForTimeout(600);
+    const zweite = await gp.locator('.q').count() ? (await gp.locator('.q').first().innerText()).trim() : '';
+    check('eine Runde laesst sich trotzdem spielen', !!zweite && zweite !== erste,
+      zweite ? 'haengt auf derselben Karte' : 'keine zweite Karte');
+    const balken = await gp.locator('.toast.aktion.speicher').innerText().catch(() => '');
+    check('der Hinweis nennt den richtigen Grund',
+      /nichts speichern/.test(balken) && !/voll/.test(balken), balken.replace(/\n+/g, ' '));
+    check('und bietet das Sichern als Datei an', /Sichern/.test(balken), balken.replace(/\n+/g, ' '));
+    await gctx.close();
+  }
+
   group('Kleines Display');
   /* Ein iPhone SE ist 320 x 568 CSS-Pixel gross - die Lernkarte ist dort
      hoeher als das Fenster. Frueher scrollte in diesem Fall die Seite statt
@@ -2279,7 +2318,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 234;
+const MINDESTENS = 238;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `

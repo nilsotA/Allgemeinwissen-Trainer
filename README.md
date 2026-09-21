@@ -441,7 +441,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 183 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 234 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 238 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -969,6 +969,21 @@ der App, auf dem Antworten still verschwinden. Jetzt steht ein **Aktionsbalken**
 gesichert wurde, mit dem Sichern-Knopf gleich daneben. Er verdrängt ein wartendes
 Update-Angebot nicht, sondern stellt es zurück und holt es nach – sonst wäre das Angebot
 nach einem einzigen Speicherfehler bis zum nächsten Start verschwunden.
+
+**„Speicher voll" stand auch da, wenn der Speicher gesperrt war.** Safari kann den
+Websitespeicher ganz abschalten – Einstellung „Alle Cookies blockieren", oder ein privates
+Fenster. Dann wirft schon der **Zugriff** auf `localStorage` einen `SecurityError`, nicht erst
+das Schreiben. Die App fing das ab und lief weiter (der Stand liegt im Arbeitsspeicher), meldete
+aber „Speicher voll – neue Antworten gehen verloren". Wer das liest, schafft Platz, und das
+ändert nichts. Die Ausnahme trägt den Unterschied im Namen; der Balken bekommt sie jetzt
+übergeben und sagt „Dieser Browser darf nichts speichern". Derselbe Satz beim Start: Es war
+dort nichts „unlesbar", es gab schlicht keinen Zugriff.
+
+Gemessen wurden vier Lagen – normal, Zugriff gesperrt, Schreiben gesperrt, `sessionStorage`
+gesperrt. In allen vieren startet die App, lässt eine Runde spielen und bietet das Sichern als
+Datei an; nur der Satz war falsch. Die erste Fassung dieser Messung maß allerdings nichts: Sie
+wartete nach der Antwort auf die vier Notenknöpfe, die es bei einer Auswahlfrage gar nicht
+gibt – und meldete den Fehlschlag auch für den Normalfall.
 
 **Bilder, die ihre Auskunft nur im `title` tragen.** Die Heatmap besteht aus 84 Zellen
 `<i title="…">`, die Wochenvorschau aus sieben Säulen derselben Bauart. Auf iOS wird

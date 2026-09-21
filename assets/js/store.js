@@ -216,8 +216,17 @@ function normalisiereFlags(z) {
    alles in Ordnung. VOR dem Aufruf erklaert: load() laeuft beim Modulstart und
    schreibt hier hinein. Als Deklaration weiter unten laege der Name in seiner
    Totzone – genau die Falle, in die `zahl` schon getappt ist. */
-let startFehler = null, kaputteRohdaten = 0;
-export const startProblem = () => (startFehler ? { grund: startFehler, bytes: kaputteRohdaten } : null);
+let startFehler = null, startFehlerArt = '', kaputteRohdaten = 0;
+export const startProblem = () =>
+  (startFehler ? { grund: startFehler, art: startFehlerArt, bytes: kaputteRohdaten } : null);
+
+/* „Voll" und „gesperrt" sind zwei verschiedene Lagen, und sie unterscheiden
+   sich nur im Namen der Ausnahme. Safari wirft bei blockierten Website-Daten
+   einen SecurityError, und zwar schon beim ZUGRIFF auf localStorage - nicht
+   erst beim Schreiben. Wer dann „Speicher voll" liest, raeumt Platz frei, der
+   nichts aendert. */
+export const speicherVoll = (e) => !!e && (e.name === 'QuotaExceededError'
+  || e.name === 'NS_ERROR_DOM_QUOTA_REACHED' || e.code === 22 || e.code === 1014);
 
 let state = load();
 
@@ -255,6 +264,7 @@ function load() {
       if (roh) { localStorage.setItem(KEY + '.kaputt', roh); kaputteRohdaten = roh.length; }
     } catch (e2) { /* voll: dann bleibt nur die Meldung */ }
     startFehler = e && e.message ? String(e.message) : 'unbekannt';
+    startFehlerArt = (e && e.name) ? String(e.name) : '';
     return structuredClone(DEFAULTS);
   }
 }
