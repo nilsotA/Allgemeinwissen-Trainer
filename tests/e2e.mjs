@@ -2610,6 +2610,113 @@ try {
     await uctx.close();
   }
 
+  group('Eine ganze Runde mit der Tastatur');
+  /* Vier Tastaturhorcher waren nie gelaufen: Enter im Eingabefeld, die Zifferntaste
+     auf den Bewertungsknoepfen, Enter im Aufloesungsbild der Quizrunde und die
+     Zifferntaste auf ihren Antwortknoepfen. Auf dem iPhone tippt man - aber am
+     Schreibtisch, mit angeschlossener Tastatur und mit Sprachsteuerung ist das
+     der Weg, und er ist bisher nur von Hand ausprobiert worden. */
+  {
+    const tctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    await tctx2.addInitScript(([k, ids]) => {
+      const heute = Math.floor(Date.now() / 86400000);
+      const cards = {};
+      for (const id of ids) cards[id] = { ef: 2.5, iv: 4, due: heute - 1, reps: 3,
+        lapses: 0, seen: 4, ok: 3, last: Date.now() - 86400000 };
+      localStorage.setItem(k, JSON.stringify({ version: 1,
+        settings: { recallMode: 'recall' }, cards, days: {}, flags: {} }));
+    }, [KEY, CARDS.slice(0, 60).map(c => c.id)]);
+    const tp2 = horche(await tctx2.newPage());
+    await tp2.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await tp2.waitForSelector('.hero');
+    await tp2.locator('[data-go="daily"]').click();
+    await tp2.waitForSelector('#rin');
+    await tp2.waitForTimeout(FUSS_TAUB);
+    check('bei „immer frei abrufen" kommt ein Eingabefeld', await tp2.locator('#rin').count() === 1);
+
+    /* Die Sammeltaste gibt es ohne Eingabe ausdruecklich NICHT: Die Festlegung
+       „hab ich / hab ich nicht" soll eine Entscheidung sein und nicht der
+       Reflex auf die Leertaste. */
+    await tp2.keyboard.press('Space');
+    await tp2.waitForTimeout(250);
+    check('die Leertaste deckt ein leeres Feld nicht auf',
+      await tp2.locator('#rin').count() === 1 && await tp2.locator('[data-g]').count() === 0);
+    check('stattdessen steht die Festlegung im Fuss', await tp2.locator('[data-hab]').count() === 2);
+
+    const stand = async () => Number((await tp2.locator('.sess-top .tiny').innerText()).split('/')[0]);
+    const vorher = await stand();
+    await tp2.locator('#rin').fill('irgendetwas');
+    await tp2.keyboard.press('Enter');
+    await tp2.waitForSelector('[data-g]');
+    check('Enter im Eingabefeld deckt die Loesung auf', await tp2.locator('.answer .val').count() > 0);
+    check('und die vier Bewertungsknoepfe stehen bereit', await tp2.locator('[data-g]').count() === 4);
+
+    await tp2.waitForTimeout(FUSS_TAUB);
+    await tp2.keyboard.press('3');          // 1..4 sind Nochmal, Schwer, Gut, Leicht
+    await tp2.waitForSelector('#rin');
+    check('die Taste 3 bewertet („Gut") und blaettert weiter', (await stand()) === vorher + 1);
+    await tp2.waitForTimeout(FUSS_TAUB);   // Speichern ist um 250 ms gebuendelt
+    const gutGezaehlt = await tp2.evaluate(k => {
+      const z = JSON.parse(localStorage.getItem(k) || '{}');
+      const tag = Object.values(z.days || {})[0] || {};
+      return { done: tag.done || 0, correct: tag.correct || 0 };
+    }, KEY);
+    /* Die beiden Tasten werden PAARWEISE geprueft. Allein sagt keine von beiden
+       genug: „richtig" gilt fuer alles ausser Nochmal, eine verschobene
+       Zuordnung faellt damit durch - erst 1 gegen 3 nagelt beide Enden fest.
+       Gegengeprobt mit umgedrehter Zuordnung: diese Pruefung bleibt gruen, die
+       naechste wird rot. */
+    check('und zwar als richtig - „Gut" ist kein Aussetzer',
+      gutGezaehlt.done === 1 && gutGezaehlt.correct === 1, JSON.stringify(gutGezaehlt));
+
+    /* Und dieselbe Taste am anderen Ende: „1" ist Nochmal, also ein Aussetzer.
+       Der Fuss der frisch gezeichneten Karte ist 350 ms taub - ein Test muss
+       sich daran halten wie ein Mensch, sonst laeuft go() ins Leere. */
+    await tp2.waitForTimeout(FUSS_TAUB);
+    await tp2.locator('#rin').fill('wieder etwas');
+    await tp2.keyboard.press('Enter');
+    await tp2.waitForSelector('[data-g]');
+    await tp2.waitForTimeout(FUSS_TAUB);
+    await tp2.keyboard.press('1');
+    await tp2.waitForSelector('#rin');
+    await tp2.waitForTimeout(FUSS_TAUB);
+    const nachNochmal = await tp2.evaluate(k => {
+      const z = JSON.parse(localStorage.getItem(k) || '{}');
+      const tag = Object.values(z.days || {})[0] || {};
+      return { done: tag.done || 0, correct: tag.correct || 0 };
+    }, KEY);
+    check('die Taste 1 bewertet („Nochmal") und zaehlt nicht als richtig',
+      nachNochmal.done === 2 && nachNochmal.correct === 1, JSON.stringify(nachNochmal));
+    await tctx2.close();
+  }
+
+  group('Die Quizrunde mit der Tastatur');
+  {
+    const qkctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const qkp = horche(await qkctx.newPage());
+    await qkp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await qkp.waitForSelector('.hero');
+    await qkp.locator('.nav-btn[data-view="duel"]').click();
+    await qkp.getByRole('button', { name: /Quizrunde starten/ }).click();
+    await qkp.waitForSelector('.opt:not([disabled])');
+    await qkp.waitForTimeout(FUSS_TAUB);
+    const frage1 = await qkp.locator('h1.q').innerText();
+    await qkp.keyboard.press('2');
+    /* Nicht hart warten: Greift die Taste nicht, soll das eine rote Pruefung
+       geben und nicht den ganzen Abschnitt abbrechen. */
+    const urteilDa = await qkp.waitForSelector('.verdict', { timeout: 5000 }).then(() => true, () => false);
+    check('eine Zifferntaste beantwortet die Quizfrage',
+      urteilDa && await qkp.locator('.opt.right').count() === 1);
+    if (!urteilDa) { await qkctx.close(); throw new Error('Quiz-Tastatur: ohne Urteil geht es hier nicht weiter'); }
+    check('und der Punktestand steht fest', /^\d+$/.test(await qkp.locator('#quizStand').innerText()));
+    await qkp.waitForTimeout(FUSS_TAUB);
+    await qkp.keyboard.press('Enter');
+    await qkp.waitForSelector('.opt:not([disabled])');
+    check('Enter blaettert zur naechsten Frage',
+      (await qkp.locator('h1.q').innerText()) !== frage1);
+    await qkctx.close();
+  }
+
   group('Die drei Knoepfe der Startseite');
   /* „Trotzdem neue Karten", „Wackelkandidaten" und „Markierte" stehen nur da,
      wenn es etwas zu tun gibt - am ersten Tag also nicht, und genau deshalb hat
@@ -2980,7 +3087,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 307;
+const MINDESTENS = 318;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
