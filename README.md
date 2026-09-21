@@ -441,7 +441,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 184 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 322 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 324 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
 npm run test:all   # alles zusammen
@@ -462,6 +462,50 @@ steht. `npm run check` weist zurück, was zugleich Ablenker der Karte ist.
 
 Zahlwörter und Ziffern gelten grundsätzlich als dasselbe: Wer „8" tippt, hat die Frage nach
 der Zahl der Planeten beantwortet. Das betrifft 93 Karten, deren Lösung ein Zahlwort enthält.
+
+### Wie sich die App nach zwei Jahren anfühlt
+
+Alle Zeitmessungen bisher liefen auf einem frischen Stand. Der Zielzustand ist aber ein
+anderer: jede der 2.381 Karten gelernt, 730 Tagesbögen, 30 Quizrunden, 85 Markierungen –
+zusammen 353 kB im Speicher. Einmal nachgemessen, bei vier- und sechsfach gedrosselter CPU
+im iPhone-13-Viewport, gemessen von innen (`performance.now()` um den Zeichenvorgang), weil
+Playwrights Warten auf Stabilität die Einblendungen mitmisst:
+
+| | frisch | nach zwei Jahren |
+|---|---|---|
+| Themen zeichnen (6×) | 73 ms | 88 ms |
+| Statistik zeichnen (6×) | 151 ms | 178 ms |
+| Runde starten (6×) | 71 ms | 51 ms |
+| Start bis Startseite (6×) | 803 ms | 1.061 ms |
+
+Das trägt: Zwei Jahre Gebrauch kosten ein paar Millisekunden, nicht Sekunden. **Ein Wert
+fiel heraus** – der erste Buchstabe in der Suche, 2.469 ms bei sechsfacher Drosselung.
+
+#### Der erste Buchstabe in der Suche, zum zweiten Mal
+
+Das Vorwärmen des Suchindex gibt es schon (siehe oben: die Bildlücke fiel von 1.348 auf
+160 ms). Es lief aber erst an, wenn der **Nachschlage-Bildschirm aufging** – wer die Lupe
+antippt und sofort tippt, zahlte die ganze Rechnung trotzdem. Gemessen, Median aus fünf bis
+sieben Läufen:
+
+| 4× gedrosselt | Start bis Startseite | erster Buchstabe „e" |
+|---|---|---|
+| Vorwärmen beim Öffnen der Suche | 581 ms | 1.471 ms |
+| Vorwärmen sofort beim Start | **1.021 ms** | 916 ms |
+| Vorwärmen 2 s nach dem Start | 580 ms | **235 ms** |
+
+Die mittlere Zeile ist der naheliegende Versuch und der falsche: Sie kauft eine halbe Sekunde
+in der Suche für eine halbe Sekunde bei **jedem** Start. Die Suche erreicht man selten sofort,
+die Startseite immer. Erst der Abstand von zwei Sekunden bringt beides – am Start kostet er
+nichts, und wer die Lupe antippt, hat den Index längst warm. Bei sechsfacher Drosselung
+dasselbe Bild: 2.500 → 562 ms nach drei Sekunden auf der Startseite, 267 ms nach acht.
+
+Nur wer die App öffnet und **binnen zwei Sekunden** tippt, wartet wie vorher; für den stößt
+`renderLookup()` das Vorwärmen weiterhin mit an. Die neue Prüfung misst genau den Fall
+dazwischen – ein paar Sekunden in der App, dann suchen – mit einer Schranke von 800 ms, also
+mit Abstand nach beiden Seiten. Gegengeprobt: ohne das Vorwärmen beim Start meldet sie
+1.598 ms.
+
 
 ### Erster Start
 

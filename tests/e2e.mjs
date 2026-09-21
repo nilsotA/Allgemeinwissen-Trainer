@@ -1191,6 +1191,37 @@ try {
     check('und das Wort ist trotzdem ganz angekommen',
       (await fp.locator('#q').inputValue()) === 'energie' && /\d+ Treffer/.test(gefunden), gefunden);
     await fctx.close();
+
+    /* Und der Fall, den die beiden oben NICHT messen, weil sie nach dem Oeffnen
+       erst 2,5 s warten: Jemand ist ein paar Sekunden in der App, tippt auf die
+       Lupe und sucht SOFORT. Solange das Vorwaermen erst in renderLookup()
+       anlief, half die Zeit auf der Startseite nichts - gemessen 1.471 ms bis
+       zur Trefferliste (Median aus fuenf Laeufen, 4x gedrosselt), egal ob man
+       drei oder acht Sekunden vorher dagestanden hatte. Seit es zwei Sekunden
+       nach dem Start anlaeuft: 235 ms. Die Schranke liegt dazwischen, mit
+       Abstand nach beiden Seiten. */
+    const wctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const wp = horche(await wctx.newPage());
+    const wcdp = await wctx.newCDPSession(wp);
+    await wcdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    await wp.goto(URL_BASE, { waitUntil: 'domcontentloaded' });
+    await wp.waitForSelector('.hero');
+    await wp.waitForTimeout(4000);          // so lange schaut jemand auf die Startseite
+    await wp.locator('#searchBtn').click();
+    await wp.waitForSelector('#q');
+    await wp.evaluate(() => {
+      window.__t0 = performance.now(); window.__fertig = null;
+      new MutationObserver(() => { if (window.__fertig === null) window.__fertig = performance.now() - window.__t0; })
+        .observe(document.getElementById('res'), { childList: true });
+    });
+    await wp.locator('#q').fill('e');
+    await wp.waitForFunction(() => window.__fertig !== null, null, { timeout: 30000 });
+    const bisTreffer = Math.round(await wp.evaluate(() => window.__fertig));
+    check('wer ein paar Sekunden in der App war, sucht ohne Wartezeit',
+      bisTreffer < 800, `${bisTreffer} ms bis zur Trefferliste (vorher rund 1.471 ms, jetzt rund 235 ms)`);
+    check('und die Trefferliste steht auch wirklich da',
+      /\d+ Treffer/.test(await wp.locator('#res .tiny').first().innerText()));
+    await wctx.close();
   }
 
   group('Markierte Karten: die Liste sagt, wie viele es sind');
@@ -3153,7 +3184,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 322;
+const MINDESTENS = 324;
 /* Die Zahl VOR dem eigenen Hochzaehlen nehmen: Sonst meldet der Wachposten
    „Nur 323 von mindestens 323 gelaufen" und zaehlt sich selbst zu den Laeufen -
    ein Satz, der sich widerspricht, ueber der einzigen Zeile, die sagt, dass

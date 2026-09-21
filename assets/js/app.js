@@ -927,6 +927,49 @@ function searchIndex() {
   return SEARCH_INDEX;
 }
 
+/* Den Suchindex in der Leerlaufzeit aufbauen, nicht beim ersten Tastendruck:
+   normalize() ueber alle Karten kostet 128 ms, auf einem gedrosselten iPhone
+   rund eine halbe Sekunde - lang genug, dass die ersten Zeichen verschluckt
+   werden.
+
+   Die Einzelfelder gehoeren in denselben Leerlauf. felder() rechnet sie
+   aufgeschoben, „nur fuer Karten, die ueberhaupt treffen" - und genau diese
+   Annahme faellt beim ERSTEN Buchstaben um: 'e' trifft alle Karten, 'v' noch
+   1.538. In Scheiben zu 150 Karten bleibt die laengste Luecke bei 169 ms, und
+   felder() traegt den aufgeschobenen Pfad weiter, falls jemand vor dem Ende
+   des Vorwaermens tippt.
+
+   Angestossen wird das schon VOR dem Oeffnen der Suche - aber mit Abstand zum
+   Start. Der Weg dahin ist gemessen, und der naheliegende war falsch:
+
+     (a) erst beim Oeffnen der Suche (vorher): Start 581 ms, Suche kalt 1.580 ms
+     (b) sofort beim Start:                    Start 1.021 ms, Suche kalt 916 ms
+     (c) zwei Sekunden nach dem Start:         Start 578 ms, Suche kalt 1.567 ms
+
+   (Median aus je sieben Laeufen bei vierfacher Drosselung; bei sechsfacher
+   dasselbe Bild mit 853 / 1.485 / 861 ms Start.) Variante (b) kauft eine
+   halbe Sekunde in der Suche fuer eine halbe Sekunde bei JEDEM Start - ein
+   schlechter Tausch, denn die Suche erreicht man selten sofort, die Startseite
+   immer. Variante (c) kostet am Start nichts und hat den Index warm, sobald
+   jemand die Lupe antippt: Wer nach drei Sekunden auf der Startseite sucht,
+   wartet 246 statt 1.523 ms. Nur wer die App oeffnet und binnen zwei Sekunden
+   tippt, zahlt wie vorher - renderLookup() stoesst das Waermen dann mit an. */
+const WAERMEN_NACH_MS = 2000;
+let waermeLaeuft = false, waermeFertig = false;
+function waermeIndex() {
+  if (waermeLaeuft || waermeFertig) return;
+  waermeLaeuft = true;
+  const leerlauf = window.requestIdleCallback || ((f) => setTimeout(f, 0));
+  const haeppchen = (i) => {
+    const bis = Math.min(CARDS.length, i + 150);
+    indexTeil(i, bis);
+    for (let k = i; k < bis; k++) felder(k);
+    if (bis < CARDS.length) leerlauf(() => haeppchen(bis));
+    else { waermeLaeuft = false; waermeFertig = true; }
+  };
+  leerlauf(() => haeppchen(0));
+}
+
 /* Die Einzelfelder braucht nur die Reihenfolge, also nur fuer Karten, die
    ueberhaupt treffen – und dann einmal. Sie beim Aufbau des Index gleich
    mitzurechnen kostete auf einem gedrosselten Handy fast eine Sekunde extra
@@ -1065,27 +1108,7 @@ function renderLookup() {
     timer = setTimeout(paint, 120);
   });
   paint();
-  /* Den Suchindex in der Leerlaufzeit aufbauen, nicht beim ersten Tastendruck:
-     normalize() ueber alle Karten kostet hier 128 ms, auf einem gedrosselten
-     iPhone rund eine halbe Sekunde - lang genug, dass die ersten Zeichen
-     verschluckt werden.
-
-     Die Einzelfelder gehoeren in denselben Leerlauf. felder() rechnet sie
-     aufgeschoben, „nur fuer Karten, die ueberhaupt treffen" - und genau diese
-     Annahme faellt beim ERSTEN Buchstaben um: 'e' trifft alle 2.321 Karten,
-     'v' noch 1.538. Gemessen im iPhone-13-Viewport bei vierfacher Drosselung
-     stand der Bildschirm nach dem ersten Zeichen 1.298 ms still, die Zeichen
-     zwei bis sieben kamen danach im Schwall. In Scheiben zu 150 Karten bleibt
-     die laengste Luecke bei 169 ms, und felder() traegt den aufgeschobenen
-     Pfad weiter, falls jemand vor dem Ende des Vorwaermens tippt. */
-  const leerlauf = window.requestIdleCallback || ((f) => setTimeout(f, 0));
-  const haeppchen = (i) => {
-    const bis = Math.min(CARDS.length, i + 150);
-    indexTeil(i, bis);
-    for (let k = i; k < bis; k++) felder(k);
-    if (bis < CARDS.length) leerlauf(() => haeppchen(bis));
-  };
-  leerlauf(() => haeppchen(0));
+  waermeIndex();
 }
 
 function renderSettings() {
@@ -2181,6 +2204,10 @@ function boot() {
   document.getElementById('boot')?.remove();
   app.hidden = false;
   show('home');
+  /* Mit Abstand zum Start, damit die ersten Tipper eine freie Hauptschleife
+     finden: Wer die Startseite liest, waermt nebenbei die Suche vor.
+     Siehe waermeIndex(). */
+  setTimeout(waermeIndex, WAERMEN_NACH_MS);
   /* Vor dem Service Worker und unabhaengig von ihm: Die Fassungskennung steht in
      der App selbst, also gibt es die Auskunft auch im privaten Tab und beim
      allerersten Aufruf. */
