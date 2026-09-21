@@ -440,7 +440,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 184 Einheitentests plus Inhaltsprüfung
+npm test           # 185 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 324 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -3111,9 +3111,10 @@ Sie gehören genauso dazu wie die Funde:
 
 - **Die Quizrunde wiederholt sich nicht.** Über 500 Runden mit festem Zufall: 1.718 von 1.892
   möglichen Karten kamen dran, die häufigste in 4,8 % der Runden. Mit eingeschaltetem
-  Lehrerwissen 2.066 von 2.381 und 3,0 %. Einzig Mathematik ist bei ausgeschaltetem
-  Lehrerwissen ein kleiner Topf – 64 Karten Mathegeschichte, jede etwa zehnmal. Das ist die
-  Folge der Einstellung und kein Fehler der Ziehung.
+  Lehrerwissen 2.066 von 2.381 und 3,0 %. Die Ziehung ist damit in Ordnung – **ein Topf war
+  es nicht**: Mathematik hatte bei ausgeschaltetem Lehrerwissen nur 64 Karten. Das lag nicht
+  an der Ziehung, sondern an der Einteilung, und ist weiter unten behoben
+  („Was am Spieleabend gefragt wird").
 - **„Weitermachen" nach einer Wackelrunde legt nicht dieselben Karten wieder vor.** Zweite
   Runde: 4 von 20 aus der ersten, dritte Runde: 3 von 20 – und zwar genau die, die eben
   „Nochmal" bekommen haben. Eine Karte, an der man gerade gescheitert ist, *ist* die
@@ -3124,6 +3125,59 @@ Sie gehören genauso dazu wie die Funde:
   (vorher 27,3 %). Die 710 später geschriebenen Karten sind also nicht schlechter zu tippen
   als die alten. Und die wörtliche Antwort gilt bei **allen** 2.249 als „passt" – eine
   Selbstverständlichkeit, die vorher nirgends gemessen war.
+
+
+### Was am Spieleabend gefragt wird – und was nicht
+
+Die Quizrunde ist die Spieleabend-Simulation, und sie lässt Lehrerwissen aus: Nach der
+Ableitung von x³ oder dem Doppelauftrag des Schulsports fragt am Spieleabend niemand. Das
+Sieb ging nach **Teilgebieten** – und die trennen nicht sauber. In `mat/Schulmathe` steht die
+p-q-Formel neben dem **Satz des Pythagoras**, in `mat/Grundlagen` die Primfaktorzerlegung
+neben der Frage, **was eine Primzahl ist**. Das erste Paar ist Lehrerwissen. Das zweite fragt
+jedes Kneipenquiz.
+
+Die Folge war messbar: Der Mathematik-Topf der Quizrunde bestand aus **64 Karten**, nämlich
+ausschließlich Mathegeschichte. Über 500 Runden kam jede davon rund zehnmal dran, die
+häufigste 24-mal – während Pythagoras, der Goldene Schnitt, die Fibonacci-Folge, π, das
+Geburtstagsparadoxon und die Lottowahrscheinlichkeit daneben lagen und nie gezogen wurden.
+Und der Nutzer merkt davon nichts: Die Einstellung heißt „Lehrerwissen in der Quizrunde", und
+niemand würde den Satz des Pythagoras darunter vermuten.
+
+Welche Sorte vorliegt, kann kein Vergleich errechnen – dieselbe Lage wie bei `ug` (Menge oder
+Abfolge). Also steht es als Kennzeichen `sa` an der Karte, von Hand gesetzt für **84** von 489
+Lehrerwissen-Karten. Das Maß war: *Würde ein Kneipenquiz das einem Nicht-Fachmann stellen?*
+
+| | Karten | davon `sa` | Beispiele |
+|---|---|---|---|
+| mat/Grundlagen | 62 | 26 | Primzahlen, π, Winkelsumme, Kanten eines Würfels |
+| mat/Schulmathe | 61 | 14 | Pythagoras, Thales, Goldener Schnitt, Fibonacci |
+| mat/Stochastik | 42 | 8 | Lotto, Geburtstagsparadoxon, Gesetz der großen Zahlen |
+| mat/Analysis | 49 | 2 | eʹ = e, Eulersche Identität |
+| spo/Trainingslehre | 60 | 15 | Muskelkater, VO₂max, BMI, größter Muskel |
+| spo/Sportmedizin | 26 | 8 | PECH-Regel, EPO, Kreuzband, Sportherz |
+| spo/Sportpsychologie | 18 | 6 | Flow, SMART-Regel, Ringelmann-Effekt |
+| spo/Bewegungslehre | 29 | 3 | Salto und Drehimpuls, Fosbury-Flop |
+| spo/Sportdidaktik | 36 | 2 | Fair Play, Ehrenurkunde |
+
+Draußen bleibt, was wirklich Beruf ist: `Lineare Algebra`, `Mathedidaktik`, `Verfahren
+erkennen`, die Trainingsmethodik und die Unterrichtskonzepte – zusammen 405 Karten, die im
+Tagestraining und in den Themenrunden voll dabei bleiben.
+
+Nach der Änderung: **1.976 statt 1.892** Karten im Quizvorrat, der Mathematik-Topf **114 statt
+64**, und die häufigste Mathekarte kommt in 500 Runden 14-mal statt 24-mal.
+
+Zwei Regeln halten das Kennzeichen ehrlich. `npm run check` weist es zurück, wenn es an einer
+Karte steht, deren Teilgebiet ohnehin in der Quizrunde vorkommt – dort bewirkt es nichts und
+täuscht nur eine Einstellung vor (dieselbe Regel wie bei `ug`). Und der Einheitentest misst
+gegen die **rohe Liste** statt gegen `istLehrerwissen`: Die nimmt die Ausnahme ja gerade
+heraus, der Test befragte sonst wieder das Sieb mit dem Sieb.
+
+Bei der Auswahl wurden **Spiegelpaare bewusst nur einmal** geholt. Die Sammlung fragt manche
+Sache aus beiden Richtungen („Was beschreibt Flow?" / „Welcher Psychologe prägte den Begriff
+Flow?"). Im Tagestraining ist das gewollt, in einer Runde von zwölf Fragen wären es zwei fast
+gleiche. Geholt wurde jeweils die Frageform, die ein Quiz stellt – beim Widerspruchsbeweis
+also „Welches Beweisverfahren trägt den lateinischen Namen *reductio ad absurdum*?" und nicht
+„Wie funktioniert ein Beweis durch Widerspruch?".
 
 
 ### Qualitätssicherung

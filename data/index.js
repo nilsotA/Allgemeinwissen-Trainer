@@ -60,7 +60,16 @@ for (const [cat, list] of Object.entries(SOURCES)) {
       // Von Hand gesetzt, weil sich Menge und Abfolge nicht rechnen lassen: Bei
       // „Vereinfachen, mathematisieren, rechnen, interpretieren, validieren" ist
       // die Reihenfolge die ganze Antwort.
-      ug: !!c.ug
+      ug: !!c.ug,
+      /* Spieleabend-Wissen in einem Lehrerwissen-Teilgebiet. Die Quizrunde
+         laesst mat/Schulmathe und spo/Trainingslehre als GANZE Teilgebiete aus -
+         am Spieleabend fragt niemand nach der p-q-Formel. Nach dem Satz des
+         Pythagoras, dem Goldenen Schnitt und der Fibonacci-Folge fragt er sehr
+         wohl, und die stehen in denselben Teilgebieten. Welche Sorte vorliegt,
+         kann kein Vergleich errechnen - also steht es von Hand an der Karte.
+         Nur dort wirksam, wo das Teilgebiet sonst ausgelassen wuerde;
+         npm run check weist das Kennzeichen anderswo zurueck. */
+      sa: !!c.sa
     });
   });
 }

@@ -1,6 +1,7 @@
 /* Stellt die Lernwarteschlange zusammen: fällige Wiederholungen + neue Karten,
    verschränkt über die Kategorien (Interleaving). */
 import { CARDS, CATS, CAT_BY_ID, catCards } from '../../data/index.js';
+import { LEHRERWISSEN } from '../../data/cats.js';
 import { S, settings, cardState, today, todayNum, isFlagged, uebernimmVorgaenger,
          setNachErsatz } from './store.js';
 import { isDue, isNew, strength, isLeech } from './srs.js';
@@ -222,17 +223,12 @@ export function buildDuel(n = 10, cat = null) {
 /** Quizrunde: quer durch alle aktiven Themen, auch Ungelerntes - siehe quizmodus.js.
     Pausierte Themen bleiben draussen: Wer Mathematik unter Mehr abgeschaltet hat,
     will sie auch im Quiz nicht - anders als beim ausdruecklich gewaehlten Themen-Duell. */
-/* Teilgebiete, die Lehrerwissen sind und kein Spieleabend-Wissen. Die Quizrunde
-   ist die Simulation eines Quizspiels - und am Spieleabend fragt niemand nach der
-   Ableitung von x hoch drei oder dem Doppelauftrag des Schulsports. Diese Karten
-   bleiben im Tagestraining und in den Themenrunden voll dabei; nur der Pruefstand
-   laesst sie aus, solange die Einstellung „Lehrerwissen in der Quizrunde" aus ist.
-   Anatomie, Regelkunde, Mathegeschichte, Olympia bleiben drin: Die fragt ein Quiz. */
-const LEHRERWISSEN = {
-  mat: new Set(['Grundlagen', 'Schulmathe', 'Analysis', 'Stochastik', 'Lineare Algebra', 'Mathedidaktik', 'Verfahren erkennen']),
-  spo: new Set(['Sportdidaktik', 'Trainingslehre', 'Bewegungslehre', 'Sportpsychologie', 'Sportmedizin', 'Verfahren erkennen']),
-};
-export const istLehrerwissen = (c) => !!LEHRERWISSEN[c.cat]?.has(c.sub);
+/* ... mit einer Ausnahme je Karte. Die Liste oben geht nach Teilgebieten, und
+   die trennen nicht sauber: In mat/Schulmathe steht die p-q-Formel neben dem
+   Satz des Pythagoras, in mat/Grundlagen die Primfaktorzerlegung neben der
+   Frage, was eine Primzahl ist. Das erste Paar ist Lehrerwissen, das zweite
+   fragt jedes Kneipenquiz. Karten mit sa: 1 sind ausdruecklich das zweite. */
+export const istLehrerwissen = (c) => !!LEHRERWISSEN[c.cat]?.has(c.sub) && !c.sa;
 
 export function buildQuiz() {
   const mitLehrerwissen = !!settings().quizLehrerwissen;

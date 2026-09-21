@@ -1,6 +1,7 @@
 /* Prüft die Kartensammlung auf Vollständigkeit und die Antwortoptionen auf Plausibilität. */
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { CARDS, CATS, countByCat, POOL_SUB, POOL_CAT } from '../data/index.js';
+import { LEHRERWISSEN } from '../data/cats.js';
 import FACTS from '../data/facts.js';
 import { options, normalize, bewerte } from '../assets/js/quiz.js';
 
@@ -145,6 +146,19 @@ for (const c of CARDS) {
   if (glieder.length < 2) fail(`${c.id}: als Menge gekennzeichnet, aber die Antwort ist keine Aufzaehlung – „${c.a}"`);
   if (c.mc) warn(`${c.id}: als Menge gekennzeichnet, laeuft aber nur als Auswahlfrage`);
 }
+/* Das Kennzeichen sa sagt: Diese Karte ist Spieleabend-Wissen, obwohl ihr
+   Teilgebiet als Lehrerwissen gilt. Es wirkt NUR dort - an einer Karte, deren
+   Teilgebiet ohnehin in der Quizrunde vorkommt, sagt es nichts und weckt nur
+   den falschen Eindruck, man haette etwas eingestellt. Dieselbe Regel wie bei
+   ug: ein Kennzeichen, das nichts tut, ist ein Versehen. */
+for (const c of CARDS) {
+  if (!c.sa) continue;
+  if (!LEHRERWISSEN[c.cat]?.has(c.sub)) {
+    fail(`${c.id}: als Spieleabend-Wissen gekennzeichnet, aber ${c.cat}/${c.sub} `
+      + 'ist ohnehin kein Lehrerwissen – das Kennzeichen bewirkt nichts');
+  }
+}
+
 /* Die Antwort steht woertlich in der Frage. Eine Karte fragte „Welches
    Instrument ist kein Streichinstrument: Bratsche, Cello, Oboe, Kontrabass?" –
    beim freien Abrufen las der Nutzer die vier Namen und schrieb einen ab. Der
@@ -381,6 +395,13 @@ for (const c of CARDS) {
 }
 
 console.log('Mengenkarten :', `${CARDS.filter(c => c.ug).length} – dort zaehlt die Reihenfolge der Antwort nicht`);
+{
+  const lehrer = CARDS.filter(c => LEHRERWISSEN[c.cat]?.has(c.sub));
+  const raus = lehrer.filter(c => c.sa);
+  console.log('Quizrunde    :', `${CARDS.length - lehrer.length + raus.length} von ${CARDS.length} Karten,`
+    + ` solange „Lehrerwissen in der Quizrunde" aus ist`
+    + ` (${lehrer.length} Lehrerwissen, davon ${raus.length} als Spieleabend-Wissen zurueckgeholt)`);
+}
 
 /* Eine zugelassene Nebenschreibweise darf keinem Ablenker gleichen - sonst
    zaehlte beim freien Abrufen ausgerechnet die falsche Antwort als richtig. */

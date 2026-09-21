@@ -13,6 +13,7 @@ globalThis.localStorage = {
 const store = await import('../assets/js/store.js');
 const sess = await import('../assets/js/session.js');
 const { CARDS } = await import('../data/index.js');
+const { LEHRERWISSEN } = await import('../data/cats.js');
 const { fresh, schedule, GOOD, AGAIN } = await import('../assets/js/srs.js');
 
 /* Der Speicher wird MIT geleert, nicht nur der Zustand. Sonst reicht ein Test
@@ -1197,6 +1198,44 @@ test('die Quizrunde fragt wie ein Spieleabend, nicht wie ein Staatsexamen', () =
   const mit = [];
   for (let i = 0; i < 30; i++) mit.push(...sess.buildQuiz().map(x => x.card));
   assert.ok(mit.some(sess.istLehrerwissen), 'mit Einstellung muss Lehrerwissen wieder gezogen werden');
+});
+
+/* Die Liste geht nach Teilgebieten, und die trennen nicht sauber: In
+   mat/Schulmathe steht die p-q-Formel neben dem Satz des Pythagoras, in
+   mat/Grundlagen die Primfaktorzerlegung neben der Frage, was eine Primzahl
+   ist. Das erste Paar ist Lehrerwissen, das zweite fragt jedes Kneipenquiz.
+   Karten mit sa: 1 sind die Ausnahme - und ohne sie war der Mathe-Topf der
+   Quizrunde 64 Karten gross (nur Mathegeschichte), die haeufigste Karte kam in
+   500 Runden 24-mal dran. */
+test('was jedes Kneipenquiz fragt, bleibt in der Quizrunde', () => {
+  const ausnahmen = CARDS.filter(c => c.sa);
+  assert.ok(ausnahmen.length >= 50,
+    `nur ${ausnahmen.length} Karten als Spieleabend-Wissen gekennzeichnet`);
+
+  /* Jede Ausnahme muss in einem Teilgebiet stehen, das sonst ausgelassen wird -
+     sonst bewirkt das Kennzeichen nichts und taeuscht eine Einstellung vor.
+     Gemessen wird gegen die rohe Liste, nicht gegen istLehrerwissen: Das nimmt
+     die Ausnahme ja gerade heraus, der Test befragte sonst das Sieb mit dem Sieb. */
+  const wirkungslos = ausnahmen.filter(c => !LEHRERWISSEN[c.cat]?.has(c.sub));
+  assert.equal(wirkungslos.length, 0,
+    `Kennzeichen ohne Wirkung: ${wirkungslos.slice(0, 3).map(c => c.cat + '/' + c.sub).join(', ')}`);
+
+  // Und sie gelten nicht mehr als Lehrerwissen - das ist der ganze Zweck.
+  assert.equal(ausnahmen.filter(sess.istLehrerwissen).length, 0);
+
+  /* Der Topf waechst wirklich. Ohne die Ausnahmen haette Mathematik in der
+     Quizrunde nur Mathegeschichte - gepruefte Zahl, damit ein versehentlich
+     entferntes Kennzeichen auffaellt. */
+  const quizMat = CARDS.filter(c => c.cat === 'mat' && !sess.istLehrerwissen(c));
+  const nurGeschichte = quizMat.filter(c => c.sub === 'Mathegeschichte').length;
+  assert.ok(quizMat.length > nurGeschichte + 40,
+    `Mathe-Topf der Quizrunde: ${quizMat.length} Karten, davon ${nurGeschichte} Mathegeschichte`);
+
+  // Und sie werden auch gezogen.
+  store.setSetting('quizLehrerwissen', false);
+  const gezogen = [];
+  for (let i = 0; i < 40; i++) gezogen.push(...sess.buildQuiz().map(x => x.card));
+  assert.ok(gezogen.some(c => c.sa), 'in 480 Ziehungen kam keine einzige Ausnahme vor');
 });
 
 /* Eine zu Ende gespielte Quizrunde machte den gespeicherten Stand unlesbar.

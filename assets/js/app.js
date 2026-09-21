@@ -1172,7 +1172,7 @@ function renderSettings() {
         <span class="switch"><input type="checkbox" id="tnk" ${s.trotzdemNeu ? 'checked' : ''}><i></i></span>
       </div>
       <div class="setrow">
-        <div><label for="qlw">Lehrerwissen in der Quizrunde</label><p class="tiny">Aus: Die Quizrunde fragt wie ein Spieleabend – Analysis, Stochastik, Trainingslehre und Sportdidaktik bleiben dem Tagestraining vorbehalten.</p></div>
+        <div><label for="qlw">Lehrerwissen in der Quizrunde</label><p class="tiny">Aus: Die Quizrunde fragt wie ein Spieleabend – Ableitungen, Trainingsmethodik und Sportdidaktik bleiben dem Tagestraining vorbehalten. Pythagoras, Goldener Schnitt und die PECH-Regel sind dabei.</p></div>
         <span class="switch"><input type="checkbox" id="qlw" ${s.quizLehrerwissen ? 'checked' : ''}><i></i></span>
       </div>
       <div class="setrow">
