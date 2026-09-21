@@ -441,7 +441,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 183 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 245 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 251 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -980,6 +980,13 @@ zurück – 400 Karten, 40 Tage, 25 Markierungen, alle Einstellungen, alle Zähl
 dürfen nur `rev` und `gen`, die Buchhaltung des Zusammenführens. Gegengeprobt gegen ein
 absichtlich kaputtes Einlesen, das die Markierungen fallen lässt: 25 Abweichungen, zwei
 Prüfungen rot.
+
+Dasselbe gilt für den **zweiten Notausgang**: „Gesicherten Stand zurückholen (N Karten)". Wer
+die falsche Datei einliest, hat genau diesen Knopf – auch er war von außen nie angefasst
+worden. Der Durchlauf liest jetzt eine fremde, dünne Sicherung über einen reichen Stand, holt
+ihn zurück und prüft die Umkehr mit: Der Knopf **tauscht** die beiden Stände, er löscht den
+eingelesenen nicht, und seine Beschriftung nennt jedes Mal die Kartenzahl, die er zurückbringt.
+Gegengeprobt gegen ein `sicherungZurueck()`, das nichts tut.
 
 **„Speicher voll" stand auch da, wenn der Speicher gesperrt war.** Safari kann den
 Websitespeicher ganz abschalten – Einstellung „Alle Cookies blockieren", oder ein privates

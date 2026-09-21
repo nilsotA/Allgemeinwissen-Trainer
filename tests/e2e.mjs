@@ -1904,6 +1904,76 @@ try {
     await bctx.close();
   }
 
+  group('Der zweite Notausgang: das Einlesen zuruecknehmen');
+  /* Wer die falsche Datei einliest, hat genau einen Knopf: „Gesicherten Stand
+     zurueckholen (N Karten)". Er war von aussen nie angefasst worden, obwohl er
+     der letzte Halt ist, wenn ein Einlesen den Fortschritt ueberschreibt.
+     Geprueft wird auch die Umkehr: Das Zurueckholen tauscht die beiden Staende,
+     es loescht den eingelesenen nicht - wer sich vertippt, kommt zurueck. */
+  {
+    const nctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const npg = horche(await nctx.newPage());
+    npg.on('dialog', d => d.accept());
+    await npg.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await npg.waitForSelector('[data-go="daily"]');
+    const bauen = (karten, antworten) => npg.evaluate(async ({ karten, antworten }) => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      const srs = await import('/assets/js/srs.js');
+      store.resetAll();
+      const heute = store.todayNum();
+      for (let i = 0; i < karten; i++) {
+        store.putCard(daten.CARDS[i].id, { ...srs.fresh(), seen: 5, ok: 4, reps: 3, iv: 9,
+          due: heute + (i % 20), last: Date.now() - i });
+      }
+      store.S().totalAnswers = antworten;
+      store.S().totalCorrect = Math.round(antworten * 0.8);
+      store.save(true);
+      return store.exportJSON();
+    }, { karten, antworten });
+    const stand = () => npg.evaluate(async () => {
+      const z = JSON.parse((await import('/assets/js/store.js')).exportJSON());
+      return { karten: Object.keys(z.cards).length, antworten: z.totalAnswers };
+    });
+
+    await bauen(500, 3000);                       // der eigene, wertvolle Stand
+    const fremd = await bauen(20, 60);            // eine duenne fremde Sicherung
+    await bauen(500, 3000);
+    await npg.reload({ waitUntil: 'networkidle' });
+
+    await npg.click('[data-view="settings"]');
+    await npg.waitForSelector('#impFile', { state: 'attached' });
+    await npg.setInputFiles('#impFile', { name: 'fremd.json', mimeType: 'application/json', buffer: Buffer.from(fremd) });
+    await npg.waitForTimeout(1500);
+    const danach = await stand();
+    check('das Einlesen ersetzt den Stand', danach.karten === 20 && danach.antworten === 60,
+      JSON.stringify(danach));
+
+    await npg.click('[data-view="settings"]').catch(() => {});
+    await npg.waitForTimeout(400);
+    check('danach steht der Rueckholknopf bereit', await npg.locator('#undoImp').count() === 1);
+    const beschriftung = (await npg.locator('#undoImp').innerText().catch(() => '')).trim();
+    check('und nennt, wie viele Karten er zurueckbringt', /500 Karten/.test(beschriftung), beschriftung);
+
+    await npg.click('#undoImp');
+    await npg.waitForTimeout(1500);
+    const zurueck = await stand();
+    check('das Zurueckholen bringt den eigenen Stand wieder',
+      zurueck.karten === 500 && zurueck.antworten === 3000, JSON.stringify(zurueck));
+
+    /* Und die Umkehr: Der Knopf tauscht, er loescht nicht. */
+    await npg.click('[data-view="settings"]').catch(() => {});
+    await npg.waitForTimeout(400);
+    const zweite = (await npg.locator('#undoImp').innerText().catch(() => '')).trim();
+    check('der Knopf bietet jetzt den eingelesenen Stand an', /20 Karten/.test(zweite), zweite);
+    await npg.click('#undoImp');
+    await npg.waitForTimeout(1500);
+    const hin = await stand();
+    check('auch das Zurueckholen laesst sich zuruecknehmen',
+      hin.karten === 20 && hin.antworten === 60, JSON.stringify(hin));
+    await nctx.close();
+  }
+
   group('Gesperrter Websitespeicher');
   /* Safari kann den Websitespeicher ganz sperren - Einstellung „Alle Cookies
      blockieren", oder ein privates Fenster. Dann wirft schon der ZUGRIFF auf
@@ -2413,7 +2483,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 245;
+const MINDESTENS = 251;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
