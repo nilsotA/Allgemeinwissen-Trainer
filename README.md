@@ -441,7 +441,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 184 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 251 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 258 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -980,6 +980,13 @@ zurück – 400 Karten, 40 Tage, 25 Markierungen, alle Einstellungen, alle Zähl
 dürfen nur `rev` und `gen`, die Buchhaltung des Zusammenführens. Gegengeprobt gegen ein
 absichtlich kaputtes Einlesen, das die Markierungen fallen lässt: 25 Abweichungen, zwei
 Prüfungen rot.
+
+Zwei weitere Schalter liefen ungeprüft mit: Das **Farbschema** („Immer hell" muss sich gegen
+ein dunkles System durchsetzen – drinnen bei Sonne ist die App sonst unlesbar) und **„Alle N
+Markierungen löschen"**. Beide tun, was sie versprechen. Beim Löschen misst die Prüfung, was
+die App als markiert *ansieht*, nicht die Zahl der Schlüssel: Die bleiben als Grabsteine
+stehen, damit ein zweiter offener Tab die Sterne nicht zurückholt. Die erste Fassung der
+Messung zählte die Gräber und meldete „17 übrig" – ein Fehlalarm des Messgeräts.
 
 **Eine Einstellung ohne Prüfung.** Sieben Schalter im Menü hatten keine Durchlaufprüfung;
 nachgemessen wirken alle. „Neue Karten trotz Rückstand" (0 → 20 neue Karten bei 400 fälligen)

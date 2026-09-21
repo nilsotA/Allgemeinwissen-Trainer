@@ -1904,6 +1904,60 @@ try {
     await bctx.close();
   }
 
+  group('Farbschema und Markierungen loeschen');
+  /* Zwei Schalter, die niemand von aussen angefasst hatte. „Immer hell" muss
+     sich gegen ein dunkles System durchsetzen (drinnen bei Sonne ist die App
+     sonst unlesbar), und „Alle N Markierungen loeschen" muss wirklich loeschen. */
+  {
+    const dctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', colorScheme: 'dark' });
+    const dp = horche(await dctx.newPage());
+    await dp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    const helligkeit = () => dp.evaluate(() => {
+      const rgb = getComputedStyle(document.body).backgroundColor.match(/\d+/g).slice(0, 3).map(Number);
+      return Math.round(rgb[0] * 0.299 + rgb[1] * 0.587 + rgb[2] * 0.114);
+    });
+    check('bei dunklem System ist die App dunkel', await helligkeit() < 60, `Helligkeit ${await helligkeit()}`);
+    await dp.click('[data-view="settings"]');
+    await dp.waitForSelector('#thm');
+    await dp.selectOption('#thm', 'light');
+    await dp.waitForTimeout(400);
+    check('„Immer hell" setzt sich gegen das dunkle System durch',
+      await helligkeit() > 200, `Helligkeit ${await helligkeit()}`);
+    await dp.selectOption('#thm', 'system');
+    await dp.waitForTimeout(400);
+    check('„Wie das System" folgt wieder dem System', await helligkeit() < 60, `Helligkeit ${await helligkeit()}`);
+
+    /* Markierungen: 17 setzen, loeschen, nachzaehlen. Gezaehlt wird, was die App
+       als markiert ansieht - die Schluessel bleiben als Grabsteine stehen, damit
+       der zweite Tab die Sterne nicht zurueckholt. */
+    await dp.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      for (let i = 0; i < 17; i++) store.toggleFlag(daten.CARDS[i * 11].id);
+      store.save(true);
+    });
+    await dp.reload({ waitUntil: 'networkidle' });
+    await dp.click('[data-view="settings"]');
+    await dp.waitForSelector('#npd');
+    const beschriftung = (await dp.locator('#clrFlags').innerText().catch(() => '')).trim();
+    check('der Knopf nennt die Zahl der Markierungen', /Alle 17 Markierungen/.test(beschriftung), beschriftung);
+    await dp.click('#clrFlags');
+    await dp.waitForTimeout(700);
+    const stand = await dp.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      return {
+        markiert: daten.CARDS.filter(c => store.isFlagged(c.id)).length,
+        grabsteine: Object.keys(JSON.parse(store.exportJSON()).flags).length,
+      };
+    });
+    check('danach ist keine Karte mehr markiert', stand.markiert === 0, `${stand.markiert} uebrig`);
+    check('die Grabsteine bleiben stehen, damit der zweite Tab sie nicht zurueckholt',
+      stand.grabsteine === 17, `${stand.grabsteine} Grabsteine`);
+    check('und der Knopf verschwindet', await dp.locator('#clrFlags').count() === 0);
+    await dctx.close();
+  }
+
   group('Der zweite Notausgang: das Einlesen zuruecknehmen');
   /* Wer die falsche Datei einliest, hat genau einen Knopf: „Gesicherten Stand
      zurueckholen (N Karten)". Er war von aussen nie angefasst worden, obwohl er
@@ -2483,7 +2537,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 251;
+const MINDESTENS = 258;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
