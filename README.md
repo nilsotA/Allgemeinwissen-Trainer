@@ -441,7 +441,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 184 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 265 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 322 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -2949,6 +2949,125 @@ thematisch nah und sprachlich ähnlich gebaut, aber von niemandem als Gegenstüc
 Keine davon gilt als richtig. Beide Gegenproben sichern sich zusätzlich gegen das
 Leerlaufen ab: Sie zählen, wie viel sie geprüft haben, und fallen durch, wenn die Stichprobe
 zusammenschrumpft.
+
+
+### Was der Durchlauftest nie angefasst hat
+
+Der Boden unter der Prüfungszahl fängt ganze Abschnitte ab, die ausfallen. Er sagt aber
+nichts über Wege, die **nie jemand gegangen ist**. Also einmal nachgemessen, statt zu
+schätzen: Der ganze Durchlauftest läuft mit eingeschalteter V8-Abdeckung, und danach steht
+Funktion für Funktion da, was gelaufen ist und was nicht.
+
+| | Funktionen gelaufen | kalt |
+|---|---|---|
+| vorher | 291 von 339 (85,8 %) | 48 |
+| jetzt | 331 von 348 (95,1 %) | 17 |
+
+Die 48 kalten Funktionen teilten sich sauber: 25 in `quiz.js`, `session.js` und `srs.js` –
+alle von den 184 Einheitentests gedeckt, sie brauchen keinen Browser. Und **23 in `app.js`**,
+das keine Einheitentests hat und für das der Durchlauftest die einzige Deckung ist.
+
+Der Grund, warum gerade diese 23 kalt blieben, ist derselbe für fast alle: **Der Durchlauftest
+startet auf einem frischen Stand.** Am ersten Tag gibt es keinen Rückstand, keine markierten
+Karten, keine wackligen, keine gespielte Quizrunde – und damit keinen der Knöpfe, die daran
+hängen. Wer nur den ersten Tag prüft, prüft die halbe App.
+
+#### Was dabei kaputt war
+
+**„Weitermachen" machte aus drei Minuten zwölf.** Die Kurzrunden-Chips auf der Startseite
+wählen eine Länge: „3 Min" sind 20 Karten, „5 Min" 40, „10 Min" 80. Der Knopf „Weitermachen"
+im Ergebnisbild rief danach dieselbe Anschlussfunktion auf wie der große Startknopf und
+reichte den **ganzen** Tagesplan nach. Gemessen an einem Stand mit Rückstand: Runde über 20
+Karten gewählt, „Weitermachen" getippt, **90 Karten** bekommen. Die Anschlussfunktion nimmt
+jetzt eine Grenze mit; der große Startknopf gibt keine mit, dort ist der ganze Plan ja das
+Gewünschte.
+
+**Ein Wort, das nicht passt, wurde abgeschnitten.** Im Nachschlagen stand die Frage nach der
+„Donaudampfschifffahrtsgesellschaft" 67 px über den Rand ihres Knopfes hinaus, und `.lk`
+schneidet mit `overflow:hidden` ab – die letzten Buchstaben waren schlicht weg. Gemessen über
+**alle 2.381 Karten, jede einzeln vorgelegt**: genau diese eine ist betroffen.
+`body{overflow-wrap:break-word}` greift nur, wenn ein Wort allein schon breiter ist als seine
+Zeile, und lässt die Breitenrechnung in Flex- und Rasterkästen unangetastet (anders als
+`anywhere`). Danach: 0 von 2.381.
+
+Der bestehende Sammler „Satz und Umbruch" **hatte** den Fehler gesehen – aber nur in etwa
+jedem dritten Lauf. Das leere Suchfeld legt eine Zufallsauswahl von 20 Karten vor; die eine
+schlechte war selten dabei. Ein Test, der mal rot und mal grün ist, wird irgendwann geglaubt
+statt gelesen. Die neue Prüfung sucht sich die zwanzig längsten ungebrochenen Wörter selbst
+aus der Sammlung und legt genau die vor.
+
+#### Und eine Prüfung, die sich selbst hereinlegte
+
+Dieselbe neue Prüfung ist beim Bauen erst einmal **falsch grün** gewesen, und der Grund gehört
+hierher: Der Stand wurde per `evaluate()` nachgetragen und die Seite danach neu geladen – ein
+Wettrennen mit dem ersten Speichern der App, das die Markierungen verlor. Das leere Suchfeld
+fällt dann auf die Zufallsauswahl zurück, und die ist ebenfalls 20 Karten groß. „Genau diese
+Karten liegen vor" war grün, ohne dass eine einzige der gesuchten Karten je auf dem Schirm
+stand. Jetzt steht der Stand vor dem ersten Skript der Seite, und die Kopfzeile wird
+mitgeprüft: Sie nennt die Zufallsauswahl beim Namen.
+
+#### Was in Ordnung war
+
+Der größere Teil der kalten Wege funktionierte. Das ist ein Ergebnis und kein Grund, sie
+ungeprüft zu lassen – geprüft wird jetzt die **Wirkung**, nicht der Eintrag im Speicher:
+
+- Die drei Schalter Ton, „Neue Karten trotz Rückstand" und „Lehrerwissen in der Quizrunde".
+  Der letzte gilt erst als wirksam, wenn die Quizseite ihren Satz über den Spieleabend
+  zurücknimmt.
+- Die beiden Knopfreihen für aktive Themen und Schwerpunkt, samt der Regeln, die es nur dort
+  gibt: Das letzte aktive Thema lässt sich nicht abschalten, und alle Themen als Schwerpunkt
+  heißt keiner.
+- Die drei Knöpfe der Startseite, die es am ersten Tag nicht gibt: „Trotzdem neue Karten",
+  „Wackelkandidaten" und „Markierte · N". Der Markierten-Knopf muss die Zahl nennen, eine
+  Runde über genau 20 Karten starten, und die Frage auf dem Schirm muss zu einer markierten
+  Karte gehören.
+- Der Quizblock der Statistik, gerechnet an zwei abgelegten Runden, deren Ergebnis von Hand
+  nachgerechnet danebensteht: Bestwert 120, Schnitt 108, schwächstes Feld Mathematik.
+- Eine ganze Runde **nur mit der Tastatur**: Enter im Eingabefeld, Zifferntaste auf den
+  Bewertungsknöpfen, Enter und Zifferntaste in der Quizrunde. Dazu die Regel, die es nur hier
+  gibt: Ohne Eingabe deckt die Leertaste nichts auf – die Festlegung soll eine Entscheidung
+  sein und nicht der Reflex auf die Leertaste.
+- Der Rückruf, der einen Fehler im Duell auf das tatsächlich verstrichene Intervall deckelt.
+  Die Regel selbst war in `srs.js` gemessen, ihre Verdrahtung in `app.js` nie gelaufen.
+
+Beim Farbschema hat die Gegenprobe etwas klargestellt, das vorher als geprüft durchgegangen
+wäre: Dass die Flächen mit dem Gerät dunkel werden, macht die Medienabfrage im Stilblatt ganz
+allein – diese Prüfung bleibt auch ohne den Horcher grün. Was nur der Horcher kann, ist die
+Leiste oben: `theme-color` ist ein Metaeintrag, den keine Medienabfrage erreicht. Beide
+Prüfungen heißen jetzt so, wie sie messen.
+
+Jede neue Regel ist **einzeln gegengeprobt**: Schalter ins Leere laufen lassen, „alle als
+Schwerpunkt" nicht mehr leeren, den Wachposten fürs letzte Thema entfernen, die Notenzuordnung
+der Zifferntasten umdrehen, die Deckelung ausbauen. Die Zifferntasten haben dabei gezeigt,
+warum sie **paarweise** geprüft werden müssen: „richtig" gilt für alles außer Nochmal, eine
+verschobene Zuordnung fällt damit nur durch, wenn Taste 1 und Taste 3 zusammen gemessen
+werden.
+
+Kalt geblieben sind 17 Funktionen: neun Sonderwege des Vergleichs in `quiz.js` und
+`nachDuellFehler` (alle von Einheitentests gedeckt) sowie sieben in `app.js` – der
+Update-Balken, zwei Wege am Offline-Speicher und der Fehlerfall beim Lesen einer
+Sicherungsdatei. Sie brauchen einen zweiten Service Worker oder ein kaputtes Dateisystem;
+`tests/offline.mjs` deckt den Update-Weg von der anderen Seite ab.
+
+#### Drei Messungen, die nichts gefunden haben
+
+Sie gehören genauso dazu wie die Funde:
+
+- **Die Quizrunde wiederholt sich nicht.** Über 500 Runden mit festem Zufall: 1.718 von 1.892
+  möglichen Karten kamen dran, die häufigste in 4,8 % der Runden. Mit eingeschaltetem
+  Lehrerwissen 2.066 von 2.381 und 3,0 %. Einzig Mathematik ist bei ausgeschaltetem
+  Lehrerwissen ein kleiner Topf – 64 Karten Mathegeschichte, jede etwa zehnmal. Das ist die
+  Folge der Einstellung und kein Fehler der Ziehung.
+- **„Weitermachen" nach einer Wackelrunde legt nicht dieselben Karten wieder vor.** Zweite
+  Runde: 4 von 20 aus der ersten, dritte Runde: 3 von 20 – und zwar genau die, die eben
+  „Nochmal" bekommen haben. Eine Karte, an der man gerade gescheitert ist, *ist* die
+  schwächste und heute fällig.
+- **Der Vergleich verhält sich bei 2.381 Karten wie bei 1.671.** Die Vertipper-Messung oben
+  stammt aus einer kleineren Sammlung. Noch einmal über alle 2.249 frei abfragbaren Karten:
+  zwei vertauschte Buchstaben 76,8 % „passt" (vorher 77,7 %), ein fehlender Buchstabe 26,3 %
+  (vorher 27,3 %). Die 710 später geschriebenen Karten sind also nicht schlechter zu tippen
+  als die alten. Und die wörtliche Antwort gilt bei **allen** 2.249 als „passt" – eine
+  Selbstverständlichkeit, die vorher nirgends gemessen war.
 
 
 ### Qualitätssicherung

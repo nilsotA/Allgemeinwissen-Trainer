@@ -516,11 +516,13 @@ try {
   server.close();
 }
 
-// Boden unter der Zahl der Pruefungen – siehe tests/e2e.mjs.
+// Boden unter der Zahl der Pruefungen – siehe tests/e2e.mjs, dort steht auch,
+// warum die Zahl VOR dem eigenen Hochzaehlen genommen wird.
 const MINDESTENS = 31;
-if (passed + failed < MINDESTENS) {
+const gelaufen = passed + failed;
+if (gelaufen < MINDESTENS) {
   failed++;
-  console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
+  console.error(`\nNur ${gelaufen} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
     + 'ein Abschnitt ist ausgefallen, ohne zu scheitern.');
 }
 

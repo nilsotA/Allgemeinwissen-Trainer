@@ -1,5 +1,5 @@
 /* Prüft die Kartensammlung auf Vollständigkeit und die Antwortoptionen auf Plausibilität. */
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { CARDS, CATS, countByCat, POOL_SUB, POOL_CAT } from '../data/index.js';
 import FACTS from '../data/facts.js';
 import { options, normalize, bewerte } from '../assets/js/quiz.js';
@@ -198,6 +198,41 @@ else {
     ['Geld im Alltag', /\*\*Geld im Alltag\*\* \((\d+) Karten\)/, String(teilgebiet('Geld im Alltag'))],
   ];
   for (const [was, muster, ist] of behauptungen) {
+    const treffer = readme.match(muster);
+    if (!treffer) {
+      fail(`README: die Zahl zu „${was}" ist nicht mehr auffindbar – Muster ${muster} greift ins Leere`);
+      continue;
+    }
+    if (treffer[1] !== ist) fail(`README behauptet ${treffer[1]} für „${was}", gezaehlt sind ${ist}`);
+  }
+
+  /* Die drei Zahlen, mit denen der README seine eigene Gruendlichkeit angibt.
+     Sie standen bis hierher ungeprueft da - „265 Durchlaufpruefungen" blieb
+     stehen, waehrend die Datei laengst 322 zaehlte. Eine Behauptung ueber die
+     eigene Deckung, die niemand nachrechnet, ist schlimmer als keine: Sie
+     beruhigt. Gemessen wird gegen den Boden im Test (der bei jedem neuen
+     Abschnitt mitwaechst) und gegen die gezaehlten test()-Aufrufe. */
+  const bodenAus = (datei) => {
+    if (!existsSync(datei)) { fail(`${datei} fehlt – die README-Zahl dazu laeuft ins Leere`); return null; }
+    const m = readFileSync(datei, 'utf8').match(/^const MINDESTENS = (\d+);/m);
+    if (!m) { fail(`${datei}: kein „const MINDESTENS = N" gefunden – die README-Zahl dazu laeuft ins Leere`); return null; }
+    return m[1];
+  };
+  /* Aus dem Verzeichnis gelesen und nicht aus einer Liste: Eine neue Testdatei
+     soll die Zahl mitwachsen lassen, ohne dass jemand daran denkt. */
+  const testDateien = existsSync('tests')
+    ? readdirSync('tests').filter(f => f.endsWith('.test.mjs')).sort() : [];
+  const einheiten = testDateien.reduce(
+    (n, f) => n + (readFileSync(`tests/${f}`, 'utf8').match(/^test\(/gm) || []).length, 0);
+  if (!einheiten) fail('keine einzige test()-Zeile in tests/*.test.mjs gefunden – die README-Zahl laeuft ins Leere');
+
+  const testZahlen = [
+    ['Einheitentests', /# (\d+) Einheitentests/, einheiten ? String(einheiten) : null],
+    ['Durchlaufprüfungen', /# (\d+) Durchlaufprüfungen/, bodenAus('tests/e2e.mjs')],
+    ['Prüfungen am Service Worker', /# (\d+) Prüfungen am Service Worker/, bodenAus('tests/offline.mjs')],
+  ];
+  for (const [was, muster, ist] of testZahlen) {
+    if (ist === null) continue;                  // der Grund steht schon als Fehler da
     const treffer = readme.match(muster);
     if (!treffer) {
       fail(`README: die Zahl zu „${was}" ist nicht mehr auffindbar – Muster ${muster} greift ins Leere`);
