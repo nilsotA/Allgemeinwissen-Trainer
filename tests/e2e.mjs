@@ -2610,6 +2610,104 @@ try {
     await uctx.close();
   }
 
+  group('Die Schalter unter „Mehr" greifen durch');
+  /* Drei Schalter und zwei Knopfreihen waren nie angetippt worden - eine
+     Abdeckungsmessung ueber den ganzen Durchlauf hat sie als kalt gemeldet.
+     Zwei der Reihen tragen Kommentare ueber Fehler, die dort schon einmal
+     steckten; geprueft wurde beides bisher nur ueber die Einstellung im
+     Speicher, nie ueber den Knopf. */
+  {
+    const sectx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const sep = horche(await sectx.newPage());
+    await sep.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await sep.waitForSelector('.hero');
+    const einst = async () => (await sep.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}'), KEY)).settings || {};
+    const zuMehr = async () => { await sep.locator('.nav-btn[data-view="settings"]').click(); await sep.waitForSelector('#snd'); };
+    await zuMehr();
+
+    check('der Ton ist ab Werk an', (await einst()).sound === true);
+    await sep.locator('#snd').click();
+    await sep.waitForTimeout(400);
+    check('der Ton-Schalter stellt ab', (await einst()).sound === false);
+    await sep.reload({ waitUntil: 'networkidle' });
+    await zuMehr();
+    check('und der Schalter steht nach dem Neuladen richtig',
+      await sep.locator('#snd').isChecked() === false);
+
+    await sep.locator('#tnk').click();
+    await sep.waitForTimeout(400);
+    check('„Neue Karten trotz Rückstand" laesst sich einschalten', (await einst()).trotzdemNeu === true);
+
+    /* Der Lehrerwissen-Schalter hat eine sichtbare Folge auf der Quizseite -
+       genau die wird geprueft, nicht nur der Eintrag im Speicher. */
+    const quizSatz = async () => {
+      await sep.locator('.nav-btn[data-view="duel"]').click();
+      await sep.waitForTimeout(300);
+      return sep.locator('#app').innerText();
+    };
+    check('die Quizseite nennt den Spieleabend, solange Lehrerwissen aus ist',
+      /Spieleabend/.test(await quizSatz()));
+    await zuMehr();
+    await sep.locator('#qlw').click();
+    await sep.waitForTimeout(400);
+    check('der Lehrerwissen-Schalter greift', (await einst()).quizLehrerwissen === true);
+    check('und die Quizseite nimmt den Satz zurueck', !/Lehrerwissen bleibt dem Tagestraining/.test(await quizSatz()));
+
+    await zuMehr();
+    const themen = await sep.locator('[data-tog]').count();
+    const erstesThema = await sep.locator('[data-tog]').first().getAttribute('data-tog');
+    await sep.locator(`[data-tog="${erstesThema}"]`).click();
+    await sep.waitForTimeout(400);
+    const cats = (await einst()).cats;
+    check('ein Thema laesst sich abschalten',
+      Array.isArray(cats) && cats.length === themen - 1 && !cats.includes(erstesThema), JSON.stringify(cats));
+    check('der Knopf zeigt es auch an',
+      await sep.locator(`[data-tog="${erstesThema}"]`).getAttribute('aria-pressed') === 'false');
+    await sep.locator(`[data-tog="${erstesThema}"]`).click();
+    await sep.waitForTimeout(400);
+    check('und wieder ein - dann steht wieder „alle" im Speicher', (await einst()).cats === null);
+
+    /* Das letzte Thema darf nicht auch noch weg: Ohne aktives Thema gaebe es
+       keine einzige Karte mehr, und die App haette nichts mehr zu zeigen. */
+    const alle = await sep.locator('[data-tog]').evaluateAll(bs => bs.map(b => b.dataset.tog));
+    for (const id of alle.slice(0, -1)) {
+      await sep.locator(`[data-tog="${id}"]`).click();
+      await sep.waitForTimeout(220);
+    }
+    const letztes = alle[alle.length - 1];
+    await sep.locator(`[data-tog="${letztes}"]`).click();
+    await sep.waitForTimeout(320);
+    const nachher = (await einst()).cats;
+    check('das letzte aktive Thema laesst sich nicht abschalten',
+      Array.isArray(nachher) && nachher.length === 1 && nachher[0] === letztes, JSON.stringify(nachher));
+    check('und die App sagt warum', /Mindestens ein Thema/.test(await sep.locator('.toast').first().innerText()));
+    await sectx.close();
+  }
+
+  group('Schwerpunkt: an, aus, und nie alle');
+  /* „Alle als Schwerpunkt" hiesse: keiner. Und ein Schwerpunkt auf einem
+     abgeschalteten Thema zaehlte frueher mit - dann liess sich der Knopf bei
+     einem einzigen aktiven Thema ueberhaupt nicht mehr einschalten. */
+  {
+    const fctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
+    const fp2 = horche(await fctx.newPage());
+    await fp2.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await fp2.waitForSelector('.hero');
+    await fp2.locator('.nav-btn[data-view="settings"]').click();
+    await fp2.waitForSelector('[data-fok]');
+    const fokus = async () => (await fp2.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}'), KEY)).settings?.focus;
+    const ids = await fp2.locator('[data-fok]').evaluateAll(bs => bs.map(b => b.dataset.fok));
+    await fp2.locator(`[data-fok="${ids[0]}"]`).click();
+    await fp2.waitForTimeout(400);
+    check('ein Schwerpunkt laesst sich setzen', JSON.stringify(await fokus()) === JSON.stringify([ids[0]]));
+    await fp2.locator(`[data-fok="${ids[1]}"]`).click();
+    await fp2.waitForTimeout(400);
+    check('und ein zweiter dazu', (await fokus() || []).length === 2);
+    for (const id of ids.slice(2)) { await fp2.locator(`[data-fok="${id}"]`).click(); await fp2.waitForTimeout(220); }
+    check('alle als Schwerpunkt heisst keiner', (await fokus()) === null, JSON.stringify(await fokus()));
+    await fctx.close();
+  }
+
   group('Das laengste Wort der Sammlung wird nicht abgeschnitten');
   /* Der Sammler oben nimmt auf dem Nachschlage-Bildschirm eine ZUFAELLIGE
      Auswahl von 20 Karten - er fand den Fehler, aber nur in etwa jedem dritten
@@ -2753,7 +2851,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 276;
+const MINDESTENS = 291;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
