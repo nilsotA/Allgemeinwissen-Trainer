@@ -441,7 +441,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 183 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 238 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 245 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run test:all   # alles zusammen
 npm run check      # nur die Inhaltsprüfung
@@ -969,6 +969,17 @@ der App, auf dem Antworten still verschwinden. Jetzt steht ein **Aktionsbalken**
 gesichert wurde, mit dem Sichern-Knopf gleich daneben. Er verdrängt ein wartendes
 Update-Angebot nicht, sondern stellt es zurück und holt es nach – sonst wäre das Angebot
 nach einem einzigen Speicherfehler bis zum nächsten Start verschwunden.
+
+**Der wichtigste Weg der App hatte keine Durchlaufprüfung.** Das README sagt seit jeher
+„sichere ihn gelegentlich – löschst du in Safari die Website-Daten, ist der Fortschritt weg".
+Geprüft war davon nur `importJSON()` als Funktion; dass „Fortschritt sichern (Datei)" eine
+brauchbare Datei erzeugt und „Fortschritt einlesen" sie zurückholt, hat nie jemand von außen
+nachgespielt. Jetzt läuft der ganze Weg durch die Oberfläche: sichern, alles zurücksetzen, die
+heruntergeladene Datei zurückholen, Feld für Feld vergleichen. Der Stand kommt vollständig
+zurück – 400 Karten, 40 Tage, 25 Markierungen, alle Einstellungen, alle Zähler; abweichen
+dürfen nur `rev` und `gen`, die Buchhaltung des Zusammenführens. Gegengeprobt gegen ein
+absichtlich kaputtes Einlesen, das die Markierungen fallen lässt: 25 Abweichungen, zwei
+Prüfungen rot.
 
 **„Speicher voll" stand auch da, wenn der Speicher gesperrt war.** Safari kann den
 Websitespeicher ganz abschalten – Einstellung „Alle Cookies blockieren", oder ein privates

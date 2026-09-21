@@ -1809,6 +1809,101 @@ try {
     await kctx.close();
   }
 
+  group('Sichern und Einlesen: der ganze Weg durch die Oberflaeche');
+  /* Der wichtigste Weg der App. Das README sagt „sichere ihn gelegentlich –
+     löschst du in Safari die Website-Daten, ist der Fortschritt weg"; geprüft
+     war bisher nur importJSON() als Funktion. Hier läuft der ganze Weg:
+     „Fortschritt sichern (Datei)" antippen, die heruntergeladene Datei nehmen,
+     alles zurücksetzen, die Datei über „Fortschritt einlesen" zurückholen und
+     Feld für Feld vergleichen. */
+  {
+    const bctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', acceptDownloads: true });
+    const bp = horche(await bctx.newPage());
+    bp.on('dialog', d => d.accept());
+    await bp.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await bp.waitForSelector('[data-go="daily"]');
+    const vorher = await bp.evaluate(async () => {
+      const daten = await import('/data/index.js');
+      const store = await import('/assets/js/store.js');
+      const srs = await import('/assets/js/srs.js');
+      const heute = store.todayNum();
+      for (let i = 0; i < 400; i++) {
+        store.putCard(daten.CARDS[i].id, { ...srs.fresh(), seen: 6 + (i % 5), ok: 4 + (i % 4),
+          reps: 2 + (i % 4), iv: 3 + (i % 90), due: heute + (i % 60) - 10, lapses: i % 3, last: Date.now() - i });
+      }
+      for (let d = 0; d < 40; d++) {
+        store.S().days[store.numToKey(heute - d)] = { done: 20, correct: 9 + (d % 7),
+          newC: 4, sec: 320 + d, duel: 10, duelOk: 6, claim: 3, claimMiss: 1 };
+      }
+      const z = store.S();
+      z.streak = 17; z.best = 23; z.totalAnswers = 1840; z.totalCorrect = 1420;
+      z.duelAnswers = 300; z.duelCorrect = 190; z.claims = 120; z.claimsMiss = 31;
+      z.quizBest = 150; z.duelBest = 9;
+      for (let i = 0; i < 25; i++) store.toggleFlag(daten.CARDS[i * 7].id);
+      store.setSetting('newPerDay', 20);
+      store.setSetting('cats', ['mat', 'spo', 'nat']);
+      store.setSetting('focus', ['mat']);
+      store.setSetting('recallMode', 'recall');
+      store.save(true);
+      return JSON.parse(store.exportJSON());
+    });
+    await bp.reload({ waitUntil: 'networkidle' });
+    await bp.click('[data-view="settings"]');
+    await bp.waitForSelector('#exp');
+    const [datei] = await Promise.all([
+      bp.waitForEvent('download', { timeout: 15000 }).catch(() => null),
+      bp.click('#exp'),
+    ]);
+    check('„Fortschritt sichern" liefert eine Datei', !!datei,
+      datei ? datei.suggestedFilename() : 'kein Download ausgeloest');
+    if (datei) {
+      const pfad = await datei.path();
+      check('die Datei traegt das Datum im Namen',
+        /^wissenswerk-\d{4}-\d{2}-\d{2}\.json$/.test(datei.suggestedFilename()), datei.suggestedFilename());
+
+      await bp.evaluate(async () => { (await import('/assets/js/store.js')).resetAll(); });
+      await bp.reload({ waitUntil: 'networkidle' });
+      const leer = await bp.evaluate(async () =>
+        JSON.parse((await import('/assets/js/store.js')).exportJSON()));
+      check('nach „Alles zuruecksetzen" ist der Stand wirklich leer',
+        Object.keys(leer.cards).length === 0 && leer.totalAnswers === 0,
+        `${Object.keys(leer.cards).length} Karten, ${leer.totalAnswers} Antworten`);
+
+      await bp.click('[data-view="settings"]');
+      await bp.waitForSelector('#impFile', { state: 'attached' });
+      await bp.setInputFiles('#impFile', pfad);
+      await bp.waitForTimeout(1500);
+      const nachher = await bp.evaluate(async () =>
+        JSON.parse((await import('/assets/js/store.js')).exportJSON()));
+
+      /* rev und gen sind Buchhaltung des Zusammenfuehrens und muessen sich
+         aendern - alles andere muss Zeichen fuer Zeichen zurueckkommen. */
+      const vgl = (a, b, weg = '') => {
+        const aus = [];
+        for (const k of new Set([...Object.keys(a || {}), ...Object.keys(b || {})])) {
+          if (!weg && (k === 'rev' || k === 'gen')) continue;
+          const x = a[k], y = b[k];
+          if (x && y && typeof x === 'object' && typeof y === 'object') aus.push(...vgl(x, y, weg + k + '.'));
+          else if (JSON.stringify(x) !== JSON.stringify(y)) aus.push(`${weg}${k}: ${JSON.stringify(x)} -> ${JSON.stringify(y)}`);
+        }
+        return aus;
+      };
+      const weg = vgl(vorher, nachher);
+      check('der eingelesene Stand ist Feld fuer Feld derselbe', weg.length === 0,
+        `${weg.length} Abweichungen: ${weg.slice(0, 4).join(' | ')}`);
+      check('alle Karten sind zurueck',
+        Object.keys(nachher.cards).length === Object.keys(vorher.cards).length,
+        `${Object.keys(nachher.cards).length} statt ${Object.keys(vorher.cards).length}`);
+      check('alle Markierungen sind zurueck',
+        Object.keys(nachher.flags).length === 25, `${Object.keys(nachher.flags).length} statt 25`);
+      check('die Einstellungen sind zurueck',
+        nachher.settings.newPerDay === 20 && nachher.settings.recallMode === 'recall'
+        && JSON.stringify(nachher.settings.cats) === JSON.stringify(['mat', 'spo', 'nat']),
+        JSON.stringify(nachher.settings));
+    }
+    await bctx.close();
+  }
+
   group('Gesperrter Websitespeicher');
   /* Safari kann den Websitespeicher ganz sperren - Einstellung „Alle Cookies
      blockieren", oder ein privates Fenster. Dann wirft schon der ZUGRIFF auf
@@ -2318,7 +2413,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 238;
+const MINDESTENS = 245;
 if (passed + failed < MINDESTENS) {
   failed++;
   console.error(`\nNur ${passed + failed} von mindestens ${MINDESTENS} Prüfungen gelaufen – `
