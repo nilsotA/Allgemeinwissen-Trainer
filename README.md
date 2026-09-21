@@ -3251,6 +3251,55 @@ im Karma mit in der Liste – sechs von neunzehn Zeilen Unsinn, und eine Liste m
 Unsinn liest beim dritten Mal niemand mehr.
 
 
+#### Passt die Frage überhaupt in die Frist?
+
+Quizrunde und Duell geben **15 Sekunden** je Frage, und der Tempobonus verfällt nach **fünf**.
+Beides sind Fristen für *Wissen* – wenn aber schon das Lesen länger dauert, misst die Runde
+Lesegeschwindigkeit. Gerechnet mit 150 Wörtern je Minute (langsames Lesen am Handy), die vier
+Optionen zur Hälfte gezählt, weil man die gewusste Antwort sucht statt alle zu lesen:
+
+| | |
+|---|---|
+| Lesezeit im Median | 5,8 s |
+| längste Karte | 15,6 s |
+| Karten über der 15-Sekunden-Frist | **1** |
+
+**Die 15-Sekunden-Frist trägt.** Erst bei 120 Wörtern je Minute – ungewöhnlich langsam für
+vertrautes Deutsch – geraten fünf Karten darüber.
+
+**Beim Tempobonus war die erste Zahl nicht haltbar.** Bei 180 Wörtern je Minute wären auf
+41 % der Karten die fünf Sekunden allein fürs Lesen weg. Die Zahl hängt aber vollständig an
+der Annahme – 60 % bei 150 Wörtern, 20 % bei 220, 3 % bei 300. Eine Kennzahl, die sich mit
+der Annahme vervielfacht, ist keine Aussage über die App.
+
+Was **nicht** von der Annahme abhängt, ist der Abstand zwischen den Themen: Mathematik und
+Politik & Wirtschaft haben die längsten Karten, Geografie und Kunst die kürzesten, und das
+Verhältnis bleibt bei jeder Lesegeschwindigkeit etwa gleich (bei 220 Wörtern: 43 % gegen 5 %).
+Das relativiert sich allerdings selbst: Die Ziehung gibt **jedem Thema mindestens eine Frage
+je Runde**, der Themenmix ist also von Runde zu Runde fast gleich – ein fester Abschlag, kein
+Rauschen zwischen den Runden.
+
+Und die Frage, auf die es ankommt: **Ist das Maximum von 180 Punkten erreichbar?** Simuliert
+mit einem Spieler, der alles weiß und antwortet, sobald er zu Ende gelesen hat – über 300
+Runden mit festem Zufall:
+
+| Wörter/min | erreichbare Rundenpunkte (Median) |
+|---|---|
+| 180 | 155 von 180 (86 %) |
+| 220 | 165 von 180 (92 %) |
+| 260 | 170 von 180 (94 %) |
+
+Die 180 stehen am oberen Rand der Spanne, sind also erreichbar; ein Spieler mit perfektem
+Wissen landet im Bereich 86–94 %. Genau so ist der Bonus gedacht – „ein Quiz belohnt Wissen,
+Tempo ist die Zugabe". **Kein Befund, keine Änderung.**
+
+`npm run check` führt die Lesezeit seither als Kennzahl mit – bewusst als Zahl und nicht als
+Wachposten. Die Schätzung ist grob, und ausgerechnet die längste Karte ist eine Formelkarte
+(der Sinussatz mit vier fast gleichen Gleichungen), bei der ein Modell aus Wortzahlen ohnehin
+nichts taugt. Daraus eine Grenze zu machen hieße, eine Schätzung als Tatsache auszugeben. Die
+Zahl steht da, damit auffällt, wenn jemand eine Karte mit dreißig Sekunden Lesezeit ergänzt.
+
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch

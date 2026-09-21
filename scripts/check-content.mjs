@@ -396,6 +396,36 @@ for (const c of CARDS) {
 
 console.log('Mengenkarten :', `${CARDS.filter(c => c.ug).length} – dort zaehlt die Reihenfolge der Antwort nicht`);
 {
+  /* Quizrunde und Duell geben 15 Sekunden je Frage. Lesbar ist eine Karte nur,
+     wenn Frage UND Optionen in deutlich weniger Zeit zu erfassen sind - sonst
+     misst die Runde Lesegeschwindigkeit statt Wissen. Gerechnet mit 150
+     Woertern je Minute (langsames Lesen am Handy); die Optionen zaehlen zur
+     Haelfte, weil man die gewusste Antwort sucht, statt alle vier zu lesen.
+
+     Bewusst nur eine Kennzahl und kein Wachposten: Die Schaetzung ist grob,
+     und ausgerechnet die laengste Karte ist eine Formelkarte, bei der ein
+     Modell aus Wortzahlen ohnehin nichts taugt (vier fast gleiche Gleichungen
+     vergleicht niemand mit Lesegeschwindigkeit). Eine Grenze daraus zu machen
+     hiesse, eine Schaetzung als Tatsache auszugeben. Die Zahl steht hier,
+     damit auffaellt, wenn jemand eine Karte mit dreissig Sekunden Lesezeit
+     ergaenzt. */
+  const FRIST_QUELLE = existsSync('assets/js/quizmodus.js')
+    ? readFileSync('assets/js/quizmodus.js', 'utf8').match(/^export const FRIST_MS = (\d+);/m) : null;
+  if (!FRIST_QUELLE) {
+    fail('assets/js/quizmodus.js: FRIST_MS nicht gefunden – die Lesezeit-Kennzahl haette keinen Bezug');
+  } else {
+    const frist = Number(FRIST_QUELLE[1]) / 1000;
+    const wz = (t) => String(t).trim().split(/\s+/).filter(Boolean).length;
+    const lesezeit = (c) => (wz(c.q)
+      + (wz(c.a) + (c.w || []).reduce((n, w) => n + wz(w), 0)) * 0.5) / 150 * 60;
+    const zeiten = CARDS.map(lesezeit).sort((a, b) => a - b);
+    const median = zeiten[Math.floor(zeiten.length / 2)];
+    const ueber = zeiten.filter(s => s >= frist).length;
+    console.log('Lesezeit     :', `Median ${median.toFixed(1)} s, laengste ${zeiten[zeiten.length - 1].toFixed(1)} s`
+      + ` – die Frist unter Zeitdruck ist ${frist} s, ${ueber} Karte(n) darueber`);
+  }
+}
+{
   const lehrer = CARDS.filter(c => LEHRERWISSEN[c.cat]?.has(c.sub));
   const raus = lehrer.filter(c => c.sa);
   console.log('Quizrunde    :', `${CARDS.length - lehrer.length + raus.length} von ${CARDS.length} Karten,`
