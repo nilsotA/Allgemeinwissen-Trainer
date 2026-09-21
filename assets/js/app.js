@@ -1116,7 +1116,7 @@ function renderSettings() {
         </select>
       </div>
       <div class="setrow">
-        <div><label for="lvl">Reihenfolge neuer Karten</label><p class="tiny">Grundlagen zuerst schließt Schullücken.</p></div>
+        <div><label for="lvl">Reihenfolge neuer Karten</label><p class="tiny">Grundlagen zuerst schließt Schullücken – Fachliches wie Analysis oder Bewegungslehre kommt dann erst nach etwa sechs Wochen. Bunt gemischt bringt beides von Anfang an.</p></div>
         <select id="lvl">
           <option value="ladder" ${s.level === 'ladder' ? 'selected' : ''}>Grundlagen zuerst</option>
           <option value="mixed" ${s.level === 'mixed' ? 'selected' : ''}>Bunt gemischt</option>

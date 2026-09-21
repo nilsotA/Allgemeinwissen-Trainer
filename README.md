@@ -988,6 +988,26 @@ die App als markiert *ansieht*, nicht die Zahl der Schlüssel: Die bleiben als G
 stehen, damit ein zweiter offener Tab die Sterne nicht zurückholt. Die erste Fassung der
 Messung zählte die Gräber und meldete „17 übrig" – ein Fehlalarm des Messgeräts.
 
+#### Was „Grundlagen zuerst" für einen Sport- und Mathe-Studenten bedeutet
+
+Sechs Teilgebiete haben **gar keine Basiskarte** – und zwar zu Recht: In Linearer Algebra,
+Analysis, Bewegungslehre, Sportpsychologie und bei den „Verfahren erkennen" gibt es kein
+Schulwissen der Klassen 5 bis 8. Mit der Voreinstellung „Grundlagen zuerst" werden neue Karten
+aber über den **ganzen** Bestand stufenweise gezogen, und der hat 682 Basiskarten. Gerechnet
+mit dem echten Tagesplan über 120 Tage:
+
+| Einstellung | erste Karte über Basis | Analysis | Bewegungslehre | Lineare Algebra |
+|---|---|---|---|---|
+| Voreinstellung | Tag 42 | Tag 51 | Tag 50 | Tag 67 |
+| Schwerpunkt Mathe + Sport | Tag 28 | Tag 34 | Tag 32 | Tag 43 |
+| nur Mathe + Sport aktiv | Tag 10 | Tag 12 | Tag 12 | Tag 15 |
+| Bunt gemischt | Tag 1 | Tag 2 | Tag 2 | Tag 8 |
+
+Sechs bis neun Wochen, bis das eigene Fach überhaupt vorkommt. Das ist kein Fehler – die
+Leiter tut genau das, wofür sie da ist – aber es ist eine Entscheidung, die der Nutzer treffen
+können muss. Der Hinweis unter dem Feld sagte nur „Grundlagen zuerst schließt Schullücken";
+er nennt jetzt auch den Preis.
+
 **Eine Einstellung ohne Prüfung.** Sieben Schalter im Menü hatten keine Durchlaufprüfung;
 nachgemessen wirken alle. „Neue Karten trotz Rückstand" (0 → 20 neue Karten bei 400 fälligen)
 und „Lehrerwissen in der Quizrunde" (0 → 92 Lehrerkarten im Quizvorrat) waren im Modell schon
