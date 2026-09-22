@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.666 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.674 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (403 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (379 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (409 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (381 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -3715,6 +3715,20 @@ die Karte sagt „aller Zeiten". Das Suchmuster kennt jetzt auch „aller Zeiten
 „Thriller" und Minecraft; eine davon ist Unsinn („Citizen Kane gilt vielen als der beste Film
 aller Zeiten"). Das breitere „die meisten" ist gemessen und verworfen: Dort waren zwei von
 drei Treffern Karten wie „Welches Land hat die meisten Zeitzonen?", die nicht altern.
+
+#### Und was im Schulalltag fehlte
+
+Derselbe Blick auf das zweite Ziel – Wissen, das eine Sport- und Mathelehrkraft haben muss –
+fand acht Lücken, die keine Didaktik-Theorie sind, sondern Alltag in der Halle: **wer bei einem
+Sportunfall zahlt** (die gesetzliche Unfallversicherung, nicht die Lehrkraft), **wann die Schule
+ihn melden muss** (sobald ein Arzt behandelt, binnen drei Tagen), **ab wann ein Kind sicher
+schwimmt** (ab Bronze – das Seepferdchen weist nur einen Frühschwimmer aus), der Unterschied
+zwischen **Helfen und Sichern** am Gerät, der **Shuttle-Run**, **Inklusion** gegenüber
+Integration sowie **Anforderungsbereiche** und **Operatoren**, nach denen jede Klausuraufgabe
+gebaut ist. Rettungsfähigkeit, Differenzierung und Bildungsstandards standen schon da. Die
+Rechtsangaben (§ 2 und § 193 SGB VII) und die Anforderungen der Schwimmabzeichen sind
+nachgeschlagen. Nur die Schwimmkarte kehrt in die Quizrunde zurück – nach dem Seepferdchen
+fragt auch ein Spieleabend, nach der Unfallanzeige nicht.
 
 ### Qualitätssicherung
 
