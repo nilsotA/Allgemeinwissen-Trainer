@@ -133,9 +133,14 @@ for (const f of funde.slice(0, ZEIGE)) {
    Einschraenkung stand „Welcher Planet ist der Sonne am naechsten?" in der
    Liste, dazu die naechste Galaxie, der naechste Reiz im Training und das
    naechste Leben im Karma - sechs von neunzehn Zeilen waren Unsinn, und eine
-   Liste mit einem Drittel Unsinn liest beim dritten Mal niemand mehr. */
+   Liste mit einem Drittel Unsinn liest beim dritten Mal niemand mehr.
+   „aller Zeiten" und „erfolgreichste" kamen nach, als die WM 2026 den
+   Torrekord verschob und die Liste die Karte dazu nicht kannte. Das breitere
+   „die meisten" ist verworfen: Dort waren zwei von drei Treffern Unsinn
+   (die meisten Nachbarlaender, Zeitzonen, Muttersprachler). */
 const ZEITWORT = new RegExp(
   '\\baktuell|\\bderzeit|\\bmomentan|\\bzurzeit|\\bamtierend'
+  + '|aller Zeiten|\\berfolgreichste[nrs]?\\b'
   + '|Weltrekord|Rekord(?:sieger|meister|weltmeister|nationalspieler|halter)\\b'
   + '|\\bden Rekord\\b|\\bden Weltrekord\\b'
   + '|n[äa]chste[nrs]?\\s+(?:Olympisch\\w*|Sommerspiele|Winterspiele|Wahl|Saison'

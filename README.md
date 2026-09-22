@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.629 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.666 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (392 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (403 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (379 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -31,7 +31,7 @@ und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
 Freddie Mercury, Falco).
 
-Ein eigenes Teilgebiet **Geld im Alltag** (52 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
+Ein eigenes Teilgebiet **Geld im Alltag** (53 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
 zählen und in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und
 Kündigungsfrist, Probezeit und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man
 trotzdem braucht. Dazu die Fristen, die man einmal falsch verstreichen lässt und dann nicht
@@ -3230,7 +3230,7 @@ p-q-Formel gegen Mitternachtsformel, Antike gegen Neuzeit bei Olympia.
 
 #### Was mit der Zeit falsch wird
 
-Derselbe Lauf führt eine zweite Liste: **11 Karten**, deren Antwort altern kann. Die App hat
+Derselbe Lauf führt eine zweite Liste: **16 Karten**, deren Antwort altern kann (ursprünglich 11, siehe „Was seit 2020 passiert ist"). Die App hat
 keinen Server und kann nichts nachladen – wird ein Weltrekord gebrochen, lernt der Nutzer
 still das Falsche weiter, und am Spieleabend fällt es auf.
 
@@ -3661,6 +3661,60 @@ Drei Karten hat erst das Inhaltstor zurechtgerückt, und das sagt etwas über di
   auch die Antwort.
 - Beim Kontext zur Vierschanzentournee stand eine Behauptung über die Reihenfolge der
   allerersten Tournee 1952/53, die sich hier nicht belegen ließ. Sie ist gestrichen.
+
+### Was seit 2020 passiert ist – nachgeschlagen statt vermutet
+
+Die App wird im September 2026 benutzt, und ein Spieleabend im Herbst 2026 fragt nach dem
+Weltmeister vom Juli. Die Sammlung hatte aber nur **12 Karten** zu Ereignissen ab 2020 –
+Katar 2022, die EM 2024, Merz, Brexit, ein paar Serien. Seit diesem Durchgang wird zum
+ersten Mal nachgeschlagen: jede neue Angabe im Netz gegen Berichte von FIFA, UEFA, ORF,
+Nobelstiftung, Sportschau und Nachrichtenseiten geprüft, statt sie aus dem Gedächtnis zu
+schreiben.
+
+**37 Karten** sind dazugekommen, darunter Spanien als Weltmeister 2026, die WM mit 48
+Mannschaften, Leverkusens ungeschlagene Meisterschaft, Paris Saint-Germain, die
+Basketball-Weltmeister von 2023, Lando Norris, Pogačars fünfter Toursieg, Mailand und Cortina,
+Leo XIV., die Ampel und die Wahl vom Februar 2025, die Zeitenwende, der Atomausstieg, das
+Deutschlandticket, Charles III., Biontech, Bulgarien beim ESC 2026, „Oppenheimer" und „One
+Battle After Another", Han Kang und Krasznahorkai, ChatGPT, Artemis II, die „Ever Given" und
+Notre-Dame. **Jede Frage nennt ihr Jahr.** „Wer wurde 2026 Weltmeister?" ist in zwanzig
+Jahren noch richtig, „Wer ist amtierender Weltmeister?" nach der nächsten WM falsch – und
+die App kann nichts nachladen.
+
+#### Eine Vermutung, die das Nachschlagen widerlegt hat
+
+Der Anlass war eine Karte, die nach Erfindung aussah: „Wer erzielte die meisten WM-Tore aller
+Zeiten? – Kylian Mbappé, 22 Tore, Stand nach der WM 2026, vor Messi (21)". Nach der WM 2022
+standen Mbappé bei 12 und Messi bei 13 Toren; zehn und acht Tore bei einem einzigen Turnier
+schienen zu viel, und geschrieben wurde die Karte von einem Sprachmodell, dessen Wissen vor
+dem Turnier endet. **Die Karte stimmt.** Mbappé hat 2026 zehn Tore geschossen, Messi acht.
+Hätte der Durchgang nach Plausibilität aufgeräumt, wäre eine richtige Karte gelöscht worden.
+
+Nachgesehen wurden auch die Karten, die das Turnier hätte umwerfen können: Weil Spanien
+gewonnen hat, bleiben „Brasilien ist Rekordweltmeister" und „Deutschland wurde viermal
+Weltmeister" richtig. Bayerns 35. Titel ändert nichts an „über 30", Paris' zweiter
+Champions-League-Sieg nichts an „Real Madrid hat mehr als doppelt so viele Titel wie der
+Zweite", und der deutsche Oscar-Beitrag 2026 ging leer aus – „vier deutsche Auslands-Oscars"
+gilt weiter. Die Weltrekorde über 100 m, im Hoch- und im Weitsprung stehen noch.
+
+#### Was sich doch geändert hatte
+
+- **Der Marathon unter zwei Stunden.** „Wer lief als erster Mensch einen Marathon unter zwei
+  Stunden? – Eliud Kipchoge" war bis April 2026 eindeutig. Seit Sabastian Sawe in London
+  1:59:30 in einem regulären Rennen gelaufen ist, gibt es zwei richtige Antworten auf dieselbe
+  Frage. Sie nennt jetzt Wien 2019 und die Sonderbedingungen, Sawe hat eine eigene Karte, und
+  der Lernstand ist über den alten Wortlaut erhalten.
+- **„Weiter im Amt (Stand 2026)"** stand im Kontext der Merz-Karte – eine Angabe, die beim
+  Schreiben niemand prüfen konnte. Dort steht jetzt, was nicht altert: Merz wurde als erster
+  Kanzler erst im zweiten Wahlgang gewählt.
+
+Die Liste der alternden Karten (`npm run widersprueche`) kannte die Mbappé-Karte nicht,
+obwohl sich genau diese Antwort 2026 geändert hat: Sie suchte nach „Rekord" und „derzeit",
+die Karte sagt „aller Zeiten". Das Suchmuster kennt jetzt auch „aller Zeiten" und
+„erfolgreichste". Damit stehen **16 statt 11 Karten** auf der Liste, darunter Phelps,
+„Thriller" und Minecraft; eine davon ist Unsinn („Citizen Kane gilt vielen als der beste Film
+aller Zeiten"). Das breitere „die meisten" ist gemessen und verworfen: Dort waren zwei von
+drei Treffern Karten wie „Welches Land hat die meisten Zeitzonen?", die nicht altern.
 
 ### Qualitätssicherung
 
