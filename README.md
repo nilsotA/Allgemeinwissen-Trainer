@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.529 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.629 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (362 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (392 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (379 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -25,7 +25,7 @@ Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast lee
 **Mythologie** (24 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
 und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (30 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (9 – Penicillin, Dynamit,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (14 Quiz-Klassiker vom
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (28 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
@@ -3634,15 +3634,33 @@ wenn eine Seite eine ERKLÄRUNG ist – nicht, wenn beide Seiten einander nur be
 Die zweite Sorte wird nicht mehr geschrieben. Das ist auch der Grund, warum 24 der 27 offenen
 Fragen aus Prüfsatz 5 offen bleiben.
 
-#### Was der Prüfsatz nicht erreicht hat
+#### Was der Prüfsatz nicht erreicht hat – und jetzt besetzt ist
 
 379 Fragen decken nicht alles ab. Ein zweiter, gröberer Blick – Stichwortlisten über den
-ganzen Bestand – nennt Themen, nach denen der Prüfsatz gar nicht gefragt hat und zu denen
-kaum etwas dasteht: **Motorsport** (1 Karte), **Hunde- und Katzenrassen** (0), **Wintersport**
+ganzen Bestand – nannte Themen, nach denen der Prüfsatz gar nicht gefragt hatte und zu denen
+kaum etwas dastand: **Motorsport** (1 Karte), **Hunde- und Katzenrassen** (0), **Wintersport**
 (3), **Musical** (2), **Eishockey** (2), **Dinosaurier** (1), **Pilze** (0), **Mode** (2),
-**Fotografie** (3), **Insekten** (0). Diese Liste ist ausdrücklich eine Ideenquelle und keine
+**Fotografie** (3), **Insekten** (0). Diese Liste war ausdrücklich eine Ideenquelle und keine
 Messung: Ihre Stichwortsuche meldete zunächst zwölf Karten zu Hunderassen, weil „Jahrhundert"
 das Wort „hund" enthält. Nachgezählt wurde jeder dieser Posten von Hand.
+
+Zehn Bündel haben daraus je zehn Karten gemacht, jedes mit Abgleich gegen den Bestand und
+einem eigenen Gegenleser: Pole Position und Nürburgring, Streif und Axel, Puck und Bully,
+Chihuahua und Schwänzeltanz, Stegosaurus und Chicxulub, Myzel und Jahresringe, „Nessun dorma"
+und Pirouette, New Look und Blende, Krakatau und Föhn, Franken und Union Jack. Die Gegenleser
+haben 74 der 100 Karten korrigiert und keine verworfen. Das ist diesmal **keine** Messung
+gegen einen Prüfsatz, sondern eine Entscheidung über Breite – und steht deshalb hier getrennt
+von den 93 %.
+
+Drei Karten hat erst das Inhaltstor zurechtgerückt, und das sagt etwas über die Tore:
+- „Die Schärfentiefe wird geringer" galt auch **rückwärts** gelesen als richtig – die Prüfung
+  auf vertauschte Wortfolgen hat es gemeldet. Die Antwort heißt jetzt „Eine geringere
+  Schärfentiefe".
+- Beim Tsunami hatten die drei Ablenker nach dem Kürzen alle die halbe Länge der Antwort. Die
+  Ratequote hätte das nicht bemerkt – sie misst über den ganzen Bestand. Gekürzt ist jetzt
+  auch die Antwort.
+- Beim Kontext zur Vierschanzentournee stand eine Behauptung über die Reihenfolge der
+  allerersten Tournee 1952/53, die sich hier nicht belegen ließ. Sie ist gestrichen.
 
 ### Qualitätssicherung
 
