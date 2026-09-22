@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.674 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.689 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (409 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (414 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (381 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -3729,6 +3729,21 @@ gebaut ist. Rettungsfähigkeit, Differenzierung und Bildungsstandards standen sc
 Rechtsangaben (§ 2 und § 193 SGB VII) und die Anforderungen der Schwimmabzeichen sind
 nachgeschlagen. Nur die Schwimmkarte kehrt in die Quizrunde zurück – nach dem Seepferdchen
 fragt auch ein Spieleabend, nach der Unfallanzeige nicht.
+
+#### Kein einziger Friedensnobelpreis
+
+Eine Zählung nach Stichwort ergab **13 Karten** zu Nobelpreisen – Literatur und Naturwissenschaft,
+aber **keine** zum Friedensnobelpreis, einem Dauerbrenner jedes Quizspiels. Brandt, Mandela und
+Mutter Teresa kamen nur im Kontext anderer Karten vor, Einsteins Nobelpreis für den Fotoeffekt
+– die klassische Falle, weil jeder die Relativitätstheorie tippt – ebenso. Neu sind Oslo als
+Verleihungsort, Dunant, Bertha von Suttner, Stresemann, Ossietzky, die EU 2012, Obama 2009,
+Malala und Machado 2025 sowie die Einstein-Karte.
+
+Dazu die Gastgeber, nach denen gefragt wird, solange die Turniere bevorstehen – und die trotzdem
+nicht altern, weil die Frage das Jahr nennt: WM 2030 (Spanien, Portugal, Marokko, Auftakt in
+Südamerika), WM 2034 (Saudi-Arabien), EM 2028 (Großbritannien und Irland), Sommerspiele 2032
+(Brisbane) und Winterspiele 2030 (französische Alpen). Die jüngeren Angaben – Machado, die
+Vergaben von 2024, das fehlende nordirische Stadion – sind nachgeschlagen.
 
 ### Qualitätssicherung
 
