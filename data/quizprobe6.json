@@ -1,0 +1,5843 @@
+[
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Hauptstädte Europas",
+  "frage": "Wie heißt die Hauptstadt Sloweniens?",
+  "antwort": "Ljubljana",
+  "alternativen": [
+   "Laibach"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Hauptstädte Europas",
+  "frage": "Welche Stadt ist die Hauptstadt der Republik Moldau?",
+  "antwort": "Chișinău",
+  "alternativen": [
+   "Chisinau",
+   "Kischinau",
+   "Kischinjow"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Hauptstädte Afrikas",
+  "frage": "Wie heißt die Hauptstadt Äthiopiens?",
+  "antwort": "Addis Abeba",
+  "alternativen": [
+   "Addis Ababa"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Hauptstädte Afrikas",
+  "frage": "Welche Stadt löste 1991 Lagos als Hauptstadt Nigerias ab?",
+  "antwort": "Abuja",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Hauptstädte Asiens",
+  "frage": "Wie heißt die Hauptstadt der Mongolei?",
+  "antwort": "Ulan Bator",
+  "alternativen": [
+   "Ulaanbaatar",
+   "Ulan-Bator"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Hauptstädte Asiens",
+  "frage": "Welche Stadt löste 2005 Rangun als Hauptstadt Myanmars ab?",
+  "antwort": "Naypyidaw",
+  "alternativen": [
+   "Naypyitaw",
+   "Nay Pyi Taw",
+   "Nay Pyi Daw"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Hauptstädte Amerikas und Ozeaniens",
+  "frage": "Welche Planstadt löste 1960 Rio de Janeiro als Hauptstadt ab?",
+  "antwort": "Brasília",
+  "alternativen": [
+   "Brasilia"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Hauptstädte Amerikas und Ozeaniens",
+  "frage": "Wie heißt die Hauptstadt Neuseelands?",
+  "antwort": "Wellington",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Zwergstaaten",
+  "frage": "Wie heißt die Hauptstadt des Fürstentums Liechtenstein?",
+  "antwort": "Vaduz",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Zwergstaaten",
+  "frage": "Welcher vollständig von Italien umschlossene Zwergstaat gilt als älteste bestehende Republik der Welt?",
+  "antwort": "San Marino",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Frühere Ländernamen",
+  "frage": "Unter welchem Namen war Sri Lanka bis 1972 bekannt?",
+  "antwort": "Ceylon",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Frühere Ländernamen",
+  "frage": "Wie hieß die heutige Demokratische Republik Kongo von 1971 bis 1997?",
+  "antwort": "Zaire",
+  "alternativen": [
+   "Zaïre"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Große Flüsse der Welt",
+  "frage": "Welcher ist der längste Fluss Europas?",
+  "antwort": "Wolga",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Große Flüsse der Welt",
+  "frage": "Welcher ist der längste Fluss Asiens?",
+  "antwort": "Jangtse",
+  "alternativen": [
+   "Jangtsekiang",
+   "Yangtze",
+   "Chang Jiang"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Seen der Welt",
+  "frage": "Welcher sibirische See ist der tiefste See der Erde?",
+  "antwort": "Baikalsee",
+  "alternativen": [
+   "Baikal"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Seen der Welt",
+  "frage": "Welcher große See liegt auf rund 3800 Metern Höhe an der Grenze zwischen Peru und Bolivien?",
+  "antwort": "Titicacasee",
+  "alternativen": [
+   "Titicaca",
+   "Titicaca-See"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Höchste Berge",
+  "frage": "Welcher ist der höchste Berg Afrikas?",
+  "antwort": "Kilimandscharo",
+  "alternativen": [
+   "Kilimanjaro"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Höchste Berge",
+  "frage": "Welcher Berg im Karakorum ist der zweithöchste der Erde?",
+  "antwort": "K2",
+  "alternativen": [
+   "Chogori",
+   "Mount Godwin-Austen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Vulkane",
+  "frage": "Welcher Vulkan begrub im Jahr 79 n. Chr. die Stadt Pompeji?",
+  "antwort": "Vesuv",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Vulkane",
+  "frage": "Welcher indonesische Vulkan löste 1815 einen gewaltigen Ausbruch aus, auf den 1816 das „Jahr ohne Sommer“ folgte?",
+  "antwort": "Tambora",
+  "alternativen": [
+   "Mount Tambora"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Wüsten",
+  "frage": "Welche ist die größte Hitzewüste der Erde?",
+  "antwort": "Sahara",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Wüsten",
+  "frage": "Welche Wüste im Norden Chiles gilt als trockenste Wüste außerhalb der Polargebiete?",
+  "antwort": "Atacama",
+  "alternativen": [
+   "Atacamawüste",
+   "Atacama-Wüste"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Inseln",
+  "frage": "Welche ist die größte Insel der Erde, wenn man Australien als Kontinent nicht mitzählt?",
+  "antwort": "Grönland",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Inseln",
+  "frage": "Zu welchem Staat gehört die Osterinsel?",
+  "antwort": "Chile",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Ozeane und Meerengen",
+  "frage": "Welcher ist der größte Ozean der Erde?",
+  "antwort": "Pazifik",
+  "alternativen": [
+   "Pazifischer Ozean",
+   "Stiller Ozean"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Ozeane und Meerengen",
+  "frage": "Welche Meerenge trennt Asien von Nordamerika?",
+  "antwort": "Beringstraße",
+  "alternativen": [
+   "Bering-Straße",
+   "Beringstrasse"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Wasserfälle",
+  "frage": "Wie heißt der Wasserfall in Venezuela, der gemeinhin als höchster Wasserfall der Erde gilt?",
+  "antwort": "Salto Ángel",
+  "alternativen": [
+   "Salto Angel",
+   "Angel Falls",
+   "Kerepakupai Merú"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Wasserfälle",
+  "frage": "An welchem Fluss liegen die Victoriafälle?",
+  "antwort": "Sambesi",
+  "alternativen": [
+   "Zambezi",
+   "Sambezi"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Klima- und Vegetationszonen",
+  "frage": "Wie heißt die baumlose Vegetationszone nördlich des borealen Nadelwaldes?",
+  "antwort": "Tundra",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Klima- und Vegetationszonen",
+  "frage": "Welcher Breitenkreis bildet die nördliche Grenze der Tropen?",
+  "antwort": "Wendekreis des Krebses",
+  "alternativen": [
+   "nördlicher Wendekreis"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Rekorde der Erde",
+  "frage": "In welchem Tiefseegraben im Pazifik liegt die tiefste bekannte Stelle der Weltmeere?",
+  "antwort": "Marianengraben",
+  "alternativen": [
+   "Marianen-Graben"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Rekorde der Erde",
+  "frage": "Welches Gewässer zwischen Israel und Jordanien markiert den tiefsten Punkt der Landoberfläche der Erde?",
+  "antwort": "Totes Meer",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "Mit wie vielen Staaten hat Deutschland eine gemeinsame Landgrenze?",
+  "antwort": "9",
+  "alternativen": [
+   "neun"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "Welche beiden Staaten Südamerikas grenzen nicht an Brasilien?",
+  "antwort": "Chile und Ecuador",
+  "alternativen": [
+   "Ecuador und Chile"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Flaggen",
+  "frage": "Welches Land zeigt ein rotes Ahornblatt auf seiner Nationalflagge?",
+  "antwort": "Kanada",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Flaggen",
+  "frage": "Welcher Staat hat als einziger eine nicht viereckige Nationalflagge?",
+  "antwort": "Nepal",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Währungen fremder Länder",
+  "frage": "Wie heißt die Währung Südafrikas?",
+  "antwort": "Rand",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Währungen fremder Länder",
+  "frage": "Welches Land führte 1946 den Forint als Währung ein?",
+  "antwort": "Ungarn",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Bauwerke und Sehenswürdigkeiten",
+  "frage": "In welcher Stadt steht der 828 Meter hohe Burj Khalifa?",
+  "antwort": "Dubai",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-welt",
+  "block": "Bauwerke und Sehenswürdigkeiten",
+  "frage": "In welcher indischen Stadt steht das Taj Mahal?",
+  "antwort": "Agra",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Bundesländer und Landeshauptstädte",
+  "frage": "Wie heißt die Landeshauptstadt von Mecklenburg-Vorpommern?",
+  "antwort": "Schwerin",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Bundesländer und Landeshauptstädte",
+  "frage": "Wiesbaden ist die Landeshauptstadt welches Bundeslandes?",
+  "antwort": "Hessen",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Bundesländer-Superlative",
+  "frage": "Welches ist das flächenmäßig größte deutsche Bundesland?",
+  "antwort": "Bayern",
+  "alternativen": [
+   "Freistaat Bayern"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Bundesländer-Superlative",
+  "frage": "Welches ist das kleinste deutsche Flächenland, also das kleinste Bundesland ohne die Stadtstaaten?",
+  "antwort": "Saarland",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Flüsse",
+  "frage": "Welcher große Strom fließt durch Hamburg?",
+  "antwort": "Elbe",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Flüsse",
+  "frage": "Welche beiden Flüsse vereinigen sich in Hann. Münden zur Weser?",
+  "antwort": "Werra und Fulda",
+  "alternativen": [
+   "Fulda und Werra"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Seen",
+  "frage": "An welchem See grenzen Deutschland, Österreich und die Schweiz aneinander?",
+  "antwort": "Bodensee",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Seen",
+  "frage": "Welcher ist der flächenmäßig größte See, der vollständig in Deutschland liegt?",
+  "antwort": "Müritz",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Gebirge und Gipfel",
+  "frage": "Wie heißt der höchste Berg Deutschlands?",
+  "antwort": "Zugspitze",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Gebirge und Gipfel",
+  "frage": "Wie heißt der höchste Berg des Harzes?",
+  "antwort": "Brocken",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Inseln",
+  "frage": "Welches ist die größte Insel Deutschlands?",
+  "antwort": "Rügen",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Inseln",
+  "frage": "Auf welcher deutschen Hochseeinsel in der Nordsee steht die Felsnadel „Lange Anna“?",
+  "antwort": "Helgoland",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Städte-Beinamen",
+  "frage": "Welche deutsche Stadt trägt den Beinamen „Elbflorenz“?",
+  "antwort": "Dresden",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Städte-Beinamen",
+  "frage": "Welche baden-württembergische Stadt wird wegen ihres strahlenförmigen Grundrisses „Fächerstadt“ genannt?",
+  "antwort": "Karlsruhe",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Autokennzeichen",
+  "frage": "Für welche Stadt steht das Kfz-Kennzeichen „HH“?",
+  "antwort": "Hamburg",
+  "alternativen": [
+   "Hansestadt Hamburg"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Autokennzeichen",
+  "frage": "Welches europäische Land hat das internationale Kfz-Nationalitätszeichen „H“?",
+  "antwort": "Ungarn",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Nachbarländer Deutschlands",
+  "frage": "Wie viele Nachbarstaaten hat Deutschland?",
+  "antwort": "9",
+  "alternativen": [
+   "neun"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Nachbarländer Deutschlands",
+  "frage": "Mit welchem Nachbarland hat Deutschland die kürzeste gemeinsame Landgrenze?",
+  "antwort": "Dänemark",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Landschaften und Regionen",
+  "frage": "Welche von vielen Flussarmen durchzogene Landschaft in Brandenburg ist für ihre Gurken berühmt?",
+  "antwort": "Spreewald",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Landschaften und Regionen",
+  "frage": "Welches Mittelgebirge im Westen Deutschlands ist für seine vulkanischen Kraterseen, die Maare, bekannt?",
+  "antwort": "Eifel",
+  "alternativen": [
+   "Vulkaneifel"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Nationalparks",
+  "frage": "Welcher Nationalpark wurde 1970 als erster Nationalpark Deutschlands gegründet?",
+  "antwort": "Bayerischer Wald",
+  "alternativen": [
+   "Nationalpark Bayerischer Wald"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Deutsche Nationalparks",
+  "frage": "In welchem Nationalpark liegen der Watzmann und der Königssee?",
+  "antwort": "Berchtesgaden",
+  "alternativen": [
+   "Nationalpark Berchtesgaden"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Sehenswürdigkeiten in Deutschland",
+  "frage": "Welches Märchenschloss ließ König Ludwig II. bei Füssen im Allgäu erbauen?",
+  "antwort": "Neuschwanstein",
+  "alternativen": [
+   "Schloss Neuschwanstein"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Sehenswürdigkeiten in Deutschland",
+  "frage": "In welcher Stadt steht das römische Stadttor Porta Nigra?",
+  "antwort": "Trier",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt der Slowakei?",
+  "antwort": "Bratislava",
+  "alternativen": [
+   "Pressburg"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Hauptstädte",
+  "frage": "Ljubljana ist die Hauptstadt welches Landes?",
+  "antwort": "Slowenien",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Kleinstaaten",
+  "frage": "Wie heißt die Hauptstadt des Fürstentums Liechtenstein?",
+  "antwort": "Vaduz",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Kleinstaaten",
+  "frage": "Welcher Kleinstaat liegt in den Pyrenäen zwischen Frankreich und Spanien?",
+  "antwort": "Andorra",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Regionen Europas",
+  "frage": "In welchem Land liegt die Küstenregion Algarve?",
+  "antwort": "Portugal",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Regionen Europas",
+  "frage": "Welche Region im Nordwesten Frankreichs hat Rennes als Hauptstadt?",
+  "antwort": "Bretagne",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Flüsse",
+  "frage": "Welches ist der längste Fluss Europas?",
+  "antwort": "Wolga",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Flüsse",
+  "frage": "In welches Meer mündet die Donau?",
+  "antwort": "Schwarzes Meer",
+  "alternativen": [
+   "ins Schwarze Meer"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Berge und Vulkane",
+  "frage": "Wie heißt der höchste Berg der Alpen?",
+  "antwort": "Mont Blanc",
+  "alternativen": [
+   "Monte Bianco"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Berge und Vulkane",
+  "frage": "Wie heißt der große aktive Vulkan an der Ostküste Siziliens?",
+  "antwort": "Ätna",
+  "alternativen": [
+   "Etna"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Inseln",
+  "frage": "Welches ist die flächenmäßig größte Insel Europas (Grönland zählt geografisch zu Nordamerika)?",
+  "antwort": "Großbritannien",
+  "alternativen": [
+   "Great Britain"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Europäische Inseln",
+  "frage": "Auf welcher Mittelmeerinsel wurde Napoleon Bonaparte geboren?",
+  "antwort": "Korsika",
+  "alternativen": [
+   "Corse"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Meere und Meerengen Europas",
+  "frage": "Welche Meerenge trennt Spanien von Marokko und damit Europa von Afrika?",
+  "antwort": "Straße von Gibraltar",
+  "alternativen": [
+   "Meerenge von Gibraltar",
+   "Gibraltar"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Meere und Meerengen Europas",
+  "frage": "Welche Meerenge teilt Istanbul in einen europäischen und einen asiatischen Teil?",
+  "antwort": "Bosporus",
+  "alternativen": [
+   "Bosphorus"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Sehenswürdigkeiten Europas",
+  "frage": "In welcher Stadt steht die Basilika Sagrada Família von Antoni Gaudí?",
+  "antwort": "Barcelona",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-de-eu",
+  "block": "Sehenswürdigkeiten Europas",
+  "frage": "In welcher Hauptstadt steht das Atomium, das für die Weltausstellung 1958 gebaut wurde?",
+  "antwort": "Brüssel",
+  "alternativen": [
+   "Bruxelles",
+   "Brussel"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Pharaonen",
+  "frage": "Welcher Pharao wurde durch die Entdeckung seines fast unversehrten Grabes durch Howard Carter im Jahr 1922 weltberühmt?",
+  "antwort": "Tutanchamun",
+  "alternativen": [
+   "Tutenchamun",
+   "Tut-anch-Amun"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Pharaonen",
+  "frage": "Für welchen Pharao wurde die größte der drei Pyramiden von Gizeh errichtet?",
+  "antwort": "Cheops",
+  "alternativen": [
+   "Chufu",
+   "Khufu"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Sieben Weltwunder der Antike",
+  "frage": "Welches der sieben Weltwunder der Antike ist als einziges bis heute erhalten?",
+  "antwort": "Pyramiden von Gizeh",
+  "alternativen": [
+   "Cheops-Pyramide",
+   "Große Pyramide von Gizeh",
+   "Pyramiden"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Sieben Weltwunder der Antike",
+  "frage": "In welcher Stadt stand der berühmte Leuchtturm, der zu den sieben Weltwundern der Antike zählte?",
+  "antwort": "Alexandria",
+  "alternativen": [
+   "Alexandrien"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Athen und Sparta",
+  "frage": "Welche griechische Stadt gilt als Wiege der Demokratie?",
+  "antwort": "Athen",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Athen und Sparta",
+  "frage": "Wie heißt der Krieg, den Athen und Sparta von 431 bis 404 v. Chr. gegeneinander führten?",
+  "antwort": "Peloponnesischer Krieg",
+  "alternativen": [
+   "Peloponnesischer"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Perserkriege",
+  "frage": "Nach dem Ort welcher Schlacht von 490 v. Chr. ist ein Laufwettbewerb über 42,195 Kilometer benannt?",
+  "antwort": "Marathon",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Perserkriege",
+  "frage": "Welcher spartanische König verteidigte 480 v. Chr. mit 300 Spartanern den Engpass bei den Thermopylen?",
+  "antwort": "Leonidas",
+  "alternativen": [
+   "Leonidas I."
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Antike Olympische Spiele",
+  "frage": "Zu Ehren welches Gottes wurden die antiken Olympischen Spiele in Olympia ausgetragen?",
+  "antwort": "Zeus",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Antike Olympische Spiele",
+  "frage": "In welchem Jahr fanden der Überlieferung nach die ersten antiken Olympischen Spiele statt?",
+  "antwort": "776 v. Chr.",
+  "alternativen": [
+   "776 vor Christus",
+   "776"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Alexander der Große",
+  "frage": "Welchen sagenumwobenen Knoten soll Alexander der Große mit seinem Schwert durchschlagen haben?",
+  "antwort": "Gordischer Knoten",
+  "alternativen": [
+   "Gordischen Knoten"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Alexander der Große",
+  "frage": "Welcher griechische Philosoph war der Lehrer des jungen Alexander?",
+  "antwort": "Aristoteles",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Römische Republik und Caesar",
+  "frage": "In welchem Jahr wurde Rom der Sage nach gegründet?",
+  "antwort": "753 v. Chr.",
+  "alternativen": [
+   "753 vor Christus",
+   "753"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Römische Republik und Caesar",
+  "frage": "Welchen Grenzfluss überschritt Caesar 49 v. Chr. mit den Worten „Alea iacta est“?",
+  "antwort": "Rubikon",
+  "alternativen": [
+   "Rubicon"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Punische Kriege",
+  "frage": "Welcher karthagische Feldherr überquerte im Zweiten Punischen Krieg mit Kriegselefanten die Alpen?",
+  "antwort": "Hannibal",
+  "alternativen": [
+   "Hannibal Barkas"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Punische Kriege",
+  "frage": "Welcher römische Politiker soll seine Reden stets mit der Forderung beendet haben, Karthago müsse zerstört werden?",
+  "antwort": "Cato",
+  "alternativen": [
+   "Cato der Ältere",
+   "Marcus Porcius Cato"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Römische Kaiser",
+  "frage": "Wer war der erste römische Kaiser?",
+  "antwort": "Augustus",
+  "alternativen": [
+   "Octavian",
+   "Oktavian"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Römische Kaiser",
+  "frage": "Nach welchem römischen Kaiser wurde die Stadt Byzanz benannt, als er sie 330 n. Chr. zur neuen Hauptstadt machte?",
+  "antwort": "Konstantin",
+  "alternativen": [
+   "Konstantin der Große",
+   "Konstantin I.",
+   "Constantinus"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Völkerwanderung",
+  "frage": "Welches Reitervolk aus Zentralasien löste 375 n. Chr. mit seinem Vorstoß nach Westen die Völkerwanderung aus?",
+  "antwort": "Hunnen",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Völkerwanderung",
+  "frage": "Welcher germanische Heerführer setzte 476 den letzten weströmischen Kaiser Romulus Augustulus ab?",
+  "antwort": "Odoaker",
+  "alternativen": [
+   "Odoacer",
+   "Odowakar"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Karl der Große und die Karolinger",
+  "frage": "In welchem Jahr wurde Karl der Große in Rom zum Kaiser gekrönt?",
+  "antwort": "800",
+  "alternativen": [
+   "800 n. Chr.",
+   "Weihnachten 800"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Karl der Große und die Karolinger",
+  "frage": "Durch welchen Vertrag wurde das Frankenreich 843 unter den Enkeln Karls des Großen aufgeteilt?",
+  "antwort": "Vertrag von Verdun",
+  "alternativen": [
+   "Verdun"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Investiturstreit und Canossa",
+  "frage": "Zu welcher Burg in Norditalien unternahm König Heinrich IV. im Jahr 1077 seinen Bußgang zu Papst Gregor VII.?",
+  "antwort": "Canossa",
+  "alternativen": [
+   "Burg Canossa"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Investiturstreit und Canossa",
+  "frage": "Welches Abkommen beendete 1122 den Investiturstreit zwischen Kaiser und Papst?",
+  "antwort": "Wormser Konkordat",
+  "alternativen": [
+   "Konkordat von Worms"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Kreuzzüge",
+  "frage": "Welche Stadt eroberten die Kreuzfahrer 1099 am Ende des Ersten Kreuzzugs?",
+  "antwort": "Jerusalem",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Kreuzzüge",
+  "frage": "Welcher Sultan eroberte Jerusalem im Jahr 1187 von den Kreuzfahrern zurück?",
+  "antwort": "Saladin",
+  "alternativen": [
+   "Salah ad-Din",
+   "Saladdin"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Hanse",
+  "frage": "Welche Stadt wurde als „Königin der Hanse“ bezeichnet?",
+  "antwort": "Lübeck",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Hanse",
+  "frage": "Wie heißt der bauchige Segelschiffstyp, der als typisches Handelsschiff der Hanse gilt?",
+  "antwort": "Kogge",
+  "alternativen": [
+   "Hansekogge"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Pest",
+  "frage": "Unter welchem Namen ist die große Pestepidemie bekannt, die Europa ab 1347 heimsuchte?",
+  "antwort": "Schwarzer Tod",
+  "alternativen": [
+   "Der Schwarze Tod"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Pest",
+  "frage": "Durch den Stich welcher Insekten wurde der Pesterreger meist von Ratten auf Menschen übertragen?",
+  "antwort": "Flöhe",
+  "alternativen": [
+   "Rattenflöhe",
+   "Floh",
+   "Rattenfloh"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Reformation",
+  "frage": "In welchem Jahr veröffentlichte Martin Luther seine 95 Thesen?",
+  "antwort": "1517",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Reformation",
+  "frage": "Auf welcher Burg übersetzte Martin Luther das Neue Testament ins Deutsche?",
+  "antwort": "Wartburg",
+  "alternativen": [
+   "Die Wartburg"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Entdeckungsfahrten",
+  "frage": "In welchem Jahr erreichte Christoph Kolumbus erstmals Amerika?",
+  "antwort": "1492",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Entdeckungsfahrten",
+  "frage": "Welcher portugiesische Seefahrer fand 1498 als erster Europäer den Seeweg nach Indien um Afrika herum?",
+  "antwort": "Vasco da Gama",
+  "alternativen": [
+   "da Gama"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Dreißigjähriger Krieg",
+  "frage": "Welches Ereignis in Prag löste 1618 den Dreißigjährigen Krieg aus?",
+  "antwort": "Prager Fenstersturz",
+  "alternativen": [
+   "Zweiter Prager Fenstersturz",
+   "Fenstersturz"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Dreißigjähriger Krieg",
+  "frage": "In welchen beiden Städten wurde 1648 der Westfälische Frieden geschlossen?",
+  "antwort": "Münster und Osnabrück",
+  "alternativen": [
+   "Osnabrück und Münster"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Absolutismus",
+  "frage": "Welches prunkvolle Schloss vor den Toren von Paris ließ Ludwig XIV. zu seiner Residenz ausbauen?",
+  "antwort": "Versailles",
+  "alternativen": [
+   "Schloss Versailles"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Absolutismus",
+  "frage": "Wie hieß der Finanzminister Ludwigs XIV., nach dem eine merkantilistische Wirtschaftspolitik benannt ist?",
+  "antwort": "Colbert",
+  "alternativen": [
+   "Jean-Baptiste Colbert"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Herrscherbeinamen",
+  "frage": "Unter welchem Beinamen ist der Stauferkaiser Friedrich I. bekannt?",
+  "antwort": "Barbarossa",
+  "alternativen": [
+   "Rotbart"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-alt",
+  "block": "Herrscherbeinamen",
+  "frage": "Unter welchem Beinamen ist der preußische König Friedrich Wilhelm I. bekannt?",
+  "antwort": "Soldatenkönig",
+  "alternativen": [
+   "Der Soldatenkönig"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Französische Revolution",
+  "frage": "Der Sturm auf welches Pariser Gefängnis am 14. Juli 1789 gilt als Beginn der Französischen Revolution?",
+  "antwort": "Bastille",
+  "alternativen": [
+   "die Bastille"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Französische Revolution",
+  "frage": "Welcher Jakobinerführer gilt als Hauptverantwortlicher der Schreckensherrschaft und wurde 1794 selbst hingerichtet?",
+  "antwort": "Maximilien de Robespierre",
+  "alternativen": [
+   "Robespierre"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Napoleon",
+  "frage": "In welcher Schlacht im heutigen Belgien wurde Napoleon im Juni 1815 endgültig besiegt?",
+  "antwort": "Waterloo",
+  "alternativen": [
+   "Schlacht bei Waterloo",
+   "Belle-Alliance"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Napoleon",
+  "frage": "Auf welcher Insel im Südatlantik starb Napoleon 1821 in der Verbannung?",
+  "antwort": "St. Helena",
+  "alternativen": [
+   "Sankt Helena",
+   "Saint Helena"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Revolution 1848/49",
+  "frage": "In welcher Frankfurter Kirche tagte 1848/49 die erste frei gewählte deutsche Nationalversammlung?",
+  "antwort": "Paulskirche",
+  "alternativen": [
+   "Frankfurter Paulskirche"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Revolution 1848/49",
+  "frage": "Welcher preußische König lehnte 1849 die ihm von der Nationalversammlung angebotene Kaiserkrone ab?",
+  "antwort": "Friedrich Wilhelm IV.",
+  "alternativen": [
+   "Friedrich Wilhelm der Vierte"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Industrialisierung und Erfindungen",
+  "frage": "Zwischen welchen beiden Städten fuhr 1835 die erste mit Dampflokomotiven betriebene Eisenbahn in Deutschland?",
+  "antwort": "Nürnberg und Fürth",
+  "alternativen": [
+   "Nürnberg–Fürth",
+   "Fürth und Nürnberg"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Industrialisierung und Erfindungen",
+  "frage": "Welcher Ingenieur meldete 1886 seinen Motorwagen zum Patent an, der als erstes Automobil gilt?",
+  "antwort": "Carl Benz",
+  "alternativen": [
+   "Karl Benz",
+   "Benz"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Reichsgründung 1871",
+  "frage": "Während welches Krieges wurde im Januar 1871 das Deutsche Kaiserreich gegründet?",
+  "antwort": "Deutsch-Französischer Krieg",
+  "alternativen": [
+   "Deutsch-Französischer Krieg 1870/71",
+   "Französisch-Preußischer Krieg"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Reichsgründung 1871",
+  "frage": "In welchem Saal des Schlosses Versailles wurde am 18. Januar 1871 Wilhelm I. zum Deutschen Kaiser proklamiert?",
+  "antwort": "Spiegelsaal",
+  "alternativen": [
+   "Spiegelgalerie",
+   "Galerie des Glaces"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Kaiserreich und Wilhelm II.",
+  "frage": "Unter welchem Beinamen ist das Jahr 1888 bekannt, in dem nach dem Tod Wilhelms I. auch sein Sohn und Nachfolger Friedrich III. starb?",
+  "antwort": "Dreikaiserjahr",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Kaiserreich und Wilhelm II.",
+  "frage": "In welches Land ging Kaiser Wilhelm II. nach seiner Abdankung 1918 ins Exil?",
+  "antwort": "Niederlande",
+  "alternativen": [
+   "Holland"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Erster Weltkrieg",
+  "frage": "In welcher Stadt wurde am 28. Juni 1914 der österreichische Thronfolger Franz Ferdinand erschossen?",
+  "antwort": "Sarajevo",
+  "alternativen": [
+   "Sarajewo"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Erster Weltkrieg",
+  "frage": "Um welche französische Festungsstadt tobte 1916 eine der verlustreichsten Schlachten des Ersten Weltkriegs?",
+  "antwort": "Verdun",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Russische Revolution",
+  "frage": "Welcher Anführer der Bolschewiki kam durch die Oktoberrevolution 1917 in Russland an die Macht?",
+  "antwort": "Lenin",
+  "alternativen": [
+   "Wladimir Iljitsch Lenin",
+   "Wladimir Lenin"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Russische Revolution",
+  "frage": "Wie hieß der letzte russische Zar, der 1918 mit seiner Familie in Jekaterinburg ermordet wurde?",
+  "antwort": "Nikolaus II.",
+  "alternativen": [
+   "Nikolai II.",
+   "Nikolaus der Zweite"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Weimarer Republik",
+  "frage": "Wer war der erste Reichspräsident der Weimarer Republik?",
+  "antwort": "Friedrich Ebert",
+  "alternativen": [
+   "Ebert"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Weimarer Republik",
+  "frage": "In welchem Jahr erreichte die Hyperinflation in der Weimarer Republik ihren Höhepunkt?",
+  "antwort": "1923",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "NS-Diktatur und Holocaust",
+  "frage": "An welchem Tag im Jahr 1933 wurde Adolf Hitler zum Reichskanzler ernannt?",
+  "antwort": "30. Januar",
+  "alternativen": [
+   "30. Januar 1933"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "NS-Diktatur und Holocaust",
+  "frage": "Auf welcher Konferenz in Berlin wurde im Januar 1942 die Organisation des Völkermords an den europäischen Juden koordiniert?",
+  "antwort": "Wannseekonferenz",
+  "alternativen": [
+   "Wannsee-Konferenz"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Zweiter Weltkrieg",
+  "frage": "Mit dem deutschen Überfall auf welches Land begann am 1. September 1939 der Zweite Weltkrieg?",
+  "antwort": "Polen",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Zweiter Weltkrieg",
+  "frage": "Welche Schlacht an der Wolga 1942/43 gilt als Wendepunkt des Zweiten Weltkriegs in Europa?",
+  "antwort": "Stalingrad",
+  "alternativen": [
+   "Schlacht von Stalingrad"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Kalter Krieg",
+  "frage": "Die Stationierung sowjetischer Atomraketen auf welcher Insel löste 1962 eine gefährliche Krise zwischen den USA und der UdSSR aus?",
+  "antwort": "Kuba",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Kalter Krieg",
+  "frage": "Welchen Spitznamen gaben die Berliner den Versorgungsflugzeugen der Luftbrücke 1948/49?",
+  "antwort": "Rosinenbomber",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Deutsche Teilung und DDR",
+  "frage": "In welchem Jahr ließ die DDR-Führung die Berliner Mauer errichten?",
+  "antwort": "1961",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Deutsche Teilung und DDR",
+  "frage": "An welchem Tag im Jahr 1953 kam es in der DDR zu einem landesweiten Volksaufstand?",
+  "antwort": "17. Juni",
+  "alternativen": [
+   "17. Juni 1953"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Mauerfall und Deutsche Einheit",
+  "frage": "An welchem Tag im Jahr 1989 fiel die Berliner Mauer?",
+  "antwort": "9. November",
+  "alternativen": [
+   "9. November 1989"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Mauerfall und Deutsche Einheit",
+  "frage": "Welcher Vertrag von 1990 zwischen den beiden deutschen Staaten und den vier Siegermächten regelte die außenpolitischen Fragen der Einheit?",
+  "antwort": "Zwei-plus-Vier-Vertrag",
+  "alternativen": [
+   "2+4-Vertrag",
+   "Zwei-plus-Vier"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Bundeskanzler",
+  "frage": "Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?",
+  "antwort": "Konrad Adenauer",
+  "alternativen": [
+   "Adenauer"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Bundeskanzler",
+  "frage": "Welcher Bundeskanzler verlor 1982 als erster durch ein konstruktives Misstrauensvotum sein Amt?",
+  "antwort": "Helmut Schmidt",
+  "alternativen": [
+   "Schmidt"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Bundespräsidenten",
+  "frage": "Wer war der erste Bundespräsident der Bundesrepublik Deutschland?",
+  "antwort": "Theodor Heuss",
+  "alternativen": [
+   "Heuss"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Bundespräsidenten",
+  "frage": "Welcher Bundespräsident trat im Februar 2012 von seinem Amt zurück?",
+  "antwort": "Christian Wulff",
+  "alternativen": [
+   "Wulff"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Dekolonisierung",
+  "frage": "Gegen welche Kolonialmacht führte Algerien von 1954 bis 1962 seinen Unabhängigkeitskrieg?",
+  "antwort": "Frankreich",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Dekolonisierung",
+  "frage": "Unter welchem Namen war Ghana als britische Kolonie bis zu seiner Unabhängigkeit 1957 bekannt?",
+  "antwort": "Goldküste",
+  "alternativen": [
+   "Gold Coast"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Raumfahrt",
+  "frage": "Welcher sowjetische Kosmonaut flog 1961 als erster Mensch ins All?",
+  "antwort": "Juri Gagarin",
+  "alternativen": [
+   "Gagarin",
+   "Yuri Gagarin"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Raumfahrt",
+  "frage": "Welcher DDR-Bürger flog 1978 als erster Deutscher ins All?",
+  "antwort": "Sigmund Jähn",
+  "alternativen": [
+   "Jähn"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Friedensnobelpreisträger",
+  "frage": "Welcher Bundeskanzler erhielt 1971 den Friedensnobelpreis für seine Ostpolitik?",
+  "antwort": "Willy Brandt",
+  "alternativen": [
+   "Brandt"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Friedensnobelpreisträger",
+  "frage": "Welche Staatengemeinschaft wurde 2012 mit dem Friedensnobelpreis ausgezeichnet?",
+  "antwort": "Europäische Union",
+  "alternativen": [
+   "EU"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Politische Attentate",
+  "frage": "In welcher texanischen Stadt wurde US-Präsident John F. Kennedy am 22. November 1963 erschossen?",
+  "antwort": "Dallas",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "geschichte-neu",
+  "block": "Politische Attentate",
+  "frage": "Welcher Wehrmachtsoffizier deponierte am 20. Juli 1944 in der Wolfsschanze eine Bombe, um Hitler zu töten?",
+  "antwort": "Claus von Stauffenberg",
+  "alternativen": [
+   "Stauffenberg",
+   "Claus Schenk Graf von Stauffenberg"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Skelett und Knochen",
+  "frage": "Aus wie vielen Knochen besteht das Skelett eines erwachsenen Menschen in der Regel?",
+  "antwort": "206",
+  "alternativen": [
+   "206 Knochen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Skelett und Knochen",
+  "frage": "Wie heißt der kleinste Knochen des menschlichen Körpers, der im Mittelohr sitzt?",
+  "antwort": "Steigbügel",
+  "alternativen": [
+   "Stapes"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Muskeln und Sportphysiologie",
+  "frage": "Wie heißt die Sehne, die den Wadenmuskel mit dem Fersenbein verbindet?",
+  "antwort": "Achillessehne",
+  "alternativen": [
+   "Tendo calcaneus"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Muskeln und Sportphysiologie",
+  "frage": "Welches Stoffwechselprodukt reichert sich bei intensiver anaerober Belastung im Muskel an und wird in der Leistungsdiagnostik im Blut gemessen?",
+  "antwort": "Laktat",
+  "alternativen": [
+   "Lactat",
+   "Milchsäure"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Herz und Kreislauf",
+  "frage": "Wie heißt die größte Schlagader des menschlichen Körpers?",
+  "antwort": "Aorta",
+  "alternativen": [
+   "Hauptschlagader"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Herz und Kreislauf",
+  "frage": "Wie heißt der natürliche Schrittmacher des Herzens, der im rechten Vorhof liegt?",
+  "antwort": "Sinusknoten",
+  "alternativen": [
+   "Sinuatrialknoten",
+   "SA-Knoten"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Blut und Blutgruppen",
+  "frage": "Wie heißt der eisenhaltige rote Blutfarbstoff, der den Sauerstoff transportiert?",
+  "antwort": "Hämoglobin",
+  "alternativen": [
+   "Haemoglobin",
+   "Hb"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Blut und Blutgruppen",
+  "frage": "Welche Blutgruppe gilt als Universalspender für rote Blutkörperchen?",
+  "antwort": "0 negativ",
+  "alternativen": [
+   "0 Rhesus negativ",
+   "0-",
+   "Null negativ",
+   "0 Rh-negativ"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Organe",
+  "frage": "Welches ist das größte Organ des menschlichen Körpers?",
+  "antwort": "Haut",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Organe",
+  "frage": "Welches Organ ist bei einer Hepatitis entzündet?",
+  "antwort": "Leber",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Gehirn und Nervensystem",
+  "frage": "Welcher Teil des Gehirns ist vor allem für Gleichgewicht und die Koordination von Bewegungen zuständig?",
+  "antwort": "Kleinhirn",
+  "alternativen": [
+   "Cerebellum",
+   "Zerebellum"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Gehirn und Nervensystem",
+  "frage": "Wie heißt der längste und dickste Nerv des menschlichen Körpers?",
+  "antwort": "Ischiasnerv",
+  "alternativen": [
+   "Nervus ischiadicus",
+   "Ischias",
+   "Hüftnerv"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Sinnesorgane",
+  "frage": "Wie heißen die Sinneszellen der Netzhaut, die für das Farbensehen zuständig sind?",
+  "antwort": "Zapfen",
+  "alternativen": [
+   "Zapfenzellen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Sinnesorgane",
+  "frage": "Wie heißt die japanisch benannte fünfte Geschmacksrichtung neben süß, sauer, salzig und bitter?",
+  "antwort": "Umami",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Hormone und Drüsen",
+  "frage": "Welches Hormon der Bauchspeicheldrüse senkt den Blutzuckerspiegel?",
+  "antwort": "Insulin",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Hormone und Drüsen",
+  "frage": "Welches Hormon aus der Zirbeldrüse steuert den Schlaf-Wach-Rhythmus?",
+  "antwort": "Melatonin",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Vitamine und Mangelkrankheiten",
+  "frage": "Welche früher bei Seefahrern gefürchtete Krankheit wird durch Mangel an Vitamin C ausgelöst?",
+  "antwort": "Skorbut",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Vitamine und Mangelkrankheiten",
+  "frage": "Welches Vitamin ist vor allem für die Blutgerinnung wichtig?",
+  "antwort": "Vitamin K",
+  "alternativen": [
+   "K"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Infektionskrankheiten und Erreger",
+  "frage": "Welche von Plasmodien verursachte Tropenkrankheit wird durch die Anophelesmücke übertragen?",
+  "antwort": "Malaria",
+  "alternativen": [
+   "Sumpffieber",
+   "Wechselfieber"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Infektionskrankheiten und Erreger",
+  "frage": "Welche Infektionskrankheit erklärte die WHO im Jahr 1980 für weltweit ausgerottet?",
+  "antwort": "Pocken",
+  "alternativen": [
+   "Blattern",
+   "Variola"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Genetik und Vererbung",
+  "frage": "Wie viele Chromosomen besitzt eine normale menschliche Körperzelle?",
+  "antwort": "46",
+  "alternativen": [
+   "46 Chromosomen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Genetik und Vererbung",
+  "frage": "Mit welchen Pflanzen führte Gregor Mendel seine berühmten Kreuzungsversuche durch?",
+  "antwort": "Erbsen",
+  "alternativen": [
+   "Erbse",
+   "Gartenerbsen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Zelle und Zellteilung",
+  "frage": "Welche Zellorganellen werden als „Kraftwerke der Zelle“ bezeichnet?",
+  "antwort": "Mitochondrien",
+  "alternativen": [
+   "Mitochondrium"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Zelle und Zellteilung",
+  "frage": "Wie heißt die Kernteilung, bei der aus einem Zellkern zwei erbgleiche Tochterkerne entstehen?",
+  "antwort": "Mitose",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Evolution",
+  "frage": "Auf welcher Inselgruppe beobachtete Charles Darwin die später nach ihm benannten Finken?",
+  "antwort": "Galápagos-Inseln",
+  "alternativen": [
+   "Galapagos",
+   "Galápagos",
+   "Galapagosinseln"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Evolution",
+  "frage": "Welcher Urvogel, dessen Fossilien in Bayern gefunden wurden, gilt als Bindeglied zwischen Dinosauriern und Vögeln?",
+  "antwort": "Archaeopteryx",
+  "alternativen": [
+   "Archäopteryx"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Tierrekorde",
+  "frage": "Welches ist das größte heute lebende Tier der Erde?",
+  "antwort": "Blauwal",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Tierrekorde",
+  "frage": "Welcher Vogel erreicht im Sturzflug die höchste Geschwindigkeit aller Tiere?",
+  "antwort": "Wanderfalke",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Tierbezeichnungen",
+  "frage": "Wie nennt man ein männliches Hausschwein?",
+  "antwort": "Eber",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Tierbezeichnungen",
+  "frage": "Wie nennt man eine männliche Ente?",
+  "antwort": "Erpel",
+  "alternativen": [
+   "Enterich"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Tierklassen und Systematik",
+  "frage": "Welches eierlegende, im Wasser lebende Säugetier aus Australien erinnert mit seinem breiten, flachen Maul an eine Ente?",
+  "antwort": "Schnabeltier",
+  "alternativen": [
+   "Platypus",
+   "Entenschnabeltier"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Tierklassen und Systematik",
+  "frage": "Zu welchem Tierstamm gehören Schnecken, Muscheln und Tintenfische?",
+  "antwort": "Weichtiere",
+  "alternativen": [
+   "Mollusken",
+   "Mollusca"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Pflanzen und Photosynthese",
+  "frage": "Wie lautet der Fachbegriff für das Blattgrün, den Farbstoff, den Pflanzen für die Photosynthese benötigen?",
+  "antwort": "Chlorophyll",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Pflanzen und Photosynthese",
+  "frage": "Wie heißen die kleinen Öffnungen an der Blattunterseite, über die der Gasaustausch erfolgt?",
+  "antwort": "Spaltöffnungen",
+  "alternativen": [
+   "Stomata",
+   "Stoma"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Gift- und Heilpflanzen",
+  "frage": "Mit dem Gift welcher Pflanze wurde der Philosoph Sokrates hingerichtet?",
+  "antwort": "Schierling",
+  "alternativen": [
+   "Gefleckter Schierling"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Gift- und Heilpflanzen",
+  "frage": "Die Salicylsäure, Grundlage des Aspirins, ist nach dem lateinischen Gattungsnamen eines Baumes benannt. Wie heißt dieser Baum auf Deutsch?",
+  "antwort": "Weide",
+  "alternativen": [
+   "Weiden"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Ökologie",
+  "frage": "Wie nennt man das Zusammenleben zweier Arten zum gegenseitigen Nutzen?",
+  "antwort": "Symbiose",
+  "alternativen": [
+   "Mutualismus"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Ökologie",
+  "frage": "Wie nennt man in der Nahrungskette die Organismen, die abgestorbenes organisches Material abbauen?",
+  "antwort": "Destruenten",
+  "alternativen": [
+   "Zersetzer",
+   "Reduzenten"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Berühmte Mediziner und Entdeckungen",
+  "frage": "Welcher schottische Bakteriologe entdeckte 1928 das Penicillin?",
+  "antwort": "Alexander Fleming",
+  "alternativen": [
+   "Fleming"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-bio",
+  "block": "Berühmte Mediziner und Entdeckungen",
+  "frage": "Welcher deutsche Mediziner entdeckte 1882 den Erreger der Tuberkulose?",
+  "antwort": "Robert Koch",
+  "alternativen": [
+   "Koch"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "SI-Basiseinheiten",
+  "frage": "Aus wie vielen Basiseinheiten besteht das Internationale Einheitensystem (SI)?",
+  "antwort": "Sieben",
+  "alternativen": [
+   "7"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "SI-Basiseinheiten",
+  "frage": "In welcher SI-Basiseinheit wird die Lichtstärke angegeben?",
+  "antwort": "Candela",
+  "alternativen": [
+   "cd"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Einheiten und ihre Namensgeber",
+  "frage": "Nach welchem deutschen Physiker ist die Einheit der Frequenz benannt?",
+  "antwort": "Heinrich Hertz",
+  "alternativen": [
+   "Hertz"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Einheiten und ihre Namensgeber",
+  "frage": "Nach welchem Erfinder ist die SI-Einheit der magnetischen Flussdichte benannt?",
+  "antwort": "Nikola Tesla",
+  "alternativen": [
+   "Tesla"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Chemische Elementsymbole",
+  "frage": "Welches chemische Element trägt das Symbol Fe?",
+  "antwort": "Eisen",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Chemische Elementsymbole",
+  "frage": "Welches chemische Element trägt das Symbol W?",
+  "antwort": "Wolfram",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Periodensystem und Elementgruppen",
+  "frage": "Wie nennt man die Elemente der 18. Gruppe (8. Hauptgruppe) des Periodensystems, zu denen Helium und Neon gehören?",
+  "antwort": "Edelgase",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Periodensystem und Elementgruppen",
+  "frage": "Welcher russische Chemiker stellte 1869 das Periodensystem der Elemente auf?",
+  "antwort": "Dmitri Mendelejew",
+  "alternativen": [
+   "Mendelejew",
+   "Mendeleev",
+   "Mendelejeff"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Chemische Summenformeln",
+  "frage": "Welcher Alltagsstoff hat die chemische Formel NaCl?",
+  "antwort": "Kochsalz",
+  "alternativen": [
+   "Natriumchlorid",
+   "Speisesalz"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Chemische Summenformeln",
+  "frage": "Welches Gas hat die Summenformel CH4?",
+  "antwort": "Methan",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Aggregatzustände und Phasenübergänge",
+  "frage": "Wie nennt man den direkten Übergang eines Stoffes vom festen in den gasförmigen Zustand?",
+  "antwort": "Sublimation",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Aggregatzustände und Phasenübergänge",
+  "frage": "Wie heißt der oft als „vierter Aggregatzustand“ bezeichnete Zustand eines ionisierten Gases?",
+  "antwort": "Plasma",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Licht und Optik",
+  "frage": "Wie viele Kilometer legt Licht im Vakuum ungefähr in einer Sekunde zurück?",
+  "antwort": "300.000 Kilometer",
+  "alternativen": [
+   "300000 km",
+   "300.000 km",
+   "rund 300.000 km"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Licht und Optik",
+  "frage": "Welche Farbe des sichtbaren Lichts hat die größte Wellenlänge?",
+  "antwort": "Rot",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Schall und Akustik",
+  "frage": "In welcher Einheit wird der Schallpegel üblicherweise angegeben?",
+  "antwort": "Dezibel",
+  "alternativen": [
+   "dB"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Schall und Akustik",
+  "frage": "Wie nennt man Schall, dessen Frequenz unterhalb der menschlichen Hörgrenze von etwa 16 bis 20 Hertz liegt?",
+  "antwort": "Infraschall",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Elektrizität und Magnetismus",
+  "frage": "Wie heißt das physikalische Gesetz, das den Zusammenhang U = R · I beschreibt?",
+  "antwort": "Ohmsches Gesetz",
+  "alternativen": [
+   "Ohm'sches Gesetz"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Elektrizität und Magnetismus",
+  "frage": "Welcher englische Naturforscher entdeckte 1831 die elektromagnetische Induktion?",
+  "antwort": "Michael Faraday",
+  "alternativen": [
+   "Faraday"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Radioaktivität und Kernphysik",
+  "frage": "Wie nennt man die Zeitspanne, nach der die Hälfte der Atomkerne eines radioaktiven Stoffes zerfallen ist?",
+  "antwort": "Halbwertszeit",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Radioaktivität und Kernphysik",
+  "frage": "Welcher deutsche Chemiker entdeckte 1938 zusammen mit Fritz Straßmann die Kernspaltung?",
+  "antwort": "Otto Hahn",
+  "alternativen": [
+   "Hahn"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Planeten des Sonnensystems",
+  "frage": "Welcher Planet ist der Sonne am nächsten?",
+  "antwort": "Merkur",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Planeten des Sonnensystems",
+  "frage": "Welcher Planet hat wegen seiner dichten Kohlendioxid-Atmosphäre die höchste Oberflächentemperatur im Sonnensystem?",
+  "antwort": "Venus",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Monde im Sonnensystem",
+  "frage": "Wie heißt der größte Mond des Sonnensystems, ein Mond des Jupiter?",
+  "antwort": "Ganymed",
+  "alternativen": [
+   "Ganymede"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Monde im Sonnensystem",
+  "frage": "Welcher Planet wird von den Monden Phobos und Deimos umkreist?",
+  "antwort": "Mars",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Sternbilder",
+  "frage": "Welches Sternbild erkennt man an den drei hellen Sternen seines „Gürtels“?",
+  "antwort": "Orion",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Sternbilder",
+  "frage": "In welchem Sternbild liegt der Polarstern?",
+  "antwort": "Kleiner Bär",
+  "alternativen": [
+   "Ursa Minor",
+   "Kleiner Wagen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Bemannte Raumfahrt",
+  "frage": "Wer flog 1961 als erster Mensch in den Weltraum?",
+  "antwort": "Juri Gagarin",
+  "alternativen": [
+   "Gagarin",
+   "Yuri Gagarin"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Bemannte Raumfahrt",
+  "frage": "Wer betrat 1969 nach Neil Armstrong als zweiter Mensch den Mond?",
+  "antwort": "Buzz Aldrin",
+  "alternativen": [
+   "Aldrin",
+   "Edwin Aldrin"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Deutsche Raumfahrer",
+  "frage": "Wer war 1978 der erste Deutsche im Weltraum?",
+  "antwort": "Sigmund Jähn",
+  "alternativen": [
+   "Jähn"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Deutsche Raumfahrer",
+  "frage": "Welcher deutsche Astronaut war 2018 als erster Deutscher Kommandant der Internationalen Raumstation ISS?",
+  "antwort": "Alexander Gerst",
+  "alternativen": [
+   "Gerst"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Erfinder und Erfindungen",
+  "frage": "Welcher schwedische Chemiker erfand das Dynamit, das er sich 1867 patentieren ließ?",
+  "antwort": "Alfred Nobel",
+  "alternativen": [
+   "Nobel"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Erfinder und Erfindungen",
+  "frage": "Welcher amerikanische Staatsmann und Naturforscher erfand den Blitzableiter?",
+  "antwort": "Benjamin Franklin",
+  "alternativen": [
+   "Franklin"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Computer und Internet",
+  "frage": "Welcher deutsche Ingenieur baute 1941 mit der Z3 den ersten funktionsfähigen programmgesteuerten Rechner?",
+  "antwort": "Konrad Zuse",
+  "alternativen": [
+   "Zuse"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Computer und Internet",
+  "frage": "Welcher britische Physiker entwickelte am CERN das World Wide Web?",
+  "antwort": "Tim Berners-Lee",
+  "alternativen": [
+   "Berners-Lee",
+   "Tim Berners Lee"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Verkehrstechnik",
+  "frage": "Wer meldete 1886 den ersten Motorwagen mit Verbrennungsmotor zum Patent an?",
+  "antwort": "Carl Benz",
+  "alternativen": [
+   "Benz",
+   "Karl Benz"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Verkehrstechnik",
+  "frage": "Zwischen welchen beiden Städten fuhr 1835 die erste Dampfeisenbahn in Deutschland?",
+  "antwort": "Nürnberg und Fürth",
+  "alternativen": [
+   "Fürth und Nürnberg",
+   "Nürnberg–Fürth"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Energie und Kraftwerke",
+  "frage": "Wie nennt man die direkte Umwandlung von Sonnenlicht in elektrischen Strom mit Solarzellen?",
+  "antwort": "Photovoltaik",
+  "alternativen": [
+   "Fotovoltaik"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Energie und Kraftwerke",
+  "frage": "In welchem Jahr wurden die letzten drei Kernkraftwerke in Deutschland abgeschaltet?",
+  "antwort": "2023",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Messgeräte",
+  "frage": "Was misst ein Barometer?",
+  "antwort": "Luftdruck",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "natur-phys",
+  "block": "Messgeräte",
+  "frage": "Was misst ein Anemometer?",
+  "antwort": "Windgeschwindigkeit",
+  "alternativen": [
+   "Windstärke"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Barockkomponisten",
+  "frage": "Welcher italienische Barockkomponist schuf die Violinkonzerte „Die vier Jahreszeiten“?",
+  "antwort": "Antonio Vivaldi",
+  "alternativen": [
+   "Vivaldi"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Barockkomponisten",
+  "frage": "In welcher Stadt wirkte Johann Sebastian Bach ab 1723 als Thomaskantor?",
+  "antwort": "Leipzig",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Wiener Klassik",
+  "frage": "In welcher Stadt wurde Wolfgang Amadeus Mozart geboren?",
+  "antwort": "Salzburg",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Wiener Klassik",
+  "frage": "Welcher Komponist vertonte im Schlusssatz seiner 9. Sinfonie Schillers „Ode an die Freude“?",
+  "antwort": "Ludwig van Beethoven",
+  "alternativen": [
+   "Beethoven"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Komponisten der Romantik",
+  "frage": "Welcher polnische Komponist wurde vor allem mit Klavierwerken wie Nocturnes, Mazurken und Polonaisen berühmt?",
+  "antwort": "Frédéric Chopin",
+  "alternativen": [
+   "Chopin",
+   "Fryderyk Chopin",
+   "Frederic Chopin"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Komponisten der Romantik",
+  "frage": "Welcher Komponist schrieb den Liederzyklus „Winterreise“?",
+  "antwort": "Franz Schubert",
+  "alternativen": [
+   "Schubert"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Ballett- und Orchesterwerke",
+  "frage": "Welcher russische Komponist schrieb die Ballette „Schwanensee“ und „Der Nussknacker“?",
+  "antwort": "Pjotr Iljitsch Tschaikowsky",
+  "alternativen": [
+   "Tschaikowsky",
+   "Tschaikowski",
+   "Tchaikovsky",
+   "Peter Tschaikowsky"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Ballett- und Orchesterwerke",
+  "frage": "Von welchem französischen Komponisten stammt der „Boléro“?",
+  "antwort": "Maurice Ravel",
+  "alternativen": [
+   "Ravel"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Oper",
+  "frage": "Welcher italienische Komponist schrieb die Opern „Aida“ und „La Traviata“?",
+  "antwort": "Giuseppe Verdi",
+  "alternativen": [
+   "Verdi"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Oper",
+  "frage": "In welcher oberfränkischen Stadt finden jedes Jahr die Richard-Wagner-Festspiele statt?",
+  "antwort": "Bayreuth",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Musicals",
+  "frage": "Welcher britische Komponist schrieb die Musicals „Cats“ und „Das Phantom der Oper“?",
+  "antwort": "Andrew Lloyd Webber",
+  "alternativen": [
+   "Lloyd Webber"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Musicals",
+  "frage": "Auf welchem Drama von Shakespeare basiert das Musical „West Side Story“?",
+  "antwort": "Romeo und Julia",
+  "alternativen": [
+   "Romeo and Juliet"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Streich- und Tasteninstrumente",
+  "frage": "Wie viele Tasten hat ein modernes Standardklavier?",
+  "antwort": "88",
+  "alternativen": [
+   "88 Tasten",
+   "achtundachtzig"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Streich- und Tasteninstrumente",
+  "frage": "Welches ist das größte und am tiefsten klingende Streichinstrument im Sinfonieorchester?",
+  "antwort": "Kontrabass",
+  "alternativen": [
+   "Bass"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Blas- und Schlaginstrumente",
+  "frage": "Zu welcher Instrumentengruppe zählt das Saxophon, obwohl es meist aus Metall gefertigt ist?",
+  "antwort": "Holzblasinstrumente",
+  "alternativen": [
+   "Holzblasinstrument",
+   "Holzbläser"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Blas- und Schlaginstrumente",
+  "frage": "Wie heißen die großen, stimmbaren Kesseltrommeln im Orchester?",
+  "antwort": "Pauken",
+  "alternativen": [
+   "Pauke",
+   "Timpani"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Musikbegriffe und Notenlehre",
+  "frage": "Welche italienische Vortragsbezeichnung bedeutet „sehr laut“ und wird mit „ff“ abgekürzt?",
+  "antwort": "Fortissimo",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Musikbegriffe und Notenlehre",
+  "frage": "Wie viele Halbtonschritte umfasst eine Oktave?",
+  "antwort": "12",
+  "alternativen": [
+   "zwölf",
+   "12 Halbtöne"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Nationalhymnen",
+  "frage": "Welcher Komponist schuf die Melodie der deutschen Nationalhymne?",
+  "antwort": "Joseph Haydn",
+  "alternativen": [
+   "Haydn",
+   "Franz Joseph Haydn"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Nationalhymnen",
+  "frage": "Wie heißt die Nationalhymne Frankreichs?",
+  "antwort": "Die Marseillaise",
+  "alternativen": [
+   "Marseillaise",
+   "La Marseillaise"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "ESC – deutsche Beiträge",
+  "frage": "Mit welchem Lied gewann Lena Meyer-Landrut 2010 den Eurovision Song Contest?",
+  "antwort": "Satellite",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "ESC – deutsche Beiträge",
+  "frage": "Mit welchem Lied holte Nicole 1982 den ersten deutschen Sieg beim Grand Prix Eurovision?",
+  "antwort": "Ein bißchen Frieden",
+  "alternativen": [
+   "Ein bisschen Frieden"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "ESC – internationale Sieger",
+  "frage": "Mit welchem Lied gewann ABBA 1974 den Eurovision Song Contest?",
+  "antwort": "Waterloo",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "ESC – internationale Sieger",
+  "frage": "Welche später weltberühmte Sängerin gewann 1988 den Grand Prix Eurovision für die Schweiz?",
+  "antwort": "Céline Dion",
+  "alternativen": [
+   "Celine Dion",
+   "Dion"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "The Beatles",
+  "frage": "Wer war ab 1962 der Schlagzeuger der Beatles?",
+  "antwort": "Ringo Starr",
+  "alternativen": [
+   "Ringo",
+   "Richard Starkey"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "The Beatles",
+  "frage": "In welcher deutschen Stadt traten die Beatles Anfang der 1960er-Jahre unter anderem im Star-Club auf?",
+  "antwort": "Hamburg",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Rockbands und ihre Mitglieder",
+  "frage": "Wie hieß der Leadsänger der britischen Rockband Queen?",
+  "antwort": "Freddie Mercury",
+  "alternativen": [
+   "Mercury"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Rockbands und ihre Mitglieder",
+  "frage": "Welcher Grunge-Band gehörte Kurt Cobain als Sänger und Gitarrist an?",
+  "antwort": "Nirvana",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Spitznamen von Musikstars",
+  "frage": "Welcher Sänger wird als „King of Pop“ bezeichnet?",
+  "antwort": "Michael Jackson",
+  "alternativen": [
+   "Jackson"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Spitznamen von Musikstars",
+  "frage": "Welcher US-Rockmusiker trägt den Spitznamen „The Boss“?",
+  "antwort": "Bruce Springsteen",
+  "alternativen": [
+   "Springsteen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Deutsche Rock- und Popbands",
+  "frage": "Welche Düsseldorfer Band gilt mit Alben wie „Autobahn“ als Pionier der elektronischen Musik?",
+  "antwort": "Kraftwerk",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Deutsche Rock- und Popbands",
+  "frage": "Welche Hannoveraner Rockband landete mit der Ballade „Wind of Change“ einen Welthit?",
+  "antwort": "Scorpions",
+  "alternativen": [
+   "Die Scorpions"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Neue Deutsche Welle",
+  "frage": "Welche Sängerin hatte 1983 mit „99 Luftballons“ einen internationalen Hit?",
+  "antwort": "Nena",
+  "alternativen": [
+   "Gabriele Kerner"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Neue Deutsche Welle",
+  "frage": "Welche Band landete 1982 mit „Da Da Da“ einen internationalen Hit?",
+  "antwort": "Trio",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Schlager",
+  "frage": "Welche Sängerin veröffentlichte 2013 den Schlagerhit „Atemlos durch die Nacht“?",
+  "antwort": "Helene Fischer",
+  "alternativen": [
+   "Fischer"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Schlager",
+  "frage": "Welcher Sänger hatte Hits mit „Griechischer Wein“ und „Aber bitte mit Sahne“?",
+  "antwort": "Udo Jürgens",
+  "alternativen": [
+   "Jürgens",
+   "Udo Juergens"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Welthits und ihre Interpreten",
+  "frage": "Welche Sängerin hatte 1992 mit „I Will Always Love You“ einen Welthit?",
+  "antwort": "Whitney Houston",
+  "alternativen": [
+   "Houston"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Welthits und ihre Interpreten",
+  "frage": "Welche US-Band veröffentlichte den Rockklassiker „Hotel California“?",
+  "antwort": "Eagles",
+  "alternativen": [
+   "The Eagles"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Musikfestivals",
+  "frage": "In welchem Jahr fand das legendäre ursprüngliche Woodstock-Festival statt?",
+  "antwort": "1969",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-musik",
+  "block": "Musikfestivals",
+  "frage": "Wie heißt das große Heavy-Metal-Festival, das jährlich in einem Dorf in Schleswig-Holstein stattfindet?",
+  "antwort": "Wacken Open Air",
+  "alternativen": [
+   "Wacken"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Hollywood-Filmklassiker",
+  "frage": "In welchem Filmklassiker von 1942 fällt in der deutschen Fassung der Satz „Ich schau dir in die Augen, Kleines“?",
+  "antwort": "Casablanca",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Hollywood-Filmklassiker",
+  "frage": "Welcher Schauspieler spielte in „Vom Winde verweht“ (1939) die Rolle des Rhett Butler?",
+  "antwort": "Clark Gable",
+  "alternativen": [
+   "Gable"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Oscar-Verleihung",
+  "frage": "Welcher Film von James Cameron gewann bei der Oscar-Verleihung 1998 elf Oscars, darunter den für den besten Film?",
+  "antwort": "Titanic",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Oscar-Verleihung",
+  "frage": "Für welchen Film erhielt Leonardo DiCaprio 2016 seinen ersten Oscar als bester Hauptdarsteller?",
+  "antwort": "The Revenant",
+  "alternativen": [
+   "Revenant",
+   "The Revenant – Der Rückkehrer"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Internationale Filmfestivals",
+  "frage": "Wie heißt der Hauptpreis der Internationalen Filmfestspiele Berlin (Berlinale)?",
+  "antwort": "Goldener Bär",
+  "alternativen": [
+   "Goldener Berliner Bär"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Internationale Filmfestivals",
+  "frage": "Wie heißt der Hauptpreis der Filmfestspiele von Cannes?",
+  "antwort": "Goldene Palme",
+  "alternativen": [
+   "Palme d'Or"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Berühmte Regisseure",
+  "frage": "Welcher Regisseur drehte „Der weiße Hai“, „E.T. – Der Außerirdische“ und „Jurassic Park“?",
+  "antwort": "Steven Spielberg",
+  "alternativen": [
+   "Spielberg"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Berühmte Regisseure",
+  "frage": "Welcher Regisseur drehte die Filme „Pulp Fiction“ und „Inglourious Basterds“?",
+  "antwort": "Quentin Tarantino",
+  "alternativen": [
+   "Tarantino"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "James Bond",
+  "frage": "Welcher Schauspieler verkörperte als Erster James Bond in einem offiziellen Kinofilm?",
+  "antwort": "Sean Connery",
+  "alternativen": [
+   "Connery"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "James Bond",
+  "frage": "Wie lautet der Originaltitel des ersten offiziellen James-Bond-Kinofilms von 1962?",
+  "antwort": "Dr. No",
+  "alternativen": [
+   "Doctor No"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Science-Fiction- und Fantasy-Filmreihen",
+  "frage": "Wie lautet in „Star Wars“ der ursprüngliche Name von Darth Vader?",
+  "antwort": "Anakin Skywalker",
+  "alternativen": [
+   "Anakin"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Science-Fiction- und Fantasy-Filmreihen",
+  "frage": "Welcher neuseeländische Regisseur verfilmte „Der Herr der Ringe“ als Trilogie?",
+  "antwort": "Peter Jackson",
+  "alternativen": [
+   "Jackson"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Disney-Zeichentrickfilme",
+  "frage": "Wie heißt der erste abendfüllende Zeichentrickfilm der Walt Disney Studios aus dem Jahr 1937?",
+  "antwort": "Schneewittchen und die sieben Zwerge",
+  "alternativen": [
+   "Schneewittchen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Disney-Zeichentrickfilme",
+  "frage": "Wie heißt das Warzenschwein, das in „Der König der Löwen“ mit Timon befreundet ist?",
+  "antwort": "Pumbaa",
+  "alternativen": [
+   "Pumba"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Pixar-Animationsfilme",
+  "frage": "Welcher Pixar-Film von 1995 gilt als erster vollständig computeranimierter Kinofilm?",
+  "antwort": "Toy Story",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Pixar-Animationsfilme",
+  "frage": "In welchem Pixar-Film träumt die Ratte Remy davon, in Paris Koch zu werden?",
+  "antwort": "Ratatouille",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Deutsche Kinofilme",
+  "frage": "Welcher Film von Wolfgang Petersen aus dem Jahr 1981 spielt an Bord des U-Boots U 96?",
+  "antwort": "Das Boot",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Deutsche Kinofilme",
+  "frage": "Welcher deutsche Film von Florian Henckel von Donnersmarck gewann 2007 den Oscar als bester fremdsprachiger Film?",
+  "antwort": "Das Leben der Anderen",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Tatort und TV-Krimis",
+  "frage": "Welcher Schauspieler spielte den Duisburger Tatort-Kommissar Horst Schimanski?",
+  "antwort": "Götz George",
+  "alternativen": [
+   "George"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Tatort und TV-Krimis",
+  "frage": "In welchem Jahr wurde die erste Folge der Krimireihe „Tatort“ ausgestrahlt?",
+  "antwort": "1970",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Deutsche Fernsehserien",
+  "frage": "Wie hieß die ARD-Serie, die von 1985 bis 2020 sonntags lief und in einer fiktiven Münchner Straße spielte?",
+  "antwort": "Lindenstraße",
+  "alternativen": [
+   "Lindenstrasse"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Deutsche Fernsehserien",
+  "frage": "Wie heißt die erste deutsche Netflix-Serie (2017), die in der fiktiven Kleinstadt Winden spielt?",
+  "antwort": "Dark",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Fernsehshows und Moderatoren",
+  "frage": "Welcher Moderator präsentierte ab 1999 die RTL-Quizshow „Wer wird Millionär?“?",
+  "antwort": "Günther Jauch",
+  "alternativen": [
+   "Jauch"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Fernsehshows und Moderatoren",
+  "frage": "Wer moderierte 1981 die erste Ausgabe von „Wetten, dass..?“?",
+  "antwort": "Frank Elstner",
+  "alternativen": [
+   "Elstner"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "US-Fernsehserien",
+  "frage": "Wie heißt das New Yorker Café, in dem sich die Clique in der Serie „Friends“ trifft?",
+  "antwort": "Central Perk",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "US-Fernsehserien",
+  "frage": "Wie heißt der Chemielehrer, der in der Serie „Breaking Bad“ zum Drogenkoch wird?",
+  "antwort": "Walter White",
+  "alternativen": [
+   "Walt White",
+   "Heisenberg"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Zeichentrickserien",
+  "frage": "In welcher fiktiven Stadt lebt die Zeichentrickfamilie Simpson?",
+  "antwort": "Springfield",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Zeichentrickserien",
+  "frage": "Wie heißt in der Zeichentrickserie „Die Biene Maja“ Majas bester Freund, eine gemütliche Drohne?",
+  "antwort": "Willi",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Europäische Comics",
+  "frage": "Wie heißt der kleine Hund von Obelix?",
+  "antwort": "Idefix",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Europäische Comics",
+  "frage": "Unter welchem Künstlernamen schuf der belgische Zeichner Georges Remi die Comicreihe „Tim und Struppi“?",
+  "antwort": "Hergé",
+  "alternativen": [
+   "Herge"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Superhelden",
+  "frage": "Wie heißt Batman mit bürgerlichem Namen?",
+  "antwort": "Bruce Wayne",
+  "alternativen": [
+   "Wayne"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Superhelden",
+  "frage": "Von welchem Planeten stammt Superman?",
+  "antwort": "Krypton",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Brettspiele",
+  "frage": "Wie heißt die teuerste Straße im klassischen deutschen Monopoly?",
+  "antwort": "Schlossallee",
+  "alternativen": [
+   "Schloßallee"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Brettspiele",
+  "frage": "Welches Spiel von Klaus Teuber wurde 1995 zum „Spiel des Jahres“ gekürt?",
+  "antwort": "Die Siedler von Catan",
+  "alternativen": [
+   "Siedler von Catan",
+   "Catan"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Kartenspiele",
+  "frage": "Aus wie vielen Karten besteht ein Skatblatt?",
+  "antwort": "32 Karten",
+  "alternativen": [
+   "32"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Kartenspiele",
+  "frage": "Wie heißt beim Poker die höchste Hand, eine Straße von der Zehn bis zum Ass in einer Farbe?",
+  "antwort": "Royal Flush",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Videospiele",
+  "frage": "Welchen Beruf üben Nintendos Super Mario und sein Bruder Luigi aus?",
+  "antwort": "Klempner",
+  "alternativen": [
+   "Installateur"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Videospiele",
+  "frage": "In welchem Staat entwickelte Alexei Paschitnow 1984 das Computerspiel „Tetris“?",
+  "antwort": "Sowjetunion",
+  "alternativen": [
+   "UdSSR"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Kinderbuch- und Kinderfernsehfiguren",
+  "frage": "Wie heißt der rothaarige Kobold, der in der Werkstatt von Meister Eder lebt?",
+  "antwort": "Pumuckl",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "unterhaltung-film",
+  "block": "Kinderbuch- und Kinderfernsehfiguren",
+  "frage": "Wie heißt das Pferd von Pippi Langstrumpf?",
+  "antwort": "Kleiner Onkel",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Weimarer Klassik: Goethe und Schiller",
+  "frage": "Von welchem Dichter stammt das Drama 'Wilhelm Tell'?",
+  "antwort": "Friedrich Schiller",
+  "alternativen": [
+   "Schiller",
+   "Friedrich von Schiller"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Weimarer Klassik: Goethe und Schiller",
+  "frage": "Wie heißt die junge Frau, in die sich Faust in Goethes 'Faust I' verliebt?",
+  "antwort": "Gretchen",
+  "alternativen": [
+   "Margarete"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Deutschsprachige Literatur des 20. Jahrhunderts",
+  "frage": "Wer schrieb die Erzählung 'Die Verwandlung', in der Gregor Samsa eines Morgens als Ungeziefer erwacht?",
+  "antwort": "Franz Kafka",
+  "alternativen": [
+   "Kafka"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Deutschsprachige Literatur des 20. Jahrhunderts",
+  "frage": "Welcher Dramatiker schrieb das Stück 'Mutter Courage und ihre Kinder'?",
+  "antwort": "Bertolt Brecht",
+  "alternativen": [
+   "Brecht",
+   "Bertold Brecht"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Literaturnobelpreisträger",
+  "frage": "Welcher deutsche Schriftsteller erhielt 1999 den Nobelpreis für Literatur?",
+  "antwort": "Günter Grass",
+  "alternativen": [
+   "Grass",
+   "Günter Graß"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Literaturnobelpreisträger",
+  "frage": "Welcher US-amerikanische Musiker wurde 2016 mit dem Literaturnobelpreis ausgezeichnet?",
+  "antwort": "Bob Dylan",
+  "alternativen": [
+   "Dylan"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "William Shakespeare",
+  "frage": "In welcher italienischen Stadt spielt Shakespeares 'Romeo und Julia'?",
+  "antwort": "Verona",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "William Shakespeare",
+  "frage": "Von welchem Land ist Hamlet in Shakespeares gleichnamiger Tragödie der Prinz?",
+  "antwort": "Dänemark",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Klassiker der Weltliteratur",
+  "frage": "Welcher antike griechische Dichter gilt als Verfasser von 'Ilias' und 'Odyssee'?",
+  "antwort": "Homer",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Klassiker der Weltliteratur",
+  "frage": "Welcher russische Schriftsteller schrieb den Roman 'Krieg und Frieden'?",
+  "antwort": "Leo Tolstoi",
+  "alternativen": [
+   "Tolstoi",
+   "Lew Tolstoi",
+   "Tolstoj",
+   "Leo Tolstoj",
+   "Lew Tolstoj"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Fantasy und Dystopien",
+  "frage": "Wie heißt der Hobbit, der in Tolkiens 'Der Herr der Ringe' den Einen Ring nach Mordor trägt?",
+  "antwort": "Frodo Beutlin",
+  "alternativen": [
+   "Frodo",
+   "Frodo Baggins"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Fantasy und Dystopien",
+  "frage": "Welcher Autor schrieb den dystopischen Roman '1984' über den 'Großen Bruder'?",
+  "antwort": "George Orwell",
+  "alternativen": [
+   "Orwell"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Märchen",
+  "frage": "Welches Männlein muss die Königin im Märchen der Brüder Grimm beim Namen nennen, um ihr Kind zu behalten?",
+  "antwort": "Rumpelstilzchen",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Märchen",
+  "frage": "Welcher dänische Dichter schrieb die Märchen 'Des Kaisers neue Kleider' und 'Die kleine Meerjungfrau'?",
+  "antwort": "Hans Christian Andersen",
+  "alternativen": [
+   "Andersen",
+   "H. C. Andersen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Kinder- und Jugendbücher",
+  "frage": "Welche schwedische Autorin erfand Pippi Langstrumpf?",
+  "antwort": "Astrid Lindgren",
+  "alternativen": [
+   "Lindgren"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Kinder- und Jugendbücher",
+  "frage": "Wie heißt das Mädchen in Michael Endes Roman, das den Menschen die von den grauen Herren gestohlene Zeit zurückbringt?",
+  "antwort": "Momo",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Detektive der Kriminalliteratur",
+  "frage": "Wie heißt der Arzt, der als Freund und Chronist an der Seite von Sherlock Holmes ermittelt?",
+  "antwort": "Dr. Watson",
+  "alternativen": [
+   "Watson",
+   "John Watson",
+   "Dr. John Watson"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Detektive der Kriminalliteratur",
+  "frage": "Welche britische Autorin erfand den belgischen Meisterdetektiv Hercule Poirot?",
+  "antwort": "Agatha Christie",
+  "alternativen": [
+   "Christie"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Comics und Bildergeschichten",
+  "frage": "Wie heißt der Freund von Asterix, der als Kind in den Zaubertrank gefallen ist?",
+  "antwort": "Obelix",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Comics und Bildergeschichten",
+  "frage": "Welcher deutsche Zeichner und Dichter schuf die Bildergeschichte 'Max und Moritz'?",
+  "antwort": "Wilhelm Busch",
+  "alternativen": [
+   "Busch"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Gedichte und Zitate",
+  "frage": "Welche Ballade von Goethe beginnt mit den Worten 'Wer reitet so spät durch Nacht und Wind?'",
+  "antwort": "Erlkönig",
+  "alternativen": [
+   "Der Erlkönig"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Gedichte und Zitate",
+  "frage": "Welcher Dichter schrieb das Loreley-Gedicht mit der Zeile 'Ich weiß nicht, was soll es bedeuten'?",
+  "antwort": "Heinrich Heine",
+  "alternativen": [
+   "Heine"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Redewendungen",
+  "frage": "Was bedeutet die umgangssprachliche Redewendung 'den Löffel abgeben'?",
+  "antwort": "sterben",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Redewendungen",
+  "frage": "Welches Tier fehlt in der Redewendung 'Da liegt der ... begraben' im Sinne von 'Das ist der Kern des Problems'?",
+  "antwort": "Hund",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Fremdwörter",
+  "frage": "Was bedeutet das Fremdwort 'obsolet'?",
+  "antwort": "veraltet",
+  "alternativen": [
+   "überholt"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Fremdwörter",
+  "frage": "Wie nennt man einen Menschenfreund mit einem Fremdwort griechischen Ursprungs?",
+  "antwort": "Philanthrop",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Grammatikbegriffe",
+  "frage": "Wie heißt im Deutschen der Fall, nach dem man mit 'Wessen?' fragt?",
+  "antwort": "Genitiv",
+  "alternativen": [
+   "Wesfall",
+   "Wes-Fall",
+   "2. Fall",
+   "zweiter Fall"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Grammatikbegriffe",
+  "frage": "Wie nennt man in der Grammatik die Zeitform von 'ich hatte gegessen'?",
+  "antwort": "Plusquamperfekt",
+  "alternativen": [
+   "Vorvergangenheit",
+   "vollendete Vergangenheit"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Stilmittel und Sprachspiele",
+  "frage": "Wie nennt man ein Wort, das vorwärts wie rückwärts gelesen gleich ist, etwa 'Otto' oder 'Rentner'?",
+  "antwort": "Palindrom",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Stilmittel und Sprachspiele",
+  "frage": "Welches Stilmittel liegt vor, wenn aufeinanderfolgende Wörter mit demselben Anlaut beginnen, wie in 'Milch macht müde Männer munter'?",
+  "antwort": "Alliteration",
+  "alternativen": [
+   "Stabreim"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Alte Meister: Renaissance und Barock",
+  "frage": "Wer malte die 'Mona Lisa'?",
+  "antwort": "Leonardo da Vinci",
+  "alternativen": [
+   "Leonardo",
+   "da Vinci"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Alte Meister: Renaissance und Barock",
+  "frage": "Welcher niederländische Maler schuf das Gemälde 'Die Nachtwache'?",
+  "antwort": "Rembrandt",
+  "alternativen": [
+   "Rembrandt van Rijn"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Moderne Malerei und Kunstrichtungen",
+  "frage": "Welcher niederländische Maler schuf die Gemälde 'Die Sternennacht' und 'Sonnenblumen'?",
+  "antwort": "Vincent van Gogh",
+  "alternativen": [
+   "van Gogh"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Moderne Malerei und Kunstrichtungen",
+  "frage": "Welche Kunstrichtung begründeten Pablo Picasso und Georges Braque zu Beginn des 20. Jahrhunderts?",
+  "antwort": "Kubismus",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Bildhauer",
+  "frage": "Welcher französische Bildhauer schuf die Skulptur 'Der Denker'?",
+  "antwort": "Auguste Rodin",
+  "alternativen": [
+   "Rodin"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Bildhauer",
+  "frage": "Welcher Renaissancekünstler schuf die gut fünf Meter hohe Marmorstatue 'David' in Florenz?",
+  "antwort": "Michelangelo",
+  "alternativen": [
+   "Michelangelo Buonarroti"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Architekten",
+  "frage": "Welcher katalanische Architekt entwarf die Basilika Sagrada Família in Barcelona?",
+  "antwort": "Antoni Gaudí",
+  "alternativen": [
+   "Gaudí",
+   "Gaudi",
+   "Antoni Gaudi"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Architekten",
+  "frage": "Welcher Architekt gründete 1919 in Weimar das Bauhaus?",
+  "antwort": "Walter Gropius",
+  "alternativen": [
+   "Gropius"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Baustile",
+  "frage": "Welchem Baustil gehört der Kölner Dom an?",
+  "antwort": "Gotik",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "literatur-kunst",
+  "block": "Baustile",
+  "frage": "Welcher mittelalterliche Baustil ist vor allem durch Rundbögen und dicke Mauern gekennzeichnet?",
+  "antwort": "Romanik",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Grundgesetz – Entstehung",
+  "frage": "In welchem Jahr wurde das Grundgesetz der Bundesrepublik Deutschland am 23. Mai verkündet?",
+  "antwort": "1949",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Grundgesetz – Entstehung",
+  "frage": "Welcher spätere Bundeskanzler war Präsident des Parlamentarischen Rates, der das Grundgesetz ausarbeitete?",
+  "antwort": "Konrad Adenauer",
+  "alternativen": [
+   "Adenauer"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Grundrechte",
+  "frage": "Welcher Artikel des Grundgesetzes beginnt mit dem Satz „Die Würde des Menschen ist unantastbar“?",
+  "antwort": "Artikel 1",
+  "alternativen": [
+   "Art. 1",
+   "1"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Grundrechte",
+  "frage": "Welcher Artikel des Grundgesetzes garantiert Meinungs-, Presse- und Kunstfreiheit?",
+  "antwort": "Artikel 5",
+  "alternativen": [
+   "Art. 5",
+   "5"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundestag und Wahlrecht",
+  "frage": "Wie viel Prozent der Zweitstimmen muss eine Partei grundsätzlich erreichen, um bei einer Bundestagswahl Sitze zu erhalten?",
+  "antwort": "5 Prozent",
+  "alternativen": [
+   "5 %",
+   "5",
+   "fünf Prozent"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundestag und Wahlrecht",
+  "frage": "Welcher britische Architekt entwarf die gläserne Kuppel des Reichstagsgebäudes?",
+  "antwort": "Norman Foster",
+  "alternativen": [
+   "Foster"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundesrat und Föderalismus",
+  "frage": "Aus wie vielen Bundesländern besteht die Bundesrepublik Deutschland?",
+  "antwort": "16",
+  "alternativen": [
+   "sechzehn"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundesrat und Föderalismus",
+  "frage": "Wie viele Stimmen hat ein Bundesland im Bundesrat laut Grundgesetz höchstens?",
+  "antwort": "6",
+  "alternativen": [
+   "sechs",
+   "6 Stimmen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundespräsidenten",
+  "frage": "Wer war der erste Bundespräsident der Bundesrepublik Deutschland?",
+  "antwort": "Theodor Heuss",
+  "alternativen": [
+   "Heuss"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundespräsidenten",
+  "frage": "Welches Verfassungsorgan, das nur zu diesem Zweck zusammentritt, wählt den Bundespräsidenten?",
+  "antwort": "Bundesversammlung",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundeskanzler",
+  "frage": "Wer war die erste Frau im Amt des deutschen Bundeskanzlers?",
+  "antwort": "Angela Merkel",
+  "alternativen": [
+   "Merkel"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundeskanzler",
+  "frage": "Welcher Bundeskanzler erhielt 1971 den Friedensnobelpreis?",
+  "antwort": "Willy Brandt",
+  "alternativen": [
+   "Brandt"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundesverfassungsgericht und Bundesgerichte",
+  "frage": "In welcher Stadt hat das Bundesverfassungsgericht seinen Sitz?",
+  "antwort": "Karlsruhe",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Bundesverfassungsgericht und Bundesgerichte",
+  "frage": "In welcher Landeshauptstadt hat das Bundesarbeitsgericht seinen Sitz?",
+  "antwort": "Erfurt",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Parteien in Deutschland",
+  "frage": "Welche Partei tritt nur in Bayern zu Wahlen an und bildet im Bundestag eine Fraktionsgemeinschaft mit der CDU?",
+  "antwort": "CSU",
+  "alternativen": [
+   "Christlich-Soziale Union"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Parteien in Deutschland",
+  "frage": "In welchem Jahr wurde die Partei Die Grünen auf Bundesebene gegründet?",
+  "antwort": "1980",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "EU-Institutionen",
+  "frage": "In welcher französischen Stadt hat das Europäische Parlament seinen offiziellen Sitz?",
+  "antwort": "Straßburg",
+  "alternativen": [
+   "Strasbourg",
+   "Strassburg"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "EU-Institutionen",
+  "frage": "In welcher Stadt hat der Gerichtshof der Europäischen Union seinen Sitz?",
+  "antwort": "Luxemburg",
+  "alternativen": [
+   "Luxembourg"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "EU-Geschichte und Erweiterung",
+  "frage": "In welcher Hauptstadt wurden 1957 die Verträge zur Gründung der Europäischen Wirtschaftsgemeinschaft unterzeichnet?",
+  "antwort": "Rom",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "EU-Geschichte und Erweiterung",
+  "frage": "Welcher Staat trat am 1. Juli 2013 der Europäischen Union bei?",
+  "antwort": "Kroatien",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Vereinte Nationen",
+  "frage": "In welcher Stadt befindet sich der Hauptsitz der Vereinten Nationen?",
+  "antwort": "New York",
+  "alternativen": [
+   "New York City"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Vereinte Nationen",
+  "frage": "Wie viele ständige Mitglieder hat der UN-Sicherheitsrat?",
+  "antwort": "5",
+  "alternativen": [
+   "fünf"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Internationale Organisationen und ihre Sitze",
+  "frage": "In welcher Stadt befindet sich das Hauptquartier der NATO?",
+  "antwort": "Brüssel",
+  "alternativen": [
+   "Bruxelles",
+   "Brussel"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Internationale Organisationen und ihre Sitze",
+  "frage": "In welcher europäischen Hauptstadt hat die Organisation erdölexportierender Länder (OPEC) ihren Sitz?",
+  "antwort": "Wien",
+  "alternativen": [
+   "Vienna"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Staatsformen und Staatstheorie",
+  "frage": "Welcher französische Philosoph begründete mit seinem Werk „Vom Geist der Gesetze“ die klassische Lehre der Gewaltenteilung?",
+  "antwort": "Montesquieu",
+  "alternativen": [
+   "Charles de Montesquieu"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Staatsformen und Staatstheorie",
+  "frage": "Wie nennt man eine Staatsform, in der die Herrschaft religiös begründet ist und von Geistlichen ausgeübt wird?",
+  "antwort": "Theokratie",
+  "alternativen": [
+   "Gottesherrschaft",
+   "Hierokratie"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Parlamente der Welt",
+  "frage": "Wie heißt das Parlament Israels?",
+  "antwort": "Knesset",
+  "alternativen": [
+   "Knesseth"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Parlamente der Welt",
+  "frage": "Wie heißt das Parlament Norwegens?",
+  "antwort": "Storting",
+  "alternativen": [
+   "Stortinget"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Volkswirtschaftliche Grundbegriffe und Ökonomen",
+  "frage": "Wie nennt man in der Volkswirtschaft ein anhaltendes Sinken des allgemeinen Preisniveaus?",
+  "antwort": "Deflation",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Volkswirtschaftliche Grundbegriffe und Ökonomen",
+  "frage": "Welcher schottische Ökonom prägte das Bild von der „unsichtbaren Hand“ des Marktes?",
+  "antwort": "Adam Smith",
+  "alternativen": [
+   "Smith"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Börse und Aktienindizes",
+  "frage": "Welches Tier gilt an der Börse als Symbol für steigende Kurse?",
+  "antwort": "Bulle",
+  "alternativen": [
+   "Stier"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Börse und Aktienindizes",
+  "frage": "Auf wie viele Unternehmen wurde der DAX im September 2021 erweitert?",
+  "antwort": "40",
+  "alternativen": [
+   "vierzig",
+   "40 Unternehmen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Unternehmen und Marken mit Herkunft",
+  "frage": "Aus welchem Land stammt das Möbelhaus IKEA?",
+  "antwort": "Schweden",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Unternehmen und Marken mit Herkunft",
+  "frage": "Für welche Stadt steht die Silbe „Bo“ im Firmennamen Haribo?",
+  "antwort": "Bonn",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Geld und Währungen",
+  "frage": "Wie heißt die Währung Polens?",
+  "antwort": "Złoty",
+  "alternativen": [
+   "Zloty",
+   "Polnischer Złoty"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Geld und Währungen",
+  "frage": "In welchem Jahr wurde in Deutschland das Euro-Bargeld eingeführt?",
+  "antwort": "2002",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Recht im Alltag",
+  "frage": "Ab welchem Alter ist man in Deutschland strafmündig?",
+  "antwort": "14 Jahre",
+  "alternativen": [
+   "14",
+   "vierzehn"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Recht im Alltag",
+  "frage": "Welches deutsche Gesetzbuch trat am 1. Januar 1900 in Kraft und regelt unter anderem Kauf- und Mietverträge?",
+  "antwort": "Bürgerliches Gesetzbuch",
+  "alternativen": [
+   "BGB"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Steuern und Sozialversicherung",
+  "frage": "Auf wie viel Prozent wurde der reguläre Mehrwertsteuersatz in Deutschland zum 1. Januar 2007 angehoben?",
+  "antwort": "19 Prozent",
+  "alternativen": [
+   "19 %",
+   "19"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "gesellschaft",
+  "block": "Steuern und Sozialversicherung",
+  "frage": "Unter welchem Reichskanzler wurde in den 1880er-Jahren die gesetzliche Sozialversicherung in Deutschland eingeführt?",
+  "antwort": "Otto von Bismarck",
+  "alternativen": [
+   "Bismarck"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Christliche Feiertage",
+  "frage": "Welches christliche Fest wird am 50. Tag der Osterzeit gefeiert, also 49 Tage nach dem Ostersonntag?",
+  "antwort": "Pfingsten",
+  "alternativen": [
+   "Pfingstsonntag"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Christliche Feiertage",
+  "frage": "Auf welchen Wochentag fällt der gesetzliche Feiertag Christi Himmelfahrt in Deutschland immer?",
+  "antwort": "Donnerstag",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Feste anderer Religionen",
+  "frage": "Wie heißt das Fest, mit dem Muslime das Ende des Fastenmonats Ramadan feiern?",
+  "antwort": "Zuckerfest",
+  "alternativen": [
+   "Eid al-Fitr",
+   "Id al-Fitr",
+   "Ramadanfest",
+   "Fest des Fastenbrechens",
+   "Şeker Bayramı"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Feste anderer Religionen",
+  "frage": "Wie heißt das achttägige jüdische Lichterfest?",
+  "antwort": "Chanukka",
+  "alternativen": [
+   "Hanukkah",
+   "Hanukka",
+   "Chanukah"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Weltreligionen und heilige Schriften",
+  "frage": "Welche Weltreligion geht auf Siddhartha Gautama zurück?",
+  "antwort": "Buddhismus",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Weltreligionen und heilige Schriften",
+  "frage": "Wie heißen im Judentum die fünf Bücher Mose?",
+  "antwort": "Tora",
+  "alternativen": [
+   "Thora",
+   "Torah",
+   "Chumasch"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Griechische Mythologie",
+  "frage": "Wer ist in der griechischen Mythologie die Göttin der Weisheit?",
+  "antwort": "Athene",
+  "alternativen": [
+   "Athena",
+   "Pallas Athene"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Griechische Mythologie",
+  "frage": "Welcher Held schlug in der griechischen Sage der Medusa den Kopf ab?",
+  "antwort": "Perseus",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Nordische Mythologie",
+  "frage": "Wie heißt der Hammer des Donnergottes Thor?",
+  "antwort": "Mjölnir",
+  "alternativen": [
+   "Mjöllnir",
+   "Mjollnir",
+   "Mjolnir"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Nordische Mythologie",
+  "frage": "Wie heißt in der nordischen Mythologie Odins Halle, in die gefallene Krieger einziehen?",
+  "antwort": "Walhall",
+  "alternativen": [
+   "Walhalla",
+   "Valhalla",
+   "Valhöll"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Philosophen",
+  "frage": "Welcher Philosoph formulierte den kategorischen Imperativ?",
+  "antwort": "Immanuel Kant",
+  "alternativen": [
+   "Kant"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Philosophen",
+  "frage": "Welcher griechische Philosoph war Lehrer Alexanders des Großen?",
+  "antwort": "Aristoteles",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Nationalgerichte",
+  "frage": "Aus welchem Land stammt das Reisgericht Paella?",
+  "antwort": "Spanien",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Nationalgerichte",
+  "frage": "In welchem Land gilt der gefüllte Schafsmagen Haggis als Nationalgericht?",
+  "antwort": "Schottland",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Getränke und Spirituosen",
+  "frage": "Welche Spirituose bildet die Grundlage eines Mojito?",
+  "antwort": "Rum",
+  "alternativen": [
+   "weißer Rum"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Getränke und Spirituosen",
+  "frage": "Aus welcher Pflanze wird Tequila hergestellt?",
+  "antwort": "Agave",
+  "alternativen": [
+   "Blaue Agave"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Kalender",
+  "frage": "Nach welchem römischen Kaiser ist der Monat August benannt?",
+  "antwort": "Augustus",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Kalender",
+  "frage": "Welcher Papst führte 1582 den heute gültigen Kalender ein?",
+  "antwort": "Gregor XIII.",
+  "alternativen": [
+   "Gregor der Dreizehnte",
+   "Papst Gregor XIII."
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Hochzeitstage",
+  "frage": "Welcher Hochzeitstag wird nach 25 Ehejahren gefeiert?",
+  "antwort": "Silberne Hochzeit",
+  "alternativen": [
+   "Silberhochzeit"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Hochzeitstage",
+  "frage": "Nach wie vielen Ehejahren feiert man die Diamantene Hochzeit?",
+  "antwort": "60 Jahre",
+  "alternativen": [
+   "60"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Tierkreiszeichen",
+  "frage": "Welches westliche Sternzeichen ist das einzige, das weder Mensch noch Tier darstellt?",
+  "antwort": "Waage",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Tierkreiszeichen",
+  "frage": "Mit welchem Tier beginnt der zwölfjährige chinesische Tierkreis?",
+  "antwort": "Ratte",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "SI-Einheiten und Vorsätze",
+  "frage": "Wie viele Quadratmeter hat ein Hektar?",
+  "antwort": "10.000 Quadratmeter",
+  "alternativen": [
+   "10000",
+   "10.000",
+   "10.000 m²"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "SI-Einheiten und Vorsätze",
+  "frage": "Welcher Einheitenvorsatz steht für das Milliardenfache, also 10 hoch 9?",
+  "antwort": "Giga",
+  "alternativen": [
+   "G"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Angloamerikanische und nautische Maße",
+  "frage": "Wie viele Zentimeter misst ein internationaler Zoll (englisch Inch)?",
+  "antwort": "2,54 Zentimeter",
+  "alternativen": [
+   "2,54 cm",
+   "2,54"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Angloamerikanische und nautische Maße",
+  "frage": "Wie viele Meter misst eine Seemeile?",
+  "antwort": "1852 Meter",
+  "alternativen": [
+   "1.852 Meter",
+   "1852 m",
+   "1852"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Straßenverkehr",
+  "frage": "Welche geometrische Form hat das Stoppschild?",
+  "antwort": "Achteck",
+  "alternativen": [
+   "achteckig",
+   "Oktogon"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Straßenverkehr",
+  "frage": "Welche Promillegrenze gilt in Deutschland für Autofahrer in der Probezeit?",
+  "antwort": "0,0 Promille",
+  "alternativen": [
+   "0 Promille",
+   "0,0"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Erste Hilfe",
+  "frage": "In welche Lage bringt man eine bewusstlose Person, die normal atmet?",
+  "antwort": "Stabile Seitenlage",
+  "alternativen": [
+   "Seitenlage"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Erste Hilfe",
+  "frage": "Wie viele Herzdruckmassagen folgen bei der Wiederbelebung eines Erwachsenen im Wechsel mit zwei Beatmungen?",
+  "antwort": "30",
+  "alternativen": [
+   "dreißig"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Abkürzungen und Buchstabieralphabet",
+  "frage": "Wofür steht die Abkürzung „PS“ am Ende eines Briefes?",
+  "antwort": "Postskriptum",
+  "alternativen": [
+   "Post Scriptum",
+   "Postscriptum",
+   "Postskript",
+   "Nachschrift"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Abkürzungen und Buchstabieralphabet",
+  "frage": "Welches Wort steht im internationalen NATO-Buchstabieralphabet für den Buchstaben Z?",
+  "antwort": "Zulu",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Farbenlehre",
+  "frage": "Welche Farbe entsteht, wenn man im Malkasten Rot und Gelb mischt?",
+  "antwort": "Orange",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Farbenlehre",
+  "frage": "Wie heißen die drei Grundfarben der additiven Farbmischung?",
+  "antwort": "Rot, Grün, Blau",
+  "alternativen": [
+   "RGB"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Mode",
+  "frage": "Welcher deutsche Modeschöpfer war von 1983 bis zu seinem Tod 2019 Kreativdirektor von Chanel?",
+  "antwort": "Karl Lagerfeld",
+  "alternativen": [
+   "Lagerfeld"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Mode",
+  "frage": "Wie heißt der robuste Baumwollstoff, aus dem Jeans gefertigt werden?",
+  "antwort": "Denim",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Pflegesymbole",
+  "frage": "Was bedeutet ein durchgestrichenes Dreieck auf dem Pflegeetikett eines Kleidungsstücks?",
+  "antwort": "Nicht bleichen",
+  "alternativen": [
+   "nicht chloren"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Pflegesymbole",
+  "frage": "Wofür steht auf Pflegeetiketten ein Quadrat mit einem Kreis darin?",
+  "antwort": "Trocknen im Wäschetrockner",
+  "alternativen": [
+   "Tumblertrocknung",
+   "Trockner geeignet"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Sprichwörter",
+  "frage": "Wie endet das Sprichwort „Morgenstund hat …“?",
+  "antwort": "Gold im Mund",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag",
+  "block": "Sprichwörter",
+  "frage": "Wie endet das Sprichwort „Wer den Pfennig nicht ehrt, …“?",
+  "antwort": "ist des Talers nicht wert",
+  "alternativen": [
+   "des Talers nicht wert"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Fußball-Weltmeister",
+  "frage": "Welches Land gewann 1930 die erste Fußball-Weltmeisterschaft?",
+  "antwort": "Uruguay",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Fußball-Weltmeister",
+  "frage": "Welcher deutsche Spieler erzielte im WM-Finale 2014 gegen Argentinien das Siegtor?",
+  "antwort": "Mario Götze",
+  "alternativen": [
+   "Götze"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Gastgeber der Fußball-WM",
+  "frage": "In welchem Land fand die Fußball-WM 1954 statt, bei der Deutschland mit dem „Wunder von Bern“ erstmals Weltmeister wurde?",
+  "antwort": "Schweiz",
+  "alternativen": [
+   "die Schweiz"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Gastgeber der Fußball-WM",
+  "frage": "Welches Land richtet die Fußball-Weltmeisterschaft der Männer 2034 aus?",
+  "antwort": "Saudi-Arabien",
+  "alternativen": [
+   "Saudi Arabien"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Fußball-Europameister",
+  "frage": "Welches Land gewann die Fußball-Europameisterschaft 2024 in Deutschland?",
+  "antwort": "Spanien",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Fußball-Europameister",
+  "frage": "Welches Land wurde 1992 Europameister, obwohl es erst kurzfristig für das ausgeschlossene Jugoslawien nachgerückt war?",
+  "antwort": "Dänemark",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Fußball-Bundesliga",
+  "frage": "Welcher Verein wurde in der Saison 2023/24 ohne eine einzige Niederlage erstmals Deutscher Fußballmeister?",
+  "antwort": "Bayer 04 Leverkusen",
+  "alternativen": [
+   "Bayer Leverkusen",
+   "Leverkusen"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Fußball-Bundesliga",
+  "frage": "In welchem Jahr startete die erste Saison der Fußball-Bundesliga?",
+  "antwort": "1963",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Fußballregeln und Spielfeldmaße",
+  "frage": "Wie viele Meter ist im Fußball der Strafstoßpunkt von der Mitte der Torlinie entfernt?",
+  "antwort": "11 Meter",
+  "alternativen": [
+   "11 m",
+   "elf Meter",
+   "11"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Fußballregeln und Spielfeldmaße",
+  "frage": "Wie breit ist ein Fußballtor, gemessen zwischen den Innenkanten der Pfosten?",
+  "antwort": "7,32 Meter",
+  "alternativen": [
+   "7,32 m",
+   "8 Yards"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Geschichte der Olympischen Spiele",
+  "frage": "In welcher Stadt fanden 1896 die ersten Olympischen Spiele der Neuzeit statt?",
+  "antwort": "Athen",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Geschichte der Olympischen Spiele",
+  "frage": "Welcher Franzose gilt als Begründer der modernen Olympischen Spiele?",
+  "antwort": "Pierre de Coubertin",
+  "alternativen": [
+   "Coubertin",
+   "Baron de Coubertin"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Olympische Gastgeberstädte",
+  "frage": "In welcher deutschen Stadt fanden 1972 die Olympischen Sommerspiele statt?",
+  "antwort": "München",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Olympische Gastgeberstädte",
+  "frage": "Welche Stadt richtet die Olympischen Sommerspiele 2032 aus?",
+  "antwort": "Brisbane",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Olympische Symbole",
+  "frage": "Wie viele Ringe zeigt die olympische Flagge?",
+  "antwort": "Fünf",
+  "alternativen": [
+   "5"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Olympische Symbole",
+  "frage": "An welchem griechischen Ort wird das olympische Feuer vor den Spielen traditionell entzündet?",
+  "antwort": "Olympia",
+  "alternativen": [
+   "antikes Olympia",
+   "Olympia in Griechenland"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Leichtathletik-Disziplinen",
+  "frage": "Wie lang ist die offizielle Marathonstrecke?",
+  "antwort": "42,195 Kilometer",
+  "alternativen": [
+   "42,195 km",
+   "42195 Meter"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Leichtathletik-Disziplinen",
+  "frage": "Welche Disziplin bildet den Abschluss des Zehnkampfs der Männer?",
+  "antwort": "1500-Meter-Lauf",
+  "alternativen": [
+   "1500 m",
+   "1500-m-Lauf",
+   "1500 Meter"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Leichtathletik-Weltrekorde",
+  "frage": "Welcher Sprinter lief 2009 in Berlin den 100-Meter-Weltrekord von 9,58 Sekunden?",
+  "antwort": "Usain Bolt",
+  "alternativen": [
+   "Bolt"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Leichtathletik-Weltrekorde",
+  "frage": "Welcher für Schweden startende Stabhochspringer mit dem Spitznamen „Mondo“ hat seit 2020 den Weltrekord mehrfach verbessert?",
+  "antwort": "Armand Duplantis",
+  "alternativen": [
+   "Mondo Duplantis",
+   "Duplantis"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Tennis: Grand-Slam-Turniere",
+  "frage": "Auf welchem Belag wird das Grand-Slam-Turnier in Wimbledon gespielt?",
+  "antwort": "Rasen",
+  "alternativen": [
+   "Gras",
+   "Naturrasen"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Tennis: Grand-Slam-Turniere",
+  "frage": "Welches Grand-Slam-Turnier wird jedes Jahr als erstes der Saison ausgetragen?",
+  "antwort": "Australian Open",
+  "alternativen": [
+   "Australian Open in Melbourne"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Formel 1",
+  "frage": "Für welchen Rennstall gewann Michael Schumacher fünf seiner sieben Formel-1-WM-Titel?",
+  "antwort": "Ferrari",
+  "alternativen": [
+   "Scuderia Ferrari"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Formel 1",
+  "frage": "Welcher britische Fahrer stellte 2020 mit seinem siebten WM-Titel den Rekord von Michael Schumacher ein?",
+  "antwort": "Lewis Hamilton",
+  "alternativen": [
+   "Hamilton"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Radsport: Tour de France",
+  "frage": "Welche Farbe hat das Trikot des Gesamtführenden der Tour de France?",
+  "antwort": "Gelb",
+  "alternativen": [
+   "Gelbes Trikot"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Radsport: Tour de France",
+  "frage": "Welcher deutsche Radprofi gewann 1997 die Tour de France?",
+  "antwort": "Jan Ullrich",
+  "alternativen": [
+   "Ullrich"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Wintersport: Nordische Disziplinen",
+  "frage": "Welche zwei Sportarten werden im Biathlon kombiniert?",
+  "antwort": "Skilanglauf und Schießen",
+  "alternativen": [
+   "Langlauf und Schießen",
+   "Schießen und Skilanglauf",
+   "Skilanglauf und Gewehrschießen"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Wintersport: Nordische Disziplinen",
+  "frage": "In welchem Ort findet bei der Vierschanzentournee traditionell das Neujahrsspringen statt?",
+  "antwort": "Garmisch-Partenkirchen",
+  "alternativen": [
+   "Garmisch"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Hallen-Ballsportarten: Regeln und Maße",
+  "frage": "Wie viele Spieler stehen beim Hallenvolleyball pro Mannschaft gleichzeitig auf dem Feld?",
+  "antwort": "Sechs",
+  "alternativen": [
+   "6"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Hallen-Ballsportarten: Regeln und Maße",
+  "frage": "In welcher Höhe hängt der Ring eines Basketballkorbs?",
+  "antwort": "3,05 Meter",
+  "alternativen": [
+   "3,05 m",
+   "10 Fuß"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Kampfsport",
+  "frage": "Welcher Boxer, der sich „The Greatest“ nannte, hieß ursprünglich Cassius Clay?",
+  "antwort": "Muhammad Ali",
+  "alternativen": [
+   "Ali",
+   "Mohammed Ali"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Kampfsport",
+  "frage": "Wie heißt im Judo die höchste Wertung, die den Kampf sofort beendet?",
+  "antwort": "Ippon",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Schach",
+  "frage": "Wie viele Felder hat ein Schachbrett?",
+  "antwort": "64",
+  "alternativen": [
+   "vierundsechzig"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Schach",
+  "frage": "Welcher IBM-Schachcomputer besiegte 1997 Garri Kasparow in einem Wettkampf?",
+  "antwort": "Deep Blue",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Sportbegriffe",
+  "frage": "Wie nennt man es im Fußball, wenn ein Spieler in einem Spiel drei Tore erzielt?",
+  "antwort": "Hattrick",
+  "alternativen": [
+   "Hat-Trick"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Sportbegriffe",
+  "frage": "Wie heißt im Golf ein Loch, das mit einem Schlag unter Par gespielt wird?",
+  "antwort": "Birdie",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Schwimmen",
+  "frage": "Welcher US-Schwimmer gewann bei Olympischen Spielen insgesamt 23 Goldmedaillen?",
+  "antwort": "Michael Phelps",
+  "alternativen": [
+   "Phelps"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Schwimmen",
+  "frage": "Mit welcher Schwimmart beginnt das Lagenschwimmen im Einzelwettbewerb?",
+  "antwort": "Schmetterling",
+  "alternativen": [
+   "Delfin",
+   "Butterfly",
+   "Schmetterlingsschwimmen"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Deutsche Sportlegenden",
+  "frage": "Welche deutsche Tennisspielerin gewann 1988 den „Golden Slam“ aus allen vier Grand-Slam-Titeln und Olympiagold?",
+  "antwort": "Steffi Graf",
+  "alternativen": [
+   "Graf",
+   "Stefanie Graf"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "sport",
+  "block": "Deutsche Sportlegenden",
+  "frage": "Welcher Basketballer aus Würzburg wurde 2011 mit den Dallas Mavericks NBA-Meister?",
+  "antwort": "Dirk Nowitzki",
+  "alternativen": [
+   "Nowitzki"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Superkompensation und Trainingsprinzipien",
+  "frage": "Wie heißt das Phänomen, dass der Körper nach einer Trainingsbelastung in der Erholungsphase über das Ausgangsniveau hinaus Leistungsfähigkeit aufbaut?",
+  "antwort": "Superkompensation",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Superkompensation und Trainingsprinzipien",
+  "frage": "Nach welchem Trainingsprinzip muss die Belastung im Lauf der Zeit gesteigert werden, damit der Körper sich weiter anpasst?",
+  "antwort": "Progressive Belastungssteigerung",
+  "alternativen": [
+   "Prinzip der progressiven Belastungssteigerung",
+   "progressive Belastung",
+   "Prinzip der progressiven Belastung",
+   "Prinzip der ansteigenden Belastung"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Ausdauertrainingsmethoden",
+  "frage": "Welche Trainingsmethode ist durch einen planmäßigen Wechsel von Belastung und „lohnender Pause“ ohne vollständige Erholung gekennzeichnet?",
+  "antwort": "Intervallmethode",
+  "alternativen": [
+   "Intervalltraining"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Ausdauertrainingsmethoden",
+  "frage": "Wie heißt die aus Schweden stammende Form der Dauermethode mit spielerischen, unregelmäßigen Tempowechseln im Gelände?",
+  "antwort": "Fahrtspiel",
+  "alternativen": [
+   "Fartlek"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Periodisierung und Trainingszyklen",
+  "frage": "Wie heißt der kleinste Trainingszyklus der Periodisierung, der in der Regel etwa eine Woche umfasst?",
+  "antwort": "Mikrozyklus",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Periodisierung und Trainingszyklen",
+  "frage": "Welche Periode folgt in der klassischen Jahresperiodisierung nach Matwejew auf die Wettkampfperiode?",
+  "antwort": "Übergangsperiode",
+  "alternativen": [
+   "Übergangsphase"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Konditionelle Fähigkeiten",
+  "frage": "Wie heißt die höchstmögliche Kraft, die ein Sportler willkürlich gegen einen Widerstand entfalten kann?",
+  "antwort": "Maximalkraft",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Konditionelle Fähigkeiten",
+  "frage": "Welche motorische Fähigkeit setzt sich nach Weineck aus Gelenkigkeit und Dehnfähigkeit zusammen?",
+  "antwort": "Beweglichkeit",
+  "alternativen": [
+   "Flexibilität"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Koordinative Fähigkeiten",
+  "frage": "Welche koordinative Fähigkeit ermöglicht es, den Körper im Gleichgewicht zu halten oder es nach einer Störung wiederherzustellen?",
+  "antwort": "Gleichgewichtsfähigkeit",
+  "alternativen": [
+   "Gleichgewicht"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Koordinative Fähigkeiten",
+  "frage": "Welche koordinative Fähigkeit bezeichnet die Fähigkeit, Teilkörperbewegungen zu einer zielgerichteten Gesamtbewegung zu verbinden?",
+  "antwort": "Kopplungsfähigkeit",
+  "alternativen": [
+   "Koppelungsfähigkeit"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Knochen und Gelenke",
+  "frage": "Wie heißt der längste und schwerste Knochen des menschlichen Körpers?",
+  "antwort": "Oberschenkelknochen",
+  "alternativen": [
+   "Femur",
+   "Oberschenkelbein",
+   "Os femoris"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Knochen und Gelenke",
+  "frage": "Wie heißen die beiden halbmondförmigen Faserknorpelscheiben im Kniegelenk, die bei Sportverletzungen häufig einreißen?",
+  "antwort": "Menisken",
+  "alternativen": [
+   "Meniskus",
+   "Menisci",
+   "Meniski"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Skelettmuskulatur",
+  "frage": "Wie heißt der vierköpfige Muskel an der Vorderseite des Oberschenkels, der das Knie streckt?",
+  "antwort": "Quadrizeps",
+  "alternativen": [
+   "Quadriceps",
+   "Musculus quadriceps femoris",
+   "Quadriceps femoris"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Skelettmuskulatur",
+  "frage": "Wie heißt die Kontraktionsform, bei der ein Muskel Spannung entwickelt, ohne seine Länge zu verändern?",
+  "antwort": "isometrisch",
+  "alternativen": [
+   "isometrische Kontraktion",
+   "Isometrie"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Herz-Kreislauf-System",
+  "frage": "Wie nennt man ein durch langjähriges Ausdauertraining vergrößertes, besonders leistungsfähiges Herz?",
+  "antwort": "Sportherz",
+  "alternativen": [
+   "Sportlerherz"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Herz-Kreislauf-System",
+  "frage": "Wie heißt die Größe, die sich aus Schlagvolumen mal Herzfrequenz ergibt?",
+  "antwort": "Herzminutenvolumen",
+  "alternativen": [
+   "HMV",
+   "Herzzeitvolumen",
+   "HZV"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Energiebereitstellung",
+  "frage": "Welches Molekül ist der unmittelbare Energielieferant für jede Muskelkontraktion?",
+  "antwort": "ATP",
+  "alternativen": [
+   "Adenosintriphosphat"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Energiebereitstellung",
+  "frage": "Welcher energiereiche Phosphatspeicher im Muskel liefert in den ersten Sekunden einer Maximalbelastung Energie zur ATP-Resynthese?",
+  "antwort": "Kreatinphosphat",
+  "alternativen": [
+   "KrP",
+   "Phosphokreatin",
+   "PCr"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Sportverletzungen",
+  "frage": "Wofür steht das H in der PECH-Regel zur Erstversorgung von Sportverletzungen?",
+  "antwort": "Hochlagern",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Sportverletzungen",
+  "frage": "Wie nennt man in der Sportmedizin das Umknicken des Fußes über den äußeren Fußrand?",
+  "antwort": "Supinationstrauma",
+  "alternativen": [
+   "Inversionstrauma"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Erste Hilfe und Reanimation",
+  "frage": "In welchem Verhältnis stehen Herzdruckmassagen zu Beatmungen bei der Laienreanimation eines Erwachsenen?",
+  "antwort": "30:2",
+  "alternativen": [
+   "30 zu 2"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Erste Hilfe und Reanimation",
+  "frage": "Wie tief soll der Brustkorb eines Erwachsenen bei der Herzdruckmassage nach den ERC-Leitlinien eingedrückt werden?",
+  "antwort": "5 bis 6 cm",
+  "alternativen": [
+   "5–6 cm",
+   "5-6 Zentimeter"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Biomechanische Prinzipien",
+  "frage": "Welches biomechanische Prinzip besagt, dass eine Ausholbewegung entgegen der Zielrichtung die Kraft der Hauptbewegung erhöht?",
+  "antwort": "Prinzip der Anfangskraft",
+  "alternativen": [
+   "Anfangskraft"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Biomechanische Prinzipien",
+  "frage": "Auf welchen deutschen Biomechaniker gehen die klassischen biomechanischen Prinzipien wie das Prinzip der Gegenwirkung zurück?",
+  "antwort": "Gerhard Hochmuth",
+  "alternativen": [
+   "Hochmuth"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Bewegungslehre und motorisches Lernen",
+  "frage": "Wie heißt nach Meinel bei zyklischen Bewegungen die Phase, in der End- und Vorbereitungsphase miteinander verschmelzen?",
+  "antwort": "Zwischenphase",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Bewegungslehre und motorisches Lernen",
+  "frage": "Wie heißt nach Meinel und Schnabel die erste Phase des motorischen Lernens?",
+  "antwort": "Grobkoordination",
+  "alternativen": [
+   "Phase der Grobkoordination",
+   "Entwicklung der Grobkoordination"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Sportdidaktik und Methodik",
+  "frage": "Wie heißt die Lehrmethode, bei der eine Bewegung von Anfang an als Ganzes geübt wird?",
+  "antwort": "Ganzheitsmethode",
+  "alternativen": [
+   "Ganzmethode",
+   "ganzheitliche Methode"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Sportdidaktik und Methodik",
+  "frage": "Wie nennt man eine nach dem Prinzip „vom Leichten zum Schweren“ aufgebaute Folge von Übungen, die schrittweise zur Zielbewegung führt?",
+  "antwort": "Methodische Übungsreihe",
+  "alternativen": [
+   "Methodische Reihe"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Regelkunde Volleyball",
+  "frage": "Wie oft darf eine Volleyballmannschaft den Ball höchstens berühren, um ihn über das Netz zu spielen, die Blockberührung nicht mitgerechnet?",
+  "antwort": "3",
+  "alternativen": [
+   "drei",
+   "dreimal"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Regelkunde Volleyball",
+  "frage": "Wie hoch hängt das Volleyballnetz bei Wettkämpfen der Männer?",
+  "antwort": "2,43 m",
+  "alternativen": [
+   "2,43 Meter",
+   "243 cm"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Regelkunde Basketball",
+  "frage": "Wie viele Sekunden hat eine angreifende Basketballmannschaft Zeit, um einen Korbwurf zu versuchen?",
+  "antwort": "24 Sekunden",
+  "alternativen": [
+   "24"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Regelkunde Basketball",
+  "frage": "Nach wie vielen persönlichen Fouls muss ein Basketballspieler nach FIBA-Regeln das Spiel verlassen?",
+  "antwort": "5",
+  "alternativen": [
+   "fünf",
+   "5 Fouls"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Regelkunde Handball",
+  "frage": "Aus welcher Entfernung zum Tor wird im Handball der Strafwurf ausgeführt?",
+  "antwort": "7 Meter",
+  "alternativen": [
+   "7 m",
+   "sieben Meter"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Regelkunde Handball",
+  "frage": "Wie viele Schritte darf ein Handballspieler mit dem Ball in der Hand höchstens machen?",
+  "antwort": "3",
+  "alternativen": [
+   "drei",
+   "drei Schritte"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Leichtathletik-Wettkampfregeln",
+  "frage": "Nach wie vielen aufeinanderfolgenden Fehlversuchen scheidet ein Hochspringer aus dem Wettbewerb aus?",
+  "antwort": "3",
+  "alternativen": [
+   "drei"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Leichtathletik-Wettkampfregeln",
+  "frage": "Wie schwer ist die Kugel beim Kugelstoßen der Männer?",
+  "antwort": "7,26 kg",
+  "alternativen": [
+   "7,26 Kilogramm",
+   "7.26 kg"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Sicherheit, Aufsicht und Hilfestellung",
+  "frage": "Wie heißt die Rechtspflicht der Sportlehrkraft, Schülerinnen und Schüler während des Unterrichts vor Gefahren und Schäden zu bewahren?",
+  "antwort": "Aufsichtspflicht",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Sicherheit, Aufsicht und Hilfestellung",
+  "frage": "Wie heißt der Hilfegriff im Geräteturnen, bei dem der Helfer den Oberarm des Turners mit beiden Händen umschließt, etwa bei der Hocke über den Bock?",
+  "antwort": "Klammergriff",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Leistungsdiagnostik und Tests",
+  "frage": "Wie heißt der nach einem US-Arzt benannte Ausdauertest, bei dem man 12 Minuten lang eine möglichst weite Strecke läuft?",
+  "antwort": "Cooper-Test",
+  "alternativen": [
+   "Cooper",
+   "Cooper-Lauf"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "lehrer-sport",
+  "block": "Leistungsdiagnostik und Tests",
+  "frage": "Bei welcher Blutlaktatkonzentration liegt nach Mader die klassische aerob-anaerobe Schwelle?",
+  "antwort": "4 mmol/l",
+  "alternativen": [
+   "4 Millimol pro Liter",
+   "4 mmol"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Primzahlen und Teilbarkeit",
+  "frage": "Welche ist die einzige gerade Primzahl?",
+  "antwort": "2",
+  "alternativen": [
+   "Zwei"
+  ],
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Primzahlen und Teilbarkeit",
+  "frage": "Nach welchem griechischen Gelehrten ist das Sieb benannt, mit dem man Primzahlen herausfiltert?",
+  "antwort": "Eratosthenes",
+  "alternativen": [
+   "Eratosthenes von Kyrene"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Bruch- und Prozentrechnung",
+  "frage": "Wie heißt die Zahl unter dem Bruchstrich?",
+  "antwort": "Nenner",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Bruch- und Prozentrechnung",
+  "frage": "Ein Preis wird um 50 Prozent gesenkt. Um wie viel Prozent muss er danach steigen, damit wieder der Ausgangspreis erreicht ist?",
+  "antwort": "100 Prozent",
+  "alternativen": [
+   "100 %",
+   "100"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Potenzen, Wurzeln und Logarithmen",
+  "frage": "Welchen Wert hat jede von null verschiedene Zahl hoch null?",
+  "antwort": "1",
+  "alternativen": [
+   "Eins"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Potenzen, Wurzeln und Logarithmen",
+  "frage": "Wie nennt man den Logarithmus zur Basis e?",
+  "antwort": "natürlicher Logarithmus",
+  "alternativen": [
+   "ln",
+   "Logarithmus naturalis"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Binomische Formeln und quadratische Gleichungen",
+  "frage": "Was ergibt nach der dritten binomischen Formel das Produkt (a + b) · (a − b)?",
+  "antwort": "a² − b²",
+  "alternativen": [
+   "a^2 - b^2",
+   "a hoch 2 minus b hoch 2"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Binomische Formeln und quadratische Gleichungen",
+  "frage": "Unter welchem Spitznamen ist die abc-Formel zur Lösung von ax² + bx + c = 0 bekannt, weil Schüler sie angeblich selbst dann aufsagen können sollen, wenn man sie aus dem Tiefschlaf weckt?",
+  "antwort": "Mitternachtsformel",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Satz des Pythagoras und Dreiecke",
+  "frage": "Wie heißt im rechtwinkligen Dreieck die Seite, die dem rechten Winkel gegenüberliegt?",
+  "antwort": "Hypotenuse",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Satz des Pythagoras und Dreiecke",
+  "frage": "Nach welchem griechischen Philosophen ist der Satz benannt, wonach jeder Winkel im Halbkreis ein rechter Winkel ist?",
+  "antwort": "Thales",
+  "alternativen": [
+   "Thales von Milet"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Trigonometrie",
+  "frage": "Welche Winkelfunktion ist im rechtwinkligen Dreieck als Gegenkathete geteilt durch Hypotenuse definiert?",
+  "antwort": "Sinus",
+  "alternativen": [
+   "sin"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Trigonometrie",
+  "frage": "Welchen Wert hat der Sinus von 30 Grad?",
+  "antwort": "0,5",
+  "alternativen": [
+   "1/2",
+   "ein halb",
+   "0.5"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Kreis und Kreiszahl Pi",
+  "frage": "An welchem Tag im Jahr wird der Pi-Tag gefeiert?",
+  "antwort": "14. März",
+  "alternativen": [
+   "14.3.",
+   "14.03."
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Kreis und Kreiszahl Pi",
+  "frage": "Wie heißt eine Strecke, die zwei Punkte einer Kreislinie miteinander verbindet?",
+  "antwort": "Sehne",
+  "alternativen": [
+   "Kreissehne"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Platonische Körper und Polyeder",
+  "frage": "Wie viele platonische Körper gibt es?",
+  "antwort": "5",
+  "alternativen": [
+   "fünf"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Platonische Körper und Polyeder",
+  "frage": "Welchen Wert hat nach dem eulerschen Polyedersatz bei jedem konvexen Polyeder die Summe Ecken minus Kanten plus Flächen?",
+  "antwort": "2",
+  "alternativen": [
+   "zwei"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Funktionen und ihre Graphen",
+  "frage": "Wie heißt der Graph einer quadratischen Funktion?",
+  "antwort": "Parabel",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Funktionen und ihre Graphen",
+  "frage": "Wie nennt man die Menge aller x-Werte, die man in eine Funktion einsetzen darf?",
+  "antwort": "Definitionsmenge",
+  "alternativen": [
+   "Definitionsbereich"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Differentialrechnung",
+  "frage": "Wie lautet die Ableitung der Funktion f(x) = x²?",
+  "antwort": "2x",
+  "alternativen": [
+   "f'(x) = 2x",
+   "2·x"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Differentialrechnung",
+  "frage": "Welcher deutsche Universalgelehrte entwickelte unabhängig von Isaac Newton die Differentialrechnung?",
+  "antwort": "Gottfried Wilhelm Leibniz",
+  "alternativen": [
+   "Leibniz",
+   "Gottfried Leibniz"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Integralrechnung",
+  "frage": "Wie nennt man eine Funktion F, deren Ableitung die gegebene Funktion f ist?",
+  "antwort": "Stammfunktion",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Integralrechnung",
+  "frage": "Für welches lateinische Wort steht das langgezogene S im Integralzeichen?",
+  "antwort": "Summa",
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Wahrscheinlichkeit und Kombinatorik",
+  "frage": "Unter welchem nach einem Tier benannten Namen ist das Monty-Hall-Problem (ein Auto und zwei Nieten hinter verschlossenen Türen) im deutschen Sprachraum bekannt?",
+  "antwort": "Ziegenproblem",
+  "alternativen": [
+   "Ziegenparadoxon"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Wahrscheinlichkeit und Kombinatorik",
+  "frage": "Wie viele verschiedene Möglichkeiten gibt es beim Lotto 6 aus 49, sechs der 49 Zahlen anzukreuzen (ohne Superzahl)?",
+  "antwort": "13.983.816",
+  "alternativen": [
+   "13983816",
+   "13 983 816"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Beschreibende Statistik",
+  "frage": "Wie heißt der Wert, der in einer der Größe nach geordneten Datenreihe genau in der Mitte steht?",
+  "antwort": "Median",
+  "alternativen": [
+   "Zentralwert"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Beschreibende Statistik",
+  "frage": "Wie heißt das Streumaß, das als Quadratwurzel der Varianz definiert ist?",
+  "antwort": "Standardabweichung",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Vektoren und Matrizen",
+  "frage": "Wie nennt man eine quadratische Matrix mit Einsen auf der Hauptdiagonale und sonst lauter Nullen?",
+  "antwort": "Einheitsmatrix",
+  "alternativen": [
+   "Identitätsmatrix"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Vektoren und Matrizen",
+  "frage": "Welchen Wert hat das Skalarprodukt zweier Vektoren, die senkrecht aufeinander stehen?",
+  "antwort": "0",
+  "alternativen": [
+   "Null"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Beweisverfahren",
+  "frage": "Welches Beweisverfahren arbeitet mit einem Anfang bei n = 1 und einem Schritt von n auf n + 1?",
+  "antwort": "vollständige Induktion",
+  "alternativen": [
+   "Induktion",
+   "Induktionsbeweis"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Beweisverfahren",
+  "frage": "Mit welcher lateinischen Abkürzung beendet man traditionell einen Beweis?",
+  "antwort": "q.e.d.",
+  "alternativen": [
+   "qed",
+   "quod erat demonstrandum"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Mathematikgeschichte und berühmte Mathematiker",
+  "frage": "Welcher 'Fürst der Mathematiker' soll als Schüler die Zahlen von 1 bis 100 blitzschnell addiert haben?",
+  "antwort": "Carl Friedrich Gauß",
+  "alternativen": [
+   "Gauß",
+   "Gauss",
+   "Carl Friedrich Gauss"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Mathematikgeschichte und berühmte Mathematiker",
+  "frage": "Welcher griechische Mathematiker verfasste das Geometrie-Lehrwerk 'Elemente'?",
+  "antwort": "Euklid",
+  "alternativen": [
+   "Euklid von Alexandria",
+   "Euclid"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Mathematikpreise und berühmte Probleme",
+  "frage": "Welche Auszeichnung für Mathematiker unter 40 Jahren gilt als 'Nobelpreis der Mathematik'?",
+  "antwort": "Fields-Medaille",
+  "alternativen": [
+   "Fields Medal",
+   "Fieldsmedaille"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Mathematikpreise und berühmte Probleme",
+  "frage": "Welcher britische Mathematiker bewies in den 1990er-Jahren den Großen Fermatschen Satz?",
+  "antwort": "Andrew Wiles",
+  "alternativen": [
+   "Wiles"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Mathematikdidaktik",
+  "frage": "Wie heißt das didaktische Prinzip, nach dem Inhalte im Laufe der Schulzeit immer wieder auf höherem Niveau aufgegriffen werden?",
+  "antwort": "Spiralprinzip",
+  "alternativen": [
+   "Spiralcurriculum"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Mathematikdidaktik",
+  "frage": "Auf welchen US-Psychologen geht das EIS-Prinzip mit enaktiver, ikonischer und symbolischer Darstellungsebene zurück?",
+  "antwort": "Jerome Bruner",
+  "alternativen": [
+   "Bruner"
+  ],
+  "schwierigkeit": "schwer"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Typische Schülerfehler",
+  "frage": "Welches falsche Ergebnis erhält, wer bei 1/2 + 1/3 einfach Zähler und Nenner getrennt addiert?",
+  "antwort": "2/5",
+  "alternativen": [
+   "zwei Fünftel"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Typische Schülerfehler",
+  "frage": "Welcher Summand fehlt, wenn ein Schüler (a + b)² fälschlich als a² + b² ausrechnet?",
+  "antwort": "2ab",
+  "alternativen": [
+   "2·a·b"
+  ],
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Mathematische Symbole und Zahlbereiche",
+  "frage": "Wofür steht in der Mathematik ein Ausrufezeichen hinter einer Zahl, etwa bei 5!?",
+  "antwort": "Fakultät",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "lehrer-mathe",
+  "block": "Mathematische Symbole und Zahlbereiche",
+  "frage": "Welcher Großbuchstabe mit Doppelstrich bezeichnet die Menge der rationalen Zahlen?",
+  "antwort": "Q",
+  "alternativen": [
+   "ℚ"
+  ],
+  "schwierigkeit": "mittel"
+ }
+]
