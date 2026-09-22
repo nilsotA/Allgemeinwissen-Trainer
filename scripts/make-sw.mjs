@@ -48,7 +48,7 @@ let files = sammeln();
    data/quizprobe.json: Das ist der feste Pruefsatz der Abdeckungsmessung, den
    die App nirgends importiert - waere er dabei, boete jede Erweiterung des
    Pruefsatzes allen Nutzern ein Update an, das nichts aendert. */
-const NUR_FUER_DIE_WERKSTATT = new Set(['./data/kennungen.json', './data/quizprobe.json', './data/quizprobe2.json', './data/quizprobe3.json', './data/quizprobe4.json', './data/tippprobe.json']);
+const NUR_FUER_DIE_WERKSTATT = new Set(['./data/kennungen.json', './data/quizprobe.json', './data/quizprobe2.json', './data/quizprobe3.json', './data/quizprobe4.json', './data/quizprobe5.json', './data/tippprobe.json']);
 const uebrig = files.filter(f => NUR_FUER_DIE_WERKSTATT.has(f));
 if (uebrig.length !== NUR_FUER_DIE_WERKSTATT.size) {
   console.error('FEHLER  Werkstatt-Datei nicht gefunden – Liste in make-sw.mjs veraltet:'
