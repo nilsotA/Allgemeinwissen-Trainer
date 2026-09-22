@@ -612,6 +612,19 @@ const ueberlappung = (a, b) => {
    Dort wurde sie fuer jedes der 2,3 Millionen Kartenpaare zweimal neu berechnet
    – 4,5 Millionen Aufrufe, gemessen 44 der 48 Sekunden Laufzeit der ganzen
    Pruefung. Einmal vorab gerechnet bleibt das Ergebnis dasselbe. */
+/* Eine Frage, die einen Begriff benennen laesst: „Wie heisst …", „Wie nennt
+   man …", „Welche Groesse ist …". Zwei davon auf dieselbe Antwort sind zweimal
+   dieselbe Karte. */
+const BENENNT = /\b(wie hei(ß|ss)|wie nenn|wie bezeichne)/i;
+const BENENNT_WELCH = /\bwelche[rs]?\s+(?:\S+\s+){0,2}(ist|hei(ß|ss)t|nennt|misst|bezeichnet)\b/i;
+const benennfrage = (q) => BENENNT.test(q) || BENENNT_WELCH.test(q);
+/* Die eine gemessene Fehlmeldung der Regel, namentlich und mit Grund: „Wie
+   heisst das leichteste Edelgas?" und „Welches Element ist im Universum am
+   zweithaeufigsten?" haben beide die Antwort Helium und sind zwei ganz
+   verschiedene Fragen. Steht sie hier, faellt eine spaetere Aenderung an einer
+   der beiden Karten auf. */
+const BENENN_AUSNAHME = new Set(['nat-16x8ptz|nat-1m1monz', 'nat-1m1monz|nat-16x8ptz']);
+
 const fragen = CARDS.map(c => ({ c, q: wortmenge(c.q), a: wortmenge(c.a), na: norm(c.a) }));
 for (let i = 0; i < fragen.length; i++) {
   for (let j = i + 1; j < fragen.length; j++) {
@@ -634,8 +647,35 @@ for (let i = 0; i < fragen.length; i++) {
        das Abendmahl?" dazu – zwei verschiedene Fakten mit derselben Antwort. */
     const dublette = (fq >= 0.7 && (gleicheAntwort || ueberlappung(fragen[i].a, fragen[j].a) >= 0.25))
       || (gleicheAntwort && fq >= 0.4);
-    if (!dublette) continue;
-    fail(`Inhaltliche Dublette: ${fragen[i].c.id} „${fragen[i].c.q}" und ${fragen[j].c.id} „${fragen[j].c.q}"`);
+    if (dublette) {
+      fail(`Inhaltliche Dublette: ${fragen[i].c.id} „${fragen[i].c.q}" und ${fragen[j].c.id} „${fragen[j].c.q}"`);
+      continue;
+    }
+    /* Zweiter Weg zur selben Feststellung, und der wichtigere: BEIDE Fragen
+       lassen einen Begriff BENENNEN, und beide meinen denselben. Dann ist es
+       zweimal dieselbe Karte, wie verschieden sie auch formuliert sein moegen.
+
+       Warum nicht ueber die Wortueberlappung: Die trennt hier nachweislich
+       nicht. Gemessen ueber alle 148 Paare mit identischer Antwort liegt
+       „Welche physikalische Groesse ist ein Mass fuer die Unordnung?" gegen
+       „Wie heisst die physikalische Groesse, die anschaulich ein Mass fuer
+       Unordnung ist?" bei 0,33 - und genau dort liegt auch „Wer malte die Mona
+       Lisa?" gegen „Wer malte das Abendmahl?". Die eine ist eine Dublette, die
+       andere nicht. Kein Schwellenwert bringt sie auseinander.
+
+       Was sie auseinanderbringt, ist die Art der Frage. Wer nach einem Maler
+       fragt, fragt nach einem anderen Bild; wer einen Begriff benennen laesst,
+       benennt denselben Begriff. Gemessen: neun Paare erfuellt die Regel, acht
+       davon waren echte Dubletten.
+
+       Gefunden hat den Fehler nicht diese Pruefung, sondern der Bestand selbst:
+       Neun solcher Paare standen im Bestand, sechs davon monatelang. */
+    if (gleicheAntwort && fragen[i].c.cat === fragen[j].c.cat && fragen[i].c.sub === fragen[j].c.sub
+        && benennfrage(fragen[i].c.q) && benennfrage(fragen[j].c.q)
+        && !BENENN_AUSNAHME.has(`${fragen[i].c.id}|${fragen[j].c.id}`)) {
+      fail(`Zweimal dieselbe Benennfrage auf „${fragen[i].c.a}": ${fragen[i].c.id} „${fragen[i].c.q}" `
+        + `und ${fragen[j].c.id} „${fragen[j].c.q}"`);
+    }
   }
 }
 

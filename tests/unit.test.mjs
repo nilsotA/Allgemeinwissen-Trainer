@@ -596,9 +596,28 @@ test('kein Ablenker im Bestand wird als richtige Eingabe durchgewunken', () => {
 /* Ein zweiter Blickwinkel auf dieselbe Frage: nicht der gebaute Ablenker,
    sondern die Antwort einer ANDEREN Karte desselben Teilgebiets. Die ist
    thematisch nah, sprachlich aehnlich gebaut und trotzdem falsch – und anders
-   als die Ablenker hat sie niemand als Gegenstueck entworfen. Gemessen: von
-   4.642 solchen Eingaben gilt keine als richtig. Ausgenommen sind Karten, die
-   sich eine Antwort wirklich teilen (zwei Fragen, beide „Norwegen"). */
+   als die Ablenker hat sie niemand als Gegenstueck entworfen.
+
+   VOLLSTAENDIG, nicht als Stichprobe. Vorher zog der Test je Karte ZWEI
+   zufaellige Geschwister. In einem Teilgebiet mit sechzig Karten trifft er
+   ein bestimmtes Paar damit in etwa drei Prozent der Faelle – und genau das
+   ist passiert: Ein Schwung neuer Karten brachte neun Paare in den Bestand,
+   die ihre eigene Frage ein zweites Mal stellten („Wie heisst die Gerade, der
+   sich ein Graph beliebig naehert?" neben „In der Kurvendiskussion sucht man
+   die Gerade …"). Der Test meldete drei davon, sechs liefen durch und standen
+   monatelang im Bestand. Jetzt laufen alle Geschwisterpaare: rund 158.000
+   statt 5.000, gemessen 28 Sekunden.
+
+   Drei Ausnahmen, und zwar begruendete:
+   - Dieselbe Antwort, anders geschrieben („Gotik" und „Die Gotik"). Zwei Fragen
+     duerfen sich eine Antwort teilen; verglichen wird deshalb die normalisierte
+     Fassung und nicht die Zeichenkette.
+   - Dieselbe Zahl („Elf" Spieler und „11 m" Strafstoss). Wer auf die
+     Entfernungsfrage „elf" tippt, hat sie gewusst – die Einheit steht in der
+     Frage.
+   - Eine Antwort, die die andere Wort fuer Wort enthaelt: „Der Amazonas" steckt
+     in „Der Amazonas-Regenwald". Das ist keine fremde Antwort, sondern dieselbe
+     genauer. */
 test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
   const nachGebiet = new Map();
   for (const c of CARDS) {
@@ -606,32 +625,48 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
     if (!nachGebiet.has(k)) nachGebiet.set(k, []);
     nachGebiet.get(k).push(c);
   }
-  let rnd = 4711;
-  const zufall = () => (rnd = (rnd * 1103515245 + 12345) % 2147483648) / 2147483648;
-  const durchgerutscht = [];
-  let geprueft = 0;
-  /* Zwei Antworten mit derselben Zahl sind KEIN Gegenbeispiel: „Elf" (Spieler
-     auf dem Feld) und „11 m" (Strafstoßpunkt) stehen beide im Teilgebiet
-     Fußball, und wer auf die Entfernungsfrage „elf" tippt, hat sie gewusst -
-     die Einheit steht in der Frage. Der Bewerter liegt dort richtig; nur die
-     Gegenprobe wuerde es als Durchrutscher zaehlen. */
-  const zahlen = (t) => normalize(t).match(/\d+/g) || [];
+  /* „Eines" ist ein Zahlwort und faellt in normalize() als Fuellwort weg -
+     ohne diese Zeile zaehlte „1" gegen „Eines" als Durchrutscher. */
+  const ZAHLWORT = { eins: '1', eines: '1', ein: '1', eine: '1', zwei: '2', drei: '3', vier: '4',
+    fuenf: '5', sechs: '6', sieben: '7', acht: '8', neun: '9', zehn: '10', elf: '11', zwoelf: '12' };
+  const zahlen = (t) => {
+    const roh = String(t).toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss').match(/[a-z0-9]+/g) || [];
+    return roh.map(w => (/^\d+$/.test(w) ? w : ZAHLWORT[w])).filter(Boolean);
+  };
   const gleicheZahl = (a, b) => {
     const x = zahlen(a), y = zahlen(b);
     return x.length === 1 && y.length === 1 && x[0] === y[0];
   };
+  const folge = (t) => normalize(t).split(' ').filter(Boolean).join(' ');
+  const enthalten = (a, b) => {
+    const x = folge(a), y = folge(b);
+    if (!x || !y) return false;
+    return x === y || x.startsWith(y + ' ') || y.startsWith(x + ' ')
+      || x.includes(' ' + y + ' ') || y.includes(' ' + x + ' ');
+  };
+  /* Die eine Ausnahme, die uebrig bleibt und keine Regel hergibt: Dieselbe
+     Aussage einmal in Worten und einmal als Formel. Wer auf „Was besagt die
+     Kettenregel?" die Formel tippt, hat sie gewusst - der Bewerter liegt dort
+     richtig, und beide Karten sind ihr Geld wert. Sie stehen namentlich hier,
+     damit eine spaetere Aenderung an einer von beiden auffaellt. */
+  const ERLAUBT = new Set(['mat-1ufyejp|mat-115b27n', 'mat-115b27n|mat-1ufyejp']);
+
+  const durchgerutscht = [];
+  let geprueft = 0;
   for (const c of CARDS) {
     if (c.mc) continue;
-    const geschwister = nachGebiet.get(c.cat + '/' + c.sub)
-      .filter(x => x.id !== c.id && x.a !== c.a && !gleicheZahl(x.a, c.a));
-    if (!geschwister.length) continue;
-    for (let i = 0; i < 2; i++) {
-      const fremd = geschwister[Math.floor(zufall() * geschwister.length)];
+    for (const fremd of nachGebiet.get(c.cat + '/' + c.sub)) {
+      if (fremd.id === c.id || enthalten(fremd.a, c.a) || gleicheZahl(fremd.a, c.a)) continue;
       geprueft++;
-      if (bewerte(c, fremd.a) >= 0.8) durchgerutscht.push(`${c.id}: „${fremd.a}" galt als „${c.a}"`);
+      if (bewerte(c, fremd.a) < 0.8) continue;
+      if (ERLAUBT.has(`${c.id}|${fremd.id}`)) continue;
+      durchgerutscht.push(`${c.id}: „${fremd.a}" galt als „${c.a}" – ${c.q}`);
     }
   }
-  assert.ok(geprueft > 3000, `nur ${geprueft} fremde Antworten geprueft`);
+  /* Der Boden haelt die Vollstaendigkeit fest: Faellt der Test je wieder auf
+     eine Stichprobe zurueck, sagt er es. */
+  assert.ok(geprueft > 100000, `nur ${geprueft} fremde Antworten geprueft – der Test ist keine Vollpruefung mehr`);
   assert.deepEqual(durchgerutscht, [], durchgerutscht.slice(0, 10).join('\n'));
 });
 

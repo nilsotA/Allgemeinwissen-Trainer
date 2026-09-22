@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.431 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.529 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (356 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (374 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (362 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (379 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -22,10 +22,10 @@ erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht
 sondern sattelfest sein.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
-**Mythologie** (21 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (28 – Reinheitsgebot,
+**Mythologie** (24 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (30 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (9 – Penicillin, Dynamit,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (13 Quiz-Klassiker vom
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (14 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
@@ -3524,6 +3524,125 @@ kann. Beide stehen deshalb nur mit einer geschärften Frage im Bestand („ein E
 Körper" gegen „eine chemische Reaktion … ohne verbraucht zu werden"). Andere Begriffe sind
 Formeln oder Schreibweisen, zu denen eine Rückfrage nichts hinzufügt. Der Bericht sagt das
 selbst dazu: Die Liste ist eine Ideenquelle, keine Arbeitsanweisung.
+
+### Der fünfte Prüfsatz, blind geschrieben: 65 %
+
+Die vier eingefrorenen Prüfsätze stehen bei 100, 94, 100 und 91 % – und sagen damit nichts
+mehr. Gegen ihre Lücken wurde geschrieben; sie messen inzwischen, ob das Abschreiben geklappt
+hat. Ein Bestand lässt sich nur mit einem Satz prüfen, den er noch nie gesehen hat.
+
+**379 neue Fragen**, geschrieben von dreizehn unabhängigen Chargen quer durch neun Gebiete –
+und zwar **ohne Kenntnis der Sammlung**: keine Datei gelesen, nicht gesucht, nur aus dem
+Wissen darüber, was deutsche Quizspiele tatsächlich fragen. Jede Charge ging danach durch
+einen zweiten, ebenfalls blinden Gegenleser: 8 Fragen verworfen, 65 korrigiert. Verworfen
+wurde unter anderem der höchste Berg Europas (Elbrus oder Mont Blanc, je nach Grenzziehung),
+die Rückwärtsrotation der Venus (Uranus rotiert auch rückläufig) und das „EC" in EC-Karte.
+
+Gemessen gegen die 2.431 Karten von damals: **245 von 379 – 65 %.**
+
+| Gebiet | | Gebiet | |
+|---|---|---|---|
+| unterhaltung | 31/60 | naturwissenschaft | 39/56 |
+| alltag | 15/29 | literatur | 21/29 |
+| geschichte | 37/60 | geografie | 43/58 |
+| sport | 20/30 | gesellschaft | 19/28 |
+| mathe | 20/29 | | |
+
+#### Mehr als die Hälfte der Lücken waren keine Wissenslücken
+
+Der Abdeckungsbericht sagt zu jeder Lücke, wo der Stoff sonst steckt. Erst diese Aufteilung
+macht die 134 lesbar:
+
+| | Anzahl | Anteil |
+|---|---|---|
+| **nirgends im Bestand** | 61 | 46 % |
+| steht **nur im Kontexttext** einer Karte | 29 | 22 % |
+| die Karte **fragt die andere Richtung** | 27 | 20 % |
+| steckt in einer **längeren Antwort** | 17 | 13 % |
+
+**54 % waren Zugriffslücken, keine Wissenslücken.** Die App weiß die Sache – sie fragt nur
+nie danach. Das Kontextfeld `t` ist dabei der größte Einzelposten: 29 Fakten stehen dort als
+Beiwerk und werden nie abgerufen.
+
+Und der Melder dafür gab es längst. `npm run luecken` sucht genau solche Begriffe, auch im
+Kontexttext. Nachgerechnet: **24 der 29 Kontextlücken standen bereits auf seiner Liste** –
+einer Liste mit 9.126 Einträgen, die niemand durchgearbeitet hat. Das Werkzeug hatte recht,
+es war nur zu lang, um danach zu handeln. Der blinde Prüfsatz ist damit weniger ein zweiter
+Melder als ein **Vorrang-Filter**: Er sagt, welche 29 von 9.126 ein Quiz wirklich fragt.
+
+#### 107 Karten, und was danach herauskam
+
+Elf Bündel schrieben die Karten, jedes mit Dublettenprüfung im Bestand, jedes einzeln
+gegengelesen: 126 geschrieben, **30 verworfen** (fast alle als Spiegel-Dubletten), 29
+korrigiert. Dazu 11 Karten von Hand für das, was auch danach noch fehlte – Stauffenberg, das
+Monopol, die Torbreite beim Fußball, die Cheops-Pyramide, Romulus Augustulus, Theseus.
+
+**245 → 352 von 379 (65 → 93 %).**
+
+Von den 27 offenen Fragen sind nur noch **drei nirgends im Bestand** – der Rest ist da, nur
+in der anderen Richtung gefragt, und dort ist die Grenze bewusst gezogen (siehe unten).
+
+#### Neun Dubletten – und ein Test, der zwei Stichproben zieht
+
+Beim Einbauen fiel etwas Unangenehmeres auf als jede Lücke: **neun Kartenpaare stellten
+dieselbe Frage zweimal.** Drei davon waren neu, **sechs standen seit dem vorigen Durchgang im
+Bestand** – Grenzwert, Asymptote, Entropie, Periodisierung, lyrisches Ich, Föderalismus,
+Bruttoinlandsprodukt. Die Karten aus der Benennrichtung waren also nicht so sauber, wie hier
+vorher stand.
+
+Gefunden hat sie der Test „die Antwort einer fremden Karte gilt nicht als richtig" – aber nur
+drei davon, und das war Zufall: Er zog **zwei zufällige Geschwister je Karte**. In einem
+Teilgebiet mit sechzig Karten trifft er ein bestimmtes Paar damit in rund drei Prozent der
+Fälle. Er läuft jetzt **vollständig**: 158.000 Paare statt 5.000, gemessen 28 Sekunden. Ein
+Boden hält das fest – fällt er je wieder auf eine Stichprobe zurück, sagt er es.
+
+#### Warum kein Schwellenwert die Dubletten findet
+
+Naheliegend wäre, die vorhandene Dublettenprüfung schärfer zu stellen: gleiche Antwort plus
+genügend Wortüberlappung in den Fragen. **Gemessen trennt das nicht.** Über alle 148 Paare
+mit identischer Antwort:
+
+| Überlappung | Paar | |
+|---|---|---|
+| 0,33 | „Welche physikalische Größe ist ein Maß für die Unordnung?" / „Wie heißt die physikalische Größe, die anschaulich ein Maß für Unordnung ist?" | **Dublette** |
+| 0,33 | „Wer malte die Mona Lisa?" / „Wer malte das Abendmahl?" | in Ordnung |
+| 0,22 | „Welcher Fluss durchfließt Deutschland am längsten?" / „Welcher Fluss fließt durch Köln?" | in Ordnung |
+| 0,21 | „In der Kurvendiskussion sucht man die Gerade …" / „Wie heißt eine Gerade, der sich ein Graph nähert?" | **Dublette** |
+
+Kein Wert trennt sie. Was sie trennt, ist die **Art der Frage**: Wer nach einem Maler fragt,
+fragt nach einem anderen Bild; wer einen Begriff **benennen** lässt, benennt denselben
+Begriff. `npm run check` meldet jetzt: gleiche Antwort, gleiches Teilgebiet, **beide Fragen
+Benennfragen**. Gemessen neun Treffer, **acht davon echte Dubletten** – die eine Fehlmeldung
+(„Wie heißt das leichteste Edelgas?" gegen „Welches Element ist im Universum am
+zweithäufigsten?", beide Helium) steht namentlich und mit Begründung im Code.
+
+Gegengeprobt, alle neun wieder eingesetzt: Die neue Regel meldet acht, der vollständige Test
+den neunten. Zusammen fangen sie alle.
+
+#### Wo die Grenze zur Rückfrage jetzt liegt
+
+Von den 30 verworfenen Karten waren fast alle Spiegel-Dubletten, und daraus ergibt sich eine
+Regel, die dem vorigen Durchgang gefehlt hat: **Eine Rückfrage verdient eine eigene Karte,
+wenn eine Seite eine ERKLÄRUNG ist – nicht, wenn beide Seiten einander nur benennen.**
+
+- „Was ist ein Kartell?" → „Eine wettbewerbswidrige Absprache" und „Wie nennt man eine
+  wettbewerbswidrige Absprache?" → „Ein Kartell": zwei verschiedene Leistungen. Wiedererkennen
+  gegen Abrufen.
+- „Welches Instrument hat 88 Tasten?" → „Das Klavier" und „Wie viele Tasten hat ein Klavier?"
+  → „88": zweimal dieselbe Verknüpfung, und jede Frage verrät die Antwort der anderen.
+
+Die zweite Sorte wird nicht mehr geschrieben. Das ist auch der Grund, warum 24 der 27 offenen
+Fragen aus Prüfsatz 5 offen bleiben.
+
+#### Was der Prüfsatz nicht erreicht hat
+
+379 Fragen decken nicht alles ab. Ein zweiter, gröberer Blick – Stichwortlisten über den
+ganzen Bestand – nennt Themen, nach denen der Prüfsatz gar nicht gefragt hat und zu denen
+kaum etwas dasteht: **Motorsport** (1 Karte), **Hunde- und Katzenrassen** (0), **Wintersport**
+(3), **Musical** (2), **Eishockey** (2), **Dinosaurier** (1), **Pilze** (0), **Mode** (2),
+**Fotografie** (3), **Insekten** (0). Diese Liste ist ausdrücklich eine Ideenquelle und keine
+Messung: Ihre Stichwortsuche meldete zunächst zwölf Karten zu Hunderassen, weil „Jahrhundert"
+das Wort „hund" enthält. Nachgezählt wurde jeder dieser Posten von Hand.
 
 ### Qualitätssicherung
 
