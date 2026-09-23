@@ -4054,6 +4054,13 @@ Würfelwürfen, rund 13,9). Inhaltlich war alles richtig; korrigiert wurde nur e
 Frage („Was ist der Strahlensatz gut?"). Damit sind beide Studienfächer, 440 Sport- und
 397 Mathekarten, vollständig von Hand gegengelesen.
 
+Die dreizehnte eröffnete die Allgemeinbildung mit Geografie: alle 194 Karten, die in den
+Querschnitten davor noch nicht dran waren. Alle Antworten stimmen, auch Stände wie Magdeburg
+vor Halle (Zensus 2024, gegengeprüft) oder die Sagrada Família als höchste Kirche der Welt.
+Präzisiert: Rätoromanisch ist Amtssprache des Bundes nur im Verkehr mit Rätoromanen. Eine
+Frage schrieb „heisst" – die Inhaltsprüfung erkennt jetzt auch eindeutige Schweizer
+ss-Schreibungen (heisst, weiss, Strasse …) und meldet sie als Fehler.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.

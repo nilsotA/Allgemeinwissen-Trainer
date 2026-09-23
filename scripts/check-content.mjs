@@ -389,8 +389,10 @@ const WORTSCHATZ = new Set(CARDS.flatMap(c => sichtbar(c).toLowerCase().match(/\
 const mitUmlaut = (w) => w.replace(/ae/g, 'ä').replace(/oe/g, 'ö').replace(/ue/g, 'ü');
 for (const c of CARDS) {
   const krumm = new Set((sichtbar(c).match(/\p{L}+/gu) || []).map(w => w.toLowerCase())
-    .filter(w => /ae|oe|ue/.test(w) && !UMLAUT_ECHT.has(w)
-      && (WORTSCHATZ.has(mitUmlaut(w)) || /^(fuer|ueber|stoess|jaehr)/.test(w))));
+    .filter(w => (/ae|oe|ue/.test(w) && !UMLAUT_ECHT.has(w)
+      && (WORTSCHATZ.has(mitUmlaut(w)) || /^(fuer|ueber|stoess|jaehr)/.test(w)))
+      /* Schweizer ss statt ß: nur eindeutige Wörter, „Masse" und „Buße" sind beide richtig */
+      || /^(heisst|heissen|weiss|gross|grosse[nrs]?|strasse|schliesslich|ausser|gemäss|grösse)$/.test(w)));
   if (krumm.size) fail(`${c.id}: Umlaut umschrieben – ${[...krumm].join(', ')}`);
 }
 
