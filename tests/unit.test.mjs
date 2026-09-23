@@ -1622,11 +1622,14 @@ test('Zusammen- oder getrennt geschrieben, Herrscherzahlen: dieselbe Antwort', (
   const gleich = [['Sechs-Tage-Krieg', 'Der Sechstagekrieg'], ['6-Tage-Krieg', 'Der Sechstagekrieg'],
     ['LZ129', 'LZ 129'], ['Nordrheinwestfalen', 'Nordrhein-Westfalen'],
     ['Friedrich 2', 'Friedrich II.'], ['Friedrich der Zweite', 'Friedrich II.'],
-    ['Ludwig 14', 'Ludwig XIV.'], ['Heinrich der Vierte', 'Heinrich IV.']];
+    ['Ludwig 14', 'Ludwig XIV.'], ['Heinrich der Vierte', 'Heinrich IV.'],
+    ['30 m', '30 Meter'], ['7,32m', '7,32 Meter'], ['49 EUR', '49 Euro'], ['2 kg', '2 Kilogramm'],
+    ['1963/1964', '1963/64']];
   for (const [ein, loesung] of gleich) assert.ok(similarity(ein, loesung) >= 0.95, `„${ein}" gilt nicht als „${loesung}"`);
   /* Die Gegenproben: Leerzeichen zwischen Ziffern tragen Bedeutung, und eine
      andere Herrscherzahl bleibt ein anderer Herrscher. */
   const verschieden = [['15 Liter', '1,5 Liter'], ['Ludwig 16', 'Ludwig XIV.'], ['Ludwig XVI.', 'Ludwig XIV.'],
-    ['Friedrich der Dritte', 'Friedrich II.']];
+    ['Friedrich der Dritte', 'Friedrich II.'], ['30 cm', '30 Meter'], ['3/40', '3/4'],
+    ['1964/65', '1963/64']];
   for (const [ein, loesung] of verschieden) assert.ok(similarity(ein, loesung) < 0.8, `„${ein}" gilt als „${loesung}"`);
 });

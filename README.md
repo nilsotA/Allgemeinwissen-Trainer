@@ -3987,12 +3987,17 @@ Karte einzeln zu suchen:
   allgemeine Regel für alle Wörter hätte sie „Xi Jinping" zur Zahl gemacht.
 - **Zahlwörter bis hundert**, bisher nur bis zwölf: „fünfzig" galt auf „Nach 50 Jahren"
   als falsch (0,00).
+- **Einheitenzeichen hinter einer Zahl:** „30 m" ist „30 Meter", „49 EUR" sind „49 Euro",
+  dazu km, cm, mm und kg. Nur direkt hinter einer Ziffer, damit das „m" in „y = mx + b"
+  eine Variable bleibt.
+- **Gekürzte Jahresspannen:** „1963/64" ist „1963/1964". Das gilt nur bei vierstelliger
+  erster Zahl, damit „3/4" ein Bruch bleibt.
 
 Die Gegenproben stehen im neuen Einheitentest: „Ludwig 16" gilt nicht als Ludwig XIV.,
 „Friedrich der Dritte" nicht als Friedrich II., „15 Liter" nicht als „1,5 Liter". Das
 Ablenkertor, der Test gegen fremde Antworten und die Vertipper-Selbstprobe haben mit den
-neuen Regeln nichts gemeldet. Vier Schreibweisen im Bestand waren damit überflüssig
-(„zwanzig Tage", „Nach fünfzig Jahren" …) und sind gestrichen.
+neuen Regeln nichts gemeldet. Zwölf Schreibweisen im Bestand waren damit überflüssig
+(„zwanzig Tage", „Nach fünfzig Jahren", „30 m", „49 EUR" …) und sind gestrichen.
 
 ### Qualitätssicherung
 

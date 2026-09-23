@@ -203,6 +203,9 @@ const ABKUERZUNGEN = [
      hineingreift. */
   [/\b(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})\b/g,
     (ganz, tag, monat, jahr) => MONATE[+monat - 1] ? ` ${+tag} ${MONATE[+monat - 1]} ${jahr} ` : ganz],
+  /* „1963/64" ist „1963/1964": Die zweite Jahreszahl einer Spanne wird gern
+     gekuerzt. Nur bei vierstelliger erster Zahl, damit „3/4" ein Bruch bleibt. */
+  [/\b(1\d|20)(\d{2})(\s*[/–-]\s*)(\d{2})(?!\d)/g, '$1$2$3$1$4'],
   [/\bv\.?\s*chr\.?/gi, ' vor christus '], [/\bn\.?\s*chr\.?/gi, ' nach christus '],
   [/\bz\.\s*b\./gi, ' zum beispiel '], [/\bd\.\s*h\./gi, ' das heisst '],
   [/\bu\.\s*a\./gi, ' unter anderem '], [/\bu\.\s*ae\./gi, ' und aehnliches '],
@@ -211,6 +214,12 @@ const ABKUERZUNGEN = [
   [/\bjhd?\.(?=\s|$)/gi, ' jahrhundert '], [/\bnr\.(?=\s|$)/gi, ' nummer '],
   [/(\d)\s*h(?=\s|$)/gi, '$1 stunden '], [/(\d)\s*min\.?(?=\s|$)/gi, '$1 minuten '],
   [/(\d)\s*se[kc]\.?(?=\s|$)/gi, '$1 sekunden '],
+  /* Einheitenzeichen hinter einer Zahl: „30 m" ist „30 Meter", „49 EUR" sind
+     „49 Euro". Nur direkt hinter einer Ziffer und nur als ganzes Wort – das
+     „m" in „y = mx + b" oder in „km/h" bleibt, was es ist. */
+  [/(\d)\s*km(?=\s|$)/gi, '$1 kilometer '], [/(\d)\s*cm(?=\s|$)/gi, '$1 zentimeter '],
+  [/(\d)\s*mm(?=\s|$)/gi, '$1 millimeter '], [/(\d)\s*m(?=\s|$)/gi, '$1 meter '],
+  [/(\d)\s*kg(?=\s|$)/gi, '$1 kilogramm '], [/(\d)\s*eur(?=\s|$)/gi, '$1 euro '],
   [/\bwkt\.?(?=\s|$)/gi, ' wahrscheinlichkeit '], [/\bbzgl\.(?=\s|$)/gi, ' bezueglich '],
   /* „v." allein ist „von" – „v. Chr." ist weiter oben schon erledigt. */
   [/\bv\.(?=\s)/gi, ' von '],
