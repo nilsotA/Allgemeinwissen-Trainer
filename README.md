@@ -4028,6 +4028,12 @@ auch Stände wie die Verlegung der Eissportarten 2030 von Nizza nach Lyon (vom I
 genehmigt). Falsch war eine Zahl: Die Meisterschale wiegt elf Kilogramm, besteht aber nicht
 ganz aus Silber, sondern enthält 5,5 Kilogramm Sterlingsilber.
 
+Die neunte galt Mathegeschichte und Mathedidaktik, 109 Karten. Alle Antworten stimmen, von
+Wiles' Lücke 1993 bis zu Bruners Scaffolding 1976. Zwei Didaktikkarten nennen jetzt den
+Wortlaut der KMK-Bildungsstandards von 2022: die fünf Leitideen (Algorithmus und Zahl, Messen,
+Raum und Form, Funktionaler Zusammenhang, Daten und Zufall) und K5 vollständig als „mit
+symbolischen, formalen und technischen Elementen der Mathematik umgehen".
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
