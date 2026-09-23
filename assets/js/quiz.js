@@ -242,8 +242,19 @@ const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eine
    „function Object() { [native code] }" - der stand dann in der Bewertung. */
 const ZAHLWOERTER = new Map(Object.entries({
   null: '0', eins: '1', zwei: '2', drei: '3', vier: '4', fuenf: '5', sechs: '6',
-  sieben: '7', acht: '8', neun: '9', zehn: '10', elf: '11', zwoelf: '12'
+  sieben: '7', acht: '8', neun: '9', zehn: '10', elf: '11', zwoelf: '12',
+  /* Die Zehner kamen nach, als eine Pruefung „fuenfzig" auf „Nach 50 Jahren"
+     mit 0 bewertet fand - dieselbe Luecke wie bei „sieben", nur hoeher. */
+  dreizehn: '13', vierzehn: '14', fuenfzehn: '15', sechzehn: '16', siebzehn: '17',
+  achtzehn: '18', neunzehn: '19', zwanzig: '20', dreissig: '30', vierzig: '40',
+  fuenfzig: '50', sechzig: '60', siebzig: '70', achtzig: '80', neunzig: '90', hundert: '100'
 }));
+
+/* Fuer den Vergleich ohne Leerzeichen: Ein Zahlwort als Wortteil bleibt Wort.
+   „Sechs-Tage-Krieg" wird beim Normalisieren zu „6 tage krieg", „Sechstagekrieg"
+   bleibt ein Wort – verglichen wird deshalb die ausgeschriebene Form. */
+const ZAHL_ZURUECK = new Map([...ZAHLWOERTER].reverse().map(([w, z]) => [z, w]));
+const kompakt = (t) => t.split(' ').map(w => ZAHL_ZURUECK.get(w) || w).join('');
 
 export function normalize(s) {
   // NFC zuerst: Ein zerlegt eingegebenes „ä" (a + Trema) muss die deutsche
@@ -650,6 +661,17 @@ function lesarten(eingabe, antwort) {
 const ausDerFrage = (frage) => new Set(
   (frage ? woerter(normalize(frage)) : []).filter(w => /^[a-zäöü]{4,}$/.test(w)));
 
+const ROEMISCH_IM_NAMEN = /\s([IVX]{2,5})\.?(?=\s|$)/;
+const romZahl = (r) => {
+  const w = { I: 1, V: 5, X: 10 };
+  let n = 0;
+  for (let i = 0; i < r.length; i++) n += w[r[i]] < (w[r[i + 1]] || 0) ? -w[r[i]] : w[r[i]];
+  return n;
+};
+const ORDINAL = ['', '', 'Zweite', 'Dritte', 'Vierte', 'Fünfte', 'Sechste', 'Siebte', 'Achte',
+  'Neunte', 'Zehnte', 'Elfte', 'Zwölfte', 'Dreizehnte', 'Vierzehnte', 'Fünfzehnte',
+  'Sechzehnte', 'Siebzehnte', 'Achtzehnte', 'Neunzehnte', 'Zwanzigste'];
+
 export function similarity(input, answer, frage) {
   const voll = String(answer).trim();
   const fassungen = new Set([voll]);
@@ -659,6 +681,16 @@ export function similarity(input, answer, frage) {
     if (kurz.length >= 3) fassungen.add(kurz);
     const formel = f.replace(OHNE_FORMELKOPF, '').trim();
     if (formel !== f && formel.length >= 3) fassungen.add(formel);
+  }
+  /* Herrschernamen: „Friedrich II." heisst auch „Friedrich 2." und „Friedrich der
+     Zweite". Nur fuer Loesungen, die selbst eine roemische Zahl ab II tragen –
+     eine Regel fuer alle Woerter haette „Xi Jinping" zur Zahl gemacht. */
+  for (const f of [...fassungen]) {
+    const m = f.match(ROEMISCH_IM_NAMEN);
+    if (!m || !ORDINAL[romZahl(m[1])]) continue;
+    const n = romZahl(m[1]);
+    fassungen.add(f.replace(ROEMISCH_IM_NAMEN, ` ${n}.`).trim());
+    fassungen.add(f.replace(ROEMISCH_IM_NAMEN, ` der ${ORDINAL[n]}`).trim());
   }
   const eingaben = lesarten(input, voll);
   const bekannt = ausDerFrage(frage);
@@ -703,6 +735,12 @@ function vergleich(input, answer, bekannt = new Set()) {
   if (!formel && !zahlLinks) b = ohneEinzelneEins(b);
   if (!a || !b) return 0;
   if (a === b) return 1;
+  /* Zusammen, getrennt oder mit Bindestrich geschrieben ist dasselbe Wort:
+     „Sechs-Tage-Krieg" und „Sechstagekrieg", „LZ129" und „LZ 129", „Hawai'i"
+     und „Hawaii". Nach dem Normalisieren unterscheiden sie sich nur noch durch
+     Leerzeichen. Nicht zwischen zwei Ziffern: „1,5 Liter" wird zu „1 5 liter"
+     und darf nicht als „15 Liter" gelten. */
+  if (!/\d \d/.test(a) && !/\d \d/.test(b) && kompakt(a) === kompakt(b)) return 1;
 
   const dist = levenshtein(a, b);
   const roh = Math.max(0, 1 - dist / Math.max(a.length, b.length));

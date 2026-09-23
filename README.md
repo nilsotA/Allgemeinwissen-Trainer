@@ -440,7 +440,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 188 Einheitentests plus Inhaltsprüfung
+npm test           # 189 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 333 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -3970,6 +3970,30 @@ Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach die
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
 
+#### Was die Stichprobe über die Bewertung gelehrt hat – ohne neue Prüfrunde
+
+Von den 289 bestätigten Befunden waren 145 fehlende Schreibweisen: richtige Eingaben, die
+die App abgelehnt hätte. Die meisten davon wurden Karte für Karte als `az` nachgetragen.
+Drei Muster ließen sich aber einmal zentral in der Bewertung lösen, statt sie auf jeder
+Karte einzeln zu suchen:
+
+- **Zusammen, getrennt oder mit Bindestrich geschrieben ist dasselbe Wort:**
+  „Sechs-Tage-Krieg" und „Sechstagekrieg", „LZ129" und „LZ 129", „Nordrheinwestfalen".
+  Ein Zahlwort als Wortteil bleibt dabei Wort, sonst wäre „Sechs-Tage-Krieg" zu
+  „6 tage krieg" geworden. Zwischen zwei Ziffern trägt das Leerzeichen dagegen Bedeutung:
+  „15 Liter" ist nicht „1,5 Liter".
+- **Herrscherzahlen:** „Friedrich II." gilt auch als „Friedrich 2." und als „Friedrich der
+  Zweite". Die Regel gilt nur für Lösungen, die selbst eine römische Zahl ab II tragen. Als
+  allgemeine Regel für alle Wörter hätte sie „Xi Jinping" zur Zahl gemacht.
+- **Zahlwörter bis hundert**, bisher nur bis zwölf: „fünfzig" galt auf „Nach 50 Jahren"
+  als falsch (0,00).
+
+Die Gegenproben stehen im neuen Einheitentest: „Ludwig 16" gilt nicht als Ludwig XIV.,
+„Friedrich der Dritte" nicht als Friedrich II., „15 Liter" nicht als „1,5 Liter". Das
+Ablenkertor, der Test gegen fremde Antworten und die Vertipper-Selbstprobe haben mit den
+neuen Regeln nichts gemeldet. Vier Schreibweisen im Bestand waren damit überflüssig
+(„zwanzig Tage", „Nach fünfzig Jahren" …) und sind gestrichen.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
@@ -4082,7 +4106,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 188 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 189 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups, den
 Vergleich freier Eingaben und den Quizmodus (Ziehung, Punkteformel, Auswertung, Runden über
 zwei Tabs) ab.

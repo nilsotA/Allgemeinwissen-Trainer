@@ -204,9 +204,17 @@ test('Zahlwörter und Ziffern gelten als dieselbe Antwort', () => {
   for (const [ein, loesung] of [['8', 'Acht'], ['sieben', '7'], ['12', 'Zwölf'], ['2 Minuten', 'Zwei Minuten']]) {
     assert.ok(similarity(ein, loesung) >= 0.95, `„${ein}" gilt nicht als „${loesung}"`);
   }
-  // Zusammensetzungen bleiben unangetastet
-  assert.equal(normalize('Vierzig'), 'vierzig');
+  // Zusammensetzungen bleiben unangetastet: Ersetzt werden nur ganze Woerter.
+  // „Vierzig" stand hier frueher als Beispiel fuer ein unberuehrtes Wort; seit
+  // die Zehner als Zahlwoerter gelten, ist es selbst eins – der Punkt der Pruefung
+  // bleibt, dass kein „4zig" daraus wird.
+  assert.equal(normalize('Vierzig'), '40');
+  assert.equal(normalize('Vierzigjährig'), 'vierzigjaehrig');
+  assert.equal(normalize('Siebenschläfer'), 'siebenschlaefer');
   assert.equal(normalize('zweite Ableitung'), 'zweite ableitung');
+  for (const [ein, loesung] of [['fünfzig', 'Nach 50 Jahren'], ['20', 'Zwanzig Tage']]) {
+    assert.ok(similarity(ein, loesung) >= 0.95, `„${ein}" gilt nicht als „${loesung}"`);
+  }
 });
 
 test('zugelassene Nebenschreibweisen zählen als richtig, Ablenker nicht', () => {
@@ -1606,4 +1614,19 @@ test('ein README-Muster, das ins Leere greift, ist ein Fehler', async () => {
     assert.fail('die Prüfung hätte scheitern müssen');
   } catch (e) { aus = (e.stdout || '') + (e.stderr || ''); }
   assert.match(aus, /die Zahl zu „Merkanker" ist nicht mehr auffindbar/);
+});
+
+test('Zusammen- oder getrennt geschrieben, Herrscherzahlen: dieselbe Antwort', () => {
+  /* Gefunden bei der Pruefung einer Stichprobe: „Sechs-Tage-Krieg", „LZ129",
+     „Friedrich 2" und „Friedrich der Zweite" galten als falsch. */
+  const gleich = [['Sechs-Tage-Krieg', 'Der Sechstagekrieg'], ['6-Tage-Krieg', 'Der Sechstagekrieg'],
+    ['LZ129', 'LZ 129'], ['Nordrheinwestfalen', 'Nordrhein-Westfalen'],
+    ['Friedrich 2', 'Friedrich II.'], ['Friedrich der Zweite', 'Friedrich II.'],
+    ['Ludwig 14', 'Ludwig XIV.'], ['Heinrich der Vierte', 'Heinrich IV.']];
+  for (const [ein, loesung] of gleich) assert.ok(similarity(ein, loesung) >= 0.95, `„${ein}" gilt nicht als „${loesung}"`);
+  /* Die Gegenproben: Leerzeichen zwischen Ziffern tragen Bedeutung, und eine
+     andere Herrscherzahl bleibt ein anderer Herrscher. */
+  const verschieden = [['15 Liter', '1,5 Liter'], ['Ludwig 16', 'Ludwig XIV.'], ['Ludwig XVI.', 'Ludwig XIV.'],
+    ['Friedrich der Dritte', 'Friedrich II.']];
+  for (const [ein, loesung] of verschieden) assert.ok(similarity(ein, loesung) < 0.8, `„${ein}" gilt als „${loesung}"`);
 });
