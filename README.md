@@ -4048,6 +4048,12 @@ unterschiedlich zuordnen, das steht jetzt so da. Damit ist jede der 440 Sportkar
 Nachlesen von Hand gegengelesen; in Mathematik fehlen noch Grundlagen, Schulmathe, Analysis,
 Stochastik und Lineare Algebra.
 
+Die zwölfte holte genau diese nach: 261 Rechenkarten, jede Formel, jedes Zahlenbeispiel und
+jede Merkhilfe nachgeprüft (vom π-Merkvers über Archimedes' 96-Ecke bis zur Varianz von 100
+Würfelwürfen, rund 13,9). Inhaltlich war alles richtig; korrigiert wurde nur eine holprige
+Frage („Was ist der Strahlensatz gut?"). Damit sind beide Studienfächer, 440 Sport- und
+397 Mathekarten, vollständig von Hand gegengelesen.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
