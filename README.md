@@ -3997,6 +3997,13 @@ Kontexttext (Fangios Rekord hielt 46 Jahre bis 2003, die ersten Frauen wählten 
 Dezember 1918 in Anhalt). Ein vager Satz wurde konkret: Bei der Tagesschau kam der Gong 1956
 dazu, die Tagesthemen 1978.
 
+Die fünfte galt „Wie viele …?"-Fragen außerhalb der Mathematik: 105 Karten, alle Antworten
+richtig. Die deutschen Auslands-Oscars sind weiter vier, 2026 gewann Norwegen. Zwei
+Kontexttexte waren falsch. Die Olympiaflagge wiederholte den Mythos, den die Ringkarte schon
+losgeworden war („jede Nationalflagge"). Beim Skatblatt hatte auch das Bridgeblatt „Joker“,
+Joker gibt es aber nur beim Rommé. Beide sind korrigiert, und alle drei Stellen zu den
+olympischen Farben (Ringe, Flagge, Wissenshappen) sagen jetzt dasselbe.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
