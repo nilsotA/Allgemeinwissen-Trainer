@@ -1882,8 +1882,31 @@ function answerBlock(card) {
       ${card.t ? `<p class="expl">${esc(card.t)}</p>` : ''}
       ${zaeh ? `<p class="knack">Diese Karte ist dir schon ${cs.lapses}-mal entfallen.
         ${esc(KNACK_TIPPS[cs.lapses % KNACK_TIPPS.length])}</p>` : ''}
+      <button type="button" class="melden" data-melden="${esc(card.id)}">Stimmt etwas nicht?</button>
     </div>`;
 }
+
+/* Eine fragwuerdige Karte melden. Die App hat keinen Server und soll keinen
+   bekommen – gemeldet wird deshalb ueber die Zwischenablage: Kennung, Frage
+   und Antwort, fertig zum Einfuegen dort, wo die Sammlung gepflegt wird. Mit
+   der Kennung findet sich die Karte in Sekunden, auch nach einer
+   Umformulierung. Kein Zustand, nichts zum Zusammenfuehren zwischen Tabs. */
+document.addEventListener('click', async (e) => {
+  const knopf = e.target.closest?.('[data-melden]');
+  if (!knopf) return;
+  const card = CARDS.find(c => c.id === knopf.dataset.melden);
+  if (!card) return;
+  const text = `Karte ${card.id}\nFrage: ${card.q}\nAntwort: ${card.a}\nWas stimmt nicht: `;
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('Kopiert – einfügen und dazuschreiben, was nicht stimmt', 3200);
+  } catch (err) {
+    /* Ohne Zugriff auf die Zwischenablage (aeltere Browser, verweigerte
+       Berechtigung) bleibt das Eingabefenster: Dort steht der Text markiert
+       und laesst sich von Hand kopieren. */
+    window.prompt('Zum Melden kopieren:', text);
+  }
+});
 
 /* Die Antwort muss nach dem Aufdecken sichtbar sein - auch auf einem kleinen
    iPhone, wo die Karte hoeher ist als das Fenster. Ein blosses scrollTop am

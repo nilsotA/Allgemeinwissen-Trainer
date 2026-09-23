@@ -179,6 +179,19 @@ try {
   check('uebrige Optionen behalten ihren Buchstaben',
     uebrig.length >= 2 && uebrig.every(t => /^[ABCD]$/.test(t.trim())),
     `${uebrig.length} gedimmte Optionen: ${uebrig.join(', ')}`);
+  /* Melden kopiert Kennung, Frage und Antwort – und aendert nichts am Stand. */
+  await page.evaluate(() => {
+    window.__gemeldet = null;
+    Object.defineProperty(navigator, 'clipboard', { configurable: true,
+      value: { writeText: async (t) => { window.__gemeldet = t; } } });
+  });
+  const vorMelden = JSON.stringify(await stored());
+  await page.locator('.answer .melden').click();
+  await page.waitForFunction(() => window.__gemeldet !== null);
+  const gemeldet = await page.evaluate(() => window.__gemeldet);
+  check('Melden kopiert Kennung, Frage und Antwort',
+    /^Karte [a-z]{3}-[0-9a-z]+\nFrage: .+\nAntwort: .+/.test(gemeldet) && gemeldet.includes(q1), gemeldet);
+  check('Melden laesst den Lernstand unberuehrt', JSON.stringify(await stored()) === vorMelden);
   await page.click('#next');
   await settle();
   const s1 = await stored();
@@ -3302,7 +3315,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 333;
+const MINDESTENS = 335;
 /* Die Zahl VOR dem eigenen Hochzaehlen nehmen: Sonst meldet der Wachposten
    „Nur 323 von mindestens 323 gelaufen" und zaehlt sich selbst zu den Laeufen -
    ein Satz, der sich widerspricht, ueber der einzigen Zeile, die sagt, dass

@@ -298,6 +298,11 @@ gegen den alten Stand fehlschlägt.
   Antworten zählen hinein – wie schnell jemand danebengreift, sagt nichts über Fortschritt.
   Tempo ist im Quizduell die eigentliche Währung, und es war die einzige Größe, die die App
   erheben konnte und nicht zeigte.
+- **Karte melden** – unter jeder aufgedeckten Antwort steht „Stimmt etwas nicht?". Der
+  Knopf kopiert Kennung, Frage und Antwort in die Zwischenablage, fertig zum Einfügen dort,
+  wo die Sammlung gepflegt wird. Die App hat keinen Server und bekommt keinen; gemeldet
+  wird deshalb über den Menschen. Mit der Kennung findet sich die Karte sofort, auch nach
+  einer Umformulierung. Der Lernstand bleibt unberührt.
 - **Markierte Karten** – was du beim Nachschlagen mit ★ versiehst, lässt sich gezielt üben.
 - **Schwachstellen** – die Statistik zeigt die Teilgebiete mit der schlechtesten
   Trefferquote; ein Tipp darauf startet eine Runde genau dazu.
@@ -441,7 +446,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
 npm test           # 189 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 333 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
 npm run widersprueche # Karten, die einander widersprechen – und die mit der Zeit altern
