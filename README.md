@@ -4022,6 +4022,12 @@ umschriebenen Umlauten auf („Neuseelaender", „stoesst"). Die Inhaltsprüfung
 jetzt als Fehler: Ein Wort mit ae/oe/ue schlägt an, wenn seine Umlautform anderswo im Bestand
 steht.
 
+Die achte galt dem Sport selbst, wo sich Regeln und Rekorde ändern: Regelkunde, Rekorde,
+Sportarten, Olympia, Sportgeschichte und Fußball, zusammen 198 Karten. Alle Antworten stimmen,
+auch Stände wie die Verlegung der Eissportarten 2030 von Nizza nach Lyon (vom IOC im Juni 2026
+genehmigt). Falsch war eine Zahl: Die Meisterschale wiegt elf Kilogramm, besteht aber nicht
+ganz aus Silber, sondern enthält 5,5 Kilogramm Sterlingsilber.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
