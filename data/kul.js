@@ -86,7 +86,7 @@ export default [
 {q:"Welcher Film gewann 2020 als erster nicht-englischsprachiger den Oscar als bester Film?",a:"Parasite",s:"Film",d:2,t:"Aus Südkorea, Regie Bong Joon-ho. Er gewann in derselben Nacht vier Oscars.",w:["Roma","Amour","Die fabelhafte Welt der Amélie"]},
 {q:"Wer spielte die Hauptrolle in „Der Pate“ als Don Vito Corleone?",a:"Marlon Brando",s:"Film",d:2,t:"1972, Regie Francis Ford Coppola. Brando lehnte den Oscar aus Protest gegen die Darstellung indigener Völker ab.",w:["Al Pacino","Robert De Niro","Jack Nicholson"]},
 {q:"Welches Zeichentrickstudio schuf „Chihiros Reise ins Zauberland“?",a:"Studio Ghibli",s:"Film",d:2,t:"Japan, Regisseur Hayao Miyazaki. Der Film gewann 2003 den Oscar für den besten Animationsfilm.",w:["Pixar","Toei Animation","DreamWorks"]},
-{q:"Welcher Stummfilmstar trug Melone, Stock und Schnauzbart?",a:"Charlie Chaplin",s:"Film",d:1,t:"Seine Figur hieß „der Tramp“. In „Der große Diktator“ (1940) sprach er erstmals – gegen Hitler.",w:["Buster Keaton","Harold Lloyd","Stan Laurel"]},
+{q:"Welcher Stummfilmstar trug Melone, Stock und Schnauzbart?",a:"Charlie Chaplin",s:"Film",d:1,t:"Seine Figur hieß „der Tramp“. Seinen ersten echten Tonfilm drehte er erst 1940: „Der große Diktator“, eine Abrechnung mit Hitler. Zuvor war seine Stimme nur einmal zu hören, in einem Fantasielied in „Moderne Zeiten“ (1936).",w:["Buster Keaton","Harold Lloyd","Stan Laurel"]},
 {q:"Welche deutsche Filmgattung der 1920er prägte mit „Metropolis“ die Filmgeschichte?",a:"Der expressionistische Stummfilm",s:"Film",d:3,t:"Regie: Fritz Lang, 1927. Die Bildsprache beeinflusst Science-Fiction bis heute.",w:["Der bundesdeutsche Heimatfilm","Der italienische Neorealismus","Die französische Nouvelle Vague"]},
 
 /* ---------- Erweiterung ---------- */

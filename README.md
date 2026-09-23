@@ -3978,6 +3978,12 @@ die einzige gerade Primzahl, der Betrag ist nie negativ. Falsch war einer: Die o
 Ringe enthalten nicht die Farben „jeder Nationalflagge der Welt", Coubertin wählte sie 1913
 für die damals teilnehmenden Nationen. Für die Studienfächer ist das ein gutes Zeichen.
 
+Dasselbe für „als Erster", „erstmals" und „als einziger" in allen Themen – 48 Kontexttexte,
+alle nachgelesen. Einer war zu glatt: Chaplin „sprach erstmals" im „Großen Diktator". Seine
+Stimme war schon 1936 in „Moderne Zeiten" zu hören, in einem Fantasielied; 1940 kam sein
+erster echter Tonfilm. Die übrigen 47 stimmen, von Boris Beckers erstem Wimbledonsieg als
+Ungesetzter bis zu George Washington, dem einzigen Präsidenten, der nie im Weißen Haus wohnte.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
