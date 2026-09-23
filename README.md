@@ -4004,6 +4004,14 @@ losgeworden war („jede Nationalflagge"). Beim Skatblatt hatte auch das Bridgeb
 Joker gibt es aber nur beim Rommé. Beide sind korrigiert, und alle drei Stellen zu den
 olympischen Farben (Ringe, Flagge, Wissenshappen) sagen jetzt dasselbe.
 
+Die sechste galt den 141 Wissenshappen („Wissen des Tages"), die keine Kartenprüfung je
+gesehen hatte. Alle Kernaussagen halten, auch die zum Nachrechnen (A4 wiegt bei 80 g/m² genau
+5 g, 72 : 8 = 9 Jahre bis zur Verdopplung, 50 bis 100 g ATP im Körper). Eine Zahl war zu groß:
+Abfragen statt Wiederlesen bringt nach einer Woche nicht „doppelt so viel", im klassischen
+Versuch von Roediger und Karpicke (2006) sind es rund die Hälfte mehr. Dazu zwei sprachliche
+Glättungen (der Strafstoß heißt in England „penalty", nicht „penalty spot"; ein holpriger
+Satz zum Grundgesetz).
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
