@@ -3862,6 +3862,46 @@ Paar: Wer bei den Niagarafällen die Antwort der Grenzkarte tippt („Kanada zu 
 nennt dieselben zwei Staaten und hat recht. Das Paar steht mit dieser Begründung als
 Ausnahme im Test.
 
+#### Die 51 Stichwortkarten, nachträglich zweifach geprüft
+
+Beide Stichwortlisten waren ohne unabhängige Prüfung eingebaut. Nachgeholt: Jeder Stapel ging
+an zwei Prüfer mit getrenntem Auftrag. Der eine sollte jede Zahl und jedes Jahr im Netz
+nachschlagen, der andere prüfen, ob eine Frage eine zweite richtige Antwort hat und ob die
+App richtige Eingaben ablehnt. **41 Befunde auf 51 Karten**, fast alle berechtigt. Der
+Befund aus dem letzten Durchgang wiederholt sich damit: Karten, die nur ihr Autor gelesen hat,
+sind nicht so sauber, wie er glaubt.
+
+- **Falsche Tatsachen.** LZ 1 war nicht „das erste starre Luftschiff", das von David Schwarz
+  flog schon 1897. Yin und Yang stammen nicht aus dem Daoismus, sie sind älter. Galle fand
+  Neptun nicht „genau dort", wo Le Verrier ihn vorhergesagt hatte, sondern ein Grad daneben.
+  Humboldt war nicht fünf Jahre nur in Südamerika, sondern auch auf Kuba und in Mexiko. Das
+  Zungen-Logo der Stones ist von 1970, nicht von 1971. Pearl Harbor traf nicht „einen
+  Großteil der Pazifikflotte", sondern alle acht Schlachtschiffe im Hafen, die Träger waren
+  auf See. Und „Bar Mizwa" heißt „Sohn des Gebots", nicht „Sohn der Pflicht".
+- **Zu starke Wörter.** Die Horseshoe Falls liegen „größtenteils", nicht „fast ganz" auf
+  kanadischer Seite. Evangelische Kirchen kennen „in der Regel" zwei Sakramente. Frauen ab
+  30 durften 1918 nur mit Besitzauflagen wählen. Der Élysée-Vertrag heißt amtlich
+  „über die Zusammenarbeit", nicht „über die Freundschaft".
+- **Ablenker, die stimmen könnten.** Midway gehört zur Hawaii-Kette und wurde am selben
+  Abend beschossen. Der BER steht in Schönefeld. Cachaça galt lange als Rum-Art. Alle drei
+  sind ersetzt.
+- **Fragen mit zweiter Antwort.** Mit Störtebeker wurden weitere Likedeeler enthauptet. In
+  Wiltshire steht auch Avebury. In „Star Trek: Enterprise" ist T'Pol Erste Offizierin. Beim
+  Trimagischen Turnier treten Beauxbatons und Durmstrang an. Die vier Fragen sind geschärft,
+  bei Fragetext-Änderungen hält ein `p:` den Lernstand. Die Heuschnupfen-Frage verriet ihre
+  Nebenschreibweise „Pollenallergie" und fragt jetzt nach dem Volksmund-Namen.
+- **Richtige Eingaben, die als falsch galten**, zusammen gut drei Dutzend: „Mr. Spock",
+  „Kermit der Frosch", „Sechs-Tage-Krieg", „Friedrich der Zweite", „Große Sphinx",
+  „General de Gaulle", „HST", „Heufieber", „Lao Tzu", „Ka'ba", „fünfzig", „Habemus Papam"
+  und weitere.
+
+Nicht übernommen: „Graf Ferdinand von Zeppelin" als Nebenschreibweise. Das Tor gegen
+vertauschte Wortfolgen meldet sie, weil sie die Antwort „Ferdinand Graf von Zeppelin" mit
+zwei getauschten Nachbarwörtern ist. Bei Namen stimmt beides, das Tor kennt diesen Fall
+nicht. Ein bekannter Rest: „Suffragisten" gilt als Tippfehler von „Suffragetten" und damit
+als richtig (0,83), obwohl es die gemäßigte Gegenbewegung ist. Der Kontexttext nennt deshalb
+den Unterschied.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
