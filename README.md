@@ -3984,6 +3984,13 @@ Stimme war schon 1936 in „Moderne Zeiten" zu hören, in einem Fantasielied; 19
 erster echter Tonfilm. Die übrigen 47 stimmen, von Boris Beckers erstem Wimbledonsieg als
 Ungesetzter bis zu George Washington, dem einzigen Präsidenten, der nie im Weißen Haus wohnte.
 
+Die dritte Nachlese galt Superlativfragen („größte", „höchste", „längste", „die meisten"),
+dem Lieblingsformat jedes Kneipenquiz: 118 Karten mit Antwort und Kontexttext. Alle Antworten
+stimmen, auch die Zahlen dahinter (Steuereinnahmen 2025: Umsatzsteuer 310, Lohnsteuer
+263 Milliarden, gegengeprüft beim Statistischen Bundesamt). Nachgeschärft wurde nur ein Satz:
+Bei der Weltmeisterfeier 2014 grölten die Spieler „Atemlos" nicht allein, Helene Fischer sang
+es live auf der Fanmeile.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
