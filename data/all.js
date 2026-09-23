@@ -339,4 +339,6 @@ export default [
 {q:"Nach wie vielen Ehejahren feiert man die goldene Hochzeit?",a:"Nach 50 Jahren",az:["50"],s:"Alltag",d:1,t:"Nach 25 Jahren ist Silberhochzeit, nach 60 diamantene und nach 65 eiserne Hochzeit.",w:["Nach 40 Jahren","Nach 60 Jahren","Nach 75 Jahren"]},
 {q:"Welches Fabeltier ist das Nationaltier Schottlands?",a:"Das Einhorn",s:"Symbole",d:2,t:"Im britischen Königswappen hält es zusammen mit dem englischen Löwen den Schild. Wales führt dagegen einen roten Drachen in der Flagge.",w:["Der Drache","Der Greif","Der Phönix"]},
 {q:"Mit welcher Spirituose wird ein Caipirinha gemixt?",a:"Cachaça",s:"Essen & Trinken",d:2,t:"Der brasilianische Schnaps wird aus frischem Zuckerrohrsaft gebrannt, Rum meist aus Melasse. Dazu kommen Limette, Rohrzucker und Eis.",w:["Rum","Tequila","Wodka"]},
+/* ---------- Stichwortsuche, zweite Liste ---------- */
+{q:"In welchem Jahr fand das erste Münchner Oktoberfest statt?",a:"1810",s:"Alltag",d:2,t:"Anlass war die Hochzeit von Kronprinz Ludwig mit Therese von Sachsen-Hildburghausen; nach ihr heißt die Festwiese Theresienwiese. Den Höhepunkt bildete damals ein Pferderennen.",w:["1800","1848","1871"]},
 ];

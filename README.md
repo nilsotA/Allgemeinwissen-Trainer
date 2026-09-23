@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.915 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.944 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (440 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (397 Karten: Grundlagen,
@@ -24,8 +24,8 @@ sondern sattelfest sein.
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (27 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
 und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (33 – Reinheitsgebot,
-Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (10 – Penicillin, Dynamit,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (31 Quiz-Klassiker vom
+Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (12 – Penicillin, Dynamit,
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (32 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
@@ -3848,6 +3848,19 @@ Frauenwahlrecht in Deutschland und in der Schweiz, die Suffragetten, Störtebeke
 der BER. Eine dreiundzwanzigste Karte, die vier Evangelisten, hat die Inhaltsprüfung als
 Dublette gemeldet: Die Sammlung fragte schon nach den vier Evangelien, mit derselben Antwort.
 Sie ist wieder gestrichen.
+
+Eine zweite Liste mit rund 200 Personen, Werken, Orten und Ereignissen, die in Quizspielen
+immer wieder vorkommen, brachte weitere **29 Karten**. Churchill, de Gaulle, Pearl Harbor,
+Fukushima, der Sechstagekrieg und Ulbrichts „Niemand hat die Absicht …" kamen bisher nur im
+Kontexttext vor oder gar nicht. Ebenso Max Planck, Kepler, Hubble, Zeppelin, Lilienthal und
+die „Hindenburg", Hogwarts, Spock, Mick Jagger, Grönemeyer, Krümelmonster und Kermit, die
+Sphinx, Stonehenge, Petra und Angkor Wat, Sylt, die Niagarafälle, Madagaskar, Hawaii, der
+Alte Fritz, Humboldt und das erste Oktoberfest. Zwei Kontexttexte haben das Nachlesen nicht
+überstanden: Autos erreichen Sylt nicht „nur per Zug", es gibt auch die Fähre aus Dänemark,
+und den Sinai gab Israel nicht 1979 zurück, sondern bis 1982. Der Fremdantwort-Test fand ein
+Paar: Wer bei den Niagarafällen die Antwort der Grenzkarte tippt („Kanada zu den USA"),
+nennt dieselben zwei Staaten und hat recht. Das Paar steht mit dieser Begründung als
+Ausnahme im Test.
 
 ### Qualitätssicherung
 

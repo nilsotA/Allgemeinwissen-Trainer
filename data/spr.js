@@ -272,4 +272,6 @@ export default [
 {q:"Wie endet das Sprichwort „Wer den Pfennig nicht ehrt, …“?",a:"ist des Talers nicht wert",s:"Sprache",d:1,t:"Der Taler war eine große Silbermünze, benannt nach dem Joachimsthaler aus Böhmen. Über das niederländische „daalder“ wurde aus ihm der Dollar.",w:["ist des Guldens nicht wert","bleibt sein Leben lang arm","hat die Mark nicht verdient"]},
 /* ---------- Stichwortsuche: Themen ohne eigene Karte ---------- */
 {q:"Welcher irische Schriftsteller schrieb 1897 den Roman „Dracula“?",a:"Bram Stoker",az:["Stoker"],s:"Literatur",d:2,t:"Graf Dracula lebt in Transsilvanien. Den Namen entlehnte Stoker dem walachischen Fürsten Vlad III. Drăculea, genannt der Pfähler.",w:["Oscar Wilde","Edgar Allan Poe","Robert Louis Stevenson"]},
+/* ---------- Stichwortsuche, zweite Liste ---------- */
+{q:"Wie heißt die Zauberschule in den „Harry Potter“-Romanen?",a:"Hogwarts",s:"Literatur",d:1,t:"Ihre vier Häuser heißen Gryffindor, Hufflepuff, Ravenclaw und Slytherin; wer wohin kommt, entscheidet der Sprechende Hut. Der erste Band erschien 1997.",w:["Beauxbatons","Durmstrang","Askaban"]},
 ];

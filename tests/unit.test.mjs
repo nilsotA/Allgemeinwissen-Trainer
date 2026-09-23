@@ -655,7 +655,11 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
        Bibliothek der Antike?" nur „Alexandria" tippt, hat sie gewusst. Die
        Stadtkarte (Leuchtturm) fragt etwas anderes, ihre Antwort ist hier aber
        trotzdem richtig. Gefunden mit Pruefsatz 6. */
-    'ges-kq5ee7|ges-3epl3n']);
+    'ges-kq5ee7|ges-3epl3n',
+    /* Die Niagarafaelle liegen an der Grenze USA–Kanada; wer dort die Antwort
+       der Grenzkarte tippt („Kanada zu den USA"), nennt dieselben zwei Staaten
+       und hat recht. */
+    'geo-1cet63k|geo-43yvg1']);
 
   const durchgerutscht = [];
   let geprueft = 0;
