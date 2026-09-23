@@ -3230,7 +3230,7 @@ p-q-Formel gegen Mitternachtsformel, Antike gegen Neuzeit bei Olympia.
 
 #### Was mit der Zeit falsch wird
 
-Derselbe Lauf führt eine zweite Liste: **18 Karten**, deren Antwort altern kann (ursprünglich 11, siehe „Was seit 2020 passiert ist" und „Der sechste Prüfsatz"). Die App hat
+Derselbe Lauf führt eine zweite Liste: **19 Karten**, deren Antwort altern kann (ursprünglich 11, siehe „Was seit 2020 passiert ist" und „Der sechste Prüfsatz"). Die App hat
 keinen Server und kann nichts nachladen – wird ein Weltrekord gebrochen, lernt der Nutzer
 still das Falsche weiter, und am Spieleabend fällt es auf.
 
@@ -3902,6 +3902,74 @@ nicht. Ein bekannter Rest: „Suffragisten" gilt als Tippfehler von „Suffraget
 als richtig (0,83), obwohl es die gemäßigte Gegenbewegung ist. Der Kontexttext nennt deshalb
 den Unterschied.
 
+### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
+
+Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,
+die über diese Karten hinausgeht: Sind nur neue Karten so fehleranfällig, oder der ganze
+Bestand? Gemessen wurde es so:
+
+- **61 Karten**, die ich in dieser Sitzung allein geschrieben hatte (Zeitgeschehen,
+  Schulalltag, Friedensnobelpreis, Gastgeber), und **159 zufällig gezogene ältere Karten**,
+  nach Themen geschichtet, ohne die in dieser Sitzung schon zweifach geprüften.
+- Beide Gruppen gemischt in 28 Stapeln, dieselben Anweisungen. Kein Prüfer wusste, welche
+  Karte zu welcher Gruppe gehört.
+- Je Stapel ein Faktenprüfer und ein Eindeutigkeitsprüfer, dazu je Ergebnis ein
+  **Gegenprüfer mit dem Auftrag, jeden Befund zu widerlegen**. Er hat 5 von 294 widerlegt.
+
+| | allein geschriebene Karten (61) | ältere Karten, Stichprobe (159) |
+|---|---|---|
+| Karten mit mindestens einem bestätigten Befund | 37 (61 %) | 127 (80 %) |
+| … ohne reine Schreibweisen-Befunde | 21 (34 %) | 75 (47 %) |
+| … mit einem sachlich falschen Detail | 9 (15 %) | 28 (18 %) |
+| … falsch in Frage, Antwort oder Ablenker | 1 (2 %) | 7 (4 %) |
+
+**Die älteren Karten schneiden nicht besser ab als die neuen, eher schlechter.** Der
+Bestand wurde früher schon mehrfach geprüft, auch blind beantwortet. Aber diese Prüfungen
+fragten „stimmt die Antwort?". Die meisten Befunde hier liegen woanders: im Kontexttext
+(„die einzige", „genau dort", „nur"), in Ablenkern, die doch stimmen, und in richtigen
+Eingaben, die die App ablehnt. Hochgerechnet auf die rund 2.600 älteren Karten ohne diese
+Prüfung heißt das: **gut 1.000 Karten mit einem berechtigten Befund, davon rund 100 mit
+einem Fehler in Frage, Antwort oder Ablenker.** Die Spanne ist wegen der kleinen Stichprobe
+weit, für die Kernfehler etwa 2 bis 9 %.
+
+Beispiele aus der Stichprobe:
+- „Wer gilt als Begründer der abendländischen Philosophie-Trias?" fragte nach einer Person
+  und erwartete drei. Der Ablenker mit Thales, der meist als Begründer gilt, war damit
+  vertretbar.
+- Das Prinzip des optimalen Beschleunigungswegs verlangt einen **optimal** langen Weg,
+  nicht einen „möglichst langen". Genau dieser Unterschied ist der Kern des Prinzips und
+  Prüfungsstoff im Studium.
+- Katharine Hepburn hält den Rekord mit vier **Schauspiel**-Oscars. Frances McDormand hat
+  ebenfalls vier Oscars, einen davon als Produzentin.
+- „Warum Antibiotika bis zum Ende nehmen? – Damit keine resistenten Keime übrig bleiben"
+  gilt als überholt. Die Antwort sagt jetzt, dass die Infektion sicher ausheilen soll.
+- Die Monotonie ist nicht „der Grund, warum eine Kurvendiskussion mit der Ableitung
+  beginnt", sie beginnt mit Definitionsbereich und Symmetrie.
+- Die Bewegungskopplung ist nach Meinel/Schnabel ein Bewegungsmerkmal, keine koordinative
+  Fähigkeit. Die Karte fragt jetzt nach der Kopplungsfähigkeit, und das passt zu ihren
+  Ablenkern.
+
+Und bei den eigenen Karten:
+- Die Basketball-Weltmeister-Frage hatte eine zweite Antwort: Deutschlands Männer wurden
+  2023 auch Hockey-Weltmeister.
+- Arsenal gewann 2025 die Champions League, nämlich die der Frauen.
+- Zwei der ESC-Ablenker hatten schon gewonnen, die Frage nach dem *ersten* Sieg verriet
+  also die Antwort.
+- Ossietzky war bei der Preisvergabe nicht mehr im KZ.
+- Die Eiswettbewerbe von 2030 wurden im Juni 2026 von Nizza nach Lyon verlegt. Das hat
+  der Prüfer gefunden, und es ließ sich im Netz bestätigen.
+
+**Eingebaut sind alle 289 bestätigten Befunde**, zusammengefasst zu 243 Änderungen. Wo
+beide Prüfer dasselbe Feld anders verbessern wollten (25-mal), ist eine Fassung von Hand
+gewählt. Die Apostel-Karte war schon einmal umformuliert, ihr `p` ist jetzt eine Liste
+mit beiden alten Fassungen. Drei Schreibweisen führten im Fremdantwort-Test zu Paaren, bei
+denen die fremde Antwort tatsächlich richtig ist („Latein" für „Fenster", Niagara und
+Grenze in beide Richtungen). Sie stehen mit Begründung als Ausnahmen im Test.
+
+Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
+lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
+der Größenordnung von 90 Millionen Tokens.
+
 ### Qualitätssicherung
 
 `npm run check` prüft nicht nur auf fehlende Felder und doppelte Fragen, sondern auch
@@ -4101,6 +4169,13 @@ trägt. Von Hand gesucht und ersetzt geht irgendwann eine Zeile still kaputt –
 bleibt gültiges JavaScript, nur die Karte stimmt nicht mehr.
 
 Nach Änderungen `npm test` und `npm run build` laufen lassen.
+
+**Keine neue Karte ohne zwei fremde Prüfer.** Die Messung im Abschnitt „Wie viele Fehler
+stecken im Bestand?" zeigt: Auch sorgfältig geschriebene Karten haben ohne zweite Prüfung
+bei mehr als jeder dritten Karte einen berechtigten Befund. Deshalb geht jede neue Karte an
+zwei unabhängige Prüfer: Der eine schlägt jede Zahl, jedes Jahr und jeden Superlativ nach,
+der andere sucht zweite richtige Antworten, Ablenker, die doch stimmen, und richtige
+Eingaben, die die App ablehnt. Erst danach wird sie eingebaut.
 
 ## Aufbau
 

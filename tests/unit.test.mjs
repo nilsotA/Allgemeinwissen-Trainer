@@ -659,7 +659,11 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
     /* Die Niagarafaelle liegen an der Grenze USA–Kanada; wer dort die Antwort
        der Grenzkarte tippt („Kanada zu den USA"), nennt dieselben zwei Staaten
        und hat recht. */
-    'geo-1cet63k|geo-43yvg1']);
+    'geo-1cet63k|geo-nhw0hm', 'geo-nhw0hm|geo-1cet63k',
+    /* „Fenster" kommt aus dem Lateinischen; wer dort „Latein" tippt – die
+       Antwort zweier Nachbarkarten –, hat recht. Die Nebenschreibweise
+       „Latein" hat die Pruefung der Stichprobe ergaenzt. */
+    'spr-c2yj8p|spr-1sq0dp', 'spr-c2yj8p|spr-1lmk35c']);
 
   const durchgerutscht = [];
   let geprueft = 0;
