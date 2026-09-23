@@ -148,9 +148,20 @@ test('keine Karte bleibt liegen, auch nicht bei nur zwei aktiven Themen', () => 
   const pool = CARDS.filter(c => c.cat === 'mat' || c.cat === 'spo');
   const stand = lernstand(pool, 0.24, 7);
   /* Genug Runden, damit "nie gezogen" etwas ueber die Ziehung sagt und nicht
-     ueber den Zufall: 800 Runden sind 9.600 Zuege auf 699 Karten, im Schnitt
-     knapp vierzehn je Karte. Wer da fehlt, wird ausgeschlossen, nicht uebersehen. */
-  const RUNDEN = 800;
+     ueber den Zufall. Frueher standen hier fest 800 Runden – gedacht als
+     „knapp vierzehn Zuege je Karte". Der Schnitt taeuscht aber: Jede Stufe
+     bekommt ihren festen Anteil an der Runde, und die volle Stufe 2 teilt ihn
+     unter den meisten Karten. Gemessen lag die duennste Gruppe (Sport, Stufe 2,
+     ungelernt, 194 Karten) bei 6,5 Zuegen je Karte, die seltenste kam genau
+     einmal dran. 25 neue Sportkarten dieser Stufe haben daraus eine Null
+     gemacht – bei unveraenderter Ziehung. Bei 6,5 im Schnitt ist eine Null
+     schlicht Zufall (e^-6,5 je Karte).
+
+     Deshalb waechst die Rundenzahl mit dem Pool: zwei Runden je Karte, also
+     24 Zuege je Karte im Schnitt und rund 12 in der duennsten Gruppe. Gemessen
+     bei 837 Karten mit drei verschiedenen Startwerten: keine Karte bleibt
+     liegen. Wer dann fehlt, wird ausgeschlossen, nicht uebersehen. */
+  const RUNDEN = Math.ceil(2 * pool.length);
   const zaehler = new Map();
   for (let i = 0; i < RUNDEN; i++)
     for (const { card } of q.ziehung(pool, { zufall: festerZufall(500 + i), stand: (id) => stand.get(id) || null }))

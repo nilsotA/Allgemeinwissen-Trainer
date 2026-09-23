@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.689 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.893 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (414 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (381 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (440 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (397 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -22,10 +22,10 @@ erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht
 sondern sattelfest sein.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
-**Mythologie** (24 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (30 – Reinheitsgebot,
-Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (9 – Penicillin, Dynamit,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (28 Quiz-Klassiker vom
+**Mythologie** (26 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (32 – Reinheitsgebot,
+Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (10 – Penicillin, Dynamit,
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (31 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
@@ -3230,7 +3230,7 @@ p-q-Formel gegen Mitternachtsformel, Antike gegen Neuzeit bei Olympia.
 
 #### Was mit der Zeit falsch wird
 
-Derselbe Lauf führt eine zweite Liste: **16 Karten**, deren Antwort altern kann (ursprünglich 11, siehe „Was seit 2020 passiert ist"). Die App hat
+Derselbe Lauf führt eine zweite Liste: **18 Karten**, deren Antwort altern kann (ursprünglich 11, siehe „Was seit 2020 passiert ist" und „Der sechste Prüfsatz"). Die App hat
 keinen Server und kann nichts nachladen – wird ein Weltrekord gebrochen, lernt der Nutzer
 still das Falsche weiter, und am Spieleabend fällt es auf.
 
@@ -3744,6 +3744,96 @@ nicht altern, weil die Frage das Jahr nennt: WM 2030 (Spanien, Portugal, Marokko
 Südamerika), WM 2034 (Saudi-Arabien), EM 2028 (Großbritannien und Irland), Sommerspiele 2032
 (Brisbane) und Winterspiele 2030 (französische Alpen). Die jüngeren Angaben – Machado, die
 Vergaben von 2024, das fehlende nordirische Stadion – sind nachgeschlagen.
+
+### Der sechste Prüfsatz: nach Themenblöcken statt nach Einzelfragen – 57 %
+
+Fünf Prüfsätze haben Einzelfragen gesammelt, und keiner hat bemerkt, dass es zum
+Friedensnobelpreis keine einzige Karte gab. Aufgefallen ist das erst bei einer Zählung nach
+Stichwort. Eine Stichprobe von Fragen trifft die großen Themen oft und die vergessenen selten.
+
+Der sechste Satz fragt deshalb anders: **14 Autoren**, jeder ohne Kenntnis der Sammlung,
+schrieben für ihr Gebiet ein Inhaltsverzeichnis von **20 Themenblöcken**, wie deutsche
+Quizspiele sie abfragen („Hauptstädte Asiens", „Komponisten der Klassik",
+„Bundespräsidenten", „Trainingsprinzipien", „Beweisverfahren"), und je Block zwei Fragen.
+14 ebenso blinde Prüfer haben jede Frage kontrolliert, bei Zweifel im Netz. Verworfen haben
+sie keine Frage, 46 haben sie geschärft: Der Salto Ángel „gilt als" höchster Wasserfall, weil
+die Tugela-Fälle 2016 höher vermessen wurden; Nürnberg–Fürth war die erste *Dampf*eisenbahn,
+denn die Prinz-Wilhelm-Bahn fuhr schon 1831 mit Pferden; beim Lotto zählt ohne Superzahl eine
+andere Zahl als mit; Ringo Starr war erst **ab 1962** Schlagzeuger der Beatles.
+
+Gemessen gegen die 2.689 Karten von damals: **318 von 560 – 57 %.** Der fünfte Satz lag
+zu seiner Zeit bei 65 %, und das bei 258 Karten weniger. **50 der 280 Blöcke waren ganz leer**:
+Addis Abeba, Ulan Bator und Vaduz, K2, Titicacasee und Totes Meer, Mozarts Geburtsort,
+Chopin, Ravel und Bayreuth, Robert Koch, Buzz Aldrin und Alexander Gerst, Idefix und
+Pumuckl, Adam Smith und die CSU. Der Satz wurde eingefroren und committet, **bevor** eine Karte
+gegen ihn geschrieben war.
+
+| Katalog | vorher | | Katalog | vorher |
+|---|---|---|---|---|
+| Geografie Welt | 21/40 | | Musik | 17/40 |
+| Geografie DE/EU | 22/40 | | Film & Fernsehen | 23/40 |
+| Geschichte bis 1789 | 18/40 | | Literatur & Kunst | 28/40 |
+| Geschichte ab 1789 | 23/40 | | Gesellschaft | 32/40 |
+| Biologie | 24/40 | | Alltag | 19/40 |
+| Physik & Technik | 23/40 | | Sport | 26/40 |
+| Lehrer Sport | 21/40 | | Lehrer Mathe | 21/40 |
+
+Von den 242 Lücken fehlten 116 ganz. 54 standen nur im Kontexttext einer Karte, 40 wurden in
+der Gegenrichtung gefragt, 31 steckten in einer längeren Antwort und eine in einem Merkanker.
+
+#### 204 Karten, zweimal geprüft
+
+Je Katalog hat ein Autor jede Lücke mit dem Bestand abgeglichen und dann entschieden. Das
+ergab 206 Karten und 7 fehlende Schreibweisen bestehender Karten. 26 Lücken blieben mit
+Begründung offen: 18 werden in der Gegenrichtung schon gefragt, 8 gleichwertig von einer
+anderen Karte. Die ersten Prüfer haben 40 Karten korrigiert und eine verworfen: „Welcher
+Baustil hat Rundbögen?" war die Umkehrung einer bestehenden Karte. Zwei Karten waren in zwei
+Katalogen doppelt entstanden (Aristoteles als Lehrer Alexanders, Nürnberg–Fürth). Übrig
+blieben **204**.
+
+Danach hat eine **zweite, adversariale Runde** alle 204 noch einmal gelesen, mit dem Auftrag,
+den Fehler zu finden, den die erste übersehen hat. Sie meldete 11 Befunde. Übernommen wurden
+10:
+- **Drei Kontexttexte behaupteten zu viel.** Gottfried von Bouillon nannte sich nicht „Vogt
+  des Heiligen Grabes", der Titel steht nur in einem fremden Brief. Das Echo am Königssee
+  hallt bis zu zweimal, nicht „mehrfach". Dass Gary Cooper den Rhett Butler abgelehnt und
+  einen Flop vorausgesagt habe, ist eine Anekdote und kein Beleg.
+- **Ein „bis dahin" war irreführend.** Wulffs 598 Tage sind nicht nur die „bis dahin",
+  sondern die bisher kürzeste Amtszeit überhaupt.
+- **Eine Frage hatte zwei Antworten.** Anophelesmücken übertragen auch die lymphatische
+  Filariose. Die Frage fragt jetzt nach der Krankheit, die *nur* sie übertragen.
+- **Fünf richtige Antworten galten als falsch:** Kältesteppe, Keith-Flack-Knoten, Faktorielle,
+  Dreierpack und „Innen- und Außenmeniskus".
+
+Den elften Befund hat die Nachprüfung widerlegt. „Schießen und Langlauf" gelte beim Biathlon
+als falsch, meldete der Prüfer. Die Karte ist aber als ungeordnet markiert, und jede
+Reihenfolge zählt. In der Kopie, die er bekommen hatte, fehlte diese Markierung.
+
+**Ergebnis: 318 → 531 von 560 (57 → 95 %).** 207 der neuen Treffer kommen von neuen Karten,
+6 von Schreibweisen bestehender Karten: „Totes Meer" neben „Das Tote Meer", „Schwarzes Meer"
+neben „In das Schwarze Meer", Tschaikowsky neben Tschaikowski, Usain Bolt ohne die Zeit,
+Marathon ohne „Schlacht bei", Kopplungsfähigkeit neben Bewegungskopplung. Offen sind 29: 16
+in der Gegenrichtung gefragt, 10 in einer längeren Antwort, 2 im Kontexttext, und das Achteck
+des Stoppschilds, nach dem die bestehende Karte umgekehrt fragt. Damit ist auch dieser Satz
+verbraucht. Die älteren stehen bei 100, 96, 100, 92 und 94 %.
+
+#### Drei Tests, die an den neuen Karten angeschlagen haben – und was davon echt war
+
+- **„Keine Karte bleibt liegen"** (Quizmodus) zog 800 feste Runden. Jede Stufe bekommt aber
+  ihren festen Anteil an der Runde, und die volle Stufe 2 teilt ihn unter den meisten Karten.
+  Schon vorher kam die dünnste Gruppe (Sport, Stufe 2, ungelernt) nur auf 6,5 Züge je Karte,
+  und die seltenste Karte wurde genau einmal gezogen. 25 neue Sportkarten dieser Stufe haben
+  daraus eine Null gemacht, bei unveränderter Ziehung. Die Rundenzahl wächst jetzt mit dem
+  Pool (zwei Runden je Karte). Mit drei Startwerten gemessen bleibt keine Karte liegen.
+- **„Die Antwort einer fremden Karte gilt nicht als richtig"** fand zwei Paare. Gebirge und
+  Nationalpark heißen beide „Bayerischer Wald", die Antworten sind jetzt gleich geschrieben.
+  „Alexandria" auf die Frage nach der größten Bibliothek der Antike ist richtig, weil die
+  Bibliothek den Namen der Stadt trägt. Das Paar steht mit dieser Begründung als Ausnahme im
+  Test.
+- **Drei Browser-Prüfungen** scheiterten bei einem Lauf um 0:22 Uhr. Das lag nicht an den
+  Karten: Die App beginnt den Tag um 4 Uhr, sieben Stellen im Test rechneten „heute" aber ab
+  Mitternacht. Eine achte Stelle war schon früher korrigiert worden, diese sieben hatte die
+  Korrektur nicht erreicht. Nach der Korrektur liefen im selben Zeitfenster alle 333 durch.
 
 ### Qualitätssicherung
 

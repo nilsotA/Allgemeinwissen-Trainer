@@ -650,7 +650,12 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
      Kettenregel?" die Formel tippt, hat sie gewusst - der Bewerter liegt dort
      richtig, und beide Karten sind ihr Geld wert. Sie stehen namentlich hier,
      damit eine spaetere Aenderung an einer von beiden auffaellt. */
-  const ERLAUBT = new Set(['mat-1ufyejp|mat-115b27n', 'mat-115b27n|mat-1ufyejp']);
+  const ERLAUBT = new Set(['mat-1ufyejp|mat-115b27n', 'mat-115b27n|mat-1ufyejp',
+    /* Die Bibliothek traegt den Namen der Stadt: Wer auf „Wie hiess die groesste
+       Bibliothek der Antike?" nur „Alexandria" tippt, hat sie gewusst. Die
+       Stadtkarte (Leuchtturm) fragt etwas anderes, ihre Antwort ist hier aber
+       trotzdem richtig. Gefunden mit Pruefsatz 6. */
+    'ges-kq5ee7|ges-3epl3n']);
 
   const durchgerutscht = [];
   let geprueft = 0;

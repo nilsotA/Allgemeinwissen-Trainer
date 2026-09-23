@@ -989,7 +989,13 @@ try {
       const z = JSON.parse(localStorage.getItem(k));
       // Acht Anzeigetage im Abstand von vier Wochen, der letzte ist heute.
       const tage = [];
-      const heute = Math.floor(Date.now() / 86400000);
+      /* „Heute" wie die App: Der App-Tag beginnt um 4 Uhr. Hier stand – wie an
+         sechs weiteren Stellen dieser Datei – Math.floor(Date.now() / 86400000),
+         der Kalendertag ab Mitternacht. Zwischen 0 und 4 Uhr lag der Test damit
+         einen Tag vor der App, und drei Pruefungen fielen durch; aufgefallen bei
+         einem Lauf um 0:22 Uhr. Dieselbe Korrektur stand schon einmal weiter
+         unten (Sicherungserinnerung), die uebrigen Stellen hatte sie nicht erreicht. */
+      const heute = (() => { const d = new Date(); if (d.getHours() < 4) d.setDate(d.getDate() - 1); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); })();
       const schluessel = (n) => {
         const d = new Date(n * 86400000);
         return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
@@ -2654,7 +2660,7 @@ try {
     const dektx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
     const BEKANNT = CARDS.slice(0, 12);
     await dektx.addInitScript(([k, ids]) => {
-      const heute = Math.floor(Date.now() / 86400000);
+      const heute = (() => { const d = new Date(); if (d.getHours() < 4) d.setDate(d.getDate() - 1); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); })();
       const cards = {};
       /* Vor zehn Tagen abgefragt, Intervall 30, also in zwanzig Tagen wieder
          faellig. Ein Fehler heute muss daraus ein Intervall von zehn Tagen
@@ -2690,7 +2696,7 @@ try {
     await dep.waitForTimeout(600);        // Speichern ist um 250 ms gebuendelt
     const stand = await dep.evaluate(([k, id]) => {
       const z = JSON.parse(localStorage.getItem(k) || '{}');
-      return { karte: z.cards[id], heute: Math.floor(Date.now() / 86400000) };
+      return { karte: z.cards[id], heute: (() => { const d = new Date(); if (d.getHours() < 4) d.setDate(d.getDate() - 1); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); })() };
     }, [KEY, karte.id]);
     check('der Fehler deckelt das Intervall auf die wirklich verstrichene Zeit',
       stand.karte && stand.karte.iv === 10, JSON.stringify(stand.karte));
@@ -2715,7 +2721,7 @@ try {
   {
     const tctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
     await tctx2.addInitScript(([k, ids]) => {
-      const heute = Math.floor(Date.now() / 86400000);
+      const heute = (() => { const d = new Date(); if (d.getHours() < 4) d.setDate(d.getDate() - 1); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); })();
       const cards = {};
       for (const id of ids) cards[id] = { ef: 2.5, iv: 4, due: heute - 1, reps: 3,
         lapses: 0, seen: 4, ok: 3, last: Date.now() - 86400000 };
@@ -2822,7 +2828,7 @@ try {
     const hctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
     const MARKIERT = 25;
     await hctx.addInitScript(([k, faellig, marken]) => {
-      const heute = Math.floor(Date.now() / 86400000);
+      const heute = (() => { const d = new Date(); if (d.getHours() < 4) d.setDate(d.getDate() - 1); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); })();
       const cards = {}, flags = {};
       for (const id of faellig) cards[id] = { ef: 2.5, iv: 3, due: heute - 2, reps: 2,
         lapses: 0, seen: 3, ok: 2, last: Date.now() - 86400000 };
@@ -3113,7 +3119,7 @@ try {
     const lctx2 = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
     const bekannt = CARDS.slice(0, 40).map(c => c.id);
     const seed = (modus) => ([k, ids, m]) => {
-      const heute = Math.floor(Date.now() / 86400000);
+      const heute = (() => { const d = new Date(); if (d.getHours() < 4) d.setDate(d.getDate() - 1); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); })();
       const cards = {};
       for (const id of ids) cards[id] = { ef: 2.5, iv: 4, due: heute - 1, reps: 3,
         lapses: 0, seen: 4, ok: 3, last: Date.now() - 86400000 };
@@ -3226,7 +3232,7 @@ try {
     const kuctx = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE' });
     const kup = horche(await kuctx.newPage());
     await kuctx.addInitScript(([k, ids]) => {
-      const heute = Math.floor(Date.now() / 86400000);
+      const heute = (() => { const d = new Date(); if (d.getHours() < 4) d.setDate(d.getDate() - 1); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000); })();
       const cards = {};
       for (const id of ids) cards[id] = { ef: 2.5, iv: 3, due: heute - 2, reps: 2,
         lapses: 0, seen: 3, ok: 2, last: Date.now() - 86400000 };
