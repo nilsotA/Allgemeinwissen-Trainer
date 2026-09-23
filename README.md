@@ -4034,6 +4034,11 @@ Wortlaut der KMK-Bildungsstandards von 2022: die fünf Leitideen (Algorithmus un
 Raum und Form, Funktionaler Zusammenhang, Daten und Zufall) und K5 vollständig als „mit
 symbolischen, formalen und technischen Elementen der Mathematik umgehen".
 
+Die zehnte galt dem Lehrerwissen Sport: Sportdidaktik, Sportpsychologie, Sportmedizin,
+Anatomie und Bewegungslehre, 156 Karten. Alle Antworten und Kontexttexte halten, von der
+Unfallmeldung nach § 193 SGB VII bis zu Hochmuths Prinzipien. Geschärft wurde nur ein Wort:
+Eine motorische Einheit hängt an einem Motoneuron, nicht an „einem Nerv".
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
