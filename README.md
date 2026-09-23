@@ -4039,6 +4039,15 @@ Anatomie und Bewegungslehre, 156 Karten. Alle Antworten und Kontexttexte halten,
 Unfallmeldung nach § 193 SGB VII bis zu Hochmuths Prinzipien. Geschärft wurde nur ein Wort:
 Eine motorische Einheit hängt an einem Motoneuron, nicht an „einem Nerv".
 
+Die elfte schloss das Lehrerwissen ab: Trainingslehre (68 Karten) und die beiden Blöcke
+„Verfahren erkennen" in Sport und Mathematik (45 Karten), auch die Rechenbeispiele
+nachgerechnet (Grenzwert 1/6, 49 über 6 = 13.983.816). Alles richtig. Zu glatt war ein
+Kontexttext: Er nannte alle vier Fähigkeiten Kraft, Ausdauer, Schnelligkeit und Beweglichkeit
+„konditionell". Schnelligkeit und Beweglichkeit sind Mischformen, die Lehrbücher
+unterschiedlich zuordnen, das steht jetzt so da. Damit ist jede der 440 Sportkarten in diesen
+Nachlesen von Hand gegengelesen; in Mathematik fehlen noch Grundlagen, Schulmathe, Analysis,
+Stochastik und Lineare Algebra.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
