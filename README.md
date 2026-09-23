@@ -3991,6 +3991,12 @@ stimmen, auch die Zahlen dahinter (Steuereinnahmen 2025: Umsatzsteuer 310, Lohns
 Bei der Weltmeisterfeier 2014 grölten die Spieler „Atemlos" nicht allein, Helene Fischer sang
 es live auf der Fanmeile.
 
+Die vierte galt Jahreszahlen und Daten: 68 Karten, deren Antwort ein Jahr oder Datum ist,
+von 776 v. Chr. bis zur Bundestagswahl 2025. Alle Antworten stimmen, auch die Details im
+Kontexttext (Fangios Rekord hielt 46 Jahre bis 2003, die ersten Frauen wählten schon im
+Dezember 1918 in Anhalt). Ein vager Satz wurde konkret: Bei der Tagesschau kam der Gong 1956
+dazu, die Tagesthemen 1978.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
