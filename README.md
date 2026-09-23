@@ -3971,6 +3971,13 @@ mit beiden alten Fassungen. Drei Schreibweisen führten im Fremdantwort-Test zu 
 denen die fremde Antwort tatsächlich richtig ist („Latein" für „Fenster", Niagara und
 Grenze in beide Richtungen). Sie stehen mit Begründung als Ausnahmen im Test.
 
+**Eine billige Nachlese statt einer zweiten Runde:** Das häufigste Fehlermuster der Stichprobe
+waren zu starke Wörter im Kontexttext („die einzige", „nur", „immer", „nie"). Eine Suche danach
+in allen Sport- und Mathekarten fand 98 Treffer, von Hand gelesen. 97 davon stimmen: Die 2 ist
+die einzige gerade Primzahl, der Betrag ist nie negativ. Falsch war einer: Die olympischen
+Ringe enthalten nicht die Farben „jeder Nationalflagge der Welt", Coubertin wählte sie 1913
+für die damals teilnehmenden Nationen. Für die Studienfächer ist das ein gutes Zeichen.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
