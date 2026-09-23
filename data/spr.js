@@ -270,4 +270,6 @@ export default [
 {q:"Welches Wort steht im NATO-Buchstabieralphabet für den Buchstaben Z?",a:"Zulu",s:"Sprache",d:2,t:"Das letzte Wort der Tafel steckt auch in der „Zulu-Zeit“: So nennen Militär und Luftfahrt die koordinierte Weltzeit UTC, gekennzeichnet mit einem Z.",w:["Zeta","Zenit","Zorro"]},
 {q:"Wie endet das Sprichwort „Morgenstund hat …“?",a:"Gold im Mund",s:"Sprache",d:1,t:"Vorbild der Wortform ist wohl der lateinische Satz „Aurora habet aurum in ore“: Die Göttin der Morgenröte wurde mit Gold in Mund und Haar dargestellt. Gemeint ist, dass Frühaufsteher mehr schaffen.",w:["Brot im Korb","Glück im Haus","Kraft im Arm"]},
 {q:"Wie endet das Sprichwort „Wer den Pfennig nicht ehrt, …“?",a:"ist des Talers nicht wert",s:"Sprache",d:1,t:"Der Taler war eine große Silbermünze, benannt nach dem Joachimsthaler aus Böhmen. Über das niederländische „daalder“ wurde aus ihm der Dollar.",w:["ist des Guldens nicht wert","bleibt sein Leben lang arm","hat die Mark nicht verdient"]},
+/* ---------- Stichwortsuche: Themen ohne eigene Karte ---------- */
+{q:"Welcher irische Schriftsteller schrieb 1897 den Roman „Dracula“?",a:"Bram Stoker",az:["Stoker"],s:"Literatur",d:2,t:"Graf Dracula lebt in Transsilvanien. Den Namen entlehnte Stoker dem walachischen Fürsten Vlad III. Drăculea, genannt der Pfähler.",w:["Oscar Wilde","Edgar Allan Poe","Robert Louis Stevenson"]},
 ];

@@ -401,4 +401,6 @@ export default [
 {q:"Wer ist in der griechischen Mythologie die Göttin der Weisheit?",a:"Athene",az:["Pallas Athene"],s:"Mythologie",d:1,t:"Der Sage nach sprang sie in voller Rüstung aus dem Kopf des Zeus. Ihr heiliges Tier ist die Eule, bei den Römern entspricht ihr Minerva.",w:["Hera","Artemis","Demeter"]},
 {q:"Welcher griechische Held schlug der Medusa den Kopf ab?",a:"Perseus",s:"Mythologie",d:2,t:"Aus ihrem Hals sprang dabei das geflügelte Pferd Pegasus. Mit dem abgeschlagenen Haupt verwandelte der Held später den Titanen Atlas in ein Gebirge.",w:["Theseus","Herakles","Odysseus"]},
 {q:"Welche Farbe entsteht, wenn man im Malkasten Rot und Gelb mischt?",a:"Orange",s:"Kunst",d:1,t:"Der Farbname ist von der Frucht entlehnt, nicht umgekehrt. Im Farbkreis liegt die Farbe dem Blau gegenüber, ihrer Komplementärfarbe.",w:["Braun","Violett","Rosa"]},
+/* ---------- Stichwortsuche: Themen ohne eigene Karte ---------- */
+{q:"Wie heißen in der nordischen Mythologie die Frauen, die gefallene Krieger auf dem Schlachtfeld auswählen?",a:"Walküren",s:"Mythologie",d:2,t:"Sie bringen die Auserwählten zu Odin. Richard Wagner machte sie mit dem „Walkürenritt“ aus seiner Oper „Die Walküre“ unsterblich.",w:["Nornen","Musen","Nymphen"]},
 ];

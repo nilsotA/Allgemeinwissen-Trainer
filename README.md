@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.893 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**2.915 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (440 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (397 Karten: Grundlagen,
@@ -22,8 +22,8 @@ erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht
 sondern sattelfest sein.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
-**Mythologie** (26 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (32 – Reinheitsgebot,
+**Mythologie** (27 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (33 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (10 – Penicillin, Dynamit,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (31 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
@@ -3834,6 +3834,20 @@ verbraucht. Die älteren stehen bei 100, 96, 100, 92 und 94 %.
   Karten: Die App beginnt den Tag um 4 Uhr, sieben Stellen im Test rechneten „heute" aber ab
   Mitternacht. Eine achte Stelle war schon früher korrigiert worden, diese sieben hatte die
   Korrektur nicht erreicht. Nach der Korrektur liefen im selben Zeitfenster alle 333 durch.
+
+#### Danach noch einmal nach Stichwort gesucht
+
+Der Themenkatalog zeigt, wo Blöcke fehlen, an die ein Autor denkt. Die schnellere Gegenprobe
+ist eine Liste von rund 170 Quizstichworten, gezählt nur in Frage und Antwort. Treffer im
+Kontexttext zählen dabei nicht, weil ihn in der Quizrunde niemand abgefragt bekommt. **22
+Stichworte kamen auf null oder eine Karte**, obwohl Quizspiele sie regelmäßig abfragen:
+Neptun als sonnenfernster Planet, Uranus, Titan, die sieben Todsünden, die zehn Plagen, die
+Sakramente, weißer Rauch im Konklave, Kaaba, Bar Mizwa, Laozi, die goldene Hochzeit, das
+Frauenwahlrecht in Deutschland und in der Schweiz, die Suffragetten, Störtebeker, Bushidō,
+„Dracula", das Einhorn als Nationaltier Schottlands, die Walküren, Cachaça, Heuschnupfen und
+der BER. Eine dreiundzwanzigste Karte, die vier Evangelisten, hat die Inhaltsprüfung als
+Dublette gemeldet: Die Sammlung fragte schon nach den vier Evangelien, mit derselben Antwort.
+Sie ist wieder gestrichen.
 
 ### Qualitätssicherung
 
