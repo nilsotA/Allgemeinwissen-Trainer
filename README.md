@@ -4012,6 +4012,16 @@ Versuch von Roediger und Karpicke (2006) sind es rund die Hälfte mehr. Dazu zwe
 Glättungen (der Strafstoß heißt in England „penalty", nicht „penalty spot"; ein holpriger
 Satz zum Grundgesetz).
 
+Die siebte galt Urheberfragen („Wer schrieb, malte, komponierte, erfand …?"): 156 Karten, alle
+Antworten richtig, dazu die Ablenker auf versehentlich richtige Optionen geprüft. Gefunden:
+Frank Elstner hat „Verstehen Sie Spaß?" nicht entwickelt (das war Kurt Felix, Elstner
+moderierte es 2002–2009), und „Die Montagsmaler" moderierte er 1974–1979, nicht zwanzig
+Jahre. Bei Leif Eriksson stand Bjarni Herjólfsson unter den Ablenkern, der Nordamerika schon
+vor ihm gesichtet hatte; ersetzt durch Harald Blauzahn. Nebenbei fielen fünf Kontexttexte mit
+umschriebenen Umlauten auf („Neuseelaender", „stoesst"). Die Inhaltsprüfung meldet so etwas
+jetzt als Fehler: Ein Wort mit ae/oe/ue schlägt an, wenn seine Umlautform anderswo im Bestand
+steht.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.

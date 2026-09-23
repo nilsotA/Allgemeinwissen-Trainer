@@ -378,6 +378,22 @@ for (const c of CARDS) {
   }
 }
 
+/* Umschriebene Umlaute in allem, was man sieht (Frage, Antwort, Kontext, Ablenker).
+   „Neuseelaender" oder „stoesst" lesen sich wie Tippfehler. Gesucht werden Woerter,
+   deren Umlautform anderswo im Bestand vorkommt – so bleiben Goethe, Poesie oder
+   Aerosol unberuehrt. Eigennamen, die wirklich so heissen, stehen in der Ausnahme.
+   Die Antwortvarianten (az) sind ausgenommen, die sieht niemand. */
+const UMLAUT_ECHT = new Set(['hoechst', 'eisenstaedt', 'ae']);
+const sichtbar = (c) => [c.q, c.a, c.t, ...(c.w || [])].filter(Boolean).join(' ');
+const WORTSCHATZ = new Set(CARDS.flatMap(c => sichtbar(c).toLowerCase().match(/\p{L}+/gu) || []));
+const mitUmlaut = (w) => w.replace(/ae/g, 'ä').replace(/oe/g, 'ö').replace(/ue/g, 'ü');
+for (const c of CARDS) {
+  const krumm = new Set((sichtbar(c).match(/\p{L}+/gu) || []).map(w => w.toLowerCase())
+    .filter(w => /ae|oe|ue/.test(w) && !UMLAUT_ECHT.has(w)
+      && (WORTSCHATZ.has(mitUmlaut(w)) || /^(fuer|ueber|stoess|jaehr)/.test(w))));
+  if (krumm.size) fail(`${c.id}: Umlaut umschrieben – ${[...krumm].join(', ')}`);
+}
+
 /* Zweitens: eine Behauptung, die vom Kalender abhaengt, ohne Jahreszahl daneben.
    „Rekordhalter: X mit N Titeln" stimmt, bis jemand N+1 holt. Nur ein Hinweis,
    keine Schranke: Ein Teil der Treffer ist harmlos, und die Wartungsliste in der
