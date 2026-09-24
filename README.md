@@ -4069,6 +4069,30 @@ Kontexttexte im ganzen Bestand, die einen Bindestrich als Gedankenstrich benutzt
 („galt - ganz"). Sie sind repariert, und die Inhaltsprüfung meldet das Muster jetzt als
 Fehler; Formeln trifft sie nicht, weil dort das echte Minuszeichen steht.
 
+Die fünfzehnte schloss die Runde ab: die übrigen 1.301 Karten aus Natur, Kultur, Sprache,
+Politik und Alltag, diesmal in einem Durchgang mit fünf Lesern (je ein Thema) und je einem
+Gegenprüfer, der jeden Befund per Websuche zu widerlegen versuchte. Alle 1.301 Antworten
+hielten. 21 Befunde wurden bestätigt, alle in Kontexttexten, Ablenkern oder einer Frage:
+- **Veraltet:** Dass Andromeda und Milchstraße verschmelzen, gilt seit Hubble- und
+  Gaia-Messungen von 2025 als offen. Die Weltreligionen stehen jetzt mit dem Pew-Stand 2020.
+- **Ablenker, die eigentlich stimmen:** „Auf beiden Halbkugeln“ bei den Pinguinen
+  (Galápagos-Pinguine leben auch knapp nördlich des Äquators) und „Eine Konjunktion“ bei der
+  Sonnenfinsternis (Neumond ist eine Konjunktion). Beide ersetzt.
+- **Zu glatt:** Punk „entstand in Großbritannien“ (die Ramones spielten schon 1974 in New
+  York), Grimm „sammelten ab 1812“ (veröffentlichten), Petrarca machte das Sonett nicht
+  schon im 14. Jahrhundert europaweit führend, „Atemschaukel“ spielt nicht unter Ceaușescu,
+  die GmbH ist die häufigste Kapitalgesellschaft, nicht Rechtsform, die DSGVO gilt seit 2018,
+  in Kraft ist sie seit 2016, die Vertrauensfrage zum Verlieren stellte zuerst Brandt 1972.
+- **Begriffe:** „in dubio pro reo“ ist nicht der lateinische Name der Unschuldsvermutung,
+  Lkw ist laut Duden ein Akronym, Kant hielt die Goldene Regel für „trivial“, statt sie zu
+  „verschärfen“, und vor „und“ steht ein Komma nicht nur nach Nebensätzen.
+- **Sicherheit:** Bei Gewitter ist nicht das Meer „besonders“ gefährlich – man verlässt
+  jedes Gewässer.
+
+Damit ist jede der 2.944 Karten mindestens einmal gezielt gegengelesen worden. Über alle
+Nachlesen hinweg war keine einzige Antwort falsch; die Fehler steckten in Kontexttexten und
+Ablenkern.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.
