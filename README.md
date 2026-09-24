@@ -4061,6 +4061,14 @@ Präzisiert: Rätoromanisch ist Amtssprache des Bundes nur im Verkehr mit Rätor
 Frage schrieb „heisst" – die Inhaltsprüfung erkennt jetzt auch eindeutige Schweizer
 ss-Schreibungen (heisst, weiss, Strasse …) und meldet sie als Fehler.
 
+Die vierzehnte galt der Geschichte: alle 202 noch offenen Karten, von Hammurabi bis zur
+Zeitenwende. Jede Antwort und jedes Detail hielt, auch die heiklen (Pearl Harbor: alle acht
+Schlachtschiffe beschädigt, vier versenkt; Merkel zehn Tage kürzer im Amt als Kohl; von
+dreißig Ausfertigungen des Wannsee-Protokolls überstand eine). Aufgefallen sind nur sieben
+Kontexttexte im ganzen Bestand, die einen Bindestrich als Gedankenstrich benutzten
+(„galt - ganz"). Sie sind repariert, und die Inhaltsprüfung meldet das Muster jetzt als
+Fehler; Formeln trifft sie nicht, weil dort das echte Minuszeichen steht.
+
 Die offene Frage ist, ob der **übrige Bestand** genauso geprüft wird. Nach dieser Messung
 lohnt es sich. Der Aufwand liegt bei rund 37.000 Tokens je Karte, bei 2.400 Karten also in
 der Größenordnung von 90 Millionen Tokens.

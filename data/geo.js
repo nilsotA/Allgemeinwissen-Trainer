@@ -139,7 +139,7 @@ export default [
 
 /* ---------- Erweiterung ---------- */
 {q:"Welche Gemeinde ist die südlichste Deutschlands?",a:"Oberstdorf",s:"Deutschland",d:3,t:"Ihr Gemeindegebiet reicht bis zum Haldenwanger Eck, dem südlichsten Punkt des Landes. Berchtesgaden liegt zwar östlicher, aber nördlicher.",w:["Garmisch-Partenkirchen","Berchtesgaden","Lindau"]},
-{q:"Welche deutsche Insel ist die einzige Hochseeinsel des Landes?",a:"Helgoland",s:"Deutschland",d:3,t:"Sie liegt rund 50 Kilometer vor der Küste und gehört zollrechtlich nicht zum EU-Gebiet - daher der zollfreie Einkauf.",w:["Sylt","Norderney","Fehmarn"]},
+{q:"Welche deutsche Insel ist die einzige Hochseeinsel des Landes?",a:"Helgoland",s:"Deutschland",d:3,t:"Sie liegt rund 50 Kilometer vor der Küste und gehört zollrechtlich nicht zum EU-Gebiet – daher der zollfreie Einkauf.",w:["Sylt","Norderney","Fehmarn"]},
 {q:"Welcher Berg ist der höchste Deutschlands außerhalb der Alpen?",a:"Der Feldberg im Schwarzwald",s:"Deutschland",d:3,t:"Mit 1.493 Metern überragt er den Brocken um mehr als 350 Meter. Alle höheren deutschen Gipfel stehen in den Alpen.",w:["Der Brocken im Harz","Der Große Arber im Bayerischen Wald","Die Wasserkuppe in der Rhön"]},
 {q:"Welches Land ist das flächengrößte, das vollständig in Europa liegt?",a:"Ukraine",s:"Europa",d:3,t:"Rund 600.000 Quadratkilometer, größer als Frankreich. Russland ist zwar weit größer, liegt aber zum Großteil in Asien.",w:["Frankreich","Spanien","Schweden"]},
 {q:"Welche Hauptstadt eines souveränen Staates liegt am weitesten nördlich?",a:"Reykjavík",s:"Europa",d:3,t:"Sie liegt auf etwa 64 Grad Nord, knapp südlich des Polarkreises, und damit deutlich nördlicher als Helsinki oder Oslo.",w:["Oslo","Helsinki","Stockholm"]},

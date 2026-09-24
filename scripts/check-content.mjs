@@ -394,6 +394,10 @@ for (const c of CARDS) {
       /* Schweizer ss statt ß: nur eindeutige Wörter, „Masse" und „Buße" sind beide richtig */
       || /^(heisst|heissen|weiss|gross|grosse[nrs]?|strasse|schliesslich|ausser|gemäss|grösse)$/.test(w)));
   if (krumm.size) fail(`${c.id}: Umlaut umschrieben – ${[...krumm].join(', ')}`);
+  /* Bindestrich als Gedankenstrich: „galt - ganz" statt „galt – ganz". Rechenzeichen
+     stehen im Bestand als echtes Minus (−), deshalb trifft das keine Formel. */
+  const strich = sichtbar(c).match(/\p{L}[.,!?"“]? - \p{L}/u);
+  if (strich) fail(`${c.id}: Bindestrich statt Gedankenstrich – „${strich[0]}"`);
 }
 
 /* Zweitens: eine Behauptung, die vom Kalender abhaengt, ohne Jahreszahl daneben.
