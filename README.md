@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.327 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.375 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (660 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (421 Karten: Grundlagen,
@@ -28,6 +28,11 @@ Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen)
 Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (63 Karten:
 Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
 Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
+Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (48 Karten): Brennwerte,
+Vitamine und ihre Mangelkrankheiten, Mineralstoffe, Fettsäuren, die DGE-Empfehlungen von 2024
+(höchstens 300 g Fleisch pro Woche, kein Alkohol als unbedenkliche Menge), Etiketten
+(Nutri-Score, Big 7, Verbrauchsdatum, 14 Allergene) und Sporternährung von 90 g Kohlenhydraten
+pro Stunde bis zur Hyponatriämie.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (27 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
@@ -4066,6 +4071,19 @@ Normalisierung mit der Antwort identisch waren, und zwei zu lange Fragen.
 | Sprint | 56 | 16 / 25 / 15 | 27 |
 | Fußball | 68 neu, 117 gesamt | 38 / 62 / 17 (gesamt) | alle |
 | Krafttraining | 63 | 17 / 30 / 16 | 14 |
+
+### Ernährung: 48 Karten, von Hand geschrieben
+
+Ernährung lag bis dahin verstreut in gut zwei Dutzend Karten: Kalorien pro Gramm, einige
+Vitamine, die Protein- und Kreatinkarten des Krafttrainings. Das neue Teilgebiet steht unter
+Alltag & Welt und damit auch in der Quizrunde, weil Vitamine, Nutri-Score und
+Mindesthaltbarkeit Alltagswissen sind. Diesmal lief kein Workflow, die Karten sind von Hand
+geschrieben. Alles, was sich zuletzt bewegt hat, ist per Websuche nachgeprüft: die
+DGE-Empfehlungen von 2024 (300 g Fleisch, keine unbedenkliche Alkoholmenge), 30 g
+Ballaststoffe, 20 µg Vitamin D, die EFSA-Grenze von 400 mg Koffein und die bis zu 90 g
+Kohlenhydrate pro Stunde bei langen Belastungen. Von 51 Entwürfen flogen drei raus. Zwei
+Fakten standen schon im Bestand (Speichelamylase, 2 % Flüssigkeitsverlust), und „4 kcal pro
+Gramm Kohlenhydrate“ hat das Dublettentor als Zwilling der Eiweißkarte erkannt.
 
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
