@@ -3907,6 +3907,28 @@ nicht. Ein bekannter Rest: „Suffragisten" gilt als Tippfehler von „Suffraget
 als richtig (0,83), obwohl es die gemäßigte Gegenbewegung ist. Der Kontexttext nennt deshalb
 den Unterschied.
 
+### Der siebte Prüfsatz: fünf neue Blickwinkel – 52 %
+
+Die ersten sechs Sätze fragten nach Einzelfragen und nach Themenblöcken. Der siebte fragt aus
+Blickwinkeln, die dort fehlten: **TV-Quizshows** („Wer wird Millionär?“, „Gefragt – Gejagt“:
+Redewendungen, Wortherkunft, Marken), **vergessene Quizduell-Kategorien** (Marken & Werbung,
+Essen, Tiere, Körper, Wetter, Comics, Spiele), **Zeitgeschehen 2023 bis 2026**,
+**Schulwissen der Klassen 5 bis 10** und **Prüfungswissen fürs Lehramt Sport und Mathematik**.
+Fünf Autoren, ohne Kenntnis der Sammlung, schrieben je 100 Fragen; die Zeitgeschehen-Fragen
+nur mit Quellenbeleg aus dem Netz. Fünf Prüfer haben jede Frage kontrolliert und 85 geschärft,
+verworfen haben sie keine. Nach dem Entfernen doppelter Antworten blieben **479 Fragen**. Der
+Satz wurde eingefroren und committet, bevor eine Karte gegen ihn geschrieben war.
+
+Gemessen gegen die 2.944 Karten: **250 von 479 – 52 %.**
+
+| Blickwinkel | vorher |
+|---|---|
+| TV-Quizshows | 49/100 |
+| Quizduell-Nischen | 47/88 |
+| Zeitgeschehen 2023–2026 | 31/96 |
+| Schulwissen 5–10 | 66/95 |
+| Lehramt Sport & Mathe | 57/100 |
+
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
 Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,
