@@ -637,10 +637,17 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
      ohne diese Zeile zaehlte „1" gegen „Eines" als Durchrutscher. */
   const ZAHLWORT = { eins: '1', eines: '1', ein: '1', eine: '1', zwei: '2', drei: '3', vier: '4',
     fuenf: '5', sechs: '6', sieben: '7', acht: '8', neun: '9', zehn: '10', elf: '11', zwoelf: '12' };
+  /* „Achtmal" und „Acht" nennen dieselbe Zahl, „Nach der fünften" und „Fünf"
+     ebenso. Ohne diese Formen galt die Antwort der Nachbarkarte als fremd,
+     obwohl sie nur anders gebeugt war (Messi achtmal, acht EM-Titel). */
+  const ORDNUNG = { erst: '1', dritt: '3', siebt: '7', acht: '8' };
+  const zahlwort = (w) => ZAHLWORT[w] || ZAHLWORT[w.replace(/mal$/, '')]
+    || ZAHLWORT[w.replace(/te[nrs]?$/, '')] || ZAHLWORT[w.replace(/ste[nrs]?$/, '')]
+    || ORDNUNG[w.replace(/e[nrs]?$/, '')];
   const zahlen = (t) => {
     const roh = String(t).toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
       .replace(/ß/g, 'ss').match(/[a-z0-9]+/g) || [];
-    return roh.map(w => (/^\d+$/.test(w) ? w : ZAHLWORT[w])).filter(Boolean);
+    return roh.map(w => (/^\d+$/.test(w) ? w : zahlwort(w))).filter(Boolean);
   };
   const gleicheZahl = (a, b) => {
     const x = zahlen(a), y = zahlen(b);
@@ -677,7 +684,10 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
     /* „Fenster" kommt aus dem Lateinischen; wer dort „Latein" tippt – die
        Antwort zweier Nachbarkarten –, hat recht. Die Nebenschreibweise
        „Latein" hat die Pruefung der Stichprobe ergaenzt. */
-    'spr-c2yj8p|spr-1sq0dp', 'spr-c2yj8p|spr-1lmk35c']);
+    'spr-c2yj8p|spr-1sq0dp', 'spr-c2yj8p|spr-1lmk35c',
+    /* Bei Höchsttempo steht ein Weltklassesprinter 0,08 bis 0,1 s am Boden. Wer
+       dort „unter 0,1 s" tippt – die Antwort der Fehlstartkarte –, hat recht. */
+    'spo-24dfun|spo-16zjy87']);
 
   const durchgerutscht = [];
   let geprueft = 0;

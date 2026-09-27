@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.140 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.327 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (473 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (421 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (660 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (421 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -20,6 +20,14 @@ In beiden Fächern reicht die Sammlung bewusst bis auf Studienniveau: biomechani
 und der Doppelauftrag des Schulsports ebenso wie Hauptsatz, hessesche Normalform, Fehler
 erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht nur mitreden,
 sondern sattelfest sein.
+
+Drei Sportthemen sind eigens ausgebaut, weil sie den Nutzer auch selbst betreffen: **Sprint**
+(56 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
+Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen),
+**Fußball** (117 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
+Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (63 Karten:
+Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
+Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (27 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
@@ -233,7 +241,7 @@ gegen den alten Stand fehlschlägt.
   Für unterwegs lässt sich eine kürzere Runde wählen (rund 3, 5 oder 10 Minuten).
 - **Wackelkandidaten** – gezielt die Karten, die immer wieder umkippen.
 - **Themen** – ein Gebiet am Stück üben oder ein einzelnes Teilgebiet gezielt: Tippen auf
-  „Sport“ öffnet die dreizehn Teilgebiete von Trainingslehre bis Rekorde, jedes mit eigenem
+  „Sport“ öffnet die fünfzehn Teilgebiete von Trainingslehre bis Krafttraining, jedes mit eigenem
   Fortschritt. Vor einer Klausur in Bewegungslehre übt man genau diese Karten.
 - **Quiz** – der Prüfstand der App: zwölf Fragen quer durch alle Themen, 15 Sekunden pro
   Frage, zehn Punkte je Treffer und fünf dazu, wenn die Antwort in den ersten fünf Sekunden
@@ -3995,6 +4003,69 @@ Im Quiz gilt Österreich. Das Statistische Bundesamt führt aber Österreich und
 817 km, die Frage hat also keine eindeutige Antwort.
 
 Stand danach: **100, 95, 100, 95, 96, 96 und 95 %** in den sieben Sätzen.
+
+### Sprint, Fußball, Krafttraining: 187 Karten für die eigenen Sportarten
+
+Der Nutzer läuft selbst 60, 100 und 200 m, will im Fußball mitreden und sich im Kraftsport
+auskennen. Genau dort war die Sammlung dünn. Zum Sprint gab es kaum mehr als Bolts 9,58 s und
+die Fehlstartregel, zum Muskelaufbau ein paar Karten in der Trainingslehre. Die 49
+Fußballkarten waren fast nur Titel und Rekordhalter: kaum Regeln, keine Taktik.
+
+**Drei Stränge, je drei Stufen.** Pro Thema schrieb ein Autor. Er glich jeden Kandidaten per
+Suche mit dem Bestand ab und belegte Rekorde, Regeln und Studienwerte über die Websuche. Jede
+Lieferung lief durch eine Vorprüfung mit der echten Bewertung der App. Danach suchte ein
+Faktenprüfer gezielt den Fehler, den der Autor übersehen hatte, anschließend ein Bauartprüfer
+zweite richtige Antworten, stimmende Ablenker, abgelehnte richtige Eingaben und Dubletten.
+Geschrieben wurden 188 Karten, eine flog als Dublette raus.
+
+Die Faktenprüfer meldeten 32 Befunde, darunter echte Fehler:
+- Die **Bahnauslosung** im 100-m-Finale ist seit 2023 geändert. Die Karte kannte die alte Regel.
+- Beim **200-m-Kurvenversatz** schloss „ab Bahn 2“ den Sonderfall Bahn 1 → 2 ein. Dort sind es
+  3,52 m statt 3,83 m, weil auf Bahn 1 weiter innen gemessen wird.
+- **Florence Griffith-Joyner** lief in Seoul zwei 200-m-Weltrekorde, erst im Halbfinale, dann im
+  Finale. „Mit welcher Zeit stellte sie den Weltrekord auf?“ hatte also zwei Antworten.
+- Der Kontext zum **Elfmeterschießen** behauptete, bei gleicher Schusszahl entscheide der erste
+  Fehlschuss. Verschießen beide, geht es aber weiter.
+- **Studienaussagen** waren überzogen: Die Nordic-Hamstring-Metaanalyse fand weniger
+  Oberschenkelverletzungen, nicht speziell weniger Zerrungen, und eine Neuauswertung zweifelt
+  an ihr. Drop-Sätze sparen „oft“ Zeit, nicht „ein Drittel bis die Hälfte“.
+
+Die Bauartprüfer meldeten 68 Befunde. Der wichtigste betraf die Abseitskarte: Die falsche
+Eingabe „Anstoß, Einwurf, Ecke“ galt mit 0,95 als richtig, weil „Anstoß“ nur einen Buchstaben von
+„Abstoß“ entfernt ist. Mit Nebenschreibweisen lässt sich das nicht beheben, also nennt die Frage
+jetzt den Abstoß selbst. Weitere Befunde:
+- „Keinmal“ als Ablenker bei der Linienregel war bis 2021 die richtige Antwort.
+- Joe Weider heißt ebenfalls „Vater des Bodybuildings“.
+- „Deload“ passte auch auf Tapering.
+
+In rund 1.000 Tipptests kamen die Nebenschreibweisen dazu, die ein Sportstudent am Handy
+wirklich tippt: „Blockstart“, „Reizdauer“, „Stripping“, „2x15 min“, „Miro Klose“.
+
+**Eine Lücke und ihre Folgen.** Als die Faktenprüfer für Fußball und Krafttraining an der Reihe
+waren, war das Suchkontingent der Sitzung aufgebraucht. Sie prüften aus Fachwissen und
+schrieben das offen dazu. Deshalb habe ich alle 187 Karten selbst gelesen und jede Behauptung
+nachgesucht, die sich seit 2025 bewegt haben könnte: Hallen-WM 2026 über 60 m, Europarekorde
+über 100 und 200 m, Ansahs 9,98 s, den Fünf-Sekunden-Countdown bei Einwurf und Abstoß ab
+2026/27, den Vertrag über das Pokalfinale in Berlin bis 2030, Talakhadzes dritten Olympiasieg,
+die Laufrichtung 1906. Zwei Angaben waren nicht belegbar und sind weg: „Ben Johnson war nur 62
+Stunden Olympiasieger“ und eine Anekdote über verärgerte Amerikaner 1906. Ein Fehler kam
+**vom Prüfer selbst**: Er hatte Talakhadzes 470 kg von Paris als zu hoch gestrichen. Die IWF
+bestätigt die 470 kg, 3 kg vor Lalayan, jetzt stehen sie wieder im Kontext. Ein Prüfer ohne
+Quelle kann eine richtige Karte also auch verschlechtern.
+
+**Einbau.** Sprint und Krafttraining sind neue Teilgebiete und zählen wie die Trainingslehre als
+Lehrerwissen: voll im Tagestraining und in den Themen, in der Quizrunde nur die Karten mit
+Spieleabend-Wissen (27 zum Sprint, 14 zum Kraftsport – Rekorde, Olympiasieger, Mr. Olympia).
+Fußball ist ohnehin Quizwissen. Die Inhaltsprüfung schlug an fünf Stellen an, weil „Rund
+44,7 km/h“ auch rückwärts gelesen als richtig galt. Die Antworten stehen jetzt ohne „Rund“ da,
+das „Rund“ bleibt als Nebenschreibweise erhalten. Dazu kamen 71 Nebenschreibweisen, die nach der
+Normalisierung mit der Antwort identisch waren, und zwei zu lange Fragen.
+
+| | Karten | Basis / Solide / Profi | davon Quizrunde |
+|---|---|---|---|
+| Sprint | 56 | 16 / 25 / 15 | 27 |
+| Fußball | 68 neu, 117 gesamt | 38 / 62 / 17 (gesamt) | alle |
+| Krafttraining | 63 | 17 / 30 / 16 | 14 |
 
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 

@@ -1184,7 +1184,7 @@ test('die Quizrunde fragt wie ein Spieleabend, nicht wie ein Staatsexamen', () =
      durch buildQuiz UND gelten nicht mehr als Lehrerwissen: lehrer.length bleibt
      0, und der Test besteht, waehrend genau das passiert, was er verhindern soll. */
   const abgedeckt = new Set(CARDS.filter(sess.istLehrerwissen).map(c => c.cat + '/' + c.sub));
-  assert.equal(abgedeckt.size, 13,
+  assert.equal(abgedeckt.size, 15,
     `LEHRERWISSEN nennt Teilgebiete, die es im Bestand nicht mehr gibt – abgedeckt sind nur: ${[...abgedeckt].sort().join(', ')}`);
 
   const gezogen = [];

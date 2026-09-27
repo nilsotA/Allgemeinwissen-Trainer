@@ -21,8 +21,10 @@ export const LEVELS = {
    Ableitung von x hoch drei oder dem Doppelauftrag des Schulsports. Diese Karten
    bleiben im Tagestraining und in den Themenrunden voll dabei; nur der Pruefstand
    laesst sie aus, solange die Einstellung „Lehrerwissen in der Quizrunde" aus ist.
-   Anatomie, Regelkunde, Mathegeschichte, Olympia bleiben drin: Die fragt ein Quiz. */
+   Anatomie, Regelkunde, Mathegeschichte, Olympia bleiben drin: Die fragt ein Quiz.
+   Sprint und Krafttraining sind Trainingswissen; Rekorde und bekannte Namen daraus
+   tragen sa und bleiben so in der Quizrunde. */
 export const LEHRERWISSEN = {
   mat: new Set(['Grundlagen', 'Schulmathe', 'Analysis', 'Stochastik', 'Lineare Algebra', 'Mathedidaktik', 'Verfahren erkennen']),
-  spo: new Set(['Sportdidaktik', 'Trainingslehre', 'Bewegungslehre', 'Sportpsychologie', 'Sportmedizin', 'Verfahren erkennen']),
+  spo: new Set(['Sportdidaktik', 'Trainingslehre', 'Bewegungslehre', 'Sportpsychologie', 'Sportmedizin', 'Verfahren erkennen', 'Sprint', 'Krafttraining']),
 };
