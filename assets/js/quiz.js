@@ -845,6 +845,25 @@ function vergleich(input, answer, bekannt = new Set()) {
     const anker = woerter(b).some(w => w !== f && traegtBedeutung(w));
     if (anker && Math.max(f.length, u.length) >= 5
         && !behauptet(u) && levenshtein(f, u) === 1) return roh;
+    /* Ohne Anker, also bei Einwortantworten („Prokrastination", „Leonidas") und
+       bei Antworten, deren einziges tragendes Wort das vertippte ist („Die
+       Aufklaerung"), blieb bisher jeder Vertipper in der vorderen Worthaelfte
+       ein anderes Wort: Nur 6,4 Prozent solcher Faelle galten als richtig. Mit
+       dem siebten Pruefsatz kamen 196 Quizkarten mit meist einwortigen
+       Antworten dazu, und die Strenge traf genau dort, wo am Handy am meisten
+       getippt wird.
+
+       Die Ausnahme hat drei Sperren statt eines Ankers. Das Wort ist lang
+       (ab acht Buchstaben – kurze Woerter bleiben streng, „Zinn"/„Zink"). Die
+       ersten beiden Buchstaben stimmen – genau dort sitzen die gefaehrlichen
+       Paare mit einem einzigen Unterschied: „Abduktion"/„Adduktion",
+       „afferent"/„efferent". Und das getippte Wort steht nirgends in der
+       Sammlung als Antwort. Die zweite Tippfehlerpruefung der Einheitentests
+       (Fehler im vorderen Viertel) stieg damit von 64,9 auf die unten im Test
+       genannte Quote; die Ablenkerpruefung und der Fremdantworttest ueber alle
+       Karten blieben ohne neuen Treffer. */
+    if (Math.min(f.length, u.length) >= 8 && f.slice(0, 2) === u.slice(0, 2)
+        && !behauptet(u) && levenshtein(f, u) === 1) return roh;
   }
 
   // Fehlt ein tragendes Wort der Lösung, ist die Eingabe inhaltlich eine andere

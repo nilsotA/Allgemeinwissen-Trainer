@@ -668,6 +668,12 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
        der Grenzkarte tippt („Kanada zu den USA"), nennt dieselben zwei Staaten
        und hat recht. */
     'geo-1cet63k|geo-nhw0hm', 'geo-nhw0hm|geo-1cet63k',
+    /* Zwei Richtungen derselben Sache, beide mit Pruefsatz 7 in Gebrauch: Wer
+       nach den Sauerstofftraegern im Blut gefragt „Erythrozyten" tippt – die
+       Antwort der Fachbegriffskarte –, hat recht. Ebenso ist „Prinzip der
+       Gegenwirkung" die richtige Antwort auf die Weitsprungfrage, deren
+       Loesung nur ein „Wegen des" davorsetzt. */
+    'nat-ogafiq|nat-i4smfh', 'spo-cfffd|spo-1ge2cqh',
     /* „Fenster" kommt aus dem Lateinischen; wer dort „Latein" tippt – die
        Antwort zweier Nachbarkarten –, hat recht. Die Nebenschreibweise
        „Latein" hat die Pruefung der Stichprobe ergaenzt. */
@@ -714,10 +720,12 @@ test('ein Tippfehler in der Antwort wird weit überwiegend verziehen', () => {
    2,2 Prozent verziehen wurde. Ein Gegentest, der nur die leichte Haelfte
    misst, meldet Gesundheit und prueft nichts.
 
-   Gemessen 1,4 -> 70,8 Prozent. Der Boden steht darunter, nicht darauf: Besser
-   darf es jederzeit werden. Die fehlenden 29 Prozent sind kein Versehen,
-   sondern die Grenze der Regel – Einwortantworten haben keinen Anker, und
-   kurze Woerter bleiben streng. */
+   Gemessen 1,4 -> 70,8 Prozent, spaeter durch neue Karten auf 64,9 gesunken:
+   Einwortantworten hatten keinen Anker und blieben streng. Seit der Ausnahme
+   fuer lange Woerter mit stimmendem Anfang (quiz.js, nach dem Anker-Fall)
+   stehen es 97,7 Prozent. Der Boden steht darunter, nicht darauf. Der Rest
+   sind kurze Woerter und Fehler in den ersten beiden Buchstaben – dort bleibt
+   es mit Absicht streng. */
 test('ein Tippfehler vorn im Wort wird ueberwiegend verziehen', () => {
   let erkannt = 0, abgelehnt = 0;
   for (const c of CARDS) {
@@ -729,7 +737,23 @@ test('ein Tippfehler vorn im Wort wird ueberwiegend verziehen', () => {
     similarity(vertippt, c.a) >= 0.8 ? erkannt++ : abgelehnt++;
   }
   const quote = erkannt / (erkannt + abgelehnt);
-  assert.ok(quote >= 0.65, `nur ${(quote * 100).toFixed(1)} % der Tippfehler vorn wurden verziehen`);
+  assert.ok(quote >= 0.95, `nur ${(quote * 100).toFixed(1)} % der Tippfehler vorn wurden verziehen`);
+});
+
+/* Die Ausnahme ohne Anker hat drei Sperren – jede einzeln belegt. */
+test('Vertipper vorn in langen Einwortantworten: verziehen, aber mit Sperren', () => {
+  for (const [eingabe, loesung] of [['Prekrastination', 'Prokrastination'], ['Leenidas', 'Leonidas'],
+    ['Die Aueklärung', 'Die Aufklärung'], ['Hammarabi', 'Hammurabi']]) {
+    assert.ok(similarity(eingabe, loesung) >= 0.8, `„${eingabe}" sollte als „${loesung}" gelten`);
+  }
+  // Sperre 1: die ersten beiden Buchstaben – dort sitzen die echten Paare.
+  // Sperre 2: kurze Woerter bleiben streng.
+  // Sperre 3: ein Wort, das die Sammlung selbst als Antwort fuehrt, ist kein Vertipper.
+  for (const [eingabe, loesung] of [['Abduktion', 'Adduktion'], ['efferent', 'afferent'],
+    ['Zink', 'Zinn'], ['Expressionismus', 'Impressionismus'], ['Bundestag', 'Bundesrat'],
+    ['Erlebnis', 'Ergebnis'], ['Leitungen', 'Leistungen']]) {
+    assert.ok(similarity(eingabe, loesung) < 0.8, `„${eingabe}" ging als „${loesung}" durch`);
+  }
 });
 
 /* Vertauschte Aussagen sind der häufigste Ablenkertyp der Sammlung. Sie stimmen

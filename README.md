@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**2.944 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.140 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (440 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (397 Karten: Grundlagen,
+Schwerpunkte liegen auf **Sport** (473 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Sportmedizin, Sportdidaktik, Sportpsychologie) und **Mathematik** (421 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -23,15 +23,15 @@ sondern sattelfest sein.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (27 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (33 – Reinheitsgebot,
-Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (12 – Penicillin, Dynamit,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (32 Quiz-Klassiker vom
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (37 – Reinheitsgebot,
+Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (14 – Penicillin, Dynamit,
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (38 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
 Freddie Mercury, Falco).
 
-Ein eigenes Teilgebiet **Geld im Alltag** (53 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
+Ein eigenes Teilgebiet **Geld im Alltag** (54 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
 zählen und in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und
 Kündigungsfrist, Probezeit und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man
 trotzdem braucht. Dazu die Fristen, die man einmal falsch verstreichen lässt und dann nicht
@@ -445,7 +445,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 189 Einheitentests plus Inhaltsprüfung
+npm test           # 190 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -3929,6 +3929,42 @@ Gemessen gegen die 2.944 Karten: **250 von 479 – 52 %.**
 | Schulwissen 5–10 | 66/95 |
 | Lehramt Sport & Mathe | 57/100 |
 
+#### 196 Karten, geschrieben mit Bestandsabgleich und zerlegt von Gegenprüfern
+
+Von den 229 Lücken fehlten 121 ganz; der Rest stand nur im Kontexttext, in einer längeren
+Antwort oder in der Gegenrichtung. Je Blickwinkel hat ein Autor jede Lücke gegen `data/*.js`
+abgeglichen und entschieden: neue Karte, fehlende Schreibweise einer bestehenden Karte oder
+begründet offen. Ein Gegenprüfer je Blickwinkel hat danach jede Karte zu widerlegen
+versucht, die Zeitgeschehen-Karten gegen Quellen im Netz. Er hat **79 Karten korrigiert** und
+**20 verworfen**, fast alle als Umkehrung oder Dublette einer bestehenden Karte („Welches Tier
+bindet man jemandem auf?“ neben „Was bedeutet ‚einen Bären aufbinden‘?“). Fünf Lücken blieben
+mit Grund offen: Ihre Antwort ist eine Zahl, die eine bestehende Karte zum selben Gegenstand
+schon in der Frage nennt („17. Juni 1953“, „WM-Finale 2014“). Eine eigene Stichprobe der
+Zeitgeschehen-Karten hielt: Klopp als Bundestrainer, „KI-Ära“ als Wort des Jahres 2025, das
+WM-Aus 2026 gegen Paraguay im Elfmeterschießen.
+
+**Ergebnis: 250 → 456 von 479 (52 → 95 %).** 198 der neuen Treffer kommen von neuen Karten,
+8 von Schreibweisen bestehender Karten und von der Bewertungsänderung unten. Die übrigen 23 sind
+fast alle Umkehrungen bestehender Karten. Die älteren Sätze stehen jetzt bei 100, 96, 100, 93,
+95 und 95 %.
+
+Die Inhaltsprüfung wies keine einzige der 196 Karten ab. Drei Einheitentests schlugen an:
+- **„@“ als Nebenschreibweise:** Die Bewertung wirft Sonderzeichen weg, der Eintrag konnte nie
+  greifen. Er ist entfernt; „Klammeraffe“ und „At“ bleiben.
+- **Zwei echte Synonympaare im Fremdantworttest:** „Erythrozyten“ auf die Frage nach den roten
+  Blutkörperchen und „Prinzip der Gegenwirkung“ auf die Weitsprungfrage sind richtig. Beide
+  stehen mit Begründung in der Ausnahmeliste.
+- **Tippfehler vorn im Wort:** Die Quote fiel auf 64,9 % und damit unter den Boden. Der Grund
+  war nicht eine Karte, sondern die Regel: Einwortantworten hatten keinen Anker, jeder
+  Vertipper in der vorderen Hälfte galt als anderes Wort – verziehen wurden **6,4 %**. Mit
+  196 meist einwortigen Quizantworten traf das genau die Eingaben, die man am Handy tippt
+  („Prekrastination“). Die Bewertung verzeiht solche Vertipper jetzt unter drei Sperren: Das
+  Wort hat mindestens acht Buchstaben, die ersten beiden Buchstaben stimmen (dort sitzen
+  „Abduktion“/„Adduktion“ und „afferent“/„efferent“), und das getippte Wort steht nirgends in
+  der Sammlung als Antwort („Erlebnis“/„Ergebnis“). **Quote vorn: 64,9 → 97,7 %**, der Boden des
+  Tests steht jetzt bei 95 %. Ablenkerprüfung und Fremdantworttest über alle 3.140 Karten
+  meldeten dadurch keinen neuen Treffer, und ein eigener Test hält die Sperren fest.
+
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
 Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,
@@ -4260,7 +4296,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 189 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 190 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups, den
 Vergleich freier Eingaben und den Quizmodus (Ziehung, Punkteformel, Auswertung, Runden über
 zwei Tabs) ab.
