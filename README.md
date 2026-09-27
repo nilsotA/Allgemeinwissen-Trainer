@@ -4087,10 +4087,18 @@ genehmigt). Falsch war eine Zahl: Die Meisterschale wiegt elf Kilogramm, besteht
 ganz aus Silber, sondern enthält 5,5 Kilogramm Sterlingsilber.
 
 Die neunte galt Mathegeschichte und Mathedidaktik, 109 Karten. Alle Antworten stimmen, von
-Wiles' Lücke 1993 bis zu Bruners Scaffolding 1976. Zwei Didaktikkarten nennen jetzt den
-Wortlaut der KMK-Bildungsstandards von 2022: die fünf Leitideen (Algorithmus und Zahl, Messen,
-Raum und Form, Funktionaler Zusammenhang, Daten und Zufall) und K5 vollständig als „mit
-symbolischen, formalen und technischen Elementen der Mathematik umgehen".
+Wiles' Lücke 1993 bis zu Bruners Scaffolding 1976. Zwei Didaktikkarten sollten dabei den
+Wortlaut der KMK-Bildungsstandards von 2022 bekommen – und bekamen den falschen: Die
+Suchzusammenfassung, auf die sich die Änderung stützte, hatte die Abiturstandards von 2012
+(„Algorithmus und Zahl … Funktionaler Zusammenhang“, sechs Kompetenzen) als Fassung 2022
+ausgegeben. Aufgefallen ist das erst beim Gegenlesen der Karten aus Prüfsatz 7, deren
+Lehramtskarte es richtig hatte, und eine gezielte Nachsuche hat es bestätigt: Für die
+Sekundarstufe I gelten seit 2022 die Leitideen Zahl und Operation, Größen und Messen,
+Strukturen und funktionaler Zusammenhang, Raum und Form, Daten und Zufall, und es sind
+**sieben** prozessbezogene Kompetenzen – neu ist „Mit Medien mathematisch arbeiten“, die
+frühere K5 heißt „Mit mathematischen Objekten umgehen“. Drei Karten sind entsprechend
+korrigiert, zwei davon mit präziserer Frage (Sekundarstufe I seit 2022). Die Lehre daraus: Eine
+Suchzusammenfassung ist keine Quelle, wenn zwei Fassungen desselben Regelwerks existieren.
 
 Die zehnte galt dem Lehrerwissen Sport: Sportdidaktik, Sportpsychologie, Sportmedizin,
 Anatomie und Bewegungslehre, 156 Karten. Alle Antworten und Kontexttexte halten, von der
