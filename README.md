@@ -3965,6 +3965,37 @@ Die Inhaltsprüfung wies keine einzige der 196 Karten ab. Drei Einheitentests sc
   Tests steht jetzt bei 95 %. Ablenkerprüfung und Fremdantworttest über alle 3.140 Karten
   meldeten dadurch keinen neuen Treffer, und ein eigener Test hält die Sperren fest.
 
+#### Die Restlücken: acht Karten in die Quizrichtung gedreht
+
+Nach sieben Sätzen stand fest: Die meisten offenen Fragen sind kein fehlendes Wissen. Die
+Karte fragt nur die andere Richtung, und einige Klassiker fielen in **drei Sätzen hintereinander**
+durch. Eine zweite Karte zum selben Fakt kommt nicht infrage (doppelte Wiederholungen,
+und jede Frage verrät die Antwort der anderen). Deshalb sind acht Karten gedreht, jeweils
+in die Richtung, in der die Prüfsätze fragen. Das `p:` erhält den Lernstand:
+
+| vorher gefragt | jetzt gefragt | durchgefallen in |
+|---|---|---|
+| Welches Instrument hat 88 Tasten? | Wie viele Tasten hat ein Standardklavier? | Satz 4, 5, 6 |
+| Mit welchem Ereignis begann der Zweite Weltkrieg? | Mit dem Überfall auf welches Land …? | Satz 4, 5, 6 |
+| Was bedeutet die Fünf-Prozent-Hürde? | Wie hoch ist die Sperrklausel? | Satz 4, 5, 7 |
+| Welcher Gott schwingt Mjölnir? | Wie heißt Thors Hammer? | Satz 5, 6 |
+| Welcher Aufstand fand am 17. Juni 1953 statt? | An welchem Tag 1953 …? | Satz 6, 7 |
+| Welches Grand-Slam-Turnier wird auf Rasen gespielt? | Auf welchem Belag spielt Wimbledon? | Satz 5, 6 |
+| Was feiern Christen an Ostern? | Welches Fest feiert die Auferstehung? | Satz 4 |
+| Was bedeutet Progression im Steuerrecht? | Wie heißt das Prinzip …? | Satz 4 |
+
+Wimbledon kostet einen Treffer, denn Satz 2 fragt die alte Richtung. Zwei Sätze gegen einen
+geben den Ausschlag. Die alten Nebenschreibweisen der gedrehten Karten sind entfernt, weil
+„Der Steuersatz steigt mit dem Einkommen“ keine Antwort auf eine Benennfrage ist. Dazu kommen
+zwei Nebenschreibweisen: „Binnendifferenzierung“ für die innere Differenzierung und
+„f′′(x) = 0“ für die Wendepunktbedingung. Wer x statt x₀ tippte, bekam bisher nur 0,50.
+
+Bewusst **nicht** aufgenommen: „Mit welchem Nachbarland hat Deutschland die längste Grenze?“
+Im Quiz gilt Österreich. Das Statistische Bundesamt führt aber Österreich und Tschechien mit je
+817 km, die Frage hat also keine eindeutige Antwort.
+
+Stand danach: **100, 95, 100, 95, 96, 96 und 95 %** in den sieben Sätzen.
+
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
 Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,
