@@ -368,7 +368,7 @@ gegen den alten Stand fehlschlägt.
   Ausgangsfrage an diese App; beantworten konnte sie sie lange nicht, weil die Statistik nur
   nach Thema aufschlüsselte. Jetzt steht für Basis, Solide und Profi jeweils da, wie viele
   Karten begonnen sind und wie viele wirklich fest sitzen.
-- **Wissen des Tages** – 141 kurze Merkanker, die ein Warum erklären oder einen verbreiteten
+- **Wissen des Tages** – 145 kurze Merkanker, die ein Warum erklären oder einen verbreiteten
   Irrtum ausräumen. Einer pro Tag, ein knappes halbes Jahr ohne Wiederholung. Sie sind
   **Abrufaufgaben, keine Lesehäppchen**: Oben steht die Frage, die Auflösung kommt erst auf
   Tastendruck – und ein Anker von vor sieben Anzeigetagen kommt zurück. Vorher war das die
