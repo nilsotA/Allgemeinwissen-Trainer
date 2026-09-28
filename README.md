@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.375 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.376 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (660 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (661 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (421 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -25,7 +25,7 @@ Drei Sportthemen sind eigens ausgebaut, weil sie den Nutzer auch selbst betreffe
 (56 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
 Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen),
 **Fußball** (117 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
-Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (63 Karten:
+Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (64 Karten:
 Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
 Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
 Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (48 Karten): Brennwerte,
@@ -4057,6 +4057,16 @@ Stunden Olympiasieger“ und eine Anekdote über verärgerte Amerikaner 1906. Ei
 **vom Prüfer selbst**: Er hatte Talakhadzes 470 kg von Paris als zu hoch gestrichen. Die IWF
 bestätigt die 470 kg, 3 kg vor Lalayan, jetzt stehen sie wieder im Kontext. Ein Prüfer ohne
 Quelle kann eine richtige Karte also auch verschlechtern.
+
+**Nachtrag.** Danach habe ich jede Korrektur der beiden Prüfer ohne Websuche einzeln
+nachgesucht, und es waren nicht die einzigen Fälle. Bei Ronaldo stand ursprünglich richtig „146
+Tore“, der Prüfer machte daraus „143 bis Ende 2025“. Bei Björnsson hatte er den Rekordverlauf
+505 kg, 510 kg (2025) und Raúl Flores mit 511 kg (2026) als unbelegt gestrichen, dabei stimmte
+alles. Beim Einwurf-Countdown strich er, dass die Regel schon bei der WM 2026 galt. Alle drei
+Angaben sind wiederhergestellt, und Flores hat eine eigene Karte bekommen. Die Bilanz dieser
+Prüfer: Ihre wenigen echten Treffer betrafen Kontexte, ihre Streichungen bei Zahlen der Jahre
+2025/26 waren fast alle falsch. Eine Prüfung ohne Quelle erkennt einen Fakt, der jünger ist als
+das eigene Wissen, nicht als richtig, sondern hält ihn für erfunden.
 
 **Einbau.** Sprint und Krafttraining sind neue Teilgebiete und zählen wie die Trainingslehre als
 Lehrerwissen: voll im Tagestraining und in den Themen, in der Quizrunde nur die Karten mit
