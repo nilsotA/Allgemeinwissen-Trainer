@@ -4224,6 +4224,16 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
+### Der zehnte Prüfsatz: die vier Schwerpunkte, gründlicher gemessen – 67 %
+
+Prüfsatz 8 hatte nur 55 Fragen zu Sprint, Fußball, Krafttraining und Ernährung. Für
+`data/quizprobe10.json` haben vier Autoren blind, also ohne den Bestand zu kennen, je 40
+typische Quiz- und Lehramtsfragen geschrieben. Je ein Prüfer hat alle Antworten nachgeprüft:
+Rekorde, Regeln nach aktuellem IFAB- und World-Athletics-Stand und alles ab 2024 per
+Websuche. Berichtigen durfte er nur mit Quelle, und Unbelegtes hätte er gestrichen statt es zu
+ändern. Alle 160 Fragen bestanden; bei einer wurde der Fragetext präzisiert. Beantwortet sind
+**107 von 160 (67 %)**, also Sport 81/120 und Ernährung 26/40.
+
 ### Die Suche war wieder langsam geworden – ein Test hat es gemerkt
 
 Ein Oberflächentest fiel gelegentlich durch: Wer einige Sekunden auf der Startseite war und

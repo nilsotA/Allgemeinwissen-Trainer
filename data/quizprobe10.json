@@ -1,0 +1,2046 @@
+[
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Rekorde",
+  "frage": "Wer hält den Weltrekord über 100 m der Männer?",
+  "antwort": "Usain Bolt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bolt"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Hallensaison",
+  "frage": "Wie lang ist eine Runde auf der Rundbahn einer Standard-Leichtathletikhalle?",
+  "antwort": "200 m",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "200",
+   "200 Meter",
+   "200m"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Hallensaison",
+  "frage": "Welche Sprintstrecke ersetzt bei Hallenmeisterschaften die 100 m?",
+  "antwort": "60 m",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "60",
+   "60 Meter",
+   "60-m-Lauf",
+   "60m",
+   "60-Meter-Lauf"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Wind",
+  "frage": "Wie stark darf der Rückenwind bei einem 100-m-Lauf höchstens sein, damit die Zeit als Rekord anerkannt wird?",
+  "antwort": "2,0 m/s",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "2 m/s",
+   "2,0",
+   "2 Meter pro Sekunde",
+   "2,0 Meter pro Sekunde",
+   "2.0 m/s"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Startregeln",
+  "frage": "Welches Kommando folgt beim deutschen Sprintstart auf „Auf die Plätze“?",
+  "antwort": "Fertig",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Set"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Startregeln",
+  "frage": "Welche Strafe erhält ein Sprinter seit 2010 bei internationalen 100-m-Rennen schon für seinen ersten Fehlstart?",
+  "antwort": "Disqualifikation",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "DQ",
+   "Ausschluss",
+   "Disqualifizierung"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Technik",
+  "frage": "Welche Startart mit den Händen auf dem Boden ist bei Läufen bis einschließlich 400 m vorgeschrieben?",
+  "antwort": "Tiefstart",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Blockstart"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Personen",
+  "frage": "Wie oft wurde Usain Bolt Olympiasieger über 100 m?",
+  "antwort": "3",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "dreimal",
+   "drei",
+   "3-mal"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Hürden",
+  "frage": "Wie viele Hürden müssen beim 110-m-Hürdenlauf überlaufen werden?",
+  "antwort": "10",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zehn"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Personen",
+  "frage": "Welcher US-Amerikaner gewann bei den Olympischen Spielen 1936 in Berlin vier Goldmedaillen?",
+  "antwort": "Jesse Owens",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Owens"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Olympia",
+  "frage": "Wer wurde 2024 in Paris Olympiasieger über 100 m der Männer?",
+  "antwort": "Noah Lyles",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Lyles"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Mehrkampf",
+  "frage": "Wie heißt der olympische Mehrkampf der Frauen?",
+  "antwort": "Siebenkampf",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Heptathlon"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Zeitmessung",
+  "frage": "Wie nennt man die Aufnahme einer Zeilenkamera, mit der bei knappen Zieleinläufen die Reihenfolge festgestellt wird?",
+  "antwort": "Zielfoto",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fotofinish",
+   "Zielfotografie",
+   "Photofinish",
+   "Foto-Finish"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Lauf-ABC",
+  "frage": "Wie heißt die Übung aus dem Lauf-ABC, bei der die Fersen im Laufen zum Gesäß geführt werden?",
+  "antwort": "Anfersen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Anfersen-Lauf"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Verletzungen",
+  "frage": "Wofür steht das H in der PECH-Regel zur Erstversorgung von Sportverletzungen?",
+  "antwort": "Hochlagern",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hochlegen"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Andere Disziplinen",
+  "frage": "Nach welchem US-Hochspringer ist die heute übliche Hochsprungtechnik mit dem Rücken zur Latte benannt?",
+  "antwort": "Dick Fosbury",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fosbury",
+   "Richard Fosbury"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Rekorde",
+  "frage": "In welcher Stadt lief Usain Bolt 2009 den 100-m-Weltrekord von 9,58 s?",
+  "antwort": "Berlin",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Rekorde",
+  "frage": "Welche US-Sprinterin hält seit 1988 den Weltrekord über 100 m der Frauen?",
+  "antwort": "Florence Griffith-Joyner",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Griffith-Joyner",
+   "Flo-Jo",
+   "FloJo",
+   "Florence Griffith Joyner"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Rekorde",
+  "frage": "Welcher Südafrikaner lief 2016 in Rio de Janeiro mit 43,03 s Weltrekord über 400 m?",
+  "antwort": "Wayde van Niekerk",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "van Niekerk",
+   "Van Niekerk"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Personen",
+  "frage": "Welcher US-Leichtathlet gewann 1984 in Los Angeles – wie Jesse Owens 1936 – Gold über 100 m, 200 m, im Weitsprung und mit der 4×100-m-Staffel?",
+  "antwort": "Carl Lewis",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lewis"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Personen",
+  "frage": "Welchem kanadischen Sprinter wurde 1988 in Seoul die olympische 100-m-Goldmedaille wegen Dopings aberkannt?",
+  "antwort": "Ben Johnson",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Johnson"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Personen",
+  "frage": "Welcher Deutsche wurde 1960 in Rom Olympiasieger über 100 m?",
+  "antwort": "Armin Hary",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hary"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Rekorde",
+  "frage": "Welche DDR-Läuferin stellte 1985 in Canberra mit 47,60 s den Weltrekord über 400 m auf?",
+  "antwort": "Marita Koch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Koch"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Personen",
+  "frage": "Welche jamaikanische Sprinterin mit dem Spitznamen „Pocket Rocket“ wurde 2008 und 2012 Olympiasiegerin über 100 m?",
+  "antwort": "Shelly-Ann Fraser-Pryce",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fraser-Pryce",
+   "Shelly-Ann Fraser",
+   "Shelly Ann Fraser-Pryce"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Personen",
+  "frage": "Welche Deutsche wurde 2022 in München Europameisterin über 100 m?",
+  "antwort": "Gina Lückenkemper",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lückenkemper"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Staffeln",
+  "frage": "Welches Land hält seit 2012 den Weltrekord in der 4×100-m-Staffel der Männer (36,84 s)?",
+  "antwort": "Jamaika",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "JAM",
+   "Jamaica"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Staffeln",
+  "frage": "Wie heißt die Markierung auf der Bahn, bei deren Erreichen durch den ankommenden Läufer der übernehmende Staffelläufer losläuft?",
+  "antwort": "Ablaufmarke",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ablaufmarkierung"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Zeitmessung",
+  "frage": "Welcher Körperteil muss die Ziellinie erreichen, damit die Zielankunft eines Läufers gewertet wird?",
+  "antwort": "Rumpf",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Torso",
+   "Oberkörper"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Trainingslehre",
+  "frage": "Welche Form der Energiebereitstellung dominiert in den ersten Sekunden eines maximalen Sprints?",
+  "antwort": "anaerob-alaktazid",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "alaktazid",
+   "anaerob alaktazid",
+   "Kreatinphosphat",
+   "anaerob-alaktacid"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Technik",
+  "frage": "Laufgeschwindigkeit ergibt sich aus Schrittlänge mal …?",
+  "antwort": "Schrittfrequenz",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Frequenz"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Verletzungen",
+  "frage": "Wie lautet der Fachbegriff für die hintere Oberschenkelmuskulatur, die bei Sprintern besonders häufig von Zerrungen und Faserrissen betroffen ist?",
+  "antwort": "ischiocrurale Muskulatur",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ischiocrurale",
+   "ischiokrurale Muskulatur",
+   "Hamstrings",
+   "Ischiokrurale",
+   "Hamstring"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Mehrkampf",
+  "frage": "Mit welcher Disziplin endet der Zehnkampf?",
+  "antwort": "1500-m-Lauf",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "1500 m",
+   "1500-Meter-Lauf",
+   "1500m",
+   "1500 Meter",
+   "1.500-m-Lauf"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Startregeln",
+  "frage": "Unterhalb welcher Reaktionszeit wertet die Fehlstartanlage einen Start als Fehlstart?",
+  "antwort": "0,1 s",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "0,100 s",
+   "100 ms",
+   "0,1 Sekunden",
+   "100 Millisekunden",
+   "eine Zehntelsekunde"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Staffeln",
+  "frage": "Wie lang ist seit 2018 die Wechselzone bei der 4×100-m-Staffel?",
+  "antwort": "30 m",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "30",
+   "30 Meter",
+   "30m"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Hürden",
+  "frage": "Wie hoch sind die Hürden beim 110-m-Hürdenlauf der Männer?",
+  "antwort": "1,067 m",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "106,7 cm",
+   "1,067",
+   "106,7",
+   "1,067 Meter"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Stadion",
+  "frage": "Welchen Radius hat die Kurve einer 400-m-Standardbahn an der Innenkante?",
+  "antwort": "36,5 m",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "36,50 m",
+   "36,5",
+   "36,5 Meter",
+   "36,50"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Personen",
+  "frage": "Welche DDR-Sprinterin lief 1977 als erste Frau die 100 m elektronisch gemessen unter 11 Sekunden?",
+  "antwort": "Marlies Göhr",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Göhr",
+   "Marlies Oelsner",
+   "Oelsner"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Olympia",
+  "frage": "Welcher Jamaikaner verlor 2024 das olympische 100-m-Finale in Paris um nur fünf Tausendstelsekunden?",
+  "antwort": "Kishane Thompson",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Thompson"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Rekorde",
+  "frage": "Welcher Sprinter lief 2024 in Braunschweig als erster Deutscher die 100 m unter 10 Sekunden?",
+  "antwort": "Owen Ansah",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Ansah"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-sprint",
+  "block": "Trainingslehre",
+  "frage": "Wie heißt das Stagnieren der Sprintgeschwindigkeit, das durch einseitiges, stets gleichförmiges Schnelligkeitstraining entsteht?",
+  "antwort": "Geschwindigkeitsbarriere",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Schnelligkeitsbarriere"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Regeln",
+  "frage": "Wie viele Spieler einer Mannschaft dürfen gleichzeitig auf dem Feld stehen – den Torwart eingeschlossen?",
+  "antwort": "11",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "elf",
+   "11 Spieler",
+   "elf Spieler"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Spielfeld",
+  "frage": "Wie weit ist der Strafstoßpunkt von der Torlinie entfernt?",
+  "antwort": "11 m",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "11 Meter",
+   "elf Meter",
+   "11",
+   "12 Yards"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Regeln",
+  "frage": "Welche Spielfortsetzung folgt, wenn der Ball zuletzt von einem Angreifer berührt wurde und neben dem Tor über die Torlinie ins Aus geht?",
+  "antwort": "Abstoß",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Torabstoß"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Schiedsrichter",
+  "frage": "Wofür steht die Abkürzung VAR?",
+  "antwort": "Video Assistant Referee",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Video-Assistent",
+   "Videoassistent",
+   "Videoschiedsrichter",
+   "Video-Assistent-Schiedsrichter",
+   "Video-Assistant-Referee"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Begriffe",
+  "frage": "Wie nennt man es, wenn ein Spieler in einem Spiel drei Tore erzielt?",
+  "antwort": "Hattrick",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hat-Trick",
+   "Hat Trick",
+   "Dreierpack"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Taktik",
+  "frage": "Wie nennt man eine Abwehr aus vier Verteidigern, die auf einer Linie im Raum verteidigen?",
+  "antwort": "Viererkette",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Vierer-Kette",
+   "Vierer-Abwehrkette"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "WM-Geschichte",
+  "frage": "Welches Land gewann die Fußball-WM 2026 der Männer?",
+  "antwort": "Spanien",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Spain",
+   "España"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "WM-Geschichte",
+  "frage": "Wie oft wurde die deutsche Männer-Nationalmannschaft Fußball-Weltmeister?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "viermal",
+   "vier",
+   "4-mal",
+   "4 Mal"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Legendäre Spiele",
+  "frage": "Wer erzielte im WM-Finale 2014 in der Verlängerung das 1:0-Siegtor gegen Argentinien?",
+  "antwort": "Mario Götze",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Götze",
+   "Goetze",
+   "Mario Goetze"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Legendäre Spiele",
+  "frage": "Mit welchem Ergebnis gewann Deutschland das WM-Halbfinale 2014 gegen Brasilien?",
+  "antwort": "7:1",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "7-1",
+   "1:7",
+   "7 zu 1"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Spitznamen",
+  "frage": "Welcher deutsche Fußballer trug den Spitznamen „Der Kaiser“?",
+  "antwort": "Franz Beckenbauer",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Beckenbauer"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Stadien",
+  "frage": "In welcher Stadt steht die Allianz Arena?",
+  "antwort": "München",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Munich",
+   "Muenchen"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Bundesliga-Rekorde",
+  "frage": "Welcher Verein ist Rekordmeister der Bundesliga?",
+  "antwort": "FC Bayern München",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bayern München",
+   "FC Bayern",
+   "Bayern",
+   "FCB"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Personen",
+  "frage": "Welcher Bundestrainer führte Deutschland 2014 zum WM-Titel?",
+  "antwort": "Joachim Löw",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Löw",
+   "Jogi Löw",
+   "Loew",
+   "Joachim Loew"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Champions League",
+  "frage": "Welcher Verein hat den Europapokal der Landesmeister bzw. die Champions League am häufigsten gewonnen?",
+  "antwort": "Real Madrid",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Real",
+   "Real Madrid CF"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Spitznamen",
+  "frage": "Welche Nationalmannschaft wird „Oranje“ genannt?",
+  "antwort": "Niederlande",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Holland",
+   "die Niederlande"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Spielfeld",
+  "frage": "Wie breit ist ein Fußballtor laut Regelwerk – gemessen innen zwischen den Pfosten?",
+  "antwort": "7,32 m",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "7,32 Meter",
+   "8 Yards",
+   "7,32"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Regeln",
+  "frage": "Welchen Mindestabstand muss die Mauer bei einem Freistoß zum Ball einhalten?",
+  "antwort": "9,15 m",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "9,15 Meter",
+   "10 Yards",
+   "9,15"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Regeln",
+  "frage": "Wie viele Spieler darf eine Mannschaft in einem Bundesliga-Spiel regulär auswechseln?",
+  "antwort": "5",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "fünf",
+   "5 Spieler",
+   "fünf Spieler"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Schiedsrichter",
+  "frage": "Wer leitete 2017 als erste Frau ein Spiel der Männer-Bundesliga?",
+  "antwort": "Bibiana Steinhaus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Steinhaus",
+   "Bibiana Steinhaus-Webb"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Taktik",
+  "frage": "Wie nennt man das sofortige, aggressive Anlaufen des Gegners direkt nach eigenem Ballverlust?",
+  "antwort": "Gegenpressing",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Counterpressing"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Begriffe",
+  "frage": "Nach welchem tschechoslowakischen Spieler ist der sanft in die Tormitte gelupfte Elfmeter benannt?",
+  "antwort": "Antonín Panenka",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Panenka",
+   "Antonin Panenka"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "WM-Geschichte",
+  "frage": "In welchem Land fand 1930 die erste Fußball-Weltmeisterschaft statt?",
+  "antwort": "Uruguay",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Legendäre Spiele",
+  "frage": "Wer schoss im WM-Finale 1954 in Bern das 3:2-Siegtor gegen Ungarn?",
+  "antwort": "Helmut Rahn",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Rahn"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "EM-Geschichte",
+  "frage": "Welcher deutsche Trainer führte Griechenland 2004 sensationell zum EM-Titel?",
+  "antwort": "Otto Rehhagel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Rehhagel"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Bundesliga-Rekorde",
+  "frage": "Wer ist mit 365 Toren Rekordtorschütze der Bundesliga?",
+  "antwort": "Gerd Müller",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gerd Mueller"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Bundesliga-Rekorde",
+  "frage": "Welcher Verein wurde 2024 als erster ungeschlagen Deutscher Meister der Bundesliga?",
+  "antwort": "Bayer 04 Leverkusen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bayer Leverkusen",
+   "Leverkusen",
+   "Bayer 04"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Vereine",
+  "frage": "Welcher Verein trägt den Spitznamen „die Knappen“?",
+  "antwort": "FC Schalke 04",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Schalke 04",
+   "Schalke",
+   "S04"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "DFB-Pokal",
+  "frage": "In welchem Stadion wird seit 1985 das DFB-Pokalfinale der Männer ausgetragen?",
+  "antwort": "Olympiastadion Berlin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Olympiastadion",
+   "Berliner Olympiastadion",
+   "Olympiastadion in Berlin"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Champions League",
+  "frage": "Gegen welchen Verein verlor der FC Bayern 2012 das „Finale dahoam“ im Elfmeterschießen?",
+  "antwort": "FC Chelsea",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Chelsea",
+   "Chelsea London",
+   "Chelsea FC"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Frauenfußball",
+  "frage": "Wie oft wurde die deutsche Frauen-Nationalmannschaft Weltmeister?",
+  "antwort": "2",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zweimal",
+   "zwei",
+   "2-mal",
+   "2 Mal"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Kuriositäten",
+  "frage": "Gegen welches Land spielte Deutschland 1982 bei der „Schande von Gijón“?",
+  "antwort": "Österreich",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Oesterreich"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Regeln",
+  "frage": "Wie viele Sekunden darf ein Torwart seit der Regeländerung 2025 den Ball höchstens mit den Händen kontrollieren, bevor der Gegner einen Eckstoß erhält?",
+  "antwort": "8 s",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "8 Sekunden",
+   "acht Sekunden",
+   "8",
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Taktik",
+  "frage": "Welche Grundordnung wird wegen ihrer Form „Tannenbaum“ genannt?",
+  "antwort": "4-3-2-1",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "4–3–2–1",
+   "4321",
+   "4-3-2-1-System"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Bundesliga-Rekorde",
+  "frage": "Wer ist mit 602 Einsätzen Rekordspieler der Bundesliga?",
+  "antwort": "Karl-Heinz Körbel",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Körbel",
+   "Charly Körbel",
+   "Karl Heinz Körbel",
+   "Koerbel"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Kuriositäten",
+  "frage": "Welcher Bayern-Spieler erzielte 1994 gegen den 1. FC Nürnberg das berühmte „Phantomtor“?",
+  "antwort": "Thomas Helmer",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Helmer"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Personen",
+  "frage": "Welcher sowjetische Torhüter gewann 1963 als erster Keeper den Ballon d'Or?",
+  "antwort": "Lew Jaschin",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Jaschin",
+   "Lev Yashin",
+   "Yashin",
+   "Lew Iwanowitsch Jaschin",
+   "Lev Jaschin"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "Frauenfußball",
+  "frage": "Welche Spielerin köpfte im WM-Finale 2003 das Golden Goal zum ersten WM-Titel der deutschen Frauen?",
+  "antwort": "Nia Künzer",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Künzer",
+   "Kuenzer",
+   "Nia Kuenzer"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "DFB-Pokal",
+  "frage": "Welche Amateurmannschaft stand 1993 im DFB-Pokalfinale gegen Bayer Leverkusen?",
+  "antwort": "Hertha BSC Amateure",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Hertha Amateure",
+   "Hertha BSC II",
+   "Hertha-Amateure",
+   "Hertha BSC"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-fussball",
+  "block": "EM-Geschichte",
+  "frage": "Wer erzielte im EM-Finale 2024 in Berlin das 2:1-Siegtor für Spanien gegen England?",
+  "antwort": "Mikel Oyarzabal",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Oyarzabal"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Anatomie",
+  "frage": "Wie heißt der zweiköpfige Muskel an der Vorderseite des Oberarms?",
+  "antwort": "Bizeps",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Biceps",
+   "Biceps brachii",
+   "Musculus biceps brachii",
+   "zweiköpfiger Oberarmmuskel",
+   "Bizepsmuskel",
+   "M. biceps brachii"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Anatomie",
+  "frage": "Welcher Rückenmuskel – im Studio kurz „Lat“ genannt – wird vor allem bei Klimmzügen trainiert?",
+  "antwort": "Latissimus dorsi",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Latissimus",
+   "Musculus latissimus dorsi",
+   "M. latissimus dorsi",
+   "breiter Rückenmuskel",
+   "Lat"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Anatomie",
+  "frage": "Welche kräftige Sehne verbindet die Wadenmuskulatur mit dem Fersenbein?",
+  "antwort": "Achillessehne",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Achilles-Sehne",
+   "Achilles Sehne",
+   "Tendo calcaneus",
+   "Tendo Achillis"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Übungen",
+  "frage": "Welcher Muskel ist beim Bankdrücken der wichtigste Arbeitsmuskel?",
+  "antwort": "Großer Brustmuskel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pectoralis major",
+   "Musculus pectoralis major",
+   "M. pectoralis major",
+   "Brustmuskel",
+   "Pectoralis"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Begriffe",
+  "frage": "Wie heißt die Dickenzunahme der Muskelfasern, die das Hauptziel des Muskelaufbautrainings ist?",
+  "antwort": "Hypertrophie",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Muskelhypertrophie"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Muskelfasertypen",
+  "frage": "Welche Muskelfasern – nach ihrer englischen Abkürzung benannt – sind schnell zuckend und bei Sprintern besonders ausgeprägt?",
+  "antwort": "FT-Fasern",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "FT",
+   "FT-Faser",
+   "Fast-Twitch-Fasern",
+   "Fast Twitch",
+   "Fast-Twitch",
+   "Typ-II-Fasern",
+   "Typ-2-Fasern",
+   "Typ II",
+   "schnell zuckende Fasern",
+   "weiße Fasern"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Energiebereitstellung",
+  "frage": "Welches Molekül ist die unmittelbare Energiequelle jeder Muskelkontraktion (Abkürzung)?",
+  "antwort": "ATP",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Adenosintriphosphat",
+   "Adenosin-Triphosphat"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Energiebereitstellung",
+  "frage": "In welcher Form speichert der Körper Kohlenhydrate in Muskeln und Leber?",
+  "antwort": "Glykogen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Glycogen"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Trainingsmethoden",
+  "frage": "Wie heißt die Kombination zweier Übungen ohne Pause dazwischen – klassisch für Agonist und Antagonist wie Bizeps und Trizeps?",
+  "antwort": "Supersatz",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Superset",
+   "Super-Satz",
+   "Supersatztraining"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Trainingslehre",
+  "frage": "Wie heißt das Modell, nach dem sich der Körper nach Belastung und Erholung über das Ausgangsniveau hinaus anpasst?",
+  "antwort": "Superkompensation",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Superkompensationsmodell",
+   "Superkompensationsprinzip",
+   "Superkompensationseffekt"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Übungen",
+  "frage": "Wie heißt die Grundübung „Deadlift“ auf Deutsch?",
+  "antwort": "Kreuzheben",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Disziplinen",
+  "frage": "Aus welchen drei Disziplinen besteht ein Wettkampf im Kraftdreikampf (Powerlifting)?",
+  "antwort": "Kniebeuge, Bankdrücken, Kreuzheben",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kniebeugen, Bankdrücken, Kreuzheben",
+   "Kniebeuge, Bankdrücken und Kreuzheben",
+   "Kniebeugen, Bankdrücken und Kreuzheben",
+   "Squat, Bench Press, Deadlift",
+   "Squat, Bench, Deadlift"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Personen",
+  "frage": "Welcher Österreicher gewann siebenmal den Titel Mr. Olympia und wurde später Gouverneur von Kalifornien?",
+  "antwort": "Arnold Schwarzenegger",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schwarzenegger"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Supplemente",
+  "frage": "Welches Nahrungsergänzungsmittel – meist als Monohydrat eingenommen – gilt als am besten belegtes legales Supplement für Kraft- und Sprintleistung?",
+  "antwort": "Kreatin",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kreatinmonohydrat",
+   "Kreatin-Monohydrat",
+   "Creatin",
+   "Creatinmonohydrat",
+   "Creatine"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Geräte",
+  "frage": "Wie schwer ist die olympische Langhantelstange für Männer?",
+  "antwort": "20 kg",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "20",
+   "20kg",
+   "20 Kilogramm",
+   "zwanzig Kilogramm"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Mythen",
+  "frage": "Welches Hormon bilden Frauen in deutlich geringerer Menge als Männer – ein Hauptgrund, warum Krafttraining Frauen nicht automatisch „massig“ macht?",
+  "antwort": "Testosteron",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Testosterone"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Anatomie",
+  "frage": "Aus wie vielen Muskeln besteht die Rotatorenmanschette der Schulter?",
+  "antwort": "4",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Anatomie",
+  "frage": "Wie heißt die Muskelgruppe der Oberschenkelrückseite, im Englischen „Hamstrings“, in der deutschen Fachsprache?",
+  "antwort": "Ischiocrurale Muskulatur",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ischiokrurale Muskulatur",
+   "Ischiocrurale",
+   "Ischiokrurale",
+   "ischiokrurale Muskeln",
+   "Beinbeuger",
+   "Kniebeuger"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Muskelphysiologie",
+  "frage": "Wie heißt die kleinste kontraktile Funktionseinheit einer Myofibrille – der Abschnitt zwischen zwei Z-Scheiben?",
+  "antwort": "Sarkomer",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Sarcomer",
+   "Sarkomere"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Muskelphysiologie",
+  "frage": "Wie nennt man die Arbeitsweise, bei der sich der Muskel unter Spannung verlängert – etwa beim kontrollierten Absenken der Hantel?",
+  "antwort": "Exzentrisch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "exzentrische Kontraktion",
+   "exzentrische Muskelarbeit",
+   "exzentrische Arbeitsweise",
+   "nachgebend",
+   "negative Phase"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Energiebereitstellung",
+  "frage": "Aus welchem energiereichen Phosphat wird ATP in den ersten Sekunden eines 60-m-Sprints vor allem nachgebildet?",
+  "antwort": "Kreatinphosphat",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Phosphokreatin",
+   "Phosphocreatin",
+   "Creatinphosphat",
+   "Kreatin-Phosphat",
+   "KrP",
+   "PCr",
+   "CrP"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Trainingslehre",
+  "frage": "Die Trainingslehre unterscheidet klassisch drei Kraftfähigkeiten: Maximalkraft, Kraftausdauer und …?",
+  "antwort": "Schnellkraft",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Trainingssteuerung",
+  "frage": "Wofür steht die Abkürzung RPE in der Trainingssteuerung?",
+  "antwort": "Rating of Perceived Exertion",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Rate of Perceived Exertion",
+   "wahrgenommene Anstrengung",
+   "subjektives Belastungsempfinden"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Trainingsmethoden",
+  "frage": "Wie heißt ein Sprungkrafttraining mit Niedersprüngen und Sprungserien, das gezielt den Dehnungs-Verkürzungs-Zyklus nutzt?",
+  "antwort": "Plyometrie",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "plyometrisches Training",
+   "Plyometrics",
+   "Plyo",
+   "Reaktivkrafttraining"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Übungen",
+  "frage": "Welche Kreuzhebevariante ist nach einem Land benannt und beginnt im Stand, mit nur leicht gebeugten Knien und Hüftbeugung als Hauptbewegung?",
+  "antwort": "Rumänisches Kreuzheben",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Romanian Deadlift",
+   "Romanian Deadlifts",
+   "RDL"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Disziplinen",
+  "frage": "Welche zwei Disziplinen umfasst das olympische Gewichtheben?",
+  "antwort": "Reißen und Stoßen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Stoßen und Reißen",
+   "Reißen, Stoßen",
+   "Snatch und Clean & Jerk",
+   "Snatch und Clean and Jerk"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Personen",
+  "frage": "Welcher US-Amerikaner teilt sich mit Lee Haney den Rekord von acht Mr.-Olympia-Titeln?",
+  "antwort": "Ronnie Coleman",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Coleman"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Rekorde",
+  "frage": "Welcher Brite hob 2016 als erster Mensch 500 kg im Kreuzheben?",
+  "antwort": "Eddie Hall",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hall",
+   "Edward Hall"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Personen",
+  "frage": "Welcher deutsche Gewichtheber wurde 2008 in Peking Olympiasieger im Superschwergewicht?",
+  "antwort": "Matthias Steiner",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Steiner"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Strongman",
+  "frage": "Welcher Isländer – als „Der Berg“ aus „Game of Thrones“ bekannt – gewann 2018 den Titel World's Strongest Man?",
+  "antwort": "Hafþór Júlíus Björnsson",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hafthor Björnsson",
+   "Hafþór Björnsson",
+   "Hafthór Björnsson",
+   "Hafthor Julius Björnsson",
+   "Hafthór Júlíus Björnsson",
+   "Hafthor Julius Bjornsson",
+   "Hafthor Bjornsson",
+   "Björnsson",
+   "Bjornsson",
+   "Thor Björnsson",
+   "Thor Bjornsson"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Ernährung",
+  "frage": "Wie viel Protein pro Kilogramm Körpergewicht empfiehlt die DGE Erwachsenen unter 65 Jahren täglich?",
+  "antwort": "0,8 g",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "0,8",
+   "0.8",
+   "0,8 g/kg",
+   "0,8 g/kg Körpergewicht",
+   "0,8 Gramm",
+   "0.8 g"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Mythen",
+  "frage": "Welches Stoffwechselprodukt galt lange fälschlich als Ursache des Muskelkaters?",
+  "antwort": "Laktat",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Milchsäure",
+   "Lactat"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Anatomie",
+  "frage": "Welcher Kopf des Quadrizeps überspannt als einziger auch das Hüftgelenk?",
+  "antwort": "Rectus femoris",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Musculus rectus femoris",
+   "M. rectus femoris",
+   "gerader Schenkelmuskel"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Muskelphysiologie",
+  "frage": "Welche Ionen werden aus dem sarkoplasmatischen Retikulum freigesetzt und lösen die Muskelkontraktion aus?",
+  "antwort": "Calcium",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Calciumionen",
+   "Kalzium",
+   "Kalziumionen",
+   "Ca2+",
+   "Ca²⁺"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Neurophysiologie",
+  "frage": "Wie heißt das Prinzip, nach dem motorische Einheiten bei steigender Kraftanforderung von klein nach groß rekrutiert werden?",
+  "antwort": "Hennemansches Größenprinzip",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Größenprinzip",
+   "Henneman-Prinzip",
+   "Henneman'sches Größenprinzip",
+   "Henneman'sches Prinzip",
+   "Größenordnungsprinzip",
+   "Size Principle",
+   "Size-Prinzip"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Neurophysiologie",
+  "frage": "Welcher Rezeptor am Übergang von Muskel zu Sehne hemmt bei zu hoher Spannung reflektorisch den eigenen Muskel?",
+  "antwort": "Golgi-Sehnenorgan",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Golgi-Sehnenapparat",
+   "Golgi-Organ",
+   "Sehnenspindel",
+   "Golgi-Sehnenspindel"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Ernährung",
+  "frage": "Welche verzweigtkettige Aminosäure gilt als stärkster Auslöser der Muskelproteinsynthese über den mTOR-Signalweg?",
+  "antwort": "Leucin",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "L-Leucin",
+   "Leuzin"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Regeln",
+  "frage": "Mit welcher Formel werden im Gewichtheben Leistungen verschiedener Gewichtsklassen vergleichbar gemacht?",
+  "antwort": "Sinclair-Formel",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Sinclair",
+   "Sinclair-Koeffizient",
+   "Sinclair-Punkte",
+   "Sinclair-Wertung"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Personen",
+  "frage": "Welcher in Bulgarien geborene türkische Gewichtheber wurde als „Taschenherkules“ dreimal Olympiasieger (1988, 1992, 1996)?",
+  "antwort": "Naim Süleymanoğlu",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Süleymanoğlu",
+   "Suleymanoglu",
+   "Naim Suleymanoglu",
+   "Süleymanoglu",
+   "Naim Süleymanoglu",
+   "Naim Sulejmanoglu"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkt-kraft",
+  "block": "Supplemente",
+  "frage": "Welches Supplement erhöht den Carnosingehalt im Muskel und verursacht oft ein harmloses Kribbeln der Haut?",
+  "antwort": "Beta-Alanin",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "β-Alanin",
+   "Beta Alanin",
+   "Betaalanin",
+   "beta-Alanin",
+   "Beta-Alanine"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Energiegehalte",
+  "frage": "Wie viele Kilokalorien liefert 1 g Fett?",
+  "antwort": "9 kcal",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "9",
+   "9 kcal/g",
+   "neun"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Energiegehalte",
+  "frage": "Wie viele Kilokalorien liefert 1 g Kohlenhydrate?",
+  "antwort": "4 kcal",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "4",
+   "4 kcal/g",
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Mangelkrankheiten",
+  "frage": "Welche früher unter Seefahrern gefürchtete Krankheit wird durch Vitamin-C-Mangel ausgelöst?",
+  "antwort": "Skorbut",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Scorbut"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Vitamine",
+  "frage": "Welches Vitamin bildet der Körper mithilfe von Sonnenlicht (UV-B) in der Haut?",
+  "antwort": "Vitamin D",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "D",
+   "Vitamin D3",
+   "Cholecalciferol",
+   "Calciferol"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Mineralstoffe",
+  "frage": "Welcher Mineralstoff ist zentraler Bestandteil des roten Blutfarbstoffs Hämoglobin?",
+  "antwort": "Eisen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fe"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Blutzucker",
+  "frage": "Wie heißt das in der Bauchspeicheldrüse gebildete Hormon, das den Blutzuckerspiegel senkt?",
+  "antwort": "Insulin",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Nährwertkennzeichnung",
+  "frage": "Wie heißt die fünfstufige Farb-Buchstaben-Skala von A bis E, die seit 2020 in Deutschland freiwillig auf Lebensmittelverpackungen gedruckt wird?",
+  "antwort": "Nutri-Score",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nutriscore",
+   "Nutri Score"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Lebensmittelkunde",
+  "frage": "Aus welcher Hülsenfrucht wird Tofu hergestellt?",
+  "antwort": "Sojabohne",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Soja",
+   "Sojabohnen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Vitamine",
+  "frage": "Welches Vitamin sollten Veganer unbedingt ergänzen, weil es praktisch nur in tierischen Lebensmitteln vorkommt?",
+  "antwort": "Vitamin B12",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "B12",
+   "Vitamin B 12",
+   "Cobalamin",
+   "Cobalamine"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Mineralstoffe",
+  "frage": "Welches Spurenelement wird dem Speisesalz zugesetzt, um einem Kropf (Struma) vorzubeugen?",
+  "antwort": "Jod",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Iod",
+   "Jodid",
+   "I"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Makronährstoffe",
+  "frage": "Aus welchen Bausteinen sind Proteine aufgebaut?",
+  "antwort": "Aminosäuren",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Aminosäure"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Herkunft und Zusammensetzung",
+  "frage": "Welche Hülsenfrucht ist die Hauptzutat von Hummus?",
+  "antwort": "Kichererbse",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kichererbsen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "DGE-Empfehlungen",
+  "frage": "Wie viele Portionen Gemüse und Obst sollte man laut der bekannten DGE-Faustregel mindestens pro Tag essen?",
+  "antwort": "5",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünf",
+   "5 Portionen",
+   "fünf Portionen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "BMI und Grundumsatz",
+  "frage": "Ab welchem BMI-Wert spricht die WHO bei Erwachsenen von Adipositas?",
+  "antwort": "30",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "30 kg/m²",
+   "30,0",
+   "dreißig"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Sporternährung",
+  "frage": "In welcher Form speichert der Körper Kohlenhydrate in Leber und Muskulatur?",
+  "antwort": "Glykogen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Glycogen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Verdauung",
+  "frage": "Welche Säure wird von der Magenschleimhaut gebildet?",
+  "antwort": "Salzsäure",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "HCl",
+   "Chlorwasserstoffsäure",
+   "Magensäure"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Energiegehalte",
+  "frage": "Wie viele Kilokalorien liefert 1 g Alkohol (Ethanol)?",
+  "antwort": "7 kcal",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "7",
+   "7 kcal/g",
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Vitamine",
+  "frage": "Mit welchem Supermarktnamen als Eselsbrücke merkt man sich die fettlöslichen Vitamine?",
+  "antwort": "EDEKA",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Edeka"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Verdauung",
+  "frage": "Welches Enzym im Speichel beginnt bereits im Mund mit der Spaltung von Stärke?",
+  "antwort": "Amylase",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "α-Amylase",
+   "Alpha-Amylase",
+   "Speichelamylase",
+   "Ptyalin"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Verdauung",
+  "frage": "In welchem Organ wird die Gallenflüssigkeit gebildet – nicht nur gespeichert?",
+  "antwort": "Leber",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Mangelkrankheiten",
+  "frage": "Der Mangel an welchem Vitamin verursacht die Krankheit Beriberi?",
+  "antwort": "Vitamin B1",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "B1",
+   "Vitamin B 1",
+   "Thiamin",
+   "Thiamine",
+   "Aneurin"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Mangelkrankheiten",
+  "frage": "Welcher Vitaminmangel führt typischerweise zu Nachtblindheit?",
+  "antwort": "Vitamin A",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "A",
+   "Retinol",
+   "Vitamin-A-Mangel"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Vitamine",
+  "frage": "Welches B-Vitamin sollen Frauen mit Kinderwunsch zusätzlich einnehmen, um Neuralrohrdefekten beim Kind vorzubeugen?",
+  "antwort": "Folsäure",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Folat",
+   "Vitamin B9",
+   "B9",
+   "Vitamin B11"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Mineralstoffe",
+  "frage": "Welcher Mineralstoff kommt im menschlichen Körper mengenmäßig am häufigsten vor?",
+  "antwort": "Calcium",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kalzium",
+   "Ca"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "DGE-Empfehlungen",
+  "frage": "Wie viel Gramm Speisesalz pro Tag sollten Erwachsene laut DGE höchstens aufnehmen?",
+  "antwort": "6 g",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "6",
+   "6 Gramm",
+   "sechs Gramm",
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "DGE-Empfehlungen",
+  "frage": "Wie viel Gramm Protein pro Kilogramm Körpergewicht empfiehlt die DGE Erwachsenen unter 65 Jahren täglich?",
+  "antwort": "0,8 g",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "0,8",
+   "0,8 g/kg",
+   "0.8",
+   "0,8 Gramm"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Sporternährung",
+  "frage": "Welche meist als Monohydrat eingenommene Substanz erhöht die Energiereserven für kurze Maximalbelastungen und gilt als wirksames legales Supplement für Sprinter?",
+  "antwort": "Kreatin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Creatin",
+   "Kreatinmonohydrat",
+   "Creatinmonohydrat"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Blutzucker",
+  "frage": "Wie heißt die Kennzahl, die angibt, wie stark ein kohlenhydrathaltiges Lebensmittel den Blutzucker im Vergleich zu reiner Glukose ansteigen lässt?",
+  "antwort": "Glykämischer Index",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "GI",
+   "glykämischer Index",
+   "Glykämischer Index (GI)"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Lebensmittelkunde",
+  "frage": "Welcher giftige Stoff bildet sich in grünen Stellen und Keimen von Kartoffeln?",
+  "antwort": "Solanin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "α-Solanin",
+   "Alpha-Solanin"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Herkunft und Zusammensetzung",
+  "frage": "Aus welchem Land stammt die Kiwi ursprünglich?",
+  "antwort": "China",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Nährwertkennzeichnung",
+  "frage": "Welches Datum tragen leicht verderbliche Lebensmittel wie Hackfleisch anstelle des Mindesthaltbarkeitsdatums?",
+  "antwort": "Verbrauchsdatum",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zu verbrauchen bis",
+   "Verbrauchsdatum (zu verbrauchen bis)"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Sporternährung",
+  "frage": "Wie heißt die Ernährungsstrategie, in den Tagen vor einem Marathon die Kohlenhydratspeicher gezielt maximal aufzufüllen?",
+  "antwort": "Carboloading",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Carbo-Loading",
+   "Carbo Loading",
+   "Carb-Loading",
+   "Carbohydrate Loading",
+   "Kohlenhydratladen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Mangelkrankheiten",
+  "frage": "Der Mangel an welchem B-Vitamin verursacht Pellagra?",
+  "antwort": "Niacin",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Vitamin B3",
+   "B3",
+   "Vitamin B 3",
+   "Nicotinsäure",
+   "Nikotinsäure"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Blutzucker",
+  "frage": "Ab welchem Nüchternblutzuckerwert (in mg/dl) wird – bei wiederholter Messung – ein Diabetes mellitus diagnostiziert?",
+  "antwort": "126 mg/dl",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "126",
+   "126 mg/dL",
+   "7,0 mmol/l",
+   "7 mmol/l"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "BMI und Grundumsatz",
+  "frage": "Mit welchem Faktor (Abkürzung) multipliziert man den Grundumsatz, um je nach körperlicher Aktivität den Gesamtenergiebedarf zu berechnen?",
+  "antwort": "PAL",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Physical Activity Level",
+   "PAL-Wert"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Lebensmittelkunde",
+  "frage": "Zu welchem Fruchttyp gehört die Erdbeere botanisch?",
+  "antwort": "Sammelnussfrucht",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Sammelnüsschenfrucht",
+   "Sammelnuss"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Nährwertkennzeichnung",
+  "frage": "Welcher Stoff verbirgt sich hinter der Zusatzstoffnummer E 300?",
+  "antwort": "Ascorbinsäure",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Vitamin C",
+   "L-Ascorbinsäure"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Lebensmittelkunde",
+  "frage": "Welches Alkaloid im Kakao macht Schokolade für Hunde giftig?",
+  "antwort": "Theobromin",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Theobromine"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Sporternährung",
+  "frage": "Welcher leistungssteigernde Stoff wurde 2004 von der WADA-Verbotsliste gestrichen und steht seitdem nur noch im Beobachtungsprogramm?",
+  "antwort": "Koffein",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Coffein",
+   "Caffein",
+   "Caffeine",
+   "Kaffein"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkt-ernaehrung",
+  "block": "Sporternährung",
+  "frage": "Welches als Backtriebmittel bekannte Salz nehmen 400- und 800-m-Läufer vor dem Rennen ein, um die Übersäuerung der Muskulatur abzupuffern?",
+  "antwort": "Natron",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Natriumhydrogencarbonat",
+   "Natriumbicarbonat",
+   "Bicarbonat",
+   "Speisenatron",
+   "Backnatron",
+   "NaHCO₃",
+   "NaHCO3"
+  ]
+ }
+]
