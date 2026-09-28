@@ -731,7 +731,9 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     'spo-5cchb|pol-43kll3', // „Die Linke" auf „Linksherum" meint die Richtung
     // Als Eingabe abwegig: Bayer für Bayes, Bache für Bach, Kanon für Kano, Polen für Pole Position, Bulle/Bully
     'mat-el5eix|nat-1mro6o8', 'kul-27vrlm|nat-1m04gch', 'spo-1nz0i3h|kul-1eekpv4',
-    'spo-se0vka|ges-14hpxr6', 'pol-1glb28d|spo-7mlofw', 'spo-7mlofw|pol-1glb28d']);
+    'spo-se0vka|ges-14hpxr6', 'pol-1glb28d|spo-7mlofw', 'spo-7mlofw|pol-1glb28d',
+    // Die Kilokalorie ist die Waerme fuer 1 kg Wasser um 1 °C: 4,184 kJ ist dort richtig
+    'nat-1sd6f76|all-mwkkwj']);
   const durchgerutscht = [];
   let geprueft = 0;
   for (const c of CARDS) {

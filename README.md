@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.428 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.461 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (673 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -4189,6 +4189,29 @@ des Schulwissens bis zum Abitur. Beantwortet sind **70 von 111 (63 %)**. 29 Lüc
 vor allem Schulformeln und Einheiten (Dichte, Gravitationsgesetz, Linsengleichung,
 Gasgleichung, Farad, Dioptrie, Becquerel, Sievert), dazu Quizklassiker wie der Magnus-Effekt
 und die Fata Morgana.
+
+**33 Karten gegen die Lücken, 63 → 93 %.** Zwei Autoren haben geschrieben, einer für Quiz und
+Alltag, einer für Schulformeln und Einheiten. Danach prüften je ein Fakten- und ein
+Bauartprüfer, mit rund 2.200 Tipptests. Neu sind Magnus, Maxwell, Ørsted, Rayleigh, Bardeen,
+Snellius, Violett, Fata Morgana, Kelvin, −40 Grad, 2,45 GHz, der TGV-Rekord, blaue Sterne,
+LIGO und 11,2 km/s. Dazu kommen die Formeln der Oberstufe: Gravitationsgesetz, drittes
+Keplersches Gesetz, Parallelschaltung, Induktionsgesetz, Linsengleichung, Q = c · m · ΔT,
+Gasgleichung, c = λ · f und de Broglie. Außerdem Farad, Lorentzkraft, Dioptrie, Becquerel und
+Sievert, die Elementarladung, h, die Wärmekapazität von Wasser und 1 kWh = 3,6 MJ. Bewusst
+offen bleiben Faraday, das James-Webb-Teleskop und Rutherford, die schon in anderen Fragen
+genannt werden, der Laser, der in einer Antwort steckt, und Dichte-, Hooke- und Pendelformel,
+die als Karte schon da sind.
+
+Die Faktenprüfer korrigierten Kontexte. Nicht nur die Magnetschwebebahn L0 war schneller als
+der TGV, auch die MLX01 fuhr schon 2003 mit 581 km/h. Beim blauen Stern galt der Ablenker
+„Weiß“ unter einer Lesart, weil heiße Sterne oft „bläulich-weiß“ heißen. Und eine
+„Resonanz bei 22 GHz“ gilt nur für freie Wassermoleküle, nicht für flüssiges Wasser.
+
+Für die Formeln brauchte die Bewertung zwei Nachschärfungen. **Der Bruchstrich** gilt jetzt
+auch hinter einem Operanden mit Index oder Hochzahl als „durch“ – vorher ging im
+Gravitationsgesetz „· r²“ als „/ r²“ durch –, ebenso hinter einer Ziffer wie in „1/R“.
+**Griechische Buchstaben der Physik** (ρ, φ/Φ, θ, ε, τ, η) werden benannt statt verworfen;
+„ρ = m / V“ hieß sonst „= m durch V“.
 
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
