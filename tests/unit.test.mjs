@@ -810,6 +810,10 @@ test('ein Bruchstrich zwischen Einzelbuchstaben ist eine Division, kein Produkt'
   assert.ok(bewerte(kin, 'E = 1/2 · m · v²') >= 0.8, '„1/2" gilt nicht als „½"');
   assert.ok(bewerte(kin, 'E = m · v²') < 0.8, 'die Formel ohne ½ gilt als richtig');
   assert.equal(normalize('Vit A'), normalize('Vitamin A'));
+  /* Auch mit Index oder Hochzahl am Operanden ist der Strich eine Division. */
+  const grav = { q: 'x', a: 'F = G · m₁ · m₂ / r²', az: [] };
+  assert.ok(bewerte(grav, 'F = G · m₁ · m₂ · r²') < 0.8, '„· r²" gilt als „/ r²"');
+  assert.notEqual(normalize('ρ = m / V'), normalize('= m / V'));
 });
 
 /* „-ose" ist der Zucker, „-ase" das Enzym: ein Buchstabe in der hinteren Worthaelfte,

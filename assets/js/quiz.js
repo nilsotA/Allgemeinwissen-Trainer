@@ -76,6 +76,10 @@ const ZEICHEN = [
   [/[⁵₅]/g, '5'], [/[⁶₆]/g, '6'], [/[⁷₇]/g, '7'], [/[⁸₈]/g, '8'], [/[⁹₉]/g, '9'],
   [/π/g, ' pi '], [/[αΑ]/g, ' alpha '], [/[βΒ]/g, ' beta '], [/[γΓ]/g, ' gamma '],
   [/[δΔ]/g, ' delta '], [/[λΛ]/g, ' lambda '], [/[σΣ]/g, ' sigma '], [/[ωΩ]/g, ' omega '],
+  /* Physikformeln: Dichte, Winkel und Fluss, Zeitkonstante. Ohne Eintrag fielen die
+     Zeichen ersatzlos weg: „ρ = m / V" hiess „= m durch V". */
+  [/[ρΡ]/g, ' rho '], [/[φϕΦ]/g, ' phi '], [/[θΘ]/g, ' theta '], [/[εΕ]/g, ' epsilon '],
+  [/[τΤ]/g, ' tau '], [/[ηΗ]/g, ' eta '],
   [/[µμ]/g, ' mikro '], [/°/g, ' grad '], [/√/g, ' wurzel '],
   /* Zeichen, die auf Karten wirklich vorkommen und die kein deutsches
      Tastenfeld hat. Ohne sie fiel die Eingabe ersatzlos weg: Wer beim
@@ -146,7 +150,12 @@ const ZEICHEN = [
      nach dem Normalisieren dasselbe wie „F = m a" – die Division galt als das
      Produkt. Einheiten wie „m/s" und „km/h" hat die Regel weiter oben schon
      uebersetzt, und zwischen Woertern („Rot/Schwarz") bleibt alles wie bisher. */
-  [/(?<![a-zäöü])([a-zäöü])\s*\/\s*(?=[a-zäöü](?![a-zäöü]))/g, '$1 durch '],
+  /* Auch ein Operand mit Index oder Hochzahl („m₂ / r²", „1/R₁") ist kein Wort:
+     Vorher fiel der Strich dort weg, und im Gravitationsgesetz galt „· r²" als
+     „/ r²". Zaehler duerfen auch reine Ziffern sein („1/f"), der Nenner muss mit
+     einem einzelnen Buchstaben beginnen – so bleibt „3/4" ein Bruch aus Ziffern,
+     der auf beiden Seiten gleich zerfaellt. */
+  [/(?<![a-zäöü0-9])([a-zäöü]\d*|\d+)\s*\/\s*(?=[a-zäöü]\d*(?![a-zäöü]))/g, '$1 durch '],
   [/=/g, ' gleich '], [/\+/g, ' plus '], [/−/g, ' minus '], [/\^/g, ' hoch '],
   /* Auch hinter einer oeffnenden Klammer ist ein getipptes "-" ein Vorzeichen:
      „(-b" wurde sonst zu „b", und die Mitternachtsformel in der Fassung, die
