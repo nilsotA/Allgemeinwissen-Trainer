@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.494 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.530 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (686 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (713 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -22,13 +22,13 @@ erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht
 sondern sattelfest sein.
 
 Drei Sportthemen sind eigens ausgebaut, weil sie den Nutzer auch selbst betreffen: **Sprint**
-(61 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
+(66 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
 Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen),
-**Fußball** (133 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
-Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (68 Karten:
+**Fußball** (142 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
+Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (74 Karten:
 Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
 Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
-Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (54 Karten): Brennwerte,
+Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (60 Karten): Brennwerte,
 Vitamine und ihre Mangelkrankheiten, Mineralstoffe, Fettsäuren, die DGE-Empfehlungen von 2024
 (höchstens 300 g Fleisch pro Woche, kein Alkohol als unbedenkliche Menge), Etiketten
 (Nutri-Score, Big 7, Verbrauchsdatum, 14 Allergene) und Sporternährung von 90 g Kohlenhydraten
@@ -36,7 +36,7 @@ pro Stunde bis zur Hyponatriämie.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (27 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (38 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (40 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (14 – Penicillin, Dynamit,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (38 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
@@ -4224,7 +4224,7 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
-### Der zehnte Prüfsatz: die vier Schwerpunkte, gründlicher gemessen – 67 %
+### Der zehnte Prüfsatz: die vier Schwerpunkte, gründlicher gemessen – 67 → 91 %
 
 Prüfsatz 8 hatte nur 55 Fragen zu Sprint, Fußball, Krafttraining und Ernährung. Für
 `data/quizprobe10.json` haben vier Autoren blind, also ohne den Bestand zu kennen, je 40
@@ -4233,6 +4233,29 @@ Rekorde, Regeln nach aktuellem IFAB- und World-Athletics-Stand und alles ab 2024
 Websuche. Berichtigen durfte er nur mit Quelle, und Unbelegtes hätte er gestrichen statt es zu
 ändern. Alle 160 Fragen bestanden; bei einer wurde der Fragetext präzisiert. Beantwortet sind
 **107 von 160 (67 %)**, also Sport 81/120 und Ernährung 26/40.
+
+Jede der 53 Lücken wurde einzeln gegen den Bestand gesucht. Übrig blieben 36 echte, zum
+Beispiel van Niekerk und Marita Koch (400-m-Weltrekorde), Kishane Thompson, die Ablaufmarke, der
+Kurvenradius von 36,5 m, das Finale dahoam, das Phantomtor, Körbels 602 Spiele, Nia Künzers
+Golden Goal, Hypertrophie, FT-Fasern, das Hennemansche Größenprinzip, das Golgi-Sehnenorgan,
+Folsäure, Pellagra, Solanin und 126 mg/dl Nüchternblutzucker. Vier Autoren haben dafür Karten
+geschrieben und mit dem Vorprüfskript gegen den Bestand geprüft. Vier Gegenprüfer haben jede
+Karte mit Websuche zu widerlegen versucht. Keine fiel durch, neun wurden berichtigt. Zwei
+Berichtigungen waren inhaltlich: Der Gewichtheber-Weltverband erkennt seit April 2026 offiziell
+nur noch GAMX- und Robi-Punkte an, deshalb fragt die Sinclair-Karte jetzt nach dem Rechenweg
+und nicht mehr nach der „offiziellen“ Formel. Und neben Theobromin ist auch Koffein für Hunde
+giftig, deshalb heißt es jetzt „vor allem“.
+
+Bei vier Lücken nannte eine bestehende Frage schon den neuen Antwortbegriff. Diese Fragen sind
+jetzt umformuliert, der Lernstand bleibt erhalten. „Welche Doppelfunktion hat die
+ischiocrurale Muskulatur …?“ heißt nun „… die hintere Oberschenkelmuskulatur?“. Ebenso
+umformuliert sind die Glykogen- und die Carboloading-Frage sowie „Welche Sportart machte Jesse
+Owens und Carl Lewis berühmt?“, die jetzt nach Zátopek und Drechsler fragt. Nach Owens fragt
+schon eine eigene Karte. Satz 10 steht damit bei **91 %**, Satz 8 bei 85 %.
+
+Die restlichen 15 Fragen stehen schon als Teil einer Aufzählung im Bestand, etwa das H der
+PECH-Regel oder die Schnellkraft. Oder sie ließen sich nur so schließen, dass sich zwei
+Karten gegenseitig die Antwort verraten, etwa Siebenkampf und „sieben Disziplinen“.
 
 ### Die Suche war wieder langsam geworden – ein Test hat es gemerkt
 
