@@ -918,8 +918,16 @@ function indexTeil(von, bis) {
   for (let i = von; i < ende; i++) {
     if (SEARCH_INDEX[i]) continue;
     const c = CARDS[i];
-    // Genau der Text von vorher: Was frueher gefunden wurde, wird weiter gefunden.
-    SEARCH_INDEX[i] = { alles: normalize(`${c.q} ${c.a} ${c.sub} ${CAT_BY_ID[c.cat].name} ${c.t}`) };
+    /* Die vier Felder einmal normalisieren und den Gesamttext daraus zusammensetzen.
+       Vorher lief normalize() zweimal ueber jede Karte - einmal am Stueck fuer
+       „alles", einmal Feld fuer Feld fuer die Reihenfolge. Bei 3.494 Karten war das
+       Vorwaermen so auf einem vierfach gedrosselten Handy erst 3,3 s nach dem Anstoss
+       fertig, und wer nach vier Sekunden auf der Startseite suchte, wartete in zwei
+       von sechs Laeufen 542 und 795 statt rund 240 ms. Die Reihenfolge ist dieselbe
+       wie im alten Gesamttext (Frage, Antwort, Teilgebiet, Thema, Kontext). */
+    const frage = normalize(c.q), antwort = normalize(c.a);
+    const gebiet = normalize(`${c.sub} ${CAT_BY_ID[c.cat].name}`), kontext = normalize(c.t);
+    SEARCH_INDEX[i] = { alles: `${frage} ${antwort} ${gebiet} ${kontext}`, frage, antwort, gebiet, kontext };
   }
 }
 function searchIndex() {
@@ -932,12 +940,12 @@ function searchIndex() {
    rund eine halbe Sekunde - lang genug, dass die ersten Zeichen verschluckt
    werden.
 
-   Die Einzelfelder gehoeren in denselben Leerlauf. felder() rechnet sie
-   aufgeschoben, „nur fuer Karten, die ueberhaupt treffen" - und genau diese
-   Annahme faellt beim ERSTEN Buchstaben um: 'e' trifft alle Karten, 'v' noch
-   1.538. In Scheiben zu 150 Karten bleibt die laengste Luecke bei 169 ms, und
-   felder() traegt den aufgeschobenen Pfad weiter, falls jemand vor dem Ende
-   des Vorwaermens tippt.
+   Die Einzelfelder gehoeren in denselben Leerlauf: Sie „nur fuer Karten, die
+   ueberhaupt treffen" zu rechnen, scheitert am ERSTEN Buchstaben - 'e' trifft
+   alle Karten, 'v' noch 1.538. Seit indexTeil() sie gleich mitrechnet, ist jede
+   Karte in einem Durchgang fertig. In Scheiben zu 150 Karten bleibt die
+   laengste Luecke kurz, und wer vor dem Ende des Vorwaermens tippt, zahlt nur
+   den Rest.
 
    Angestossen wird das schon VOR dem Oeffnen der Suche - aber mit Abstand zum
    Start. Der Weg dahin ist gemessen, und der naheliegende war falsch:
@@ -963,28 +971,16 @@ function waermeIndex() {
   const haeppchen = (i) => {
     const bis = Math.min(CARDS.length, i + 150);
     indexTeil(i, bis);
-    for (let k = i; k < bis; k++) felder(k);
     if (bis < CARDS.length) leerlauf(() => haeppchen(bis));
     else { waermeLaeuft = false; waermeFertig = true; }
   };
   leerlauf(() => haeppchen(0));
 }
 
-/* Die Einzelfelder braucht nur die Reihenfolge, also nur fuer Karten, die
-   ueberhaupt treffen – und dann einmal. Sie beim Aufbau des Index gleich
-   mitzurechnen kostete auf einem gedrosselten Handy fast eine Sekunde extra
-   beim ersten Suchlauf, fuer Karten, die meist gar nicht in der Liste landen. */
+/* Die Einzelfelder fuer die Reihenfolge entstehen mit dem Index (siehe indexTeil). */
 function felder(i) {
   indexTeil(i, i + 1);            // der Eintrag kann noch fehlen, wenn erst ein Teil warm ist
-  const e = SEARCH_INDEX[i];
-  if (e.frage === undefined) {
-    const c = CARDS[i];
-    e.frage = normalize(c.q);
-    e.antwort = normalize(c.a);
-    e.gebiet = normalize(`${c.sub} ${CAT_BY_ID[c.cat].name}`);
-    e.kontext = normalize(c.t);
-  }
-  return e;
+  return SEARCH_INDEX[i];
 }
 
 /* Gesucht wird nach Teilzeichenketten – das ist absichtlich grosszuegig, damit

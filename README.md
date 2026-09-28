@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.484 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.494 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (676 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (686 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -24,7 +24,7 @@ sondern sattelfest sein.
 Drei Sportthemen sind eigens ausgebaut, weil sie den Nutzer auch selbst betreffen: **Sprint**
 (61 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
 Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen),
-**Fußball** (123 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
+**Fußball** (133 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
 Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (68 Karten:
 Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
 Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
@@ -4223,6 +4223,31 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Die Suche war wieder langsam geworden – ein Test hat es gemerkt
+
+Ein Oberflächentest fiel gelegentlich durch: Wer einige Sekunden auf der Startseite war und
+dann sofort suchte, sollte in unter 800 ms Treffer sehen, gemessen wurden 832 ms. In sechs
+Nachmessungen auf einem vierfach gedrosselten iPhone lagen zwei Läufe bei 542 und 795 ms, die
+übrigen bei rund 240. Ursache war nicht der Test, sondern das Wachstum: Der Suchindex wird zwei
+Sekunden nach dem Start im Leerlauf vorgewärmt, und bei inzwischen 3.494 Karten war er erst
+3,3 s später fertig. Dabei lief `normalize()` zweimal über jede Karte, einmal über den
+Gesamttext und einmal Feld für Feld. Jetzt entsteht der Gesamttext aus den schon normalisierten
+Feldern. Das Vorwärmen dauert noch rund 2 s, und acht von acht Messläufen lagen zwischen 212
+und 251 ms. Ein Versuch, die Leerlauf-Frist des Browsers in kleineren Stücken auszunutzen, war
+gemessen schlechter (414 bis 1.003 ms) und wurde verworfen. Bei 12 Karten, deren Antwort mit
+„bis“ beginnt, steht im Index nun „höchstens“ – dieselbe Lesart wie beim Bewerten.
+
+### Fußball: zehn Lücken zwischen Regelheft und Kabinensprache
+
+Eine Durchsicht nach Stichwörtern fand im Fußball noch Lücken bei Begriffen, die jeder
+Kommentator benutzt, und bei Regeln, die im Verein oft falsch erklärt werden. Neu sind der
+Sechser, der Doppelpass, die Gelb-Rote Karte und die Mindestzahl von sieben Spielern. Dazu
+kommen das Ballgewicht von 410 bis 450 g und die Regel, dass ein Tor direkt aus dem Anstoß seit
+2016 zählt. Bei den Personen fehlten Philipp Lahm als Kapitän von 2014, Manuel Neuer mit dem
+Goldenen Handschuh, Toni Kroos mit sechs Champions-League-Titeln und Cristiano Ronaldo als
+Rekordtorschütze der Champions League. Zwei weitere Kandidaten blieben draußen: Die falsche
+Neun gab es schon, und nach Messis acht Auszeichnungen fragt bereits eine Karte.
 
 ### Physik, die man auf dem Sportplatz und in der Küche sieht
 
