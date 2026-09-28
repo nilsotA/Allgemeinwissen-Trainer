@@ -4152,6 +4152,44 @@ Buchstaben liest die Bewertung ihn jetzt als „durch“. Einheiten wie „m/s�
 frühere Regel, und zwischen Wörtern („Rot/Schwarz“) ändert sich nichts. Ein eigener Test hält
 das fest.
 
+### Gegenprüfung der solo geschriebenen Karten – und der neunte Prüfsatz
+
+Ernährung, Physik, die Mathepreise und die Füllkarten aus Prüfsatz 8 hatte ich ohne zweiten
+Prüfer geschrieben. Das waren 102 Karten. Je Hälfte haben ein Faktenprüfer mit Websuche und ein
+Bauartprüfer sie gegengelesen, mit einer neuen Regel aus den Pannen davor: Eine Angabe über
+2024 bis 2026 wird nur mit Quelle geändert. Die Suche lief diesmal ohne Sperre. Alle jungen
+Angaben hielten: DGE 2024, Abelpreis 2026, Fields-Medaille 2026, Flores' 511 kg,
+Nobelpreis 2025. Rund 2.000 Tipptests später standen 110 Befunde, übernommen wurden 107 davon.
+Die wichtigsten:
+
+- **Hyponatriämie:** Der Kontext riet zu salzhaltigen Getränken als Schutz. Laut der
+  Konsensuskonferenz von 2015 schützen sie nicht, entscheidend ist die Trinkmenge.
+- **Verratene Antworten:** „EDEKA“ in der Frage buchstabierte die fettlöslichen Vitamine vor.
+  „Natriummangel“, „Klebereiweiß“ und „Zucker der Milch“ standen als Nebenschreibweise
+  praktisch in der eigenen Frage. „Laktoseintoleranz“ verriet die Laktosekarte, „Gluten“ die
+  Glutenkarte, und die Einstein-Frage nahm „Wer stellte die Relativitätstheorie auf?“ vorweg.
+  Zwölf Fragen sind umformuliert.
+- **Ablenker, die stimmen:** VLDL gilt ebenfalls als „schlechtes“ Cholesterin, Alkohol hat
+  eine ähnlich hohe Thermogenese wie Eiweiß, Glucose steckt auch in Obst und Honig.
+- **Kontexte:** Gegarte Kartoffeln haben weniger Kalium als Bananen. Die Vitamin-D-Gabe für
+  Säuglinge läuft bis zum zweiten Frühsommer. Mehrere Zuckernamen in der Zutatenliste schieben
+  Zucker nach hinten, nicht nach vorn. Hoch und Tief sind relativ zur Umgebung definiert, nicht
+  über 1013 hPa.
+- **Zwei Bestandskarten:** „Nobelpreis der Mathematik“ hatte seit der Abelpreis-Karte zwei
+  Antworten. „Kein Fehlstart erlaubt“ stimmt im Mehrkampf nicht.
+
+Die Tipptests fanden zwei weitere Schwächen der Bewertung. **„½“ fiel ersatzlos weg**: Aus
+„E = ½ · m · v²“ wurde „E = m · v²“, und die Formel ohne Faktor galt als richtig. Bruchzeichen
+werden jetzt wie getippte Brüche gelesen. **„Vit A“** ohne Punkt galt nur 0,56 und wird jetzt
+wie „Vitamin A“ gelesen.
+
+**Der neunte Prüfsatz (`data/quizprobe9.json`)** ist blind geschrieben: 111 Physikfragen von
+zwei Autoren, die die App nicht kannten. Einer schrieb aus Sicht der Quizshows, einer aus Sicht
+des Schulwissens bis zum Abitur. Beantwortet sind **70 von 111 (63 %)**. 29 Lücken fehlen ganz,
+vor allem Schulformeln und Einheiten (Dichte, Gravitationsgesetz, Linsengleichung,
+Gasgleichung, Farad, Dioptrie, Becquerel, Sievert), dazu Quizklassiker wie der Magnus-Effekt
+und die Fata Morgana.
+
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
 Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,

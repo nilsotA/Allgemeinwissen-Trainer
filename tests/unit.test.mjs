@@ -805,6 +805,11 @@ test('ein Bruchstrich zwischen Einzelbuchstaben ist eine Division, kein Produkt'
   }
   assert.equal(normalize('Rot/Schwarz'), normalize('Rot Schwarz'));
   assert.equal(normalize('343 m/s'), normalize('343 Meter pro Sekunde'));
+  /* „½" fiel ersatzlos weg: „E = ½ · m · v²" war dasselbe wie „E = m · v²". */
+  const kin = { q: 'x', a: 'E = ½ · m · v²', az: [] };
+  assert.ok(bewerte(kin, 'E = 1/2 · m · v²') >= 0.8, '„1/2" gilt nicht als „½"');
+  assert.ok(bewerte(kin, 'E = m · v²') < 0.8, 'die Formel ohne ½ gilt als richtig');
+  assert.equal(normalize('Vit A'), normalize('Vitamin A'));
 });
 
 /* „-ose" ist der Zucker, „-ase" das Enzym: ein Buchstabe in der hinteren Worthaelfte,

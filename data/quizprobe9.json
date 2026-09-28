@@ -1,0 +1,1425 @@
+[
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Einheiten",
+  "frage": "In welcher SI-Einheit wird die elektrische Stromstärke gemessen?",
+  "antwort": "Ampere",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "A"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Einheiten",
+  "frage": "Nach welchem deutschen Physiker ist die Einheit der Frequenz benannt?",
+  "antwort": "Heinrich Hertz",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hertz",
+   "Heinrich Rudolf Hertz"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Einheiten",
+  "frage": "Welcher schottische Ingenieur verbesserte die Dampfmaschine entscheidend und gab der Einheit der Leistung ihren Namen?",
+  "antwort": "James Watt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Watt"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Einheiten",
+  "frage": "Nach welchem Erfinder ist die SI-Einheit der magnetischen Flussdichte benannt?",
+  "antwort": "Nikola Tesla",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Tesla"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Einheiten",
+  "frage": "Wie viele Basiseinheiten hat das Internationale Einheitensystem (SI)?",
+  "antwort": "7",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Einheiten",
+  "frage": "Wie viel Watt entspricht eine metrische Pferdestärke (PS), gerundet auf eine Nachkommastelle?",
+  "antwort": "735,5 W",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "735,5 Watt",
+   "735,5",
+   "735,49875 W"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Mechanik",
+  "frage": "Wie lautet das zweite Newtonsche Gesetz als Formel?",
+  "antwort": "F = m · a",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "F=m·a",
+   "F=ma",
+   "F = ma",
+   "F=m*a",
+   "F = m*a",
+   "F = m × a"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Mechanik",
+  "frage": "Wie groß ist die Fallbeschleunigung an der Erdoberfläche (Normwert, auf zwei Nachkommastellen gerundet)?",
+  "antwort": "9,81 m/s²",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "9,81",
+   "9,81 m/s^2",
+   "9,81 m/s2",
+   "9,81 Meter pro Quadratsekunde"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Mechanik",
+  "frage": "Welche Scheinkraft lenkt Winde ab und lässt Tiefdruckgebiete auf der Nordhalbkugel gegen den Uhrzeigersinn drehen?",
+  "antwort": "Corioliskraft",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Coriolis-Kraft",
+   "Coriolis-Effekt",
+   "Corioliseffekt"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Mechanik",
+  "frage": "Wie schnell breitet sich Schall in Luft bei 20 °C ungefähr aus?",
+  "antwort": "343 m/s",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "343",
+   "343 Meter pro Sekunde",
+   "340 m/s",
+   "1235 km/h"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Mechanik",
+  "frage": "Nach welchem deutschen Physiker ist der Effekt benannt, der angeschnittene Bälle (etwa bei einer Bananenflanke) in der Luft seitlich ablenkt?",
+  "antwort": "Heinrich Gustav Magnus",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Magnus",
+   "Gustav Magnus",
+   "Magnus-Effekt",
+   "Magnuseffekt"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Elektrizität",
+  "frage": "Wie lautet das Ohmsche Gesetz, nach der Spannung aufgelöst?",
+  "antwort": "U = R · I",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "U=R·I",
+   "U = R*I",
+   "U=R*I",
+   "U=RI",
+   "U = RI",
+   "U = I · R",
+   "U=I*R"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Elektrizität",
+  "frage": "Welcher italienische Physiker baute um 1800 mit einer nach ihm benannten Säule die erste Batterie?",
+  "antwort": "Alessandro Volta",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Volta"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Elektrizität",
+  "frage": "Wie heißt der Zustand, in dem bestimmte Materialien unterhalb einer Sprungtemperatur Strom ganz ohne elektrischen Widerstand leiten?",
+  "antwort": "Supraleitung",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Supraleitfähigkeit"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Elektrizität",
+  "frage": "Nach welchem schottischen Physiker sind die Grundgleichungen der Elektrodynamik benannt?",
+  "antwort": "James Clerk Maxwell",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Maxwell"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Elektrizität",
+  "frage": "Welcher dänische Physiker entdeckte 1820, dass ein elektrischer Strom eine Kompassnadel ablenkt?",
+  "antwort": "Hans Christian Ørsted",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Ørsted",
+   "Oersted",
+   "Örsted",
+   "Hans Christian Oersted",
+   "Hans Christian Örsted"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Optik",
+  "frage": "Wie schnell ist Licht im Vakuum, gerundet in Kilometern pro Sekunde?",
+  "antwort": "300 000 km/s",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "300.000 km/s",
+   "300000 km/s",
+   "299 792 km/s",
+   "299.792 km/s",
+   "299 792 458 m/s",
+   "3 · 10^8 m/s"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Optik",
+  "frage": "Welche Farbe des sichtbaren Spektrums hat die kürzeste Wellenlänge?",
+  "antwort": "Violett",
+  "schwierigkeit": "leicht"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Optik",
+  "frage": "Wofür steht das „L“ im Kunstwort Laser?",
+  "antwort": "Light",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Licht"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Optik",
+  "frage": "Wie nennt man umgangssprachlich eine Luftspiegelung, die in der Wüste eine Wasserfläche vortäuscht?",
+  "antwort": "Fata Morgana",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Optik",
+  "frage": "Nach welchem britischen Physiker ist die Lichtstreuung benannt, die den Himmel blau erscheinen lässt?",
+  "antwort": "Lord Rayleigh",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Rayleigh",
+   "John William Strutt",
+   "Rayleigh-Streuung"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Wärme",
+  "frage": "Welche Temperatureinheit des SI beginnt am absoluten Nullpunkt und kennt deshalb keine negativen Werte?",
+  "antwort": "Kelvin",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "K",
+   "Kelvin-Skala"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Wärme",
+  "frage": "Wie viel Grad Celsius entsprechen dem absoluten Nullpunkt?",
+  "antwort": "−273,15 °C",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "-273,15 °C",
+   "-273,15",
+   "−273,15",
+   "minus 273,15 Grad",
+   "-273 °C"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Wärme",
+  "frage": "Bei welcher Temperatur hat Wasser seine größte Dichte?",
+  "antwort": "4 °C",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "4 Grad Celsius",
+   "4",
+   "vier Grad",
+   "3,98 °C"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Wärme",
+  "frage": "Bei welcher Temperatur zeigen Celsius- und Fahrenheit-Skala denselben Zahlenwert?",
+  "antwort": "−40 Grad",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "-40",
+   "−40",
+   "minus 40",
+   "-40 °C",
+   "-40 °F"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Wärme",
+  "frage": "Nach welchem deutschen Arzt ist der Effekt benannt, bei dem Wassertropfen auf einer sehr heißen Herdplatte auf einem Dampfpolster tanzen?",
+  "antwort": "Johann Gottlob Leidenfrost",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Leidenfrost",
+   "Leidenfrost-Effekt"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Atom und Kern",
+  "frage": "Wie heißen die positiv geladenen Bausteine des Atomkerns?",
+  "antwort": "Protonen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Proton"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Atom und Kern",
+  "frage": "Welcher deutsche Chemiker entdeckte 1938 gemeinsam mit Fritz Straßmann die Kernspaltung?",
+  "antwort": "Otto Hahn",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hahn"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Atom und Kern",
+  "frage": "Welcher Physiker schloss 1911 aus seinem Streuversuch an Goldfolie auf einen winzigen, massereichen Atomkern?",
+  "antwort": "Ernest Rutherford",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Rutherford",
+   "Lord Rutherford"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Atom und Kern",
+  "frage": "Welches Elementarteilchen wurde 2012 am CERN nachgewiesen?",
+  "antwort": "Higgs-Boson",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Higgs-Teilchen",
+   "Higgs Boson",
+   "Higgsboson"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Atom und Kern",
+  "frage": "Wie groß ist die Halbwertszeit von Kohlenstoff-14, auf der die Radiokarbonmethode beruht (gerundet)?",
+  "antwort": "5730 Jahre",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "5730",
+   "5.730 Jahre",
+   "5700 Jahre",
+   "rund 5700 Jahre"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Relativität und Quanten",
+  "frage": "Wie lautet Einsteins berühmte Formel zur Äquivalenz von Masse und Energie?",
+  "antwort": "E = mc²",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "E=mc²",
+   "E=mc^2",
+   "E=mc2",
+   "E = m·c²",
+   "E = m c²"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Relativität und Quanten",
+  "frage": "Welcher deutsche Physiker begründete im Jahr 1900 mit dem nach ihm benannten Wirkungsquantum die Quantenphysik?",
+  "antwort": "Max Planck",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Planck"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Relativität und Quanten",
+  "frage": "In welchem Jahr veröffentlichte Albert Einstein die spezielle Relativitätstheorie?",
+  "antwort": "1905",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Relativität und Quanten",
+  "frage": "Für seine Erklärung welches Effekts erhielt Albert Einstein den Physik-Nobelpreis?",
+  "antwort": "Photoelektrischer Effekt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Photoeffekt",
+   "Fotoeffekt",
+   "fotoelektrischer Effekt",
+   "lichtelektrischer Effekt",
+   "äußerer Photoeffekt"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Relativität und Quanten",
+  "frage": "Welcher deutsche Physiker formulierte 1927 die Unschärferelation?",
+  "antwort": "Werner Heisenberg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Heisenberg"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Relativität und Quanten",
+  "frage": "Wie heißt der relativistische Effekt, durch den eine schnell bewegte Uhr für einen ruhenden Beobachter langsamer geht?",
+  "antwort": "Zeitdilatation",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Zeitdehnung"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Personen und Entdeckungen",
+  "frage": "Welcher Physiker soll durch einen fallenden Apfel zum Gravitationsgesetz angeregt worden sein?",
+  "antwort": "Isaac Newton",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Newton",
+   "Sir Isaac Newton"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Personen und Entdeckungen",
+  "frage": "Welche Wissenschaftlerin erhielt als einzige Person Nobelpreise in Physik und in Chemie?",
+  "antwort": "Marie Curie",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Curie",
+   "Marie Skłodowska-Curie",
+   "Maria Skłodowska-Curie",
+   "Marie Sklodowska-Curie"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Personen und Entdeckungen",
+  "frage": "Wer erhielt 1901 den ersten Nobelpreis für Physik?",
+  "antwort": "Wilhelm Conrad Röntgen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Röntgen",
+   "Wilhelm Röntgen"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Personen und Entdeckungen",
+  "frage": "Welcher US-Physiker ist bislang der Einzige, der zweimal den Nobelpreis für Physik erhielt?",
+  "antwort": "John Bardeen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Bardeen"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Personen und Entdeckungen",
+  "frage": "Für den Nachweis welches makroskopischen Quanteneffekts – neben der Energiequantisierung – in einem elektrischen Schaltkreis erhielten John Clarke, Michel Devoret und John Martinis den Physik-Nobelpreis 2025?",
+  "antwort": "Quantentunneln",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Tunneleffekt",
+   "makroskopisches Quantentunneln",
+   "makroskopischer Tunneleffekt",
+   "quantenmechanisches Tunneln",
+   "Tunneln"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Alltag und Technik",
+  "frage": "Wie heißt der Effekt, durch den das Martinshorn eines vorbeifahrenden Rettungswagens plötzlich tiefer klingt?",
+  "antwort": "Doppler-Effekt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dopplereffekt",
+   "Doppler"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Alltag und Technik",
+  "frage": "Wie heißt die leitende Hülle, die Autoinsassen bei einem Blitzeinschlag schützt?",
+  "antwort": "Faradayscher Käfig",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Faraday-Käfig",
+   "Faradaykäfig",
+   "Faraday’scher Käfig"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Alltag und Technik",
+  "frage": "Welche Nennspannung liegt an einer Haushaltssteckdose in Deutschland an?",
+  "antwort": "230 Volt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "230 V",
+   "230"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Alltag und Technik",
+  "frage": "Welcher deutsche Ingenieur stellte 1941 mit der Z3 den ersten funktionsfähigen programmgesteuerten Digitalrechner vor?",
+  "antwort": "Konrad Zuse",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zuse"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Alltag und Technik",
+  "frage": "Welche Farbkombination hat der Schutzleiter in Stromkabeln nach europäischer Norm?",
+  "antwort": "Grün-Gelb",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gelb-Grün",
+   "grüngelb",
+   "gelbgrün",
+   "grün/gelb",
+   "gelb/grün"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Alltag und Technik",
+  "frage": "Mit welcher Frequenz arbeiten handelsübliche Haushalts-Mikrowellenherde?",
+  "antwort": "2,45 GHz",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "2,45 Gigahertz",
+   "2450 MHz",
+   "2,45"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Alltag und Technik",
+  "frage": "Welche Geschwindigkeit erreichte ein französischer TGV 2007 beim bis heute gültigen Weltrekord für Rad-Schiene-Züge?",
+  "antwort": "574,8 km/h",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "574,8",
+   "574,8 Kilometer pro Stunde",
+   "575 km/h"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Astrophysik",
+  "frage": "Welche physikalische Größe gibt die Einheit Lichtjahr an?",
+  "antwort": "Entfernung",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Strecke",
+   "Länge",
+   "Distanz"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Astrophysik",
+  "frage": "Wie lange braucht das Licht der Sonne ungefähr bis zur Erde?",
+  "antwort": "8 Minuten",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "acht Minuten",
+   "8 min",
+   "etwa 8 Minuten",
+   "8,3 Minuten",
+   "8 Minuten 20 Sekunden",
+   "500 Sekunden"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Astrophysik",
+  "frage": "Wie heißt die Grenze um ein Schwarzes Loch, hinter der nicht einmal Licht entkommen kann?",
+  "antwort": "Ereignishorizont",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Astrophysik",
+  "frage": "Welches Weltraumteleskop wurde am 25. Dezember 2021 ins All gebracht?",
+  "antwort": "James-Webb-Weltraumteleskop",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "James Webb",
+   "JWST",
+   "James-Webb-Teleskop",
+   "Webb-Teleskop",
+   "Webb"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Astrophysik",
+  "frage": "Welche Farbe haben die heißesten Sterne?",
+  "antwort": "Blau",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "blauweiß",
+   "blau-weiß",
+   "bläulich"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Astrophysik",
+  "frage": "Welches Observatorium wies im September 2015 erstmals Gravitationswellen direkt nach?",
+  "antwort": "LIGO",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Advanced LIGO",
+   "aLIGO",
+   "Laser Interferometer Gravitational-Wave Observatory"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-quiz",
+  "block": "Astrophysik",
+  "frage": "Wie groß ist die Fluchtgeschwindigkeit an der Erdoberfläche, gerundet auf eine Nachkommastelle?",
+  "antwort": "11,2 km/s",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "11,2",
+   "11,2 Kilometer pro Sekunde",
+   "rund 40 000 km/h"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Mechanik",
+  "frage": "Wie lautet die Grundgleichung der Mechanik (2. Newtonsches Axiom) als Formel?",
+  "antwort": "F = m · a",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "F = m·a",
+   "F=m·a",
+   "F = ma",
+   "F=ma",
+   "F = m * a"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Mechanik",
+  "frage": "Mit welcher Formel berechnet man die Dichte eines Stoffes?",
+  "antwort": "ρ = m / V",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ρ = m/V",
+   "ρ=m/V",
+   "rho = m/V",
+   "m/V"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Mechanik",
+  "frage": "Wie lautet die Formel für die kinetische Energie eines Körpers?",
+  "antwort": "E_kin = ½ · m · v²",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "E_kin = 1/2 · m · v²",
+   "E = ½mv²",
+   "E = 1/2 m v^2",
+   "½ m v²",
+   "E_kin = m·v²/2"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Mechanik",
+  "frage": "Wie heißt die physikalische Größe, die als Produkt aus Masse und Geschwindigkeit definiert ist?",
+  "antwort": "Impuls",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "p",
+   "p = m · v",
+   "Bewegungsgröße"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Mechanik",
+  "frage": "Wie lautet das Hookesche Gesetz für eine Schraubenfeder als Formel?",
+  "antwort": "F = D · s",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "F = D·s",
+   "F = D · Δs",
+   "F = D · x",
+   "F = k · x",
+   "F = −D · s"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Mechanik",
+  "frage": "Wie heißt das dritte Newtonsche Axiom, nach dem jede Kraft eine gleich große, entgegengesetzte Gegenkraft hervorruft?",
+  "antwort": "Wechselwirkungsprinzip",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "actio = reactio",
+   "actio gleich reactio",
+   "Reaktionsprinzip",
+   "Wechselwirkungsgesetz",
+   "Gegenwirkungsprinzip"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Mechanik",
+  "frage": "Wie lautet das Newtonsche Gravitationsgesetz als Formel?",
+  "antwort": "F = G · m₁ · m₂ / r²",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "F = G·m1·m2/r²",
+   "F_G = G · (m₁ · m₂) / r²",
+   "F = G · m · M / r²",
+   "F = G m1 m2 / r^2"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Mechanik",
+  "frage": "Wie lautet das dritte Keplersche Gesetz als Formel (T: Umlaufzeit, a: große Halbachse)?",
+  "antwort": "T²/a³ = konstant",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "T²/a³ = const",
+   "T² ~ a³",
+   "T₁²/T₂² = a₁³/a₂³",
+   "T^2/a^3 = konstant"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Elektrizität",
+  "frage": "Wie lautet das Ohmsche Gesetz als Formel?",
+  "antwort": "U = R · I",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "U = R·I",
+   "U=RI",
+   "R = U/I",
+   "I = U/R"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Elektrizität",
+  "frage": "Mit welcher Formel berechnet man die elektrische Leistung aus Spannung und Stromstärke?",
+  "antwort": "P = U · I",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "P = U·I",
+   "P=UI",
+   "P = UI"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Elektrizität",
+  "frage": "Wie berechnet man den Gesamtwiderstand zweier parallel geschalteter Widerstände?",
+  "antwort": "1/R = 1/R₁ + 1/R₂",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "1/R_ges = 1/R₁ + 1/R₂",
+   "1/R = 1/R1 + 1/R2",
+   "R = R₁·R₂/(R₁+R₂)"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Elektrizität",
+  "frage": "In welcher Einheit wird die Kapazität eines Kondensators angegeben?",
+  "antwort": "Farad",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "F"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Elektrizität",
+  "frage": "Wie heißt die Kraft, die auf eine bewegte Ladung in einem Magnetfeld wirkt?",
+  "antwort": "Lorentzkraft",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lorentz-Kraft"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Elektrizität",
+  "frage": "Wie groß ist die Elementarladung e?",
+  "antwort": "1,602 · 10⁻¹⁹ C",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "1,6 · 10⁻¹⁹ C",
+   "1,602·10^-19 C",
+   "1,602176634 · 10⁻¹⁹ C",
+   "1,6·10^-19 Coulomb"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Elektrizität",
+  "frage": "Wie lautet das Induktionsgesetz für eine Spule mit N Windungen als Formel?",
+  "antwort": "U_ind = −N · dΦ/dt",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "U_ind = −N · Φ̇",
+   "U_ind = −N · ΔΦ/Δt",
+   "U_ind = -n·dΦ/dt",
+   "U = -N dΦ/dt"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Optik",
+  "frage": "Wie groß ist die Lichtgeschwindigkeit im Vakuum (gerundet)?",
+  "antwort": "300 000 km/s",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "3 · 10⁸ m/s",
+   "3·10^8 m/s",
+   "299 792 458 m/s",
+   "300.000 km/s",
+   "299 792 km/s"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Optik",
+  "frage": "Reflexionsgesetz: Der Einfallswinkel ist gleich dem …?",
+  "antwort": "Reflexionswinkel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ausfallswinkel",
+   "Ausfallwinkel"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Optik",
+  "frage": "Nach welchem niederländischen Gelehrten ist das Brechungsgesetz benannt?",
+  "antwort": "Snellius",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Willebrord Snellius",
+   "Snell",
+   "Willebrord van Roijen Snell"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Optik",
+  "frage": "In welcher Einheit wird die Brechkraft einer Linse angegeben?",
+  "antwort": "Dioptrie",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "dpt",
+   "1/m",
+   "m⁻¹"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Optik",
+  "frage": "Wie lautet die Linsengleichung (Abbildungsgleichung) für dünne Linsen mit Gegenstandsweite g und Bildweite b?",
+  "antwort": "1/f = 1/g + 1/b",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "1/f = 1/b + 1/g",
+   "1/f=1/g+1/b",
+   "1/f = 1/a + 1/b"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Wärme",
+  "frage": "Bei welcher Temperatur in Grad Celsius liegt der absolute Nullpunkt?",
+  "antwort": "−273,15 °C",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "-273,15 °C",
+   "−273 °C",
+   "-273 °C",
+   "0 K"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Wärme",
+  "frage": "Mit welcher Formel berechnet man die Wärme, die nötig ist, um einen Körper der Masse m um ΔT zu erwärmen?",
+  "antwort": "Q = c · m · ΔT",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Q = m · c · ΔT",
+   "Q = c·m·Δϑ",
+   "ΔQ = c · m · ΔT",
+   "Q = cmΔT"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Wärme",
+  "frage": "Bei welcher Temperatur hat Wasser seine größte Dichte?",
+  "antwort": "4 °C",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "3,98 °C",
+   "4 Grad Celsius",
+   "rund 4 °C"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Wärme",
+  "frage": "Wie groß ist die spezifische Wärmekapazität von Wasser (gerundet)?",
+  "antwort": "4,19 kJ/(kg·K)",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "4,18 kJ/(kg·K)",
+   "4,2 kJ/(kg·K)",
+   "4190 J/(kg·K)",
+   "4182 J/(kg·K)",
+   "4,19 J/(g·K)"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Wärme",
+  "frage": "Wie lautet die universelle Gasgleichung (thermische Zustandsgleichung idealer Gase) mit der Stoffmenge n?",
+  "antwort": "p · V = n · R · T",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "pV = nRT",
+   "p·V = n·R·T",
+   "p · V = N · k · T"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Schwingungen und Wellen",
+  "frage": "In welcher Einheit wird die Frequenz gemessen?",
+  "antwort": "Hertz",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hz",
+   "1/s"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Schwingungen und Wellen",
+  "frage": "Wie lautet der Zusammenhang zwischen Ausbreitungsgeschwindigkeit, Wellenlänge und Frequenz einer Welle?",
+  "antwort": "c = λ · f",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "c = λf",
+   "c=λ·f",
+   "v = λ · f",
+   "c = lambda · f"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Schwingungen und Wellen",
+  "frage": "Wie schnell breitet sich Schall in Luft bei 20 °C etwa aus?",
+  "antwort": "343 m/s",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "340 m/s",
+   "ca. 340 m/s",
+   "343 Meter pro Sekunde",
+   "1235 km/h"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Schwingungen und Wellen",
+  "frage": "Wie heißt der Effekt, durch den das Martinshorn eines vorbeifahrenden Krankenwagens erst höher und dann tiefer klingt?",
+  "antwort": "Doppler-Effekt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dopplereffekt"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Schwingungen und Wellen",
+  "frage": "Wie lautet die Formel für die Schwingungsdauer eines Fadenpendels bei kleiner Auslenkung?",
+  "antwort": "T = 2π · √(l/g)",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "T = 2π√(l/g)",
+   "T = 2·π·sqrt(l/g)",
+   "T = 2 pi Wurzel(l/g)"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Atom und Kern",
+  "frage": "Welche radioaktive Strahlung besteht aus Heliumkernen?",
+  "antwort": "Alphastrahlung",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "α-Strahlung",
+   "Alpha-Strahlung",
+   "Alphateilchen"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Atom und Kern",
+  "frage": "Welches Teilchen verlässt beim β⁻-Zerfall neben einem Antineutrino den Atomkern?",
+  "antwort": "Elektron",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "e⁻",
+   "Betateilchen"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Atom und Kern",
+  "frage": "In welcher Einheit wird die Aktivität einer radioaktiven Quelle angegeben?",
+  "antwort": "Becquerel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bq",
+   "1/s"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Atom und Kern",
+  "frage": "In welcher Einheit wird die Äquivalentdosis, also die biologisch bewertete Strahlendosis, angegeben?",
+  "antwort": "Sievert",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Sv"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Atom und Kern",
+  "frage": "Wie groß ist die Halbwertszeit von Kohlenstoff-14?",
+  "antwort": "5730 Jahre",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "5.730 Jahre",
+   "ca. 5700 Jahre",
+   "5700 Jahre"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Relativität und Quanten",
+  "frage": "Wie lautet Einsteins Formel zur Äquivalenz von Masse und Energie?",
+  "antwort": "E = m · c²",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "E = mc²",
+   "E=mc^2",
+   "E = m·c²"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Relativität und Quanten",
+  "frage": "Mit welcher Formel berechnet man die Energie eines Photons aus seiner Frequenz?",
+  "antwort": "E = h · f",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "E = hf",
+   "E = h·ν",
+   "E = hν"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Relativität und Quanten",
+  "frage": "Für die Erklärung welches Effekts erhielt Albert Einstein den Nobelpreis für Physik?",
+  "antwort": "Photoeffekt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fotoeffekt",
+   "photoelektrischer Effekt",
+   "lichtelektrischer Effekt"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Relativität und Quanten",
+  "frage": "Wie heißt der Effekt der Relativitätstheorie, nach dem bewegte Uhren langsamer gehen?",
+  "antwort": "Zeitdilatation",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zeitdehnung"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Relativität und Quanten",
+  "frage": "Wie groß ist das Plancksche Wirkungsquantum h?",
+  "antwort": "6,626 · 10⁻³⁴ J·s",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "6,63 · 10⁻³⁴ Js",
+   "6,626·10^-34 Js",
+   "6,62607015 · 10⁻³⁴ J·s"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Relativität und Quanten",
+  "frage": "Wie lautet die Formel für die De-Broglie-Wellenlänge eines Teilchens mit Impuls p?",
+  "antwort": "λ = h / p",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "λ = h/p",
+   "λ = h/(m·v)",
+   "λ = h/(mv)",
+   "lambda = h/p"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Einheiten",
+  "frage": "In welcher Einheit wird die Kraft gemessen?",
+  "antwort": "Newton",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "N",
+   "kg·m/s²"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Einheiten",
+  "frage": "In welcher SI-Einheit werden Energie und Arbeit gemessen?",
+  "antwort": "Joule",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "J",
+   "Newtonmeter",
+   "Nm",
+   "Wattsekunde",
+   "Ws"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Einheiten",
+  "frage": "Wie viele Basiseinheiten hat das Internationale Einheitensystem (SI)?",
+  "antwort": "7",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Einheiten",
+  "frage": "Wie heißt die SI-Basiseinheit der Lichtstärke?",
+  "antwort": "Candela",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "cd"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Einheiten",
+  "frage": "Wie vielen Joule entspricht eine Kilowattstunde?",
+  "antwort": "3,6 · 10⁶ J",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "3,6 MJ",
+   "3 600 000 J",
+   "3.600.000 J",
+   "3,6 Millionen Joule"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Personen und Entdeckungen",
+  "frage": "Welcher deutsche Physiker entdeckte 1895 in Würzburg die X-Strahlen?",
+  "antwort": "Wilhelm Conrad Röntgen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Röntgen",
+   "Wilhelm Röntgen",
+   "W. C. Röntgen"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Personen und Entdeckungen",
+  "frage": "Welche Physikerin erhielt als erster Mensch zwei Nobelpreise?",
+  "antwort": "Marie Curie",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Marie Skłodowska-Curie",
+   "Maria Skłodowska-Curie",
+   "Curie"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Personen und Entdeckungen",
+  "frage": "Wer entdeckte 1831 die elektromagnetische Induktion?",
+  "antwort": "Michael Faraday",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Faraday"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Personen und Entdeckungen",
+  "frage": "Wer entdeckte 1938 zusammen mit Fritz Straßmann die Kernspaltung?",
+  "antwort": "Otto Hahn",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hahn"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Alltag und Technik",
+  "frage": "Wie hoch ist die Nennspannung im deutschen Haushaltsstromnetz?",
+  "antwort": "230 V",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "230 Volt",
+   "230"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Alltag und Technik",
+  "frage": "Auf welchem optischen Effekt beruht die Lichtleitung in Glasfaserkabeln?",
+  "antwort": "Totalreflexion",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "totale Reflexion",
+   "innere Totalreflexion"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Alltag und Technik",
+  "frage": "Wie heißt eine leitende Hülle, die zum Beispiel Autoinsassen bei einem Blitzeinschlag schützt?",
+  "antwort": "Faradayscher Käfig",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Faraday-Käfig",
+   "Faradaykäfig",
+   "Faraday'scher Käfig"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Astrophysik",
+  "frage": "Durch welchen Prozess erzeugt die Sonne ihre Energie?",
+  "antwort": "Kernfusion",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fusion",
+   "Wasserstofffusion",
+   "Kernverschmelzung"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "physik-schule",
+  "block": "Astrophysik",
+  "frage": "Wie lange braucht das Licht ungefähr von der Sonne zur Erde?",
+  "antwort": "8 Minuten",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "etwa 8 Minuten",
+   "8 min 20 s",
+   "8 min 19 s",
+   "8,3 Minuten",
+   "500 Sekunden"
+  ]
+ }
+]

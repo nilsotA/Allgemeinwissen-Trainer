@@ -68,6 +68,10 @@ export function options(card) {
 /* Zeichen, die beim reinen Wegwerfen von Nicht-ASCII verloren gingen und dann
    „H₂O" zu „h o" oder „π" zu einer leeren Zeichenkette gemacht haben. */
 const ZEICHEN = [
+  /* Bruchzeichen wie getippte Brueche: „½" ist „1/2". Vorher fielen sie ersatzlos
+     weg, und aus „E = ½ · m · v²" wurde „E = m · v²" – die Formel ohne den
+     Faktor galt damit als richtig. */
+  [/½/g, ' 1/2 '], [/¼/g, ' 1/4 '], [/¾/g, ' 3/4 '], [/⅓/g, ' 1/3 '], [/⅔/g, ' 2/3 '],
   [/[⁰₀]/g, '0'], [/[¹₁]/g, '1'], [/[²₂]/g, '2'], [/[³₃]/g, '3'], [/[⁴₄]/g, '4'],
   [/[⁵₅]/g, '5'], [/[⁶₆]/g, '6'], [/[⁷₇]/g, '7'], [/[⁸₈]/g, '8'], [/[⁹₉]/g, '9'],
   [/π/g, ' pi '], [/[αΑ]/g, ' alpha '], [/[βΒ]/g, ' beta '], [/[γΓ]/g, ' gamma '],
@@ -214,6 +218,8 @@ const ABKUERZUNGEN = [
   [/\b(1\d|20)(\d{2})(\s*[/–-]\s*)(\d{2})(?!\d)/g, '$1$2$3$1$4'],
   [/\bv\.?\s*chr\.?/gi, ' vor christus '], [/\bn\.?\s*chr\.?/gi, ' nach christus '],
   [/\bz\.\s*b\./gi, ' zum beispiel '], [/\bd\.\s*h\./gi, ' das heisst '],
+  /* „Vit A" ohne Punkt ist so gemeint wie „Vit. A" (gemessen 0,56 gegen 1,00). */
+  [/\bvit\b\.?/gi, ' vitamin '],
   [/\bu\.\s*a\./gi, ' unter anderem '], [/\bu\.\s*ae\./gi, ' und aehnliches '],
   [/\bmrd\.?(?=\s|$)/gi, ' milliarden '], [/\bmio\.?(?=\s|$)/gi, ' millionen '],
   [/\bjh\.(?=\s|$)/gi, ' jahrhundert '], [/\bjt\.(?=\s|$)/gi, ' jahrtausend '],
