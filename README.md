@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.530 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.534 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (713 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (715 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -22,13 +22,13 @@ erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht
 sondern sattelfest sein.
 
 Drei Sportthemen sind eigens ausgebaut, weil sie den Nutzer auch selbst betreffen: **Sprint**
-(66 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
+(67 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
 Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen),
-**Fußball** (142 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
+**Fußball** (143 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
 Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (74 Karten:
 Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
 Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
-Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (60 Karten): Brennwerte,
+Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (62 Karten): Brennwerte,
 Vitamine und ihre Mangelkrankheiten, Mineralstoffe, Fettsäuren, die DGE-Empfehlungen von 2024
 (höchstens 300 g Fleisch pro Woche, kein Alkohol als unbedenkliche Menge), Etiketten
 (Nutri-Score, Big 7, Verbrauchsdatum, 14 Allergene) und Sporternährung von 90 g Kohlenhydraten
@@ -4223,6 +4223,16 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Vier Grundbegriffe, die ihre eigene Frage verrieten – Satz 8 bei 93 %
+
+Wechselzone, Lewandowskis 41 Tore, Ballaststoffe und vegan fehlten als Antwort, obwohl die
+Begriffe im Bestand standen – nur eben in der Frage einer anderen Karte („Wie lang ist die
+Wechselzone …?“). Fünf solche Fragen sind jetzt umformuliert, etwa „Wie lang ist der
+Übergabebereich …?“ oder „… Menschen, die ganz auf tierische Lebensmittel verzichten …“. Der
+Lernstand bleibt über den Vorgänger erhalten. Danach bekam jeder Begriff eine eigene Karte.
+Muskelkater blieb offen: Drei Fragen tragen das Wort, und alle umzuschreiben hätte sie
+unverständlicher gemacht. Satz 8 steht damit bei **93 %** (vorher 85 %).
 
 ### Der zehnte Prüfsatz: die vier Schwerpunkte, gründlicher gemessen – 67 → 91 %
 
