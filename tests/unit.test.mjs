@@ -733,7 +733,9 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     'mat-el5eix|nat-1mro6o8', 'kul-27vrlm|nat-1m04gch', 'spo-1nz0i3h|kul-1eekpv4',
     'spo-se0vka|ges-14hpxr6', 'pol-1glb28d|spo-7mlofw', 'spo-7mlofw|pol-1glb28d',
     // Die Kilokalorie ist die Waerme fuer 1 kg Wasser um 1 °C: 4,184 kJ ist dort richtig
-    'nat-1sd6f76|all-mwkkwj']);
+    'nat-1sd6f76|all-mwkkwj',
+    // Hefe bildet dasselbe Gas, nach dem die Chemiekarten fragen
+    'all-1mvx341|nat-rd1kgn', 'all-1mvx341|nat-tajmq2']);
   const durchgerutscht = [];
   let geprueft = 0;
   for (const c of CARDS) {

@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.466 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.475 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (675 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -28,7 +28,7 @@ Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen)
 Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (68 Karten:
 Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
 Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
-Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (52 Karten): Brennwerte,
+Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (54 Karten): Brennwerte,
 Vitamine und ihre Mangelkrankheiten, Mineralstoffe, Fettsäuren, die DGE-Empfehlungen von 2024
 (höchstens 300 g Fleisch pro Woche, kein Alkohol als unbedenkliche Menge), Etiketten
 (Nutri-Score, Big 7, Verbrauchsdatum, 14 Allergene) und Sporternährung von 90 g Kohlenhydraten
@@ -36,7 +36,7 @@ pro Stunde bis zur Hyponatriämie.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (27 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (37 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (38 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (14 – Penicillin, Dynamit,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (38 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
@@ -4223,6 +4223,21 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Neun Klassiker, die ganz fehlten
+
+Die Prüfsätze 4 bis 9 enthielten noch Fragen, die nirgends im Bestand standen – weder in
+dieser noch in umgekehrter Richtung. Dazu gehören die Form des Stoppschilds (Achteck), die
+Tage eines Schaltjahrs, das Gas, mit dem Hefeteig aufgeht, die Vitamingruppe von Thiamin und
+Cobalamin, das Mindesthaltbarkeitsdatum und E-Dur mit vier Kreuzen. In der
+Physik kamen drei Formeln dazu: das Reflexionsgesetz, F = D · s für die Feder und
+T = 2π · √(l/g) für das Fadenpendel. Die Dichtekarte nimmt jetzt auch „ρ = m / V“ an, die
+HbA1c-Karte auch „Langzeit-Blutzucker“.
+
+Drei weitere Kandidaten – Wimbledon auf Rasen, Buddhismus und Schwimmen als erste
+Triathlondisziplin – blieben draußen, weil bestehende Fragen die Antwort schon nennen.
+Die Zahl der offenen Fragen sinkt in Satz 4 von 14 auf 10, in Satz 8 von 10 auf 8 und in
+Satz 9 von 5 auf 2.
 
 ### „max 6 g" heißt „höchstens 6 g" – und 184 Nebenschreibweisen weniger
 
