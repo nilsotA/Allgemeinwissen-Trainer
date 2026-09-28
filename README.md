@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.475 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.484 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (675 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (676 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -22,7 +22,7 @@ erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht
 sondern sattelfest sein.
 
 Drei Sportthemen sind eigens ausgebaut, weil sie den Nutzer auch selbst betreffen: **Sprint**
-(60 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
+(61 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
 Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen),
 **Fußball** (123 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
 Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (68 Karten:
@@ -4223,6 +4223,17 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Physik, die man auf dem Sportplatz und in der Küche sieht
+
+Neun Karten verbinden Physik mit Alltag und Sport. Der Luftwiderstand wächst quadratisch mit
+dem Tempo, deshalb spart der Windschatten so viel. Die Dellen des Golfballs senken den
+Luftwiderstand. Ein Fallschirmspringer wird in Bauchlage höchstens etwa 200 km/h schnell, und
+im luftleeren Raum fallen Eisen und Holz gleich schnell. Dazu kommen der Überschallknall,
+Wasser, das auf dem Everest schon bei etwa 70 °C kocht, der Schnellkochtopf und Metall, das
+sich kälter anfühlt als Holz. Im Sprint gibt es eine Karte zur Zentripetalkraft, die man in
+der Kurve der 200 m durch die Neigung nach innen aufbringt. Eine zehnte Karte zu Newton und
+dem Prisma blieb draußen, weil eine bestehende Frage ihre Antwort schon enthält.
 
 ### Neun Klassiker, die ganz fehlten
 
