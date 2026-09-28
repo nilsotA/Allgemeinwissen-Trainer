@@ -4224,6 +4224,21 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
+### „max 6 g" heißt „höchstens 6 g" – und 184 Nebenschreibweisen weniger
+
+Die Bauartprüfer hatten für jede Zahlenkarte mit Obergrenze eigene Nebenschreibweisen
+angelegt: „Max 6 g“, „Maximal 6 g“, „Bis 300 g“. Ohne sie fiel „max 300 g“ auf 0,56, obwohl
+„höchstens 300 g“ galt. Die Bewertung führt diese Formen jetzt selbst zusammen: „max“,
+„max.“, „maximal“ und ein „bis“ am Anfang heißen vor einer Zahl „höchstens“. Die Regel greift
+nur direkt vor einer Ziffer, damit „Max Planck“ ein Name bleibt, und „bis“ nur am Anfang,
+weil es mitten im Text eine Spanne ist („3 bis 5“). „mindestens“ bleibt getrennt.
+
+Danach waren 184 Nebenschreibweisen nach dem Normalisieren mit der Antwort oder einer
+anderen Nebenschreibweise identisch, etwa „Sieben“ neben „7“, „Die Länge“ neben „Länge“,
+„Orsted“ neben „Ørsted“. Sie sind entfernt. Gegenprobe: Alle 3.422 Nebenschreibweisen des
+alten Stands gelten gegen den neuen Stand weiterhin als richtig. Die Inhaltsprüfung meldet
+solche Doppel jetzt als Hinweis.
+
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
 Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,

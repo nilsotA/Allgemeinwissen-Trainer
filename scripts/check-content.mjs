@@ -461,7 +461,13 @@ console.log('Mengenkarten :', `${CARDS.filter(c => c.ug).length} – dort zaehlt
 /* Eine zugelassene Nebenschreibweise darf keinem Ablenker gleichen - sonst
    zaehlte beim freien Abrufen ausgerechnet die falsche Antwort als richtig. */
 for (const c of CARDS) {
+  /* Zwei Nebenschreibweisen, die nach dem Normalisieren gleich sind („Sieben" und
+     „7", „Max 6 g" und „Höchstens 6 g"), bewerten dasselbe – eine ist Ballast.
+     Beim Aufraeumen waren es 182 Stueck. */
+  const gesehen = new Set();
   for (const z of c.az || []) {
+    if (norm(z) !== norm(c.a) && gesehen.has(norm(z))) warn(`${c.id}: Nebenschreibweise „${z}" steht schon in anderer Schreibung da`);
+    gesehen.add(norm(z));
     if (norm(z) === norm(c.a)) warn(`${c.id}: Nebenschreibweise „${z}" ist die Antwort selbst`);
     if ((c.w || []).some(w => norm(w) === norm(z))) fail(`${c.id}: Nebenschreibweise „${z}" ist zugleich ein Ablenker`);
   }

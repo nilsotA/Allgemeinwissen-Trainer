@@ -316,6 +316,12 @@ export function normalize(s) {
        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
        .replace(/[^a-z0-9]+/g, ' ');
   t = t.split(' ').map(w => ZAHLWOERTER.get(w) || w).join(' ');
+  /* Obergrenzen vor einer Zahl sind eine Aussage: „max 6 g", „max. 6 g", „maximal
+     6 g" und „bis 6 g" meinen alle „hoechstens 6 g". Vorher brauchte jede Schreibweise
+     eine eigene Nebenschreibweise, und „max 300 g" fiel ohne sie auf 0,56. Nur direkt
+     vor einer Ziffer – „Max Planck" bleibt ein Name –, und „bis" nur am Anfang, weil es
+     in der Mitte eine Spanne ist („3 bis 5"). „mindestens" bleibt getrennt. */
+  t = t.replace(/\b(?:max|maximal|hoechstens)\s+(?=\d)/g, 'hoechstens ').replace(/^\s*bis\s+(?:zu\s+)?(?=\d)/, 'hoechstens ');
   const ohneFuell = t.replace(FUELLWOERTER, ' ').trim().replace(/\s+/g, ' ');
   // Besteht die Eingabe nur aus Füllwörtern, ist der ungefilterte Text die bessere Grundlage
   return ohneFuell || t.trim().replace(/\s+/g, ' ');
