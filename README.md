@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.461 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.466 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (673 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (675 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -25,7 +25,7 @@ Drei Sportthemen sind eigens ausgebaut, weil sie den Nutzer auch selbst betreffe
 (60 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
 Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen),
 **Fußball** (123 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
-Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (66 Karten:
+Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (68 Karten:
 Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
 Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
 Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (52 Karten): Brennwerte,
@@ -4212,6 +4212,17 @@ auch hinter einem Operanden mit Index oder Hochzahl als „durch“ – vorher g
 Gravitationsgesetz „· r²“ als „/ r²“ durch –, ebenso hinter einer Ziffer wie in „1/R“.
 **Griechische Buchstaben der Physik** (ρ, φ/Φ, θ, ε, τ, η) werden benannt statt verworfen;
 „ρ = m / V“ hieß sonst „= m durch V“.
+
+### Verratene Namen umgangen: fünf Lücken aus den Sätzen 8 und 9
+
+Fünf Klassiker blieben offen, weil die Frage einer anderen Karte den Namen schon nannte:
+Faraday, Rutherford, das James-Webb-Teleskop, Kreatin und Mr. Olympia. Deshalb sind jetzt
+sechs Fragen so umformuliert, dass der Name nicht mehr darin steht, etwa „das größte
+Weltraumteleskop, das 2021 ins All startete“ oder „der bedeutendste Profititel im
+Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach bekam jeder der fünf
+eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
+nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
+verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
