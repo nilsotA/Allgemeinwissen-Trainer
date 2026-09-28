@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.534 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.536 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (715 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -4223,6 +4223,17 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Fibonacci-Folge, Sieb des Eratosthenes, Zinseszins, Ramadan und Stoßlüften
+
+Fünf weitere Klassiker aus den Sätzen 4, 5 und 7 fehlten nur scheinbar oder nur in einer
+Richtung. Bei Fibonacci, Eratosthenes und dem Zinseszinseffekt fragt schon eine Karte nach dem
+Namen. Sie nahm aber nur die kurze Form an, wer „Sieb des Eratosthenes“ oder
+„Fibonacci-Folge“ tippte, lag daneben. Die Langformen sind jetzt Nebenschreibweisen. Ramadan
+und Stoßlüften standen nur in der Frage einer anderen Karte. Diese Fragen heißen jetzt „… am
+Ende ihres Fastenmonats“ und „… wenige Minuten mit weit geöffnetem Fenster lüften, statt es
+lange zu kippen“, und beide Begriffe haben eine eigene Karte. Satz 4 steigt auf 98 %, Satz 7
+auf 96 %.
 
 ### Vier Grundbegriffe, die ihre eigene Frage verrieten – Satz 8 bei 93 %
 
