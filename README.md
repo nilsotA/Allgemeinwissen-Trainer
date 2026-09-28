@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.392 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.396 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (673 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (421 Karten: Grundlagen,
+Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -4125,6 +4125,14 @@ zweiten Fall wie Laktose/Laktase fand er nicht. 14 Treffer stehen einzeln begrü
 Ausnahmeliste: inhaltlich richtige wie „Frankreich“ für „Die französischen Alpen“ und „Mit
 18 Jahren“ für „Ab 18 Jahren“, dazu Eingaben, die niemand ernsthaft tippt, etwa „Kanon“ für
 Kano oder „Bache“ für Bach.
+
+### Mathematik aktuell: Fields-Medaille und Abelpreis
+
+Die Sammlung kannte die Fields-Medaille und ihre erste Preisträgerin, aber keinen deutschen
+Träger und nichts nach 2014. Vier Karten, jede Angabe per Websuche geprüft: Peter Scholze (2018,
+zweiter Deutscher), Maryna Viazovska (2022, Kugelpackung in acht Dimensionen), Hong Wang
+(2026, dritte Frau) und Gerd Faltings, der 2026 als erster Deutscher den Abelpreis erhielt –
+vierzig Jahre nach seiner Fields-Medaille.
 
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
