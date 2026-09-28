@@ -1,0 +1,569 @@
+[
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wie viele Minuten dauert ein reguläres Fußballspiel?",
+  "antwort": "90",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "90 Minuten"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welcher Verein ist deutscher Rekordmeister im Fußball?",
+  "antwort": "Bayern München",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "FC Bayern"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welcher Spieler wurde „Bomber der Nation“ genannt?",
+  "antwort": "Gerd Müller",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wie heißt das Heimstadion des FC Schalke 04?",
+  "antwort": "Veltins-Arena",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Arena AufSchalke"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welcher Verein spielt im Signal Iduna Park?",
+  "antwort": "Borussia Dortmund",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "BVB"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wie viele Vereine spielen in der Fußball-Bundesliga?",
+  "antwort": "18",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "In welchem Jahr startete die Fußball-Bundesliga?",
+  "antwort": "1963",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wie viele Auswechslungen darf ein Team im Profifußball pro Spiel vornehmen?",
+  "antwort": "5",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fünf"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welches Land gewann 2010 die Fußball-WM?",
+  "antwort": "Spanien",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wie nennt man das Bundesligaspiel zwischen Bayern München und Borussia Dortmund?",
+  "antwort": "Der Klassiker",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Klassiker"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welcher Verein trägt den Spitznamen „die Fohlen“?",
+  "antwort": "Borussia Mönchengladbach",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gladbach"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welcher Trainer gewann 2013 mit dem FC Bayern das Triple?",
+  "antwort": "Jupp Heynckes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Heynckes"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wer war Bundestrainer, als Deutschland 2014 Weltmeister wurde?",
+  "antwort": "Joachim Löw",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Löw"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welcher Verein trägt den Spitznamen „die Geißböcke“?",
+  "antwort": "1. FC Köln",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "FC Köln",
+   "Köln"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welche Rückennummer trägt klassischerweise der Torwart?",
+  "antwort": "1",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Eins"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wofür steht die Abkürzung VAR im Fußball?",
+  "antwort": "Video Assistant Referee",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Video-Assistent",
+   "Videoschiedsrichter"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wie heißt der Wettbewerb der besten europäischen Vereinsmannschaften?",
+  "antwort": "Champions League",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "UEFA Champions League"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welcher Pole schoss für den FC Bayern in einer Saison 41 Bundesligatore?",
+  "antwort": "Robert Lewandowski",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lewandowski"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Welcher Verein gewann 2024 ohne Niederlage die deutsche Meisterschaft?",
+  "antwort": "Bayer Leverkusen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Leverkusen"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Fußball",
+  "frage": "Wie heißt die Auszeichnung für den besten Torschützen einer Bundesligasaison?",
+  "antwort": "Torjägerkanone",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kicker-Torjägerkanone"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Wie lang ist eine Runde auf der Stadionbahn?",
+  "antwort": "400 m",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "400 Meter"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Wie viele Läufer bilden eine Staffel?",
+  "antwort": "4",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vier"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Womit wird beim Staffellauf übergeben?",
+  "antwort": "Staffelstab",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Stab"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Wie heißt die Hochsprungtechnik, bei der man rückwärts über die Latte springt?",
+  "antwort": "Fosbury-Flop",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Flop"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Wie schwer ist die Kugel beim Kugelstoßen der Männer?",
+  "antwort": "7,26 kg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "7,26"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Wie viele Disziplinen hat der Siebenkampf der Frauen?",
+  "antwort": "7",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Sieben"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Mit welcher Startform beginnen Sprinter ihr Rennen?",
+  "antwort": "Tiefstart",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Aus dem Startblock"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Welcher Jamaikaner hält den Weltrekord über 200 m?",
+  "antwort": "Usain Bolt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bolt"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Wie heißt die Zone, in der beim Staffellauf der Stab übergeben werden muss?",
+  "antwort": "Wechselzone",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Leichtathletik",
+  "frage": "Wer lief als erster Deutscher die 100 m unter 10 Sekunden?",
+  "antwort": "Owen Ansah",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ansah"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Welche drei Übungen bilden den Kraftdreikampf?",
+  "antwort": "Kniebeuge, Bankdrücken, Kreuzheben",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Wie heißt der bekannteste Bodybuilding-Wettbewerb der Welt?",
+  "antwort": "Mr. Olympia",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mister Olympia"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Wie oft gewann Arnold Schwarzenegger den Titel Mr. Olympia?",
+  "antwort": "7",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Siebenmal"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Welches Nahrungsergänzungsmittel gilt als am besten untersucht zur Steigerung der Maximalkraft?",
+  "antwort": "Kreatin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kreatin-Monohydrat"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Wie heißt ein Training, bei dem man nacheinander verschiedene Stationen absolviert?",
+  "antwort": "Zirkeltraining",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Wofür steht die Abkürzung HIIT?",
+  "antwort": "High Intensity Interval Training",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hochintensives Intervalltraining"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Wie nennt man im Bodybuilding die Aufbauphase mit Kalorienüberschuss?",
+  "antwort": "Massephase",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bulk",
+   "Bulking",
+   "Aufbauphase"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Welcher Muskel an der Oberarmvorderseite wird beim Curl trainiert?",
+  "antwort": "Bizeps",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Musculus biceps brachii"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Wie heißt der Muskelschmerz ein bis zwei Tage nach ungewohntem Training?",
+  "antwort": "Muskelkater",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "schwerpunkte",
+  "block": "Kraftsport",
+  "frage": "Wie heißt der Weltverband im Gewichtheben, abgekürzt?",
+  "antwort": "IWF",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Wie heißt der Zucker in der Milch?",
+  "antwort": "Laktose",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Milchzucker"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Wie heißt der Zucker, der vor allem in Obst steckt?",
+  "antwort": "Fruktose",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fruchtzucker"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Welcher Mineralstoff ist für den Sauerstofftransport im Blut unverzichtbar?",
+  "antwort": "Eisen",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Welches Vitamin steckt reichlich in Zitrusfrüchten?",
+  "antwort": "Vitamin C",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Wie nennt man jemanden, der keinerlei tierische Produkte isst?",
+  "antwort": "Veganer",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vegan"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Wie heißt das Klebereiweiß in Weizen?",
+  "antwort": "Gluten",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Welcher Zucker ist der wichtigste Energielieferant des Gehirns?",
+  "antwort": "Glukose",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Traubenzucker"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Welche Einheit steht neben Kilokalorien für den Energiegehalt auf Lebensmitteln?",
+  "antwort": "Kilojoule",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "kJ"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Welche Kampagne empfiehlt fünf Portionen Obst und Gemüse täglich?",
+  "antwort": "5 am Tag",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fünf am Tag"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Wie heißt die Aufbewahrungsangabe „mindestens haltbar bis“ ausgeschrieben als Begriff?",
+  "antwort": "Mindesthaltbarkeitsdatum",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "MHD"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Welcher Mineralstoff ist Hauptbestandteil von Knochen?",
+  "antwort": "Calcium",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kalzium"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Welche Fettsäuren gelten als besonders gesund und stecken in Fisch?",
+  "antwort": "Omega-3-Fettsäuren",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Omega-3"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Wie heißt das Hormon, das den Blutzucker senkt?",
+  "antwort": "Insulin",
+  "schwierigkeit": "mittel"
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Welche Vitamingruppe umfasst Thiamin, Riboflavin und Cobalamin?",
+  "antwort": "B-Vitamine",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vitamin B"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "schwerpunkte",
+  "block": "Ernährung",
+  "frage": "Wie nennt man Nahrungsbestandteile, die unverdaulich sind, aber die Verdauung fördern?",
+  "antwort": "Ballaststoffe",
+  "schwierigkeit": "mittel"
+ }
+]

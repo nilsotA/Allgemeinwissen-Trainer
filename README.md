@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.379 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.392 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (664 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (673 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (421 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -22,13 +22,13 @@ erster Art und das EIS-Prinzip. Wer diese Fächer unterrichtet, soll darin nicht
 sondern sattelfest sein.
 
 Drei Sportthemen sind eigens ausgebaut, weil sie den Nutzer auch selbst betreffen: **Sprint**
-(59 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
+(60 Karten zu 60, 100 und 200 m: Start und Startregeln, Rennphasen, Technik, Kurve, Wind und
 Zielfoto, Rekorde bis 2026, Schnelligkeitstraining und Oberschenkelverletzungen),
-**Fußball** (117 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
-Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (64 Karten:
+**Fußball** (123 Karten: Regeln auf dem IFAB-Stand 2026/27, Taktik von Catenaccio bis
+Gegenpressing, Geschichte, Personen, Vereine, Begriffe) und **Krafttraining** (66 Karten:
 Muskelaufbau nach aktueller Studienlage, Methoden, Übungen und Muskeln, Protein und Kreatin,
 Kraftsport von Powerlifting bis Mr. Olympia, Mythen).
-Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (48 Karten): Brennwerte,
+Dazu kommt ein eigenes Teilgebiet **Ernährung** unter Alltag & Welt (52 Karten): Brennwerte,
 Vitamine und ihre Mangelkrankheiten, Mineralstoffe, Fettsäuren, die DGE-Empfehlungen von 2024
 (höchstens 300 g Fleisch pro Woche, kein Alkohol als unbedenkliche Menge), Etiketten
 (Nutri-Score, Big 7, Verbrauchsdatum, 14 Allergene) und Sporternährung von 90 g Kohlenhydraten
@@ -458,7 +458,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 190 Einheitentests plus Inhaltsprüfung
+npm test           # 191 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4095,6 +4095,28 @@ Kohlenhydrate pro Stunde bei langen Belastungen. Von 51 Entwürfen flogen drei r
 Fakten standen schon im Bestand (Speichelamylase, 2 % Flüssigkeitsverlust), und „4 kcal pro
 Gramm Kohlenhydrate“ hat das Dublettentor als Zwilling der Eiweißkarte erkannt.
 
+### Der achte Prüfsatz: die neuen Schwerpunkte, gegen Quizklassiker gemessen – 55 → 78 %
+
+Die Runden zu Sprint, Fußball, Krafttraining und Ernährung waren aus Fach- und Trainersicht
+geschrieben. Ob sie auch die Fragen beantworten, die am Spieleabend kommen, zeigt erst ein
+eingefrorener Satz aus solchen Fragen: 55 Klassiker, von „Wie heißt das Stadion von Schalke?“
+bis „Wie heißt der Zucker der Milch?“ (`data/quizprobe8.json`). Beantwortet waren nur 30. Die
+Sammlung konnte erklären, was Laktose ist oder was eine Viererkette leistet, aber es fehlten
+Veltins-Arena, die „Fohlen“, Heynckes' Triple, Löw 2014, die Torjägerkanone, der Staffelstab,
+HIIT, die Massephase, Laktose, Fruktose, Glukose als Brennstoff des Gehirns und das Gluten.
+13 Karten schließen diese Lücken. Zwei weitere hätten nicht funktioniert: „Champions League“
+und „Lewandowski“ stehen schon in mehreren Fragen des Bestands, eine Benennkarte wäre jedes Mal
+vorab verraten. Aus demselben Grund bleiben Mr. Olympia, Kreatin, Ballaststoffe und Veganer
+offen. **30 → 43 von 55 (55 → 78 %).**
+
+Nebenbei fand der Fremdantworttest eine echte Bewertungslücke: „Laktose“ galt als richtige
+Antwort auf die Frage nach dem fehlenden Enzym Laktase, und umgekehrt. Die Wörter
+unterscheiden sich nur in einem Buchstaben der hinteren Worthälfte, und dort wird ein
+Vertipper sonst verziehen. „-ose“ ist aber der Zucker, „-ase“ das Enzym, das ihn spaltet –
+genau diese Verwechslung soll die Karte abfragen. Solche Paare bleiben jetzt verschieden
+(auch Maltose/Maltase, Amylose/Amylase). Echte Vertipper wie „Laktoze“ gelten weiter, ein
+eigener Test hält beides fest.
+
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
 Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,
@@ -4434,7 +4456,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 190 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 191 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups, den
 Vergleich freier Eingaben und den Quizmodus (Ziehung, Punkteformel, Auswertung, Runden über
 zwei Tabs) ab.

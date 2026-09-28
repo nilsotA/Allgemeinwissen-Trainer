@@ -751,6 +751,19 @@ test('ein Tippfehler vorn im Wort wird ueberwiegend verziehen', () => {
 });
 
 /* Die Ausnahme ohne Anker hat drei Sperren – jede einzeln belegt. */
+/* „-ose" ist der Zucker, „-ase" das Enzym: ein Buchstabe in der hinteren Worthaelfte,
+   wo sonst Vertipper verziehen werden. Gefunden hat es der Fremdantworttest, als
+   neben „Laktase" eine Karte mit der Antwort „Laktose" dazukam. */
+test('Zucker und Enzym gelten nicht als Vertipper voneinander', () => {
+  for (const [ein, loesung] of [['Laktose', 'Laktase'], ['Laktase', 'Laktose'],
+    ['Maltose', 'Maltase'], ['Amylose', 'Amylase'], ['Saccharose', 'Saccharase']]) {
+    assert.ok(similarity(ein, loesung) < 0.8, `„${ein}" gilt als „${loesung}"`);
+  }
+  for (const [ein, loesung] of [['Laktoze', 'Laktose'], ['Laktse', 'Laktase'], ['Fruktse', 'Fruktose']]) {
+    assert.ok(similarity(ein, loesung) >= 0.8, `Vertipper „${ein}" gilt nicht als „${loesung}"`);
+  }
+});
+
 test('Vertipper vorn in langen Einwortantworten: verziehen, aber mit Sperren', () => {
   for (const [eingabe, loesung] of [['Prekrastination', 'Prokrastination'], ['Leenidas', 'Leonidas'],
     ['Die Aueklärung', 'Die Aufklärung'], ['Hammarabi', 'Hammurabi']]) {

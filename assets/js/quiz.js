@@ -383,10 +383,22 @@ function nurDreher(x, y) {
     && x[ab[0]] === y[ab[1]] && x[ab[1]] === y[ab[0]];
 }
 
+/* Zucker und Enzym: „-ose" heisst Zucker, „-ase" das Enzym, das ihn spaltet.
+   Laktose/Laktase, Maltose/Maltase, Amylose/Amylase liegen einen Buchstaben
+   auseinander, und zwar in der hinteren Haelfte, wo sonst ein Vertipper
+   verziehen wird. Genau diese Verwechslung soll eine Karte aber abfragen –
+   „Laktose" galt als richtige Antwort auf die Frage nach dem fehlenden Enzym. */
+const ZUCKER_ENZYM = /^(.{3,})([oa])se$/;
+const zuckerOderEnzym = (x, y) => {
+  const m = x.match(ZUCKER_ENZYM), n = y.match(ZUCKER_ENZYM);
+  return !!(m && n && m[1] === n[1] && m[2] !== n[2]);
+};
+
 function gleichesWort(x, y) {
   if (x === y) return true;
   const lang = Math.max(x.length, y.length);
   if (lang < 5) return false;
+  if (zuckerOderEnzym(x, y)) return false;
   const kopf = Math.max(4, Math.ceil(lang / 2));
   // Der Dreher wird am ganzen Wort geprueft: Er kann genau auf der Kopfgrenze
   // liegen, und dann steckt im Kopf nur seine Haelfte.
@@ -844,7 +856,7 @@ function vergleich(input, answer, bekannt = new Set()) {
     const f = fehlend[0], u = ueberzaehlig[0];
     const anker = woerter(b).some(w => w !== f && traegtBedeutung(w));
     if (anker && Math.max(f.length, u.length) >= 5
-        && !behauptet(u) && levenshtein(f, u) === 1) return roh;
+        && !behauptet(u) && !zuckerOderEnzym(f, u) && levenshtein(f, u) === 1) return roh;
     /* Ohne Anker, also bei Einwortantworten („Prokrastination", „Leonidas") und
        bei Antworten, deren einziges tragendes Wort das vertippte ist („Die
        Aufklaerung"), blieb bisher jeder Vertipper in der vorderen Worthaelfte
@@ -863,7 +875,7 @@ function vergleich(input, answer, bekannt = new Set()) {
        genannte Quote; die Ablenkerpruefung und der Fremdantworttest ueber alle
        Karten blieben ohne neuen Treffer. */
     if (Math.min(f.length, u.length) >= 8 && f.slice(0, 2) === u.slice(0, 2)
-        && !behauptet(u) && levenshtein(f, u) === 1) return roh;
+        && !behauptet(u) && !zuckerOderEnzym(f, u) && levenshtein(f, u) === 1) return roh;
   }
 
   // Fehlt ein tragendes Wort der Lösung, ist die Eingabe inhaltlich eine andere
