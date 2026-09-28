@@ -794,7 +794,19 @@ test('ein Tippfehler vorn im Wort wird ueberwiegend verziehen', () => {
   assert.ok(quote >= 0.95, `nur ${(quote * 100).toFixed(1)} % der Tippfehler vorn wurden verziehen`);
 });
 
-/* Die Ausnahme ohne Anker hat drei Sperren – jede einzeln belegt. */
+/* Der Schraegstrich fiel frueher mit allen Satzzeichen weg: „F = m/a" war dann
+   „F = m a" und galt als das Produkt F = m · a. Gefunden beim Schreiben der
+   Physikkarten, als die Division als Ablenker mit 1,00 durchging. */
+test('ein Bruchstrich zwischen Einzelbuchstaben ist eine Division, kein Produkt', () => {
+  const kraft = { q: 'x', a: 'F = m · a', az: ['F = ma'] };
+  assert.ok(bewerte(kraft, 'F=ma') >= 0.8, '„F=ma" gilt nicht');
+  for (const falsch of ['F = m/a', 'F = m / a', 'F = a/m']) {
+    assert.ok(bewerte(kraft, falsch) < 0.8, `„${falsch}" gilt als „F = m · a"`);
+  }
+  assert.equal(normalize('Rot/Schwarz'), normalize('Rot Schwarz'));
+  assert.equal(normalize('343 m/s'), normalize('343 Meter pro Sekunde'));
+});
+
 /* „-ose" ist der Zucker, „-ase" das Enzym: ein Buchstabe in der hinteren Worthaelfte,
    wo sonst Vertipper verziehen werden. Gefunden hat es der Fremdantworttest, als
    neben „Laktase" eine Karte mit der Antwort „Laktose" dazukam. */
@@ -808,6 +820,7 @@ test('Zucker und Enzym gelten nicht als Vertipper voneinander', () => {
   }
 });
 
+/* Die Ausnahme ohne Anker hat drei Sperren – jede einzeln belegt. */
 test('Vertipper vorn in langen Einwortantworten: verziehen, aber mit Sperren', () => {
   for (const [eingabe, loesung] of [['Prekrastination', 'Prokrastination'], ['Leenidas', 'Leonidas'],
     ['Die Aueklärung', 'Die Aufklärung'], ['Hammarabi', 'Hammurabi']]) {

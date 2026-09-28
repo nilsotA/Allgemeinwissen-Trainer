@@ -137,6 +137,12 @@ const ZEICHEN = [
      aussen vor, und „E = mc²" oder „y = mx + b" rechnen weiter. */
   [/([a-zäöüß]{2})\s*\+\s*(?=[a-zäöüA-ZÄÖÜ][a-zäöüßA-ZÄÖÜ])/g, '$1 und '],
   [/([a-zäöüß]{2})\s*=\s*(?=[a-zäöüA-ZÄÖÜ][a-zäöüßA-ZÄÖÜ])/g, '$1 ist '],
+  /* Ein Schraegstrich zwischen zwei EINZELNEN Buchstaben ist ein Bruchstrich:
+     „m/a", „U / I". Sonst fiel er mit allen Satzzeichen weg, und „F = m/a" war
+     nach dem Normalisieren dasselbe wie „F = m a" – die Division galt als das
+     Produkt. Einheiten wie „m/s" und „km/h" hat die Regel weiter oben schon
+     uebersetzt, und zwischen Woertern („Rot/Schwarz") bleibt alles wie bisher. */
+  [/(?<![a-zäöü])([a-zäöü])\s*\/\s*(?=[a-zäöü](?![a-zäöü]))/g, '$1 durch '],
   [/=/g, ' gleich '], [/\+/g, ' plus '], [/−/g, ' minus '], [/\^/g, ' hoch '],
   /* Auch hinter einer oeffnenden Klammer ist ein getipptes "-" ein Vorzeichen:
      „(-b" wurde sonst zu „b", und die Mitternachtsformel in der Fassung, die

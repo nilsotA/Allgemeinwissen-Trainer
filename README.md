@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.396 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.428 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (673 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -458,7 +458,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 192 Einheitentests plus Inhaltsprüfung
+npm test           # 193 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4134,6 +4134,24 @@ zweiter Deutscher), Maryna Viazovska (2022, Kugelpackung in acht Dimensionen), H
 (2026, dritte Frau) und Gerd Faltings, der 2026 als erster Deutscher den Abelpreis erhielt –
 vierzig Jahre nach seiner Fields-Medaille.
 
+### Physik: 32 Karten, und ein Bruchstrich, der verschwand
+
+Die 89 Physikkarten deckten Einheiten, Atom und Licht gut ab. Es fehlte aber ausgerechnet
+F = m · a, dazu die Energieformeln, die elektrische Leistung, die Goldene Regel der
+Mechanik, das Pendel und das Hookesche Gesetz. Neu sind außerdem Alltagsphysik (Faradayscher
+Käfig, Brillengläser gegen Kurzsichtigkeit, 1 bar mehr je 10 m Tauchtiefe, 1013 hPa, 1 PS =
+735,5 W) und moderne Physik: Higgs-Boson und CERN, Gravitationswellen, Quarks,
+Zeitdilatation, Supraleitung, das Kilogramm über die Planck-Konstante seit 2019 und der
+Nobelpreis 2025 für makroskopisches Quantentunneln. Dazu Quizklassiker wie Hammer und Feder
+auf dem Mond, Schrödingers Katze, das Foucaultsche Pendel und Einsteins Wunderjahr 1905.
+
+Beim Schreiben fiel eine Lücke in der Bewertung auf. Der Ablenker „F = m / a“ galt mit 1,00
+als richtige Antwort auf „F = m · a“. Der Schrägstrich fiel mit allen Satzzeichen weg, und
+„m / a“ war danach dasselbe wie „m a“ – die Division galt als Produkt. Zwischen zwei einzelnen
+Buchstaben liest die Bewertung ihn jetzt als „durch“. Einheiten wie „m/s“ übersetzt schon eine
+frühere Regel, und zwischen Wörtern („Rot/Schwarz“) ändert sich nichts. Ein eigener Test hält
+das fest.
+
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
 Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,
@@ -4473,7 +4491,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 192 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 193 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups, den
 Vergleich freier Eingaben und den Quizmodus (Ziehung, Punkteformel, Auswertung, Runden über
 zwei Tabs) ab.
