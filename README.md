@@ -458,7 +458,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 191 Einheitentests plus Inhaltsprüfung
+npm test           # 192 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4117,6 +4117,15 @@ genau diese Verwechslung soll die Karte abfragen. Solche Paare bleiben jetzt ver
 (auch Maltose/Maltase, Amylose/Amylase). Echte Vertipper wie „Laktoze“ gelten weiter, ein
 eigener Test hält beides fest.
 
+Der Fremdantworttest vergleicht allerdings nur Karten desselben Teilgebiets. Ein zweiter Test
+tut das jetzt über alle Grenzen hinweg, und zwar für jedes Kartenpaar, dessen Antworten ein
+Wort mit denselben vier Anfangsbuchstaben teilen. Genau dort sitzen die Verwechslungen, die
+der Bewerter als Vertipper verzeiht. Das sind rund 38.000 Paare in gut zehn Sekunden. Einen
+zweiten Fall wie Laktose/Laktase fand er nicht. 14 Treffer stehen einzeln begründet auf der
+Ausnahmeliste: inhaltlich richtige wie „Frankreich“ für „Die französischen Alpen“ und „Mit
+18 Jahren“ für „Ab 18 Jahren“, dazu Eingaben, die niemand ernsthaft tippt, etwa „Kanon“ für
+Kano oder „Bache“ für Bach.
+
 ### Wie viele Fehler stecken im Bestand? Eine Stichprobe mit zwei Prüfern
 
 Die Nachprüfung der Stichwortkarten fand 41 Befunde auf 51 Karten. Das warf eine Frage auf,
@@ -4456,7 +4465,7 @@ nie früher wiederkommen als „Gut", „Gut" nie früher als „Schwer" – son
 ehrliche Selbsteinschätzung. Der Startwert des Zufalls liegt fest, ein Fehlschlag ist also
 reproduzierbar und nicht „manchmal rot".
 
-Die 191 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
+Die 192 Einheitentests decken den Scheduler (Intervallgrenzen, Wachstumsgarantie, Vorschau),
 die Warteschlangen (keine Dubletten, Budget, Themenfilter), das Einlesen fremder Backups, den
 Vergleich freier Eingaben und den Quizmodus (Ziehung, Punkteformel, Auswertung, Runden über
 zwei Tabs) ab.

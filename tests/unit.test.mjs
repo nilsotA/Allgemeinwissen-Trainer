@@ -707,6 +707,50 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
   assert.deepEqual(durchgerutscht, [], durchgerutscht.slice(0, 10).join('\n'));
 });
 
+/* Dasselbe über Teilgebietsgrenzen hinweg. Der Test oben vergleicht nur Karten
+   eines Teilgebiets; „Laktose" (Ernährung) und „Laktase" wären ohne Zufall nie
+   aufgefallen. Voll ueber alle Paare waere zu teuer, deshalb nur Karten, deren
+   Antworten ein Wort mit denselben vier Anfangsbuchstaben teilen – dort sitzen
+   die Vertipper-Verwechslungen, die der Bewerter verzeiht. Rund 38.000 Paare,
+   gut zehn Sekunden. */
+test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richtig', () => {
+  const kopf = (t) => new Set(normalize(t).split(' ').filter(w => w.length >= 4).map(w => w.slice(0, 4)));
+  const index = new Map();
+  for (const c of CARDS) for (const k of kopf(c.a)) {
+    if (!index.has(k)) index.set(k, []);
+    index.get(k).push(c);
+  }
+  /* Was heute durchgeht, ist inhaltlich richtig oder als Eingabe abwegig. Jedes
+     Paar steht einzeln hier, damit ein neues sofort auffaellt. */
+  const ERLAUBT = new Set([
+    'ges-p6xhl6|ges-khhfuf', // „Versailles" meint den Vertrag von Versailles
+    'mat-jn04sr|mat-og7vt5', // „Der Logarithmus" ist das Werkzeug, das die Karte meint
+    'pol-1g0ho6z|pol-19r0m4j', // „Mit 18" = „Ab 18"
+    'spo-1oqafrh|geo-1s27ays', 'spo-1oqafrh|geo-ostf3y', // Frankreich richtet die Spiele in den Alpen aus
+    'mat-10xfssj|mat-195rkl', 'mat-195rkl|mat-10xfssj', // Summa/Summe: dieselbe Idee, lateinisch und deutsch
+    'spo-5cchb|pol-43kll3', // „Die Linke" auf „Linksherum" meint die Richtung
+    // Als Eingabe abwegig: Bayer für Bayes, Bache für Bach, Kanon für Kano, Polen für Pole Position, Bulle/Bully
+    'mat-el5eix|nat-1mro6o8', 'kul-27vrlm|nat-1m04gch', 'spo-1nz0i3h|kul-1eekpv4',
+    'spo-se0vka|ges-14hpxr6', 'pol-1glb28d|spo-7mlofw', 'spo-7mlofw|pol-1glb28d']);
+  const durchgerutscht = [];
+  let geprueft = 0;
+  for (const c of CARDS) {
+    if (c.mc) continue;
+    const kandidaten = new Set();
+    for (const k of kopf(c.a)) for (const f of index.get(k) || []) kandidaten.add(f);
+    for (const fremd of kandidaten) {
+      if (fremd.id === c.id || fremd.cat + '/' + fremd.sub === c.cat + '/' + c.sub) continue;
+      const x = normalize(fremd.a), y = normalize(c.a);
+      if (x === y || x.includes(y) || y.includes(x)) continue;
+      geprueft++;
+      if (bewerte(c, fremd.a) < 0.8 || ERLAUBT.has(`${c.id}|${fremd.id}`)) continue;
+      durchgerutscht.push(`${c.id}: „${fremd.a}" (${fremd.id}) galt als „${c.a}" – ${c.q}`);
+    }
+  }
+  assert.ok(geprueft > 30000, `nur ${geprueft} Paare geprueft`);
+  assert.deepEqual(durchgerutscht, [], durchgerutscht.slice(0, 10).join('\n'));
+});
+
 /* Umgekehrt darf die Strenge nicht dazu führen, dass richtige Antworten mit
    einem Tippfehler reihenweise abgelehnt werden. */
 test('ein Tippfehler in der Antwort wird weit überwiegend verziehen', () => {
