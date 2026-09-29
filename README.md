@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.536 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.598 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (715 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (725 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -35,10 +35,10 @@ Vitamine und ihre Mangelkrankheiten, Mineralstoffe, Fettsäuren, die DGE-Empfehl
 pro Stunde bis zur Hyponatriämie.
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
-**Mythologie** (27 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (40 – Reinheitsgebot,
+**Mythologie** (28 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (41 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (14 – Penicillin, Dynamit,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (38 Quiz-Klassiker vom
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (41 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
@@ -4224,7 +4224,7 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
-### Der elfte Prüfsatz: 300 typische Quizabend-Fragen – 76 %
+### Der elfte Prüfsatz: 300 typische Quizabend-Fragen – 76 → 96 %
 
 Die Sätze 1 bis 7 lagen alle bei 95 % oder mehr. Die Frage war, ob das an der Sammlung liegt
 oder daran, dass die Sätze inzwischen zu gut zur Sammlung passen. Für `data/quizprobe11.json`
@@ -4234,6 +4234,31 @@ Bündel waren Geografie, Geschichte und Politik, Unterhaltung, Natur und Wissens
 und Sprache sowie Sport allgemein mit Zeitgeschehen 2024 bis 2026. Je ein Prüfer hat alle
 Antworten mit Websuche nachgeprüft. Alle 300 blieben stehen. Beantwortet sind **227 von 300
 (76 %)** – ein Satz, der die Sammlung nicht kennt, findet also deutlich mehr Lücken.
+
+Jede der 73 Lücken wurde einzeln nachgesehen. Viele „umgekehrt gefragte“ Treffer des
+Messgeräts waren bloßer Wortzufall: „Olaf“ aus der „Eiskönigin“ steckt in einer Frage zu Olaf
+Scholz, „22“ (Steffi Grafs Grand-Slam-Titel) in einem Datum, „144“ (ein Gros) in „Wurzel aus
+144“. Solche Lücken sind echt und bekamen eine Karte. Sechs Autoren haben 62 Karten
+geschrieben und gegen den Bestand geprüft, sechs Gegenprüfer haben jede mit Websuche zu
+widerlegen versucht. Keine fiel durch, 13 wurden im Kontext oder in der Frage präzisiert.
+Gukesh ist etwa „jüngster *unumstrittener* Schachweltmeister“, denn Ponomarjow war 2002 beim
+FIDE-Titel jünger. Und bei den Frauen hat in der Profi-Ära nur Serena Williams mehr
+Grand-Slam-Titel als Steffi Graf, nicht in der Profi-Ära überhaupt, denn Djokovic hat 24.
+
+Neu sind unter anderem Sucre, Großglockner, die Flaggen von Libanon und Bhutan, CH =
+Confoederatio Helvetica, .tv = Tuvalu, DDR, D-Mark, NATO, Lehman Brothers, Caprivi, Guillaume,
+de Maizière, Treuhand, Kohl als längster Kanzler, Eminem, Olaf, Rosebud, Breaking Bad,
+„Dinner for One“, Loriot, GZSZ, Jumpman, Peyo, Kapitän Ahab, Argos, Aschermittwoch,
+Pyrrhussieg, u. A. w. g., Riesling, Juli, Gros, Walhai, Apollo 13, Olympus Mons, Zungenbein,
+Karate, Tom Brady, das Grüne Jackett, Rochade, Gukesh, 1,73 m, 147, Super Bowl LX und die
+Landtagswahl in Sachsen-Anhalt 2026. Sechs bestehende Fragen sind umformuliert, weil sie eine
+neue Antwort verrieten, darunter „Welche Mauer-Rede hielt Kennedy 1963 in Berlin?“ und der
+Zwei-plus-Vier-Vertrag „von 1990“.
+
+Satz 11 steht damit bei **96 %**. Offen sind elf Fragen. Die meisten davon würden zwei Karten
+erzeugen, die sich gegenseitig lösen: Machu Picchu–Peru, Angkor Wat–Kambodscha, Kubakrise–1962,
+Barometer, Eiffelturm–Weltausstellung, Eulen nach Athen und Stanley Cup–Eishockey. Den
+Zusammenhang fragt jeweils schon eine Karte in der anderen Richtung ab.
 
 ### Fibonacci-Folge, Sieb des Eratosthenes, Zinseszins, Ramadan und Stoßlüften
 
