@@ -4230,6 +4230,34 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
+### Aktualitätsprüfung: 415 Karten, die veralten können – fünf Fehler, drei verirrte Nebenschreibweisen
+
+Rekorde, „bisher“, „noch immer“, „amtierend“, „Stand 2026“, Rekordsieger und Zählungen: 415
+Karten enthalten Angaben, die mit der Zeit falsch werden. Acht Prüfer haben sie mit Websuche auf
+den Stand vom 29.09.2026 geprüft, und jeder Befund ging an einen unabhängigen Gegenprüfer. Die
+Regel aus einer früheren Runde galt weiter: Geändert wird nur, was eine datierte Quelle als
+falsch belegt. „Kann ich nicht bestätigen“ ist kein Befund, denn Prüfer haben früher richtige
+Fakten von 2025/26 „berichtigt“, die sie nur nicht kannten.
+
+Gefunden und bestätigt wurden fünf Fehler:
+- Ein Tor direkt aus dem Anstoß ist seit **1997** erlaubt, nicht erst seit 2016. 2016 kam nur
+  der Rückpass beim Anstoß dazu. Der Fehler stand in einer Karte der Fußballrunde.
+- „Welche Wurfdisziplin hat die weitesten Weiten?“ gilt so nur für Männer. Bei den Frauen liegen
+  Hammer (82,98 m) und Diskus (76,80 m) vor dem Speer (72,28 m). Die Frage sagt jetzt
+  „bei den Männern“.
+- Steffi Grafs Golden Slam ist nur außerhalb des Rollstuhltennis einmalig. 2021 gelang er auch
+  Diede de Groot und Dylan Alcott.
+- Frankreich hat inzwischen rund 69 Millionen Einwohner (INSEE, 1. Januar 2026), nicht 68.
+- Die Wimbledon-Karte fragt nach dem Belag, nahm aber „Wimbledon Championships“ und „The
+  Championships“ als richtig an. Das waren Überbleibsel aus der Zeit, als sie nach dem Turnier
+  fragte.
+
+Der letzte Fund führte zu einem Scan aller 153 umformulierten Karten auf solche Überbleibsel.
+Zwei weitere tauchten auf. „Unter welchem überlieferten Namen ist das BVB-Stadion bekannt?“
+nahm den Sponsorennamen „Signal Iduna Park“ an, also gerade den, den die Frage ausschließt. Und
+„Welches Land hat zu welchem Nachbarn die längste Grenze?“ ließ „USA“ oder „Kanada“ allein
+gelten, obwohl beide Länder gefragt sind. Beide sind bereinigt.
+
 ### Grammatik und Englisch als eigene Teilgebiete – und ein abgeschriebenes Wort ist kein Vertipper
 
 „Was ist eine Präposition?“ beantwortete die Sammlung nicht, Englisch kam gar nicht vor. Für den
@@ -4372,8 +4400,9 @@ gemessen schlechter (414 bis 1.003 ms) und wurde verworfen. Bei 12 Karten, deren
 Eine Durchsicht nach Stichwörtern fand im Fußball noch Lücken bei Begriffen, die jeder
 Kommentator benutzt, und bei Regeln, die im Verein oft falsch erklärt werden. Neu sind der
 Sechser, der Doppelpass, die Gelb-Rote Karte und die Mindestzahl von sieben Spielern. Dazu
-kommen das Ballgewicht von 410 bis 450 g und die Regel, dass ein Tor direkt aus dem Anstoß seit
-2016 zählt. Bei den Personen fehlten Philipp Lahm als Kapitän von 2014, Manuel Neuer mit dem
+kommen das Ballgewicht von 410 bis 450 g und die Regel, dass ein Tor direkt aus dem Anstoß
+zählt (seit 1997 – die Karte nannte zuerst 2016, das berichtigte die Aktualitätsprüfung weiter
+unten). Bei den Personen fehlten Philipp Lahm als Kapitän von 2014, Manuel Neuer mit dem
 Goldenen Handschuh, Toni Kroos mit sechs Champions-League-Titeln und Cristiano Ronaldo als
 Rekordtorschütze der Champions League. Zwei weitere Kandidaten blieben draußen: Die falsche
 Neun gab es schon, und nach Messis acht Auszeichnungen fragt bereits eine Karte.
