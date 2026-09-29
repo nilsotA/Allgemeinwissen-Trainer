@@ -4224,6 +4224,17 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
+### Der elfte Prüfsatz: 300 typische Quizabend-Fragen – 76 %
+
+Die Sätze 1 bis 7 lagen alle bei 95 % oder mehr. Die Frage war, ob das an der Sammlung liegt
+oder daran, dass die Sätze inzwischen zu gut zur Sammlung passen. Für `data/quizprobe11.json`
+haben sechs Autoren blind je 50 Fragen geschrieben, wie sie ein Quizmaster tatsächlich stellt:
+Pubquiz, Trivial Pursuit, „Wer wird Millionär“ bis 64.000 €, „Gefragt – Gejagt“. Die sechs
+Bündel waren Geografie, Geschichte und Politik, Unterhaltung, Natur und Wissenschaft, Kultur
+und Sprache sowie Sport allgemein mit Zeitgeschehen 2024 bis 2026. Je ein Prüfer hat alle
+Antworten mit Websuche nachgeprüft. Alle 300 blieben stehen. Beantwortet sind **227 von 300
+(76 %)** – ein Satz, der die Sammlung nicht kennt, findet also deutlich mehr Lücken.
+
 ### Fibonacci-Folge, Sieb des Eratosthenes, Zinseszins, Ramadan und Stoßlüften
 
 Fünf weitere Klassiker aus den Sätzen 4, 5 und 7 fehlten nur scheinbar oder nur in einer

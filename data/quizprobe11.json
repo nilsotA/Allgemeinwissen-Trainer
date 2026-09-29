@@ -1,0 +1,3343 @@
+[
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt von Australien?",
+  "antwort": "Canberra",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt von Kanada?",
+  "antwort": "Ottawa",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt der Türkei?",
+  "antwort": "Ankara",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt von Brasilien?",
+  "antwort": "Brasília",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Brasilia"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt von Neuseeland?",
+  "antwort": "Wellington",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt von Kasachstan (Stand 2026)?",
+  "antwort": "Astana",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Hauptstädte",
+  "frage": "Welche Stadt ist seit 2005 die Hauptstadt von Myanmar?",
+  "antwort": "Naypyidaw",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Naypyitaw",
+   "Nay Pyi Taw",
+   "Nay Pyi Daw"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Hauptstädte",
+  "frage": "Welche Stadt ist laut Verfassung die Hauptstadt Boliviens – nicht der Regierungssitz La Paz?",
+  "antwort": "Sucre",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss fließt durch Paris?",
+  "antwort": "Seine",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flüsse",
+  "frage": "In welches Meer mündet die Donau?",
+  "antwort": "Schwarzes Meer",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schwarze Meer",
+   "Das Schwarze Meer"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flüsse",
+  "frage": "An welchem Fluss liegt Dresden?",
+  "antwort": "Elbe",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flüsse",
+  "frage": "Welcher ist der längste Fluss Europas?",
+  "antwort": "Wolga",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Volga"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Berge & Gebirge",
+  "frage": "Wie heißt der höchste Berg Deutschlands?",
+  "antwort": "Zugspitze",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Berge & Gebirge",
+  "frage": "Wie heißt der höchste Berg Afrikas?",
+  "antwort": "Kilimandscharo",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kilimanjaro",
+   "Kibo",
+   "Kilimandjaro"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Berge & Gebirge",
+  "frage": "In welchem Mittelgebirge liegt der Brocken?",
+  "antwort": "Harz",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Berge & Gebirge",
+  "frage": "Wie heißt der höchste Berg Österreichs?",
+  "antwort": "Großglockner",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Glockner",
+   "Grossglockner"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Meere & Inseln",
+  "frage": "Welche ist die größte Insel der Erde?",
+  "antwort": "Grönland",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Groenland",
+   "Kalaallit Nunaat"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Meere & Inseln",
+  "frage": "Welche ist die größte Insel Deutschlands?",
+  "antwort": "Rügen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ruegen"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Meere & Inseln",
+  "frage": "Wie heißt die Tiefseerinne im Pazifik mit der tiefsten Stelle der Weltmeere?",
+  "antwort": "Marianengraben",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Challengertief",
+   "Marianenrinne",
+   "Marianen-Graben"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Meere & Inseln",
+  "frage": "Welche Meerenge trennt in Istanbul Europa von Asien?",
+  "antwort": "Bosporus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bosporos",
+   "Bosphorus"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Wüsten",
+  "frage": "Welche ist – Kältewüsten mitgezählt – die flächenmäßig größte Wüste der Erde?",
+  "antwort": "Antarktis",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Antarktika",
+   "Antarktische Wüste"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Superlative",
+  "frage": "Welches ist das flächenmäßig größte Land der Erde?",
+  "antwort": "Russland",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Russische Föderation"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Superlative",
+  "frage": "Welches ist der flächenmäßig kleinste Staat der Welt?",
+  "antwort": "Vatikanstadt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Vatikan",
+   "Vatikanstaat",
+   "Staat der Vatikanstadt"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Superlative",
+  "frage": "Welcher ist der tiefste See der Erde?",
+  "antwort": "Baikalsee",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Baikal",
+   "Bajkalsee"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Superlative",
+  "frage": "Wie heißt der höchste Wasserfall der Erde – er liegt in Venezuela?",
+  "antwort": "Salto Ángel",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Angel Falls",
+   "Salto Angel",
+   "Kerepakupai Merú",
+   "Kerepakupai Meru",
+   "Angelfall"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flaggen",
+  "frage": "Welches europäische Land hat eine senkrecht gestreifte Flagge in Grün, Weiß und Rot?",
+  "antwort": "Italien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flaggen",
+  "frage": "Welches Land hat als einziges eine nicht rechteckige Nationalflagge?",
+  "antwort": "Nepal",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flaggen",
+  "frage": "Welches Land zeigt eine grüne Zeder in der Mitte seiner Flagge?",
+  "antwort": "Libanon",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Der Libanon"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flaggen",
+  "frage": "Welcher souveräne Staat zeigt einen Drachen auf seiner Nationalflagge?",
+  "antwort": "Bhutan",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Japans?",
+  "antwort": "Yen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Japanischer Yen",
+   "JPY",
+   "Jen"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Polens?",
+  "antwort": "Złoty",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zloty",
+   "PLN",
+   "Polnischer Złoty",
+   "Polnischer Zloty"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Amtssprachen",
+  "frage": "Welche Sprache ist neben Niederländisch und Französisch die dritte Amtssprache Belgiens?",
+  "antwort": "Deutsch",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Amtssprachen",
+  "frage": "Welche Sprache ist die Amtssprache des südamerikanischen Staates Suriname?",
+  "antwort": "Niederländisch",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Holländisch"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Wahrzeichen",
+  "frage": "In welchem Land liegt die Inkastadt Machu Picchu?",
+  "antwort": "Peru",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Wahrzeichen",
+  "frage": "In welchem Land liegt die Tempelanlage Angkor Wat?",
+  "antwort": "Kambodscha",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Nachbarländer",
+  "frage": "Wie viele Nachbarländer hat Deutschland?",
+  "antwort": "9",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "neun"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Nachbarländer",
+  "frage": "Welcher Staat ist vollständig von Südafrika umschlossen?",
+  "antwort": "Lesotho",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Deutschland",
+  "frage": "Wie heißt die Landeshauptstadt von Rheinland-Pfalz?",
+  "antwort": "Mainz",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Deutschland",
+  "frage": "Wie heißt die Landeshauptstadt von Mecklenburg-Vorpommern?",
+  "antwort": "Schwerin",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Kennzeichen & Codes",
+  "frage": "Für welche Stadt steht das Kfz-Kennzeichen „HH“?",
+  "antwort": "Hamburg",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hansestadt Hamburg",
+   "Freie und Hansestadt Hamburg"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Kennzeichen & Codes",
+  "frage": "Wofür steht die Länderabkürzung „CH“ der Schweiz?",
+  "antwort": "Confoederatio Helvetica",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Confœderatio Helvetica",
+   "Confederatio Helvetica"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Kennzeichen & Codes",
+  "frage": "Zu welchem Inselstaat gehört die Internet-Endung „.tv“?",
+  "antwort": "Tuvalu",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Zeitzonen",
+  "frage": "Durch welchen Londoner Stadtteil verläuft der Nullmeridian?",
+  "antwort": "Greenwich",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Zeitzonen",
+  "frage": "Wie viele Stunden ist die Mitteleuropäische Sommerzeit (MESZ) der Weltzeit UTC voraus?",
+  "antwort": "2 Stunden",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "2",
+   "zwei",
+   "zwei Stunden",
+   "UTC+2"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Zeitzonen",
+  "frage": "Welches Land hat – inklusive seiner Überseegebiete – die meisten Zeitzonen der Welt?",
+  "antwort": "Frankreich",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Europa",
+  "frage": "In welcher Stadt hat das Europäische Parlament seinen offiziellen Sitz?",
+  "antwort": "Straßburg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Strasbourg",
+   "Strassburg"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Europa",
+  "frage": "Welche Stadt liegt weiter nördlich – Rom oder New York?",
+  "antwort": "Rom",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Roma"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Redewendungen",
+  "frage": "Welche Stadt ergänzt die Redewendung: „… sehen und sterben“?",
+  "antwort": "Neapel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Napoli"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Meere & Inseln",
+  "frage": "Welche ist die größte Insel im Mittelmeer?",
+  "antwort": "Sizilien",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Sicilia"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "quizabend-geografie",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss führt die größte Wassermenge der Erde?",
+  "antwort": "Amazonas",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Amazon"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Antike",
+  "frage": "Welcher römische Feldherr und Diktator wurde an den Iden des März 44 v. Chr. ermordet?",
+  "antwort": "Julius Caesar",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Caesar",
+   "Gaius Julius Caesar",
+   "Cäsar",
+   "Julius Cäsar",
+   "Gaius Iulius Caesar"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Antike",
+  "frage": "Welche Stadt wurde der Sage nach 753 v. Chr. gegründet – Merkspruch: „Sieben – fünf – drei, … schlüpft aus dem Ei“?",
+  "antwort": "Rom",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Roma"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Reformation",
+  "frage": "Wer veröffentlichte 1517 in Wittenberg seine 95 Thesen?",
+  "antwort": "Martin Luther",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Luther"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Entdecker",
+  "frage": "In welchem Jahr erreichte Christoph Kolumbus Amerika?",
+  "antwort": "1492",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Erfindungen",
+  "frage": "Wer erfand um 1450 in Mainz den Buchdruck mit beweglichen Metalllettern?",
+  "antwort": "Johannes Gutenberg",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gutenberg",
+   "Johann Gutenberg",
+   "Johannes Gensfleisch"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Französische Revolution",
+  "frage": "In welchem Jahr begann mit dem Sturm auf die Bastille die Französische Revolution?",
+  "antwort": "1789",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Napoleon",
+  "frage": "Welcher französische Kaiser wurde 1815 bei Waterloo endgültig geschlagen?",
+  "antwort": "Napoleon",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Napoleon Bonaparte",
+   "Napoleon I.",
+   "Napoleon I",
+   "Napoléon",
+   "Napoléon Bonaparte"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "USA",
+  "frage": "Wer war der erste Präsident der Vereinigten Staaten?",
+  "antwort": "George Washington",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Washington"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "USA",
+  "frage": "Welches Land schenkte den USA die Freiheitsstatue?",
+  "antwort": "Frankreich",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Zweiter Weltkrieg",
+  "frage": "In welchem Jahr begann mit dem deutschen Überfall auf Polen der Zweite Weltkrieg?",
+  "antwort": "1939",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Zweiter Weltkrieg",
+  "frage": "Auf welche japanische Stadt warfen die USA am 6. August 1945 die erste Atombombe?",
+  "antwort": "Hiroshima",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Wettlauf ins All",
+  "frage": "Wer war 1961 der erste Mensch im Weltraum?",
+  "antwort": "Juri Gagarin",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gagarin",
+   "Yuri Gagarin",
+   "Jurij Gagarin",
+   "Juri Alexejewitsch Gagarin"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Wettlauf ins All",
+  "frage": "Wer betrat 1969 als erster Mensch den Mond?",
+  "antwort": "Neil Armstrong",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Armstrong"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Berühmte Zitate",
+  "frage": "Welcher US-Präsident sagte 1963 in West-Berlin den berühmten Satz „Ich bin ein Berliner“?",
+  "antwort": "John F. Kennedy",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kennedy",
+   "JFK",
+   "John F Kennedy",
+   "John Fitzgerald Kennedy"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Deutsche Teilung",
+  "frage": "In welchem Jahr fiel die Berliner Mauer?",
+  "antwort": "1989",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Bundeskanzler",
+  "frage": "Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?",
+  "antwort": "Konrad Adenauer",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Adenauer"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Wende",
+  "frage": "In welchem Jahr wurde Deutschland wiedervereinigt?",
+  "antwort": "1990",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "DDR",
+  "frage": "Wofür steht die Abkürzung DDR?",
+  "antwort": "Deutsche Demokratische Republik",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Bundeskanzler",
+  "frage": "Wer war die erste Frau im Amt des deutschen Bundeskanzlers?",
+  "antwort": "Angela Merkel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Merkel"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-geschichte",
+  "block": "Wahlen",
+  "frage": "Wie viel Prozent der Zweitstimmen braucht eine Partei grundsätzlich, um in den Bundestag einzuziehen?",
+  "antwort": "5 %",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "5",
+   "fünf Prozent",
+   "5 Prozent",
+   "5%",
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-geschichte",
+  "block": "Bundeskanzler",
+  "frage": "Wer wurde im Mai 2025 zum deutschen Bundeskanzler gewählt?",
+  "antwort": "Friedrich Merz",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Merz"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Geld",
+  "frage": "Wie hieß die Währung der Bundesrepublik vor Einführung des Euro?",
+  "antwort": "Deutsche Mark",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "D-Mark",
+   "DM",
+   "Mark"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-geschichte",
+  "block": "Wirtschaft",
+  "frage": "Wofür steht die Abkürzung BIP?",
+  "antwort": "Bruttoinlandsprodukt",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Grundgesetz",
+  "frage": "In welchem Jahr wurde das Grundgesetz verkündet?",
+  "antwort": "1949",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Kaiserreich",
+  "frage": "Welcher preußische König wurde 1871 im Spiegelsaal von Versailles zum Deutschen Kaiser proklamiert?",
+  "antwort": "Wilhelm I.",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wilhelm der Erste",
+   "Kaiser Wilhelm I.",
+   "Wilhelm I",
+   "Kaiser Wilhelm"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Weimarer Republik",
+  "frage": "Wer war der erste Reichspräsident der Weimarer Republik?",
+  "antwort": "Friedrich Ebert",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ebert"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Kalter Krieg",
+  "frage": "In welchem Jahr brachte die Kubakrise die Welt an den Rand eines Atomkriegs?",
+  "antwort": "1962",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "USA",
+  "frage": "Welcher US-Präsident trat 1974 wegen der Watergate-Affäre zurück?",
+  "antwort": "Richard Nixon",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Nixon",
+   "Richard M. Nixon"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Erfindungen",
+  "frage": "Welcher schottische Forscher entdeckte 1928 das Penicillin?",
+  "antwort": "Alexander Fleming",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fleming",
+   "Sir Alexander Fleming"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Entdecker",
+  "frage": "Welcher portugiesische Seefahrer brach 1519 zur ersten Weltumsegelung auf, starb aber unterwegs auf den Philippinen?",
+  "antwort": "Ferdinand Magellan",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Magellan",
+   "Fernão de Magalhães",
+   "Magalhães",
+   "Fernando Magellan",
+   "Magalhaes",
+   "Fernando de Magallanes"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Dreißigjähriger Krieg",
+  "frage": "In welchem Jahr endete der Dreißigjährige Krieg mit dem Westfälischen Frieden?",
+  "antwort": "1648",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Erster Weltkrieg",
+  "frage": "Welcher österreichische Thronfolger wurde 1914 in Sarajevo ermordet?",
+  "antwort": "Franz Ferdinand",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Erzherzog Franz Ferdinand",
+   "Franz Ferdinand von Österreich-Este"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Nachkriegszeit",
+  "frage": "Wie nannten die Berliner die Flugzeuge der Luftbrücke 1948/49?",
+  "antwort": "Rosinenbomber",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Rosinen-Bomber"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-geschichte",
+  "block": "Institutionen",
+  "frage": "In welcher Stadt hat das Bundesverfassungsgericht seinen Sitz?",
+  "antwort": "Karlsruhe",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Mittelalter",
+  "frage": "Welcher Frankenkönig wurde im Jahr 800 in Rom zum Kaiser gekrönt?",
+  "antwort": "Karl der Große",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Karl I.",
+   "Charlemagne",
+   "Karl der Grosse",
+   "Carolus Magnus"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Bundeskanzler",
+  "frage": "Welcher Bundeskanzler kniete 1970 am Ehrenmal für die Opfer des Warschauer Ghettos nieder?",
+  "antwort": "Willy Brandt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Brandt"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Berühmte Zitate",
+  "frage": "Welcher DDR-Staatschef sagte im Juni 1961: „Niemand hat die Absicht, eine Mauer zu errichten“?",
+  "antwort": "Walter Ulbricht",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ulbricht"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Was war früher?",
+  "frage": "Was geschah früher – der Bau der Berliner Mauer oder die erste bemannte Mondlandung?",
+  "antwort": "Bau der Berliner Mauer",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mauerbau",
+   "die Berliner Mauer",
+   "Berliner Mauer",
+   "Bau der Mauer"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-geschichte",
+  "block": "UNO",
+  "frage": "Wie viele ständige Mitglieder hat der UN-Sicherheitsrat?",
+  "antwort": "5",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Widerstand",
+  "frage": "Welcher Offizier verübte am 20. Juli 1944 das Bombenattentat auf Hitler in der Wolfsschanze?",
+  "antwort": "Claus Schenk Graf von Stauffenberg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Stauffenberg",
+   "Claus von Stauffenberg",
+   "Graf von Stauffenberg",
+   "Claus Graf von Stauffenberg",
+   "Graf Stauffenberg"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Absolutismus",
+  "frage": "Welchem französischen „Sonnenkönig“ wird der Satz „Der Staat bin ich“ zugeschrieben?",
+  "antwort": "Ludwig XIV.",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ludwig der Vierzehnte",
+   "Louis XIV",
+   "Ludwig XIV",
+   "Louis XIV.",
+   "Ludwig 14.",
+   "Louis Quatorze"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-geschichte",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht die Abkürzung NATO?",
+  "antwort": "North Atlantic Treaty Organization",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Nordatlantikvertrags-Organisation",
+   "Organisation des Nordatlantikvertrags",
+   "North Atlantic Treaty Organisation",
+   "Nordatlantikpakt-Organisation"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-geschichte",
+  "block": "Wirtschaft",
+  "frage": "Die Pleite welcher US-Investmentbank im September 2008 verschärfte die weltweite Finanzkrise dramatisch?",
+  "antwort": "Lehman Brothers",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lehman",
+   "Lehman Bros."
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Antike",
+  "frage": "Wie hieß der letzte Kaiser des Weströmischen Reiches, der 476 von Odoaker abgesetzt wurde?",
+  "antwort": "Romulus Augustulus",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Romulus Augustus"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Kaiserreich",
+  "frage": "Wer folgte 1890 Otto von Bismarck als Reichskanzler nach?",
+  "antwort": "Leo von Caprivi",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Caprivi",
+   "Georg Leo von Caprivi",
+   "Leo Graf von Caprivi"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Kalter Krieg",
+  "frage": "Wie hieß der DDR-Spion im Kanzleramt, dessen Enttarnung 1974 zum Rücktritt von Willy Brandt führte?",
+  "antwort": "Günter Guillaume",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Guillaume"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Wende",
+  "frage": "Wer war der einzige frei gewählte Ministerpräsident der DDR?",
+  "antwort": "Lothar de Maizière",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "de Maizière",
+   "Maizière",
+   "Lothar de Maiziere",
+   "de Maiziere"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Wende",
+  "frage": "Welche Anstalt privatisierte ab 1990 die volkseigenen Betriebe der DDR?",
+  "antwort": "Treuhandanstalt",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Treuhand"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "Bundeskanzler",
+  "frage": "Welcher Bundeskanzler war bisher am längsten im Amt – wenige Tage länger als Angela Merkel?",
+  "antwort": "Helmut Kohl",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Kohl"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "quizabend-geschichte",
+  "block": "NS-Zeit",
+  "frage": "Wie heißt die Konferenz vom Januar 1942 in Berlin, auf der NS-Funktionäre die Organisation des Holocaust koordinierten?",
+  "antwort": "Wannseekonferenz",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Wannsee-Konferenz",
+   "Wannsee Konferenz"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "ESC",
+  "frage": "Mit welchem Song gewann ABBA 1974 den Eurovision Song Contest?",
+  "antwort": "Waterloo",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "ESC",
+  "frage": "Welches Land gewann 2026 in Wien zum ersten Mal den Eurovision Song Contest?",
+  "antwort": "Bulgarien",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Bands & Sänger",
+  "frage": "Wie hieß der Leadsänger der Band Queen?",
+  "antwort": "Freddie Mercury",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mercury",
+   "Farrokh Bulsara",
+   "Freddy Mercury"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Bands & Sänger",
+  "frage": "Aus welcher englischen Stadt stammen die Beatles?",
+  "antwort": "Liverpool",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Klassik",
+  "frage": "Wer komponierte die Oper „Die Zauberflöte“?",
+  "antwort": "Mozart",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wolfgang Amadeus Mozart"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Instrumente",
+  "frage": "Wie viele Tasten hat ein normales Klavier?",
+  "antwort": "88",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "achtundachtzig"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Rap & Pop",
+  "frage": "Welcher Rapper heißt mit bürgerlichem Namen Marshall Mathers?",
+  "antwort": "Eminem",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Klassik",
+  "frage": "Welcher französische Komponist schrieb den „Boléro“?",
+  "antwort": "Ravel",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Maurice Ravel"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Instrumente",
+  "frage": "Wie heißt das Streichinstrument, das in Größe und Tonlage zwischen Geige und Cello liegt?",
+  "antwort": "Bratsche",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Viola"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Deutsche Musik",
+  "frage": "Welche Sängerin landete 1983 mit „99 Luftballons“ einen Welthit?",
+  "antwort": "Nena",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gabriele Kerner"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Regisseure",
+  "frage": "Wer führte Regie bei „Jurassic Park“ (1993)?",
+  "antwort": "Steven Spielberg",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Spielberg"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Filmzitate",
+  "frage": "Aus welchem Film stammt das Zitat „Ich schau dir in die Augen, Kleines“?",
+  "antwort": "Casablanca",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Filmzitate",
+  "frage": "In welchem Film heißt es „Das Leben ist wie eine Schachtel Pralinen – man weiß nie, was man kriegt“?",
+  "antwort": "Forrest Gump",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Forest Gump"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "James Bond",
+  "frage": "Welcher Schauspieler spielte 1962 in „James Bond jagt Dr. No“ als erster James Bond auf der Kinoleinwand?",
+  "antwort": "Sean Connery",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Connery"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Disney/Pixar",
+  "frage": "Wie heißt der sprechende Schneemann in Disneys „Die Eiskönigin“?",
+  "antwort": "Olaf",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Disney/Pixar",
+  "frage": "Welcher Pixar-Film war 1995 der erste komplett computeranimierte Kinofilm?",
+  "antwort": "Toy Story",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Marvel",
+  "frage": "Wie heißt der Hammer des Marvel-Helden Thor?",
+  "antwort": "Mjölnir",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mjolnir",
+   "Mjoelnir"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Star Wars",
+  "frage": "Wer ist in „Star Wars“ der Vater von Luke Skywalker?",
+  "antwort": "Darth Vader",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Anakin Skywalker",
+   "Vader",
+   "Anakin"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Oscars",
+  "frage": "Welcher südkoreanische Film gewann 2020 als erster nicht englischsprachiger Film den Oscar als bester Film?",
+  "antwort": "Parasite",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Parasit",
+   "Gisaengchung"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Oscars",
+  "frage": "Wie viele Oscars gewann James Camerons „Titanic“?",
+  "antwort": "11",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "elf"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Oscars",
+  "frage": "Welcher deutsche Antikriegsfilm von Edward Berger gewann 2023 den Oscar als bester internationaler Film?",
+  "antwort": "Im Westen nichts Neues",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "All Quiet on the Western Front"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Filmklassiker",
+  "frage": "Welches Wort flüstert Charles Foster Kane in „Citizen Kane“ (1941) kurz vor seinem Tod?",
+  "antwort": "Rosebud",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Rosenknospe"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Regisseure",
+  "frage": "Welcher Regisseur drehte den Thriller „Psycho“ (1960)?",
+  "antwort": "Alfred Hitchcock",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hitchcock"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Oscars",
+  "frage": "Welcher Film von Paul Thomas Anderson gewann im März 2026 den Oscar als bester Film?",
+  "antwort": "One Battle After Another",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Eine Schlacht nach der anderen"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Serien",
+  "frage": "In welcher US-Stadt spielt die Serie „Breaking Bad“?",
+  "antwort": "Albuquerque",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Serien",
+  "frage": "Wie heißt das Stammcafé der Clique in der Serie „Friends“?",
+  "antwort": "Central Perk",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Serien",
+  "frage": "In welcher Stadt leben die Simpsons?",
+  "antwort": "Springfield",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Serien",
+  "frage": "Aus welchem Land stammt die Netflix-Serie „Squid Game“?",
+  "antwort": "Südkorea",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Korea",
+   "Süd-Korea",
+   "Republik Korea"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Serien",
+  "frage": "Wie heißt die fiktive Kleinstadt in Indiana, in der „Stranger Things“ spielt?",
+  "antwort": "Hawkins",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Deutsches Fernsehen",
+  "frage": "Wer moderiert in Deutschland die Quizshow „Wer wird Millionär?“?",
+  "antwort": "Günther Jauch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jauch",
+   "Günter Jauch"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Deutsches Fernsehen",
+  "frage": "In welchem Jahr wurde der erste „Tatort“ ausgestrahlt?",
+  "antwort": "1970",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Deutsches Fernsehen",
+  "frage": "Wie heißt der Butler von Miss Sophie in „Dinner for One“?",
+  "antwort": "James",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Deutsches Fernsehen",
+  "frage": "Welcher Humorist drehte die Kinofilme „Ödipussi“ und „Pappa ante portas“?",
+  "antwort": "Loriot",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vicco von Bülow"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Deutsches Fernsehen",
+  "frage": "Wofür steht die Abkürzung der RTL-Seifenoper „GZSZ“?",
+  "antwort": "Gute Zeiten, schlechte Zeiten",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gute Zeiten schlechte Zeiten"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Videospiele",
+  "frage": "Wie heißt der Bruder von Super Mario?",
+  "antwort": "Luigi",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Videospiele",
+  "frage": "In welchem Staat wurde 1984 das Computerspiel „Tetris“ entwickelt?",
+  "antwort": "Sowjetunion",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "UdSSR"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Videospiele",
+  "frage": "Unter welchem Namen trat Mario 1981 in seinem ersten Spiel „Donkey Kong“ auf?",
+  "antwort": "Jumpman",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Jump Man"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Comics",
+  "frage": "Wie heißt der kleine Hund von Obelix?",
+  "antwort": "Idefix",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Comics",
+  "frage": "Wie heißt die Heimatstadt von Donald Duck in den deutschen Comics?",
+  "antwort": "Entenhausen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Comics",
+  "frage": "Unter welchem Künstlernamen erfand der Belgier Pierre Culliford die Schlümpfe?",
+  "antwort": "Peyo",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Comics",
+  "frage": "Welcher Zeichner schuf die „Peanuts“ mit Charlie Brown und Snoopy?",
+  "antwort": "Charles M. Schulz",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Schulz",
+   "Charles Schulz"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Brett- und Kartenspiele",
+  "frage": "Welche Straße ist beim deutschen Monopoly die teuerste?",
+  "antwort": "Schlossallee",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schloßallee"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Brett- und Kartenspiele",
+  "frage": "Wie viele Karten hat ein Skatblatt?",
+  "antwort": "32",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zweiunddreißig"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Brett- und Kartenspiele",
+  "frage": "Wie viele Augen zeigt ein normaler sechsseitiger Spielwürfel auf allen Seiten zusammen?",
+  "antwort": "21",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "einundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Brett- und Kartenspiele",
+  "frage": "Wie viele Steine hat ein klassisches Dominospiel (Doppel-Sechs)?",
+  "antwort": "28",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "achtundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Brett- und Kartenspiele",
+  "frage": "Wie heißt das Brettspiel von Klaus Teuber, in dem man mit Rohstoffen Straßen, Siedlungen und Städte baut?",
+  "antwort": "Catan",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Die Siedler von Catan",
+   "Siedler von Catan"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Spielzeug",
+  "frage": "Aus welchem Land stammt Ernő Rubik, der Erfinder des Zauberwürfels?",
+  "antwort": "Ungarn",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Spielzeug",
+  "frage": "Der Markenname LEGO leitet sich vom dänischen „leg godt“ ab – was bedeutet das auf Deutsch?",
+  "antwort": "Spiel gut",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Spiel gut!",
+   "Spielt gut"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Promis",
+  "frage": "Welcher Schauspieler sagt als „Terminator“ den Satz „I'll be back“ und war später Gouverneur von Kalifornien?",
+  "antwort": "Arnold Schwarzenegger",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schwarzenegger"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-unterhaltung",
+  "block": "Promis",
+  "frage": "Mit welchem NFL-Star gab Taylor Swift im August 2025 ihre Verlobung bekannt?",
+  "antwort": "Travis Kelce",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kelce"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Tierrekorde",
+  "frage": "Welches ist das schnellste Landtier der Welt?",
+  "antwort": "Gepard",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Tierrekorde",
+  "frage": "Welches ist das größte Tier, das jemals auf der Erde gelebt hat?",
+  "antwort": "Blauwal",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Jungtiere",
+  "frage": "Wie nennt man ein junges Pferd?",
+  "antwort": "Fohlen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Füllen"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Säugetiere",
+  "frage": "Welches Säugetier kann als einziges aktiv fliegen?",
+  "antwort": "Fledermaus",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fledertier",
+   "Flughund",
+   "Fledermäuse",
+   "Fledertiere"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Tiere und Länder",
+  "frage": "In welchem Land ist der flugunfähige Kiwi-Vogel heimisch – er ist dort sogar Nationalsymbol?",
+  "antwort": "Neuseeland",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Pflanzen",
+  "frage": "Wie heißt der Vorgang, bei dem Pflanzen mithilfe von Sonnenlicht aus Kohlendioxid und Wasser Zucker und Sauerstoff herstellen?",
+  "antwort": "Photosynthese",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fotosynthese"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Skelett",
+  "frage": "Wie viele Knochen hat ein erwachsener Mensch?",
+  "antwort": "206",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zweihundertsechs"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Organe",
+  "frage": "Welches ist das größte Organ des menschlichen Körpers?",
+  "antwort": "Haut",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "die Haut"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Skelett",
+  "frage": "Wie heißt der längste Knochen des menschlichen Körpers?",
+  "antwort": "Oberschenkelknochen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Femur",
+   "Os femoris",
+   "Oberschenkel"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Elementsymbole",
+  "frage": "Welches chemische Symbol hat Gold?",
+  "antwort": "Au",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Elemente",
+  "frage": "Welches Metall ist bei Raumtemperatur flüssig?",
+  "antwort": "Quecksilber",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hg"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Elemente",
+  "frage": "Welches chemische Element hat die Ordnungszahl 1?",
+  "antwort": "Wasserstoff",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "H"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Planeten",
+  "frage": "Welcher ist der größte Planet unseres Sonnensystems?",
+  "antwort": "Jupiter",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Planeten",
+  "frage": "Welcher Himmelskörper wurde 2006 vom Planeten zum Zwergplaneten herabgestuft?",
+  "antwort": "Pluto",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Raumfahrt",
+  "frage": "Wer betrat 1969 als erster Mensch den Mond?",
+  "antwort": "Neil Armstrong",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Armstrong"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht die Abkürzung WWW?",
+  "antwort": "World Wide Web",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "World-Wide Web",
+   "Worldwide Web"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Computer",
+  "frage": "Wie viele Bit ergeben ein Byte?",
+  "antwort": "8",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Medizin",
+  "frage": "Wer entdeckte 1928 das Penicillin?",
+  "antwort": "Alexander Fleming",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fleming"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Vitamine",
+  "frage": "Welches Vitamin bildet der Körper mithilfe von Sonnenlicht in der Haut selbst?",
+  "antwort": "Vitamin D",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "D",
+   "Vitamin D3",
+   "Cholecalciferol"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Wetter",
+  "frage": "Mit welchem Messgerät misst man den Luftdruck?",
+  "antwort": "Barometer",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Wetter",
+  "frage": "Wie nennt man einen tropischen Wirbelsturm über dem Atlantik, etwa vor der Küste der USA?",
+  "antwort": "Hurrikan",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hurricane",
+   "Hurrican"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Einheiten",
+  "frage": "In welcher Einheit wird die elektrische Spannung gemessen?",
+  "antwort": "Volt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "V"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Tierbesonderheiten",
+  "frage": "Wie viele Herzen hat ein Oktopus?",
+  "antwort": "3",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "drei"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Tierbesonderheiten",
+  "frage": "Welche Farbe hat die Haut unter dem Fell eines Eisbären?",
+  "antwort": "Schwarz",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Tierrekorde",
+  "frage": "Welches ist der größte Fisch der Welt?",
+  "antwort": "Walhai",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Jungtiere",
+  "frage": "Wie nennt man ein Känguru-Junges?",
+  "antwort": "Joey",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Pflanzen",
+  "frage": "Welches Gewürz wird aus den getrockneten Blütennarben einer Krokusart gewonnen und gilt als das teuerste der Welt?",
+  "antwort": "Safran",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Pflanzen",
+  "frage": "Zu welcher Fruchtform zählt die Banane botanisch gesehen?",
+  "antwort": "Beere",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Beerenfrucht"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Skelett",
+  "frage": "Wie heißt der kleinste Knochen des menschlichen Körpers – er sitzt im Mittelohr?",
+  "antwort": "Steigbügel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Stapes"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Organe",
+  "frage": "Welches Organ produziert das Hormon Insulin?",
+  "antwort": "Bauchspeicheldrüse",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Pankreas"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Blut",
+  "frage": "Welche Blutgruppe gilt als Universalspender?",
+  "antwort": "0 negativ",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "0-",
+   "0 neg",
+   "Null negativ",
+   "0 Rh negativ",
+   "0 Rhesus negativ",
+   "0 Rh-",
+   "O negativ"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Atmosphäre",
+  "frage": "Welches Gas macht mit rund 78 Prozent den größten Anteil der Erdluft aus?",
+  "antwort": "Stickstoff",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "N2",
+   "N"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Physik",
+  "frage": "Wie viel Grad Celsius beträgt der absolute Nullpunkt?",
+  "antwort": "−273,15 °C",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "-273,15 °C",
+   "-273 °C",
+   "minus 273,15 Grad",
+   "−273,15",
+   "-273,15",
+   "minus 273,15 Grad Celsius"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Zitate",
+  "frage": "Welcher antike Gelehrte soll „Heureka!“ gerufen haben, als ihm in der Badewanne das Auftriebsprinzip einfiel?",
+  "antwort": "Archimedes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Archimedes von Syrakus"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Zitate",
+  "frage": "Bei welcher Mondmission fiel 1970 der berühmte Funkspruch „Houston, wir haben ein Problem“?",
+  "antwort": "Apollo 13",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Apollo XIII"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Planeten",
+  "frage": "Welcher Planet unseres Sonnensystems hat die heißeste Oberfläche?",
+  "antwort": "Venus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Raumfahrt",
+  "frage": "Wer flog 1978 als erster Deutscher ins All?",
+  "antwort": "Sigmund Jähn",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Jähn"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Raumfahrt",
+  "frage": "Wie heißt die NASA-Mission, mit der im April 2026 erstmals seit 1972 wieder Menschen um den Mond flogen?",
+  "antwort": "Artemis II",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Artemis 2",
+   "Artemis-II",
+   "Artemis-2"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Wetter",
+  "frage": "Was ist heißer – die Oberfläche der Sonne oder ein Blitz?",
+  "antwort": "Blitz",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "ein Blitz"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht die Abkürzung USB?",
+  "antwort": "Universal Serial Bus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Erfinder",
+  "frage": "Welcher deutsche Ingenieur stellte 1941 in Berlin den ersten funktionsfähigen, frei programmierbaren Digitalrechner vor?",
+  "antwort": "Konrad Zuse",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zuse"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Medizin",
+  "frage": "Welche Infektionskrankheit des Menschen gilt seit 1980 als weltweit ausgerottet?",
+  "antwort": "Pocken",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Blattern",
+   "Variola",
+   "Menschenpocken"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Einheiten",
+  "frage": "Wie viele Zentimeter entspricht ein Zoll?",
+  "antwort": "2,54 cm",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "2,54",
+   "2.54 cm",
+   "2.54",
+   "2,54 Zentimeter"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Planeten",
+  "frage": "Wie heißt der höchste bekannte Vulkan im Sonnensystem – er steht auf dem Mars?",
+  "antwort": "Olympus Mons",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Einheiten",
+  "frage": "Wie viele Meter misst eine internationale Seemeile?",
+  "antwort": "1852 m",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "1.852 m",
+   "1852 Meter",
+   "1852",
+   "1.852 Meter"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht die Abkürzung LASER?",
+  "antwort": "Light Amplification by Stimulated Emission of Radiation",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Wetter",
+  "frage": "Wie heißt die hoch aufgetürmte Wolkengattung, aus der Gewitter entstehen?",
+  "antwort": "Cumulonimbus",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Kumulonimbus",
+   "Cumulonimbus-Wolke",
+   "Kumulonimbuswolke"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Tierrekorde",
+  "frage": "Welcher Hai gilt mit einem geschätzten Alter von bis zu 400 Jahren als das langlebigste Wirbeltier?",
+  "antwort": "Grönlandhai",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Eishai",
+   "Grönland-Hai"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Elementsymbole",
+  "frage": "Welches chemische Element hat das Symbol W?",
+  "antwort": "Wolfram",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Tungsten"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-natur",
+  "block": "Skelett",
+  "frage": "Wie heißt der einzige Knochen des Menschen, der mit keinem anderen Knochen gelenkig verbunden ist?",
+  "antwort": "Zungenbein",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Os hyoideum",
+   "Hyoid"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Literatur – Klassiker",
+  "frage": "Wer schrieb die Tragödie „Faust“?",
+  "antwort": "Johann Wolfgang von Goethe",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Goethe",
+   "J. W. von Goethe",
+   "Johann Wolfgang Goethe",
+   "J. W. Goethe"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Literatur – Klassiker",
+  "frage": "Wer schuf die Bildergeschichte „Max und Moritz“?",
+  "antwort": "Wilhelm Busch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Busch"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Literatur – Weltliteratur",
+  "frage": "Wer schrieb den Roman „1984“ über einen Überwachungsstaat mit dem „Großen Bruder“?",
+  "antwort": "George Orwell",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Orwell",
+   "Eric Arthur Blair",
+   "Eric Blair"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Märchen",
+  "frage": "In welchem Grimm-Märchen streuen zwei Geschwister Brotkrumen, um den Weg aus dem Wald zurückzufinden?",
+  "antwort": "Hänsel und Gretel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Haensel und Gretel",
+   "Hänsel & Gretel"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Literatur – Krimi",
+  "frage": "Welche britische Autorin erfand den belgischen Detektiv Hercule Poirot?",
+  "antwort": "Agatha Christie",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Christie"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Literatur – Schauplätze",
+  "frage": "In welcher Hansestadt spielt Thomas Manns Roman „Buddenbrooks“?",
+  "antwort": "Lübeck",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Luebeck"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Literatur – Figuren",
+  "frage": "Wie heißt der Kapitän, der in Herman Melvilles „Moby-Dick“ den weißen Wal jagt?",
+  "antwort": "Ahab",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kapitän Ahab",
+   "Captain Ahab",
+   "Kapitaen Ahab"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Literatur – Weltliteratur",
+  "frage": "Welcher Autor ließ Gregor Samsa eines Morgens als ungeheures Ungeziefer erwachen?",
+  "antwort": "Franz Kafka",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kafka"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Literatur – Antike",
+  "frage": "Wie heißt der Hund des Odysseus, der seinen Herrn nach 20 Jahren als Einziger sofort wiedererkennt?",
+  "antwort": "Argos",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Argus"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Kunst – Gemälde",
+  "frage": "Wer malte die „Mona Lisa“?",
+  "antwort": "Leonardo da Vinci",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Leonardo",
+   "da Vinci"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Kunst – Gemälde",
+  "frage": "Welcher norwegische Maler schuf das Bild „Der Schrei“?",
+  "antwort": "Edvard Munch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Munch"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Kunst – Renaissance",
+  "frage": "Wer malte die Deckenfresken der Sixtinischen Kapelle im Vatikan?",
+  "antwort": "Michelangelo",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Michelangelo Buonarroti",
+   "Buonarroti"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Kunst – Pop-Art",
+  "frage": "Welcher Pop-Art-Künstler wurde mit Bildern von Campbell’s-Suppendosen berühmt?",
+  "antwort": "Andy Warhol",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Warhol"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Kunst – Stile",
+  "frage": "Welche Kunstrichtung ist nach einem Hafenbild benannt, das Claude Monet 1872 malte?",
+  "antwort": "Impressionismus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Kunst – Gemälde",
+  "frage": "Welcher niederländische Maler schuf „Das Mädchen mit dem Perlenohrring“?",
+  "antwort": "Jan Vermeer",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vermeer",
+   "Johannes Vermeer",
+   "Jan Vermeer van Delft",
+   "Vermeer van Delft"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Kunst – Stile",
+  "frage": "Wie heißt die Künstlergruppe, die Wassily Kandinsky und Franz Marc 1911 in München begründeten?",
+  "antwort": "Der Blaue Reiter",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Blauer Reiter",
+   "Blaue Reiter"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Architektur",
+  "frage": "Welcher Architekt entwarf die Kirche Sagrada Família in Barcelona?",
+  "antwort": "Antoni Gaudí",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gaudí",
+   "Gaudi",
+   "Antoni Gaudi",
+   "Antonio Gaudí"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Architektur",
+  "frage": "Welche Kunst- und Architekturschule gründete Walter Gropius 1919 in Weimar?",
+  "antwort": "Bauhaus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Staatliches Bauhaus",
+   "Das Bauhaus"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Architektur",
+  "frage": "Zu welchem Anlass wurde der Eiffelturm 1889 in Paris errichtet?",
+  "antwort": "Weltausstellung",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Weltausstellung 1889",
+   "Expo 1889",
+   "Exposition Universelle",
+   "Pariser Weltausstellung"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Mythologie – römisch",
+  "frage": "Wie heißt der oberste Gott der Römer, der dem griechischen Zeus entspricht?",
+  "antwort": "Jupiter",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Juppiter",
+   "Iuppiter"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Mythologie – griechisch",
+  "frage": "Wie viele Arbeiten musste Herakles im Auftrag von König Eurystheus verrichten?",
+  "antwort": "12",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwölf",
+   "zwoelf"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Mythologie – nordisch",
+  "frage": "Wie heißt der Hammer des nordischen Donnergottes Thor?",
+  "antwort": "Mjölnir",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mjöllnir",
+   "Mjolnir",
+   "Mjollnir",
+   "Mjoelnir"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Mythologie – nordisch",
+  "frage": "Wie heißt in der nordischen Mythologie die Weltesche, die die neun Welten verbindet?",
+  "antwort": "Yggdrasil",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Yggdrasill"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-kultur",
+  "block": "Religion & Feiertage",
+  "frage": "Wie heißt der Fastenmonat im Islam?",
+  "antwort": "Ramadan",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ramadhan",
+   "Ramazan"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-kultur",
+  "block": "Religion & Feiertage",
+  "frage": "Mit welchem Tag beginnt die 40-tägige christliche Fastenzeit vor Ostern?",
+  "antwort": "Aschermittwoch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-kultur",
+  "block": "Religion & Feiertage",
+  "frage": "Welches christliche Fest wird am 40. Tag nach Ostern gefeiert – in Deutschland zugleich Vatertag?",
+  "antwort": "Christi Himmelfahrt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Himmelfahrt"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-kultur",
+  "block": "Religion & Feiertage",
+  "frage": "Wie heißt das achttägige jüdische Lichterfest?",
+  "antwort": "Chanukka",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hanukkah",
+   "Chanukkah",
+   "Hanukka",
+   "Chanukah"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-kultur",
+  "block": "Philosophie",
+  "frage": "Welchem griechischen Philosophen wird der Satz „Ich weiß, dass ich nichts weiß“ zugeschrieben?",
+  "antwort": "Sokrates",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Socrates"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-kultur",
+  "block": "Philosophie",
+  "frage": "Welcher französische Philosoph prägte den Satz „Ich denke, also bin ich“?",
+  "antwort": "René Descartes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Descartes",
+   "Rene Descartes"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Redewendungen",
+  "frage": "Welchem Tier schaut man laut Sprichwort nicht ins Maul, wenn man es geschenkt bekommt?",
+  "antwort": "Gaul",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pferd",
+   "geschenkter Gaul"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Redewendungen",
+  "frage": "Welche Vögel trägt man sprichwörtlich nach Athen, wenn man etwas Überflüssiges tut?",
+  "antwort": "Eulen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Eule"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Redewendungen",
+  "frage": "Wie nennt man einen Sieg, der so teuer erkauft ist, dass er einer Niederlage gleichkommt?",
+  "antwort": "Pyrrhussieg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Pyrrhus-Sieg"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Redewendungen",
+  "frage": "Welchen sprichwörtlichen Knoten soll Alexander der Große mit dem Schwert durchschlagen haben?",
+  "antwort": "Gordischer Knoten",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gordischen Knoten",
+   "gordischer Knoten"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Sprache & Fremdwörter",
+  "frage": "Wie nennt man ein Wort, das vorwärts und rückwärts gelesen gleich lautet – etwa „Otto“ oder „Rentner“?",
+  "antwort": "Palindrom",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-kultur",
+  "block": "Sprache & Fremdwörter",
+  "frage": "Wie heißt das Stilmittel, das zwei sich widersprechende Begriffe verbindet – etwa „bittersüß“ oder „alter Knabe“?",
+  "antwort": "Oxymoron",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht die Abkürzung „GmbH“?",
+  "antwort": "Gesellschaft mit beschränkter Haftung",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gesellschaft mit beschraenkter Haftung"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht die Abkürzung „u. A. w. g.“ auf einer Einladung?",
+  "antwort": "um Antwort wird gebeten",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Um Antwort wird gebeten"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Marken & Logos",
+  "frage": "Welche Automarke hat vier ineinandergreifende Ringe im Logo?",
+  "antwort": "Audi",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Marken & Slogans",
+  "frage": "Welche Sportmarke wirbt mit dem Slogan „Just do it“?",
+  "antwort": "Nike",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Marken & Gründer",
+  "frage": "Wofür steht der Markenname „Haribo“?",
+  "antwort": "Hans Riegel Bonn",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Marken & Logos",
+  "frage": "Wie heißt das aus Reifen bestehende Maskottchen des Reifenherstellers Michelin?",
+  "antwort": "Bibendum",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Bib"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Essen & Trinken – Käse",
+  "frage": "Aus welchem Land stammt der Käse Gouda?",
+  "antwort": "Niederlande",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Holland"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Essen & Trinken – Gewürze",
+  "frage": "Welches Gewürz gilt als das teuerste der Welt?",
+  "antwort": "Safran",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Essen & Trinken – Spirituosen",
+  "frage": "Aus welcher Pflanze wird Tequila gewonnen?",
+  "antwort": "Agave",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Blaue Agave",
+   "Blaue Weber-Agave",
+   "Agave tequilana"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Essen & Trinken – Wein",
+  "frage": "Welche weiße Rebsorte ist das Aushängeschild der Weinbaugebiete Mosel und Rheingau?",
+  "antwort": "Riesling",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Essen & Trinken – Käse",
+  "frage": "Welcher Schimmelpilz sorgt für die blaugrünen Adern im Roquefort?",
+  "antwort": "Penicillium roqueforti",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Penicillium",
+   "P. roqueforti"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Mode",
+  "frage": "Welche französische Modeschöpferin machte das „kleine Schwarze“ berühmt?",
+  "antwort": "Coco Chanel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Chanel",
+   "Gabrielle Chanel",
+   "Gabrielle „Coco“ Chanel"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Kalender & Zahlen",
+  "frage": "Welcher Monat ist nach Julius Cäsar benannt?",
+  "antwort": "Juli",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Kalender & Zahlen",
+  "frage": "Wie viele Augen hat ein normaler sechsseitiger Spielwürfel insgesamt?",
+  "antwort": "21",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "einundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-kultur",
+  "block": "Kalender & Zahlen",
+  "frage": "Wie viele Stück sind ein Gros?",
+  "antwort": "144",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "hundertvierundvierzig",
+   "12 Dutzend",
+   "zwölf Dutzend"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Olympia-Geschichte",
+  "frage": "In welcher Stadt fanden 1896 die ersten Olympischen Spiele der Neuzeit statt?",
+  "antwort": "Athen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Athens"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Olympia-Geschichte",
+  "frage": "Welcher französische Pädagoge gilt als Begründer der Olympischen Spiele der Neuzeit?",
+  "antwort": "Pierre de Coubertin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Coubertin",
+   "Baron de Coubertin",
+   "Baron Pierre de Coubertin"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Olympia-Rekorde",
+  "frage": "Welcher Schwimmer ist mit 23 Goldmedaillen der erfolgreichste Olympionike aller Zeiten?",
+  "antwort": "Michael Phelps",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Phelps"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Olympia in Deutschland",
+  "frage": "In welchem Jahr fanden in München Olympische Sommerspiele statt?",
+  "antwort": "1972",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Tennis",
+  "frage": "Auf welchem Belag wird das Tennisturnier in Wimbledon gespielt?",
+  "antwort": "Rasen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gras",
+   "Naturrasen"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Tennis-Legenden",
+  "frage": "Welcher Deutsche gewann 1985 mit 17 Jahren als jüngster Spieler das Herreneinzel in Wimbledon?",
+  "antwort": "Boris Becker",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Becker"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Tennis-Legenden",
+  "frage": "Wie viele Grand-Slam-Titel im Einzel gewann Steffi Graf?",
+  "antwort": "22",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zweiundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Formel 1",
+  "frage": "Wie viele Formel-1-Weltmeistertitel gewann Michael Schumacher?",
+  "antwort": "7",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Formel 1",
+  "frage": "Welche Rennstrecke taufte Jackie Stewart „Grüne Hölle“?",
+  "antwort": "Nürburgring-Nordschleife",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Nordschleife",
+   "Nürburgring",
+   "Nürburgring Nordschleife"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Radsport",
+  "frage": "Welche Farbe hat das Trikot des Gesamtführenden der Tour de France?",
+  "antwort": "Gelb",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Maillot jaune",
+   "gelbes Trikot"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Radsport",
+  "frage": "Welcher Radprofi gewann 1997 als bislang einziger Deutscher die Tour de France?",
+  "antwort": "Jan Ullrich",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ullrich"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Wintersport",
+  "frage": "Welche Wintersportart kombiniert Skilanglauf mit Schießen?",
+  "antwort": "Biathlon",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Wintersport",
+  "frage": "In welchem österreichischen Ort findet traditionell das letzte Springen der Vierschanzentournee statt?",
+  "antwort": "Bischofshofen",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Wintersport",
+  "frage": "Wie heißt die berühmte Abfahrtsstrecke des Hahnenkammrennens in Kitzbühel?",
+  "antwort": "Streif",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Die Streif"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Boxen",
+  "frage": "Unter welchem Namen wurde der Boxer Cassius Clay weltberühmt?",
+  "antwort": "Muhammad Ali",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ali",
+   "Mohammed Ali",
+   "Muhammed Ali",
+   "Mohammad Ali"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Boxen",
+  "frage": "In welchem heutigen Land fand 1974 der Boxkampf „Rumble in the Jungle“ zwischen Ali und Foreman statt?",
+  "antwort": "Demokratische Republik Kongo",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "DR Kongo",
+   "Kongo",
+   "Zaire",
+   "Kinshasa",
+   "Kongo-Kinshasa",
+   "D. R. Kongo"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Kampfsport",
+  "frage": "Welche japanische Kampfkunst heißt übersetzt „leere Hand“?",
+  "antwort": "Karate",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Karate-Do",
+   "Karatedo"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Handball",
+  "frage": "Wie viele Spieler einer Mannschaft stehen beim Handball gleichzeitig auf dem Feld – inklusive Torwart?",
+  "antwort": "7",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Handball",
+  "frage": "In welchem Jahr wurde Deutschland bei der Heim-WM Handball-Weltmeister der Männer?",
+  "antwort": "2007",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Basketball-Regeln",
+  "frage": "In welcher Höhe hängt ein Basketballkorb?",
+  "antwort": "3,05 m",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "3,05",
+   "305 cm",
+   "3,05 Meter",
+   "10 Fuß",
+   "3.05",
+   "3.05 m"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Basketball/NBA",
+  "frage": "Mit welchem Team wurde Dirk Nowitzki 2011 NBA-Meister?",
+  "antwort": "Dallas Mavericks",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mavericks",
+   "Dallas",
+   "Mavs"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "American Football",
+  "frage": "Wie viele Punkte zählt ein Touchdown im American Football?",
+  "antwort": "6",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Super Bowl",
+  "frage": "Welcher Quarterback gewann als einziger Spieler sieben Super Bowls?",
+  "antwort": "Tom Brady",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Brady"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Golf",
+  "frage": "Wie nennt man im Golf ein Loch, das mit einem Schlag unter Par gespielt wird?",
+  "antwort": "Birdie",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Golf",
+  "frage": "Welches Kleidungsstück erhält der Sieger des US Masters in Augusta?",
+  "antwort": "Grünes Jackett",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Green Jacket",
+   "grüne Jacke",
+   "grünes Sakko",
+   "grünes Jacket"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Golf-Regeln",
+  "frage": "Wie viele Schläger darf ein Golfer laut Regelwerk höchstens in seinem Bag mitführen?",
+  "antwort": "14",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "vierzehn"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Schach",
+  "frage": "Wie heißt der Spezialzug im Schach, bei dem König und Turm gleichzeitig bewegt werden?",
+  "antwort": "Rochade",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Schach",
+  "frage": "In welcher Stadt fand 1972 das WM-Duell zwischen Bobby Fischer und Boris Spasski statt?",
+  "antwort": "Reykjavík",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Reykjavik"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Schach",
+  "frage": "Welcher Inder wurde im Dezember 2024 mit 18 Jahren jüngster Schachweltmeister der Geschichte?",
+  "antwort": "Gukesh",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Dommaraju Gukesh",
+   "Gukesh Dommaraju",
+   "D. Gukesh",
+   "Gukesh D"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Darts",
+  "frage": "Welche Höchstpunktzahl kann man beim Darts mit drei Pfeilen erreichen?",
+  "antwort": "180",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "hundertachtzig"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Darts-Regeln",
+  "frage": "In welcher Höhe über dem Boden hängt die Mitte (Bullseye) einer Steeldartscheibe?",
+  "antwort": "1,73 m",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "1,73",
+   "173 cm",
+   "1,73 Meter",
+   "1.73",
+   "1.73 m"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Snooker",
+  "frage": "Wie viele Punkte hat ein Maximum Break im Snooker?",
+  "antwort": "147",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "hundertsiebenundvierzig"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Eishockey",
+  "frage": "Wie heißt die Meistertrophäe der nordamerikanischen Eishockeyliga NHL?",
+  "antwort": "Stanley Cup",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Stanley-Cup"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Badminton-Regeln",
+  "frage": "Aus wie vielen Federn besteht ein Wettkampf-Federball im Badminton?",
+  "antwort": "16",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "sechzehn"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Politik",
+  "frage": "Welcher Politiker wurde im Mai 2025 als erster Bundeskanzler erst im zweiten Wahlgang gewählt?",
+  "antwort": "Friedrich Merz",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Merz"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Politik",
+  "frage": "Wie viele Sitze hat der 2025 nach der Wahlrechtsreform gewählte Deutsche Bundestag?",
+  "antwort": "630",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sechshundertdreißig"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Kirche",
+  "frage": "Welchen Papstnamen wählte der US-Amerikaner Robert Francis Prevost im Mai 2025?",
+  "antwort": "Leo XIV.",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Leo XIV",
+   "Leo 14.",
+   "Leo der Vierzehnte",
+   "Leo",
+   "Papst Leo XIV."
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Politik",
+  "frage": "Wer ist seit Januar 2025 Vizepräsident der USA?",
+  "antwort": "JD Vance",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vance",
+   "J. D. Vance",
+   "James David Vance",
+   "J.D. Vance"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Wahlen",
+  "frage": "Welche Partei wurde bei der Landtagswahl in Sachsen-Anhalt im September 2026 stärkste Kraft?",
+  "antwort": "AfD",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Alternative für Deutschland"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Musik",
+  "frage": "Welches Land gewann den Eurovision Song Contest 2026 in Wien?",
+  "antwort": "Bulgarien",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Film",
+  "frage": "Welcher Film von Paul Thomas Anderson gewann 2026 den Oscar als bester Film?",
+  "antwort": "One Battle After Another",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Raumfahrt",
+  "frage": "Mit welcher NASA-Mission flogen im April 2026 erstmals seit 1972 wieder Menschen zum Mond?",
+  "antwort": "Artemis II",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Artemis 2",
+   "Artemis-II"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Verkehr",
+  "frage": "Wie viel kostet das Deutschlandticket seit Januar 2026 pro Monat?",
+  "antwort": "63 Euro",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "63",
+   "63 €",
+   "63 EUR"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Nobelpreise",
+  "frage": "Welcher ungarische Schriftsteller erhielt 2025 den Literaturnobelpreis?",
+  "antwort": "László Krasznahorkai",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Krasznahorkai",
+   "Laszlo Krasznahorkai"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Sport",
+  "frage": "Welches Land wurde im Juli 2026 Fußball-Weltmeister?",
+  "antwort": "Spanien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Sport",
+  "frage": "Welches Land führte den Medaillenspiegel der Olympischen Winterspiele 2026 in Mailand und Cortina an?",
+  "antwort": "Norwegen",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Sport",
+  "frage": "Welches Team gewann im Februar 2026 den Super Bowl LX?",
+  "antwort": "Seattle Seahawks",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Seahawks",
+   "Seattle"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Sport",
+  "frage": "Welches Land wurde 2025 im Finale gegen die Türkei Basketball-Europameister der Männer?",
+  "antwort": "Deutschland",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Sport",
+  "frage": "Welcher deutsche Tennisspieler gewann im Juni 2026 bei den French Open seinen ersten Grand-Slam-Titel?",
+  "antwort": "Alexander Zverev",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Zverev",
+   "Sascha Zverev"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "quizabend-sportaktuell",
+  "block": "Zeitgeschehen Sport",
+  "frage": "Welcher McLaren-Pilot wurde 2025 Formel-1-Weltmeister?",
+  "antwort": "Lando Norris",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Norris"
+  ]
+ }
+]
