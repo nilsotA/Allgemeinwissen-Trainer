@@ -4230,6 +4230,20 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
+### „Streich die beiden Extremwerte“ klappt nicht mehr: Klammerquote 60,6 → 49,5 %
+
+Bei Zahlenfragen im Auswahlmodus gibt es eine bekannte Ratestrategie: Man streicht den
+kleinsten und den größten Wert und rät zwischen den beiden mittleren. Das lohnt sich nur, wenn
+die richtige Antwort überzufällig oft in der Mitte liegt. Hier lag sie bei 126 von 208
+Zahlenkarten dort, also 60,6 % statt der zufälligen 50 %. Viele neue Karten der letzten Runden
+hatten ihre Ablenker symmetrisch um die Antwort gelegt. Bei 23 Karten liegt ein Ablenker jetzt
+auf der anderen Seite, ohne unplausibel zu werden. Das Schaltjahr steht zwischen 360, 364 und
+365, der Fußball-Elfmeter zwischen 7 m (Handball), 9 m und 10 m, das iPhone zwischen 2009, 2010
+und 2012. Verwechslungsfallen, die etwas beibringen, bleiben stehen, etwa 0 °C bei der
+größten Dichte des Wassers oder die 9 kcal des Fetts beim Alkohol. Die Quote liegt jetzt bei
+49,5 % und damit im Zufallsband (± 3,5). Die Inhaltsprüfung gibt ab 50 % plus zwei
+Standardabweichungen einen Hinweis. Die alte Schranke bei 70 % hätte den Anstieg nie gemeldet.
+
 ### Englisch: sieben häufige unregelmäßige Verben und sechs False Friends mehr
 
 Das neue Teilgebiet hatte nur fünf unregelmäßige Verben. Jetzt kommen see, write, eat, drink,

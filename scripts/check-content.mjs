@@ -608,6 +608,11 @@ if (!zahlkarten) {
      Ablenker die Antwort aus gutem Grund einklammern (Rechenfehler in Mathe,
      Jahreszahlen in Geschichte, 16 % neben 19 % Mehrwertsteuer). */
   if (mittig > 70) fail(`Zu viele Zahlenkarten klammern die Antwort ein (${mittig.toFixed(1)} %) – wer beide Extremwerte streicht, raet mit 50 statt 25 Prozent.`);
+  /* Der zweite Durchgang (23 Karten, Ablenker auf eine Seite gelegt) brachte 60,6 auf
+     49,5 Prozent. Neue Karten hatten den Wert still wieder hochgetrieben – die Schranke
+     bei 70 meldet das nicht. Ab zwei Standardabweichungen ueber dem Zufall gibt es
+     deshalb einen Hinweis, bevor es eine Ratestrategie wird. */
+  else if (mittig > 50 + 2 * klammerBand) warn(`Klammerquote ${mittig.toFixed(1)} % liegt mehr als zwei Standardabweichungen ueber 50 % – bei neuen Zahlenkarten einen Ablenker auf die andere Seite legen`);
 }
 if (quote > 32) fail(`Die Laenge verraet die Antwort zu oft: ${quote.toFixed(1)} % statt hoechstens 32 %`);
 /* Zwei Arten von Schludrigkeit, die beim Lesen durchrutschen und beim Lernen
