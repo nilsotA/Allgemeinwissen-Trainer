@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.699 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.712 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (725 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -36,7 +36,7 @@ pro Stunde bis zur Hyponatriämie.
 Unter Sprache & Literatur stehen zwei Teilgebiete für das Handwerkszeug: **Grammatik** (62 Karten
 – Wortarten mit Fach- und Schulbegriff wie Präposition = Verhältniswort, Satzglieder, die vier
 Fälle, sechs Zeitformen, Modus und Passiv, Steigerung, Satzarten, Laute und Stilmittel) und
-**Englisch** (59 Karten – unregelmäßige Verben, Simple Past oder Present Perfect, since und for,
+**Englisch** (72 Karten – unregelmäßige Verben, Simple Past oder Present Perfect, since und for,
 if-Sätze, some/any und much/many, False Friends wie „become“ und „gift“, britisch gegen
 amerikanisch, Redewendungen, ASAP bis RSVP).
 
@@ -4229,6 +4229,16 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Englisch: sieben häufige unregelmäßige Verben und sechs False Friends mehr
+
+Das neue Teilgebiet hatte nur fünf unregelmäßige Verben. Jetzt kommen see, write, eat, drink,
+think, fly und catch dazu, jeweils mit den typischen Fehlformen als Ablenker („seed“,
+„writed“, „catched“). Neu bei den False Friends sind „billion“ (= Milliarde, der klassische
+Übersetzungsfehler in Nachrichten), „chef“, „also“, „actually“, „brave“ und „mist“. Beim
+Goldenen Bären nimmt die Berlinale-Karte jetzt auch „Goldener Bär“ ohne Artikel an. Die
+älteren Prüfsätze 5 bis 7 bringen sonst nichts mehr. Ihre restlichen Lücken sind Paare, die
+schon in der Gegenrichtung im Bestand stehen und sich gegenseitig verraten würden.
 
 ### Aktualitätsprüfung: 415 Karten, die veralten können – fünf Fehler, drei verirrte Nebenschreibweisen
 
