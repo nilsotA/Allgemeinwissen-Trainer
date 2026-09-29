@@ -1,0 +1,1452 @@
+[
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist eine Präposition?",
+  "antwort": "Verhältniswort",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ein Verhältniswort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist ein Adverb?",
+  "antwort": "Umstandswort",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ein Umstandswort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist eine Konjunktion?",
+  "antwort": "Bindewort",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ein Bindewort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist ein Pronomen?",
+  "antwort": "Fürwort",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ein Fürwort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist ein Numerale?",
+  "antwort": "Zahlwort",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "ein Zahlwort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist eine Interjektion?",
+  "antwort": "Ausrufewort",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Empfindungswort",
+   "Ausrufwort",
+   "ein Ausrufewort",
+   "ein Empfindungswort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist ein Substantiv?",
+  "antwort": "Hauptwort",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Namenwort",
+   "Nomen",
+   "Dingwort",
+   "ein Hauptwort",
+   "ein Nomen"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist ein Adjektiv?",
+  "antwort": "Eigenschaftswort",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wiewort",
+   "ein Eigenschaftswort",
+   "ein Wiewort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Was ist ein Verb?",
+  "antwort": "Tätigkeitswort",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Zeitwort",
+   "Tunwort",
+   "Tuwort",
+   "ein Tätigkeitswort",
+   "ein Zeitwort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortarten",
+  "frage": "Zu welcher Wortart gehören „der“, „die“ und „das“, wenn sie als Begleiter vor einem Nomen stehen?",
+  "antwort": "Artikel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "bestimmter Artikel",
+   "Begleiter",
+   "Geschlechtswort",
+   "Artikelwort",
+   "Artikelwörter"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortart im Satz",
+  "frage": "Welche Wortart ist „weil“ im Satz „Ich bleibe zu Hause, weil es regnet“?",
+  "antwort": "Konjunktion",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Subjunktion",
+   "unterordnende Konjunktion",
+   "subordinierende Konjunktion",
+   "Bindewort"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Satzglieder",
+  "frage": "Mit welcher Frage ermittelt man das Subjekt eines Satzes?",
+  "antwort": "Wer oder was?",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wer oder was",
+   "Wer/Was?",
+   "Wer oder was fragt man"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Satzglieder",
+  "frage": "Wie lautet die deutsche Bezeichnung für das Subjekt?",
+  "antwort": "Satzgegenstand",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "der Satzgegenstand"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Satzglieder",
+  "frage": "Welches Satzglied ist „im Garten“ im Satz „Wir spielen im Garten“?",
+  "antwort": "adverbiale Bestimmung des Ortes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lokaladverbiale",
+   "Lokaladverbial",
+   "Adverbial des Ortes",
+   "Adverbiale des Ortes",
+   "Umstandsbestimmung des Ortes",
+   "Ortsangabe",
+   "Lokalbestimmung",
+   "adverbiale Bestimmung"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Satzglieder",
+  "frage": "Welche adverbiale Bestimmung erfragt man mit „Warum?“?",
+  "antwort": "adverbiale Bestimmung des Grundes",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Kausaladverbiale",
+   "Kausaladverbial",
+   "Adverbial des Grundes",
+   "Adverbiale des Grundes",
+   "Umstandsbestimmung des Grundes",
+   "kausale adverbiale Bestimmung",
+   "Kausalbestimmung"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Satzglieder",
+  "frage": "Wie heißt der Fachbegriff für eine nähere Bestimmung eines Nomens – etwa „rote“ in „das rote Auto“?",
+  "antwort": "Attribut",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "das Attribut",
+   "adjektivisches Attribut"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zeichensetzung",
+  "frage": "Welches Satzzeichen trennt im Deutschen einen Nebensatz vom Hauptsatz?",
+  "antwort": "Komma",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ein Komma",
+   "das Komma",
+   "Beistrich"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Fälle",
+  "frage": "Wie viele grammatische Fälle gibt es im Deutschen?",
+  "antwort": "vier",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "4",
+   "vier Fälle"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Fälle",
+  "frage": "Welcher Fall wird auch Wes-Fall genannt?",
+  "antwort": "Genitiv",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "2. Fall",
+   "zweiter Fall",
+   "der Genitiv"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Fälle",
+  "frage": "Wie heißt der 4. Fall mit Fachbegriff?",
+  "antwort": "Akkusativ",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "der Akkusativ"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zweifelsfälle",
+  "frage": "Welchen Fall verlangt die Präposition „wegen“ in der Standardsprache?",
+  "antwort": "Genitiv",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wes-Fall",
+   "Wesfall",
+   "2. Fall",
+   "zweiter Fall",
+   "den Genitiv",
+   "der Genitiv"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zeitformen",
+  "frage": "Wie viele Zeitformen (Tempora) hat das Deutsche?",
+  "antwort": "sechs",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "6",
+   "sechs Tempora",
+   "sechs Zeitformen"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zeitformen",
+  "frage": "In welcher Zeitform steht „ich habe gelacht“?",
+  "antwort": "Perfekt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vollendete Gegenwart",
+   "2. Vergangenheit",
+   "zweite Vergangenheit"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zeitformen",
+  "frage": "In welcher Zeitform steht „ich ging“?",
+  "antwort": "Präteritum",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Imperfekt",
+   "einfache Vergangenheit",
+   "1. Vergangenheit",
+   "erste Vergangenheit",
+   "Mitvergangenheit"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zeitformen",
+  "frage": "In welcher Zeitform steht „ich hatte gegessen“?",
+  "antwort": "Plusquamperfekt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "vollendete Vergangenheit",
+   "Vorvergangenheit",
+   "3. Vergangenheit",
+   "dritte Vergangenheit"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zeitformen",
+  "frage": "In welcher Zeitform steht „ich werde gegangen sein“?",
+  "antwort": "Futur II",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Futur 2",
+   "vollendete Zukunft",
+   "zweites Futur",
+   "Futurum exactum"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Modus",
+  "frage": "Wie heißt die Befehlsform des Verbs mit Fachbegriff?",
+  "antwort": "Imperativ",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "der Imperativ"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Modus",
+  "frage": "Wie heißt die Wirklichkeitsform des Verbs mit Fachbegriff?",
+  "antwort": "Indikativ",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "der Indikativ"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Modus",
+  "frage": "In welchem Modus steht „wäre“ im Satz „Wenn ich reich wäre, würde ich reisen“?",
+  "antwort": "Konjunktiv II",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Konjunktiv 2",
+   "Konjunktiv Präteritum"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Modus",
+  "frage": "In welchem Modus steht „sei“ in der indirekten Rede „Er sagt, er sei krank“?",
+  "antwort": "Konjunktiv I",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Konjunktiv 1",
+   "Konjunktiv Präsens"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Aktiv und Passiv",
+  "frage": "Wie nennt man die Leideform des Verbs mit Fachbegriff?",
+  "antwort": "Passiv",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "das Passiv"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Aktiv und Passiv",
+  "frage": "Mit welchem Hilfsverb bildet man das Vorgangspassiv – wie in „Das Haus wird gebaut“?",
+  "antwort": "werden",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "mit werden"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Aktiv und Passiv",
+  "frage": "Welche Passivform liegt in „Die Tür ist geöffnet“ vor?",
+  "antwort": "Zustandspassiv",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "sein-Passiv",
+   "Statalpassiv"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Genus und Numerus",
+  "frage": "Wie lautet der Fachbegriff für das grammatische Geschlecht eines Nomens?",
+  "antwort": "Genus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "das Genus"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Genus und Numerus",
+  "frage": "Welches grammatische Geschlecht hat das Wort „Mädchen“?",
+  "antwort": "Neutrum",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sächlich",
+   "das Neutrum"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Steigerung",
+  "frage": "Wie heißt die Grundstufe eines Adjektivs bei der Steigerung (z. B. „schnell“) mit Fachbegriff?",
+  "antwort": "Positiv",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "der Positiv"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Steigerung",
+  "frage": "Welche Steigerungsstufe ist „schneller“?",
+  "antwort": "Komparativ",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Vergleichsstufe",
+   "Höherstufe",
+   "erste Steigerungsstufe",
+   "1. Steigerungsstufe",
+   "der Komparativ"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Verbformen",
+  "frage": "Wie heißt die Grundform eines Verbs, z. B. „laufen“, mit Fachbegriff?",
+  "antwort": "Infinitiv",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "der Infinitiv"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Verbformen",
+  "frage": "Wie nennt man Verben, die ihren Stammvokal bei der Konjugation ändern, wie „singen – sang – gesungen“?",
+  "antwort": "starke Verben",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "starkes Verb",
+   "stark",
+   "unregelmäßige Verben",
+   "unregelmäßiges Verb",
+   "ablautende Verben"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Verbformen",
+  "frage": "Welche Verbform ist „gelaufen“?",
+  "antwort": "Partizip II",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Partizip Perfekt",
+   "Partizip 2",
+   "zweites Partizip",
+   "Partizip Präteritum",
+   "Partizip der Vergangenheit",
+   "Mittelwort der Vergangenheit"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Satzarten",
+  "frage": "Wie nennt man einen Satz, der aus mindestens einem Hauptsatz und einem Nebensatz besteht?",
+  "antwort": "Satzgefüge",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hypotaxe",
+   "ein Satzgefüge"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Satzarten",
+  "frage": "Wie nennt man die Verbindung von zwei oder mehr Hauptsätzen zu einem Satz?",
+  "antwort": "Satzreihe",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Parataxe",
+   "Satzverbindung",
+   "eine Satzreihe"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Satzarten",
+  "frage": "Wie heißt ein Nebensatz, der sich auf ein Nomen bezieht und etwa mit „der“, „die“, „das“ oder „welcher“ eingeleitet wird?",
+  "antwort": "Relativsatz",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bezugssatz",
+   "Attributsatz",
+   "ein Relativsatz"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortbildung",
+  "frage": "Wie nennt man ein zusammengesetztes Wort wie „Haustür“ mit Fachbegriff?",
+  "antwort": "Kompositum",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "ein Kompositum",
+   "das Kompositum"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortbildung",
+  "frage": "Wie heißt eine Vorsilbe wie „ver-“ oder „un-“ mit Fachbegriff?",
+  "antwort": "Präfix",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "das Präfix"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Laute und Buchstaben",
+  "frage": "Wie heißt ein Selbstlaut wie „a“, „e“ oder „i“ mit Fachbegriff?",
+  "antwort": "Vokal",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "der Vokal"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Laute und Buchstaben",
+  "frage": "Wie nennt man einen Doppellaut wie „ei“, „au“ oder „eu“ mit Fachbegriff?",
+  "antwort": "Diphthong",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "der Diphthong"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortbeziehungen",
+  "frage": "Wie nennt man ein Wort mit gleicher oder sehr ähnlicher Bedeutung wie ein anderes Wort?",
+  "antwort": "Synonym",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sinnverwandtes Wort",
+   "ein Synonym"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortbeziehungen",
+  "frage": "Wie nennt man ein Wort mit gegenteiliger Bedeutung, etwa „heiß“ zu „kalt“?",
+  "antwort": "Antonym",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gegenwort",
+   "Gegensatzwort",
+   "ein Antonym"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Wortbeziehungen",
+  "frage": "Wie nennt man ein Wort, das gleich geschrieben und gesprochen wird, aber völlig verschiedene Bedeutungen hat – wie „Kiefer“ (Baum und Knochen)?",
+  "antwort": "Homonym",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Teekesselchen",
+   "ein Homonym"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Stilmittel",
+  "frage": "Wie heißt das Stilmittel, bei dem eine Eigenschaft doppelt ausgedrückt wird, wie in „weißer Schimmel“?",
+  "antwort": "Pleonasmus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "ein Pleonasmus"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Stilmittel",
+  "frage": "Wie heißt das Stilmittel, bei dem dasselbe Wort am Anfang aufeinanderfolgender Sätze oder Verse wiederholt wird?",
+  "antwort": "Anapher",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Anaphora",
+   "eine Anapher"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Stilmittel",
+  "frage": "Wie nennt man eine Frage, auf die keine Antwort erwartet wird, weil sie eine Aussage verstärken soll?",
+  "antwort": "rhetorische Frage",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "eine rhetorische Frage",
+   "Scheinfrage"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Stilmittel",
+  "frage": "Wie heißt das Stilmittel der Beschönigung, etwa „entschlafen“ statt „sterben“?",
+  "antwort": "Euphemismus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hüllwort",
+   "ein Euphemismus"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Stilmittel",
+  "frage": "Wie lautet der Fachbegriff für Lautmalerei, z. B. „Kuckuck“ oder „zischen“?",
+  "antwort": "Onomatopoesie",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Onomatopöie",
+   "Onomatopoie",
+   "Onomatopoiesis",
+   "Onomatopoese",
+   "Onomatopoetikon"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Stilmittel",
+  "frage": "Wie heißt die Überkreuzstellung von Satzgliedern wie in Goethes „Faust“: „Die Kunst ist lang, und kurz ist unser Leben“?",
+  "antwort": "Chiasmus",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Kreuzstellung",
+   "ein Chiasmus"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Stilmittel",
+  "frage": "Wie heißt das Stilmittel der schrittweisen Steigerung, etwa „Sekunden, Minuten, Stunden vergingen“?",
+  "antwort": "Klimax",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Gradatio",
+   "eine Klimax"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zweifelsfälle",
+  "frage": "Welches Wort ist richtig, wenn etwas nur dem Anschein nach so ist, in Wirklichkeit aber nicht: „scheinbar“ oder „anscheinend“?",
+  "antwort": "scheinbar",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "„scheinbar“"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zweifelsfälle",
+  "frage": "„das“ oder „dass“: Wie schreibt man die Lücke in „Ich hoffe, ___ du kommst“?",
+  "antwort": "dass",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "„dass“"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-grammatik",
+  "block": "Zweifelsfälle",
+  "frage": "„seit“ oder „seid“: Wie schreibt man die Lücke in „Ihr ___ zu spät“?",
+  "antwort": "seid",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "„seid“"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Unregelmäßige Verben",
+  "frage": "Wie lautet das Simple Past von „to go“?",
+  "antwort": "went",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Unregelmäßige Verben",
+  "frage": "Wie lautet das Simple Past von „to bring“?",
+  "antwort": "brought",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Unregelmäßige Verben",
+  "frage": "Wie lautet das Partizip Perfekt (3. Form) von „to buy“?",
+  "antwort": "bought",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Unregelmäßige Verben",
+  "frage": "Wie lautet das Simple Past von „to teach“?",
+  "antwort": "taught",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Unregelmäßige Verben",
+  "frage": "Wie lautet das Simple Past von „to lie“ im Sinne von „liegen“?",
+  "antwort": "lay",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Zeitformen",
+  "frage": "Welche englische Zeitform verlangt das Signalwort „ago“ (z. B. „two years ago“)?",
+  "antwort": "Simple Past",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Past Simple",
+   "einfache Vergangenheit",
+   "Simple Past Tense"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Zeitformen",
+  "frage": "Welches englische Wort drückt im Present Perfect „seit“ bei einem Zeitpunkt aus (z. B. „seit 2020“)?",
+  "antwort": "since",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Zeitformen",
+  "frage": "Welches englische Wort drückt im Present Perfect „seit“ bei einem Zeitraum aus (z. B. „seit drei Jahren“)?",
+  "antwort": "for",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Zeitformen",
+  "frage": "Wie heißt die englische Zeitform, die mit „have/has“ und dem Partizip Perfekt gebildet wird?",
+  "antwort": "Present Perfect",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Present Perfect Simple"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Zeitformen",
+  "frage": "Welche englische Zukunftsform verwendet man für Vorhersagen aufgrund sichtbarer Anzeichen – etwa „Look at the clouds – it … rain.“?",
+  "antwort": "going-to-future",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "going to",
+   "going-to-Future",
+   "Futur mit going to",
+   "going to future",
+   "going-to-Futur"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Zeitformen",
+  "frage": "Welche englische Zeitform beschreibt eine Handlung, die gerade im Moment abläuft (z. B. „I am reading“)?",
+  "antwort": "Present Progressive",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Present Continuous",
+   "Verlaufsform der Gegenwart"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "If-Sätze",
+  "frage": "Welche Zeitform steht beim if-Satz Typ 1 im Nebensatz mit „if“?",
+  "antwort": "Simple Present",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Present Simple",
+   "einfache Gegenwart"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "If-Sätze",
+  "frage": "Welcher if-Satz-Typ drückt eine nicht mehr erfüllbare Bedingung in der Vergangenheit aus („If I had known, I would have come“)?",
+  "antwort": "Typ 3",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Typ III",
+   "third conditional",
+   "Conditional III",
+   "dritter Typ",
+   "Typ drei",
+   "if-Satz Typ 3",
+   "Conditional 3"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Mengenwörter",
+  "frage": "Welches Wort ersetzt „some“ normalerweise in verneinten Sätzen und Fragen?",
+  "antwort": "any",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Mengenwörter",
+  "frage": "Welches Wort – „much“ oder „many“ – steht vor unzählbaren Nomen wie „water“?",
+  "antwort": "much",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Mengenwörter",
+  "frage": "Welches Wort – „few“ oder „little“ – steht vor zählbaren Nomen im Plural?",
+  "antwort": "few",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Steigerung",
+  "frage": "Wie lautet der Superlativ von „good“?",
+  "antwort": "best",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "the best"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Steigerung",
+  "frage": "Wie lautet der Komparativ von „bad“?",
+  "antwort": "worse",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Unregelmäßige Plurale",
+  "frage": "Wie lautet der Plural von „child“?",
+  "antwort": "children",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Unregelmäßige Plurale",
+  "frage": "Wie lautet der Plural von „mouse“ (das Tier)?",
+  "antwort": "mice",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Unregelmäßige Plurale",
+  "frage": "Wie lautet der Plural von „sheep“?",
+  "antwort": "sheep",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Artikel",
+  "frage": "Welcher unbestimmte Artikel steht vor „hour“?",
+  "antwort": "an",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "an hour"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Artikel",
+  "frage": "Welcher unbestimmte Artikel steht vor „university“?",
+  "antwort": "a",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "a university"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Question Tags",
+  "frage": "Welches Question Tag vervollständigt „She likes pizza, …?“",
+  "antwort": "doesn't she",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "doesn't she?",
+   "doesn’t she",
+   "doesn’t she?"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Question Tags",
+  "frage": "Welches Question Tag vervollständigt „I'm right, …?“",
+  "antwort": "aren't I",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "aren't I?",
+   "am I not",
+   "am I not?",
+   "aren’t I",
+   "aren’t I?"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Präpositionen der Zeit",
+  "frage": "Welche englische Präposition steht vor Wochentagen (z. B. „… Monday“)?",
+  "antwort": "on",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Präpositionen der Zeit",
+  "frage": "Welche englische Präposition steht vor Uhrzeiten (z. B. „… 5 o'clock“)?",
+  "antwort": "at",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Präpositionen der Zeit",
+  "frage": "Welche englische Präposition steht vor Monaten und Jahreszahlen (z. B. „… July“, „… 2026“)?",
+  "antwort": "in",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Satzbau",
+  "frage": "Welche Grundwortstellung hat ein englischer Aussagesatz?",
+  "antwort": "Subjekt – Prädikat – Objekt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "SPO",
+   "SVO",
+   "S-P-O",
+   "S-V-O",
+   "Subject – Verb – Object",
+   "Subjekt – Verb – Objekt",
+   "Subjekt-Prädikat-Objekt"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "False Friends",
+  "frage": "Was bedeutet das englische Verb „to become“?",
+  "antwort": "werden",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "False Friends",
+  "frage": "Was bedeutet das englische Wort „gift“?",
+  "antwort": "Geschenk",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "das Geschenk",
+   "Gabe",
+   "Begabung",
+   "Talent"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "False Friends",
+  "frage": "Was bedeutet das englische Adjektiv „sensible“?",
+  "antwort": "vernünftig",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sinnvoll",
+   "verständig"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "False Friends",
+  "frage": "Was bedeutet das englische Adverb „eventually“?",
+  "antwort": "schließlich",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "letztendlich",
+   "am Ende",
+   "irgendwann",
+   "letzten Endes"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "False Friends",
+  "frage": "Was bedeutet das englische Adjektiv „bald“?",
+  "antwort": "glatzköpfig",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "kahl",
+   "kahlköpfig",
+   "mit Glatze"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "False Friends",
+  "frage": "Welchen Beruf hat ein „undertaker“?",
+  "antwort": "Bestatter",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Leichenbestatter",
+   "Beerdigungsunternehmer",
+   "Bestattungsunternehmer",
+   "Bestatterin"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Britisch vs. Amerikanisch",
+  "frage": "Wie heißt die britische „flat“ (Wohnung) im amerikanischen Englisch?",
+  "antwort": "apartment",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "an apartment"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Britisch vs. Amerikanisch",
+  "frage": "Wie heißt der britische „lift“ (Aufzug) im amerikanischen Englisch?",
+  "antwort": "elevator",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "an elevator"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Britisch vs. Amerikanisch",
+  "frage": "Wie heißt ein britischer „biscuit“ (Keks) im amerikanischen Englisch?",
+  "antwort": "cookie",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "a cookie"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Britisch vs. Amerikanisch",
+  "frage": "Wie heißt der Herbst („autumn“) im amerikanischen Englisch?",
+  "antwort": "fall",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Britisch vs. Amerikanisch",
+  "frage": "Wie schreibt man das britische „colour“ im amerikanischen Englisch?",
+  "antwort": "color",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Britisch vs. Amerikanisch",
+  "frage": "Welches Stockwerk meint ein Amerikaner mit „first floor“?",
+  "antwort": "Erdgeschoss",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "ground floor",
+   "Parterre",
+   "das Erdgeschoss"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Redewendungen",
+  "frage": "Was bedeutet „It's raining cats and dogs“?",
+  "antwort": "Es regnet in Strömen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Es schüttet",
+   "Es regnet stark",
+   "Es gießt in Strömen",
+   "Es schüttet wie aus Eimern",
+   "Es regnet Bindfäden"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Redewendungen",
+  "frage": "Was wünscht man jemandem mit „Break a leg!“?",
+  "antwort": "Viel Glück",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hals- und Beinbruch",
+   "Toi, toi, toi"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Redewendungen",
+  "frage": "Was bedeutet „It's a piece of cake“?",
+  "antwort": "kinderleicht",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ein Kinderspiel",
+   "sehr einfach",
+   "ganz einfach",
+   "ein Klacks"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Redewendungen",
+  "frage": "Welche deutsche Redewendung entspricht „to kill two birds with one stone“?",
+  "antwort": "zwei Fliegen mit einer Klappe schlagen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zwei Fliegen mit einer Klappe"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Redewendungen",
+  "frage": "Was bedeutet „to pull someone's leg“?",
+  "antwort": "jemanden auf den Arm nehmen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "jemanden veräppeln",
+   "jemanden aufziehen",
+   "jemanden auf die Schippe nehmen",
+   "jemanden veralbern"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht die Abkürzung „ASAP“?",
+  "antwort": "as soon as possible",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "so bald wie möglich",
+   "schnellstmöglich"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht die Abkürzung „FYI“?",
+  "antwort": "for your information",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zur Information",
+   "zu Ihrer Information",
+   "zur Kenntnisnahme"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Abkürzungen",
+  "frage": "Was bedeutet die Abkürzung „e.g.“?",
+  "antwort": "for example",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zum Beispiel",
+   "z. B.",
+   "exempli gratia",
+   "for instance"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Abkürzungen",
+  "frage": "Was bedeutet die Abkürzung „i.e.“?",
+  "antwort": "that is",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "das heißt",
+   "d. h.",
+   "id est",
+   "that is to say",
+   "in other words"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Abkürzungen",
+  "frage": "Wofür steht „RSVP“ auf Einladungen?",
+  "antwort": "répondez s'il vous plaît",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Um Antwort wird gebeten",
+   "u. A. w. g.",
+   "please reply",
+   "repondez s'il vous plait",
+   "Répondez, s'il vous plaît"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Vokabeln",
+  "frage": "Was heißt „Eichhörnchen“ auf Englisch?",
+  "antwort": "squirrel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "a squirrel"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Vokabeln",
+  "frage": "Was heißt „Glühbirne“ auf Englisch?",
+  "antwort": "light bulb",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "lightbulb",
+   "bulb",
+   "a light bulb"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Vokabeln",
+  "frage": "Was heißt „Fledermaus“ auf Englisch?",
+  "antwort": "bat",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "a bat"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Sprachwissen",
+  "frage": "Wie viele Buchstaben hat das englische Alphabet?",
+  "antwort": "26",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechsundzwanzig",
+   "twenty-six"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Sprachwissen",
+  "frage": "Welcher Buchstabe kommt in englischen Texten am häufigsten vor?",
+  "antwort": "E",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "e"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Sprachwissen",
+  "frage": "Wie nennt man einen Satz, der alle Buchstaben des Alphabets enthält – etwa „The quick brown fox jumps over the lazy dog“?",
+  "antwort": "Pangramm",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "pangram",
+   "das Pangramm"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Scheinanglizismen",
+  "frage": "Wie heißt das „Handy“ im britischen Englisch?",
+  "antwort": "mobile phone",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "mobile",
+   "a mobile phone"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Scheinanglizismen",
+  "frage": "Wie heißt der „Beamer“ (Präsentationsgerät) auf Englisch?",
+  "antwort": "projector",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "video projector",
+   "a projector",
+   "data projector",
+   "digital projector"
+  ]
+ },
+ {
+  "gebiet": "literatur",
+  "katalog": "basis-englisch",
+  "block": "Scheinanglizismen",
+  "frage": "Wie heißt das „Public Viewing“ (gemeinsames Fußballschauen auf Großleinwand) auf Englisch?",
+  "antwort": "public screening",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "a public screening",
+   "open-air screening"
+  ]
+ }
+]

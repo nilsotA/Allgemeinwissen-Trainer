@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.598 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.699 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (725 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -33,6 +33,12 @@ Vitamine und ihre Mangelkrankheiten, Mineralstoffe, Fettsäuren, die DGE-Empfehl
 (höchstens 300 g Fleisch pro Woche, kein Alkohol als unbedenkliche Menge), Etiketten
 (Nutri-Score, Big 7, Verbrauchsdatum, 14 Allergene) und Sporternährung von 90 g Kohlenhydraten
 pro Stunde bis zur Hyponatriämie.
+Unter Sprache & Literatur stehen zwei Teilgebiete für das Handwerkszeug: **Grammatik** (62 Karten
+– Wortarten mit Fach- und Schulbegriff wie Präposition = Verhältniswort, Satzglieder, die vier
+Fälle, sechs Zeitformen, Modus und Passiv, Steigerung, Satzarten, Laute und Stilmittel) und
+**Englisch** (59 Karten – unregelmäßige Verben, Simple Past oder Present Perfect, since und for,
+if-Sätze, some/any und much/many, False Friends wie „become“ und „gift“, britisch gegen
+amerikanisch, Redewendungen, ASAP bis RSVP).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (28 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
@@ -458,7 +464,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 193 Einheitentests plus Inhaltsprüfung
+npm test           # 194 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4223,6 +4229,39 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Grammatik und Englisch als eigene Teilgebiete – und ein abgeschriebenes Wort ist kein Vertipper
+
+„Was ist eine Präposition?“ beantwortete die Sammlung nicht, Englisch kam gar nicht vor. Für den
+zwölften Prüfsatz (`data/quizprobe12.json`) haben zwei Autoren blind je 60 typische Fragen
+geschrieben: deutsche Grammatik mit Fach- und Schulbegriffen sowie Englisch-Basics. Ein Prüfer
+hat alle Antworten auf Eindeutigkeit geprüft, im britischen wie im amerikanischen Standard.
+Danach haben vier Autoren 101 Karten geschrieben, und vier Gegenprüfer haben jede zu widerlegen
+versucht. Keine fiel durch, 42 wurden präzisiert. Zum Beispiel ist „weil“ nach dem
+KMK-Verzeichnis von 2019 eine Subjunktion. Die Karte zur Konjunktion nennt deshalb „und“,
+„aber“ und „sondern“ als Beispiele. Der Artikel zählt in der Schweizer Schulgrammatik zu den
+Pronomen, deshalb ist „Pronomen“ dort kein Ablenker mehr. „brang“ und „brung“ stehen im
+Wörterbuch als Mundart, deshalb fragt die Karte ausdrücklich nach dem Standardenglisch.
+Grammatik und Englisch sind eigene Teilgebiete. 23 bestehende Grammatikkarten sind aus
+„Sprache“ dorthin umgezogen, Rechtschreibfälle wie das/dass, ss/ß und seit/seid bleiben in
+„Sprache“. Satz 12 steht bei **97 %**. Offen sind vier Fragen, die schon in der Gegenrichtung
+im Bestand stehen, etwa „Welche Wortart bezeichnet ein Eigenschaftswort?“.
+
+Ein Gegenprüfer bemerkte, dass auf „bad – … – worst“ das abgeschriebene „worst“ mit 0,80 als
+„worse“ galt. Ein Scan über alle Karten fand dasselbe Muster fünfmal im Bestand. Auf den
+Extremwertsatz genügte „Maximum“ aus der Frage (0,95), auf die Frage nach Differenzierbarkeit
+und Stetigkeit genügte „folgt“ (0,95), und auf die Hüfte beim Sprintstart „im Vergleich zu den
+Schultern“ genügte „Schultern“ (1,00). Die Bewertung kennt dafür jetzt drei Regeln:
+
+- Ein einzelnes Wort, das wörtlich in der Frage steht und in der Lösung nicht vorkommt, ist
+  abgeschrieben und kein Vertipper.
+- Eine Kurzform ohne Verhältniswort („Über den Schultern“ → „Schultern“) zählt nicht, wenn
+  von ihr nur Wörter der Frage übrig bleiben.
+- Wer nur Wörter der Frage tippt, darf dabei keine anderen Wörter der Frage auslassen.
+
+Gegenprobe über den ganzen Bestand: Antworten, alle Nebenschreibweisen, zwei Vertipperarten, alle
+Ablenker und die 1.212 Eingaben der Tippprobe werden genau wie vorher bewertet. Kein Ergebnis
+ist über oder unter die Schwelle von 0,8 gewandert. Ein Einheitentest hält die Fälle fest.
 
 ### Der elfte Prüfsatz: 300 typische Quizabend-Fragen – 76 → 96 %
 

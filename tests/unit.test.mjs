@@ -835,6 +835,24 @@ test('Zucker und Enzym gelten nicht als Vertipper voneinander', () => {
   }
 });
 
+/* Wer ein Wort aus der Frage abschreibt, hat nicht die Lösung vertippt. */
+test('ein aus der Frage abgeschriebenes Wort ist kein Vertipper der Lösung', () => {
+  const faelle = [
+    [{ q: 'Welche Form fehlt in der Steigerung „bad – … – worst“?', a: 'worse' }, 'worst', 'worse'],
+    [{ q: 'Wie schreibt man das britische „colour“ im amerikanischen Englisch?', a: 'color' }, 'colour', 'color'],
+    [{ q: 'Welcher Satz garantiert, dass eine stetige Funktion auf [a, b] ein Maximum und ein Minimum annimmt?',
+       a: 'Extremwertsatz', az: ['Satz vom Maximum und Minimum'] }, 'Maximum', 'Satz vom Maximum und Minimum'],
+    [{ q: 'Wo ist die Hüfte beim Sprintstart im Vergleich zu den Schultern?', a: 'Etwas höher', az: ['Über den Schultern'] },
+      'Schultern', 'über den Schultern'],
+  ];
+  for (const [karte, abgeschrieben, richtig] of faelle) {
+    assert.ok(bewerte(karte, abgeschrieben) < 0.8, `„${abgeschrieben}" gilt auf „${karte.q}"`);
+    assert.ok(bewerte(karte, richtig) >= 0.8, `„${richtig}" gilt nicht auf „${karte.q}"`);
+  }
+  // Steht das Wort auch in der Lösung, bleibt es richtig.
+  assert.ok(bewerte({ q: 'Was ist schwerer, Blei oder Eisen?', a: 'Blei' }, 'Blei') >= 0.8);
+});
+
 /* Die Ausnahme ohne Anker hat drei Sperren – jede einzeln belegt. */
 test('Vertipper vorn in langen Einwortantworten: verziehen, aber mit Sperren', () => {
   for (const [eingabe, loesung] of [['Prekrastination', 'Prokrastination'], ['Leenidas', 'Leonidas'],

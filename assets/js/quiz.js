@@ -723,10 +723,15 @@ const ORDINAL = ['', '', 'Zweite', 'Dritte', 'Vierte', 'Fünfte', 'Sechste', 'Si
 export function similarity(input, answer, frage) {
   const voll = String(answer).trim();
   const fassungen = new Set([voll]);
+  const bekannt = ausDerFrage(frage);
   for (const f of [voll, voll.replace(OHNE_ZUSATZ, '').trim()]) {
     if (f.length >= 3) fassungen.add(f);
+    /* Ohne Verhaeltniswort bleibt manchmal nur ein Wort der Frage uebrig: Aus
+       „Über den Schultern" wurde „Schultern", und auf „Wo ist die Hüfte im
+       Vergleich zu den Schultern?" galt das abgeschriebene „Schultern" als 1,00.
+       Dort trug das Verhaeltniswort die ganze Aussage. */
     const kurz = f.replace(OHNE_VORWORT, '').trim();
-    if (kurz.length >= 3) fassungen.add(kurz);
+    if (kurz.length >= 3 && !woerter(normalize(kurz)).every(w => bekannt.has(w))) fassungen.add(kurz);
     const formel = f.replace(OHNE_FORMELKOPF, '').trim();
     if (formel !== f && formel.length >= 3) fassungen.add(formel);
   }
@@ -741,7 +746,6 @@ export function similarity(input, answer, frage) {
     fassungen.add(f.replace(ROEMISCH_IM_NAMEN, ` der ${ORDINAL[n]}`).trim());
   }
   const eingaben = lesarten(input, voll);
-  const bekannt = ausDerFrage(frage);
   return Math.max(...[...fassungen].flatMap(f => eingaben.map(e => vergleich(e, f, bekannt))));
 }
 
@@ -793,6 +797,14 @@ function vergleich(input, answer, bekannt = new Set()) {
   const dist = levenshtein(a, b);
   const roh = Math.max(0, 1 - dist / Math.max(a.length, b.length));
 
+  /* Ein einzelnes Wort, das wörtlich in der Frage steht und in der Lösung nicht
+     vorkommt, ist abgeschrieben und kein Vertipper. Auf „bad – … – worst" galt
+     „worst" mit 0,80 als „worse", auf „Wie schreibt man das britische „colour"
+     amerikanisch?" das abgeschriebene „colour" als „color", und auf den
+     Extremwertsatz genügte „Maximum" aus der Frage (0,95). Steht das Wort auch in
+     der Lösung („Hamburg" auf „Hamburg mit 1,9 Mio."), bleibt alles wie bisher. */
+  if (bekannt.has(a) && !woerter(b).includes(a)) return Math.min(roh, 0.5);
+
   // Eine Verneinung, die in der Lösung nicht vorkommt, dreht die Aussage um.
   const verneint = VERNEINUNG.test(a) && !VERNEINUNG.test(b);
   // Zahlen und Rechenzeichen muessen auf beiden Seiten uebereinstimmen – fehlende
@@ -842,7 +854,11 @@ function vergleich(input, answer, bekannt = new Set()) {
      „fehlend" dann nicht leer ist. Gemessen: „nicht A ⇒ nicht B" bekam so 0,95
      auf die Loesung „nicht B ⇒ nicht A". Das ist die Umkehrung und nicht die
      Kontraposition - also gerade der Fehler, den die Karte abfragt. */
-  if (etwasErkannt && !zuLang && !extra.length && !bindungGetauscht
+  /* Wer nur Woerter der Frage tippt und dabei andere Woerter der Frage auslaesst,
+     hat nichts gezeigt: Auf „Welcher Satz garantiert … ein Maximum und ein Minimum?"
+     galt „Maximum" als Kurzform von „Satz vom Maximum und Minimum" (0,95). */
+  const nurAusDerFrage = woerter(a).every(w => bekannt.has(w)) && fehlend.some(w => bekannt.has(w));
+  if (etwasErkannt && !zuLang && !extra.length && !bindungGetauscht && !nurAusDerFrage
       && fehlt.every(w => KLASSIFIKATOREN.has(w)) && inReihenfolge(a, b)) {
     if (fehlt.length === 0) return 0.95;
     if (b.includes(a) || a.length >= Math.max(4, b.length * 0.4)) return 0.9;
