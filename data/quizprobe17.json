@@ -1,0 +1,1654 @@
+[
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "Welcher ägyptische Pharao wurde durch die Entdeckung seines fast unversehrten Grabes durch Howard Carter im Jahr 1922 weltberühmt?",
+    "antwort": "Tutanchamun",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Tutenchamun",
+      "Tut-anch-Amun"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "Welcher Vulkan begrub im Jahr 79 n. Chr. die Stadt Pompeji unter Asche?",
+    "antwort": "Vesuv",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "Welcher karthagische Feldherr überquerte im Zweiten Punischen Krieg mit Kriegselefanten die Alpen?",
+    "antwort": "Hannibal",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "Wie hieß die letzte Pharaonin Ägyptens, Geliebte von Caesar und Marcus Antonius?",
+    "antwort": "Kleopatra",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Kleopatra VII.",
+      "Cleopatra"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "Welchen Grenzfluss überschritt Caesar 49 v. Chr. mit seinem Heer und löste damit den Bürgerkrieg aus?",
+    "antwort": "Rubikon",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Rubico"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "In welchem Jahr v. Chr. wurde Rom der Überlieferung nach gegründet?",
+    "antwort": "753 v. Chr.",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "753"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "Welcher spartanische König fiel 480 v. Chr. im Kampf gegen die Perser an den Thermopylen?",
+    "antwort": "Leonidas",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Leonidas I."
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "Nach welchem römischen Kaiser ist der Grenzwall im Norden Englands benannt?",
+    "antwort": "Hadrian",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Hadrianus"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "Welcher griechische Philosoph war der Lehrer Alexanders des Großen?",
+    "antwort": "Aristoteles",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Antike",
+    "frage": "In welchem Jahr n. Chr. endete mit der Absetzung des Romulus Augustulus das Weströmische Reich?",
+    "antwort": "476",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "476 n. Chr."
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "In welchem Jahr wurde Karl der Große in Rom zum Kaiser gekrönt?",
+    "antwort": "800",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "800 n. Chr."
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "In welcher Stadt liegt Karl der Große begraben?",
+    "antwort": "Aachen",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "Welche Stadt eroberten die Kreuzfahrer 1099 am Ende des Ersten Kreuzzugs?",
+    "antwort": "Jerusalem",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "Welche Seuche, auch „Schwarzer Tod“ genannt, raffte ab 1347 etwa ein Drittel der Bevölkerung Europas dahin?",
+    "antwort": "Pest",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Beulenpest",
+      "Schwarzer Tod"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "Wie hieß der mittelalterliche Bund norddeutscher Kaufleute und Städte mit Lübeck als Vorort?",
+    "antwort": "Hanse",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Hansebund",
+      "Deutsche Hanse"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "Welche französische Nationalheldin wurde 1431 in Rouen als Ketzerin verbrannt?",
+    "antwort": "Jeanne d’Arc",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Jeanne d'Arc",
+      "Johanna von Orléans",
+      "Jungfrau von Orléans"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "Welcher römisch-deutsche König unternahm 1077 den berühmten „Gang nach Canossa“?",
+    "antwort": "Heinrich IV.",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Heinrich der Vierte",
+      "Heinrich IV"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "Welcher Kaiser mit rotem Bart ertrank 1190 während des Dritten Kreuzzugs im Fluss Saleph?",
+    "antwort": "Friedrich I. Barbarossa",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Barbarossa",
+      "Friedrich Barbarossa",
+      "Friedrich I."
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "Welcher Papst rief 1095 in Clermont zum Ersten Kreuzzug auf?",
+    "antwort": "Urban II.",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Urban der Zweite",
+      "Urban II"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Mittelalter",
+    "frage": "Welcher englische König musste 1215 die Magna Carta besiegeln?",
+    "antwort": "Johann Ohneland",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Johann I.",
+      "John",
+      "King John",
+      "Johann"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Entdeckungen",
+    "frage": "In welchem Jahr erreichte Christoph Kolumbus zum ersten Mal Amerika?",
+    "antwort": "1492",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Entdeckungen",
+    "frage": "Welcher portugiesische Seefahrer leitete die erste Weltumsegelung, starb aber 1521 auf den Philippinen?",
+    "antwort": "Ferdinand Magellan",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Magellan",
+      "Fernão de Magalhães",
+      "Magalhães"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Entdeckungen",
+    "frage": "Welcher portugiesische Seefahrer erreichte 1498 als erster Europäer auf dem Seeweg um Afrika Indien?",
+    "antwort": "Vasco da Gama",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "da Gama"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Entdeckungen",
+    "frage": "Wie hieß das Flaggschiff des Kolumbus auf seiner ersten Reise?",
+    "antwort": "Santa María",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Santa Maria"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Entdeckungen",
+    "frage": "Nach welchem italienischen Seefahrer wurde der Kontinent Amerika benannt?",
+    "antwort": "Amerigo Vespucci",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Vespucci"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Entdeckungen",
+    "frage": "Welcher spanische Konquistador eroberte ab 1519 das Aztekenreich?",
+    "antwort": "Hernán Cortés",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Cortés",
+      "Cortez",
+      "Hernando Cortez"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Entdeckungen",
+    "frage": "Welcher spanische Konquistador eroberte ab 1532 das Inkareich?",
+    "antwort": "Francisco Pizarro",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Pizarro"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Entdeckungen",
+    "frage": "Welcher Vertrag von 1494 teilte die neu entdeckten Gebiete außerhalb Europas zwischen Spanien und Portugal auf?",
+    "antwort": "Vertrag von Tordesillas",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Tordesillas"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Reformation und Dreißigjähriger Krieg",
+    "frage": "In welchem Jahr veröffentlichte Martin Luther seine 95 Thesen?",
+    "antwort": "1517",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Reformation und Dreißigjähriger Krieg",
+    "frage": "In welcher Stadt soll Luther seine Thesen an die Tür der Schlosskirche geschlagen haben?",
+    "antwort": "Wittenberg",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Lutherstadt Wittenberg"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Reformation und Dreißigjähriger Krieg",
+    "frage": "Auf welcher Burg übersetzte Luther als „Junker Jörg“ das Neue Testament ins Deutsche?",
+    "antwort": "Wartburg",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Reformation und Dreißigjähriger Krieg",
+    "frage": "Wie heißt der Friedensschluss von 1648, der den Dreißigjährigen Krieg beendete?",
+    "antwort": "Westfälischer Friede",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Westfälischer Frieden",
+      "Frieden von Münster und Osnabrück"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Reformation und Dreißigjähriger Krieg",
+    "frage": "Welches Ereignis von 1618 in Prag gilt als Auslöser des Dreißigjährigen Krieges?",
+    "antwort": "Prager Fenstersturz",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Zweiter Prager Fenstersturz"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Reformation und Dreißigjähriger Krieg",
+    "frage": "Welcher schwedische König fiel 1632 in der Schlacht bei Lützen?",
+    "antwort": "Gustav II. Adolf",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Gustav Adolf",
+      "Gustav II Adolf"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Reformation und Dreißigjähriger Krieg",
+    "frage": "Welcher kaiserliche Feldherr wurde 1634 in Eger ermordet?",
+    "antwort": "Wallenstein",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Albrecht von Wallenstein"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "Welches Pariser Gefängnis wurde am 14. Juli 1789 gestürmt?",
+    "antwort": "Bastille",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "Welcher französische König wurde im Januar 1793 mit der Guillotine hingerichtet?",
+    "antwort": "Ludwig XVI.",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Louis XVI.",
+      "Ludwig der Sechzehnte",
+      "Ludwig XVI"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "Wie lautet der Wahlspruch der Französischen Revolution auf Deutsch?",
+    "antwort": "Freiheit, Gleichheit, Brüderlichkeit",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Liberté, Égalité, Fraternité"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "In welchem Jahr wurde die Unabhängigkeitserklärung der Vereinigten Staaten verabschiedet?",
+    "antwort": "1776",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "Wie nennt man den Protest von 1773, bei dem Kolonisten britischen Tee ins Hafenbecken warfen?",
+    "antwort": "Boston Tea Party",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "In welchem Frankfurter Gebäude tagte 1848/49 die erste frei gewählte deutsche Nationalversammlung?",
+    "antwort": "Paulskirche",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Frankfurter Paulskirche"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "Welcher Jakobiner prägte die „Schreckensherrschaft“ und wurde 1794 selbst hingerichtet?",
+    "antwort": "Maximilien de Robespierre",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Robespierre"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "Wer war der Hauptverfasser der amerikanischen Unabhängigkeitserklärung?",
+    "antwort": "Thomas Jefferson",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Jefferson"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "In welcher preußischen Provinz fand 1844 der Weberaufstand statt, den Gerhart Hauptmann dramatisierte?",
+    "antwort": "Schlesien",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Revolutionen",
+    "frage": "Welcher preußische König lehnte 1849 die ihm von der Nationalversammlung angetragene Kaiserkrone ab?",
+    "antwort": "Friedrich Wilhelm IV.",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Friedrich Wilhelm der Vierte",
+      "Friedrich Wilhelm IV"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kaiserreich und Bismarck",
+    "frage": "In welchem Saal wurde Wilhelm I. am 18. Januar 1871 zum Deutschen Kaiser proklamiert?",
+    "antwort": "Spiegelsaal von Versailles",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Spiegelsaal",
+      "Versailles"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kaiserreich und Bismarck",
+    "frage": "Welchen Beinamen trug Reichskanzler Otto von Bismarck?",
+    "antwort": "Eiserner Kanzler",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Der Eiserne Kanzler"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kaiserreich und Bismarck",
+    "frage": "Welcher Kaiser entließ Bismarck im Jahr 1890?",
+    "antwort": "Wilhelm II.",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Wilhelm der Zweite",
+      "Wilhelm II"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kaiserreich und Bismarck",
+    "frage": "Wie heißt Bismarcks Auseinandersetzung mit der katholischen Kirche in den 1870er-Jahren?",
+    "antwort": "Kulturkampf",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kaiserreich und Bismarck",
+    "frage": "Wie wird das Jahr 1888 genannt, in dem nacheinander drei Kaiser regierten?",
+    "antwort": "Dreikaiserjahr",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kaiserreich und Bismarck",
+    "frage": "Welches von Bismarck redigierte Telegramm führte 1870 zum Deutsch-Französischen Krieg?",
+    "antwort": "Emser Depesche",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kaiserreich und Bismarck",
+    "frage": "Welche Sozialversicherung führte Bismarck 1883 als erste ein?",
+    "antwort": "Krankenversicherung",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "gesetzliche Krankenversicherung"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erster Weltkrieg",
+    "frage": "Welcher österreichische Thronfolger wurde am 28. Juni 1914 in Sarajevo ermordet?",
+    "antwort": "Franz Ferdinand",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Erzherzog Franz Ferdinand"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erster Weltkrieg",
+    "frage": "Um welche französische Festungsstadt tobte 1916 eine der verlustreichsten Schlachten des Ersten Weltkriegs?",
+    "antwort": "Verdun",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erster Weltkrieg",
+    "frage": "Welcher Vertrag von 1919 regelte die Friedensbedingungen für Deutschland nach dem Ersten Weltkrieg?",
+    "antwort": "Versailler Vertrag",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Vertrag von Versailles",
+      "Friedensvertrag von Versailles"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erster Weltkrieg",
+    "frage": "Unter welchem Spitznamen ist der Jagdflieger Manfred von Richthofen bekannt?",
+    "antwort": "Roter Baron",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Der Rote Baron"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erster Weltkrieg",
+    "frage": "Nach welchem Generalstabschef ist der deutsche Aufmarschplan benannt, der einen Angriff auf Frankreich über Belgien vorsah?",
+    "antwort": "Schlieffen",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Schlieffen-Plan",
+      "Alfred von Schlieffen"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erster Weltkrieg",
+    "frage": "Welcher britische Passagierdampfer wurde 1915 von einem deutschen U-Boot versenkt?",
+    "antwort": "Lusitania",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "RMS Lusitania"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erster Weltkrieg",
+    "frage": "In welcher Hafenstadt begann im November 1918 der Matrosenaufstand, der die Novemberrevolution auslöste?",
+    "antwort": "Kiel",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erster Weltkrieg",
+    "frage": "In welcher Stadt schlossen das Deutsche Reich und Sowjetrussland im März 1918 einen Separatfrieden?",
+    "antwort": "Brest-Litowsk",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Brest"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weimarer Republik",
+    "frage": "Wer war der erste Reichspräsident der Weimarer Republik?",
+    "antwort": "Friedrich Ebert",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Ebert"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weimarer Republik",
+    "frage": "In welcher Stadt tagte 1919 die Nationalversammlung, die der ersten deutschen Republik ihren Namen gab?",
+    "antwort": "Weimar",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weimarer Republik",
+    "frage": "Welche Sozialistin wurde im Januar 1919 gemeinsam mit Karl Liebknecht in Berlin ermordet?",
+    "antwort": "Rosa Luxemburg",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Luxemburg"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weimarer Republik",
+    "frage": "In welchem Jahr erreichte die deutsche Hyperinflation ihren Höhepunkt?",
+    "antwort": "1923",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weimarer Republik",
+    "frage": "Welcher SPD-Politiker rief am 9. November 1918 von einem Fenster des Reichstags die Republik aus?",
+    "antwort": "Philipp Scheidemann",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Scheidemann"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weimarer Republik",
+    "frage": "Welcher Außenminister erhielt 1926 für die Verträge von Locarno den Friedensnobelpreis?",
+    "antwort": "Gustav Stresemann",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Stresemann"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weimarer Republik",
+    "frage": "Welcher Artikel der Weimarer Verfassung erlaubte dem Reichspräsidenten Notverordnungen?",
+    "antwort": "Artikel 48",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "48",
+      "Art. 48"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "An welchem Datum wurde Adolf Hitler zum Reichskanzler ernannt?",
+    "antwort": "30. Januar 1933",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "30.01.1933",
+      "30.1.1933"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "An welchem Datum begann mit dem deutschen Überfall auf Polen der Zweite Weltkrieg?",
+    "antwort": "1. September 1939",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "01.09.1939",
+      "1.9.1939"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "In welcher Stadt an der Wolga kapitulierte Anfang 1943 die 6. Armee?",
+    "antwort": "Stalingrad",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Wolgograd"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "An welchem Datum landeten die Alliierten in der Normandie (D-Day)?",
+    "antwort": "6. Juni 1944",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "06.06.1944",
+      "6.6.1944"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "An welchem Datum verübte Claus Schenk Graf von Stauffenberg sein Attentat auf Hitler?",
+    "antwort": "20. Juli 1944",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "20.07.1944",
+      "20.7.1944"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "An welchem Datum trat die bedingungslose Kapitulation der Wehrmacht in Kraft und endete der Krieg in Europa?",
+    "antwort": "8. Mai 1945",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "08.05.1945",
+      "8.5.1945"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "Wie heißt das Gesetz vom März 1933, das der Regierung Hitler die Gesetzgebung ohne Reichstag erlaubte?",
+    "antwort": "Ermächtigungsgesetz",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Gesetz zur Behebung der Not von Volk und Reich"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "In welchem Jahr fand die Wannseekonferenz statt?",
+    "antwort": "1942",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "Welcher Schreiner verübte am 8. November 1939 im Münchner Bürgerbräukeller ein Bombenattentat auf Hitler?",
+    "antwort": "Georg Elser",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Elser",
+      "Johann Georg Elser"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "NS-Zeit und Zweiter Weltkrieg",
+    "frage": "Welchen Codenamen trug die Atombombe, die am 6. August 1945 auf Hiroshima abgeworfen wurde?",
+    "antwort": "Little Boy",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "An welchem Datum begann der Bau der Berliner Mauer?",
+    "antwort": "13. August 1961",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "13.08.1961",
+      "13.8.1961"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "In welchem Jahr stand die Welt mit der Kubakrise am Rand eines Atomkriegs?",
+    "antwort": "1962",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "Wer flog 1961 als erster Mensch ins Weltall?",
+    "antwort": "Juri Gagarin",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Gagarin",
+      "Jurij Gagarin"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "In welchem Jahr betrat mit Neil Armstrong erstmals ein Mensch den Mond?",
+    "antwort": "1969",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "Wie nannten die Berliner die Flugzeuge der Luftbrücke 1948/49?",
+    "antwort": "Rosinenbomber",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "Welcher sowjetische Parteichef stand den USA in der Kubakrise gegenüber?",
+    "antwort": "Nikita Chruschtschow",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Chruschtschow",
+      "Chrustschow"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "Wie hieß die Hündin, die 1957 an Bord von Sputnik 2 die Erde umkreiste?",
+    "antwort": "Laika",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "Wer flog 1963 als erste Frau ins Weltall?",
+    "antwort": "Walentina Tereschkowa",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Tereschkowa",
+      "Valentina Tereshkova"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Kalter Krieg",
+    "frage": "Wer flog 1978 als erster Deutscher ins Weltall?",
+    "antwort": "Sigmund Jähn",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Jähn"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "An welchem Datum fiel die Berliner Mauer?",
+    "antwort": "9. November 1989",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "09.11.1989",
+      "9.11.1989"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "An welchem Datum trat die DDR der Bundesrepublik bei?",
+    "antwort": "3. Oktober 1990",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "03.10.1990",
+      "3.10.1990"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "In welchem Jahr wurden sowohl die Bundesrepublik als auch die DDR gegründet?",
+    "antwort": "1949",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "In welcher Stadt nahmen die Montagsdemonstrationen von 1989 an der Nikolaikirche ihren Ausgang?",
+    "antwort": "Leipzig",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "Wer war von 1971 bis 1989 als Erster Sekretär bzw. Generalsekretär der SED der mächtigste Mann der DDR?",
+    "antwort": "Erich Honecker",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Honecker"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "An welchem Datum kam es 1953 zum Volksaufstand in der DDR?",
+    "antwort": "17. Juni 1953",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "17. Juni",
+      "17.06.1953",
+      "17.6.1953"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "Welches SED-Politbüromitglied verkündete am 9. November 1989 auf einer Pressekonferenz die neue Reiseregelung?",
+    "antwort": "Günter Schabowski",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Schabowski"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "Wie heißt der Vertrag von 1990 zwischen den beiden deutschen Staaten und den vier Siegermächten?",
+    "antwort": "Zwei-plus-Vier-Vertrag",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "2+4-Vertrag",
+      "Zwei-plus-Vier"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Deutsche Teilung und Wiedervereinigung",
+    "frage": "Wer war der einzige frei gewählte Ministerpräsident der DDR?",
+    "antwort": "Lothar de Maizière",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "de Maizière",
+      "de Maiziere"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?",
+    "antwort": "Konrad Adenauer",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Adenauer"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "Wer war der erste Bundespräsident der Bundesrepublik Deutschland?",
+    "antwort": "Theodor Heuss",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Heuss"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "Wie lautet der erste Satz von Artikel 1 des Grundgesetzes?",
+    "antwort": "Die Würde des Menschen ist unantastbar.",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Die Würde des Menschen ist unantastbar"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "Wer war der erste SPD-Bundeskanzler?",
+    "antwort": "Willy Brandt",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Brandt"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "Wer war die erste Frau im Amt des Bundeskanzlers?",
+    "antwort": "Angela Merkel",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Merkel"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "An welchem Datum wurde das Grundgesetz verkündet?",
+    "antwort": "23. Mai 1949",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "23.05.1949",
+      "23.5.1949"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "Welcher Bundeskanzler wurde 1982 durch ein konstruktives Misstrauensvotum abgelöst?",
+    "antwort": "Helmut Schmidt",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Schmidt"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "Welcher Bundespräsident nannte in seiner Rede vom 8. Mai 1985 das Kriegsende einen „Tag der Befreiung“?",
+    "antwort": "Richard von Weizsäcker",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Weizsäcker",
+      "von Weizsäcker"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Bundesrepublik",
+    "frage": "Welcher Bundeskanzler führte von 1966 bis 1969 die erste Große Koalition?",
+    "antwort": "Kurt Georg Kiesinger",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Kiesinger"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Europäische Einigung",
+    "frage": "In welchem Jahr wurde der Euro als Bargeld eingeführt?",
+    "antwort": "2002",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Europäische Einigung",
+    "frage": "Nach welchem luxemburgischen Ort ist das Abkommen über den Wegfall der Grenzkontrollen benannt?",
+    "antwort": "Schengen",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Europäische Einigung",
+    "frage": "In welchem Jahr wurden die Römischen Verträge zur Gründung der EWG unterzeichnet?",
+    "antwort": "1957",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Europäische Einigung",
+    "frage": "Unter welchem Kurznamen ist die 1951 gegründete Europäische Gemeinschaft für Kohle und Stahl bekannt?",
+    "antwort": "Montanunion",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "EGKS"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Europäische Einigung",
+    "frage": "Wie heißt der deutsch-französische Freundschaftsvertrag von 1963?",
+    "antwort": "Élysée-Vertrag",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Elysée-Vertrag",
+      "Elysee-Vertrag"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Europäische Einigung",
+    "frage": "Welcher französische Außenminister schlug 1950 die Vergemeinschaftung von Kohle und Stahl vor?",
+    "antwort": "Robert Schuman",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Schuman"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Europäische Einigung",
+    "frage": "In welchem Jahr wurde das Europäische Parlament erstmals direkt gewählt?",
+    "antwort": "1979",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Welcher Herrscher einte zu Beginn des 13. Jahrhunderts die mongolischen Stämme und begründete das Mongolische Reich?",
+    "antwort": "Dschingis Khan",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Temüdschin",
+      "Genghis Khan"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Wer rief 1949 in Peking die Volksrepublik China aus?",
+    "antwort": "Mao Zedong",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Mao",
+      "Mao Tse-tung"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Welcher indische Unabhängigkeitskämpfer führte 1930 den Salzmarsch an?",
+    "antwort": "Mahatma Gandhi",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Gandhi",
+      "Mohandas Karamchand Gandhi"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Wer wurde 1994 der erste schwarze Präsident Südafrikas?",
+    "antwort": "Nelson Mandela",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Mandela"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Welcher erste Kaiser Chinas ließ sich mit der Terrakotta-Armee bestatten?",
+    "antwort": "Qin Shihuangdi",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Qin Shi Huang",
+      "Qin Shihuang",
+      "Shihuangdi"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Wie hieß die Hauptstadt des Aztekenreichs, auf deren Ruinen Mexiko-Stadt steht?",
+    "antwort": "Tenochtitlan",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Tenochtitlán"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "In welchem Jahr wurde Indien von Großbritannien unabhängig?",
+    "antwort": "1947",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Welcher südamerikanische Unabhängigkeitskämpfer wurde „El Libertador“ genannt?",
+    "antwort": "Simón Bolívar",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Bolívar",
+      "Simon Bolivar"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Welcher US-Kommodore erzwang 1853/54 mit seinen „Schwarzen Schiffen“ die Öffnung Japans?",
+    "antwort": "Matthew Perry",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Perry",
+      "Matthew C. Perry"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Weltgeschichte außerhalb Europas",
+    "frage": "Welcher Mogulkaiser ließ das Taj Mahal als Grabmal für seine Frau errichten?",
+    "antwort": "Shah Jahan",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Schah Jahan",
+      "Shahjahan"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Herrscher und Beinamen",
+    "frage": "Welcher französische König wird „Sonnenkönig“ genannt?",
+    "antwort": "Ludwig XIV.",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Louis XIV.",
+      "Ludwig der Vierzehnte",
+      "Ludwig XIV"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Herrscher und Beinamen",
+    "frage": "Welcher preußische König wurde „der Alte Fritz“ genannt?",
+    "antwort": "Friedrich II.",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Friedrich der Große",
+      "Friedrich II"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Herrscher und Beinamen",
+    "frage": "Welcher englische König des 12. Jahrhunderts trug den Beinamen „Löwenherz“?",
+    "antwort": "Richard I.",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Richard Löwenherz",
+      "Richard I"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Herrscher und Beinamen",
+    "frage": "Welcher bayerische König wird „Märchenkönig“ genannt?",
+    "antwort": "Ludwig II.",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Ludwig der Zweite",
+      "Ludwig II"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Herrscher und Beinamen",
+    "frage": "Welcher russische Zar gründete 1703 Sankt Petersburg?",
+    "antwort": "Peter der Große",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Peter I."
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Herrscher und Beinamen",
+    "frage": "Welcher preußische König trug den Beinamen „Soldatenkönig“?",
+    "antwort": "Friedrich Wilhelm I.",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Friedrich Wilhelm I"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Herrscher und Beinamen",
+    "frage": "Welche in Stettin geborene Prinzessin wurde als russische Zarin „die Große“ genannt?",
+    "antwort": "Katharina II.",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Katharina die Große",
+      "Katharina II"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Herrscher und Beinamen",
+    "frage": "Welcher fränkische König, Vater Karls des Großen, trug den Beinamen „der Kurze“?",
+    "antwort": "Pippin",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Pippin der Kurze",
+      "Pippin der Jüngere",
+      "Pippin III."
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Schlachten",
+    "frage": "In welcher Schlacht wurde Napoleon 1815 endgültig besiegt?",
+    "antwort": "Waterloo",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Schlacht bei Waterloo",
+      "Belle-Alliance"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Schlachten",
+    "frage": "Wie wird die Schlacht bei Leipzig von 1813 gegen Napoleon auch genannt?",
+    "antwort": "Völkerschlacht",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Völkerschlacht bei Leipzig"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Schlachten",
+    "frage": "In welchem Jahr n. Chr. fand die Varusschlacht statt?",
+    "antwort": "9 n. Chr.",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "9"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Schlachten",
+    "frage": "In welchem Jahr fand die Schlacht bei Hastings statt?",
+    "antwort": "1066",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Schlachten",
+    "frage": "Welcher britische Admiral fiel 1805 in der siegreichen Seeschlacht von Trafalgar?",
+    "antwort": "Horatio Nelson",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Nelson",
+      "Lord Nelson"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Schlachten",
+    "frage": "Gegen welches Volk siegte Otto I. im Jahr 955 in der Schlacht auf dem Lechfeld?",
+    "antwort": "Ungarn",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Magyaren"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Schlachten",
+    "frage": "In welchem Jahr scheiterte die zweite Belagerung Wiens durch die Osmanen?",
+    "antwort": "1683",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erfindungen",
+    "frage": "Wer erfand um 1450 in Mainz den Buchdruck mit beweglichen Metalllettern?",
+    "antwort": "Johannes Gutenberg",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Gutenberg"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erfindungen",
+    "frage": "Wer meldete 1886 das erste Automobil mit Verbrennungsmotor zum Patent an?",
+    "antwort": "Carl Benz",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Benz",
+      "Karl Benz"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erfindungen",
+    "frage": "Welcher deutsche Physiker entdeckte 1895 die nach ihm benannten Strahlen?",
+    "antwort": "Wilhelm Conrad Röntgen",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Röntgen"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erfindungen",
+    "frage": "Welchen Brüdern gelang 1903 der erste gesteuerte Motorflug?",
+    "antwort": "Brüder Wright",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Wright",
+      "Orville und Wilbur Wright",
+      "Gebrüder Wright"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erfindungen",
+    "frage": "Welcher deutsche Ingenieur stellte 1941 mit der Z3 den ersten funktionsfähigen programmgesteuerten Rechner vor?",
+    "antwort": "Konrad Zuse",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Zuse"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erfindungen",
+    "frage": "Wer erfand 1817 die Laufmaschine, einen Vorläufer des Fahrrads?",
+    "antwort": "Karl Drais",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Drais",
+      "Karl von Drais"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Erfindungen",
+    "frage": "Welcher Alchemist gilt als Erfinder des europäischen Hartporzellans, das ab 1710 in Meißen hergestellt wurde?",
+    "antwort": "Johann Friedrich Böttger",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Böttger"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Zitate",
+    "frage": "Wer meldete mit „Veni, vidi, vici“ einen schnellen Sieg nach Rom?",
+    "antwort": "Gaius Julius Caesar",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Caesar",
+      "Julius Caesar"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Zitate",
+    "frage": "Welcher US-Präsident sagte 1963 in Berlin „Ich bin ein Berliner“?",
+    "antwort": "John F. Kennedy",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Kennedy",
+      "JFK"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Zitate",
+    "frage": "Wer sagte im Juni 1961: „Niemand hat die Absicht, eine Mauer zu errichten“?",
+    "antwort": "Walter Ulbricht",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Ulbricht"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Zitate",
+    "frage": "Welcher britische Premierminister bot 1940 „nichts als Blut, Mühe, Tränen und Schweiß“?",
+    "antwort": "Winston Churchill",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Churchill"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Zitate",
+    "frage": "Welcher Bundeskanzler kündigte 1969 in seiner Regierungserklärung an: „Wir wollen mehr Demokratie wagen“?",
+    "antwort": "Willy Brandt",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Brandt"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Zitate",
+    "frage": "Wer erklärte 1862, die großen Fragen der Zeit würden „durch Eisen und Blut“ entschieden?",
+    "antwort": "Otto von Bismarck",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Bismarck"
+    ]
+  },
+  {
+    "gebiet": "geschichte",
+    "katalog": "geschichte-quizabend",
+    "block": "Zitate",
+    "frage": "Welcher Außenminister sprach 1989 vom Balkon der Prager Botschaft zu den DDR-Flüchtlingen über ihre Ausreise?",
+    "antwort": "Hans-Dietrich Genscher",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Genscher"
+    ]
+  }
+]
