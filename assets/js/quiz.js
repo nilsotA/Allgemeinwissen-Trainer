@@ -342,6 +342,10 @@ export function normalize(s) {
      fehlen, aber nicht zusaetzlich dastehen - und so fiel die haeufigste Art, eine
      Jahreszahl hinzuschreiben, bei 53 Karten durch (0,44). */
   t = t.replace(/\b(?:im|in dem)\s+jahre?\s+(?=\d)/g, '');
+  /* Dasselbe fuer den Tag: „Am 1. September 1939" ist die Antwort „1. September
+     1939" mit dem Wort, mit dem man sie ausspricht, und galt als falsch (0,60).
+     Nur am Anfang und nur vor einer Zahl - „am Main" bleibt, wie es ist. */
+  t = t.replace(/^\s*am\s+(?=\d)/, '');
   /* Obergrenzen vor einer Zahl sind eine Aussage: „max 6 g", „max. 6 g", „maximal
      6 g" und „bis 6 g" meinen alle „hoechstens 6 g". Vorher brauchte jede Schreibweise
      eine eigene Nebenschreibweise, und „max 300 g" fiel ohne sie auf 0,56. Nur direkt
@@ -809,7 +813,8 @@ export function similarity(input, answer, frage) {
    ueberhaupt keine Zahl steht. Genau dann kann sie kein Zahlwert sein. Ohne
    diese Einschraenkung galt „e^π + i = 0" als Eulersche Identitaet und „Etwa
    5 Liter" als „Etwa 1,5 Liter" – dort ist die Eins die Vorkommastelle. */
-const ohneEinzelneEins = (t) => woerter(t).filter(w => w !== '1').join(' ');
+/* Vor einem Monat ist die Eins ein Tag: „Am 1. März" ist nicht „März". */
+const ohneEinzelneEins = (t) => woerter(t).filter((w, i, alle) => w !== '1' || MONATE.includes(alle[i + 1])).join(' ');
 
 /* Alle Woerter, die irgendeine Karte als Antwort BEHAUPTET. Wird einmal
    gebaut, wie mehrdeutigeNachnamen() weiter oben. */
@@ -833,7 +838,10 @@ function vergleich(input, answer, bekannt = new Set()) {
      dass „durch" und „mal" auch gewoehnliche Woerter sind, schadet hier nicht -
      sie machen die Regel nur vorsichtiger. */
   const formel = [a, b].some(t => woerter(t).some(w => OPERATOR.has(w)));
-  const zahlLinks = /\d/.test(a), zahlRechts = /\d/.test(b);
+  /* Eine roemische Ordnungszahl ist auch eine Zahl: Sonst fiel die „1" in
+     „Katharina 1." weg und galt als „Katharina II." (1,00) - eine andere Zarin. */
+  const ROEMISCH = /\b(?:ii|iii|iv|vi|vii|viii|ix|xi|xii|xiii|xiv|xv|xvi)\b/;
+  const zahlLinks = /\d/.test(a) || ROEMISCH.test(a), zahlRechts = /\d/.test(b) || ROEMISCH.test(b);
   if (!formel && !zahlRechts) a = ohneEinzelneEins(a);
   if (!formel && !zahlLinks) b = ohneEinzelneEins(b);
   if (!a || !b) return 0;

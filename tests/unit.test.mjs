@@ -1254,6 +1254,18 @@ test('Ein Datum ohne Jahr darf in Ziffern stehen', () => {
   assert.ok(bewerte({ a: '3,14' }, '3.14') >= 0.8, 'eine Dezimalzahl bleibt eine Dezimalzahl');
 });
 
+test('Ein Datum darf mit „Am" beginnen, auch wenn die Loesung es nicht tut', () => {
+  /* „Am 1. September 1939" auf „1. September 1939" gab 0,60 – bei allen zwoelf
+     Karten, deren Antwort ein Datum ist. Nur vor einer Zahl: „am Main" bleibt. */
+  for (const [loesung, eingabe] of [['1. September 1939', 'Am 1. September 1939'],
+                                    ['9. November 1989', 'am 9.11.1989'], ['3. Oktober', 'Am 3.10.']])
+    assert.ok(bewerte({ a: loesung }, eingabe) >= 0.8, `„${eingabe}" gilt nicht als „${loesung}"`);
+  assert.ok(bewerte({ a: '1. September 1939' }, 'Am 3. September 1939') < 0.8, 'ein falscher Tag bleibt falsch');
+  assert.equal(normalize('Am Main'), 'am main', '„am" faellt nur vor einer Zahl weg');
+  // Vor einem Monat ist die Eins ein Tag und kein Artikel: „1. März" ist nicht „März".
+  assert.ok(bewerte({ a: 'März' }, 'Am 1. März') < 0.8, '„Am 1. März" gilt faelschlich als „März"');
+});
+
 test('Umlaute ohne Punkte gelten, wenn die Eingabe keinen Umlaut enthaelt', () => {
   /* „Turkisch fur Anfanger" gab 0,60 – auf einer englischen Tastatur tippt man so.
      „ue" fuer „ü" ging laengst, der Buchstabe ohne Punkte nicht. */
@@ -1841,6 +1853,7 @@ test('Zusammen- oder getrennt geschrieben, Herrscherzahlen: dieselbe Antwort', (
      andere Herrscherzahl bleibt ein anderer Herrscher. */
   const verschieden = [['15 Liter', '1,5 Liter'], ['Ludwig 16', 'Ludwig XIV.'], ['Ludwig XVI.', 'Ludwig XIV.'],
     ['Friedrich der Dritte', 'Friedrich II.'], ['30 cm', '30 Meter'], ['3/40', '3/4'],
-    ['1964/65', '1963/64']];
+    ['1964/65', '1963/64'], ['Katharina 1.', 'Katharina II.']];
+  // „Katharina 1." galt als „Katharina II." – die Eins fiel als Artikel weg.
   for (const [ein, loesung] of verschieden) assert.ok(similarity(ein, loesung) < 0.8, `„${ein}" gilt als „${loesung}"`);
 });

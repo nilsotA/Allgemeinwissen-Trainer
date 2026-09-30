@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**4.038 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**4.084 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (775 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -465,7 +465,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 198 Einheitentests plus Inhaltsprüfung
+npm test           # 199 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -2197,7 +2197,7 @@ gewogen, bevor sie blieb:
 | Einheiten | „340 m/s", „9 kcal" | Kürzel gelten wie das Wort |
 | Rechenzeichen | „(a+b)*(a-b)=a^2-b^2" | unsichtbares Mal, Minus am Einzelbuchstaben |
 | mehrdeutiger Strich | „1618-1648" gegen „b^2-4ac" | beide Lesarten prüfen statt raten |
-| Datum in Ziffern | „9.11.1989" | gilt wie „9. November 1989" |
+| Datum in Ziffern | „9.11.1989", „Am 9.11.1989" | gilt wie „9. November 1989" |
 | die Eins als Artikel | „auf 1 Karte setzen" | zählt nicht als Zahl — außerhalb von Formeln |
 
 ### Was die Messung über die Methode gesagt hat
@@ -4230,6 +4230,63 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Prüfsatz 17, Geschichte in der Breite: 61 → 91 %
+
+Geschichte hatte bisher weniger als 300 Karten. Ein Agent schrieb 150 Quizabend-Fragen von
+der Antike bis zur Bundesrepublik, ohne die Sammlung zu kennen: Herrscher und Beinamen,
+Schlachten, Revolutionen, Kaiserreich, beide Weltkriege, Kalter Krieg, Europäische Einigung
+und Weltgeschichte außerhalb Europas. Die Ausgangsmessung lag bei **91 von 150 (61 %)**.
+
+46 neue Karten schließen die Lücken:
+- **Mittelalter und Frühe Neuzeit:** Urban II. in Clermont, Aachen als Grab Karls des Großen,
+  Pippin der Kurze, Richard Löwenherz, die Santa María, Wittenberg, Gustav Adolf bei Lützen,
+  Wallensteins Ende in Eger, Wien 1683.
+- **Revolutionen:** Ludwig XVI., „Freiheit, Gleichheit, Brüderlichkeit“, die Boston Tea Party,
+  der schlesische Weberaufstand.
+- **Kaiserreich:** der „Eiserne Kanzler“, Kulturkampf, Emser Depesche, die Krankenversicherung
+  von 1883.
+- **Weltkriege:** Roter Baron, Schlieffen-Plan, Lusitania, Brest-Litowsk, Scheidemann am
+  Reichstagsfenster, der 1. September 1939, Ermächtigungsgesetz, Georg Elser, Little Boy und
+  die Enola Gay.
+- **Nach 1945:** der 13. August 1961, Chruschtschows Geheimrede, Schabowskis Zettel, Genscher
+  auf dem Balkon in Prag, Weizsäckers Rede von 1985, Kiesinger, Montanunion, Robert Schuman,
+  Élysée-Vertrag, die erste Europawahl 1979.
+- **Außerhalb Europas:** Mao, Tenochtitlan, Indiens Unabhängigkeit, Commodore Perry,
+  Shah Jahan, Peter der Große, Katharina die Große.
+
+Die Abdeckung steigt auf **137 von 150 (91 %)**. Die 13 Reste sind fast alle Umkehrpaare:
+„Was geschah am 20. Juli 1944?“ steht schon da, eine Karte nach dem Datum würde sie verraten.
+Genauso bei 1066, 1923, 1942, 1957, 1962, der Magna Carta und dem Soldatenkönig. Drei
+geschriebene Karten flogen nach der Gegenprüfung wieder heraus, weil eine Bestandskarte sie
+praktisch schon enthält: Hadrian (neben dem Hadrianswall), die Völkerschlacht (neben dem
+Völkerschlachtdenkmal) und der 3. Oktober 1990 (neben dem Tag der Deutschen Einheit und dem
+Jahr der Einheit). Vier Bestandsfragen sind umformuliert, damit die neuen Karten sie nicht
+verraten; der Lernstand bleibt über den Vorgänger erhalten:
+- Caprivi folgte nicht mehr „dem Eisernen Kanzler“, sondern dem ersten Reichskanzler.
+- Die Kulturrevolution löste „Chinas Parteivorsitzender“ aus, nicht mehr Mao namentlich.
+- „Die Weber“ handeln vom Weberaufstand von 1844, nicht mehr vom „schlesischen“.
+- Die Wrights flogen als Erste gesteuert mit einem *Flugzeug*.
+
+Zu Letzterem hat die Faktenprüfung einen alten Fehler gefunden: „der erste gesteuerte
+Motorflug der Geschichte“ stimmt nicht, Luftschiffe fuhren schon ab 1852 gesteuert mit
+Motor. Damit war auch der Ablenker „Graf Zeppelin“ halb richtig; jetzt steht dort Hans Grade.
+Die Karte nimmt außerdem „Wright“, „Gebrüder Wright“ und „Orville und Wilbur Wright“ an,
+vorher galt nur die Dativform „Den Brüdern Wright“. Weitere Befunde der Faktenprüfung:
+- Das Ermächtigungsgesetz beschloss der Reichstag am 23. März, es datiert aber vom 24. März 1933.
+- Brest-Litowsk war ein Frieden mit allen Mittelmächten, nicht nur mit dem Deutschen Reich.
+- Sankt Petersburg wurde erst 1712 Hauptstadt, und Tenochtitlans Einwohnerzahl ist eine
+  Schätzspanne.
+
+Drei Bewertungsfehler kamen mit heraus:
+- **„Am 1. September 1939“** galt nicht als „1. September 1939“ (0,60) – bei allen zwölf
+  Karten, deren Antwort ein Datum ist. Das „am“ vor einer Zahl fällt jetzt weg, „am Main“
+  bleibt. Sechs ältere Nebenschreibweisen, die nur dafür da waren, sind damit überflüssig und
+  gestrichen.
+- **„Katharina 1.“** galt als „Katharina II.“ (1,00): Die einzelne Eins fiel als Artikel weg,
+  weil auf der Lösungsseite keine Ziffer stand. Eine römische Ordnungszahl zählt jetzt als Zahl.
+- **„1. März“** galt als „März“, aus demselben Grund. Aufgefallen ist es an der Pandemie-Karte,
+  sobald „Am 1. März“ dazukam. Vor einem Monatsnamen ist die Eins jetzt ein Tag.
 
 ### Prüfsatz 16, Geografie in der Breite: 63 → 93 %
 
