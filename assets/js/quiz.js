@@ -224,6 +224,14 @@ const ABKUERZUNGEN = [
      hineingreift. */
   [/\b(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})\b/g,
     (ganz, tag, monat, jahr) => MONATE[+monat - 1] ? ` ${+tag} ${MONATE[+monat - 1]} ${jahr} ` : ganz],
+  /* Monatskuerzel nach einer Tageszahl: „6. Jan.", „31. Okt.", „3. Sept." gaben
+     0,60. Nur direkt nach „Zahl-Punkt", damit „Jan" als Name bleibt, was er ist. */
+  [/(\d)\.\s*(jan|feb|mär|mrz|apr|jun|jul|aug|sept?|okt|nov|dez)\b\.?/gi, (ganz, tag, m) => {
+    const k = m.toLowerCase();
+    const voll = { jan: 'januar', feb: 'februar', 'mär': 'maerz', mrz: 'maerz', apr: 'april', jun: 'juni', jul: 'juli',
+      aug: 'august', sep: 'september', sept: 'september', okt: 'oktober', nov: 'november', dez: 'dezember' }[k];
+    return `${tag}. ${voll} `;
+  }],
   /* „1963/64" ist „1963/1964": Die zweite Jahreszahl einer Spanne wird gern
      gekuerzt. Nur bei vierstelliger erster Zahl, damit „3/4" ein Bruch bleibt. */
   [/\b(1\d|20)(\d{2})(\s*[/–-]\s*)(\d{2})(?!\d)/g, '$1$2$3$1$4'],

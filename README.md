@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.795 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.860 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (737 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (738 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -42,9 +42,9 @@ amerikanisch, Redewendungen, ASAP bis RSVP).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (28 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (42 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (46 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (42 Quiz-Klassiker vom
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (45 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), **Amerika** (67 – Bundesstaaten und ihre Hauptstädte, Konquistadoren, Tango,
 Route 66, Ellis Island, Thanksgiving, Kap Hoorn), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
@@ -4230,6 +4230,33 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Prüfsatz 13 im Stil von „Wer wird Millionär?“: 65 → 96 %
+
+Die bisherigen Prüfsätze fragten wie ein Quizabend. Der dreizehnte fragt wie die unteren
+und mittleren Stufen von „Wer wird Millionär?“, mit Redewendungen, Werbung, Märchen,
+Fernsehen, Comics und Küche. Ein Agent schrieb die 200 Fragen, ohne die Sammlung zu kennen.
+Die Ausgangsmessung lag bei **129 von 200 (65 %)**, klar unter den anderen Sätzen. Die
+größte Lücke waren Sprichwörter zum Vervollständigen: Die Sammlung fragte nach der Bedeutung
+einer Redewendung, nie nach dem fehlenden Wort. Nur 9 von 30 Sprachfragen waren gedeckt.
+Überraschend fehlte auch Düsseldorf als Hauptstadt von Nordrhein-Westfalen, als einzige der
+dreizehn Flächenländer.
+
+65 neue Karten schließen die Lücken. Darunter sind 16 Sprichwörter, 9 Werbeslogans vom
+HB-Männchen bis „Ich bin doch nicht blöd“, 9 Märchen- und Kinderbuchkarten, Fernsehen und
+Schlager von der Tagesschau bis Modern Talking, Comics von Kryptonit bis Lucky Luke, Küche
+(Kapern, Kirschwasser, Nori, Pinienkerne), Feiertage und Düsseldorf. Die Abdeckung steigt
+auf **191 von 200 (96 %)**. Die neun Reste stehen in anderer Richtung oder Form im Bestand.
+
+Die Faktenprüfung fand drei Fehler in den Kontexttexten. Der Sparkassen-Slogan lief bis
+2021, nicht nur bis 2016. Das Überraschungsei ist in den USA bis heute verboten, nicht nur
+„lange“ gewesen. Und bei Haribo stammt nur „macht Kinder froh“ aus den 1930ern, der Zusatz
+„und Erwachsene ebenso“ kam in den 1960ern. Die Gegenprüfung fand drei Ablenker, die als
+Variante belegt sind („vom Ast“, „die Suppe versalzen“, „am lautesten“), drei Fragen, die
+sich selbst verrieten (die „Pechmarie“ auf „Mit Pech“ und die einzige Kirsch-Option bei der
+Kirschtorte), und viele übliche Eingaben, die abgelehnt worden wären. Eine Karte zu „einen Bären aufbinden“ flog als Dublette heraus – die Vorprüfung hatte sie wegen anderer Formulierung nicht erkannt, der Test auf fremde Antworten schon. Daraus wurde auch eine
+allgemeine Verbesserung der Bewertung: Monatskürzel nach einer Tageszahl („6. Jan.“,
+„31. Okt.“, „3. Sept.“) gelten jetzt als der volle Monat, „Jan“ als Name bleibt unberührt.
 
 ### „3.10.“ ist der Tag der Deutschen Einheit
 

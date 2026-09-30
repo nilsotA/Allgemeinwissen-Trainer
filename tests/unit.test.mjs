@@ -732,6 +732,9 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     'spo-5cchb|pol-43kll3', // „Die Linke" auf „Linksherum" meint die Richtung
     // Als Eingabe abwegig: Bayer für Bayes, Bache für Bach, Kanon für Kano, Polen für Pole Position, Bulle/Bully
     'mat-el5eix|nat-1mro6o8', 'kul-27vrlm|nat-1m04gch', 'spo-1nz0i3h|kul-1eekpv4',
+    // Ebenso abwegig: Schwein für Schwerin oder die Schweiz, „und andere" für Thomas Anders
+    'geo-lcc3da|spr-cu0rjq', 'spr-cu0rjq|geo-lcc3da', 'kul-smzyzr|spr-cu0rjq', 'spr-cu0rjq|kul-smzyzr',
+    'kul-6q17o9|spr-fqmes1',
     'spo-se0vka|ges-14hpxr6', 'pol-1glb28d|spo-7mlofw', 'spo-7mlofw|pol-1glb28d',
     // Die Kilokalorie ist die Waerme fuer 1 kg Wasser um 1 °C: 4,184 kJ ist dort richtig
     'nat-1sd6f76|all-mwkkwj',
