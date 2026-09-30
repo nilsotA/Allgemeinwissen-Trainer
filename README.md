@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.712 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.726 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (725 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -43,7 +43,7 @@ amerikanisch, Redewendungen, ASAP bis RSVP).
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (28 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
 und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (41 – Reinheitsgebot,
-Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (14 – Penicillin, Dynamit,
+Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (41 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
@@ -4229,6 +4229,22 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Erfindungen: 14 → 28 Karten
+
+„Wer hat's erfunden?“ gehört an jedem Quizabend dazu, das Teilgebiet war aber mit 14 Karten
+das dünnste der Sammlung. Hinzu kamen Klassiker, die bisher ganz fehlten: Kaffeefilter
+(Melitta Bentz), Teddybär (Theodore Roosevelt), Spreizdübel (Artur Fischer), Fließband (Henry
+Ford), Grammophon (Emil Berliner), Nipkow-Scheibe, europäisches Porzellan (Böttger),
+Schwarzpulver, Leeuwenhoeks Mikroskop, der Hubschrauber von Henrich Focke, Nylonstrümpfe,
+Sicherheitszündhölzer, Walkman und Post-it. Beide Prüfer fanden keinen Sachfehler, aber
+sechs Stellen zum Nachschärfen. Die ersten Nylonstrümpfe gab es schon 1939 im Testverkauf,
+also fragt die Karte nach dem landesweiten Verkauf 1940. Bei den Sicherheitszündhölzern
+hatte der Frankfurter Chemiker Böttger 1848 dieselbe Idee, also fragt sie, wo sie zuerst in
+großem Stil hergestellt wurden. Der Breguet-Dorand flog ein Jahr vor der Fw 61, also „gilt
+als“ erster voll steuerbarer Hubschrauber. Nipkow hat 1884 angemeldet, nicht erhalten. Der
+Ablenker „Bertha Benz“ lag beim Tippen zu nah an „Bentz“, und „Heinrich Focke“ und „Arthur
+Fischer“, die üblichen Vertipper, zählen jetzt als richtig.
 
 ### „Nimm die längste Option“ klappt nicht mehr: 28,3 → 25,3 %
 
