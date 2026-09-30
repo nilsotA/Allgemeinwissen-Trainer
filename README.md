@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**4.084 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**4.127 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (775 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -41,7 +41,7 @@ if-Sätze, some/any und much/many, False Friends wie „become“ und „gift“
 amerikanisch, Redewendungen, ASAP bis RSVP).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
-**Mythologie** (28 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
+**Mythologie** (32 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
 und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (47 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (45 Quiz-Klassiker vom
@@ -465,7 +465,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 199 Einheitentests plus Inhaltsprüfung
+npm test           # 200 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4230,6 +4230,58 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Prüfsatz 18, Kunst, Musik und Literatur: 63 → 93 %
+
+Der klassische Kulturteil des Quizabends, blind geschrieben: Malerei, Architektur,
+Sinfonien und Opern, deutsche und Weltliteratur, Sagen, Mythologie, Philosophie,
+Literaturnobelpreis, Theaterbegriffe. Die Ausgangsmessung lag bei **95 von 150 (63 %)**.
+
+43 neue Karten schließen die Lücken:
+- **Malerei und Architektur:** Klimts „Kuss“, Spitzwegs „Armer Poet“, Hoppers „Nighthawks“,
+  die korinthische Ordnung, die Laokoon-Gruppe, Brunelleschis Kuppel, Stillleben, Triptychon,
+  Chiaroscuro.
+- **Musik:** Eroica, „Mit dem Paukenschlag“, „Aus der Neuen Welt“, die Unvollendete,
+  Mussorgski, Berlioz, Papageno, „My Fair Lady“.
+- **Literatur:** Davos im „Zauberberg“, Franz Biberkopf, Zuckmayer, Sancho Pansa,
+  Raskolnikow, der erste Satz von „Anna Karenina“, Dickens, Scrooge, Quasimodo, Grass 1999,
+  Mommsen 1902, Souffleur, Generalprobe, Commedia dell’arte.
+- **Sagen und Mythen:** Hameln, Siegfried, Hagen von Tronje, Excalibur, Rübezahl,
+  Prometheus, Ödipus, Charon, Thor.
+- **Philosophie:** Nietzsches „Gott ist tot“, Marx’ „Kapital“, Heideggers „Sein und Zeit“.
+
+Die „Nachtwache“-Karte antwortet jetzt „Rijksmuseum“ statt „Im Rijksmuseum in Amsterdam“.
+Die Abdeckung steigt auf **139 von 150 (93 %)**. Offen bleiben Umkehrpaare wie Hamlet,
+Wilhelm Tell, der Freischütz, die Achillesferse, Pandora, Hobbes, die Uffizien und das
+Fresko. Drei Bestandsfragen sind umformuliert, damit die neuen Karten sie nicht verraten:
+Der „Kuss“ nennt Klimt nicht mehr, der Hammer Mjölnir nicht mehr Thor, und die Frage nach
+dem Sinn von „Gott ist tot“ nicht mehr Nietzsche.
+
+Beim Umformulieren entstand ein Fehler: Die Mjölnir-Karte hatte schon einen Vorgänger und
+bekam ein zweites `p:`. In JavaScript gewinnt still der letzte Schlüssel – der ältere
+Vorgänger wäre verloren gewesen und mit ihm der Lernstand darauf. Die Faktenprüfung hat es
+gefunden. Jetzt steht dort eine Liste, und ein neuer Test prüft jede Kartenzeile auf
+doppelte Schlüssel.
+
+Die Faktenprüfung fand außerdem:
+- **Eroica:** Beethoven strich die Widmung, als Napoleon sich im Mai 1804 zum Kaiser
+  *ausrufen* ließ. Gekrönt wurde er erst im Dezember.
+- **Charon:** Die 100 Jahre am Ufer gelten bei Vergil den Unbestatteten, nicht denen ohne
+  Münze.
+- **Nietzsche** nannte den Tod Gottes selbst „das größte neuere Ereignis“; der Kontext hatte
+  das Gegenteil behauptet.
+- **Rübezahl:** Der Ablenker „Krakonoš“ ist sein tschechischer Name, also ebenfalls richtig.
+
+Die Gegenprüfung fand Fragen, die ihre Antwort vorsagten: „von der er nur zwei Sätze
+*vollendete*“ bei der Unvollendeten, „ein lauter *Schlag*“ beim Paukenschlag, „in New York“
+bei der Neuen Welt. Sie fand auch Ablenker, die sich von selbst ausschließen: Sartre bei der
+Frage nach einem *deutschen* Philosophen, ein französischer Begriff bei der Frage nach einem
+*italienischen*. Dazu kam eine Lücke in der Bewertung: **„Symphonie“ und „Sinfonie“** galten
+nicht als dasselbe Wort, „Eroica-Symphonie“ bekam 0,40. Die Bewertung setzt beide jetzt
+gleich.
+
+Bewusst hingenommen: „Papagena“ gilt auf der Papageno-Karte als Vertipper des Richtigen.
+Ein Buchstabe Unterschied lässt sich von einem echten Tippfehler nicht trennen.
 
 ### Prüfsatz 17, Geschichte in der Breite: 61 → 91 %
 

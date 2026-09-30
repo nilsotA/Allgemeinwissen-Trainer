@@ -337,6 +337,10 @@ export function normalize(s) {
        .replace(/đ/g, 'd').replace(/ð/g, 'd').replace(/þ/g, 'th').replace(/ı/g, 'i')
        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
        .replace(/[^a-z0-9]+/g, ' ');
+  /* „Symphonie" und „Sinfonie" sind dasselbe Wort in zwei Schreibungen, ebenso
+     das englische „Symphony". „Eroica-Symphonie" gab 0,40, weil nur eine der
+     beiden in der Loesung stand. */
+  t = t.replace(/symphon/g, 'sinfon');
   t = t.split(' ').map(w => ZAHLWOERTER.get(w) || w).join(' ');
   /* „im Jahr 1492" ist dieselbe Antwort wie „1492". Das Jahr durfte als Einheit
      fehlen, aber nicht zusaetzlich dastehen - und so fiel die haeufigste Art, eine

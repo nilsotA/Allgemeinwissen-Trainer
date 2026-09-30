@@ -1847,7 +1847,7 @@ test('Zusammen- oder getrennt geschrieben, Herrscherzahlen: dieselbe Antwort', (
     ['Friedrich 2', 'Friedrich II.'], ['Friedrich der Zweite', 'Friedrich II.'],
     ['Ludwig 14', 'Ludwig XIV.'], ['Heinrich der Vierte', 'Heinrich IV.'],
     ['30 m', '30 Meter'], ['7,32m', '7,32 Meter'], ['49 EUR', '49 Euro'], ['2 kg', '2 Kilogramm'],
-    ['1963/1964', '1963/64']];
+    ['1963/1964', '1963/64'], ['Eroica-Symphonie', 'Eroica-Sinfonie']];
   for (const [ein, loesung] of gleich) assert.ok(similarity(ein, loesung) >= 0.95, `„${ein}" gilt nicht als „${loesung}"`);
   /* Die Gegenproben: Leerzeichen zwischen Ziffern tragen Bedeutung, und eine
      andere Herrscherzahl bleibt ein anderer Herrscher. */
@@ -1856,4 +1856,23 @@ test('Zusammen- oder getrennt geschrieben, Herrscherzahlen: dieselbe Antwort', (
     ['1964/65', '1963/64'], ['Katharina 1.', 'Katharina II.']];
   // „Katharina 1." galt als „Katharina II." – die Eins fiel als Artikel weg.
   for (const [ein, loesung] of verschieden) assert.ok(similarity(ein, loesung) < 0.8, `„${ein}" gilt als „${loesung}"`);
+});
+
+test('Keine Karte traegt einen Schluessel doppelt', () => {
+  /* Eine Karte, die schon einen Vorgaenger hatte, bekam beim Umformulieren ein
+     zweites „p:". In JavaScript gewinnt still der letzte Schluessel – der aeltere
+     Vorgaenger fiel weg und mit ihm der Lernstand derer, die noch auf ihm lernten. */
+  const doppelt = [];
+  for (const kat of new Set(CARDS.map(c => c.cat))) {
+    const zeilen = readFileSync(new URL(`../data/${kat}.js`, import.meta.url), 'utf8').split('\n');
+    zeilen.forEach((z, i) => {
+      if (!z.startsWith('{q:')) return;
+      /* Nur ausserhalb von Zeichenketten zaehlt ein Treffer: Zeichenketten vorher leeren. */
+      const ohneText = z.replace(/"(?:[^"\\]|\\.)*"/g, '""');
+      const echt = [...ohneText.matchAll(/[{,](\w+):/g)].map(m => m[1]);
+      const mehrfach = echt.filter((k, j) => echt.indexOf(k) !== j);
+      if (mehrfach.length) doppelt.push(`${kat}.js:${i + 1} ${[...new Set(mehrfach)].join(', ')}`);
+    });
+  }
+  assert.deepEqual(doppelt, []);
 });
