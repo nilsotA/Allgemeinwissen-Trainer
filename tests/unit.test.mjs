@@ -1233,6 +1233,18 @@ test('Jahreszahl mit „im Jahr", Tausender mit Leerzeichen, Dezimalpunkt', () =
     assert.ok(bewerte({ a: loesung }, eingabe) < 0.8, `„${eingabe}" gilt faelschlich als „${loesung}"`);
 });
 
+test('Ein Datum ohne Jahr darf in Ziffern stehen', () => {
+  /* „3.10." auf „3. Oktober" gab 0,22, „17.06." auf „Am 17. Juni" 0,50. Mit
+     Jahr ging es laengst. Ohne Schlusspunkt ist „14.3" mehrdeutig und gilt nur
+     als Datum, wenn der Monat in der Loesung steht. */
+  for (const [loesung, eingabe] of [['3. Oktober', '3.10.'], ['3. Oktober', '03.10.'],
+                                    ['Am 17. Juni', '17.06.'], ['14. März', '14.3'], ['Am 6. Dezember', 'Am 6.12']])
+    assert.ok(bewerte({ a: loesung }, eingabe) >= 0.8, `„${eingabe}" gilt nicht als „${loesung}"`);
+  for (const [loesung, eingabe] of [['3. Oktober', '3.11.'], ['14. März', '14.4'], ['3,1', '3.10']])
+    assert.ok(bewerte({ a: loesung }, eingabe) < 0.8, `„${eingabe}" gilt faelschlich als „${loesung}"`);
+  assert.ok(bewerte({ a: '3,14' }, '3.14') >= 0.8, 'eine Dezimalzahl bleibt eine Dezimalzahl');
+});
+
 test('Messgeraet und App teilen dieselbe Nachsicht', () => {
   /* scripts/abdeckung.mjs hielt eine eigene Kopie der Verhaeltniswoerter und
      kannte den Klammerzusatz gar nicht. Die Kopie war laengst veraltet: „an"

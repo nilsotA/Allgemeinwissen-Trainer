@@ -465,7 +465,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 196 Einheitentests plus Inhaltsprüfung
+npm test           # 197 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4230,6 +4230,21 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### „3.10.“ ist der Tag der Deutschen Einheit
+
+Datumsangaben in Ziffern galten bisher nur mit Jahr. „9.11.1989“ war der 9. November 1989,
+aber „3.10.“ auf „3. Oktober“ ergab 0,22, und „17.06.“ auf „Am 17. Juni“ ergab 0,50. Tag und
+Monat mit Schlusspunkt werden jetzt als Datum gelesen, allerdings nur mit echtem Tag und
+Monat. Das muss geschehen, bevor die Normalisierung den Schlusspunkt eines Satzes streicht,
+denn nur dieser Punkt unterscheidet das Datum von der Dezimalzahl.
+
+Der Alt-neu-Vergleich meldete danach zwölf Verschlechterungen: „14.3“ für den Pi-Tag,
+„6.12“ für Nikolaus und ähnliche, getippt ohne Schlusspunkt. Ohne Punkt ist „14.3“ echt
+mehrdeutig, es kann auch 14,3 heißen. Es gilt deshalb nur dann als Datum, wenn der passende
+Monat in der Lösung steht, nach demselben Muster wie der Dezimalpunkt. Danach meldete der
+Vergleich keine Verschlechterung mehr. Gegenproben im Einheitentest: „3.11.“ bleibt falsch für
+den 3. Oktober, „14.4“ für den 14. März und „3.10“ für 3,1.
 
 ### „im Jahr 1492“, „300 000“ und „42.195“: drei Zahlenschreibweisen
 

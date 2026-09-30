@@ -298,6 +298,12 @@ export function normalize(s) {
      mit allen Satzzeichen ohnehin weg - nur muss er VOR der Kuerzelliste weg
      sein, sonst las die „VO₂max." als „VO₂ maximal" und „Vitamin D." als
      „Vitamin der". Nur genau einer, damit „753 v. Chr." seinen behaelt. */
+  /* Ein Datum ohne Jahr: „3.10." ist der 3. Oktober, „17.06." der 17. Juni.
+     Das muss VOR dem Schlusspunkt geschehen, denn nur der Punkt nach dem Monat
+     unterscheidet es von der Dezimalzahl „3.10". Nur echte Tage und Monate.
+     Vorher 0,22 fuer den Tag der Deutschen Einheit. */
+  t = t.replace(/\b(\d{1,2})\.\s*(\d{1,2})\.(?!\s*\d)/g,
+    (ganz, tag, monat) => (MONATE[+monat - 1] && +tag >= 1 && +tag <= 31) ? ` ${+tag}. ${MONATE[+monat - 1]} ` : ganz);
   t = t.replace(/\.\s*$/, '');
   for (const [re, ersatz] of ABKUERZUNGEN) t = t.replace(re, ersatz);
   for (const [re, ersatz] of ZEICHEN) t = t.replace(re, ersatz);
@@ -637,6 +643,11 @@ export function bewerte(card, eingabe) {
   const mitKomma = txt.replace(/(\d)\.(\d{3})(?!\d)/g, (m, v, n) =>
     listen.some(l => String(l).includes(`${v},${n}`)) ? `${v},${n}` : m);
   const lesarten = mitKomma === txt ? [txt] : [txt, mitKomma];
+  /* „14.3" ohne Schlusspunkt kann ein Datum sein oder 14,3. Als Datum gilt es,
+     wenn der Monat in der Loesung steht: Dann ist „14.3" der 14. Maerz. */
+  const ohnePunkt = txt.match(/\b\d{1,2}\.\s*(\d{1,2})$/);
+  if (ohnePunkt && MONATE[+ohnePunkt[1] - 1]
+      && listen.some(l => normalize(String(l)).split(' ').includes(MONATE[+ohnePunkt[1] - 1]))) lesarten.push(txt + '.');
   let beste = Math.max(...lesarten.flatMap(e => listen.map(l => similarity(e, l, card.q))));
   if (card.ug) beste = Math.max(beste, ...listen.map(l => similarity(sortiert(txt), sortiert(l), card.q)));
   return beste;
