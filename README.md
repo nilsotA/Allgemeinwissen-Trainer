@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.777 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.795 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (737 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -42,10 +42,10 @@ amerikanisch, Redewendungen, ASAP bis RSVP).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (28 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (41 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (42 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (41 Quiz-Klassiker vom
-Wanderfalken bis zum blauen Krakenblut), **Amerika** (52 – Bundesstaaten und ihre Hauptstädte,
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (42 Quiz-Klassiker vom
+Wanderfalken bis zum blauen Krakenblut), **Amerika** (67 – Bundesstaaten und ihre Hauptstädte, Konquistadoren, Tango,
 Route 66, Ellis Island, Thanksgiving, Kap Hoorn), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
@@ -4230,6 +4230,28 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Süd- und Mittelamerika: 18 Karten mehr
+
+Die Fortsetzung der Amerika-Runde für den Süden. Neu sind Rios Sambódromo, Cortés und
+Pizarro, der Día de los Muertos, Pinochets Putsch, der Tango (Argentinien und Uruguay), der
+Falklandkrieg, die Schweinebucht, die Eröffnung des Panamakanals 1914, Haiti als erster Staat
+aus einem erfolgreichen Sklavenaufstand, Mate, die Nazca-Linien, Chichén Itzá auf Yucatán,
+Pablo Escobar und Eva Perón. Dazu kamen Alpakas unter **Tiere**, Brasilien als größter
+Kaffeeproduzent unter **Essen & Trinken** und Venezuelas Erdölreserven unter **Wirtschaft**.
+Die beiden letzten stehen bewusst nicht unter „Amerika“: Der Name des Teilgebiets hätte
+Vietnam, Äthiopien, Saudi-Arabien und Iran als Ablenker sofort ausgeschlossen.
+
+Die Vorprüfung fand zwei Karten, die sich gegenseitig verrieten. Die Mate-Frage nannte
+„Argentinien und Uruguay“, also genau die Antwort der Tango-Karte, und die Totentag-Frage
+nannte Mexiko als Antwort für Chichén Itzá. Die Chichén-Itzá-Karte fragt deshalb jetzt nach
+der Halbinsel. Der Gegenprüfer schickte alle üblichen Eingaben durch die Bewertung der App,
+und drei naheliegende Antworten wären als falsch gezählt worden: „Wolle“ bei den Alpakas,
+„England und Argentinien“ beim Falklandkrieg und „Anfang November“ beim Totentag. Sie
+gelten jetzt, ebenso „Bay of Pigs“ und „Playa Girón“. Außerdem verriet „Evita“ in der Frage
+die Antwort, und neben Escobar standen ein Mexikaner und ein Panamaer, obwohl die Frage
+„kolumbianisch“ sagte. Die Faktenprüfung korrigierte Cortés' Truppenstärke: Bei der
+Belagerung von 1521 waren es knapp tausend Spanier, nicht „wenige hundert“.
 
 ### Amerika als eigenes Teilgebiet: 52 Karten
 
