@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.749 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.777 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (737 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -45,7 +45,8 @@ Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast lee
 und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (41 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (41 Quiz-Klassiker vom
-Wanderfalken bis zum blauen Krakenblut), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
+Wanderfalken bis zum blauen Krakenblut), **Amerika** (52 – Bundesstaaten und ihre Hauptstädte,
+Route 66, Ellis Island, Thanksgiving, Kap Hoorn), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
 Freddie Mercury, Falco).
@@ -4229,6 +4230,33 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Amerika als eigenes Teilgebiet: 52 Karten
+
+Die USA und die Amerikas kamen bisher vor allem über Hauptstädte und Präsidenten vor. An
+Quizabenden gefragt wird aber vieles andere, und das fehlte: der größte und der
+bevölkerungsreichste Bundesstaat, Hauptstadtfallen wie Sacramento, Albany und Austin, „Big
+Apple“ und „Windy City“, Las Vegas in Nevada, Yellowstone als erster Nationalpark, Route 66,
+der Louisiana-Kauf, Alcatraz und Ellis Island, Hymne, Thanksgiving, zwei Senatoren je Staat,
+Wall Street, Québec, Toronto, Kap Hoorn, Bolívar, Castro, Rosa Parks, die Zeitverschiebung
+nach New York, „Sunshine State“, Spanisch als zweite Sprache, Chiles Form und Denali. Dazu
+wanderten 24 vorhandene Karten aus „Welt“ ins neue Teilgebiet **Amerika**, etwa Ottawa,
+Brasília, der Amazonas und die Niagarafälle. Die Kennung hängt nicht am Teilgebiet, der
+Lernstand bleibt also erhalten. Eine Karte zu den 13 Streifen der Flagge flog als Dublette
+heraus.
+
+Faktenprüfung und Gegenprüfung fanden keinen Sachfehler, aber einige Unschärfen:
+- **Ellis Island:** Von den Ankömmlingen stammen rund 40 % der US-Amerikaner ab, nicht
+  „fast die Hälfte“.
+- **Route 66:** Sie endete erst ab 1936 in Santa Monica. „Chicago und Santa Monica“ zählt
+  jetzt ebenfalls als richtig.
+- **Zeitverschiebung:** „Im Winter“ war schief. Der Abstand beträgt auch im Sommer sechs
+  Stunden, und in einigen Wochen im März und Herbst sind es fünf. Die Frage nennt jetzt den
+  Januar.
+- **Windy City:** Der Zusatz „am Michigansee“ schloss zwei der drei Ablenker aus und ist
+  gestrichen.
+- **Alcatraz:** Die Karte erwähnt jetzt Trumps Anordnung von 2025, die Insel wieder zum
+  Gefängnis zu machen. Stand 2026 ist sie nicht umgesetzt.
 
 ### Bauwerke, Olympia und Rekorde: 61 → 84 Karten
 

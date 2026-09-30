@@ -726,7 +726,8 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     'ges-p6xhl6|ges-khhfuf', // „Versailles" meint den Vertrag von Versailles
     'mat-jn04sr|mat-og7vt5', // „Der Logarithmus" ist das Werkzeug, das die Karte meint
     'pol-1g0ho6z|pol-19r0m4j', // „Mit 18" = „Ab 18"
-    'spo-1oqafrh|geo-1s27ays', 'spo-1oqafrh|geo-ostf3y', // Frankreich richtet die Spiele in den Alpen aus
+    'spo-1oqafrh|geo-1s27ays', 'spo-1oqafrh|geo-ostf3y', 'spo-1oqafrh|geo-174vmfg', // Frankreich richtet die Spiele in den Alpen aus
+    'spr-1kfchxd|geo-fojbps', // „Austin" für Austen ist ein Vertipper des Namens, kein anderer Begriff
     'mat-10xfssj|mat-195rkl', 'mat-195rkl|mat-10xfssj', // Summa/Summe: dieselbe Idee, lateinisch und deutsch
     'spo-5cchb|pol-43kll3', // „Die Linke" auf „Linksherum" meint die Richtung
     // Als Eingabe abwegig: Bayer für Bayes, Bache für Bach, Kanon für Kano, Polen für Pole Position, Bulle/Bully
