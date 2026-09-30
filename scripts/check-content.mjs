@@ -384,9 +384,9 @@ for (const c of CARDS) {
    Aerosol unberuehrt. Eigennamen, die wirklich so heissen, stehen in der Ausnahme.
    Die Antwortvarianten (az) sind ausgenommen, die sieht niemand. */
 const UMLAUT_ECHT = new Set(['hoechst', 'eisenstaedt', 'ae']);
-/* Eigennamen, die wirklich mit ss geschrieben werden: Der Nobelpreistraeger
-   Rainer Weiss (LIGO) heisst so und nicht „Weiß". */
-const EIGENNAMEN_SS = /\bRainer Weiss\b/g;
+/* Eigennamen, die wirklich mit ss oder oe geschrieben werden: Der Nobelpreistraeger
+   Rainer Weiss (LIGO) heisst so und nicht „Weiß", Joaquin Phoenix nicht „Phönix". */
+const EIGENNAMEN_SS = /\b(?:Rainer Weiss|Joaquin Phoenix)\b/g;
 const sichtbar = (c) => [c.q, c.a, c.t, ...(c.w || [])].filter(Boolean).join(' ').replace(EIGENNAMEN_SS, '');
 const WORTSCHATZ = new Set(CARDS.flatMap(c => sichtbar(c).toLowerCase().match(/\p{L}+/gu) || []));
 const mitUmlaut = (w) => w.replace(/ae/g, 'ä').replace(/oe/g, 'ö').replace(/ue/g, 'ü');

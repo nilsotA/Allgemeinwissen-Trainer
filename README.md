@@ -4230,6 +4230,23 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
+### „Nimm die längste Option“ klappt nicht mehr: 28,3 → 25,3 %
+
+Nach dem Mittelwert-Trick die zweite Ratestrategie: Bei 130 Karten war die richtige Antwort
+deutlich länger als jeder Ablenker, mindestens 30 % und sechs Zeichen länger. Mit „im Zweifel
+die längste Option“ lag man deshalb in 28,3 % der Fälle richtig, statt zu 25 % – knapp unter
+der Schranke von 32 %, aber 4,6 Standardabweichungen über dem Zufall. Vier Autoren haben
+für diese Karten längere, eindeutig falsche Ablenker geschrieben, meist mit vollen Namen
+echter Personen („Antoine Henri Becquerel“, „Gottlieb Wilhelm Daimler“) oder mit Sätzen in
+derselben Bauart wie die Antwort. Vier Gegenprüfer haben jeden neuen Ablenker darauf geprüft,
+ob er in irgendeiner Lesart doch stimmt. Dabei flogen mehrere Kandidaten heraus: Beim
+Nullmeridian zum Beispiel Paris, Rom und Washington, durch die früher eigene Bezugsmeridiane
+liefen, bei Darwin die Falklandinseln und beim Betrag „der Wert mit umgekehrtem Vorzeichen“,
+denn für negative Zahlen stimmt genau das. 125 Karten haben neue Ablenker. Fünf bleiben, wie
+sie sind, weil die Antwort ein langer Eigenname ist und jede längere Alternative gezwungen
+wirkte (etwa Garmisch-Partenkirchen). Die längste Option trifft jetzt in 25,3 % der Fälle,
+also im Zufallsband.
+
 ### „Streich die beiden Extremwerte“ klappt nicht mehr: Klammerquote 60,6 → 49,5 %
 
 Bei Zahlenfragen im Auswahlmodus gibt es eine bekannte Ratestrategie: Man streicht den
