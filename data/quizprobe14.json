@@ -1,0 +1,1538 @@
+[
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "In welcher fiktiven Kleinstadt in Indiana spielt die Netflix-Serie „Stranger Things“?",
+  "antwort": "Hawkins",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Wie heißt der Chemielehrer, der in „Breaking Bad“ zum Drogenkoch wird?",
+  "antwort": "Walter White",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Heisenberg",
+   "Walt"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Welche deutsche Netflix-Serie über Zeitreisen spielt in der Kleinstadt Winden?",
+  "antwort": "Dark",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Unter welchem deutschen Titel lief die spanische Serie „La Casa de Papel“ auf Netflix?",
+  "antwort": "Haus des Geldes",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "La Casa de Papel",
+   "Money Heist"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Aus welchem Land stammt die Netflix-Serie „Squid Game“?",
+  "antwort": "Südkorea",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Korea"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Wie heißt das Café, in dem sich die Clique in „Friends“ ständig trifft?",
+  "antwort": "Central Perk",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Wie lautet der Wahlspruch des Hauses Stark in „Game of Thrones“ auf Deutsch?",
+  "antwort": "Der Winter naht",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Winter is coming"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Welcher US-Sender produzierte die Serie „Game of Thrones“?",
+  "antwort": "HBO",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Wie heißt die Papierfirma, in der die US-Serie „The Office“ spielt?",
+  "antwort": "Dunder Mifflin",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Wie heißt die ARD-Serie (2006–2008) von Bora Dagtekin über eine deutsch-türkische Patchworkfamilie?",
+  "antwort": "Türkisch für Anfänger",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Welcher Schauspieler spielt den Büroleiter Bernd Stromberg?",
+  "antwort": "Christoph Maria Herbst",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Wie heißt die Figur aus „The Mandalorian“, die Fans zunächst „Baby Yoda“ nannten?",
+  "antwort": "Grogu",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "Wie heißt der hochbegabte Physiker mit festem Sofaplatz in „The Big Bang Theory“?",
+  "antwort": "Sheldon Cooper",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Sheldon"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "In welcher englischen Stadt spielt die Serie „Peaky Blinders“?",
+  "antwort": "Birmingham",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Serien & Streaming",
+  "frage": "In welchem Jahr startete Netflix in Deutschland?",
+  "antwort": "2014",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wie heißt die Zauberschule, die Harry Potter besucht?",
+  "antwort": "Hogwarts",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "In welches Hogwarts-Haus wird Harry Potter eingeteilt?",
+  "antwort": "Gryffindor",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wie lautet der ursprüngliche Name von Lord Voldemort?",
+  "antwort": "Tom Riddle",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Tom Vorlost Riddle",
+   "Tom Marvolo Riddle"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wie heißt der Hammer des Marvel-Helden Thor?",
+  "antwort": "Mjölnir",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mjolnir"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Welcher Schauspieler spielte Iron Man im Marvel Cinematic Universe?",
+  "antwort": "Robert Downey Jr.",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Robert Downey Junior",
+   "Robert Downey"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Welcher Schurke löscht in „Avengers: Infinity War“ mit einem Fingerschnippen die Hälfte allen Lebens aus?",
+  "antwort": "Thanos",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wie viele Infinity-Steine gibt es im Marvel Cinematic Universe?",
+  "antwort": "6",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Aus welchem fiktiven afrikanischen Land stammt Black Panther?",
+  "antwort": "Wakanda",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wie lautet der ursprüngliche Name von Darth Vader?",
+  "antwort": "Anakin Skywalker",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Anakin"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wie heißt das Raumschiff von Han Solo auf Deutsch?",
+  "antwort": "Millennium Falke",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Millennium Falcon",
+   "Rasender Falke"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Welcher Regisseur verfilmte die „Der Herr der Ringe“-Trilogie?",
+  "antwort": "Peter Jackson",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "In welchem Land wurde die „Der Herr der Ringe“-Trilogie gedreht?",
+  "antwort": "Neuseeland",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "In welchen Vulkan muss der Eine Ring in „Der Herr der Ringe“ geworfen werden?",
+  "antwort": "Schicksalsberg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Orodruin",
+   "Mount Doom"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wie heißt der Cowboy aus „Toy Story“?",
+  "antwort": "Woody",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Sheriff Woody"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "In welchem Pixar-Film kocht eine Ratte in einem Pariser Restaurant?",
+  "antwort": "Ratatouille",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Welcher südkoreanische Film gewann 2020 als erster nicht-englischsprachiger Film den Oscar als bester Film?",
+  "antwort": "Parasite",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Gisaengchung"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wer führte Regie beim Film „Barbie“ (2023)?",
+  "antwort": "Greta Gerwig",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Welcher Schauspieler spielt Zeki Müller in „Fack ju Göhte“?",
+  "antwort": "Elyas M'Barek",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Elyas M’Barek",
+   "Elyas MBarek"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "Wie heißt die Heldin der „Tribute von Panem“-Reihe?",
+  "antwort": "Katniss Everdeen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Katniss"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Filme & Franchises",
+  "frage": "In welchem Jahr kam der erste Harry-Potter-Film in die Kinos?",
+  "antwort": "2001",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt Marios Bruder im grünen Outfit?",
+  "antwort": "Luigi",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "In welchem Spiel aus Blöcken schleichen sich explodierende Creeper an?",
+  "antwort": "Minecraft",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Aus welchem Land stammt Mojang, das Studio hinter Minecraft?",
+  "antwort": "Schweden",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt das Battle-Royale-Spiel von Epic Games aus dem Jahr 2017?",
+  "antwort": "Fortnite",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt die Spielkonsole, die Sony im November 2020 veröffentlichte?",
+  "antwort": "PlayStation 5",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "PS5",
+   "Playstation 5"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt der spielbare Held der „The Legend of Zelda“-Reihe?",
+  "antwort": "Link",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Welches gelbe Pokémon ist Ashs ständiger Begleiter?",
+  "antwort": "Pikachu",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt das Handyspiel von 2016, bei dem man draußen per Augmented Reality Pokémon fängt?",
+  "antwort": "Pokémon Go",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pokemon Go"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "In welcher fiktiven Stadt spielt „Grand Theft Auto V“?",
+  "antwort": "Los Santos",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt in „Among Us“ die Rolle der heimlichen Saboteure?",
+  "antwort": "Impostor",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Imposter",
+   "Hochstapler"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Welche Firma entwickelte „League of Legends“?",
+  "antwort": "Riot Games",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Riot"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt die Nintendo-Konsole von 2006, die durch ihre Bewegungssteuerung berühmt wurde?",
+  "antwort": "Wii",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nintendo Wii"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt der Hexer, den man in „The Witcher 3“ spielt?",
+  "antwort": "Geralt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Geralt von Riva"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Welches polnische Studio entwickelte „The Witcher 3“ und „Cyberpunk 2077“?",
+  "antwort": "CD Projekt Red",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "CD Projekt",
+   "CDPR"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "In welchem Nintendo-Spiel von 2020 zieht man auf eine Insel und zahlt seine Schulden bei Tom Nook ab?",
+  "antwort": "Animal Crossing",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Animal Crossing: New Horizons"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Videospiele & Konsolen",
+  "frage": "Wie heißt der Handheld-PC von Valve, der 2022 erschien?",
+  "antwort": "Steam Deck",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Mit welcher App wurde „Musical.ly“ 2018 zusammengelegt?",
+  "antwort": "TikTok",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Welches chinesische Unternehmen steht hinter TikTok?",
+  "antwort": "ByteDance",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Welche Hintergrundfarbe hat das Snapchat-Logo mit dem Geist?",
+  "antwort": "Gelb",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Wie viele Zeichen durfte ein Tweet ursprünglich höchstens haben?",
+  "antwort": "140",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "hundertvierzig"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Welchen Namen trägt Twitter seit 2023?",
+  "antwort": "X",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Welcher Konzern kaufte 2012 die App Instagram?",
+  "antwort": "Facebook",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Meta"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Welche Messenger-App kaufte Facebook 2014 für rund 19 Milliarden Dollar?",
+  "antwort": "WhatsApp",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Was bedeuten zwei blaue Haken bei einer WhatsApp-Nachricht?",
+  "antwort": "gelesen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nachricht wurde gelesen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Wie hieß das deutsche Netzwerk für Studierende, dessen Schülerableger „SchülerVZ“ hieß?",
+  "antwort": "StudiVZ",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Wie heißt die Live-Streaming-Plattform für Gamer, die Amazon 2014 übernahm?",
+  "antwort": "Twitch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Wie heißt der KI-Chatbot, den OpenAI im November 2022 veröffentlichte?",
+  "antwort": "ChatGPT",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Bei welcher Dating-App wischt man nach rechts, wenn einem jemand gefällt?",
+  "antwort": "Tinder",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Internet & Apps",
+  "frage": "Wie heißt das allererste YouTube-Video aus dem Jahr 2005?",
+  "antwort": "Me at the zoo",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Wer gründete Facebook 2004 an der Harvard-Universität?",
+  "antwort": "Mark Zuckerberg",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Zuckerberg"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Wer stellte das erste iPhone auf der Bühne vor?",
+  "antwort": "Steve Jobs",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jobs"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "In welchem Jahr kam das erste iPhone auf den Markt?",
+  "antwort": "2007",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Wie heißt der Mutterkonzern von Google seit 2015?",
+  "antwort": "Alphabet",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Alphabet Inc."
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "In welchen Namen benannte sich der Facebook-Konzern 2021 um?",
+  "antwort": "Meta",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Meta Platforms"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Wer gründete Amazon?",
+  "antwort": "Jeff Bezos",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bezos"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Aus welchem Land stammt der Smartphone-Hersteller Samsung?",
+  "antwort": "Südkorea",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Korea"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Welches Unternehmen hinter den GeForce-Grafikkarten gründete Jensen Huang 1993 mit?",
+  "antwort": "Nvidia",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "NVIDIA"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Aus welchem Land stammt der Musikstreamingdienst Spotify?",
+  "antwort": "Schweden",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Wer übernahm 2011 von Steve Jobs den Chefposten bei Apple?",
+  "antwort": "Tim Cook",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Cook"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Welcher Berliner Online-Modehändler warb mit dem Slogan „Schrei vor Glück“?",
+  "antwort": "Zalando",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Tech-Firmen & Gründer",
+  "frage": "Welcher chinesische Konzern steht hinter der App WeChat?",
+  "antwort": "Tencent",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welche Sängerin veröffentlichte 2008 den Hit „Poker Face“?",
+  "antwort": "Lady Gaga",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Wie nennen sich die Fans von Taylor Swift?",
+  "antwort": "Swifties",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Swiftie"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welcher südkoreanische Rapper landete 2012 mit „Gangnam Style“ einen Welthit?",
+  "antwort": "Psy",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "PSY"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welche siebenköpfige K-Pop-Band erreichte 2020 mit „Dynamite“ Platz 1 der US-Charts?",
+  "antwort": "BTS",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bangtan Boys"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welche britische Sängerin veröffentlichte 2011 das Album „21“ mit „Rolling in the Deep“?",
+  "antwort": "Adele",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welcher kanadische Sänger veröffentlichte Ende 2019 „Blinding Lights“?",
+  "antwort": "The Weeknd",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Weeknd"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welche italienische Rockband gewann 2021 den Eurovision Song Contest?",
+  "antwort": "Måneskin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Maneskin"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welcher schwedische DJ mit Hits wie „Levels“ und „Wake Me Up“ starb 2018?",
+  "antwort": "Avicii",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welche Sängerin veröffentlichte 2019 den Hit „Bad Guy“?",
+  "antwort": "Billie Eilish",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Welcher US-Rapper heißt mit bürgerlichem Namen Marshall Mathers?",
+  "antwort": "Eminem",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Slim Shady"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Popmusik international",
+  "frage": "Unter welchem Künstlernamen veröffentlichte Donald Glover 2018 „This Is America“?",
+  "antwort": "Childish Gambino",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Wer gewann 2010 mit „Satellite“ den Eurovision Song Contest für Deutschland?",
+  "antwort": "Lena",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Lena Meyer-Landrut"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Welcher deutsche Rapper tritt stets mit einer Pandamaske auf?",
+  "antwort": "Cro",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Welcher Berliner Rapper trug zu Beginn seiner Karriere eine silberne Totenkopfmaske?",
+  "antwort": "Sido",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Welcher deutsche Musikpreis wurde 2018 nach dem Skandal um Kollegah und Farid Bang abgeschafft?",
+  "antwort": "Echo",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Echo Pop"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Welche Sängerin landete 2013 mit „Atemlos durch die Nacht“ einen Dauerbrenner?",
+  "antwort": "Helene Fischer",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Welcher Rapper aus Ludwigshafen hatte 2019 mit „Roller“ einen großen Hit?",
+  "antwort": "Apache 207",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Apache"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Welcher Seeed-Sänger veröffentlichte 2008 solo den Song „Haus am See“?",
+  "antwort": "Peter Fox",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Welche Band aus Magdeburg um Bill Kaulitz landete 2005 mit „Durch den Monsun“ einen Nummer-eins-Hit?",
+  "antwort": "Tokio Hotel",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Wie heißt das gemeinsame Album von Bonez MC und RAF Camora aus dem Jahr 2016?",
+  "antwort": "Palmen aus Plastik",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Welche Band um Sängerin Judith Holofernes hatte mit „Guten Tag“ ihren Durchbruch?",
+  "antwort": "Wir sind Helden",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Deutschrap & Deutschpop",
+  "frage": "Aus welcher Stadt stammt die Band Kraftklub?",
+  "antwort": "Chemnitz",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Welches Wort für „Boss“ oder „Anführer“ wurde 2013 zum Jugendwort des Jahres gewählt?",
+  "antwort": "Babo",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Welches Kofferwort für Menschen, die nur aufs Handy starren, war Jugendwort des Jahres 2015?",
+  "antwort": "Smombie",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Welches Wort für „peinlich, zum Fremdschämen“ wurde 2021 Jugendwort des Jahres?",
+  "antwort": "cringe",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Auf welchen Song wird man bei einem „Rickroll“ gelockt?",
+  "antwort": "Never Gonna Give You Up",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Never Gonna Give You Up von Rick Astley"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Unter welchem Namen wurde die Katze Tardar Sauce mit ihrem mürrischen Gesicht zum Meme?",
+  "antwort": "Grumpy Cat",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Wie heißt das Meme mit dem Shiba-Inu-Hund, nach dem auch eine Kryptowährung benannt ist?",
+  "antwort": "Doge",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dogecoin"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Wie hieß die Spendenaktion von 2014, bei der man sich einen Eimer Eiswasser über den Kopf kippte?",
+  "antwort": "Ice Bucket Challenge",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ice-Bucket-Challenge"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Welche Farben hatte das virale Kleid von 2015 („The Dress“) in Wirklichkeit?",
+  "antwort": "Blau und Schwarz",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "blau-schwarz",
+   "schwarz-blau",
+   "Schwarz und Blau"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Welches Wort für eine Empörungswelle im Netz wurde 2011 zum „Anglizismus des Jahres“ gewählt?",
+  "antwort": "Shitstorm",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Memes & Netzsprache",
+  "frage": "Wie heißt das Meme, in dem sich ein Mann nach einer anderen Frau umdreht, während seine Freundin empört schaut?",
+  "antwort": "Distracted Boyfriend",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Der abgelenkte Freund",
+   "Abgelenkter Freund"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Wofür steht die Abkürzung „FOMO“?",
+  "antwort": "Fear of Missing Out",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fear of missing out"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Wofür steht die Abkürzung „LOL“?",
+  "antwort": "Laughing out loud",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "laughing out loud"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Wofür steht die Abkürzung „YOLO“?",
+  "antwort": "You only live once",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Wofür steht die Abkürzung „BFF“?",
+  "antwort": "Best Friends Forever",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Best Friend Forever",
+   "Best Friends For Ever"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Wofür steht die Abkürzung „IRL“?",
+  "antwort": "In real life",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "im echten Leben"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Wofür steht „GOAT“, wenn ein Sportler so genannt wird?",
+  "antwort": "Greatest of all time",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Greatest of All Time"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Wofür steht die Abkürzung „TL;DR“?",
+  "antwort": "Too long; didn't read",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Too long, didn't read",
+   "too long didn't read"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Wofür steht „NPC“ in Videospielen?",
+  "antwort": "Non-Player Character",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Non-Playable Character",
+   "Nicht-Spieler-Charakter"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Aus welchem Land stammen die Emojis ursprünglich?",
+  "antwort": "Japan",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "popkultur-2000-2024",
+  "block": "Abkürzungen & Emojis",
+  "frage": "Welches Emoji kürte Oxford Dictionaries 2015 zum „Wort des Jahres“?",
+  "antwort": "Gesicht mit Freudentränen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "😂",
+   "Face with Tears of Joy",
+   "Tränen lachendes Gesicht",
+   "Freudentränen-Emoji",
+   "Lach-Tränen-Emoji"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "Welcher Poptitan war jahrelang das Gesicht der Jury von „Deutschland sucht den Superstar“?",
+  "antwort": "Dieter Bohlen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bohlen"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "Wer gewann 2003 die erste Staffel von „Deutschland sucht den Superstar“?",
+  "antwort": "Alexander Klaws",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "Welche Castingshow mit Heidi Klum startete 2006 auf ProSieben?",
+  "antwort": "Germany's Next Topmodel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "GNTM",
+   "Germanys Next Topmodel"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "Wie lautet der offizielle Titel der RTL-Show, die als „Dschungelcamp“ bekannt ist?",
+  "antwort": "Ich bin ein Star – Holt mich hier raus!",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ich bin ein Star, holt mich hier raus",
+   "Dschungelcamp"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "Wer gewann 2006 die erste Staffel von „Germany's Next Topmodel“?",
+  "antwort": "Lena Gercke",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "In welcher Kuppelshow verteilt ein Junggeselle am Ende jeder Folge Rosen?",
+  "antwort": "Der Bachelor",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bachelor"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "In welcher Castingshow drehen sich die Coaches auf roten Stühlen um, wenn ihnen eine Stimme gefällt?",
+  "antwort": "The Voice of Germany",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "The Voice"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "Auf welchem Sender lief ab dem Jahr 2000 die erste deutsche Staffel von „Big Brother“?",
+  "antwort": "RTL II",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "RTL 2",
+   "RTL2"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "In welcher VOX-Sendung muss Tim Mälzer weltweit Gerichte nachkochen?",
+  "antwort": "Kitchen Impossible",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "In welcher VOX-Show präsentieren Gründer ihre Ideen vor Investoren?",
+  "antwort": "Die Höhle der Löwen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Höhle der Löwen",
+   "DHDL"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "Wie lautet der Nachname von Klaas aus dem Moderatoren-Duo „Joko & Klaas“?",
+  "antwort": "Heufer-Umlauf",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "popkultur-2000-2024",
+  "block": "Reality-TV & Castingshows",
+  "frage": "Welche Girlband ging 2000 aus der ersten Staffel von „Popstars“ hervor?",
+  "antwort": "No Angels",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Unter welchem Namen erscheint EAs Fußballspiel seit 2023, nachdem der Name FIFA wegfiel?",
+  "antwort": "EA Sports FC",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "EA FC",
+   "FC 24",
+   "EA Sports FC 24"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Wer schoss im WM-Finale 2014 das Siegtor für Deutschland?",
+  "antwort": "Mario Götze",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Götze"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Welcher Spieler flankte im WM-Finale 2014 vor Götzes Siegtor?",
+  "antwort": "André Schürrle",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Schürrle",
+   "Andre Schürrle"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Mit welchem Ergebnis gewann Deutschland das WM-Halbfinale 2014 gegen Brasilien?",
+  "antwort": "7:1",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "1:7",
+   "7 zu 1"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Welcher Fußballstar ist für den Torjubel „Siuuu“ bekannt?",
+  "antwort": "Cristiano Ronaldo",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ronaldo",
+   "CR7"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Wie heißt der Spielmodus in FIFA/EA FC, in dem man Spielerkarten aus Packs sammelt?",
+  "antwort": "Ultimate Team",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "FUT",
+   "FIFA Ultimate Team"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Gegen welchen Verein gewann der FC Bayern 2013 das Champions-League-Finale in Wembley?",
+  "antwort": "Borussia Dortmund",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dortmund",
+   "BVB"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Welcher Außenseiter wurde 2016 sensationell englischer Meister?",
+  "antwort": "Leicester City",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Leicester"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Welcher jamaikanische Sprinter lief 2009 in Berlin die 100 Meter in 9,58 Sekunden?",
+  "antwort": "Usain Bolt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bolt"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "popkultur-2000-2024",
+  "block": "Sport-Popkultur",
+  "frage": "Welcher Basketballer aus Würzburg wurde 2011 mit den Dallas Mavericks NBA-Meister?",
+  "antwort": "Dirk Nowitzki",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Nowitzki"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "Welche Sportmarke hat drei Streifen als Markenzeichen?",
+  "antwort": "Adidas",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "In welcher fränkischen Stadt haben Adidas und Puma ihren Hauptsitz?",
+  "antwort": "Herzogenaurach",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "Welche schwedische Modekette kürzt sich mit zwei Buchstaben und einem „&“ ab?",
+  "antwort": "H&M",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hennes & Mauritz"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "Aus welchem Land stammt die Modekette Zara?",
+  "antwort": "Spanien",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "Welcher österreichische Energydrink „verleiht Flügel“?",
+  "antwort": "Red Bull",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "Welche Kaffeehauskette hat eine grüne Meerjungfrau im Logo?",
+  "antwort": "Starbucks",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "Wie heißt die Sneaker-Linie von Nike, die nach einem Basketballstar benannt ist?",
+  "antwort": "Air Jordan",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jordan"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "Aus welchem Land stammt Bubble Tea?",
+  "antwort": "Taiwan",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "Welche französische Luxusmarke hat die Initialen „LV“ als Logo?",
+  "antwort": "Louis Vuitton",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "popkultur-2000-2024",
+  "block": "Marken & Lifestyle",
+  "frage": "In welcher Stadt wurde die Streetwear-Marke Supreme gegründet?",
+  "antwort": "New York",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "New York City",
+   "NYC"
+  ]
+ }
+]
