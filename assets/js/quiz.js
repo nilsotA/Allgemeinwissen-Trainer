@@ -307,6 +307,10 @@ export function normalize(s) {
      Handy tippt praktisch niemand Tausenderpunkte. Dieselbe Unterscheidung
      zwischen Tausenderpunkt und Dezimalkomma trifft NUM/zuZahl oben. */
   t = t.replace(/(\d)\.(?=\d{3}(\D|$))/g, '$1');
+  /* Dasselbe fuer Tausendergruppen mit Leerzeichen, wie Taschenrechner und viele
+     Buecher sie setzen: „300 000 km/s" galt nicht als „300.000 km/s" (0,50). Nur
+     echte Dreiergruppen hinter ein bis drei Ziffern werden zusammengezogen. */
+  t = t.replace(/(?<!\d)(\d{1,3})((?:[ \u00a0\u202f]\d{3})+)(?!\d)/g, (m, a, b) => a + b.replace(/\D/g, ''));
   t = t.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
   /* Erst danach die fremden Diakritika, und nur die: Ein deutsches Tastenfeld
      gibt í, ó, ø, ř oder ć gar nicht her - wer „Brasilia" tippt, hat die
@@ -320,6 +324,10 @@ export function normalize(s) {
        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
        .replace(/[^a-z0-9]+/g, ' ');
   t = t.split(' ').map(w => ZAHLWOERTER.get(w) || w).join(' ');
+  /* „im Jahr 1492" ist dieselbe Antwort wie „1492". Das Jahr durfte als Einheit
+     fehlen, aber nicht zusaetzlich dastehen - und so fiel die haeufigste Art, eine
+     Jahreszahl hinzuschreiben, bei 53 Karten durch (0,44). */
+  t = t.replace(/\b(?:im|in dem)\s+jahre?\s+(?=\d)/g, '');
   /* Obergrenzen vor einer Zahl sind eine Aussage: „max 6 g", „max. 6 g", „maximal
      6 g" und „bis 6 g" meinen alle „hoechstens 6 g". Vorher brauchte jede Schreibweise
      eine eigene Nebenschreibweise, und „max 300 g" fiel ohne sie auf 0,56. Nur direkt
@@ -622,7 +630,14 @@ export function bewerte(card, eingabe) {
      nicht durch: Es gilt nur dort, wo die Kurzform ohnehin schon erlaubt ist. */
   const initialen = kurz ? mitInitialen(card.a) : null;
   const listen = [card.a, ...(card.az || []), ...(kurz ? [kurz] : []), ...(initialen ? [initialen] : [])];
-  let beste = Math.max(...listen.map(l => similarity(txt, l, card.q)));
+  /* Ein Dezimalpunkt statt des Kommas: „42.195 km" auf „42,195 km". Im Deutschen
+     waeren das 42.195 Kilometer - deshalb gilt diese Lesart nur, wenn genau diese
+     Ziffern mit Komma in der Loesung stehen. Sonst bleibt der Punkt ein
+     Tausenderpunkt, und „3.600" ist weiter nicht „3,6". */
+  const mitKomma = txt.replace(/(\d)\.(\d{3})(?!\d)/g, (m, v, n) =>
+    listen.some(l => String(l).includes(`${v},${n}`)) ? `${v},${n}` : m);
+  const lesarten = mitKomma === txt ? [txt] : [txt, mitKomma];
+  let beste = Math.max(...lesarten.flatMap(e => listen.map(l => similarity(e, l, card.q))));
   if (card.ug) beste = Math.max(beste, ...listen.map(l => similarity(sortiert(txt), sortiert(l), card.q)));
   return beste;
 }

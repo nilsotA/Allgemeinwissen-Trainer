@@ -465,7 +465,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 195 Einheitentests plus Inhaltsprüfung
+npm test           # 196 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4230,6 +4230,25 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### „im Jahr 1492“, „300 000“ und „42.195“: drei Zahlenschreibweisen
+
+Der nächste Durchlauf prüfte, wie Zahlen getippt werden. Drei übliche Schreibweisen fielen
+durch:
+- **„im Jahr 1492“** auf „1492“ ergab 0,44, bei **53 Karten**. Das Jahr durfte als Einheit
+  fehlen, aber nicht zusätzlich dastehen. „im Jahr“ und „im Jahre“ vor einer Zahl fallen
+  jetzt weg.
+- **Tausender mit Leerzeichen** („300 000 km/s“ auf „300.000 km/s“) ergaben 0,50, bei
+  12 Karten. Echte Dreiergruppen hinter ein bis drei Ziffern werden jetzt zusammengezogen,
+  wie es mit dem Tausenderpunkt schon geschah.
+- **Dezimalpunkt statt Komma** („42.195 km“ auf „42,195 km“) ergab 0,50, bei 7 Karten. Hier
+  steckt eine echte Mehrdeutigkeit: Im Deutschen wären das 42.195 Kilometer. Diese Lesart
+  gilt deshalb nur, wenn genau diese Ziffern mit Komma in der Lösung stehen. Sonst bleibt
+  der Punkt ein Tausenderpunkt, und „3.600“ ist weiter nicht „3,6“.
+
+Der Alt-neu-Vergleich zeigte keine Verschlechterung und keinen betroffenen Ablenker. Ein
+Einheitentest hält die Gegenproben fest: „im Jahr 1493“, „30 000 km/s“, „42.159 km“ und
+„1 000“ statt „10.000“ bleiben falsch.
 
 ### „100 Grad“ auf „100 °C“ galt als falsch
 

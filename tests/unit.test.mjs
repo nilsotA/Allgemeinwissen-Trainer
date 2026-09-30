@@ -1219,6 +1219,20 @@ test('Grad Celsius und km/h duerfen fehlen oder anders geschrieben sein', () => 
     assert.ok(bewerte({ a: loesung }, eingabe) < 0.8, `„${eingabe}" gilt faelschlich als „${loesung}"`);
 });
 
+test('Jahreszahl mit „im Jahr", Tausender mit Leerzeichen, Dezimalpunkt', () => {
+  /* „im Jahr 1492" fiel bei 53 Karten durch (0,44), „300 000 km/s" bei 12, und
+     „42.195 km" auf „42,195 km" bei 7. Der Punkt ist im Deutschen aber auch
+     Tausendertrenner - diese Lesart gilt nur, wo die Loesung genau diese Ziffern
+     mit Komma hat. */
+  for (const [loesung, eingabe] of [['1492', 'im Jahr 1492'], ['1492', 'im Jahre 1492'],
+                                    ['300.000 km/s', '300 000 km/s'], ['10.000', '10 000'],
+                                    ['42,195 km', '42.195 km'], ['4,184 kJ', '4.184 kJ']])
+    assert.ok(bewerte({ a: loesung }, eingabe) >= 0.8, `„${eingabe}" gilt nicht als „${loesung}"`);
+  for (const [loesung, eingabe] of [['1492', 'im Jahr 1493'], ['300.000 km/s', '30 000 km/s'],
+                                    ['42,195 km', '42.159 km'], ['3,6', '3.600'], ['10.000', '1 000']])
+    assert.ok(bewerte({ a: loesung }, eingabe) < 0.8, `„${eingabe}" gilt faelschlich als „${loesung}"`);
+});
+
 test('Messgeraet und App teilen dieselbe Nachsicht', () => {
   /* scripts/abdeckung.mjs hielt eine eigene Kopie der Verhaeltniswoerter und
      kannte den Klammerzusatz gar nicht. Die Kopie war laengst veraltet: „an"
