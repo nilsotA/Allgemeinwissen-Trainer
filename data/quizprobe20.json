@@ -1,0 +1,1632 @@
+[
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „Au“?",
+    "antwort": "Gold",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Aurum"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „Ag“?",
+    "antwort": "Silber",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Argentum"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „Pb“?",
+    "antwort": "Blei",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Plumbum"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „Hg“?",
+    "antwort": "Quecksilber",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Hydrargyrum"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „Na“?",
+    "antwort": "Natrium",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „K“?",
+    "antwort": "Kalium",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „W“?",
+    "antwort": "Wolfram",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Tungsten"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „Sn“?",
+    "antwort": "Zinn",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Stannum"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Symbol hat Eisen?",
+    "antwort": "Fe",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „O“?",
+    "antwort": "Sauerstoff",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Oxygenium"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Symbol hat Kupfer?",
+    "antwort": "Cu",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „C“?",
+    "antwort": "Kohlenstoff",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Carboneum"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „N“?",
+    "antwort": "Stickstoff",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Nitrogenium"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „Ca“?",
+    "antwort": "Calcium",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Kalzium",
+      "Kalcium"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Element hat das Symbol „Cl“?",
+    "antwort": "Chlor",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches chemische Symbol hat Helium?",
+    "antwort": "He",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Chemische Elemente",
+    "frage": "Welches Element mit dem Symbol „U“ dient als Brennstoff in Kernkraftwerken?",
+    "antwort": "Uran",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Uranium"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Welcher russische Chemiker stellte 1869 das Periodensystem der Elemente auf?",
+    "antwort": "Dmitri Mendelejew",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Mendelejew",
+      "Mendeleev",
+      "Mendelejeff",
+      "Dmitri Iwanowitsch Mendelejew"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Wie heißt die Elementgruppe, zu der Helium, Neon und Argon gehören?",
+    "antwort": "Edelgase",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Edelgas"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Wie heißt die Zahl, die die Anzahl der Protonen im Atomkern eines Elements angibt?",
+    "antwort": "Ordnungszahl",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Kernladungszahl",
+      "Protonenzahl",
+      "Atomnummer"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Welche Wissenschaftlerin erhielt als erste Person zwei Nobelpreise?",
+    "antwort": "Marie Curie",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Curie",
+      "Maria Skłodowska-Curie",
+      "Marie Skłodowska-Curie"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Welches von Marie und Pierre Curie entdeckte Element ist nach Marie Curies Heimatland benannt?",
+    "antwort": "Polonium",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Wie heißt die Elementgruppe, zu der Lithium, Natrium und Kalium gehören?",
+    "antwort": "Alkalimetalle",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Alkalimetall"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Wie heißt die Elementgruppe, zu der Fluor, Chlor, Brom und Iod gehören?",
+    "antwort": "Halogene",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Halogen",
+      "Salzbildner"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Welcher schwedische Chemiker erfand das Dynamit und stiftete mit seinem Vermögen einen berühmten Preis?",
+    "antwort": "Alfred Nobel",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Nobel"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Welcher deutsche Chemiker stellte 1828 erstmals Harnstoff künstlich her?",
+    "antwort": "Friedrich Wöhler",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Wöhler"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Wie heißen die negativ geladenen Teilchen in der Atomhülle?",
+    "antwort": "Elektronen",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Elektron"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Periodensystem und Chemiker",
+    "frage": "Welcher französische Chemiker formulierte das Gesetz von der Erhaltung der Masse und wurde 1794 hingerichtet?",
+    "antwort": "Antoine Lavoisier",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Lavoisier",
+      "Antoine Laurent de Lavoisier"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Wie lautet die chemische Summenformel von Wasser?",
+    "antwort": "H2O",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "H₂O"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welchen pH-Wert hat reines Wasser bei 25 °C?",
+    "antwort": "7",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "sieben",
+      "pH 7"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Wie lautet der chemische Name von Kochsalz?",
+    "antwort": "Natriumchlorid",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "NaCl"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welches Gas macht mit rund 78 Prozent den größten Anteil der Luft aus?",
+    "antwort": "Stickstoff",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "N2",
+      "N₂"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welches Gas macht rund 21 Prozent der Luft aus und ist für die Atmung unverzichtbar?",
+    "antwort": "Sauerstoff",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "O2",
+      "O₂"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welches Edelgas ist mit knapp einem Prozent das dritthäufigste Gas der trockenen Luft?",
+    "antwort": "Argon",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Ar"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welche Säure verleiht Speiseessig seinen sauren Geschmack?",
+    "antwort": "Essigsäure",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Ethansäure"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welche Säure ist im menschlichen Magensaft enthalten?",
+    "antwort": "Salzsäure",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "HCl",
+      "Chlorwasserstoffsäure"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welches Gas sorgt für die Bläschen in Mineralwasser?",
+    "antwort": "Kohlenstoffdioxid",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Kohlendioxid",
+      "CO2",
+      "CO₂"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welches Gas ist der Hauptbestandteil von Erdgas?",
+    "antwort": "Methan",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "CH4",
+      "CH₄"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Wie nennt man eine wässrige Lösung mit einem pH-Wert über 7?",
+    "antwort": "basisch",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "alkalisch",
+      "Lauge",
+      "Base"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welche chemische Verbindung verbirgt sich hinter dem Backtriebmittel „Natron“?",
+    "antwort": "Natriumhydrogencarbonat",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Natriumhydrogenkarbonat",
+      "Natriumbicarbonat",
+      "NaHCO3",
+      "NaHCO₃"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Wie heißt der Trinkalkohol in Bier und Wein chemisch?",
+    "antwort": "Ethanol",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Äthanol",
+      "Ethylalkohol"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Alltagschemie",
+    "frage": "Welches farb- und geruchlose, giftige Gas entsteht bei unvollständiger Verbrennung?",
+    "antwort": "Kohlenmonoxid",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Kohlenstoffmonoxid",
+      "CO"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Welches ist das härteste natürlich vorkommende Mineral?",
+    "antwort": "Diamant",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Wie heißt der rote Edelstein, der eine Varietät des Minerals Korund ist?",
+    "antwort": "Rubin",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Welche Farbe hat ein Smaragd?",
+    "antwort": "Grün",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Wie heißt der meist blaue Edelstein, der wie der Rubin zum Korund gehört?",
+    "antwort": "Saphir",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Wie heißt die zehnstufige Skala, mit der die Ritzhärte von Mineralen angegeben wird?",
+    "antwort": "Mohs-Skala",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Mohssche Härteskala",
+      "Mohs-Härteskala",
+      "Mohs'sche Härteskala",
+      "Mohs"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Welches Mineral hat auf der Mohs-Skala die Härte 1?",
+    "antwort": "Talk",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Wie heißt die violette Varietät des Quarzes, die als Schmuckstein beliebt ist?",
+    "antwort": "Amethyst",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Wie heißt das fossile Baumharz, das man häufig an der Ostseeküste findet?",
+    "antwort": "Bernstein",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "Wie heißt das goldglänzende Eisensulfid-Mineral, das auch „Narrengold“ genannt wird?",
+    "antwort": "Pyrit",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Eisenkies",
+      "Schwefelkies"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Edelsteine und Minerale",
+    "frage": "In welcher Einheit wird das Gewicht von Edelsteinen angegeben?",
+    "antwort": "Karat",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "ct"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Planet umkreist die Sonne auf der innersten Bahn?",
+    "antwort": "Merkur",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher ist der größte Planet unseres Sonnensystems?",
+    "antwort": "Jupiter",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Planet wird wegen seiner Farbe „der Rote Planet“ genannt?",
+    "antwort": "Mars",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Planet ist vor allem für sein auffälliges Ringsystem berühmt?",
+    "antwort": "Saturn",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Wie viele Planeten hat unser Sonnensystem?",
+    "antwort": "8",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "acht"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Himmelskörper wurde 2006 vom Planeten zum Zwergplaneten herabgestuft?",
+    "antwort": "Pluto",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Planet wird auch Morgenstern oder Abendstern genannt?",
+    "antwort": "Venus",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Wie heißt der größere der beiden Marsmonde?",
+    "antwort": "Phobos",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Jupitermond ist der größte Mond des Sonnensystems?",
+    "antwort": "Ganymed",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Ganymede"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Saturnmond besitzt als einziger Mond des Sonnensystems eine dichte Atmosphäre?",
+    "antwort": "Titan",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Planet ist seit Plutos Herabstufung der sonnenfernste des Sonnensystems?",
+    "antwort": "Neptun",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Wie heißt der riesige, seit Langem beobachtete Wirbelsturm in der Atmosphäre des Jupiter?",
+    "antwort": "Großer Roter Fleck",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Roter Fleck",
+      "Großer Roter Punkt"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welcher Jupitermond gilt als vulkanisch aktivster Himmelskörper des Sonnensystems?",
+    "antwort": "Io",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Welchen Planeten entdeckte Wilhelm Herschel im Jahr 1781?",
+    "antwort": "Uranus",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Wie viele natürliche Monde hat die Venus?",
+    "antwort": "0",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "keinen",
+      "keine",
+      "null"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Wie heißt die Zone zwischen den Bahnen von Mars und Jupiter, in der besonders viele Kleinplaneten kreisen?",
+    "antwort": "Asteroidengürtel",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Planetoidengürtel",
+      "Hauptgürtel"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Planeten und Monde",
+    "frage": "Wie nennt man es, wenn der Mond in den Schatten der Erde eintritt?",
+    "antwort": "Mondfinsternis",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie heißt die Galaxie, in der unser Sonnensystem liegt?",
+    "antwort": "Milchstraße",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Galaxis"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Welcher Stern ist nach der Sonne der Erde am nächsten?",
+    "antwort": "Proxima Centauri",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Proxima",
+      "Alpha Centauri C"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie heißt die große Spiralgalaxie in unserer Nachbarschaft, die man mit bloßem Auge sehen kann?",
+    "antwort": "Andromedagalaxie",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Andromeda",
+      "Andromedanebel",
+      "M31",
+      "Andromeda-Galaxie"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Welcher Stern ist der hellste am Nachthimmel?",
+    "antwort": "Sirius",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Hundsstern"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Welcher Stern zeigt am Nachthimmel annähernd die Nordrichtung an?",
+    "antwort": "Polarstern",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Nordstern",
+      "Polaris"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Zu welchem Sternbild gehört der Große Wagen?",
+    "antwort": "Großer Bär",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Ursa Major"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie heißt die Entfernung, die Licht in einem Jahr zurücklegt?",
+    "antwort": "Lichtjahr",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie nennt man ein Objekt mit so starker Gravitation, dass nicht einmal Licht ihm entkommen kann?",
+    "antwort": "Schwarzes Loch",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie nennt man die gewaltige Explosion eines massereichen Sterns am Ende seines Lebens?",
+    "antwort": "Supernova",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie heißt der rote Überriese, der die Schulter des Sternbilds Orion bildet?",
+    "antwort": "Beteigeuze",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Betelgeuse",
+      "Beteigeuse"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie heißt der Sternhaufen im Stier, der auch „Siebengestirn“ genannt wird?",
+    "antwort": "Plejaden",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "M45"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie heißt die gängige Theorie, nach der das Universum aus einem extrem heißen, dichten Anfangszustand entstand?",
+    "antwort": "Urknall",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Urknalltheorie",
+      "Big Bang"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Sterne und Galaxien",
+    "frage": "Wie nennt man umgangssprachlich die Leuchtspur eines in der Atmosphäre verglühenden Meteoroiden?",
+    "antwort": "Sternschnuppe",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Meteor"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wer betrat als erster Mensch den Mond?",
+    "antwort": "Neil Armstrong",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Armstrong"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wer war der erste Mensch im Weltall?",
+    "antwort": "Juri Gagarin",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Gagarin",
+      "Yuri Gagarin",
+      "Jurij Gagarin"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wie hieß der erste künstliche Erdsatellit, den die Sowjetunion 1957 startete?",
+    "antwort": "Sputnik 1",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Sputnik"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wie hieß die Hündin, die 1957 als erstes Lebewesen die Erde in einer Umlaufbahn umkreiste?",
+    "antwort": "Laika",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wer flog 1978 als erster Deutscher ins Weltall?",
+    "antwort": "Sigmund Jähn",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Jähn"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wer flog 1963 als erste Frau ins Weltall?",
+    "antwort": "Valentina Tereschkowa",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Tereschkowa",
+      "Walentina Tereschkowa",
+      "Valentina Tereshkova"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wie lautet die Abkürzung der Internationalen Raumstation?",
+    "antwort": "ISS",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Nach welchem US-Astronomen ist das 1990 gestartete Weltraumteleskop benannt?",
+    "antwort": "Edwin Hubble",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Hubble"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wer betrat bei der Mission Apollo 11 als zweiter Mensch den Mond?",
+    "antwort": "Buzz Aldrin",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Aldrin",
+      "Edwin Aldrin"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wie lautet die Abkürzung der US-Raumfahrtbehörde?",
+    "antwort": "NASA",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "In welchem Jahr landeten erstmals Menschen auf dem Mond?",
+    "antwort": "1969",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wie heißt der Ort in Französisch-Guayana, von dem Europas Ariane-Raketen starten?",
+    "antwort": "Kourou",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Welche Raumsonde erreichte 2012 als erstes von Menschen gebautes Objekt den interstellaren Raum?",
+    "antwort": "Voyager 1",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Voyager"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Raumfahrt",
+    "frage": "Wie hieß die Trägerrakete, mit der die Apollo-Astronauten zum Mond flogen?",
+    "antwort": "Saturn V",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Saturn 5",
+      "Saturn-V"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Aufbau der Erde",
+    "frage": "Wie heißt die äußerste feste Gesteinsschicht der Erde?",
+    "antwort": "Erdkruste",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Kruste"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Aufbau der Erde",
+    "frage": "Wie heißt die dicke Schicht zwischen Erdkruste und Erdkern?",
+    "antwort": "Erdmantel",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Mantel"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Aufbau der Erde",
+    "frage": "Welches Metall ist der Hauptbestandteil des Erdkerns?",
+    "antwort": "Eisen",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Fe"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Aufbau der Erde",
+    "frage": "Wie heißt die Grenzfläche zwischen Erdkruste und Erdmantel?",
+    "antwort": "Mohorovičić-Diskontinuität",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Moho",
+      "Mohorovicic-Diskontinuität",
+      "Moho-Diskontinuität"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Aufbau der Erde",
+    "frage": "Wie nannte Alfred Wegener seine 1912 vorgestellte Theorie von den wandernden Kontinenten?",
+    "antwort": "Kontinentalverschiebung",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Kontinentaldrift",
+      "Kontinentalverschiebungstheorie"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Aufbau der Erde",
+    "frage": "Wie heißt der Superkontinent, der vor rund 300 bis 200 Millionen Jahren fast alle Landmassen vereinte?",
+    "antwort": "Pangaea",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Pangäa",
+      "Pangea"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Aufbau der Erde",
+    "frage": "Wie viel Prozent der Erdoberfläche sind ungefähr von Wasser bedeckt?",
+    "antwort": "71",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "71 %",
+      "70",
+      "70 %",
+      "rund 70 Prozent"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Aufbau der Erde",
+    "frage": "Wie heißt die gasförmige Hülle, die die Erde umgibt?",
+    "antwort": "Atmosphäre",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Lufthülle",
+      "Erdatmosphäre"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Wie heißt geschmolzenes Gestein, das bei einem Vulkanausbruch an der Erdoberfläche austritt?",
+    "antwort": "Lava",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Wie heißt die Gesteinsschmelze im Erdinneren, bevor sie an die Oberfläche gelangt?",
+    "antwort": "Magma",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Welcher Vulkan verschüttete im Jahr 79 n. Chr. die Stadt Pompeji?",
+    "antwort": "Vesuv",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Vesuvio"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Wie heißt der höchste aktive Vulkan Europas, der auf Sizilien liegt?",
+    "antwort": "Ätna",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Etna"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Welche nach einem US-Seismologen benannte Skala ist die bekannteste für die Stärke von Erdbeben?",
+    "antwort": "Richterskala",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Richter-Skala",
+      "Richter"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Wie heißt der Punkt an der Erdoberfläche direkt über dem Herd eines Erdbebens?",
+    "antwort": "Epizentrum",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Wie heißt eine durch ein Seebeben ausgelöste Riesenwelle mit japanischem Namen?",
+    "antwort": "Tsunami",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Welcher isländische Vulkan legte im Jahr 2010 mit seiner Aschewolke den Flugverkehr in Europa lahm?",
+    "antwort": "Eyjafjallajökull",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Eyjafjallajokull"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Wie heißt der Gürtel aus Vulkanen und Erdbebenzonen rund um den Pazifischen Ozean?",
+    "antwort": "Pazifischer Feuerring",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Feuerring",
+      "Ring of Fire",
+      "Zirkumpazifischer Feuergürtel",
+      "Pazifischer Feuergürtel"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Wie nennt man eine heiße Quelle, die in Abständen Wasserfontänen ausstößt?",
+    "antwort": "Geysir",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Geiser",
+      "Geyser"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Vulkane und Erdbeben",
+    "frage": "Welcher indonesische Vulkan löste mit seinem Ausbruch 1815 das „Jahr ohne Sommer“ aus?",
+    "antwort": "Tambora",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Mit welchem Messgerät bestimmt man den Luftdruck?",
+    "antwort": "Barometer",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "In welcher Schicht der Atmosphäre liegt die Ozonschicht?",
+    "antwort": "Stratosphäre",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Wie nennt man einen tropischen Wirbelsturm über dem Atlantik und der Karibik?",
+    "antwort": "Hurrikan",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Hurricane"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Wie heißt ein tropischer Wirbelsturm im nordwestlichen Pazifik, etwa vor Japan oder den Philippinen?",
+    "antwort": "Taifun",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Taifune"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Wie heißt das Klimaphänomen im Pazifik, dessen spanischer Name „das Christkind“ bedeutet?",
+    "antwort": "El Niño",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "El Nino"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Wie heißt der Effekt, bei dem Gase wie Kohlenstoffdioxid und Methan die Erdatmosphäre erwärmen?",
+    "antwort": "Treibhauseffekt",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Glashauseffekt"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Wie nennt man in der Wetterkunde ein Gebiet mit hohem Luftdruck?",
+    "antwort": "Hochdruckgebiet",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Hoch",
+      "Antizyklone"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Wie heißt der warme, trockene Fallwind, der vor allem am Nordrand der Alpen auftritt?",
+    "antwort": "Föhn",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Welche Windstärke auf der Beaufort-Skala bezeichnet einen Orkan?",
+    "antwort": "12",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "zwölf",
+      "Windstärke 12"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Wie heißt die Wissenschaft vom Wetter und von den Vorgängen in der Atmosphäre?",
+    "antwort": "Meteorologie",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Wetterkunde"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wetter und Klima",
+    "frage": "Wie nennt man einen kleinräumigen, rüsselförmigen Luftwirbel, der besonders häufig in den USA auftritt?",
+    "antwort": "Tornado",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Windhose",
+      "Twister"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wolken und Niederschlag",
+    "frage": "Wie lautet die lateinische Bezeichnung für hohe, feine, federartige Eiswolken?",
+    "antwort": "Cirrus",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Zirrus",
+      "Cirruswolken",
+      "Zirruswolken"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wolken und Niederschlag",
+    "frage": "Wie lautet die lateinische Bezeichnung für Haufenwolken, die oft bei schönem Wetter auftreten?",
+    "antwort": "Cumulus",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Kumulus",
+      "Cumuluswolken",
+      "Kumuluswolken"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wolken und Niederschlag",
+    "frage": "Wie heißt die mächtige Gewitterwolke, deren Oberseite oft die Form eines Ambosses hat?",
+    "antwort": "Cumulonimbus",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Kumulonimbus"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wolken und Niederschlag",
+    "frage": "Wie nennt man eine Wolke, die direkt auf dem Erdboden aufliegt?",
+    "antwort": "Nebel",
+    "schwierigkeit": "leicht",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wolken und Niederschlag",
+    "frage": "Wie heißen die weißen Streifen, die Flugzeuge in großer Höhe am Himmel hinterlassen?",
+    "antwort": "Kondensstreifen",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Kondensationsstreifen"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Wolken und Niederschlag",
+    "frage": "Wie heißt Niederschlag aus Eiskörnern, der vor allem bei Gewittern fällt?",
+    "antwort": "Hagel",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Hagelkörner"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Gesteine",
+    "frage": "Wie nennt man Gesteine, die aus erstarrtem Magma entstanden sind?",
+    "antwort": "Magmatische Gesteine",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Magmatite",
+      "Magmatit",
+      "Erstarrungsgesteine",
+      "Eruptivgesteine"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Gesteine",
+    "frage": "Welches Gestein entsteht durch Umwandlung von Kalkstein unter Druck und Hitze?",
+    "antwort": "Marmor",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Gesteine",
+    "frage": "Welches dunkle vulkanische Gestein bildet den größten Teil des Ozeanbodens?",
+    "antwort": "Basalt",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Gesteine",
+    "frage": "Welches Tiefengestein besteht hauptsächlich aus Feldspat, Quarz und Glimmer?",
+    "antwort": "Granit",
+    "schwierigkeit": "mittel",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Gesteine",
+    "frage": "Wie heißt das schwarze vulkanische Gesteinsglas, aus dem in der Steinzeit scharfe Klingen gefertigt wurden?",
+    "antwort": "Obsidian",
+    "schwierigkeit": "schwer",
+    "alternativen": []
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Gesteine",
+    "frage": "Welcher fossile Brennstoff wurde bis 2018 im Ruhrgebiet unter Tage abgebaut?",
+    "antwort": "Steinkohle",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Kohle"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Gesteine",
+    "frage": "Wie nennt man versteinerte Überreste oder Spuren von Lebewesen der Vorzeit?",
+    "antwort": "Fossilien",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Fossil",
+      "Versteinerungen"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Gesteine",
+    "frage": "Wie heißen die Tropfsteine, die von der Decke einer Höhle herabhängen?",
+    "antwort": "Stalaktiten",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "Stalaktit"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "In welcher Einheit wird die elektrische Stromstärke gemessen?",
+    "antwort": "Ampere",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "A"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "Wie heißt die SI-Basiseinheit der Temperatur?",
+    "antwort": "Kelvin",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "K"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "Bei wie viel Grad Celsius liegt der absolute Nullpunkt?",
+    "antwort": "-273,15",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "−273,15",
+      "-273,15 °C",
+      "-273",
+      "−273"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "In welcher Einheit wird die Kraft gemessen?",
+    "antwort": "Newton",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "N"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "In welcher Einheit wird die Frequenz angegeben?",
+    "antwort": "Hertz",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "Hz"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "In welcher Einheit wird die elektrische Spannung gemessen?",
+    "antwort": "Volt",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "V"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "In welcher Einheit wird die Leistung gemessen?",
+    "antwort": "Watt",
+    "schwierigkeit": "leicht",
+    "alternativen": [
+      "W"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "Welche Einheit gibt die Aktivität einer radioaktiven Substanz in Zerfällen pro Sekunde an?",
+    "antwort": "Becquerel",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Bq"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "Wie heißt die Längeneinheit, die dem mittleren Abstand zwischen Erde und Sonne entspricht?",
+    "antwort": "Astronomische Einheit",
+    "schwierigkeit": "mittel",
+    "alternativen": [
+      "AE",
+      "AU"
+    ]
+  },
+  {
+    "gebiet": "naturwissenschaft",
+    "katalog": "chemie-astro-erde-quizabend",
+    "block": "Maßeinheiten",
+    "frage": "Welche astronomische Längeneinheit entspricht etwa 3,26 Lichtjahren?",
+    "antwort": "Parsec",
+    "schwierigkeit": "schwer",
+    "alternativen": [
+      "Parsek",
+      "pc"
+    ]
+  }
+]
