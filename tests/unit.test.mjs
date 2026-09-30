@@ -738,6 +738,13 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     'mat-el5eix|nat-1mro6o8', 'kul-27vrlm|nat-1m04gch', 'spo-1nz0i3h|kul-1eekpv4',
     // Ebenso abwegig: „Ein Löwe" für Joachim Löw
     'spo-1hbyeuw|geo-gxsbee',
+    // Ebenso abwegig: die Bibel für den Biber, Rubin für Rubik, Argos für Argon, Medien für den Median
+    'nat-1ydwbi0|spr-1ebz78q', 'spr-1ebz78q|nat-1ydwbi0', 'nat-1mgw4hd|nat-wdtjdm', 'nat-2d7jz7|kul-1c8z0ib',
+    'kul-1c8z0ib|nat-2d7jz7', 'mat-1kuzbbl|pol-fy4snm', 'pol-fy4snm|mat-1kuzbbl',
+    // Ebenso abwegig: Hagel für Hagen von Tronje
+    'spr-nvq5zl|all-114pxho',
+    // Kohlendioxid und Kohlenstoffdioxid sind dasselbe Gas – die Hefe bildet es
+    'all-1mvx341|nat-1i179nr',
     // Ebenso abwegig: Schwein für Schwerin oder die Schweiz, „und andere" für Thomas Anders
     'geo-lcc3da|spr-cu0rjq', 'spr-cu0rjq|geo-lcc3da', 'kul-smzyzr|spr-cu0rjq', 'spr-cu0rjq|kul-smzyzr',
     'kul-6q17o9|spr-fqmes1',

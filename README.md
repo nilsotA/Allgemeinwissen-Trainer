@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**4.127 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**4.317 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (775 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -44,14 +44,14 @@ Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast lee
 **Mythologie** (32 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
 und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (47 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (45 Quiz-Klassiker vom
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (59 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), **Amerika** (67 – Bundesstaaten und ihre Hauptstädte, Konquistadoren, Tango,
 Route 66, Ellis Island, Thanksgiving, Kap Hoorn), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
 Freddie Mercury, Falco).
 
-Ein eigenes Teilgebiet **Geld im Alltag** (54 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
+Ein eigenes Teilgebiet **Geld im Alltag** (56 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
 zählen und in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und
 Kündigungsfrist, Probezeit und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man
 trotzdem braucht. Dazu die Fristen, die man einmal falsch verstreichen lässt und dann nicht
@@ -4230,6 +4230,58 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Prüfsätze 19–21, Naturwissenschaft und Gesellschaft: 53/53/62 → 99/99/100 %
+
+Drei Gebiete, die bisher nie einzeln gemessen wurden, auf einmal: **Biologie und Medizin**,
+**Chemie, Astronomie und Erde**, **Politik, Recht und Wirtschaft**. Drei Agenten schrieben je
+150 Fragen, ohne die Sammlung zu kennen. Die Ausgangsmessung lag bei **80, 79 und 93 von 150**.
+
+Diesmal lief die Arbeit als Workflow mit festen Rollen. Die sechs Lückenpakete bekamen je
+einen Autor, dann prüften parallel eine Faktenprüfung mit Websuche und eine Gegenprüfung,
+danach arbeitete ein dritter Agent die Befunde ein. Ein letzter Agent führte alles zusammen
+und suchte Dubletten und Verräter über die Paketgrenzen hinweg. Dafür gibt es neue Werkzeuge
+im Arbeitsbereich:
+- `verrat-neu` meldet, wenn eine neue Frage die Antwort einer vorhandenen Karte nennt oder
+  umgekehrt. Allerweltswörter, die in mehr als zehn Fragen stehen, zählen nicht.
+- `kartentest` prüft je Karte die Test-Eingaben, die Antwort des Prüfsatzes und ob die Karte in
+  der strengen Messung zählt.
+- `umformulieren` hängt beim Umformulieren den Vorgänger an ein schon vorhandenes `p` an,
+  statt ein zweites zu schreiben.
+
+**190 neue Karten**: 55 Biologie, 24 Chemie, 17 Astronomie, 14 Tiere, 18 Erde und Wetter,
+16 Politik DE, 14 Wirtschaft, 12 Recht, 6 Politik EU und einige weitere. Dazu kommen 19
+umformulierte und 9 geänderte Bestandskarten. Die Abdeckung steigt auf **148, 148 und 150 von
+150**. Offen bleiben vier echte Spiegelpaare, bei denen beide Seiten einander nur benennen:
+Skorbut ↔ Vitamin C, Anopheles ↔ Malaria, Fe ↔ Eisen, Parsec ↔ 3,26 Lichtjahre.
+
+Vier Karten sind bewusste **Rückfragen** nach der Regel von oben – eine Seite ist eine
+Erklärung. „Was misst ein Barometer?“ steht schon da, jetzt auch „Mit welchem Messgerät
+bestimmt man den Luftdruck?“. Ebenso Milchstraße, Bernstein und Ordnungszahl. Die Autoren
+hatten sie zunächst offen gelassen, weil die Arbeitsanweisung strenger war als diese Regel.
+
+Die Faktenprüfung fand unter anderem:
+- **Grundgesetz:** „Die Würde des Menschen ist unantastbar“ ist nicht der allererste Satz,
+  davor steht die Präambel. Die Karte fragt jetzt nach dem Satz, mit dem Artikel 1 beginnt.
+- **Pyrit** ist Eisen*di*sulfid (FeS₂), nicht „Eisensulfid“.
+- **Basalt** bildet nur die oberste Lage der Ozeankruste. Dem Volumen nach überwiegt Gabbro.
+- **Hurrikane** tragen Namen seit 1950, Vornamen erst seit 1953.
+- **Grundlagenvertrag:** Die Bundesrepublik hat die DDR 1972 gerade *nicht* völkerrechtlich
+  anerkannt – deshalb Ständige Vertretungen statt Botschaften.
+- **Pioneer 10** durchquerte den Asteroidengürtel 1972/73, nicht „schon 1972“.
+- **Inlandtaipan:** Belegt sind rund 100 Menschen pro Biss, nicht über 200.
+- **Polonium** benannten Marie und Pierre Curie gemeinsam.
+
+Beim Nachsehen fiel ein Fehler des einarbeitenden Agenten auf: Die Korrektur für die
+EWG-Karte war im Kontext der Saarland-Karte gelandet, deren eigener Text war damit weg. Beide
+sind neu geschrieben. Eine maschinelle Gegenprobe, ob jeder neue Kontext zu seiner eigenen
+Frage passt, fand keinen weiteren solchen Fall.
+
+Die Gegenprüfung fand außerdem zwei Nebenschreibweisen, durch die falsche Antworten als
+richtig galten:
+- Mit „Quecksilberbarometer“ ging auch „Quecksilberthermometer“ durch.
+- „Großer Roter Punkt“ ist kein Name für den Großen Roten Fleck, auch wenn der Prüfsatz ihn
+  als Alternative führt.
 
 ### Prüfsatz 18, Kunst, Musik und Literatur: 63 → 93 %
 

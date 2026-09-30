@@ -946,7 +946,10 @@ try {
     await sp.locator('#searchBtn').click();
     await sp.waitForSelector('#q');
     for (const [begriff, erwartet] of [
-      ['DNA', /Abkürzung DNA|Basen bilden die DNA/],
+      /* Jede echte DNA-Karte darf oben stehen – verhindert werden soll nur ein
+         Teilwort-Treffer wie „Schuldnachweis". Die frühere Liste zweier Karten
+         wurde rot, als eine dritte DNA-Karte dazukam. */
+      ['DNA', /\bDNA\b/],
       ['Grundgesetz', /Grundgesetz/],
       ['Bundesrat', /Bundesrat/],
       ['Kettenregel', /Kettenregel/],
