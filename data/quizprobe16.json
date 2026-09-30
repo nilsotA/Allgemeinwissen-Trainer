@@ -1,0 +1,1457 @@
+[
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Australiens?",
+  "antwort": "Canberra",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Kanadas?",
+  "antwort": "Ottawa",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Welche Stadt ist als „Bundesstadt“ Sitz von Regierung und Parlament der Schweiz?",
+  "antwort": "Bern",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Brasiliens?",
+  "antwort": "Brasília",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Brasilia"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Neuseelands?",
+  "antwort": "Wellington",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt der USA?",
+  "antwort": "Washington, D.C.",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Washington",
+   "Washington D.C."
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Kenias?",
+  "antwort": "Nairobi",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Irlands?",
+  "antwort": "Dublin",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Kasachstans?",
+  "antwort": "Astana",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Vietnams?",
+  "antwort": "Hanoi",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hà Nội"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt der Mongolei?",
+  "antwort": "Ulaanbaatar",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ulan-Bator",
+   "Ulan Bator"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Sloweniens?",
+  "antwort": "Ljubljana",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Laibach"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Welches Land hat die Hauptstadt Skopje?",
+  "antwort": "Nordmazedonien",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mazedonien"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Myanmars?",
+  "antwort": "Naypyidaw",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Naypyitaw",
+   "Nay Pyi Taw"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die offizielle Hauptstadt Tansanias?",
+  "antwort": "Dodoma",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt Bhutans?",
+  "antwort": "Thimphu",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Thimpu"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Hauptstädte",
+  "frage": "In welcher Stadt hat die Regierung (Exekutive) Südafrikas ihren Sitz?",
+  "antwort": "Pretoria",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Tshwane"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welches Land hat eine weiße Flagge mit einem roten Kreis in der Mitte?",
+  "antwort": "Japan",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welches Blatt ist auf der Flagge Kanadas abgebildet?",
+  "antwort": "Ahornblatt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ahorn"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welches Land hat eine Flagge mit drei senkrechten Streifen in Schwarz, Gelb und Rot?",
+  "antwort": "Belgien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welches Land hat eine Flagge mit senkrechten Streifen in Grün, Weiß und Orange (von der Mastseite aus)?",
+  "antwort": "Irland",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welches Land hat eine Flagge mit drei gleich breiten waagerechten Streifen in Rot, Weiß, Rot ohne Symbol?",
+  "antwort": "Österreich",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welcher Baum ist auf der Flagge des Libanon abgebildet?",
+  "antwort": "Zeder",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Libanonzeder"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welcher Himalaya-Staat zeigt einen weißen Drachen auf seiner Flagge?",
+  "antwort": "Bhutan",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welcher EU-Staat zeigt den Umriss seiner Insel auf der Nationalflagge?",
+  "antwort": "Zypern",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welches Land zeigt ein Sturmgewehr (AK-47) auf seiner Flagge?",
+  "antwort": "Mosambik",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flaggen",
+  "frage": "Welches Tier hält auf der Flagge Sri Lankas ein Schwert?",
+  "antwort": "Löwe",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss fließt durch Wien?",
+  "antwort": "Donau",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss fließt durch London?",
+  "antwort": "Themse",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Thames"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher ist der längste Fluss Afrikas?",
+  "antwort": "Nil",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss führt weltweit die größte Wassermenge?",
+  "antwort": "Amazonas",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss gilt im Hinduismus als heilig und fließt durch Varanasi?",
+  "antwort": "Ganges",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss fließt durch Rom?",
+  "antwort": "Tiber",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss fließt durch Prag?",
+  "antwort": "Moldau",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vltava"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss fließt durch Warschau?",
+  "antwort": "Weichsel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wisła"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher ist der längste Fluss Frankreichs?",
+  "antwort": "Loire",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss fließt durch Lissabon?",
+  "antwort": "Tejo",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Tajo",
+   "Tagus"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Flüsse",
+  "frage": "Welcher Fluss fließt durch Sankt Petersburg?",
+  "antwort": "Newa",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Neva"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Wie heißt der höchste Berg der Erde?",
+  "antwort": "Mount Everest",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Everest",
+   "Chomolungma",
+   "Sagarmatha"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Wie heißt der höchste Berg der Alpen?",
+  "antwort": "Mont Blanc",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Monte Bianco"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Welches Gebirge bildet die Grenze zwischen Europa und Asien?",
+  "antwort": "Ural",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Welches Gebirge liegt zwischen Spanien und Frankreich?",
+  "antwort": "Pyrenäen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Welcher Vulkan zerstörte im Jahr 79 n. Chr. Pompeji?",
+  "antwort": "Vesuv",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Wie heißt der zweithöchste Berg der Erde?",
+  "antwort": "K2",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Chogori"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Wie heißt der höchste Berg Österreichs?",
+  "antwort": "Großglockner",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Welches Gebirge durchzieht Marokko?",
+  "antwort": "Atlas",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Atlasgebirge"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Gebirge und Berge",
+  "frage": "Wie heißt der höchste Berg des australischen Festlands?",
+  "antwort": "Mount Kosciuszko",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Kosciuszko"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "Welches ist der größte Ozean der Erde?",
+  "antwort": "Pazifik",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pazifischer Ozean",
+   "Stiller Ozean"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "An welchem Salzsee zwischen Israel und Jordanien liegt der tiefste Landpunkt der Erde?",
+  "antwort": "Totes Meer",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "Welche Meerenge teilt Istanbul in einen europäischen und einen asiatischen Teil?",
+  "antwort": "Bosporus",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "Welches Meer liegt zwischen Italien und der Balkanhalbinsel?",
+  "antwort": "Adria",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Adriatisches Meer"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "Welches ist der flächenmäßig größte See der Erde?",
+  "antwort": "Kaspisches Meer",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "Welches ist der größte See Afrikas?",
+  "antwort": "Victoriasee",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Viktoriasee"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "Welches ist der größte See Italiens?",
+  "antwort": "Gardasee",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lago di Garda"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "Welches ist der größte der fünf Großen Seen Nordamerikas?",
+  "antwort": "Oberer See",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Lake Superior"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Seen und Meere",
+  "frage": "Welches ist der größte See, der vollständig in Europa liegt (in Russland)?",
+  "antwort": "Ladogasee",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Ladoga"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Inseln und Inselstaaten",
+  "frage": "Zu welchem Königreich gehört Grönland?",
+  "antwort": "Dänemark",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Inseln und Inselstaaten",
+  "frage": "Zu welchem Land gehören die Kanarischen Inseln?",
+  "antwort": "Spanien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Inseln und Inselstaaten",
+  "frage": "Welcher Inselstaat hat die Hauptstadt Manila?",
+  "antwort": "Philippinen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Inseln und Inselstaaten",
+  "frage": "Wie heißt die größte Insel der Balearen?",
+  "antwort": "Mallorca",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Inseln und Inselstaaten",
+  "frage": "Welches ist die größte Insel im Mittelmeer?",
+  "antwort": "Sizilien",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Inseln und Inselstaaten",
+  "frage": "Zu welchem Land gehört die Osterinsel?",
+  "antwort": "Chile",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Inseln und Inselstaaten",
+  "frage": "Zu welchem Land gehört die Inselgruppe Spitzbergen?",
+  "antwort": "Norwegen",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Inseln und Inselstaaten",
+  "frage": "Auf welcher Insel liegen Haiti und die Dominikanische Republik?",
+  "antwort": "Hispaniola",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Wüsten",
+  "frage": "Wie heißt die größte Trockenwüste Afrikas?",
+  "antwort": "Sahara",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Wüsten",
+  "frage": "Welche Wüste erstreckt sich über die Mongolei und Nordchina?",
+  "antwort": "Gobi",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Wüsten",
+  "frage": "Welche Küstenwüste gab dem Staat Namibia ihren Namen?",
+  "antwort": "Namib",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Wüsten",
+  "frage": "Welcher Kontinent gilt als größte (Kälte-)Wüste der Erde?",
+  "antwort": "Antarktis",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Antarktika"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Wüsten",
+  "frage": "In welcher Wüste liegt das Death Valley?",
+  "antwort": "Mojave",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Mojave-Wüste",
+   "Mohave"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Länder-Superlative",
+  "frage": "Welches ist das flächengrößte Land der Erde?",
+  "antwort": "Russland",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Länder-Superlative",
+  "frage": "Welches ist das bevölkerungsreichste Land Afrikas?",
+  "antwort": "Nigeria",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Länder-Superlative",
+  "frage": "Welches ist das flächengrößte Land Südamerikas?",
+  "antwort": "Brasilien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Länder-Superlative",
+  "frage": "Welches ist das flächengrößte Land Afrikas?",
+  "antwort": "Algerien",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Länder-Superlative",
+  "frage": "Welches ist das flächengrößte Land, das vollständig in Europa liegt?",
+  "antwort": "Ukraine",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Länder-Superlative",
+  "frage": "Welche Stadt ist der höchstgelegene Regierungssitz der Welt?",
+  "antwort": "La Paz",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Länder-Superlative",
+  "frage": "Welches ist der flächenmäßig kleinste Staat Afrikas?",
+  "antwort": "Seychellen",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "Welche Republik auf dem Monte Titano ist vollständig von Italien umschlossen?",
+  "antwort": "San Marino",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "Welches ist das einzige Land, mit dem Südkorea eine Landgrenze hat?",
+  "antwort": "Nordkorea",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "Welches Land grenzt im Süden an die USA?",
+  "antwort": "Mexiko",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "Welcher Staat grenzt neben Deutschland und Österreich an den Bodensee?",
+  "antwort": "Schweiz",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "An wie viele Staaten grenzt Österreich?",
+  "antwort": "8",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "Welches ist das einzige Nachbarland Gambias?",
+  "antwort": "Senegal",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Grenzen und Nachbarländer",
+  "frage": "Welcher europäische Staat ist ein „doppelter Binnenstaat“, also nur von Binnenstaaten umgeben?",
+  "antwort": "Liechtenstein",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "An wie viele Staaten grenzt Deutschland?",
+  "antwort": "9",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "neun"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Welches ist das flächengrößte Bundesland?",
+  "antwort": "Bayern",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Wie heißt der höchste Berg Deutschlands?",
+  "antwort": "Zugspitze",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Wie heißt der höchste Berg im Harz?",
+  "antwort": "Brocken",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Welches ist die größte Insel Deutschlands?",
+  "antwort": "Rügen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Welcher Fluss fließt durch Dresden?",
+  "antwort": "Elbe",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Welcher Fluss fließt durch München?",
+  "antwort": "Isar",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "An welchem Fluss liegt Frankfurt mit seiner Bankenskyline?",
+  "antwort": "Main",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Wie heißt die Landeshauptstadt von Niedersachsen?",
+  "antwort": "Hannover",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Wie heißt die Landeshauptstadt von Thüringen?",
+  "antwort": "Erfurt",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Wie heißt die Landeshauptstadt von Hessen?",
+  "antwort": "Wiesbaden",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Wie heißt die Landeshauptstadt von Mecklenburg-Vorpommern?",
+  "antwort": "Schwerin",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Welches ist der größte See, der vollständig in Deutschland liegt?",
+  "antwort": "Müritz",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Welche Insel ist die nördlichste Deutschlands?",
+  "antwort": "Sylt",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Wie heißt Deutschlands einzige Hochseeinsel?",
+  "antwort": "Helgoland",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Welcher Kanal verbindet Nord- und Ostsee quer durch Schleswig-Holstein?",
+  "antwort": "Nord-Ostsee-Kanal",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kiel-Kanal",
+   "Kieler Kanal"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Welches Bundesland grenzt an die meisten anderen Bundesländer?",
+  "antwort": "Niedersachsen",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "Wie heißt der höchste Berg Sachsens?",
+  "antwort": "Fichtelberg",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Deutschland",
+  "frage": "In der Nähe welcher Stadt steht das Hermannsdenkmal im Teutoburger Wald?",
+  "antwort": "Detmold",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "Welche deutsche Stadt trägt den Beinamen „Elbflorenz“?",
+  "antwort": "Dresden",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "Welche Stadt wird wegen ihrer Hochhäuser „Mainhattan“ genannt?",
+  "antwort": "Frankfurt am Main",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Frankfurt"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "Welche Stadt nennt man „Tor zur Welt“?",
+  "antwort": "Hamburg",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welcher Stadt steht das Holstentor?",
+  "antwort": "Lübeck",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "Welche Stadt wird „Big Apple“ genannt?",
+  "antwort": "New York",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "New York City"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welcher Stadt steht das Opernhaus mit den segelartigen Dächern am Hafen?",
+  "antwort": "Sydney",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welcher Stadt sitzt die Bronzefigur der Kleinen Meerjungfrau?",
+  "antwort": "Kopenhagen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welcher Stadt steht die Akropolis?",
+  "antwort": "Athen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welchem Land liegt die Inkastadt Machu Picchu?",
+  "antwort": "Peru",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welcher Stadt liegt die Verbotene Stadt?",
+  "antwort": "Peking",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Beijing"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "Welche Stadt trägt den Beinamen „The Big Easy“?",
+  "antwort": "New Orleans",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "Welche Stadt wird „die Goldene Stadt“ genannt?",
+  "antwort": "Prag",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "Welche Stadt heißt wegen ihres Stadtgrundrisses „Fächerstadt“?",
+  "antwort": "Karlsruhe",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welcher Stadt stehen die Petronas Towers?",
+  "antwort": "Kuala Lumpur",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welcher Stadt steht das Taj Mahal?",
+  "antwort": "Agra",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Städte-Wahrzeichen und Beinamen",
+  "frage": "In welchem Land liegt die Tempelanlage Angkor Wat?",
+  "antwort": "Kambodscha",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Europa",
+  "frage": "Welcher EU-Staat hat die meisten Einwohner?",
+  "antwort": "Deutschland",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Europa",
+  "frage": "Welche Hauptstadt entstand 1873 aus den Städten Buda, Óbuda und Pest?",
+  "antwort": "Budapest",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Europa",
+  "frage": "Welche Halbinsel teilen sich Spanien und Portugal?",
+  "antwort": "Iberische Halbinsel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Iberien",
+   "Pyrenäenhalbinsel"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Europa",
+  "frage": "Welches ist der flächenmäßig kleinste EU-Staat?",
+  "antwort": "Malta",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Europa",
+  "frage": "Auf welcher Halbinsel liegt das dänische Festland?",
+  "antwort": "Jütland",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Kfz-Kennzeichen und Länderkürzel",
+  "frage": "Für welches Land steht das Kfz-Nationalitätszeichen „A“?",
+  "antwort": "Österreich",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Kfz-Kennzeichen und Länderkürzel",
+  "frage": "Für welche Stadt steht das deutsche Kfz-Kennzeichen „HH“?",
+  "antwort": "Hamburg",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Kfz-Kennzeichen und Länderkürzel",
+  "frage": "Für welches Land steht die Internet-Länderendung „.dk“?",
+  "antwort": "Dänemark",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Kfz-Kennzeichen und Länderkürzel",
+  "frage": "Für welches Land steht das Kfz-Nationalitätszeichen „H“?",
+  "antwort": "Ungarn",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Kfz-Kennzeichen und Länderkürzel",
+  "frage": "Für welches Land steht das Kfz-Nationalitätszeichen „FL“?",
+  "antwort": "Liechtenstein",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Kfz-Kennzeichen und Länderkürzel",
+  "frage": "Für welches Land steht das Kfz-Nationalitätszeichen „ZA“?",
+  "antwort": "Südafrika",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Japans?",
+  "antwort": "Yen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Großbritanniens?",
+  "antwort": "Pfund Sterling",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pfund",
+   "Britisches Pfund"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Russlands?",
+  "antwort": "Rubel",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Polens?",
+  "antwort": "Złoty",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zloty"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Südafrikas?",
+  "antwort": "Rand",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Brasiliens?",
+  "antwort": "Real",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Ungarns?",
+  "antwort": "Forint",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Währungen",
+  "frage": "Wie heißt die Währung Israels?",
+  "antwort": "Schekel",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Neuer Schekel",
+   "Shekel",
+   "Neuer Israelischer Schekel"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Amtssprachen",
+  "frage": "Welche Amtssprache hat Brasilien?",
+  "antwort": "Portugiesisch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Amtssprachen",
+  "frage": "Welche Sprache ist neben Englisch Amtssprache Kanadas?",
+  "antwort": "Französisch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Amtssprachen",
+  "frage": "Welche vierte Landessprache hat die Schweiz neben Deutsch, Französisch und Italienisch?",
+  "antwort": "Rätoromanisch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Romanisch",
+   "Bündnerromanisch"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Amtssprachen",
+  "frage": "Welche Sprache ist neben Niederländisch und Französisch dritte Amtssprache Belgiens?",
+  "antwort": "Deutsch",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Amtssprachen",
+  "frage": "Welche indigene Sprache ist neben Spanisch Amtssprache Paraguays?",
+  "antwort": "Guaraní",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Guarani"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Zeitzonen, Äquator und Wendekreise",
+  "frage": "Welcher Breitenkreis teilt die Erde in Nord- und Südhalbkugel?",
+  "antwort": "Äquator",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Zeitzonen, Äquator und Wendekreise",
+  "frage": "Wie heißt der Längengrad 0°, der durch Greenwich verläuft?",
+  "antwort": "Nullmeridian",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Meridian von Greenwich",
+   "Greenwich-Meridian"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Zeitzonen, Äquator und Wendekreise",
+  "frage": "Welches Land ist nach dem Äquator benannt?",
+  "antwort": "Ecuador",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Zeitzonen, Äquator und Wendekreise",
+  "frage": "Wie heißt der südliche Wendekreis?",
+  "antwort": "Wendekreis des Steinbocks",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Zeitzonen, Äquator und Wendekreise",
+  "frage": "Wie viele offizielle Zeitzonen hat China?",
+  "antwort": "1",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "eine",
+   "eins"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Zeitzonen, Äquator und Wendekreise",
+  "frage": "Wie heißt der Breitenkreis bei etwa 66,5° nördlicher Breite?",
+  "antwort": "Nördlicher Polarkreis",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Polarkreis",
+   "Arktischer Polarkreis"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Zeitzonen, Äquator und Wendekreise",
+  "frage": "Welcher Kontinent wird als einziger vom Äquator und von beiden Wendekreisen durchquert?",
+  "antwort": "Afrika",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "geografie-quizabend",
+  "block": "Zeitzonen, Äquator und Wendekreise",
+  "frage": "Welcher Staat hat einschließlich seiner Überseegebiete die meisten Zeitzonen?",
+  "antwort": "Frankreich",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ }
+]
