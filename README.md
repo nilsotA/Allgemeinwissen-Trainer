@@ -3,7 +3,7 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.994 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**4.038 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (775 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
@@ -4230,6 +4230,41 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Prüfsatz 16, Geografie in der Breite: 63 → 93 %
+
+Geografie ist an jedem Quizabend dabei. Einzeln gemessen wurde sie bisher nie. Ein Agent
+schrieb 150 Fragen zu Hauptstädten, Flaggen, Flüssen, Seen, Inseln, Wüsten, Superlativen,
+Grenzen, Währungen, Amtssprachen und Breitenkreisen, ohne die Sammlung zu kennen. Die
+Ausgangsmessung lag bei **94 von 150 (63 %)**.
+
+44 neue Karten schließen die Lücken:
+- **Hauptstädte:** Skopje, Dodoma, Thimphu und Pretoria als Regierungssitz.
+- **Flaggen:** Irland, Zypern, Mosambik und Sri Lanka.
+- **Flüsse europäischer Städte:** Themse, Moldau, Weichsel, Tejo, Newa, dazu die Loire.
+- **Seen:** Kaspisches Meer, Gardasee, Oberer See, Ladogasee.
+- **Inseln, Wüsten und Halbinseln:** Mallorca, Hispaniola, Namib, Mojave, Iberische
+  Halbinsel, Jütland.
+- **Grenzen und Kuriositäten:** Gambia im Senegal, Liechtenstein als doppelter Binnenstaat.
+- **Deutschland:** Main, Nord-Ostsee-Kanal, Fichtelberg.
+- **Währungen und Sprachen:** Rubel, Real, Forint, Schekel; Französisch in Kanada,
+  Rätoromanisch, Guaraní.
+
+Die Abdeckung steigt auf **139 von 150 (93 %)**, und die Sammlung überschreitet 4.000 Karten.
+Den Nullmeridian und den nördlichen Polarkreis gibt es nicht als Antwort, weil bestehende
+Fragen sie schon nennen und die Karten sich gegenseitig verraten würden.
+
+Die Faktenprüfung fand vier Fehler:
+- **Ladogasee:** Er ist rund 33-mal so groß wie der Bodensee, nicht 50-mal.
+- **Kupfer und Zypern:** Das Kupfer heißt nach der Insel (aes Cyprium, cuprum), nicht
+  umgekehrt.
+- **Tansania:** Die Ministerien sitzen inzwischen tatsächlich in Dodoma.
+- **Südlicher Wendekreis:** Er verläuft durch São Paulo, nicht durch Rio.
+
+Die Gegenprüfung fand fünf vertretbar richtige Ablenker: Äquatorialguinea (auch nach dem
+Äquator benannt), das Rif (gehört zum Atlas), Ladinisch (im weiten Sinn rätoromanisch),
+Inuktitut (Amtssprache in Nunavut) und Guatemala (Gewehre auf der Flagge). Außerdem ergänzte
+sie rund 40 übliche Eingaben, von „Lichtenstein“ über „NOK“ bis „Superiorsee“. Die Nebenschreibweise „Kiel-Kanal“ flog wieder heraus: Zusammen mit dem Wort „Kanal“ aus der Frage hätte sonst schon „Kiel“ allein als richtig gegolten – der Test auf fremde Antworten hat es gefunden.
 
 ### Prüfsatz 15, Sport in der Breite: 67 → 89 %
 

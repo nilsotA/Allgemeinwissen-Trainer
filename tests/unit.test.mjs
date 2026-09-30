@@ -668,6 +668,8 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
   const ERLAUBT = new Set(['mat-1ufyejp|mat-115b27n', 'mat-115b27n|mat-1ufyejp',
     // Facebook heisst seit 2021 Meta – derselbe Konzern hat Instagram gekauft
     'pol-m0ojtz|pol-1cum8me',
+    // „Mainz" ist eine Stadt, kein Fluss – als Antwort auf den Fluss durch Frankfurt abwegig
+    'geo-17q9w1x|geo-yt9vlc',
     /* Die Bibliothek traegt den Namen der Stadt: Wer auf „Wie hiess die groesste
        Bibliothek der Antike?" nur „Alexandria" tippt, hat sie gewusst. Die
        Stadtkarte (Leuchtturm) fragt etwas anderes, ihre Antwort ist hier aber
@@ -734,6 +736,8 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     'spo-5cchb|pol-43kll3', // „Die Linke" auf „Linksherum" meint die Richtung
     // Als Eingabe abwegig: Bayer für Bayes, Bache für Bach, Kanon für Kano, Polen für Pole Position, Bulle/Bully
     'mat-el5eix|nat-1mro6o8', 'kul-27vrlm|nat-1m04gch', 'spo-1nz0i3h|kul-1eekpv4',
+    // Ebenso abwegig: „Ein Löwe" für Joachim Löw
+    'spo-1hbyeuw|geo-gxsbee',
     // Ebenso abwegig: Schwein für Schwerin oder die Schweiz, „und andere" für Thomas Anders
     'geo-lcc3da|spr-cu0rjq', 'spr-cu0rjq|geo-lcc3da', 'kul-smzyzr|spr-cu0rjq', 'spr-cu0rjq|kul-smzyzr',
     'kul-6q17o9|spr-fqmes1',
