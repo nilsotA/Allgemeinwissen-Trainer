@@ -4231,6 +4231,25 @@ eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Fe
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
 
+### „Weißer Zwerg“ statt „Als Weißer Zwerg“: 13 Kernantworten gelten jetzt
+
+Bei der Gegenprüfung der Lateinamerika-Karten fiel auf, dass „Wolle“ auf „Wegen ihrer Wolle“
+als falsch gezählt wurde. Eine Messung über alle Karten ergab: 13 Lösungen lehnten ihren
+eigenen Kern ab, also die Lösung ohne das einleitende Verhältniswort und den Artikel.
+Beispiele sind „Weißer Zwerg“ auf „Als Weißer Zwerg“, „14 Jahren“ auf „Ab 14 Jahren“,
+„Glockenturm des Doms“ auf „Als Glockenturm des Doms“ und „Extreme Härte“ auf „An seiner
+extremen Härte“. Der Grund waren zwei Lücken in der Bewertung. „Als“, „Ab“ und „Bis“ fehlten
+in der Liste der Verhältniswörter, die am Anfang der Lösung wegfallen dürfen. Gebeugte
+Possessivpronomen („seiner“, „ihren“) zählten als echtes Wort, obwohl sie wie ein Artikel
+stehen. Beide Lücken sind geschlossen, und alle 13 Kernantworten gelten jetzt.
+
+Der Alt-neu-Vergleich über alle Lösungen, Nebenschreibweisen, Vertipper, Ablenker und die
+Tippprobe fand dabei einen Fehler im ersten Entwurf. Mit „seine“ als Füllwort verschwand der
+Fluss aus „Die Seine“, und „Die Sein“ galt nicht mehr als Vertipper. Deshalb stehen nur die
+gebeugten Formen auf der Liste (seiner, seinem, seinen, seines, ihrer, ihrem, ihren, ihres).
+Danach gab es null Änderungen außer den gewollten. Ein Einheitentest hält beide Fälle fest,
+dazu den Widerspruch: „Bis 18 Jahren“ bleibt auf „Ab 18 Jahren“ falsch.
+
 ### Süd- und Mittelamerika: 18 Karten mehr
 
 Die Fortsetzung der Amerika-Runde für den Süden. Neu sind Rios Sambódromo, Cortés und

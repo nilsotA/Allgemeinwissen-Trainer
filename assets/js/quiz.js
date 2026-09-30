@@ -261,7 +261,9 @@ const ABKUERZUNGEN = [
 // „den", „einer", „eines" fehlten: „Grand Canyon" galt deshalb nicht als Antwort
 // auf eine Karte, deren Loesung „Den Grand Canyon" lautet. „the" kam dazu, weil
 // „The Sopranos" sonst nicht als „Die Sopranos" galt.
-const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|im|in|von|vom|zu|zum|zur|und|the)\b/g;
+// Gebeugte Possessivpronomen stehen wie Artikel: „Extreme Härte" auf „An seiner
+// extremen Härte" gab 0,60. Nur die gebeugten Formen – „Seine" ist auch ein Fluss.
+const FUELLWOERTER = /\b(der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|im|in|von|vom|zu|zum|zur|und|the|seine[mnrs]|ihre[mnrs])\b/g;
 
 /* Wer „Wie viele Kontinente gibt es?" beantwortet, tippt „7" und nicht „Sieben".
    Ohne diese Zuordnung galt die richtige Antwort als falsch – bei 93 Karten,
@@ -497,7 +499,9 @@ export const OHNE_ZUSATZ = /\s+\([^()]*\)\s*$/;
    Buchstaben vor dem Gleichheitszeichen zaehlen als Kopf; „x = (−b ± …)/(2a)"
    verliert dadurch nichts, denn die Loesungsformel ohne „x =" ist dieselbe. */
 export const OHNE_FORMELKOPF = /^[A-Za-z]{1,2}\s*=\s*(?=\S)/;
-export const OHNE_VORWORT = /^(aus|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber|weil|denn|wegen|wenn|falls|sobald)\s+/i;
+/* „als", „ab" und „bis" kamen spaeter dazu: „Weißer Zwerg" auf „Als Weißer
+   Zwerg" und „14 Jahren" auf „Ab 14 Jahren" galten als falsch (12 Karten). */
+export const OHNE_VORWORT = /^(aus|als|ab|bis|an|am|auf|bei|beim|mit|nach|seit|über|um|unter|vor|für|gegen|durch|ohne|hinter|neben|zwischen|entlang|gegenüber|weil|denn|wegen|wenn|falls|sobald)\s+/i;
 
 /* Bewertet eine getippte Eingabe gegen eine ganze Karte statt gegen eine
    einzelne Zeichenkette: Zugelassene Nebenschreibweisen zaehlen mit, und bei

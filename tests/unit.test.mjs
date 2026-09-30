@@ -1190,6 +1190,19 @@ test('Ein einleitendes Verhaeltniswort der Loesung darf fehlen', () => {
      dann dasselbe. Hier faellt nur das erste Wort der LOESUNG weg. */
   assert.ok(bewerte({ a: 'Vor Christus' }, 'Nach Christus') < 0.8,
     'das Verhaeltniswort der Eingabe zaehlt weiter');
+
+  /* „Als", „Ab" und „Bis" fehlten: 12 Karten lehnten ihren eigenen Kern ab, etwa
+     „Weißer Zwerg" auf „Als Weißer Zwerg" oder „14 Jahren" auf „Ab 14 Jahren".
+     Das gebeugte Possessivpronomen („seiner", „ihren") stoert wie ein Artikel -
+     „Extreme Härte" auf „An seiner extremen Härte" gab 0,60. „Seine" und „Ihre"
+     bleiben stehen, sonst verschwaende der Fluss aus „Die Seine". */
+  for (const [loesung, kurz] of [['Als Weißer Zwerg', 'Weißer Zwerg'], ['Ab 14 Jahren', '14 Jahren'],
+                                 ['Bis 20 Jahre', '20 Jahre'], ['An seiner extremen Härte', 'Extreme Härte']])
+    assert.ok(bewerte({ a: loesung }, kurz) >= 0.8, `„${kurz}" gilt nicht als „${loesung}"`);
+  assert.ok(bewerte({ a: 'Die Seine' }, 'Seine') >= 0.8, 'der Fluss Seine bleibt eine Antwort');
+  assert.ok(bewerte({ a: 'Die Seine' }, 'Loire') < 0.8, 'und ein anderer Fluss bleibt falsch');
+  assert.ok(bewerte({ a: 'Ab 18 Jahren' }, 'Bis 18 Jahren') < 0.8,
+    '„Bis" in der Eingabe widerspricht „Ab" in der Loesung');
 });
 
 test('Messgeraet und App teilen dieselbe Nachsicht', () => {
