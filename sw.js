@@ -1,5 +1,5 @@
 /* Automatisch erzeugt von scripts/make-sw.mjs – nicht von Hand ändern. */
-const VERSION = 'wissenswerk-591d1e75b2';
+const VERSION = 'wissenswerk-2195e476a6';
 const ASSETS = [
   "./assets/css/app.css",
   "./assets/js/app.js",

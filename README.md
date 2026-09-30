@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.959 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.994 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (740 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (775 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -4230,6 +4230,38 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Prüfsatz 15, Sport in der Breite: 67 → 89 %
+
+Die Sportkarten waren auf Trainingslehre, Sprint und Fußball ausgerichtet. Am Quizabend kommt
+aber alles: Tennis, Formel 1, US-Sport, Darts, Snooker, Boxen, Radsport, Wintersport. Ein
+Agent schrieb 150 solche Fragen, ohne die Sammlung zu kennen. Die Ausgangsmessung lag bei
+**100 von 150 (67 %)**.
+
+35 neue Karten schließen die echten Lücken:
+- **Fußball:** Bierhoffs Golden Goal, Konietzkas erstes Bundesligator, St. Pauli am
+  Millerntor, Herbert Zimmermanns „Aus, aus, aus!“.
+- **Spitznamen:** „The Great One“, „der Kannibale“, „The Power“, „Eddie the Eagle“.
+- **Tennis:** Stich 1991, Nadals 14 French-Open-Titel, Laver 1969, die Netzhöhe.
+- **Motorsport:** Rosberg 2016, Laudas Unfall 1976, Rindts Titel nach seinem Tod, Mick
+  Schumacher.
+- **Weitere Sportarten:** die „Bad Boys“ im Handball, Ryder Cup, Langer, Tysons Biss,
+  Schmeling gegen Louis, Paris–Roubaix, Beamon, Hannawalds Grand Slam, Darts von 501 bis
+  170, das Crucible Theatre, Lasker, das Dohyō und das Boat Race.
+
+Die Abdeckung steigt auf **134 von 150 (89 %)**. Die meisten der 16 Reste sind Umkehrfragen
+zu bestehenden Karten, etwa „Wie heißt die Meistertrophäe der NHL?“ neben „In welcher
+Sportart wird der Stanley Cup vergeben?“. Solche Paare würden sich gegenseitig verraten und
+bleiben deshalb bewusst aus.
+
+Was die Prüfer fanden:
+- **Nadal:** Auf dem Sand von Roland Garros verlor er mehr als vier Matches, denn die
+  Olympischen Spiele 2024 fanden dort statt. Nur bei den French Open waren es vier.
+- **Tour de France:** Die Champs-Élysées sind eine Avenue, kein Boulevard.
+- **Vertretbar richtige Ablenker:** „Perfect Leg“ ist nur ein anderer Name für den
+  Neun-Darter, und der Solheim Cup ist ebenfalls Europa gegen die USA, bei den Frauen.
+- **Verratene Antworten:** Neben „welcher englische Dartsspieler“ standen zwei Niederländer
+  und ein Schotte. Bei der Frage nach einem „Sohn“ stand eine Tochter unter den Optionen.
 
 ### „Turkisch fur Anfanger“: Umlaute ohne Punkte
 
