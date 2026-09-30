@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.726 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.749 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (725 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (737 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -4229,6 +4229,27 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Bauwerke, Olympia und Rekorde: 61 → 84 Karten
+
+Nach den Erfindungen die nächsten drei dünnen Quiz-Teilgebiete. **Bauwerke** (23 → 34):
+Hagia Sophia, Alhambra, Corcovado, Tower Bridge, Schönbrunn, Atomium, Verbotene Stadt,
+Berliner Fernsehturm, Völkerschlachtdenkmal, Elbphilharmonie, Rialtobrücke. **Olympia**
+(24 → 30): Comănecis erste 10,0, Isabell Werth als erfolgreichste deutsche Olympionikin, Mark
+Spitz, Breaking, die Eröffnungsfeier auf der Seine, „Tokio 2020“ im Jahr 2021. **Rekorde**
+(14 → 20), mit Blick auf die Leichtathletik: Bannisters Meile, Kratochvílovás 800 m von 1983
+als ältester gültiger Weltrekord, Jamaikas 4 × 100 m, Železnýs Speerwurf, Mahutschichs 2,10 m
+und Rudishas 1:40,91.
+
+Die Gegenprüfung fand vor allem verratende Fragen. „Welche Ukrainerin …“ neben einer
+Bulgarin, einer Deutschen und einer Australierin, „Welcher Tscheche …“ neben drei Deutschen
+und „Welche Dressurreiterin …“ neben einer Kanutin und einer Eisschnellläuferin ließen sich
+ohne jedes Wissen lösen. Diese Fragen nennen jetzt nur noch Sportart oder Land, sodass alle
+vier Optionen passen. Die Faktenprüfung fand einen echten Fehler im Kontext: „Seither kam
+keine Läuferin näher als gut eine Sekunde heran“ stimmte schon 2008 nicht, und 2026 lief
+Audrey Werro 1:53,70. Bei der Elbphilharmonie standen die 77 Millionen Euro für den
+Stadtanteil neben den 866 Millionen Gesamtkosten; der Stadtanteil lag am Ende bei rund
+789 Millionen. Lewandowskis 41 Tore flogen als Dublette heraus.
 
 ### Erfindungen: 14 → 28 Karten
 
