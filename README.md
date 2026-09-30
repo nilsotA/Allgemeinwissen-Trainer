@@ -465,7 +465,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 197 Einheitentests plus Inhaltsprüfung
+npm test           # 198 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4230,6 +4230,21 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### „Turkisch fur Anfanger“: Umlaute ohne Punkte
+
+Die Gegenprüfung der Popkultur-Karten fand eine Lücke, die die ganze Sammlung betraf. Wer
+Umlaute ohne Punkte tippt, auf einer englischen Tastatur oder in Eile, wurde abgelehnt:
+„Turkisch fur Anfanger“ ergab 0,60, ebenso „Muller“ für „Müller“. „ue“ für „ü“ galt längst,
+der Buchstabe ohne Punkte nicht. Die Bewertung vergleicht jetzt zusätzlich mit einer Fassung
+der Lösung ohne Punkte, aber nur dann, wenn die Eingabe selbst keinen einzigen Umlaut
+enthält. Wer „Bär“ tippt, meint nicht „Bar“.
+
+Die Sorge galt Wortpaaren wie Bar/Bär oder Mutter/Mütter. Der Alt-neu-Vergleich über alle
+Lösungen, Nebenschreibweisen, Vertipper, Ablenker und die Tippprobe zeigte keine einzige
+Änderung. Auch die beiden Tests, die verhindern, dass die Antwort einer fremden Karte als
+richtig gilt, blieben grün. Kein Ablenker und keine Nachbarkarte unterscheidet sich also nur
+durch einen Umlaut von einer Lösung.
 
 ### Prüfsatz 14, Popkultur 2000–2024: 33 → 99 %
 

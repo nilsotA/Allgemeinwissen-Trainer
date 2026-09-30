@@ -1250,6 +1250,17 @@ test('Ein Datum ohne Jahr darf in Ziffern stehen', () => {
   assert.ok(bewerte({ a: '3,14' }, '3.14') >= 0.8, 'eine Dezimalzahl bleibt eine Dezimalzahl');
 });
 
+test('Umlaute ohne Punkte gelten, wenn die Eingabe keinen Umlaut enthaelt', () => {
+  /* „Turkisch fur Anfanger" gab 0,60 – auf einer englischen Tastatur tippt man so.
+     „ue" fuer „ü" ging laengst, der Buchstabe ohne Punkte nicht. */
+  for (const [loesung, eingabe] of [['Türkisch für Anfänger', 'Turkisch fur Anfanger'],
+                                    ['Thomas Müller', 'Thomas Muller'], ['Düsseldorf', 'Dusseldorf'],
+                                    ['Österreich', 'Osterreich']])
+    assert.ok(bewerte({ a: loesung }, eingabe) >= 0.8, `„${eingabe}" gilt nicht als „${loesung}"`);
+  // Wer selbst einen Umlaut tippt, meint ihn: „Bär" ist nicht „Bar".
+  assert.ok(bewerte({ a: 'Bar' }, 'Bär') < 0.8, '„Bär" gilt faelschlich als „Bar"');
+});
+
 test('Messgeraet und App teilen dieselbe Nachsicht', () => {
   /* scripts/abdeckung.mjs hielt eine eigene Kopie der Verhaeltniswoerter und
      kannte den Klammerzusatz gar nicht. Die Kopie war laengst veraltet: „an"

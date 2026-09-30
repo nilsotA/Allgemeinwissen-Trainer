@@ -648,6 +648,14 @@ export function bewerte(card, eingabe) {
      waeren das 42.195 Kilometer - deshalb gilt diese Lesart nur, wenn genau diese
      Ziffern mit Komma in der Loesung stehen. Sonst bleibt der Punkt ein
      Tausenderpunkt, und „3.600" ist weiter nicht „3,6". */
+  /* Umlaute ohne Punkte: Auf einer englischen Tastatur oder in Eile wird aus
+     „Türkisch für Anfänger" schnell „Turkisch fur Anfanger" – bisher 0,60. Nur
+     wenn die Eingabe selbst gar keinen Umlaut enthaelt, wird die Loesung
+     zusaetzlich ohne Punkte verglichen; wer „Bär" tippt, meint nicht „Bar". */
+  if (!/[äöüÄÖÜ]/.test(txt)) {
+    const ohnePunkte = (l) => String(l).replace(/[äÄ]/g, 'a').replace(/[öÖ]/g, 'o').replace(/[üÜ]/g, 'u');
+    for (const l of [...listen]) if (/[äöüÄÖÜ]/.test(l)) listen.push(ohnePunkte(l));
+  }
   const mitKomma = txt.replace(/(\d)\.(\d{3})(?!\d)/g, (m, v, n) =>
     listen.some(l => String(l).includes(`${v},${n}`)) ? `${v},${n}` : m);
   const lesarten = mitKomma === txt ? [txt] : [txt, mitKomma];
