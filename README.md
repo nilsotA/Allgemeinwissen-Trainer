@@ -465,7 +465,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 194 Einheitentests plus Inhaltsprüfung
+npm test           # 195 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
@@ -4230,6 +4230,25 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### „100 Grad“ auf „100 °C“ galt als falsch
+
+Als Nächstes prüfte ich die Zahlenantworten: Gilt die blanke Zahl oder eine andere übliche
+Schreibweise der Einheit? Fast überall ja, aber ausgerechnet bei Temperaturen nicht.
+„100“ auf „100 °C“ ergab 0,19, „100 Grad“ nur 0,50, und beim Dichtemaximum von Wasser war
+„4 Grad“ falsch. Der Grund: „°C“ wird intern zu „grad celsius“, und „Celsius“ stand nicht bei
+den Einheiten, die fehlen dürfen. Bei „km/h“ hielt das „pro“ aus „kilometer pro stunde“ die
+blanke Zahl genauso auf. Beide Wörter stehen jetzt auf der Liste. Diese Liste greift nur,
+wenn die Lösung eine Zahl enthält. Außerdem gelten jetzt „Stundenkilometer“ und „kmh“ als
+km/h. Sieben von Hand gepflegte Nebenschreibweisen wie „50 kmh“ sind dadurch überflüssig
+und gestrichen.
+
+Der Alt-neu-Vergleich fand 29 Verbesserungen, alle bei abgeschnittenen Eingaben wie
+„44,7 km/“. Er fand zunächst auch fünf Verschlechterungen. Drei davon, etwa „130
+Stundenkilomete“ mit fehlendem r, sind behoben, weil die Umschreibung jetzt auch
+abgeschnittene Formen erfasst. Zwei künstliche Buchstabendreher („50S tundenkilometer“,
+„50k mh“) bleiben falsch. Kein Ablenker kippt. Ein neuer Einheitentest hält die Gegenproben
+fest: „100 Grad Fahrenheit“, „90 Grad“ und „200 m/s“ bleiben falsch.
 
 ### „Weißer Zwerg“ statt „Als Weißer Zwerg“: 13 Kernantworten gelten jetzt
 

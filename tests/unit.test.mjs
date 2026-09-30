@@ -1205,6 +1205,20 @@ test('Ein einleitendes Verhaeltniswort der Loesung darf fehlen', () => {
     '„Bis" in der Eingabe widerspricht „Ab" in der Loesung');
 });
 
+test('Grad Celsius und km/h duerfen fehlen oder anders geschrieben sein', () => {
+  /* „°C" wird zu „grad celsius", und „celsius" stand nicht bei den Einheiten:
+     „100" auf „100 °C" gab 0,19, sogar „100 Grad" nur 0,50. Bei „km/h" hielt
+     das „pro" aus „kilometer pro stunde" die blosse Zahl auf. */
+  for (const [loesung, eingabe] of [['100 °C', '100'], ['100 °C', '100 Grad'], ['4 °C', '4 Grad'],
+                                    ['Etwa 200 km/h', '200'], ['Etwa 200 km/h', '200 Stundenkilometer'],
+                                    ['50 km/h', '50 kmh']])
+    assert.ok(bewerte({ a: loesung }, eingabe) >= 0.8, `„${eingabe}" gilt nicht als „${loesung}"`);
+  // Eine andere Einheit oder Zahl bleibt falsch.
+  for (const [loesung, eingabe] of [['100 °C', '100 Grad Fahrenheit'], ['100 °C', '90 Grad'],
+                                    ['Etwa 200 km/h', '200 m/s'], ['4 °C', '0 Grad']])
+    assert.ok(bewerte({ a: loesung }, eingabe) < 0.8, `„${eingabe}" gilt faelschlich als „${loesung}"`);
+});
+
 test('Messgeraet und App teilen dieselbe Nachsicht', () => {
   /* scripts/abdeckung.mjs hielt eine eigene Kopie der Verhaeltniswoerter und
      kannte den Klammerzusatz gar nicht. Die Kopie war laengst veraltet: „an"

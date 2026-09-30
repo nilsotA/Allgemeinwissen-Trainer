@@ -115,6 +115,8 @@ const ZEICHEN = [
      waehrend das getippte „km2" ein „km2" blieb - und die Flaeche Deutschlands
      galt in zwei von drei Schreibweisen als falsch. So endet alles auf „km2". */
   [/\bm\s*\/\s*s\b/gi, ' meter pro sekunde '], [/\bkm\s*\/\s*h\b/gi, ' kilometer pro stunde '],
+  /* „Stundenkilometer" und „kmh" sagt und tippt man im Deutschen fuer km/h. */
+  [/\bstundenkilomet[a-z]*/gi, ' kilometer pro stunde '], [/\bkmh\b/gi, ' kilometer pro stunde '],
   [/\bkcal\b/gi, ' kilokalorien '], [/\bkj\b/gi, ' kilojoule '],
   [/\bkg\b/gi, ' kilogramm '], [/\bkm\b/gi, ' kilometer '],
   [/\bcm\b/gi, ' zentimeter '], [/\bmm\b/gi, ' millimeter '],
@@ -392,6 +394,9 @@ const EINHEITEN = new Set([
   'sekunde', 'sekunden', 'meter', 'metern', 'zentimeter', 'millimeter',
   'kilometer', 'gramm', 'kilogramm', 'liter', 'grad', 'euro', 'cent',
   'punkte', 'punkten', 'prozent',
+  /* „°C" wird zu „grad celsius", „km/h" zu „kilometer pro stunde": Ohne diese
+     beiden galt „100" und sogar „100 Grad" auf „100 °C" als falsch (0,19 und 0,50). */
+  'celsius', 'pro',
 ]);
 
 /* Zwei Wörter meinen dasselbe, wenn sie sich nur wie ein Tippfehler unterscheiden.
