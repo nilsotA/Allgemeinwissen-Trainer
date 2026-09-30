@@ -1,0 +1,1639 @@
+[
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte die „Mona Lisa“?",
+  "antwort": "Leonardo da Vinci",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Leonardo",
+   "da Vinci"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "In welchem Museum hängt die „Mona Lisa“?",
+  "antwort": "Louvre",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Musée du Louvre"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Die Sternennacht“ (1889)?",
+  "antwort": "Vincent van Gogh",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "van Gogh"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Der Schrei“?",
+  "antwort": "Edvard Munch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Munch"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte das Antikriegsbild „Guernica“?",
+  "antwort": "Pablo Picasso",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Picasso"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Das Mädchen mit dem Perlenohrring“?",
+  "antwort": "Jan Vermeer",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vermeer",
+   "Johannes Vermeer",
+   "Jan Vermeer van Delft"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "In welcher Stadt hängt „Das Mädchen mit dem Perlenohrring“?",
+  "antwort": "Den Haag",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Haag"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "In welchem Amsterdamer Museum hängt „Die Nachtwache“?",
+  "antwort": "Rijksmuseum",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Die Geburt der Venus“?",
+  "antwort": "Sandro Botticelli",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Botticelli"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "In welchem Florentiner Museum hängt Botticellis „Geburt der Venus“?",
+  "antwort": "Uffizien",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Galleria degli Uffizi",
+   "Uffizi"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Der Wanderer über dem Nebelmeer“?",
+  "antwort": "Caspar David Friedrich",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "C. D. Friedrich"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Welche Kunstrichtung ist nach Claude Monets Bild „Impression, soleil levant“ benannt?",
+  "antwort": "Impressionismus",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte das goldglänzende Gemälde „Der Kuss“ (1908/09)?",
+  "antwort": "Gustav Klimt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Klimt"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Die Beständigkeit der Erinnerung“ mit den zerfließenden Uhren?",
+  "antwort": "Salvador Dalí",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dalí",
+   "Dali",
+   "Salvador Dali"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Der arme Poet“ (1839)?",
+  "antwort": "Carl Spitzweg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Spitzweg"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Welche Künstlergruppe gründeten Wassily Kandinsky und Franz Marc 1911 in München?",
+  "antwort": "Der Blaue Reiter",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Blauer Reiter",
+   "Blaue Reiter"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Las Meninas“ (Die Hoffräulein)?",
+  "antwort": "Diego Velázquez",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Velázquez",
+   "Velazquez"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Welcher Pop-Art-Künstler wurde mit Bildern von Campbell's-Suppendosen berühmt?",
+  "antwort": "Andy Warhol",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Warhol"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Welcher Nürnberger Künstler schuf den „Feldhasen“ und das „Selbstbildnis im Pelzrock“?",
+  "antwort": "Albrecht Dürer",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dürer"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Welchen Stil begründeten Pablo Picasso und Georges Braque um 1907?",
+  "antwort": "Kubismus",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Malerei",
+  "frage": "Wer malte „Nighthawks“ (1942)?",
+  "antwort": "Edward Hopper",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Hopper"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Wer schuf die Marmorstatue des „David“ in Florenz (1501–1504)?",
+  "antwort": "Michelangelo",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Michelangelo Buonarroti"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Welcher französische Bildhauer schuf „Der Denker“?",
+  "antwort": "Auguste Rodin",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Rodin"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Welcher Baustil ist durch Spitzbögen, Kreuzrippengewölbe und Strebewerk gekennzeichnet?",
+  "antwort": "Gotik",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Welcher Architekt entwarf die Sagrada Família in Barcelona?",
+  "antwort": "Antoni Gaudí",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gaudí",
+   "Gaudi",
+   "Antoni Gaudi"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Wie heißt die 1919 in Weimar gegründete Kunst- und Architekturschule?",
+  "antwort": "Bauhaus",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Staatliches Bauhaus"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Wer gründete 1919 das Bauhaus?",
+  "antwort": "Walter Gropius",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gropius"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Dorisch, ionisch und … – wie heißt die dritte klassische griechische Säulenordnung?",
+  "antwort": "korinthisch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Korinthische Ordnung"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Wie heißt die antike Skulpturengruppe in den Vatikanischen Museen, die einen trojanischen Priester und seine Söhne im Kampf mit Schlangen zeigt?",
+  "antwort": "Laokoon-Gruppe",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Laokoon",
+   "Laokoongruppe"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "Welcher Baumeister schuf die Kuppel des Florentiner Doms?",
+  "antwort": "Filippo Brunelleschi",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Brunelleschi"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Bildhauerei und Architektur",
+  "frage": "„Weniger ist mehr“ gilt als Leitsatz welches Bauhaus-Architekten?",
+  "antwort": "Ludwig Mies van der Rohe",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Mies van der Rohe",
+   "Mies"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte „Eine kleine Nachtmusik“?",
+  "antwort": "Wolfgang Amadeus Mozart",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mozart"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wie viele Sinfonien vollendete Ludwig van Beethoven?",
+  "antwort": "9",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "neun"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Welcher Komponist war beim Schreiben seiner späten Werke nahezu vollständig taub?",
+  "antwort": "Ludwig van Beethoven",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Beethoven"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Welchen Beinamen trägt Beethovens 3. Sinfonie?",
+  "antwort": "Eroica",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Welchen Beinamen trägt Joseph Haydns Sinfonie Nr. 94 in G-Dur?",
+  "antwort": "Mit dem Paukenschlag",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Paukenschlag",
+   "Surprise"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Welchen Beinamen trägt Antonín Dvořáks 9. Sinfonie?",
+  "antwort": "Aus der Neuen Welt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Neue Welt",
+   "From the New World"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Welchen Beinamen trägt Franz Schuberts Sinfonie in h-Moll, von der nur zwei Sätze vollendet wurden?",
+  "antwort": "Die Unvollendete",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Unvollendete"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Welchen Beinamen trägt Mozarts letzte Sinfonie Nr. 41 in C-Dur?",
+  "antwort": "Jupiter",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Jupiter-Sinfonie"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte „Die vier Jahreszeiten“?",
+  "antwort": "Antonio Vivaldi",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Vivaldi"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte das „Weihnachtsoratorium“ und die „Brandenburgischen Konzerte“?",
+  "antwort": "Johann Sebastian Bach",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bach",
+   "J. S. Bach"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte die „Wassermusik“ und das Oratorium „Der Messias“?",
+  "antwort": "Georg Friedrich Händel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Händel",
+   "Haendel",
+   "Handel"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte den Walzer „An der schönen blauen Donau“?",
+  "antwort": "Johann Strauss (Sohn)",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Johann Strauss",
+   "Johann Strauß",
+   "Strauss",
+   "Strauß"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte die Ballette „Schwanensee“ und „Der Nussknacker“?",
+  "antwort": "Peter Tschaikowsky",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Tschaikowsky",
+   "Tschaikowski",
+   "Pjotr Iljitsch Tschaikowski",
+   "Tchaikovsky"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte die sinfonische Dichtung „Die Moldau“?",
+  "antwort": "Bedřich Smetana",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Smetana",
+   "Friedrich Smetana"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte „Bilder einer Ausstellung“?",
+  "antwort": "Modest Mussorgski",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Mussorgski",
+   "Mussorgsky",
+   "Modest Mussorgsky"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wer komponierte die „Symphonie fantastique“?",
+  "antwort": "Hector Berlioz",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Berlioz"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Wie viele Saiten hat eine Violine?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Welches ist das größte und am tiefsten klingende Streichinstrument im Sinfonieorchester?",
+  "antwort": "Kontrabass",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bass"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Klassische Musik",
+  "frage": "Welches Instrument gibt im Sinfonieorchester traditionell den Stimmton A vor?",
+  "antwort": "Oboe",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Wie heißt der Vogelfänger in der „Zauberflöte“?",
+  "antwort": "Papageno",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Wer komponierte den Opernzyklus „Der Ring des Nibelungen“?",
+  "antwort": "Richard Wagner",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wagner"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "In welcher Stadt finden die Richard-Wagner-Festspiele statt?",
+  "antwort": "Bayreuth",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Wer komponierte die Opern „Aida“ und „La Traviata“?",
+  "antwort": "Giuseppe Verdi",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Verdi"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Wer komponierte die Oper „Carmen“?",
+  "antwort": "Georges Bizet",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bizet"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Wer komponierte die Opern „Tosca“ und „Madama Butterfly“?",
+  "antwort": "Giacomo Puccini",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Puccini"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Wie heißt Carl Maria von Webers Oper um den Jägerburschen Max und die Freikugeln?",
+  "antwort": "Der Freischütz",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Freischütz"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Wie heißt die Operette von Johann Strauss, in der Dr. Falke Rache an Gabriel von Eisenstein nimmt?",
+  "antwort": "Die Fledermaus",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Fledermaus"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Wer komponierte die Musicals „Cats“ und „Das Phantom der Oper“?",
+  "antwort": "Andrew Lloyd Webber",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Lloyd Webber"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Oper und Musical",
+  "frage": "Welches Musical beruht auf George Bernard Shaws Komödie „Pygmalion“?",
+  "antwort": "My Fair Lady",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb die Tragödie „Faust“?",
+  "antwort": "Johann Wolfgang von Goethe",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Goethe"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wie heißt der Teufel, mit dem Faust bei Goethe einen Pakt schließt?",
+  "antwort": "Mephistopheles",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mephisto"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Welche Literaturepoche um 1770 ist nach einem Drama von Friedrich Maximilian Klinger benannt?",
+  "antwort": "Sturm und Drang",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Geniezeit"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb das Drama „Die Räuber“?",
+  "antwort": "Friedrich Schiller",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schiller",
+   "Friedrich von Schiller"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Welcher Schweizer Freiheitsheld schießt in einem Schiller-Drama einen Apfel vom Kopf seines Sohnes?",
+  "antwort": "Wilhelm Tell",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Tell"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb das Drama „Nathan der Weise“?",
+  "antwort": "Gotthold Ephraim Lessing",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lessing"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb die Erzählung „Die Verwandlung“?",
+  "antwort": "Franz Kafka",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kafka"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "„Jemand musste Josef K. verleumdet haben …“ – mit diesem Satz beginnt welcher Roman?",
+  "antwort": "Der Process",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Der Prozess",
+   "Der Proceß",
+   "Process",
+   "Prozess"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb den Roman „Buddenbrooks“?",
+  "antwort": "Thomas Mann",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mann"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "In welchem Schweizer Kurort spielt Thomas Manns Roman „Der Zauberberg“?",
+  "antwort": "Davos",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb „Mutter Courage und ihre Kinder“?",
+  "antwort": "Bertolt Brecht",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Brecht",
+   "Bert Brecht"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb den Roman „Die Blechtrommel“?",
+  "antwort": "Günter Grass",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Grass",
+   "Günter Graß"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "„Ilsebill salzte nach.“ – So beginnt welcher Roman von Günter Grass?",
+  "antwort": "Der Butt",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Butt"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb die Dramen „Woyzeck“ und „Dantons Tod“?",
+  "antwort": "Georg Büchner",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Büchner"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb den Roman „Effi Briest“?",
+  "antwort": "Theodor Fontane",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fontane"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb die Novelle „Der Schimmelreiter“?",
+  "antwort": "Theodor Storm",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Storm"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb das Gedicht „Die Lore-Ley“ („Ich weiß nicht, was soll es bedeuten …“)?",
+  "antwort": "Heinrich Heine",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Heine"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wie heißt der Protagonist in Döblins „Berlin Alexanderplatz“?",
+  "antwort": "Franz Biberkopf",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Biberkopf"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb das Stück „Der Hauptmann von Köpenick“?",
+  "antwort": "Carl Zuckmayer",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Zuckmayer"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb den Antikriegsroman „Im Westen nichts Neues“?",
+  "antwort": "Erich Maria Remarque",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Remarque"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb die Romane „Der Steppenwolf“ und „Siddhartha“?",
+  "antwort": "Hermann Hesse",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hesse"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Deutsche Literatur",
+  "frage": "Wer schrieb die Bildergeschichte „Max und Moritz“?",
+  "antwort": "Wilhelm Busch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Busch"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb „Romeo und Julia“?",
+  "antwort": "William Shakespeare",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Shakespeare"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "In welchem Stück fällt der Satz „Sein oder Nichtsein, das ist hier die Frage“?",
+  "antwort": "Hamlet",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb den Roman „Don Quijote“?",
+  "antwort": "Miguel de Cervantes",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Cervantes"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wie heißt der Knappe von Don Quijote?",
+  "antwort": "Sancho Pansa",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Sancho Panza",
+   "Sancho"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wie heißt das Pferd von Don Quijote?",
+  "antwort": "Rosinante",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Rocinante"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb „Schuld und Sühne“ (auch „Verbrechen und Strafe“)?",
+  "antwort": "Fjodor Dostojewski",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dostojewski",
+   "Dostojewskij",
+   "Dostoevsky"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wie heißt der Student, der in „Schuld und Sühne“ eine Pfandleiherin ermordet?",
+  "antwort": "Raskolnikow",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Rodion Raskolnikow",
+   "Raskolnikov"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb die Romane „Krieg und Frieden“ und „Anna Karenina“?",
+  "antwort": "Lew Tolstoi",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Tolstoi",
+   "Leo Tolstoi",
+   "Tolstoy"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "„Alle glücklichen Familien gleichen einander, jede unglückliche Familie ist auf ihre eigene Weise unglücklich.“ – So beginnt welcher Roman?",
+  "antwort": "Anna Karenina",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb den Roman „1984“?",
+  "antwort": "George Orwell",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Orwell"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb „Der alte Mann und das Meer“?",
+  "antwort": "Ernest Hemingway",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hemingway"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb den Roman „Stolz und Vorurteil“?",
+  "antwort": "Jane Austen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Austen"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb „Oliver Twist“ und „David Copperfield“?",
+  "antwort": "Charles Dickens",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dickens"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wie heißt der Geizhals in Dickens’ „Eine Weihnachtsgeschichte“?",
+  "antwort": "Ebenezer Scrooge",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Scrooge"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb den Roman „Die Elenden“ („Les Misérables“)?",
+  "antwort": "Victor Hugo",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hugo"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wie heißt der Glöckner von Notre-Dame in Victor Hugos Roman?",
+  "antwort": "Quasimodo",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Wer schrieb die „Göttliche Komödie“?",
+  "antwort": "Dante Alighieri",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dante"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "Welchem Dichter werden die Epen „Ilias“ und „Odyssee“ zugeschrieben?",
+  "antwort": "Homer",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Homeros"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Weltliteratur",
+  "frage": "„Nennt mich Ismael.“ – So beginnt welcher Roman?",
+  "antwort": "Moby Dick",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Moby-Dick",
+   "Moby Dick oder Der Wal"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "Wie viele Zwerge leben im Märchen „Schneewittchen“ hinter den Bergen?",
+  "antwort": "7",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "Wie viele Jahre schläft Dornröschen?",
+  "antwort": "100",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "hundert"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "Welche Märchenfigur spinnt für die Müllerstochter Stroh zu Gold und verlangt ihr erstes Kind?",
+  "antwort": "Rumpelstilzchen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "Wer schrieb die Märchen „Die kleine Meerjungfrau“ und „Des Kaisers neue Kleider“?",
+  "antwort": "Hans Christian Andersen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Andersen"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "In welcher Stadt spielt die Sage vom Rattenfänger?",
+  "antwort": "Hameln",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "Welcher Held der Nibelungensage badete im Drachenblut?",
+  "antwort": "Siegfried",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Sigurd"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "Wer tötet im Nibelungenlied Siegfried?",
+  "antwort": "Hagen von Tronje",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hagen"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "Wie heißt das Schwert von König Artus?",
+  "antwort": "Excalibur",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Exkalibur",
+   "Caliburn"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Märchen und Sagen",
+  "frage": "Wie heißt der Berggeist des Riesengebirges?",
+  "antwort": "Rübezahl",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Wer ist der Göttervater der griechischen Mythologie?",
+  "antwort": "Zeus",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Wie heißt der griechische Gott des Meeres?",
+  "antwort": "Poseidon",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "An welchem Körperteil war Achilleus verwundbar?",
+  "antwort": "Ferse",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Achillesferse"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Wer flog mit Flügeln aus Wachs und Federn zu nahe an die Sonne?",
+  "antwort": "Ikarus",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ikaros"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Wer öffnete das Gefäß, aus dem alle Übel in die Welt kamen?",
+  "antwort": "Pandora",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Welcher Titan brachte den Menschen das Feuer?",
+  "antwort": "Prometheus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Welcher Held tötete den Minotauros im Labyrinth von Knossos?",
+  "antwort": "Theseus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Wer löste das Rätsel der Sphinx und heiratete unwissentlich seine Mutter?",
+  "antwort": "Ödipus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Oidipus"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Wer muss in der Unterwelt ewig einen Felsbrocken einen Berg hinaufwälzen?",
+  "antwort": "Sisyphos",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Sisyphus"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Griechische Mythologie",
+  "frage": "Wie heißt der Fährmann, der die Toten über den Fluss der Unterwelt bringt?",
+  "antwort": "Charon",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Nordische Mythologie",
+  "frage": "Wie heißt der Göttervater der nordischen Mythologie?",
+  "antwort": "Odin",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wotan",
+   "Wodan"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Nordische Mythologie",
+  "frage": "Wie heißt der nordische Donnergott?",
+  "antwort": "Thor",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Donar"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Nordische Mythologie",
+  "frage": "Wie heißt Thors Hammer?",
+  "antwort": "Mjölnir",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mjöllnir",
+   "Mjolnir"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Nordische Mythologie",
+  "frage": "Wie heißt die Halle, in die die Walküren die gefallenen Krieger bringen?",
+  "antwort": "Walhall",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Walhalla",
+   "Valhalla",
+   "Valhöll"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Nordische Mythologie",
+  "frage": "Wie heißt die Weltesche der nordischen Mythologie?",
+  "antwort": "Yggdrasil",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Yggdrasill"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Welcher Philosoph prägte den Satz „Ich denke, also bin ich“?",
+  "antwort": "René Descartes",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Descartes",
+   "Rene Descartes"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Welchem Philosophen wird der Satz „Ich weiß, dass ich nichts weiß“ zugeschrieben?",
+  "antwort": "Sokrates",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Welcher Philosoph verkündete „Gott ist tot“?",
+  "antwort": "Friedrich Nietzsche",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nietzsche"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Wer schrieb „Das Kapital“?",
+  "antwort": "Karl Marx",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Marx"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Von welchem Philosophen stammt das Höhlengleichnis?",
+  "antwort": "Platon",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Plato"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Welcher Philosoph war Lehrer Alexanders des Großen?",
+  "antwort": "Aristoteles",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Wer schrieb die „Kritik der reinen Vernunft“?",
+  "antwort": "Immanuel Kant",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kant"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Welcher griechische Philosoph soll in einer Tonne gelebt haben?",
+  "antwort": "Diogenes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Diogenes von Sinope"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Wer schrieb das staatsphilosophische Werk „Leviathan“ (1651)?",
+  "antwort": "Thomas Hobbes",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Hobbes"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Philosophie",
+  "frage": "Wer schrieb „Sein und Zeit“ (1927)?",
+  "antwort": "Martin Heidegger",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Heidegger"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Literaturnobelpreis",
+  "frage": "Welcher Musiker erhielt 2016 den Literaturnobelpreis?",
+  "antwort": "Bob Dylan",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dylan"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Literaturnobelpreis",
+  "frage": "Welcher französische Philosoph lehnte 1964 den Literaturnobelpreis ab?",
+  "antwort": "Jean-Paul Sartre",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Sartre"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Literaturnobelpreis",
+  "frage": "In welchem Jahr erhielt Günter Grass den Literaturnobelpreis?",
+  "antwort": "1999",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Literaturnobelpreis",
+  "frage": "In welchem Jahr erhielt Thomas Mann den Literaturnobelpreis?",
+  "antwort": "1929",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Literaturnobelpreis",
+  "frage": "Welcher Historiker erhielt 1902 als erster Deutscher den Literaturnobelpreis?",
+  "antwort": "Theodor Mommsen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Mommsen"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Literaturnobelpreis",
+  "frage": "In welchem Jahr erhielt Heinrich Böll den Literaturnobelpreis?",
+  "antwort": "1972",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie heißt die Person, die den Schauspielern im Theater den Text einflüstert?",
+  "antwort": "Souffleur",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Souffleuse"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie heißt die letzte Probe vor der Premiere?",
+  "antwort": "Generalprobe",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie nennt man ein Gemälde, das unbelebte Gegenstände wie Obst, Blumen oder Gefäße zeigt?",
+  "antwort": "Stillleben",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Stilleben"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie nennt man ein Bild, das aus aufgeklebten Papier- oder Materialstücken besteht?",
+  "antwort": "Collage",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie nennt man ein Bild, das mit lasierenden Wasserfarben gemalt ist?",
+  "antwort": "Aquarell",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie nennt man die Wandmalerei auf frischem, noch feuchtem Putz?",
+  "antwort": "Fresko",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Freske",
+   "Freskomalerei"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie nennt man ein dreiteiliges Tafelbild, etwa einen Flügelaltar?",
+  "antwort": "Triptychon",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Triptych"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie heißt die italienische Stegreifkomödie mit Figuren wie Harlekin und Pantalone?",
+  "antwort": "Commedia dell’arte",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Commedia dell'arte",
+   "Commedia dell arte"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "kultur-quizabend",
+  "block": "Theater- und Kunstbegriffe",
+  "frage": "Wie heißt der italienische Fachbegriff für die Hell-Dunkel-Malerei?",
+  "antwort": "Chiaroscuro",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Chiaroscuro-Malerei"
+  ]
+ }
+]
