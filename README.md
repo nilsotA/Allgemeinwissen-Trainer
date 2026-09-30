@@ -3,9 +3,9 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**3.860 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**3.959 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (738 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (740 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -42,7 +42,7 @@ amerikanisch, Redewendungen, ASAP bis RSVP).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (28 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (46 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (47 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (45 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), **Amerika** (67 – Bundesstaaten und ihre Hauptstädte, Konquistadoren, Tango,
@@ -4230,6 +4230,42 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Prüfsatz 14, Popkultur 2000–2024: 33 → 99 %
+
+Die bisherigen Prüfsätze fragten Schulwissen, Quizabend-Klassiker und „Wer wird Millionär?“.
+Was an einem Spieleabend unter Anfang-Zwanzigjährigen dazukommt, war nie gemessen worden:
+Serien und Streaming, Games, Apps, Deutschrap, Netzsprache und Castingshows. Ein Agent
+schrieb dazu 150 Fragen, ohne die Sammlung zu kennen. Die Ausgangsmessung lag bei **49 von
+150 (33 %)**, mit weitem Abstand die größte Lücke aller Prüfsätze.
+
+99 neue Karten, geschrieben in zwei Hälften mit je zwei Prüfern:
+- **Serien und Film:** Haus des Geldes, „Der Winter naht“, Dunder Mifflin, Stromberg,
+  Grogu, Gryffindor, Thanos, Wakanda, Fack ju Göhte.
+- **Games:** Fortnite, PS5, Among Us, The Witcher, EA Sports FC, Ultimate Team.
+- **Apps und Tech:** TikTok und ByteDance, die 140 Zeichen, X, WhatsApp, StudiVZ, Twitch,
+  ChatGPT, Alphabet, Meta.
+- **Musik:** Lady Gaga, BTS, The Weeknd, Avicii, Billie Eilish, Cro, Sido, Apache 207,
+  Tokio Hotel, Palmen aus Plastik, Måneskin.
+- **Netzsprache:** Jugendwörter von Babo bis cringe, Rickroll, Doge, The Dress, FOMO, YOLO,
+  GOAT, TL;DR.
+- **Fernsehen:** DSDS, GNTM, Dschungelcamp, Bachelor, The Voice, Big Brother, Höhle der Löwen,
+  No Angels.
+- **Fußball:** Schürrles Flanke 2014 und Leicesters Titel 2016.
+
+Die Abdeckung steigt auf **148 von 150 (99 %)**.
+
+Popkultur altert schnell, und das zeigte die Faktenprüfung deutlich:
+- **Cro** trägt seit 2020 keine Pandamaske mehr. Die Frage lautete zunächst „tritt stets mit
+  einer Pandamaske auf“.
+- **Sido** legte seine Maske 2005 ab, nicht 2009.
+- **Der Bachelor** lief bei RTL schon 2003, nicht erst ab 2012.
+- **„Dragons’ Den“** ist die britische Fassung, nicht das japanische Original.
+
+Die Gegenprüfung fand zwei vertretbar richtige Ablenker: „Traitor“ war bei Among Us die
+englische Entsprechung der deutschen Rolle „Verräter“, und „Meta“ ist der Käufer von
+Instagram, nur unter späterem Namen. Außerdem ergänzte sie über 60 übliche Eingaben, von
+„Fortnight“ über „too long didnt read“ bis „FC 26“.
 
 ### Prüfsatz 13 im Stil von „Wer wird Millionär?“: 65 → 96 %
 

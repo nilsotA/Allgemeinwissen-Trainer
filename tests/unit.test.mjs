@@ -666,6 +666,8 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
      richtig, und beide Karten sind ihr Geld wert. Sie stehen namentlich hier,
      damit eine spaetere Aenderung an einer von beiden auffaellt. */
   const ERLAUBT = new Set(['mat-1ufyejp|mat-115b27n', 'mat-115b27n|mat-1ufyejp',
+    // Facebook heisst seit 2021 Meta – derselbe Konzern hat Instagram gekauft
+    'pol-m0ojtz|pol-1cum8me',
     /* Die Bibliothek traegt den Namen der Stadt: Wer auf „Wie hiess die groesste
        Bibliothek der Antike?" nur „Alexandria" tippt, hat sie gewusst. Die
        Stadtkarte (Leuchtturm) fragt etwas anderes, ihre Antwort ist hier aber
