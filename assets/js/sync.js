@@ -224,7 +224,7 @@ export async function standAus(huelle) {
 
 async function paket() {
   const st = store.S();
-  const rev = st.rev;
+  const rev = store.standMarke();
   const roh = JSON.stringify(st);
   const kopf = { format: FORMAT, geraet: geraeteKennung(), name: geraeteName(), zeit: jetzt() };
   let gzip = null;
@@ -266,9 +266,14 @@ async function lauf({ grund = 'hand' } = {}) {
        App-Start wird deshalb nachgesehen, ob es ein aelteres gibt, und dorthin
        gewechselt. Der Stand geht dabei nicht verloren: Er liegt auf jedem
        Geraet vollstaendig und wird ins richtige Gist neu hochgeladen. */
-    if (!gistGeprueft) {
+    /* Am ersten Tag nach dem Verbinden bei jedem App-Start, danach einmal am
+       Tag: Die Liste kann bei vielen Gists bis zu zehn Anfragen kosten, und der
+       Doppelfall entsteht nur bei der Einrichtung. */
+    const TAG = 86400000;
+    if (!gistGeprueft && (jetzt() - (k.verbundenAm || 0) < TAG || jetzt() - (k.gistGeprueftAm || 0) > TAG)) {
       const aeltestes = await findeGist(k.token);
       gistGeprueft = true;
+      k = merke({ gistGeprueftAm: jetzt() });
       if (aeltestes && aeltestes !== k.gist) k = merke({ gist: aeltestes, geschoben: null });
     }
     let gist;
@@ -302,7 +307,7 @@ async function lauf({ grund = 'hand' } = {}) {
       schreib(BEKANNT, { gist: k.gist, dateien: ergebnis.bekannt });
       k = merke({ verbunden: true });
     }
-    if (k.verbunden && (!eigeneDa || store.S().rev !== k.geschoben)) await hochladen(k);
+    if (k.verbunden && (!eigeneDa || store.standMarke() !== k.geschoben)) await hochladen(k);
     fehlversuche = 0; naechsterVersuch = 0;
     merke({ zuletzt: jetzt(), fehler: null, art: null, pausiert: false, geraete });
     const antwort = { ok: true, ...(ergebnis || {}), geraete: geraete.length };
@@ -334,7 +339,7 @@ function melde(k, e) {
 export function nurHochladen() {
   const k = konfiguration();
   if (!k || !k.gist || !k.verbunden || k.pausiert || laeuft || hochLaeuft || ohneNetz()) return Promise.resolve(false);
-  if (store.S().rev === k.geschoben || jetzt() < naechsterVersuch) return Promise.resolve(false);
+  if (store.standMarke() === k.geschoben || jetzt() < naechsterVersuch) return Promise.resolve(false);
   hochLaeuft = hochladen(k, { wachHalten: true }).then(() => true, () => false)
     .finally(() => { hochLaeuft = null; });
   return hochLaeuft;
@@ -346,7 +351,7 @@ export async function verbinden(token) {
   if (!/^[A-Za-z0-9_]{20,255}$/.test(token)) return { ok: false, art: 'schluessel', text: 'Das sieht nicht nach einem GitHub-Schlüssel aus' };
   try {
     const gist = await findeOderLegeAn(token);
-    schreib(KONF, { token, gist, verbunden: false, geschoben: null, zuletzt: 0, fehler: null });
+    schreib(KONF, { token, gist, verbunden: false, geschoben: null, zuletzt: 0, fehler: null, verbundenAm: jetzt() });
     fehlversuche = 0; naechsterVersuch = 0; gistGeprueft = true;
   } catch (e) {
     return { ok: false, art: e.art || 'server', text: e.message };
@@ -392,7 +397,7 @@ export function starte({ nachAbgleich = () => {} } = {}) {
     if (document.visibilityState !== 'visible' || store.beschaeftigt()) return;
     const k = konfiguration();
     if (!k) return;
-    const geaendert = store.S().rev !== k.geschoben;
+    const geaendert = store.standMarke() !== k.geschoben;
     if (geaendert || jetzt() - letzterLauf > 5 * 60000) los('takt');
   }, 60000);
 }

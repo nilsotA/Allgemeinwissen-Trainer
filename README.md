@@ -309,10 +309,17 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
   es ein älteres gibt, und wechselt dorthin.
 - Kaputte oder fremde Dateien im Gist werden übergangen. Werte daraus laufen durch dieselbe
   Säuberung wie eine eingelesene Sicherung.
+- Ist der Speicher des Geräts voll, schlägt das Ablegen fehl, und die Fassungsnummer bleibt
+  stehen. Der Abgleich zählt dann jeden Speicherversuch mit und lädt die neuen Antworten
+  trotzdem hoch. Sonst hielte er sie für längst hochgeladen, und das ausgerechnet in der Lage,
+  in der die Kopie im Gist ihre einzige Rettung ist.
+- Die Gist-Liste fragt jedes Gerät am ersten Tag nach dem Verbinden bei jedem Start ab,
+  danach nur einmal am Tag. Bei vielen Gists kostet sie bis zu zehn Anfragen, und den
+  Doppelfall gibt es nur bei der Einrichtung.
 - Solange der Abgleich gelingt, entfällt die Erinnerung ans Sichern als Datei.
 
 **Geprüft** wird das zweifach:
-- `tests/sync.test.mjs` (31 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
+- `tests/sync.test.mjs` (33 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
   eigenem Speicher, gegen ein nachgebautes Gist-Archiv mit den Antworten der echten API. Darin
   stecken die Summe unabhängig gelernter Antworten, Zurücksetzen samt Netz, die
   liegengebliebene Datei, verschiedene Generationen beim ersten Abgleich, 401 und Netzabbruch
@@ -571,7 +578,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 231 Einheitentests plus Inhaltsprüfung
+npm test           # 233 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 352 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt

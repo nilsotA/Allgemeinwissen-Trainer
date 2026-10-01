@@ -612,3 +612,34 @@ test('Verlassen der App laedt genau einmal hoch', async () => {
   assert.equal(a, true); assert.equal(b, false);
   assert.equal(gh.anfragen.slice(vorher).filter(x => x.startsWith('PATCH')).length, 1);
 });
+
+test('voller Speicher: der Abgleich laedt die neuen Antworten trotzdem hoch', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  const echt = A.local.setItem;
+  A.local.setItem = (k, v) => { if (k === KEY) { const e = new Error('voll'); e.name = 'QuotaExceededError'; throw e; } return echt(k, v); };
+  try {
+    A.lerne('nurImSpeicher');
+    const r = await A.abgleichen();
+    assert.equal(r.ok, true, r.text);
+  } finally { A.local.setItem = echt; }
+  await B.abgleichen();
+  assert.ok(karten(B).includes('nurImSpeicher'), 'die Antwort muss das andere Geraet erreichen');
+});
+
+test('die Gist-Liste wird nicht bei jedem Start abgefragt', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  let jetzt = Date.now();
+  aktiv = A; A.sync.setzeUhr(() => jetzt);
+  await A.verbinden();
+  jetzt += 3 * 86400000;                              // drei Tage spaeter
+  const listen = () => gh.anfragen.filter(a => a === 'GET /gists').length;
+  const B1 = await geraet(gh, A); B1.sync.setzeUhr(() => jetzt);
+  await B1.abgleichen();
+  const nachErstemStart = listen();
+  const B2 = await geraet(gh, A); B2.sync.setzeUhr(() => jetzt + 60000);
+  await B2.abgleichen();
+  assert.equal(listen(), nachErstemStart, 'am selben Tag kein zweites Mal');
+});

@@ -448,7 +448,17 @@ export function aendereKarte(id, fn) {
   return neu;
 }
 
+/* Woran der Abgleich erkennt, dass es etwas Neues hochzuladen gibt. Die
+   Fassungsnummer allein genuegt nicht: Schlaegt das Schreiben fehl (voller
+   Speicher), bleibt sie stehen - der Abgleich hielte den Stand fuer schon
+   hochgeladen, und das in genau der Lage, in der die Kopie im Gist die einzige
+   Rettung der neuen Antworten ist. Dann zaehlt jeder Speicherversuch mit. */
+let speicherZuletztOk = true, speicherVersuche = 0;
+export const standMarke = () =>
+  (speicherZuletztOk ? String(state.rev || 0) : `${state.rev || 0}*${speicherVersuche}`);
+
 export function save(now = false) {
+  speicherVersuche++;
   const write = () => {
     /* Die Fassungsnummer darf nur zaehlen, was wirklich im Speicher steht.
        Wurde sie vor dem Schreiben erhoeht und das Schreiben schlug fehl (volles
@@ -462,9 +472,11 @@ export function save(now = false) {
       state.rev = vorherigeRev + 1;
       localStorage.setItem(KEY, JSON.stringify(state));
       quotaWarned = false;
+      speicherZuletztOk = true;
       return true;
     } catch (e) {
       state.rev = vorherigeRev;
+      speicherZuletztOk = false;
       if (!quotaWarned) console.warn('Speichern fehlgeschlagen', e);
       quotaWarned = true;
       /* Immer melden, nicht nur beim ersten Mal: Der Nutzer kann den Hinweis
