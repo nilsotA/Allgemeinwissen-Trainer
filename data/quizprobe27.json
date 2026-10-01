@@ -1,0 +1,1667 @@
+[
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie viele Knochen hat ein erwachsener Mensch ungefähr?",
+  "antwort": "206",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "206 Knochen"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie heißt der längste Knochen des menschlichen Körpers?",
+  "antwort": "Oberschenkelknochen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Femur",
+   "Os femoris"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie heißt der kleinste Knochen des Menschen, der im Mittelohr sitzt?",
+  "antwort": "Steigbügel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Stapes"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie viele Rippenpaare hat der Mensch normalerweise?",
+  "antwort": "12",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwölf",
+   "12 Paare"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie viele Halswirbel hat der Mensch?",
+  "antwort": "7",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie lautet der Fachbegriff für das Schienbein?",
+  "antwort": "Tibia",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie heißt die Kniescheibe in der Fachsprache?",
+  "antwort": "Patella",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Welcher Mineralstoff ist der wichtigste Baustoff der Knochen?",
+  "antwort": "Calcium",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kalzium"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie heißt die Krankheit, bei der die Knochendichte abnimmt („Knochenschwund“)?",
+  "antwort": "Osteoporose",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie nennt man die bewegliche Verbindung zwischen zwei Knochen?",
+  "antwort": "Gelenk",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie heißt der einzige bewegliche Knochen des Schädels?",
+  "antwort": "Unterkiefer",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mandibula",
+   "Unterkieferknochen"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Welches Gewebe im Inneren vieler Knochen bildet die Blutzellen?",
+  "antwort": "Rotes Knochenmark",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Knochenmark"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Skelett und Knochen",
+  "frage": "Wie heißt das Schlüsselbein in der Fachsprache?",
+  "antwort": "Clavicula",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Klavikula"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Wie heißt der größte (schwerste) Muskel des Menschen?",
+  "antwort": "Großer Gesäßmuskel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gluteus maximus",
+   "Musculus gluteus maximus",
+   "Gesäßmuskel"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Wie heißt der zweiköpfige Oberarmmuskel, der den Arm beugt?",
+  "antwort": "Bizeps",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Biceps",
+   "Musculus biceps brachii"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Welcher Muskel ist der Gegenspieler des Bizeps?",
+  "antwort": "Trizeps",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Triceps",
+   "Musculus triceps brachii"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Wie nennt man das Prinzip, dass Muskeln paarweise als Spieler und Gegenspieler arbeiten?",
+  "antwort": "Gegenspielerprinzip",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Antagonismus",
+   "Antagonistenprinzip",
+   "Agonist-Antagonist-Prinzip"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Wie heißt die kräftigste Sehne des Menschen, die den Wadenmuskel mit dem Fersenbein verbindet?",
+  "antwort": "Achillessehne",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Wie heißt der Muskeltyp der Eingeweide (z. B. Darm), der nicht willentlich gesteuert wird?",
+  "antwort": "Glatte Muskulatur",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "glatte Muskeln"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Wie nennt man umgangssprachlich die Muskelschmerzen ein bis zwei Tage nach ungewohnter Belastung?",
+  "antwort": "Muskelkater",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Welches energiereiche Molekül liefert dem Muskel unmittelbar die Energie für die Kontraktion?",
+  "antwort": "ATP",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Adenosintriphosphat"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Welche beiden Proteine gleiten bei der Muskelkontraktion aneinander vorbei?",
+  "antwort": "Aktin und Myosin",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Myosin und Aktin",
+   "Actin und Myosin"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Wie nennt man das Dickenwachstum eines Muskels durch Krafttraining?",
+  "antwort": "Hypertrophie",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Muskelhypertrophie"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Welche Muskelfasern sind kraftvoll und schnell, ermüden aber rasch – rote oder weiße?",
+  "antwort": "Weiße",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "weiße Muskelfasern",
+   "FT-Fasern",
+   "Typ-II-Fasern"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Muskeln und Bewegung",
+  "frage": "Welches Gewebe verbindet Muskeln mit Knochen?",
+  "antwort": "Sehnen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Sehne"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Aus wie vielen Hohlräumen (Vorhöfe und Kammern zusammen) besteht das menschliche Herz?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Wie heißt die größte Schlagader des Körpers?",
+  "antwort": "Aorta",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hauptschlagader"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Wie viele Liter Blut hat ein erwachsener Mensch ungefähr?",
+  "antwort": "5 bis 6 Liter",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "5 Liter",
+   "6 Liter",
+   "5–6 Liter",
+   "fünf Liter"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Welche Blutgruppe gilt als „Universalspender“ für rote Blutkörperchen?",
+  "antwort": "0 negativ",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "0-",
+   "0 Rhesus negativ",
+   "Null negativ"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Welcher eisenhaltige rote Farbstoff in den roten Blutkörperchen bindet den Sauerstoff?",
+  "antwort": "Hämoglobin",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hb"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Wie heißen die roten Blutkörperchen mit Fachbegriff?",
+  "antwort": "Erythrozyten",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Erythrocyten"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Welche Blutzellen sind vor allem für die Blutgerinnung zuständig?",
+  "antwort": "Blutplättchen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Thrombozyten"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Wie hoch ist ungefähr der normale Ruhepuls eines Erwachsenen (Schläge pro Minute)?",
+  "antwort": "60 bis 80",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "60–80",
+   "70",
+   "60-80 Schläge pro Minute"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Welcher Blutdruckwert gilt als klassischer Normal- bzw. Idealwert?",
+  "antwort": "120 zu 80",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "120/80",
+   "120/80 mmHg"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Wie heißen die Blutgefäße, die das Blut zum Herzen hin transportieren?",
+  "antwort": "Venen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Vene"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Wie heißen die feinsten Blutgefäße, in denen der Stoffaustausch stattfindet?",
+  "antwort": "Kapillaren",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Haargefäße"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Wie heißt der natürliche Taktgeber des Herzens im rechten Vorhof?",
+  "antwort": "Sinusknoten",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Sinuatrialknoten",
+   "SA-Knoten"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Herz, Blut und Kreislauf",
+  "frage": "Wie heißen die Gefäße, die den Herzmuskel selbst versorgen und deren Verschluss zum Herzinfarkt führt?",
+  "antwort": "Herzkranzgefäße",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Koronararterien",
+   "Koronargefäße",
+   "Herzkranzarterien"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Wie heißt der wichtigste Atemmuskel des Menschen?",
+  "antwort": "Zwerchfell",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Diaphragma"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Wie heißen die winzigen Bläschen der Lunge, in denen der Gasaustausch stattfindet?",
+  "antwort": "Lungenbläschen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Alveolen"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Welches Gas atmen wir verstärkt aus, weil es bei der Zellatmung entsteht?",
+  "antwort": "Kohlendioxid",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "CO2",
+   "Kohlenstoffdioxid"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Wie viel Prozent Sauerstoff enthält die Luft ungefähr?",
+  "antwort": "21 Prozent",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "21",
+   "21 %",
+   "rund 21 %"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Wie viele Lungenflügel hat der Mensch?",
+  "antwort": "2",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwei"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Aus wie vielen Lappen besteht der rechte Lungenflügel?",
+  "antwort": "3",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "drei"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Wie heißt die Luftröhre in der Fachsprache?",
+  "antwort": "Trachea",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Welcher Knorpeldeckel verschließt beim Schlucken die Luftröhre?",
+  "antwort": "Kehldeckel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Epiglottis"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Wie nennt man das Luftvolumen, das man nach maximaler Einatmung maximal ausatmen kann?",
+  "antwort": "Vitalkapazität",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Welche chronische Atemwegserkrankung mit anfallsartiger Atemnot ist oft allergisch bedingt?",
+  "antwort": "Asthma",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Asthma bronchiale"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Mit welcher Abkürzung bezeichnet man die chronisch obstruktive Lungenerkrankung, typisch bei Rauchern?",
+  "antwort": "COPD",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Atmung und Lunge",
+  "frage": "Mit welcher Abkürzung bezeichnet man die maximale Sauerstoffaufnahme, ein Maß für die Ausdauerleistungsfähigkeit?",
+  "antwort": "VO2max",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "VO2 max",
+   "VO₂max"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Welches ist das größte innere Organ des Menschen?",
+  "antwort": "Leber",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Welches ist das größte Organ des Menschen insgesamt?",
+  "antwort": "Haut",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Welches Organ speichert die Gallenflüssigkeit?",
+  "antwort": "Gallenblase",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Welches Organ produziert das Hormon Insulin?",
+  "antwort": "Bauchspeicheldrüse",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pankreas"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Wie heißt der erste Abschnitt des Dünndarms direkt nach dem Magen?",
+  "antwort": "Zwölffingerdarm",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Duodenum"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Welche Säure ist im Magensaft enthalten?",
+  "antwort": "Salzsäure",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "HCl",
+   "Chlorwasserstoffsäure"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Wie heißt der Anhang des Blinddarms, dessen Entzündung umgangssprachlich „Blinddarmentzündung“ heißt?",
+  "antwort": "Wurmfortsatz",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Appendix"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Welche paarigen Organe filtern das Blut und bilden den Urin?",
+  "antwort": "Nieren",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Niere"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Wie heißen die kleinsten Funktionseinheiten der Niere?",
+  "antwort": "Nephrone",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Nephron"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Wie heißt das Enzym im Speichel, das Stärke spaltet?",
+  "antwort": "Amylase",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Speichelamylase",
+   "Ptyalin",
+   "Alpha-Amylase"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Wie heißt der Muskelschlauch zwischen Rachen und Magen?",
+  "antwort": "Speiseröhre",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ösophagus"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Welches Organ im linken Oberbauch baut alte rote Blutkörperchen ab?",
+  "antwort": "Milz",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Verdauung und Organe",
+  "frage": "Wie nennt man die Gesamtheit der Mikroorganismen im Darm?",
+  "antwort": "Darmflora",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mikrobiom",
+   "Darmmikrobiom",
+   "Darmmikrobiota"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie heißen Nervenzellen mit Fachbegriff?",
+  "antwort": "Neuronen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Neurone",
+   "Neuron"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie heißt die Kontaktstelle zwischen zwei Nervenzellen?",
+  "antwort": "Synapse",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Welcher Teil des Gehirns ist vor allem für Gleichgewicht und Bewegungskoordination zuständig?",
+  "antwort": "Kleinhirn",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Cerebellum"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie viele Sinne werden klassisch unterschieden?",
+  "antwort": "5",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie heißt die lichtempfindliche Schicht im Auge?",
+  "antwort": "Netzhaut",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Retina"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Welche Sinneszellen der Netzhaut ermöglichen das Farbensehen?",
+  "antwort": "Zapfen",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie heißt die Stelle der Netzhaut, an der der Sehnerv austritt und keine Sinneszellen sitzen?",
+  "antwort": "Blinder Fleck",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie heißt die fünfte Geschmacksrichtung neben süß, sauer, salzig und bitter?",
+  "antwort": "Umami",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie heißt Kurzsichtigkeit in der Fachsprache?",
+  "antwort": "Myopie",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Welcher Nerv leitet die Signale vom Auge zum Gehirn?",
+  "antwort": "Sehnerv",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nervus opticus"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie heißt die isolierende Hülle um viele Nervenfasern, die die Signalleitung beschleunigt?",
+  "antwort": "Myelinscheide",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Markscheide"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Welches Organ verbraucht rund 20 % der Körperenergie, obwohl es nur etwa 2 % des Körpergewichts ausmacht?",
+  "antwort": "Gehirn",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nerven, Gehirn und Sinne",
+  "frage": "Wie heißt der Teil des vegetativen Nervensystems, der den Körper auf „Kampf oder Flucht“ einstellt?",
+  "antwort": "Sympathikus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sympathisches Nervensystem"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Welches Hormon senkt den Blutzuckerspiegel?",
+  "antwort": "Insulin",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Welches Hormon erhöht als Gegenspieler des Insulins den Blutzuckerspiegel?",
+  "antwort": "Glukagon",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Glucagon"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Welches Hormon wird bei Stress und Gefahr aus dem Nebennierenmark ausgeschüttet?",
+  "antwort": "Adrenalin",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Epinephrin"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Welches Hormon steuert den Schlaf-Wach-Rhythmus?",
+  "antwort": "Melatonin",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Welche Drüse produziert das Hormon Thyroxin?",
+  "antwort": "Schilddrüse",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Welches Spurenelement braucht die Schilddrüse zur Hormonbildung?",
+  "antwort": "Jod",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Iod"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Wie heißt die Hirnanhangdrüse in der Fachsprache?",
+  "antwort": "Hypophyse",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Welches Hormon wird oft „Kuschelhormon“ oder „Bindungshormon“ genannt?",
+  "antwort": "Oxytocin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Oxytozin"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "In welchen Zellorganellen, den „Kraftwerken der Zelle“, findet die Zellatmung statt?",
+  "antwort": "Mitochondrien",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mitochondrium"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Wie nennt man den Energieverbrauch des Körpers in völliger Ruhe?",
+  "antwort": "Grundumsatz",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ruheumsatz"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Welches in der Niere gebildete Hormon regt die Bildung roter Blutkörperchen an und ist als Dopingmittel bekannt?",
+  "antwort": "EPO",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Erythropoetin",
+   "Erythropoietin"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Hormone und Stoffwechsel",
+  "frage": "Mit welcher Abkürzung bezeichnet man das menschliche Wachstumshormon, das auch als Dopingmittel bekannt ist?",
+  "antwort": "HGH",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "hGH",
+   "GH",
+   "STH",
+   "Somatotropin"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Welche Blutzellen sind für die Immunabwehr zuständig?",
+  "antwort": "Weiße Blutkörperchen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Leukozyten"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Wie heißen die Eiweißstoffe, die das Immunsystem gezielt gegen Krankheitserreger bildet?",
+  "antwort": "Antikörper",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Immunglobuline"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Gegen welche Erreger wirken Antibiotika – Bakterien oder Viren?",
+  "antwort": "Bakterien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Welches Virus verursacht die Immunschwächekrankheit AIDS?",
+  "antwort": "HIV",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "HI-Virus",
+   "Humanes Immundefizienz-Virus"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Welche Infektionskrankheit wurde 1980 von der WHO als weltweit ausgerottet erklärt?",
+  "antwort": "Pocken",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Variola",
+   "Blattern"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Wofür steht die Abkürzung der durch Zecken übertragenen Viruserkrankung FSME?",
+  "antwort": "Frühsommer-Meningoenzephalitis",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Welche bakterielle Krankheit wird in Deutschland am häufigsten durch Zecken übertragen?",
+  "antwort": "Borreliose",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lyme-Borreliose",
+   "Lyme-Krankheit"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Welche Krankheit wird durch die Anopheles-Mücke übertragen?",
+  "antwort": "Malaria",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Gegen welche Krankheit müssen Kinder in Kitas und Schulen in Deutschland seit März 2020 geimpft sein?",
+  "antwort": "Masern",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Masernimpfung"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Welche Art von Impfstoff kam bei den COVID-19-Impfstoffen von Biontech/Pfizer und Moderna erstmals breit zum Einsatz?",
+  "antwort": "mRNA-Impfstoff",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "mRNA",
+   "mRNA-Impfstoffe"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Welche Infektionskrankheit wurde früher „Schwindsucht“ genannt?",
+  "antwort": "Tuberkulose",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "TBC",
+   "Tbc",
+   "TB"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Welches Organ hinter dem Brustbein ist für die Reifung der T-Zellen wichtig?",
+  "antwort": "Thymus",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Thymusdrüse",
+   "Bries"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Immunsystem, Krankheiten und Impfungen",
+  "frage": "Wie nennt man eine Infektionskrankheit, die von Tieren auf Menschen übertragen wird?",
+  "antwort": "Zoonose",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Wer entdeckte 1928 das Penicillin?",
+  "antwort": "Alexander Fleming",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fleming"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Wer entdeckte 1895 die nach ihm benannten X-Strahlen?",
+  "antwort": "Wilhelm Conrad Röntgen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Röntgen",
+   "Wilhelm Röntgen"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher deutsche Arzt entdeckte 1882 den Erreger der Tuberkulose?",
+  "antwort": "Robert Koch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Koch"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher englische Arzt entwickelte 1796 die erste Pockenimpfung?",
+  "antwort": "Edward Jenner",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Jenner"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher antike griechische Arzt gilt als „Vater der Medizin“ und Namensgeber eines ärztlichen Eides?",
+  "antwort": "Hippokrates",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hippokrates von Kos"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher französische Forscher entwickelte einen Impfstoff gegen Tollwut und ein nach ihm benanntes Verfahren zur Haltbarmachung?",
+  "antwort": "Louis Pasteur",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Pasteur"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher Chirurg führte 1967 in Kapstadt die erste Herztransplantation durch?",
+  "antwort": "Christiaan Barnard",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Barnard",
+   "Chris Barnard"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher englische Arzt beschrieb 1628 erstmals vollständig den Blutkreislauf?",
+  "antwort": "William Harvey",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Harvey"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher Arzt gilt als „Retter der Mütter“, weil er Händedesinfektion gegen das Kindbettfieber einführte?",
+  "antwort": "Ignaz Semmelweis",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Semmelweis",
+   "Ignaz Philipp Semmelweis"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welche britische Krankenschwester gilt als Begründerin der modernen Krankenpflege („Lady with the Lamp“)?",
+  "antwort": "Florence Nightingale",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nightingale"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher Wiener Arzt begründete die Psychoanalyse?",
+  "antwort": "Sigmund Freud",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Freud"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welcher Arzt der Renaissance prägte sinngemäß den Satz „Die Dosis macht das Gift“?",
+  "antwort": "Paracelsus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Theophrastus Bombastus von Hohenheim"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Medizingeschichte und berühmte Mediziner",
+  "frage": "Welche Biochemikerin erhielt 2023 zusammen mit Drew Weissman den Medizin-Nobelpreis für ihre mRNA-Forschung?",
+  "antwort": "Katalin Karikó",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Karikó",
+   "Kariko",
+   "Katalin Kariko"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welches Vitamin bildet der Körper mithilfe von Sonnenlicht in der Haut?",
+  "antwort": "Vitamin D",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "D",
+   "Cholecalciferol"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welche Krankheit entsteht durch Vitamin-C-Mangel und war früher bei Seefahrern gefürchtet?",
+  "antwort": "Skorbut",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welches Vitamin ist besonders für die Blutgerinnung wichtig?",
+  "antwort": "Vitamin K",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "K"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welches Vitamin kommt fast nur in tierischen Lebensmitteln vor und sollte bei veganer Ernährung ergänzt werden?",
+  "antwort": "Vitamin B12",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "B12",
+   "Cobalamin"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welcher Mineralstoff ist zentraler Bestandteil des Hämoglobins?",
+  "antwort": "Eisen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fe"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Wie viele Kilokalorien liefert ein Gramm Fett ungefähr?",
+  "antwort": "9",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "9 kcal",
+   "9,3 kcal"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Wie viele Kilokalorien liefert ein Gramm Kohlenhydrate ungefähr?",
+  "antwort": "4",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "4 kcal",
+   "4,1 kcal"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welches Vitamin ist wichtig für das Sehen in der Dämmerung und kommt als Vorstufe reichlich in Karotten vor?",
+  "antwort": "Vitamin A",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "A",
+   "Retinol"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welche vier Vitamine sind fettlöslich?",
+  "antwort": "A, D, E und K",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "E, D, K, A",
+   "EDEKA",
+   "ADEK"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Aus welchen Bausteinen sind Proteine aufgebaut?",
+  "antwort": "Aminosäuren",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Aminosäure"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welche Mangelkrankheit wird durch zu wenig Vitamin B1 (Thiamin) ausgelöst?",
+  "antwort": "Beriberi",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Nährstoffe, Vitamine und Mineralstoffe",
+  "frage": "Welche Knochenerkrankung bei Kindern wird durch Vitamin-D-Mangel ausgelöst?",
+  "antwort": "Rachitis",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Welche Einheit gibt neben Kilojoule üblicherweise den Energiegehalt von Lebensmitteln an?",
+  "antwort": "Kilokalorie",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "kcal",
+   "Kalorie",
+   "Kalorien"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Wie viele Kilojoule entsprechen ungefähr einer Kilokalorie?",
+  "antwort": "4,2",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "4,184",
+   "4,19",
+   "rund 4"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Wie heißt die Kennzahl aus Körpergewicht geteilt durch Körpergröße zum Quadrat?",
+  "antwort": "Body-Mass-Index",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "BMI",
+   "Körpermasseindex"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Ab welchem BMI spricht man laut WHO von Übergewicht?",
+  "antwort": "25",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "ab 25",
+   "25 kg/m²"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Ab welchem BMI spricht man laut WHO von Adipositas (Fettleibigkeit)?",
+  "antwort": "30",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "ab 30",
+   "30 kg/m²"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Wie heißt die farbige Nährwertkennzeichnung mit den Buchstaben A bis E auf Lebensmittelverpackungen?",
+  "antwort": "Nutri-Score",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nutriscore"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Welcher Zucker kommt natürlicherweise in Milch vor?",
+  "antwort": "Laktose",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Milchzucker",
+   "Lactose"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Welches Klebereiweiß aus Weizen vertragen Menschen mit Zöliakie nicht?",
+  "antwort": "Gluten",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Welche als besonders gesund geltenden Fettsäuren stecken z. B. in Lachs, Walnüssen und Leinöl?",
+  "antwort": "Omega-3-Fettsäuren",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Omega-3",
+   "ω-3-Fettsäuren"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Wie viel Gramm Speisesalz sollen Erwachsene laut Deutscher Gesellschaft für Ernährung (DGE) höchstens pro Tag essen?",
+  "antwort": "6 Gramm",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "6",
+   "6 g"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Wie heißt die Ernährungsform mit festen Essenspausen, etwa nach der 16:8-Methode?",
+  "antwort": "Intervallfasten",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "intermittierendes Fasten",
+   "Intermittent Fasting"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Lebensmittel, Kalorien und Ernährungsregeln",
+  "frage": "Wie viele Kilokalorien liefert ein Gramm Alkohol (Ethanol) ungefähr?",
+  "antwort": "7",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "7 kcal",
+   "7,1 kcal"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Unter welcher Notrufnummer erreicht man in Deutschland Rettungsdienst und Feuerwehr?",
+  "antwort": "112",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "In welche Lage bringt man eine bewusstlose Person, die normal atmet?",
+  "antwort": "Stabile Seitenlage",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Seitenlage"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "In welchem Verhältnis wechseln sich bei der Herz-Lungen-Wiederbelebung Herzdruckmassage und Beatmung ab?",
+  "antwort": "30:2",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "30 zu 2"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Wie oft pro Minute soll bei der Herzdruckmassage laut Leitlinien gedrückt werden?",
+  "antwort": "100 bis 120",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "100–120",
+   "100-120 Mal pro Minute"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Wie heißt das Gerät, das bei Kammerflimmern einen Stromstoß abgibt und oft öffentlich zugänglich hängt?",
+  "antwort": "Defibrillator",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "AED",
+   "Defi"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "In welcher Schlafphase träumen wir am lebhaftesten?",
+  "antwort": "REM-Schlaf",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "REM-Phase",
+   "REM"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Wofür steht die Abkürzung REM beim REM-Schlaf?",
+  "antwort": "Rapid Eye Movement",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "schnelle Augenbewegungen"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Wie viele Stunden Schlaf pro Nacht werden Erwachsenen ungefähr empfohlen?",
+  "antwort": "7 bis 9",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "7–9",
+   "7-9 Stunden",
+   "8"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Wie heißt der Handgriff mit ruckartigem Druck auf den Oberbauch, der bei Erstickungsgefahr durch einen Fremdkörper helfen soll?",
+  "antwort": "Heimlich-Manöver",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Heimlich-Handgriff",
+   "Heimlich-Griff",
+   "Oberbauchkompression"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Wie heißt die Erste-Hilfe-Regel bei Sportverletzungen, deren Buchstaben für Pause, Eis, Compression und Hochlagern stehen?",
+  "antwort": "PECH-Regel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "PECH",
+   "PECH-Schema"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Wie heißen nächtliche Atemaussetzer im Schlaf, die oft mit lautem Schnarchen einhergehen?",
+  "antwort": "Schlafapnoe",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Schlafapnoe-Syndrom",
+   "obstruktive Schlafapnoe"
+  ]
+ },
+ {
+  "gebiet": "koerper",
+  "katalog": "koerper-gesundheit-ernaehrung",
+  "block": "Schlaf, Erste Hilfe und Alltagsgesundheit",
+  "frage": "Ab welcher Körpertemperatur spricht man bei Erwachsenen von Fieber?",
+  "antwort": "38 °C",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "38",
+   "38 Grad",
+   "ab 38 °C"
+  ]
+ }
+]

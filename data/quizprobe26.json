@@ -1,0 +1,1594 @@
+[
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Welcher Seefahrer erreichte 1492 im Auftrag Spaniens Amerika?",
+  "antwort": "Christoph Kolumbus",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kolumbus",
+   "Christopher Columbus",
+   "Columbus"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Mit welchem Schiff kamen die Pilgerväter 1620 nach Nordamerika?",
+  "antwort": "Mayflower",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Wie hieß die erste dauerhafte englische Siedlung in Nordamerika, gegründet 1607 in Virginia?",
+  "antwort": "Jamestown",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Aus wie vielen Kolonien gingen die Vereinigten Staaten ursprünglich hervor?",
+  "antwort": "13",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "dreizehn"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Wie heißt der Protest von 1773, bei dem Kolonisten Teeladungen in ein Hafenbecken warfen?",
+  "antwort": "Boston Tea Party",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "In welchem Jahr wurde die Unabhängigkeitserklärung der USA verabschiedet?",
+  "antwort": "1776",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Wer gilt als Hauptautor der Unabhängigkeitserklärung?",
+  "antwort": "Thomas Jefferson",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Jefferson"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "In welcher Stadt wurde die Unabhängigkeitserklärung verabschiedet?",
+  "antwort": "Philadelphia",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Wer war der erste Präsident der USA?",
+  "antwort": "George Washington",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Washington"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Welcher Gründervater ist auf dem 100-Dollar-Schein abgebildet?",
+  "antwort": "Benjamin Franklin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Franklin"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Von welchem Land kauften die USA 1803 das Louisiana-Territorium?",
+  "antwort": "Frankreich",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Wie heißt die Expedition von 1804 bis 1806, die den Westen bis zum Pazifik erkundete?",
+  "antwort": "Lewis-und-Clark-Expedition",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Lewis und Clark",
+   "Lewis-and-Clark-Expedition"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Gründung und frühe Geschichte der USA",
+  "frage": "Von welchem Land kauften die USA 1867 Alaska?",
+  "antwort": "Russland",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Russisches Kaiserreich"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "In welchem Jahr begann der Amerikanische Bürgerkrieg?",
+  "antwort": "1861",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Welcher Präsident führte die Nordstaaten durch den Bürgerkrieg?",
+  "antwort": "Abraham Lincoln",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Lincoln"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Wie nannte sich der Zusammenschluss der abtrünnigen Südstaaten im Bürgerkrieg?",
+  "antwort": "Konföderierte Staaten von Amerika",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Konföderation",
+   "Konföderierte Staaten",
+   "Confederate States of America"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Wer war der bekannteste General der Südstaaten-Armee im Bürgerkrieg?",
+  "antwort": "Robert E. Lee",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Robert Lee",
+   "Lee"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Welche Schlacht in Pennsylvania 1863 gilt als Wendepunkt des Bürgerkriegs?",
+  "antwort": "Schlacht von Gettysburg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gettysburg"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Wer erschoss Abraham Lincoln 1865 in einem Theater in Washington?",
+  "antwort": "John Wilkes Booth",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Booth"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Der wievielte Zusatzartikel zur US-Verfassung schaffte 1865 die Sklaverei ab?",
+  "antwort": "13.",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "13",
+   "dreizehnte",
+   "13. Zusatzartikel"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "In welchem Jahr traten die USA in den Ersten Weltkrieg ein?",
+  "antwort": "1917",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Wie nennt man das landesweite Alkoholverbot in den USA von 1920 bis 1933?",
+  "antwort": "Prohibition",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Wie hieß das Reform- und Konjunkturprogramm von Franklin D. Roosevelt in den 1930er-Jahren?",
+  "antwort": "New Deal",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Welchen US-Marinestützpunkt auf Hawaii griff Japan am 7. Dezember 1941 an?",
+  "antwort": "Pearl Harbor",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Auf welche japanische Stadt warfen die USA am 6. August 1945 die erste Atombombe?",
+  "antwort": "Hiroshima",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Bürgerkrieg bis Weltkriege",
+  "frage": "Wie hieß das geheime US-Forschungsprogramm zum Bau der Atombombe?",
+  "antwort": "Manhattan-Projekt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Manhattan Project",
+   "Manhattan-Project"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Aus wie vielen Bundesstaaten bestehen die USA?",
+  "antwort": "50",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünfzig"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Für wie viele Jahre wird der US-Präsident gewählt?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier",
+   "vier Jahre"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Wie heißt die Kammer des US-Kongresses, deren Abgeordnete alle zwei Jahre gewählt werden?",
+  "antwort": "Repräsentantenhaus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "House of Representatives"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Wie viele Senatoren stellt jeder US-Bundesstaat?",
+  "antwort": "2",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zwei"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Wie heißt das Gremium, das formal den US-Präsidenten wählt?",
+  "antwort": "Electoral College",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wahlleutekollegium",
+   "Wahlmännerkollegium",
+   "Wahlmänner"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Wie viele Wahlleutestimmen braucht ein Kandidat mindestens, um US-Präsident zu werden?",
+  "antwort": "270",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Welcher US-Präsident trat 1974 infolge der Watergate-Affäre zurück?",
+  "antwort": "Richard Nixon",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nixon"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Wer war der erste afroamerikanische Präsident der USA?",
+  "antwort": "Barack Obama",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Obama"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Welcher US-Präsident wurde am 22. November 1963 in Dallas erschossen?",
+  "antwort": "John F. Kennedy",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kennedy",
+   "JFK"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Welcher US-Präsident wurde als einziger viermal gewählt?",
+  "antwort": "Franklin D. Roosevelt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Franklin Roosevelt",
+   "Roosevelt",
+   "FDR"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Welches Tier ist das Symbol der Demokratischen Partei?",
+  "antwort": "Esel",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Wie viele Richter gehören dem Obersten Gerichtshof der USA an?",
+  "antwort": "9",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "neun"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Präsidenten und Politisches System",
+  "frage": "Welcher Präsident hatte vor Donald Trump als einziger zwei nicht aufeinanderfolgende Amtszeiten?",
+  "antwort": "Grover Cleveland",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Cleveland"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Wer hielt 1963 in Washington die Rede „I Have a Dream“?",
+  "antwort": "Martin Luther King",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Martin Luther King Jr.",
+   "MLK"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Welche Afroamerikanerin weigerte sich 1955 in Montgomery, ihren Sitzplatz im Bus für einen Weißen freizumachen?",
+  "antwort": "Rosa Parks",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Parks"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Welcher Bürgerrechtler und frühere Sprecher der „Nation of Islam“ wurde 1965 in New York ermordet?",
+  "antwort": "Malcolm X",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Wie heißt die Konfrontation von 1962 um sowjetische Atomraketen auf einer Karibikinsel?",
+  "antwort": "Kubakrise",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kuba-Krise",
+   "Cuban Missile Crisis"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Wie nannten die Berliner die US-Flugzeuge, die West-Berlin 1948/49 aus der Luft versorgten?",
+  "antwort": "Rosinenbomber",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Wie nennt man die antikommunistische Verfolgungswelle der frühen 1950er-Jahre, benannt nach einem Senator?",
+  "antwort": "McCarthy-Ära",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "McCarthyismus",
+   "McCarthyism"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "In welchem Krieg in Südostasien kämpften die USA vor allem von 1964 bis 1973?",
+  "antwort": "Vietnamkrieg",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Vietnam-Krieg",
+   "Vietnam"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Wer betrat 1969 als erster Mensch den Mond?",
+  "antwort": "Neil Armstrong",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Armstrong"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Wie hieß die NASA-Mission der ersten bemannten Mondlandung?",
+  "antwort": "Apollo 11",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Welcher US-Präsident rief 1987 in Berlin „Mr. Gorbachev, tear down this wall!“?",
+  "antwort": "Ronald Reagan",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Reagan"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Welche Terrororganisation verübte die Anschläge vom 11. September 2001?",
+  "antwort": "al-Qaida",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Al-Qaida",
+   "al-Qaeda",
+   "Al Kaida",
+   "El Kaida"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kalter Krieg, Bürgerrechtsbewegung, 9/11",
+  "frage": "Welches Gebäude des US-Verteidigungsministeriums wurde am 11. September 2001 von einem Flugzeug getroffen?",
+  "antwort": "Pentagon",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt der USA?",
+  "antwort": "Washington, D.C.",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Washington",
+   "Washington DC"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Welcher ist flächenmäßig der größte US-Bundesstaat?",
+  "antwort": "Alaska",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Welcher ist der bevölkerungsreichste US-Bundesstaat?",
+  "antwort": "Kalifornien",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "California"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt von Kalifornien?",
+  "antwort": "Sacramento",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt von Texas?",
+  "antwort": "Austin",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt des Bundesstaats New York?",
+  "antwort": "Albany",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Welcher US-Bundesstaat besteht aus einer Inselgruppe im Pazifik?",
+  "antwort": "Hawaii",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hawaiʻi"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Welche Stadt trägt den Spitznamen „Big Apple“?",
+  "antwort": "New York City",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "New York",
+   "NYC"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Welcher US-Bundesstaat trägt den Beinamen „Sunshine State“?",
+  "antwort": "Florida",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Welche Stadt am Michigansee wird „Windy City“ genannt?",
+  "antwort": "Chicago",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Welcher ist flächenmäßig der kleinste US-Bundesstaat?",
+  "antwort": "Rhode Island",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Bundesstaaten, Städte und Hauptstädte",
+  "frage": "Wie heißt die Hauptstadt von Florida?",
+  "antwort": "Tallahassee",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Welcher große Strom fließt durch New Orleans und mündet kurz danach ins Meer?",
+  "antwort": "Mississippi",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Welcher Nationalpark in den USA gilt als ältester Nationalpark der Welt (1872)?",
+  "antwort": "Yellowstone",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Yellowstone-Nationalpark"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Welcher Fluss hat den Grand Canyon geformt?",
+  "antwort": "Colorado",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Colorado River"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "In welchem US-Bundesstaat liegt der Grand Canyon?",
+  "antwort": "Arizona",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Wie heißt der höchste Berg Nordamerikas in Alaska?",
+  "antwort": "Denali",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mount McKinley",
+   "McKinley"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Welcher der fünf Großen Seen liegt als einziger vollständig in den USA?",
+  "antwort": "Michigansee",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Lake Michigan",
+   "Michigan-See"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Welche berühmten Wasserfälle liegen an der Grenze zwischen den USA und Kanada?",
+  "antwort": "Niagarafälle",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Niagara Falls",
+   "Niagara-Fälle"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Wie heißt das Wüstental in Kalifornien, einer der heißesten Orte der Erde?",
+  "antwort": "Death Valley",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Tal des Todes"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Welches Hochgebirge erstreckt sich im Westen Nordamerikas von Kanada bis New Mexico?",
+  "antwort": "Rocky Mountains",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Rockies",
+   "Felsengebirge"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Wie heißt das Mittelgebirge im Osten der USA, das sich von Alabama bis Kanada zieht?",
+  "antwort": "Appalachen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Appalachian Mountains"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "In welchen Berg in South Dakota sind vier Präsidentenköpfe gemeißelt?",
+  "antwort": "Mount Rushmore",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Rushmore"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Landschaften, Flüsse, Nationalparks",
+  "frage": "Welche ehemalige Gefängnisinsel liegt in der Bucht von San Francisco?",
+  "antwort": "Alcatraz",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Welcher Stadtteil von Los Angeles ist das Synonym für die US-Filmindustrie?",
+  "antwort": "Hollywood",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Wie heißt der wichtigste Filmpreis der USA, eine goldene Statuette?",
+  "antwort": "Oscar",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Academy Award"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Wer wird als „King of Pop“ bezeichnet?",
+  "antwort": "Michael Jackson",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jackson"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Wer wird als „King of Rock ’n’ Roll“ bezeichnet?",
+  "antwort": "Elvis Presley",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Elvis"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "In welcher Stadt in Tennessee liegt Elvis Presleys Anwesen Graceland?",
+  "antwort": "Memphis",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Welche gelbe Zeichentrickfamilie lebt in der Stadt Springfield?",
+  "antwort": "Die Simpsons",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Simpsons",
+   "The Simpsons"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Welche Musikrichtung entstand Anfang des 20. Jahrhunderts in New Orleans?",
+  "antwort": "Jazz",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Welche US-Sängerin ging 2023 bis 2024 mit der „Eras Tour“ auf Welttournee?",
+  "antwort": "Taylor Swift",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Swift"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Wie heißt der wichtigste US-Musikpreis, der jährlich in Los Angeles verliehen wird?",
+  "antwort": "Grammy",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Grammy Award",
+   "Grammys"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Welche Stadt in Tennessee gilt als Hauptstadt der Country-Musik?",
+  "antwort": "Nashville",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Welcher Rapper aus Detroit spielte die Hauptrolle im Film „8 Mile“?",
+  "antwort": "Eminem",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Marshall Mathers"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "Wer führte Regie bei „Der Pate“ (1972)?",
+  "antwort": "Francis Ford Coppola",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Coppola"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Popkultur (Hollywood, Musik, TV)",
+  "frage": "In welcher Serie wird ein Chemielehrer aus Albuquerque zum Drogenproduzenten?",
+  "antwort": "Breaking Bad",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Wie heißt das Endspiel der National Football League (NFL)?",
+  "antwort": "Super Bowl",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Welche Sportart wird in der Profiliga NBA gespielt?",
+  "antwort": "Basketball",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Welche Sportart wird in der Profiliga MLB gespielt?",
+  "antwort": "Baseball",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Wie lautet die Abkürzung der nordamerikanischen Eishockey-Profiliga?",
+  "antwort": "NHL",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "National Hockey League"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Wie viele Punkte bringt ein Touchdown im American Football (ohne Extrapunkt)?",
+  "antwort": "6",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Welcher Basketballstar gewann in den 1990er-Jahren sechs Meistertitel mit den Chicago Bulls?",
+  "antwort": "Michael Jordan",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jordan"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Wie heißt die Finalserie der Major League Baseball?",
+  "antwort": "World Series",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Wie heißt die Trophäe für den Meister der NHL?",
+  "antwort": "Stanley Cup",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Welcher deutsche Basketballer wurde 2011 mit den Dallas Mavericks NBA-Meister?",
+  "antwort": "Dirk Nowitzki",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nowitzki"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Welcher Quarterback gewann als Spieler sieben Super Bowls?",
+  "antwort": "Tom Brady",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Brady"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Wie heißt das jährliche Auswahlverfahren, bei dem Profiteams Nachwuchsspieler vom College verpflichten?",
+  "antwort": "Draft",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "NFL Draft",
+   "NBA Draft"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Wie wird das K.-o.-Turnier im College-Basketball im März umgangssprachlich genannt?",
+  "antwort": "March Madness",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Sport (NFL, NBA, MLB, NHL, College)",
+  "frage": "Wie viele Spieler eines Teams stehen beim Basketball gleichzeitig auf dem Feld?",
+  "antwort": "5",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Wie heißt die Region südlich von San Francisco, das Zentrum der Tech-Industrie?",
+  "antwort": "Silicon Valley",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Wer gründete 1976 zusammen mit Steve Wozniak die Firma Apple?",
+  "antwort": "Steve Jobs",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jobs"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Wer gründete 1975 zusammen mit Paul Allen die Firma Microsoft?",
+  "antwort": "Bill Gates",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gates"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Wer gründete 1994 den Onlinehändler Amazon?",
+  "antwort": "Jeff Bezos",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bezos"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Welcher US-Erfinder ließ 1880 seine Kohlefaden-Glühlampe patentieren?",
+  "antwort": "Thomas Edison",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Edison",
+   "Thomas Alva Edison"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Welchen Brüdern gelang 1903 der erste gesteuerte Motorflug?",
+  "antwort": "Gebrüder Wright",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wright-Brüder",
+   "Wright Brothers",
+   "Orville und Wilbur Wright",
+   "Wright"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Welcher Unternehmer führte 1913 das Fließband in der Autoproduktion ein?",
+  "antwort": "Henry Ford",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ford"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "In welcher Straße in Manhattan liegt die New Yorker Börse?",
+  "antwort": "Wall Street",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Welches Getränk wurde 1886 von einem Apotheker in Atlanta erfunden?",
+  "antwort": "Coca-Cola",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Coca Cola",
+   "Cola"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Wie heißt der bekannteste US-Aktienindex, benannt nach Charles Dow und Edward Jones?",
+  "antwort": "Dow Jones",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dow Jones Industrial Average",
+   "Dow"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Welcher aus Franken stammende Einwanderer gründete das Jeans-Unternehmen Levi’s?",
+  "antwort": "Levi Strauss",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Strauss"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Wirtschaft, Marken, Silicon Valley, Erfindungen",
+  "frage": "Wie heißt die Zentralbank der USA?",
+  "antwort": "Federal Reserve",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Fed",
+   "Federal Reserve System"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Wie heißt die Hauptstadt Kanadas?",
+  "antwort": "Ottawa",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Wie heißt die Hauptstadt Mexikos?",
+  "antwort": "Mexiko-Stadt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mexiko City",
+   "Mexico City",
+   "Ciudad de México"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Welches Blatt ist auf der Flagge Kanadas abgebildet?",
+  "antwort": "Ahornblatt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ahorn",
+   "Maple Leaf"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Welche Amtssprache hat Kanada neben Englisch?",
+  "antwort": "Französisch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "In welcher kanadischen Provinz ist Französisch die einzige Amtssprache?",
+  "antwort": "Québec",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Quebec"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Welche ist die größte Stadt Kanadas?",
+  "antwort": "Toronto",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Welches Volk gründete die Stadt Tenochtitlan, auf deren Ruinen Mexiko-Stadt steht?",
+  "antwort": "Azteken",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mexica"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Welcher spanische Konquistador eroberte ab 1519 das Aztekenreich?",
+  "antwort": "Hernán Cortés",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Cortés",
+   "Cortez",
+   "Hernando Cortez"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Auf welcher mexikanischen Halbinsel liegen Cancún und Chichén Itzá?",
+  "antwort": "Yucatán",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Yucatan",
+   "Halbinsel Yucatán"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Wie heißt der mexikanische Feiertag Anfang November, an dem man der Verstorbenen gedenkt?",
+  "antwort": "Día de los Muertos",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dia de los Muertos",
+   "Tag der Toten",
+   "Totentag"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Welche mexikanische Malerin wurde durch ihre Selbstporträts weltberühmt?",
+  "antwort": "Frida Kahlo",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kahlo"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Kanada und Mexiko",
+  "frage": "Wie hieß das 1994 in Kraft getretene Freihandelsabkommen zwischen USA, Kanada und Mexiko?",
+  "antwort": "NAFTA",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Nordamerikanisches Freihandelsabkommen"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Wie heißt die Hauptstadt Brasiliens?",
+  "antwort": "Brasília",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Brasilia"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Welche Amtssprache hat Brasilien?",
+  "antwort": "Portugiesisch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Wie heißt die Hauptstadt Argentiniens?",
+  "antwort": "Buenos Aires",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Welcher Fluss durchfließt den größten Regenwald der Erde und ist der wasserreichste Fluss der Welt?",
+  "antwort": "Amazonas",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Amazon"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Wie heißt der höchste Berg Amerikas, in den argentinischen Anden?",
+  "antwort": "Aconcagua",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Wie heißt die Ruinenstadt der Inka hoch in den Anden Perus?",
+  "antwort": "Machu Picchu",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Nach welchem Unabhängigkeitskämpfer ist Bolivien benannt?",
+  "antwort": "Simón Bolívar",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Simon Bolivar",
+   "Bolívar"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Welches lange, schmale Land erstreckt sich an der Pazifikküste Südamerikas über rund 4.300 km?",
+  "antwort": "Chile",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Wie heißt die Hauptstadt Kubas?",
+  "antwort": "Havanna",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "La Habana",
+   "Havana"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Welcher Revolutionär regierte Kuba ab 1959 fast fünf Jahrzehnte lang?",
+  "antwort": "Fidel Castro",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Castro"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Welcher Kanal in Mittelamerika verbindet Atlantik und Pazifik?",
+  "antwort": "Panamakanal",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Panama-Kanal",
+   "Panama Canal"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Welche zu Ecuador gehörende Inselgruppe inspirierte Charles Darwin zu seiner Evolutionstheorie?",
+  "antwort": "Galápagos-Inseln",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Galapagos",
+   "Galápagos",
+   "Galapagosinseln"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "Südamerika und Karibik",
+  "frage": "Auf welcher Karibikinsel liegen Haiti und die Dominikanische Republik?",
+  "antwort": "Hispaniola",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "An welchem Datum feiern die USA ihren Unabhängigkeitstag?",
+  "antwort": "4. Juli",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "4th of July",
+   "Fourth of July",
+   "4.7."
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Welcher Feiertag wird in den USA am vierten Donnerstag im November gefeiert?",
+  "antwort": "Thanksgiving",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Erntedankfest"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Wie heißt der Rabatt-Einkaufstag direkt nach Thanksgiving?",
+  "antwort": "Black Friday",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Wie viele Sterne hat die Flagge der USA?",
+  "antwort": "50",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünfzig"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Wie viele Streifen hat die Flagge der USA?",
+  "antwort": "13",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "dreizehn"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Welcher Greifvogel ist das Wappentier der USA?",
+  "antwort": "Weißkopfseeadler",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Weißkopf-Seeadler",
+   "Bald Eagle",
+   "Adler"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Welches Land schenkte den USA die Freiheitsstatue?",
+  "antwort": "Frankreich",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Wie heißt die Nationalhymne der USA?",
+  "antwort": "The Star-Spangled Banner",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Star-Spangled Banner",
+   "Star Spangled Banner"
+  ]
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Wie heißt die Symbolfigur der US-Regierung mit Zylinder und Ziegenbart?",
+  "antwort": "Uncle Sam",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Welches Motto steht auf allen US-Dollar-Banknoten?",
+  "antwort": "In God We Trust",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Über welche Insel im Hafen von New York kamen bis 1954 Millionen Einwanderer ins Land?",
+  "antwort": "Ellis Island",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "amerika",
+  "katalog": "usa-amerika",
+  "block": "US-Alltag, Feiertage, Symbole",
+  "frage": "Wie heißt der US-Gedenktag für gefallene Soldaten am letzten Montag im Mai?",
+  "antwort": "Memorial Day",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ }
+]

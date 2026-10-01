@@ -1,0 +1,1603 @@
+[
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Zu welcher Wortart gehören „schnell“, „schön“ und „groß“?",
+  "antwort": "Adjektiv",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Eigenschaftswort",
+   "Adjektive"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Welche Wortart bezeichnet Lebewesen, Dinge und Begriffe und wird im Deutschen großgeschrieben?",
+  "antwort": "Nomen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Substantiv",
+   "Hauptwort",
+   "Namenwort"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Wie heißt die Wortart von „der“, „die“ und „das“, wenn sie vor einem Nomen stehen?",
+  "antwort": "Artikel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Begleiter",
+   "bestimmter Artikel"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Mit welcher Frage ermittelt man das Subjekt eines Satzes?",
+  "antwort": "Wer oder was?",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wer?",
+   "wer oder was"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Welches Satzglied erfragt man mit „Wen oder was?“?",
+  "antwort": "Akkusativobjekt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Akkusativ-Objekt",
+   "Objekt im Akkusativ"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Welches Satzglied erfragt man mit „Wem?“?",
+  "antwort": "Dativobjekt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dativ-Objekt",
+   "Objekt im Dativ"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Wie heißt das Satzglied, das aussagt, was jemand tut oder was geschieht, und aus dem Verb gebildet wird?",
+  "antwort": "Prädikat",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Satzaussage"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Zu welcher Wortart gehören „und“, „oder“ und „weil“?",
+  "antwort": "Konjunktion",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bindewort",
+   "Konjunktionen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Zu welcher Wortart gehören „auf“, „unter“ und „neben“?",
+  "antwort": "Präposition",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Verhältniswort",
+   "Präpositionen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Zu welcher Wortart gehören „gestern“, „hier“ und „gern“?",
+  "antwort": "Adverb",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Umstandswort",
+   "Adverbien"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Wie nennt man das Satzglied, das Zeit, Ort, Art und Weise oder Grund einer Handlung angibt?",
+  "antwort": "Adverbiale Bestimmung",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Adverbial",
+   "Umstandsbestimmung",
+   "Adverbiale"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Zu welcher Wortart gehören „autsch“, „hurra“ und „pst“?",
+  "antwort": "Interjektion",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ausrufewort",
+   "Empfindungswort"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Wie heißt ein Nebensatz, der mit „der“, „die“, „das“ oder „welcher“ eingeleitet wird und sich auf ein Nomen bezieht?",
+  "antwort": "Relativsatz",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Wortarten und Satzglieder",
+  "frage": "Wie nennt man einen Satzteil, der ein Nomen näher bestimmt, aber kein eigenes Satzglied ist (z. B. „das Haus meines Vaters“)?",
+  "antwort": "Attribut",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Beifügung"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Wie viele Zeitformen (Tempora) unterscheidet die deutsche Schulgrammatik?",
+  "antwort": "6",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Welche Zeitform ist „ich bin gegangen“?",
+  "antwort": "Perfekt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vollendete Gegenwart"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Welche Zeitform ist „ich ging“?",
+  "antwort": "Präteritum",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Imperfekt",
+   "Vergangenheit",
+   "einfache Vergangenheit"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Welche Zeitform ist „ich war gegangen“?",
+  "antwort": "Plusquamperfekt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vollendete Vergangenheit",
+   "Vorvergangenheit"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Welche Zeitform ist „ich werde gegangen sein“?",
+  "antwort": "Futur II",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "vollendete Zukunft",
+   "Futur 2",
+   "Futur zwei"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Wie lautet das Partizip II von „schwimmen“?",
+  "antwort": "geschwommen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Wie nennt man die Befehlsform eines Verbs?",
+  "antwort": "Imperativ",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Befehlsform"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Wie lautet der Imperativ Singular von „essen“?",
+  "antwort": "iss",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "iss!"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Welchen Modus verwendet man im Deutschen standardsprachlich für die indirekte Rede?",
+  "antwort": "Konjunktiv I",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Konjunktiv 1",
+   "Konjunktiv eins",
+   "Möglichkeitsform"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Wie nennt man Verben, die im Präteritum ihren Stammvokal ändern, z. B. „singen – sang – gesungen“?",
+  "antwort": "starke Verben",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "unregelmäßige Verben",
+   "starkes Verb"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Welche Verbform ist „lachend“?",
+  "antwort": "Partizip I",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Partizip Präsens",
+   "Mittelwort der Gegenwart",
+   "Partizip 1"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Wie nennt man die Verbform in „Der Kuchen wird gebacken“?",
+  "antwort": "Passiv",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Vorgangspassiv",
+   "Leideform"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "Wie lautet das Partizip II von „senden“ im Sinne von „im Fernsehen oder Radio ausstrahlen“?",
+  "antwort": "gesendet",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Zeiten und Verbformen (Deutsch)",
+  "frage": "„Das Bild ___ gestern an der Wand.“ – Welche Präteritumsform von „hängen“ ist hier richtig?",
+  "antwort": "hing",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Wie viele Fälle hat die deutsche Sprache?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Wie heißt der 2. Fall im Deutschen?",
+  "antwort": "Genitiv",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wesfall"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Mit welchem Fragewort erfragt man den Genitiv?",
+  "antwort": "Wessen?",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "wessen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Welchen Fall verlangt „wegen“ in der Standardsprache?",
+  "antwort": "Genitiv",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wesfall",
+   "2. Fall"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Welchen Fall verlangt die Präposition „mit“?",
+  "antwort": "Dativ",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wemfall",
+   "3. Fall"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Welchen Fall verlangt die Präposition „für“?",
+  "antwort": "Akkusativ",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wenfall",
+   "4. Fall"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Wie lautet der Buchtitel von Bastian Sick: „Der Dativ ist dem Genitiv sein …“?",
+  "antwort": "Tod",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Welcher Fall folgt standardsprachlich auf „trotz“?",
+  "antwort": "Genitiv",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wesfall",
+   "2. Fall"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "„Ich lege das Buch auf ___ Tisch.“ – Welcher Fall steht hier nach „auf“?",
+  "antwort": "Akkusativ",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wenfall",
+   "4. Fall",
+   "den"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Wie nennt man Präpositionen wie „in“, „auf“ und „über“, die je nach Frage (Wo? oder Wohin?) Dativ oder Akkusativ verlangen?",
+  "antwort": "Wechselpräpositionen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wechselpräposition"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "„Ich helfe ___ Mann.“ – Heißt es „dem“ oder „den“?",
+  "antwort": "dem",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Wie lautet der Genitiv Singular von „der Name“ (mit Artikel)?",
+  "antwort": "des Namens",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Namens"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Wie lautet der Dativ Singular von „der Präsident“ (mit Artikel)?",
+  "antwort": "dem Präsidenten",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Präsidenten"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fälle und Fallfehler",
+  "frage": "Welchen Fall verlangt die Präposition „gemäß“?",
+  "antwort": "Dativ",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Wemfall",
+   "3. Fall"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "„Ich hoffe, ___ du kommst.“ – „das“ oder „dass“?",
+  "antwort": "dass",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Was ist richtig: „Standart“ oder „Standard“?",
+  "antwort": "Standard",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Wie viele „h“ enthält das Wort „Rhythmus“?",
+  "antwort": "2",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zwei"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Wie heißt das bekannteste Wörterbuch der deutschen Rechtschreibung?",
+  "antwort": "Duden",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "der Duden"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Wie lautet der Vorname von Duden, nach dem das Rechtschreibwörterbuch benannt ist?",
+  "antwort": "Konrad",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Konrad Duden"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Wie schreibt man nach der Rechtschreibreform das frühere Wort „Schiffahrt“?",
+  "antwort": "Schifffahrt",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Nach kurzem Vokal steht seit der Reform „ss“ statt „ß“ – wie schreibt man daher heute „Fluß“?",
+  "antwort": "Fluss",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Welches Satzzeichen trennt einen Nebensatz vom Hauptsatz?",
+  "antwort": "Komma",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Beistrich"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Wie heißt das Satzzeichen „;“?",
+  "antwort": "Semikolon",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Strichpunkt"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Wie nennt man das Zeichen „&“?",
+  "antwort": "Et-Zeichen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Und-Zeichen",
+   "Ampersand",
+   "Kaufmanns-Und"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Wie nennt man die Anführungszeichen in der Form » … « bzw. « … »?",
+  "antwort": "Guillemets",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "französische Anführungszeichen",
+   "Chevrons"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Wie nennt man es, wenn ein Verb oder Adjektiv zum Nomen wird, z. B. „das Laufen“?",
+  "antwort": "Nominalisierung",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Substantivierung"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "„Ich warte ___ einer Stunde.“ – „seit“ oder „seid“?",
+  "antwort": "seit",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Rechtschreibung und Zeichensetzung",
+  "frage": "Welcher Großbuchstabe wurde 2017 offiziell in die deutsche Rechtschreibung aufgenommen?",
+  "antwort": "ẞ",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "großes ß",
+   "großes Eszett",
+   "Versal-Eszett",
+   "großes scharfes S"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Welches Stilmittel liegt vor: „Er ist stark wie ein Bär“?",
+  "antwort": "Vergleich",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie heißt ein bildhafter Ausdruck ohne „wie“, etwa „ein Meer von Tränen“?",
+  "antwort": "Metapher",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie nennt man die Wiederholung gleicher Anfangslaute, z. B. „Milch macht müde Männer munter“?",
+  "antwort": "Alliteration",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Stabreim"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie nennt man eine Frage, auf die keine Antwort erwartet wird?",
+  "antwort": "rhetorische Frage",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Welches Stilmittel ist „Ich habe dir das schon tausendmal gesagt“?",
+  "antwort": "Hyperbel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Übertreibung"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Welches Stilmittel liegt vor in „Die Sonne lacht“?",
+  "antwort": "Personifikation",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Personifizierung",
+   "Vermenschlichung"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie nennt man es, wenn das Gegenteil des Gesagten gemeint ist, z. B. „Das hast du ja toll gemacht!“ nach einem Missgeschick?",
+  "antwort": "Ironie",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie lautet der Fachbegriff für Lautmalerei wie „kikeriki“ oder „zischen“?",
+  "antwort": "Onomatopoesie",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Onomatopöie",
+   "Onomatopoie",
+   "Lautmalerei"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie heißt die Wiederholung desselben Wortes am Anfang aufeinanderfolgender Sätze oder Verse?",
+  "antwort": "Anapher",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie nennt man die Verbindung zweier sich widersprechender Begriffe wie „bittersüß“ oder „schwarze Milch“?",
+  "antwort": "Oxymoron",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie nennt man eine beschönigende Umschreibung wie „entschlafen“ für „sterben“?",
+  "antwort": "Euphemismus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Beschönigung"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie heißt das Stilmittel, bei dem etwas durch Verneinung des Gegenteils ausgedrückt wird, z. B. „nicht schlecht“ für „gut“?",
+  "antwort": "Litotes",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie nennt man das Stilmittel „ein Teil für das Ganze“, etwa „ein Dach über dem Kopf“ für ein Haus?",
+  "antwort": "Pars pro toto",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Synekdoche"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Stilmittel und rhetorische Figuren",
+  "frage": "Wie heißt die Überkreuzstellung von Satzgliedern, z. B. „Ich schlafe am Tag, in der Nacht wache ich“?",
+  "antwort": "Chiasmus",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Ergänze das Sprichwort: „Lügen haben kurze …“",
+  "antwort": "Beine",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Ergänze: „Jemandem einen Bären …“ (ihm etwas Unwahres erzählen)",
+  "antwort": "aufbinden",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Ergänze: „Da liegt der Hund …“",
+  "antwort": "begraben",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Ergänze: „Den Nagel auf den … treffen“",
+  "antwort": "Kopf",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Was bedeutet die Redewendung „Schwein haben“?",
+  "antwort": "Glück haben",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Glück"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Was bedeutet umgangssprachlich „den Löffel abgeben“?",
+  "antwort": "sterben",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Aus welchem Buch stammen Redewendungen wie „sein Licht unter den Scheffel stellen“ und „Perlen vor die Säue werfen“?",
+  "antwort": "Bibel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "die Bibel",
+   "Neues Testament"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Ergänze: „Mit ihm ist nicht gut … essen“",
+  "antwort": "Kirschen",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Für welche griechischen Buchstaben stehen A und O in der Redewendung „das A und O“?",
+  "antwort": "Alpha und Omega",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Alpha, Omega"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Was bedeutet die Redewendung „Fersengeld geben“?",
+  "antwort": "fliehen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "weglaufen",
+   "flüchten",
+   "davonlaufen",
+   "abhauen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Was bedeutet „auf dem Holzweg sein“?",
+  "antwort": "sich irren",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "irren",
+   "falsch liegen",
+   "sich täuschen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Aus welcher Jagdmethode stammt die Redewendung „jemandem auf den Leim gehen“?",
+  "antwort": "Vogelfang",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vogeljagd",
+   "Leimrute"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "In welcher Stadt standen die Statuen, auf die die Redewendung „bis in die Puppen“ zurückgeht?",
+  "antwort": "Berlin",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Redewendungen und ihre Herkunft",
+  "frage": "Was war der „Stegreif“ in der Redewendung „aus dem Stegreif“ ursprünglich?",
+  "antwort": "Steigbügel",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Welches deutsche Wort für eine Vorschuleinrichtung wurde unverändert ins Englische übernommen?",
+  "antwort": "Kindergarten",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Aus welcher Sprache stammen viele Musikbegriffe wie „piano“, „forte“ und „allegro“?",
+  "antwort": "Italienisch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Aus welcher Sprache stammen „Portemonnaie“, „Trottoir“ und „Friseur“?",
+  "antwort": "Französisch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Was bedeutet der lateinische Ausspruch „Carpe diem“?",
+  "antwort": "Nutze den Tag",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pflücke den Tag",
+   "Genieße den Tag"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Aus welcher Sprache stammt das Wort „Tsunami“?",
+  "antwort": "Japanisch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Aus welcher Sprache stammen „Algebra“, „Zucker“ und „Alkohol“?",
+  "antwort": "Arabisch",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Wie heißt die Wissenschaft von der Herkunft der Wörter?",
+  "antwort": "Etymologie",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Wie nennt man ein scheinbar englisches Wort, das es im Englischen so nicht gibt, wie „Handy“ oder „Beamer“?",
+  "antwort": "Scheinanglizismus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Pseudoanglizismus"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Was bedeutet das aus dem Griechischen stammende Wort „Demokratie“ wörtlich?",
+  "antwort": "Volksherrschaft",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Herrschaft des Volkes"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Aus welcher Sprache stammt das Wort „Joghurt“?",
+  "antwort": "Türkisch",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Wie nennt man ein aus einer fremden Sprache übernommenes, an die eigene Sprache angepasstes Wort wie „Fenster“ (von lateinisch „fenestra“)?",
+  "antwort": "Lehnwort",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Aus welcher Sprache der Azteken stammen die Wörter „Tomate“, „Schokolade“ und „Avocado“?",
+  "antwort": "Nahuatl",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Aztekisch"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Fremdwörter und Herkunft von Wörtern",
+  "frage": "Aus welcher Sprache stammt das Wort „Roboter“?",
+  "antwort": "Tschechisch",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Wie lautet die Simple-Past-Form von „go“?",
+  "antwort": "went",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Wie lautet die Simple-Past-Form von „bring“?",
+  "antwort": "brought",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Welche englische Zeitform bildet man mit „have/has“ und dem Past Participle?",
+  "antwort": "Present Perfect",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Present Perfect Simple"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Wie lautet der Plural von „mouse“?",
+  "antwort": "mice",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Welches Hilfsverb braucht man im Simple Present für Fragen und Verneinungen?",
+  "antwort": "do",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "do/does",
+   "does"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Welche Zeitform steht beim if-Satz Typ 1 im if-Teil?",
+  "antwort": "Simple Present",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Present Simple",
+   "Präsens"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Welche Zeitform steht beim if-Satz Typ 2 im if-Teil (z. B. „If I ___ rich, …“)?",
+  "antwort": "Simple Past",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Past Simple",
+   "Präteritum"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Wie lautet der Plural von „sheep“?",
+  "antwort": "sheep",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Wie lautet das Past Participle von „swim“?",
+  "antwort": "swum",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Wie lautet der Komparativ von „bad“?",
+  "antwort": "worse",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Wie lautet die Kurzform von „will not“?",
+  "antwort": "won't",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "won’t"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Welche Zeitform steht beim if-Satz Typ 3 im if-Teil?",
+  "antwort": "Past Perfect",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Plusquamperfekt",
+   "Past Perfect Simple"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: Grammatik",
+  "frage": "Wie lautet das Past Participle von „lie“ im Sinne von „liegen“?",
+  "antwort": "lain",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was bedeutet das englische Verb „become“ auf Deutsch?",
+  "antwort": "werden",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was bedeutet das englische Wort „gift“?",
+  "antwort": "Geschenk",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Wie heißt das „Handy“ auf Englisch?",
+  "antwort": "mobile phone",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "mobile",
+   "cell phone",
+   "cellphone",
+   "smartphone"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was bedeutet das englische Wort „brave“?",
+  "antwort": "mutig",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "tapfer"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was bedeutet das englische Wort „chef“?",
+  "antwort": "Koch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Küchenchef"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was bedeutet das englische Wort „sensible“?",
+  "antwort": "vernünftig",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was bedeutet das englische Wort „bald“?",
+  "antwort": "glatzköpfig",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "kahl",
+   "kahlköpfig",
+   "Glatze"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Wie heißt der Rock (Kleidungsstück) auf Englisch?",
+  "antwort": "skirt",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was ist ein „gymnasium“ im Englischen?",
+  "antwort": "Turnhalle",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Sporthalle",
+   "Fitnessstudio"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Wie heißt „Eichhörnchen“ auf Englisch?",
+  "antwort": "squirrel",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Welcher deutschen Zahl entspricht die englische „billion“?",
+  "antwort": "Milliarde",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "1 Milliarde",
+   "1.000.000.000"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was bedeutet das englische Wort „eventually“?",
+  "antwort": "schließlich",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "letztendlich",
+   "irgendwann",
+   "endlich"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: False Friends und Vokabeln",
+  "frage": "Was ist ein „undertaker“ im Englischen?",
+  "antwort": "Bestatter",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Leichenbestatter"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Wie heißt der Aufzug im britischen Englisch?",
+  "antwort": "lift",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Wie heißt der Aufzug im amerikanischen Englisch?",
+  "antwort": "elevator",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Wie heißt der Herbst im amerikanischen Englisch (britisch: „autumn“)?",
+  "antwort": "fall",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Wie schreibt man das britische „colour“ im amerikanischen Englisch?",
+  "antwort": "color",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Ergänze das englische Idiom: „It's raining cats and …“",
+  "antwort": "dogs",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Wie heißt der Bürgersteig im amerikanischen Englisch?",
+  "antwort": "sidewalk",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Was bezeichnen Briten als „chips“?",
+  "antwort": "Pommes frites",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Pommes",
+   "French fries",
+   "fries"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Wie heißt Benzin im britischen Englisch?",
+  "antwort": "petrol",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Welche deutsche Redewendung entspricht „to kill two birds with one stone“?",
+  "antwort": "zwei Fliegen mit einer Klappe schlagen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zwei Fliegen mit einer Klappe"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Was wünscht man jemandem mit „Break a leg!“ auf Deutsch?",
+  "antwort": "Hals- und Beinbruch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "viel Glück",
+   "toi, toi, toi"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Wie heißt das Erdgeschoss im amerikanischen Englisch?",
+  "antwort": "first floor",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Was meinen Briten mit „pants“?",
+  "antwort": "Unterhose",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Unterwäsche",
+   "Unterhosen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Englisch: britisch vs. amerikanisch, Idioms",
+  "frage": "Was bedeutet das englische Idiom „once in a blue moon“?",
+  "antwort": "sehr selten",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "alle Jubeljahre",
+   "selten"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Welche Sprache hat weltweit die meisten Muttersprachler?",
+  "antwort": "Chinesisch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mandarin",
+   "Hochchinesisch",
+   "Mandarin-Chinesisch"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Welche Schrift verwenden Russisch und Bulgarisch?",
+  "antwort": "Kyrillisch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "kyrillische Schrift"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Wer prägte mit seiner Bibelübersetzung im 16. Jahrhundert die neuhochdeutsche Schriftsprache?",
+  "antwort": "Martin Luther",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Luther"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Wie viele Landessprachen hat die Schweiz?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Welche Sprache ist Amtssprache in Brasilien?",
+  "antwort": "Portugiesisch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Welche Sprache hat weltweit die meisten Sprecher insgesamt, also Mutter- und Zweitsprachler zusammen?",
+  "antwort": "Englisch",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Zu welcher großen Sprachfamilie gehört das Deutsche?",
+  "antwort": "indogermanisch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "indoeuropäisch",
+   "indogermanische Sprachen",
+   "indoeuropäische Sprachen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "In welchem Land ist Deutsch neben Französisch und Luxemburgisch Amtssprache?",
+  "antwort": "Luxemburg",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Welche Sprache, gesprochen in Spanien und Frankreich, ist mit keiner anderen bekannten Sprache verwandt?",
+  "antwort": "Baskisch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Euskara"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Welche Brüder begannen 1838 mit dem „Deutschen Wörterbuch“?",
+  "antwort": "Brüder Grimm",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Grimm",
+   "Jacob und Wilhelm Grimm"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Wie heißt die Plansprache, die Ludwik Zamenhof 1887 veröffentlichte?",
+  "antwort": "Esperanto",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Zu welcher Sprachfamilie gehören Finnisch und Ungarisch?",
+  "antwort": "uralische Sprachen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "uralisch",
+   "finno-ugrisch",
+   "finnisch-ugrisch"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "Welche westslawische Minderheitensprache wird in der Lausitz gesprochen?",
+  "antwort": "Sorbisch",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Wendisch"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "sprache-deutsch-englisch",
+  "block": "Sprachen der Welt und Sprachgeschichte",
+  "frage": "In welchem Land werden die meisten Sprachen der Welt gesprochen?",
+  "antwort": "Papua-Neuguinea",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ }
+]
