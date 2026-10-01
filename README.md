@@ -3,10 +3,10 @@
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
 
-**4.317 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**4.545 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (775 Karten: Trainingslehre, Anatomie, Bewegungslehre,
-Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (425 Karten: Grundlagen,
+Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (467 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
 Fakt fragt, sondern nach der Entscheidung davor – siehe unten. Die beiden **Didaktiken** sind
@@ -42,9 +42,9 @@ amerikanisch, Redewendungen, ASAP bis RSVP).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (32 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (47 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (92 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (59 Quiz-Klassiker vom
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (60 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), **Amerika** (67 – Bundesstaaten und ihre Hauptstädte, Konquistadoren, Tango,
 Route 66, Ellis Island, Thanksgiving, Kap Hoorn), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
@@ -4230,6 +4230,62 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Aufräumen und drei neue Gebiete: Spiegelpaare, veraltete Fakten, Prüfsätze 22–24
+
+Diese Runde hatte drei Teile. Gearbeitet haben einzelne Agenten, Autoren und Prüfer je Paket,
+diesmal ohne Workflow.
+
+**1. Spiegelpaare im Bestand.** 1.664 Paare, in denen eine Frage die Antwort einer anderen
+Karte enthält, wurden einzeln sortiert. Die meisten sind harmlos: ein Land oder eine Stadt in
+einer fremden Frage. Gewollte Rückfragen mit einer Erklärungsseite bleiben ebenfalls stehen.
+Echte Verräter waren 97 Paare, darunter
+Garfield ↔ Lasagne, Pumuckl ↔ Meister Eder, ChatGPT ↔ OpenAI, Puma ↔ Rudolf Dassler, der
+Architekt des Reichstagsgebäudes, Canossa und Nicoles ESC-Sieg. **100 Fragen** sind so
+umformuliert, dass sie den Partner nicht mehr nennen und trotzdem ihren eigenen Fakt
+abfragen. Ein Gegenleser hat alle 100 geprüft und 16 verbessert. Dabei kamen auch zwei
+Sachfehler heraus: Die Stiefel stellt man am Abend des 5. Dezember raus, nicht am 6., und es
+gab drei Dassler-Brüder, nicht zwei. Die Erlaubnisliste der Tests und die Tippprobe zeigen
+jetzt auf die neuen Kennungen.
+
+**2. Veraltete Fakten.** 488 Karten mit Ämtern, Rekorden, Titeln, Mitgliederzahlen,
+„bisher“ oder Jahreszahlen ab 2022 hat je ein Prüfer mit Websuche gegen den Stand Oktober 2026
+geprüft. Die meisten waren schon zeitfest formuliert („Stand 2026“, Jahreszahl in der Frage).
+Falsch war nur eine Angabe: Dem 800-m-Weltrekord von 1983 kam Nadeschda Olisarenko 1980 näher
+als Audrey Werro 2026. Vier weitere Kontexte sind genauer geworden: die Ätna-Höhe, das BSW
+„seit“ statt „ab“ 1. Oktober 2026, sowie „Stand 2026“ bei Auslands-Oscar und Bardeen.
+
+**3. Drei neue blinde Prüfsätze.**
+
+| Prüfsatz | vorher | jetzt |
+|---|---|---|
+| 22 Religion, Feiertage, Bräuche, Essen und Trinken | 54/150 (36 %) | 148/150 (99 %) |
+| 23 Film- und Musik-Klassiker 1950–1999 | 56/150 (37 %) | 149/150 (99 %) |
+| 24 Mathe- und Zahlen-Trivia | 99/150 (66 %) | 148/150 (99 %) |
+
+Dafür kamen **228 neue Karten** dazu, außerdem 31 umformulierte und 19 angepasste
+Bestandskarten. Offen bleiben Umkehrpaare (Auferstehung, Roquefort, Queen of Pop, Billion)
+und MCMXCIX. Die römischen Zahlen vergleicht die Bewertung wie Wörter, „MCMXCIV“ hätte
+deshalb als „MCMXCIX“ gegolten. Aus demselben Grund gelten „m“ für Milli und „MMMCMXCIX“
+nicht als Nebenschreibweise. Groß- und Kleinschreibung zählen beim Tippen nicht, also wäre
+„M“ für Mega durchgegangen.
+
+Die zwölf Prüfer fanden unter anderem:
+- Der Fisch als „geheimes Erkennungszeichen“ der frühen Christen ist eine spätere Legende.
+- Das Reinheitsgebot von 1516 nannte keine Hefe.
+- Geier Sturzflug kommt aus Bochum, nicht aus Bonn.
+- Colonel Tom Parker hat sehr wohl Militärdienst geleistet.
+- E.T. wird mit Erdnussbutter-Dragees gelockt.
+- Ludolph van Ceulens Vieleck hatte über vier *Trillionen* Ecken.
+- Das erste Tetra-Pak enthielt Sahne.
+
+Hinzu kamen viele Optionen, die sich am Wortlaut ausschließen ließen: der „irische“
+Bond-Darsteller gegen drei Briten, ein „Londoner Stadion“ gegen Old Trafford, der
+„glatzköpfige“ Schauspieler.
+
+Eine Bewertungslücke ist dabei aufgefallen und geschlossen: **„Mose“ galt als „1. Buch
+Mose“**. Die Eins fiel als Artikel weg. Vor einem Zählwort wie Buch, Liga, Klasse oder Platz
+bleibt sie jetzt stehen.
 
 ### Prüfsätze 19–21, Naturwissenschaft und Gesellschaft: 53/53/62 → 99/99/100 %
 

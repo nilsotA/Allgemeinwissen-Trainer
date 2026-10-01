@@ -728,7 +728,7 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
      Paar steht einzeln hier, damit ein neues sofort auffaellt. */
   const ERLAUBT = new Set([
     'ges-p6xhl6|ges-khhfuf', // „Versailles" meint den Vertrag von Versailles
-    'mat-jn04sr|mat-og7vt5', // „Der Logarithmus" ist das Werkzeug, das die Karte meint
+    'mat-jn04sr|mat-jdq9vr', // „Der Logarithmus" ist das Werkzeug, das die Karte meint
     'pol-1g0ho6z|pol-19r0m4j', // „Mit 18" = „Ab 18"
     'spo-1oqafrh|geo-1s27ays', 'spo-1oqafrh|geo-ostf3y', 'spo-1oqafrh|geo-174vmfg', // Frankreich richtet die Spiele in den Alpen aus
     'spr-1kfchxd|geo-fojbps', // „Austin" für Austen ist ein Vertipper des Namens, kein anderer Begriff
@@ -741,6 +741,8 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     // Ebenso abwegig: die Bibel für den Biber, Rubin für Rubik, Argos für Argon, Medien für den Median
     'nat-1ydwbi0|spr-1ebz78q', 'spr-1ebz78q|nat-1ydwbi0', 'nat-1mgw4hd|nat-wdtjdm', 'nat-2d7jz7|kul-1c8z0ib',
     'kul-1c8z0ib|nat-2d7jz7', 'mat-1kuzbbl|pol-fy4snm', 'pol-fy4snm|mat-1kuzbbl',
+    // Ebenso abwegig: Rinde für Jochen Rindt, Schwaben für die Schwalbe
+    'spo-cpnvan|all-ossyot', 'spo-jjs2iu|all-rg6jsz',
     // Ebenso abwegig: Hagel für Hagen von Tronje
     'spr-nvq5zl|all-114pxho',
     // Kohlendioxid und Kohlenstoffdioxid sind dasselbe Gas – die Hefe bildet es
