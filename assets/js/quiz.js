@@ -821,7 +821,14 @@ export function similarity(input, answer, frage) {
    einem Zählwort ist sie eine Ordnungszahl: „1. Buch Mose" ist nicht „Mose" –
    sonst galt der Name des Propheten als Name des Buches. */
 const ZAEHLWORT = new Set(['buch', 'mose', 'korinther', 'klasse', 'liga', 'bundesliga', 'platz', 'weltkrieg', 'advent', 'staffel', 'satz', 'halbzeit', 'reihe', 'stock', 'etage']);
-const ohneEinzelneEins = (t) => woerter(t).filter((w, i, alle) => w !== '1' || MONATE.includes(alle[i + 1]) || ZAEHLWORT.has(alle[i + 1])).join(' ');
+/* Und als letztes Wort hinter einem Namen ist sie ein Teil davon: „Partizip 1“ ist nicht
+   „Partizip“, „Formel 1“ nicht „Formel“ – sonst galt das blosse Stichwort als Antwort
+   auf genau die Unterscheidung, nach der die Karte fragt. Ein Zahlwort, das als Artikel
+   herhalten koennte („eine Meile“), steht nie am Ende. Mit Punkt ist die Eins dagegen
+   eine Ordnungszahl: Bei „Peter 1.“ genuegt weiter „Peter“, wie bei „Napoleon I.“. */
+const ohneEinzelneEins = (t, endEinsBleibt = false) => woerter(t).filter((w, i, alle) => w !== '1' || MONATE.includes(alle[i + 1]) || ZAEHLWORT.has(alle[i + 1])
+  || (endEinsBleibt && i > 0 && i === alle.length - 1 && /[a-zäöüß]/.test(alle[i - 1]))).join(' ');
+const endEins = (roh) => !/1\.\s*$/.test(String(roh));
 
 /* Alle Woerter, die irgendeine Karte als Antwort BEHAUPTET. Wird einmal
    gebaut, wie mehrdeutigeNachnamen() weiter oben. */
@@ -849,8 +856,8 @@ function vergleich(input, answer, bekannt = new Set()) {
      „Katharina 1." weg und galt als „Katharina II." (1,00) - eine andere Zarin. */
   const ROEMISCH = /\b(?:ii|iii|iv|vi|vii|viii|ix|xi|xii|xiii|xiv|xv|xvi)\b/;
   const zahlLinks = /\d/.test(a) || ROEMISCH.test(a), zahlRechts = /\d/.test(b) || ROEMISCH.test(b);
-  if (!formel && !zahlRechts) a = ohneEinzelneEins(a);
-  if (!formel && !zahlLinks) b = ohneEinzelneEins(b);
+  if (!formel && !zahlRechts) a = ohneEinzelneEins(a, endEins(input));
+  if (!formel && !zahlLinks) b = ohneEinzelneEins(b, endEins(answer));
   if (!a || !b) return 0;
   if (a === b) return 1;
   /* Zusammen, getrennt oder mit Bindestrich geschrieben ist dasselbe Wort:

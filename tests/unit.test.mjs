@@ -1859,14 +1859,17 @@ test('Zusammen- oder getrennt geschrieben, Herrscherzahlen: dieselbe Antwort', (
     ['Friedrich 2', 'Friedrich II.'], ['Friedrich der Zweite', 'Friedrich II.'],
     ['Ludwig 14', 'Ludwig XIV.'], ['Heinrich der Vierte', 'Heinrich IV.'],
     ['30 m', '30 Meter'], ['7,32m', '7,32 Meter'], ['49 EUR', '49 Euro'], ['2 kg', '2 Kilogramm'],
-    ['1963/1964', '1963/64'], ['Eroica-Symphonie', 'Eroica-Sinfonie']];
+    ['1963/1964', '1963/64'], ['Eroica-Symphonie', 'Eroica-Sinfonie'],
+    ['Peter', 'Peter 1.'], ['Formel eins', 'Formel 1']];
   for (const [ein, loesung] of gleich) assert.ok(similarity(ein, loesung) >= 0.95, `„${ein}" gilt nicht als „${loesung}"`);
   /* Die Gegenproben: Leerzeichen zwischen Ziffern tragen Bedeutung, und eine
      andere Herrscherzahl bleibt ein anderer Herrscher. */
   const verschieden = [['15 Liter', '1,5 Liter'], ['Ludwig 16', 'Ludwig XIV.'], ['Ludwig XVI.', 'Ludwig XIV.'],
     ['Friedrich der Dritte', 'Friedrich II.'], ['30 cm', '30 Meter'], ['3/40', '3/4'],
-    ['1964/65', '1963/64'], ['Katharina 1.', 'Katharina II.']];
+    ['1964/65', '1963/64'], ['Katharina 1.', 'Katharina II.'],
+    ['Partizip', 'Partizip 1'], ['Formel', 'Formel 1']];
   // „Katharina 1." galt als „Katharina II." – die Eins fiel als Artikel weg.
+  // „Partizip" galt als „Partizip 1" – dieselbe Eins, diesmal am Ende eines Namens.
   for (const [ein, loesung] of verschieden) assert.ok(similarity(ein, loesung) < 0.8, `„${ein}" gilt als „${loesung}"`);
 });
 
