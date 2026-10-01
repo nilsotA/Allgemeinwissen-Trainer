@@ -1,0 +1,1544 @@
+[
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Hitchcock",
+  "frage": "Welcher Film von Alfred Hitchcock aus dem Jahr 1960 enthält die berühmte Duschszene?",
+  "antwort": "Psycho",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Hitchcock",
+  "frage": "In welchem Hitchcock-Film von 1963 greifen Vögel Menschen an?",
+  "antwort": "Die Vögel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "The Birds"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Hitchcock",
+  "frage": "Wie heißt das Motel, das Norman Bates in „Psycho“ betreibt?",
+  "antwort": "Bates Motel",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bates-Motel"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Hitchcock",
+  "frage": "Welcher Schauspieler spielt in Hitchcocks „Das Fenster zum Hof“ (1954) den Fotografen im Rollstuhl?",
+  "antwort": "James Stewart",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Jimmy Stewart"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Hitchcock",
+  "frage": "In welchem Hitchcock-Film von 1959 wird Cary Grant von einem Flugzeug über ein Feld gejagt?",
+  "antwort": "Der unsichtbare Dritte",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "North by Northwest"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Hitchcock",
+  "frage": "Welche Schauspielerin spielt die Hauptrolle in Hitchcocks „Die Vögel“?",
+  "antwort": "Tippi Hedren",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Hitchcock",
+  "frage": "Welche Hitchcock-Schauspielerin wurde 1956 Fürstin von Monaco?",
+  "antwort": "Grace Kelly",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gracia Patricia"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Spielberg",
+  "frage": "Welcher Spielberg-Film von 1975 handelt von einem menschenfressenden Hai?",
+  "antwort": "Der weiße Hai",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jaws"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Spielberg",
+  "frage": "Welcher Außerirdische will in Spielbergs Film von 1982 „nach Hause telefonieren“?",
+  "antwort": "E.T.",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ET",
+   "E. T."
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Spielberg",
+  "frage": "Für welchen Film erhielt Steven Spielberg 1994 seinen ersten Regie-Oscar?",
+  "antwort": "Schindlers Liste",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schindler’s List",
+   "Schindler's List"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Spielberg",
+  "frage": "Wie heißt der Archäologe mit Hut und Peitsche, den Harrison Ford ab 1981 spielt?",
+  "antwort": "Indiana Jones",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Indy"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Spielberg",
+  "frage": "In welchem Spielberg-Film von 1993 werden Dinosaurier aus altem Erbgut geklont?",
+  "antwort": "Jurassic Park",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Spielberg",
+  "frage": "Welcher Spielberg-Film von 1998 beginnt mit der Landung am Omaha Beach?",
+  "antwort": "Der Soldat James Ryan",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Saving Private Ryan"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Spielberg",
+  "frage": "Wie heißt die Badeinsel, auf der „Der weiße Hai“ spielt?",
+  "antwort": "Amity",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Amity Island"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Spielberg",
+  "frage": "Welcher Spielberg-Film von 1977 handelt von Außerirdischen, mit denen per Fünf-Ton-Melodie kommuniziert wird?",
+  "antwort": "Unheimliche Begegnung der dritten Art",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Close Encounters of the Third Kind"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Wer führte Regie bei „Der Pate“ (1972)?",
+  "antwort": "Francis Ford Coppola",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Coppola"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Welcher Schauspieler spielte Don Vito Corleone in „Der Pate“ (1972)?",
+  "antwort": "Marlon Brando",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Wer führte Regie bei „2001: Odyssee im Weltraum“ (1968)?",
+  "antwort": "Stanley Kubrick",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kubrick"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Wie heißt der Bordcomputer in „2001: Odyssee im Weltraum“?",
+  "antwort": "HAL 9000",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "HAL"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Wer führte Regie bei „Pulp Fiction“ (1994)?",
+  "antwort": "Quentin Tarantino",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Tarantino"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Wer schuf 1977 den ersten „Krieg der Sterne“-Film als Autor und Regisseur?",
+  "antwort": "George Lucas",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Wer ist in „Star Wars“ der Vater von Luke Skywalker?",
+  "antwort": "Darth Vader",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Anakin Skywalker"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Welcher Film von James Cameron gewann 1998 elf Oscars?",
+  "antwort": "Titanic",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "In welchem Film von 1999 entscheidet sich Neo für die rote Pille?",
+  "antwort": "Matrix",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "The Matrix"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "In welchem Jahr kam James Dean bei einem Autounfall ums Leben?",
+  "antwort": "1955",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmklassiker",
+  "frage": "Wer führte Regie bei „Zurück in die Zukunft“ (1985)?",
+  "antwort": "Robert Zemeckis",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Zemeckis"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmzitate",
+  "frage": "Aus welchem Film stammt der Satz „Ich mache ihm ein Angebot, das er nicht ablehnen kann“?",
+  "antwort": "Der Pate",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "The Godfather"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmzitate",
+  "frage": "Aus welcher Filmreihe stammt der Wunsch „Möge die Macht mit dir sein“?",
+  "antwort": "Star Wars",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Krieg der Sterne"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmzitate",
+  "frage": "Aus welchem Film von 1995 stammt der Funkspruch „Houston, wir haben ein Problem“?",
+  "antwort": "Apollo 13",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmzitate",
+  "frage": "Aus welchem Film stammt der Satz „Das Leben ist wie eine Schachtel Pralinen“?",
+  "antwort": "Forrest Gump",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmzitate",
+  "frage": "Welche Filmfigur sagt „I’ll be back“?",
+  "antwort": "Terminator",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Der Terminator",
+   "The Terminator"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmzitate",
+  "frage": "Aus welchem Film von 1991 stammt der Spruch „Hasta la vista, Baby“?",
+  "antwort": "Terminator 2",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Terminator 2 – Tag der Abrechnung",
+   "Terminator 2: Judgment Day"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmzitate",
+  "frage": "In welchem Film ruft Leonardo DiCaprio am Bug eines Schiffes „Ich bin der König der Welt!“?",
+  "antwort": "Titanic",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Filmzitate",
+  "frage": "In welchem Horrorfilm ruft Jack Nicholson durch eine zerhackte Tür „Here’s Johnny!“?",
+  "antwort": "Shining",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "The Shining"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Oscars",
+  "frage": "Welcher Film gewann 1995 den Oscar als bester Film und erzählt das Leben eines Mannes, der quer durch die USA läuft?",
+  "antwort": "Forrest Gump",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Oscars",
+  "frage": "Welcher Film gewann 1992 alle fünf Haupt-Oscars (Film, Regie, Hauptdarsteller, Hauptdarstellerin, Drehbuch)?",
+  "antwort": "Das Schweigen der Lämmer",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "The Silence of the Lambs"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Oscars",
+  "frage": "Welcher deutsche Film nach Günter Grass gewann 1980 den Oscar als bester fremdsprachiger Film?",
+  "antwort": "Die Blechtrommel",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Oscars",
+  "frage": "Wer führte Regie bei „Die Blechtrommel“ (1979)?",
+  "antwort": "Volker Schlöndorff",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Schlöndorff"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Oscars",
+  "frage": "Welcher Western von und mit Kevin Costner gewann 1991 den Oscar als bester Film?",
+  "antwort": "Der mit dem Wolf tanzt",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dances with Wolves"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Welcher Schauspieler verkörperte James Bond als Erster in einem offiziellen Kinofilm?",
+  "antwort": "Sean Connery",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Connery"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Wie heißt der erste offizielle James-Bond-Kinofilm von 1962?",
+  "antwort": "James Bond jagt Dr. No",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dr. No",
+   "James Bond 007 jagt Dr. No"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Welcher Schauspieler spielte James Bond nur ein einziges Mal, 1969 in „Im Geheimdienst Ihrer Majestät“?",
+  "antwort": "George Lazenby",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Lazenby"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Welcher Schauspieler gab 1995 in „GoldenEye“ sein Debüt als James Bond?",
+  "antwort": "Pierce Brosnan",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Brosnan"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "In wie vielen offiziellen Bond-Filmen spielte Roger Moore die Hauptrolle?",
+  "antwort": "7",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Welche Sängerin sang den Titelsong zu „Goldfinger“?",
+  "antwort": "Shirley Bassey",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Welcher Ex-Beatle sang mit seiner Band Wings den Bond-Song „Live and Let Die“?",
+  "antwort": "Paul McCartney",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Paul McCartney & Wings",
+   "McCartney"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Mit welchem Buchstaben wird Bonds Vorgesetzter beim Geheimdienst bezeichnet?",
+  "antwort": "M",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Mit welchem Buchstaben wird der Tüftler bezeichnet, der Bond mit technischen Geräten ausstattet?",
+  "antwort": "Q",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Welchen Cocktail bestellt James Bond „geschüttelt, nicht gerührt“?",
+  "antwort": "Wodka Martini",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Martini",
+   "Vodka Martini"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "James Bond",
+  "frage": "Welche Dienstnummer trägt James Bond?",
+  "antwort": "007",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Null-Null-Sieben",
+   "Doppelnull-Sieben"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Western",
+  "frage": "Wer führte Regie bei „Spiel mir das Lied vom Tod“ (1968)?",
+  "antwort": "Sergio Leone",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Leone"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Western",
+  "frage": "Welcher Schauspieler spielte den „Mann ohne Namen“ in Sergio Leones Dollar-Trilogie?",
+  "antwort": "Clint Eastwood",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Eastwood"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Western",
+  "frage": "Wer komponierte die Musik zu „Spiel mir das Lied vom Tod“?",
+  "antwort": "Ennio Morricone",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Morricone"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Western",
+  "frage": "Welches Instrument spielt Charles Bronsons Figur in „Spiel mir das Lied vom Tod“?",
+  "antwort": "Mundharmonika",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Harmonika"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Western",
+  "frage": "Welcher Schauspieler spielte den Anführer Chris in „Die glorreichen Sieben“ (1960)?",
+  "antwort": "Yul Brynner",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Western",
+  "frage": "Welcher französische Schauspieler spielte Winnetou in den Karl-May-Filmen der 1960er?",
+  "antwort": "Pierre Brice",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Western",
+  "frage": "Wie heißt der erste Karl-May-Film der Rialto-Reihe von 1962: „Der Schatz im …“?",
+  "antwort": "Silbersee",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Der Schatz im Silbersee"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Western",
+  "frage": "Welcher Schauspieler spielte Sundance Kid an der Seite von Paul Newman (1969)?",
+  "antwort": "Robert Redford",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Redford"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "In welchem Disney-Zeichentrickfilm von 1994 wird ein junger Löwe König?",
+  "antwort": "Der König der Löwen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "The Lion King"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "Wie heißt der junge Löwe in „Der König der Löwen“?",
+  "antwort": "Simba",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "Wie heißt das Warzenschwein in „Der König der Löwen“?",
+  "antwort": "Pumbaa",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Pumba"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "In welchem Disney-Film von 1967 tritt der Bär Balu auf?",
+  "antwort": "Das Dschungelbuch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dschungelbuch",
+   "The Jungle Book"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "Wie heißt der schwarze Panther im „Dschungelbuch“?",
+  "antwort": "Baghira",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bagheera"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "Wie heißt die kleine Meerjungfrau im Disney-Film von 1989 auf Deutsch?",
+  "antwort": "Arielle",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ariel"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "Wie viele Dalmatiner nennt der Titel des Disney-Films von 1961?",
+  "antwort": "101",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "hundertundeins"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "Wie heißt die pelzbesessene Schurkin in „101 Dalmatiner“?",
+  "antwort": "Cruella de Vil",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Cruella",
+   "Cruella De Vil"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "Wie heißt der sprechende Kerzenleuchter in „Die Schöne und das Biest“ (1991)?",
+  "antwort": "Lumière",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Lumiere"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Disney",
+  "frage": "Wie heißt die böse Fee in Disneys „Dornröschen“ (1959) im Deutschen?",
+  "antwort": "Malefiz",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Maleficent"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Wie heißt der Butler in „Dinner for One“?",
+  "antwort": "James",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Den wievielten Geburtstag feiert Miss Sophie in „Dinner for One“?",
+  "antwort": "90",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "90.",
+   "neunzigsten"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Über den Kopf welches Tierfells stolpert der Butler in „Dinner for One“ immer wieder?",
+  "antwort": "Tiger",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Tigerfell",
+   "Tigerkopf"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Welcher Film von Wolfgang Petersen (1981) spielt in einem U-Boot?",
+  "antwort": "Das Boot",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Welcher Film von Tom Tykwer (1998) zeigt Franka Potente mit roten Haaren beim Rennen durch Berlin?",
+  "antwort": "Lola rennt",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Unter welchem Künstlernamen wurde Vicco von Bülow bekannt?",
+  "antwort": "Loriot",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Welche ARD-Krimireihe startete 1970 und läuft bis heute sonntags?",
+  "antwort": "Tatort",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Wie hieß die allererste „Tatort“-Folge von 1970?",
+  "antwort": "Taxi nach Leipzig",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Welcher Schauspieler spielte den Duisburger Kommissar Horst Schimanski?",
+  "antwort": "Götz George",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Deutsche Filme & TV",
+  "frage": "Wer führte Regie bei „Die Ehe der Maria Braun“ (1979)?",
+  "antwort": "Rainer Werner Fassbinder",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Fassbinder"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "Aus welcher Stadt stammen die Beatles?",
+  "antwort": "Liverpool",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "Wie heißt der Schlagzeuger der Beatles?",
+  "antwort": "Ringo Starr",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ringo"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "Welcher Beatle war der Leadgitarrist der Band?",
+  "antwort": "George Harrison",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Harrison"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "In welcher deutschen Stadt spielten die Beatles Anfang der 1960er in Clubs?",
+  "antwort": "Hamburg",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "Auf dem Cover welches Beatles-Albums überqueren die vier einen Zebrastreifen?",
+  "antwort": "Abbey Road",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "In welchem Jahr erschien das Beatles-Album „Sgt. Pepper’s Lonely Hearts Club Band“?",
+  "antwort": "1967",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "Welcher Beatle war mit Yoko Ono verheiratet?",
+  "antwort": "John Lennon",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Lennon"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "In welchem Liverpooler Kellerclub wurden die Beatles berühmt?",
+  "antwort": "Cavern Club",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "The Cavern",
+   "Cavern"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Beatles",
+  "frage": "In welchem Jahr wurde John Lennon in New York erschossen?",
+  "antwort": "1980",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rolling Stones",
+  "frage": "Wie heißt der Sänger der Rolling Stones?",
+  "antwort": "Mick Jagger",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jagger"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rolling Stones",
+  "frage": "Welcher Stones-Gitarrist schrieb die meisten Songs gemeinsam mit Mick Jagger?",
+  "antwort": "Keith Richards",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Richards"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rolling Stones",
+  "frage": "Wie lautet das Schlüsselwort im Titel des Stones-Hits „(I Can’t Get No) …“ von 1965?",
+  "antwort": "Satisfaction",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rolling Stones",
+  "frage": "Welches Gründungsmitglied der Rolling Stones ertrank 1969 in seinem Swimmingpool?",
+  "antwort": "Brian Jones",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rolling Stones",
+  "frage": "Wie hieß der langjährige Schlagzeuger der Rolling Stones (gestorben 2021)?",
+  "antwort": "Charlie Watts",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Watts"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rolling Stones",
+  "frage": "Welcher Bassist verließ die Rolling Stones 1993?",
+  "antwort": "Bill Wyman",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Wyman"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Elvis Presley",
+  "frage": "Wie heißt das Anwesen von Elvis Presley?",
+  "antwort": "Graceland",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Elvis Presley",
+  "frage": "In welcher Stadt in Tennessee liegt Graceland?",
+  "antwort": "Memphis",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Elvis Presley",
+  "frage": "In welcher hessischen Garnisonsstadt war Elvis 1958 bis 1960 als Soldat stationiert?",
+  "antwort": "Friedberg",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Friedberg (Hessen)"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Elvis Presley",
+  "frage": "Wie hieß der Manager von Elvis Presley mit Fantasie-Dienstgrad?",
+  "antwort": "Colonel Tom Parker",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Tom Parker",
+   "Colonel Parker"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Elvis Presley",
+  "frage": "In welchem Jahr starb Elvis Presley?",
+  "antwort": "1977",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Elvis Presley",
+  "frage": "Welches Hotel besang Elvis 1956 in seinem ersten Nummer-1-Hit?",
+  "antwort": "Heartbreak Hotel",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Elvis Presley",
+  "frage": "Wie hieß die Ehefrau von Elvis Presley mit Vornamen?",
+  "antwort": "Priscilla",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Queen",
+  "frage": "Wie hieß der Sänger von Queen?",
+  "antwort": "Freddie Mercury",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mercury"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Queen",
+  "frage": "Wie heißt der Gitarrist von Queen?",
+  "antwort": "Brian May",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "May"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Queen",
+  "frage": "Welcher Queen-Song von 1975 enthält einen Opernteil?",
+  "antwort": "Bohemian Rhapsody",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Queen",
+  "frage": "In welchem Londoner Stadion trat Queen 1985 beim Live-Aid-Konzert auf?",
+  "antwort": "Wembley-Stadion",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wembley"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Queen",
+  "frage": "Wie lautete der bürgerliche Name von Freddie Mercury?",
+  "antwort": "Farrokh Bulsara",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Bulsara"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Queen",
+  "frage": "In welchem Jahr starb Freddie Mercury?",
+  "antwort": "1991",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "ABBA",
+  "frage": "Aus welchem Land stammt ABBA?",
+  "antwort": "Schweden",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "ABBA",
+  "frage": "Mit welchem Song gewann ABBA 1974 den Eurovision Song Contest?",
+  "antwort": "Waterloo",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "ABBA",
+  "frage": "In welchem englischen Badeort gewann ABBA 1974 den Eurovision Song Contest?",
+  "antwort": "Brighton",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "ABBA",
+  "frage": "Wie heißt die blonde Sängerin von ABBA mit vollem Namen?",
+  "antwort": "Agnetha Fältskog",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Agnetha Faltskog",
+   "Agnetha"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "ABBA",
+  "frage": "Welches Musical (Premiere 1999) basiert auf ABBA-Songs?",
+  "antwort": "Mamma Mia!",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mamma Mia"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "ABBA",
+  "frage": "Wie alt ist die „Dancing Queen“ laut dem ABBA-Song?",
+  "antwort": "17",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "siebzehn"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Michael Jackson & Madonna",
+  "frage": "Wie heißt das meistverkaufte Album von Michael Jackson (1982)?",
+  "antwort": "Thriller",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Michael Jackson & Madonna",
+  "frage": "Wie heißt Michael Jacksons berühmter Tanzschritt, bei dem er scheinbar vorwärts nach hinten gleitet?",
+  "antwort": "Moonwalk",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Michael Jackson & Madonna",
+  "frage": "Wie hieß die Band, in der Michael Jackson mit seinen Brüdern begann?",
+  "antwort": "The Jackson Five",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Jackson 5",
+   "The Jackson 5",
+   "Jackson Five"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Michael Jackson & Madonna",
+  "frage": "Wie hieß Michael Jacksons Ranch in Kalifornien?",
+  "antwort": "Neverland",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Neverland Ranch"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Michael Jackson & Madonna",
+  "frage": "Wie hieß Michael Jacksons Schimpanse?",
+  "antwort": "Bubbles",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Michael Jackson & Madonna",
+  "frage": "Welcher Michael-Jackson-Hit von 1983 handelt von einer Frau, die behauptet, er sei der Vater ihres Kindes?",
+  "antwort": "Billie Jean",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Michael Jackson & Madonna",
+  "frage": "In welcher Musicalverfilmung von 1996 spielte Madonna Eva Perón?",
+  "antwort": "Evita",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Michael Jackson & Madonna",
+  "frage": "Welchen Ehrentitel trägt Madonna, analog zu Michael Jacksons „King of Pop“?",
+  "antwort": "Queen of Pop",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Königin des Pop"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "In welchem Jahr fand das Woodstock-Festival statt?",
+  "antwort": "1969",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "In welchem US-Bundesstaat fand das Woodstock-Festival statt?",
+  "antwort": "New York",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "Welcher Gitarrist spielte zum Abschluss von Woodstock die US-Nationalhymne?",
+  "antwort": "Jimi Hendrix",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Hendrix"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "Welche Band nahm 1971 „Stairway to Heaven“ auf?",
+  "antwort": "Led Zeppelin",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "Welche Band hatte 1972 den Hit „Smoke on the Water“?",
+  "antwort": "Deep Purple",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "Welche Band veröffentlichte 1973 „The Dark Side of the Moon“?",
+  "antwort": "Pink Floyd",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "Welche Band sang 1976 „Hotel California“?",
+  "antwort": "Eagles",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "The Eagles"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "Wie hieß der Sänger von Nirvana?",
+  "antwort": "Kurt Cobain",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Cobain"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Rock & Woodstock",
+  "frage": "Welcher irische Musiker organisierte 1985 das Benefizkonzert Live Aid?",
+  "antwort": "Bob Geldof",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Geldof"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Eurovision",
+  "frage": "Mit welchem Lied gewann Nicole 1982 den Eurovision Song Contest?",
+  "antwort": "Ein bißchen Frieden",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ein bisschen Frieden"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Eurovision",
+  "frage": "In welchem englischen Ort gewann Nicole 1982 den Eurovision Song Contest?",
+  "antwort": "Harrogate",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Eurovision",
+  "frage": "Für welches Land gewann Céline Dion 1988 den Eurovision Song Contest?",
+  "antwort": "Schweiz",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Eurovision",
+  "frage": "Für welches Land gewann Johnny Logan den Eurovision Song Contest?",
+  "antwort": "Irland",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Eurovision",
+  "frage": "Welcher Sänger trat 1998 mit „Guildo hat euch lieb!“ für Deutschland an?",
+  "antwort": "Guildo Horn",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Schlager & NDW",
+  "frage": "Welche Sängerin landete 1983 mit „99 Luftballons“ einen Welthit?",
+  "antwort": "Nena",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Schlager & NDW",
+  "frage": "Welche Band hatte 1982 den Hit „Da Da Da“?",
+  "antwort": "Trio",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Schlager & NDW",
+  "frage": "Welcher österreichische Sänger kam 1986 mit „Rock Me Amadeus“ auf Platz 1 der US-Charts?",
+  "antwort": "Falco",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Schlager & NDW",
+  "frage": "Welcher NDW-Sänger hatte 1982 den Hit „Ich will Spaß“?",
+  "antwort": "Markus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Schlager & NDW",
+  "frage": "Welche Band forderte 1983 „Bruttosozialprodukt“-Steigerung im gleichnamigen Hit?",
+  "antwort": "Geier Sturzflug",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Schlager & NDW",
+  "frage": "Welcher Sänger wollte 1976 seinen Kuchen „Aber bitte mit Sahne“?",
+  "antwort": "Udo Jürgens",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Schlager & NDW",
+  "frage": "Welches Accessoire ist neben den blonden Haaren das Markenzeichen von Heino?",
+  "antwort": "Sonnenbrille",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "dunkle Sonnenbrille"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Schlager & NDW",
+  "frage": "Welcher Sänger fragte 1984 im Hit „Männer“: „Wann ist ein Mann ein Mann?“",
+  "antwort": "Herbert Grönemeyer",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Grönemeyer"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Musicals & Filmmusik",
+  "frage": "Welcher Komponist schrieb die Musicals „Cats“ und „Das Phantom der Oper“?",
+  "antwort": "Andrew Lloyd Webber",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Lloyd Webber"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Musicals & Filmmusik",
+  "frage": "In welchem Musical lebt eine maskierte Gestalt unter der Pariser Oper?",
+  "antwort": "Das Phantom der Oper",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Phantom der Oper",
+   "The Phantom of the Opera"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Musicals & Filmmusik",
+  "frage": "Wer komponierte „West Side Story“?",
+  "antwort": "Leonard Bernstein",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Bernstein"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Musicals & Filmmusik",
+  "frage": "Auf welchem Shakespeare-Drama basiert „West Side Story“?",
+  "antwort": "Romeo und Julia",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Romeo and Juliet"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Musicals & Filmmusik",
+  "frage": "Wie heißen die beiden rivalisierenden Gangs in „West Side Story“?",
+  "antwort": "Jets und Sharks",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Sharks und Jets"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Musicals & Filmmusik",
+  "frage": "Welche Sängerin sang den „Titanic“-Song „My Heart Will Go On“?",
+  "antwort": "Céline Dion",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Celine Dion"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Musicals & Filmmusik",
+  "frage": "Welche Sängerin spielte 1992 in „Bodyguard“ die Hauptrolle neben Kevin Costner?",
+  "antwort": "Whitney Houston",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "film-musik-klassiker-quizabend",
+  "block": "Musicals & Filmmusik",
+  "frage": "Welche Brüder-Band lieferte den Soundtrack zu „Saturday Night Fever“?",
+  "antwort": "Bee Gees",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "The Bee Gees"
+  ]
+ }
+]

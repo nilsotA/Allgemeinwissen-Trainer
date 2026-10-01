@@ -1,0 +1,1617 @@
+[
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt die heilige Schrift des Islam?",
+  "antwort": "Koran",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Qur’an",
+   "Quran"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt das Gotteshaus der Muslime?",
+  "antwort": "Moschee",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt der islamische Fastenmonat?",
+  "antwort": "Ramadan",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ramadhan"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt das Fest zum Ende des Ramadan auf Arabisch?",
+  "antwort": "Id al-Fitr",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Eid al-Fitr",
+   "Eid ul-Fitr",
+   "Id ul-Fitr"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie viele Säulen hat der Islam?",
+  "antwort": "5",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "In welcher Stadt steht die Kaaba?",
+  "antwort": "Mekka",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Makka"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt das achttägige jüdische Lichterfest?",
+  "antwort": "Chanukka",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Chanukkah",
+   "Hanukkah",
+   "Hanukka",
+   "Chanukah"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt der jüdische Versöhnungstag, der höchste Feiertag des Judentums?",
+  "antwort": "Jom Kippur",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Yom Kippur"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie nennt man Speisen, die nach den jüdischen Speisegesetzen erlaubt sind?",
+  "antwort": "koscher",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißen die fünf Bücher Mose im Judentum?",
+  "antwort": "Tora",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Thora",
+   "Torah",
+   "Pentateuch"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt der siebenarmige Leuchter, ein Symbol des Judentums?",
+  "antwort": "Menora",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Menorah"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt das hinduistische Lichterfest im Herbst?",
+  "antwort": "Diwali",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Divali",
+   "Deepavali"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt das hinduistische Frühlingsfest, bei dem man sich mit Farbpulver bewirft?",
+  "antwort": "Holi",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Welcher Fluss ist den Hindus heilig?",
+  "antwort": "Ganges",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ganga"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt der Kreislauf der Wiedergeburten im Hinduismus und Buddhismus?",
+  "antwort": "Samsara",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt das große indische Epos, zu dem die Bhagavad Gita gehört?",
+  "antwort": "Mahabharata",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie hieß der historische Buddha mit bürgerlichem Namen?",
+  "antwort": "Siddhartha Gautama",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Siddharta Gautama",
+   "Gautama",
+   "Siddhartha"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Religionen",
+  "frage": "Wie heißt die Versammlung der Kardinäle zur Wahl eines neuen Papstes?",
+  "antwort": "Konklave",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Wie hieß nach der Bibel der erste Mensch?",
+  "antwort": "Adam",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Wie heißt das erste Buch der Bibel?",
+  "antwort": "Genesis",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "1. Buch Mose",
+   "Erstes Buch Mose",
+   "1. Mose"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Wie heißt das letzte Buch des Neuen Testaments?",
+  "antwort": "Offenbarung des Johannes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Offenbarung",
+   "Apokalypse",
+   "Johannesoffenbarung"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Wer baute in der Bibel die Arche?",
+  "antwort": "Noah",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Noach"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Welchen Riesen besiegte David mit einer Steinschleuder?",
+  "antwort": "Goliath",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Goliat"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Wer empfing nach der Bibel die Zehn Gebote auf dem Berg Sinai?",
+  "antwort": "Mose",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Moses"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Welcher Jünger verriet Jesus?",
+  "antwort": "Judas Iskariot",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Judas",
+   "Judas Ischariot"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Für wie viele Silberlinge verriet Judas Jesus?",
+  "antwort": "30",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "dreißig"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Welcher Apostel verleugnete Jesus dreimal, bevor der Hahn krähte?",
+  "antwort": "Petrus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Simon Petrus"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Welcher römische Statthalter verurteilte Jesus zum Tod?",
+  "antwort": "Pontius Pilatus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Pilatus"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Welcher Prophet wurde von einem großen Fisch verschluckt?",
+  "antwort": "Jona",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Jonas"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Wie hieß die Mutter von Johannes dem Täufer?",
+  "antwort": "Elisabeth",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Elisabet"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "Wie viele Jahre alt wurde Methusalem laut Bibel?",
+  "antwort": "969",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bibel",
+  "frage": "In welchem Ort verwandelte Jesus auf einer Hochzeit Wasser in Wein?",
+  "antwort": "Kana",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Kana in Galiläa",
+   "Cana"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "An welchem Datum ist der Tag der Deutschen Einheit?",
+  "antwort": "3. Oktober",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "03.10.",
+   "3.10."
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "Was feiern Christen an Ostern?",
+  "antwort": "Auferstehung Jesu",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Auferstehung",
+   "Auferstehung Christi"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "An welches Ereignis erinnert der Karfreitag?",
+  "antwort": "Kreuzigung Jesu",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kreuzigung",
+   "Tod Jesu",
+   "Kreuzestod Jesu"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "Was feiern Christen an Pfingsten?",
+  "antwort": "Aussendung des Heiligen Geistes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ausgießung des Heiligen Geistes",
+   "Herabkunft des Heiligen Geistes",
+   "Heiliger Geist"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "Wie heißt der Donnerstag vor Ostern?",
+  "antwort": "Gründonnerstag",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "Wie viele Tage nach dem Ostersonntag wird Fronleichnam gefeiert?",
+  "antwort": "60",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "sechzig"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "Auf welchem Konzil wurde im Jahr 325 eine einheitliche Regel für das Osterdatum beschlossen?",
+  "antwort": "Konzil von Nicäa",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Nicäa",
+   "Nizäa",
+   "Nikaia",
+   "Erstes Konzil von Nicäa"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "Ostern fällt auf den ersten Sonntag nach dem ersten … nach Frühlingsanfang. Was fehlt?",
+  "antwort": "Vollmond",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Frühlingsvollmond"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "An welchem Datum ist der Reformationstag?",
+  "antwort": "31. Oktober",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "31.10."
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "An welchem Datum feiert man das Fest der Heiligen Drei Könige?",
+  "antwort": "6. Januar",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "06.01.",
+   "6.1."
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "In welchem Bundesland ist der Buß- und Bettag heute noch gesetzlicher Feiertag?",
+  "antwort": "Sachsen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Freistaat Sachsen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "An welchem Sonntag im Mai ist in Deutschland Muttertag?",
+  "antwort": "zweiter",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "2.",
+   "zweiten",
+   "2. Sonntag"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Feiertage",
+  "frage": "Nach welchem Papst ist der Silvestertag benannt?",
+  "antwort": "Silvester I.",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Papst Silvester",
+   "Silvester I",
+   "Papst Silvester I."
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "An welchem Datum ist Martinstag?",
+  "antwort": "11. November",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "11.11."
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Was teilte der heilige Martin mit einem Bettler?",
+  "antwort": "Mantel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "seinen Mantel"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Welcher Braten wird traditionell am Martinstag gegessen?",
+  "antwort": "Martinsgans",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gans",
+   "Gänsebraten"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "An welchem Datum ist Nikolaustag?",
+  "antwort": "6. Dezember",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "06.12.",
+   "6.12."
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Wer gilt als Erfinder des Adventskranzes?",
+  "antwort": "Johann Hinrich Wichern",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Wichern"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Wofür steht die Abkürzung C+M+B, die Sternsinger an die Haustür schreiben?",
+  "antwort": "Christus mansionem benedicat",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Christus segne dieses Haus"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Um welche Uhrzeit beginnt am 11.11. traditionell die Karnevalssession?",
+  "antwort": "11:11 Uhr",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "11.11 Uhr",
+   "11:11",
+   "elf Uhr elf"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Wie lautet der Karnevalsruf in Köln?",
+  "antwort": "Alaaf",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kölle Alaaf"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Wie nennt man im Rheinland die Süßigkeiten, die beim Rosenmontagszug geworfen werden?",
+  "antwort": "Kamelle",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kamellen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Wie heißt der Donnerstag vor Rosenmontag, an dem Frauen Männern die Krawatte abschneiden?",
+  "antwort": "Weiberfastnacht",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Altweiberfastnacht",
+   "Weiberdonnerstag",
+   "Wieverfastelovend",
+   "Fettdonnerstag"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Auf welcher Festwiese findet das Münchner Oktoberfest statt?",
+  "antwort": "Theresienwiese",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wiesn"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Was ruft der Münchner Oberbürgermeister beim Anstich des ersten Fasses auf dem Oktoberfest?",
+  "antwort": "O’zapft is!",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Ozapft is",
+   "O'zapft is",
+   "O’zapft is"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Bräuche in Deutschland",
+  "frage": "Auf welchem Berg treffen sich der Sage nach die Hexen in der Walpurgisnacht?",
+  "antwort": "Brocken",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Blocksberg"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Welche Zahl gilt in Deutschland als Unglückszahl?",
+  "antwort": "13",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "dreizehn"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Wie heißt die krankhafte Angst vor der Zahl 13?",
+  "antwort": "Triskaidekaphobie",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Wie viele Jahre Pech bringt laut Aberglaube ein zerbrochener Spiegel?",
+  "antwort": "7",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Wie viele Blätter hat ein Glücksklee?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Welches Tier soll Unglück bringen, wenn es einem über den Weg läuft?",
+  "antwort": "schwarze Katze",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Katze"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Worauf klopft man dreimal, um ein Unglück abzuwenden?",
+  "antwort": "Holz",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Welche Zahl gilt in China als besondere Glückszahl?",
+  "antwort": "8",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Wie viele Zacken hat der Davidstern?",
+  "antwort": "6",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Welche Religion symbolisiert das Rad mit acht Speichen (Dharmachakra)?",
+  "antwort": "Buddhismus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Wie heißt das griechische Wort für „Fisch“, das frühe Christen als geheimes Erkennungszeichen nutzten?",
+  "antwort": "Ichthys",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Ichthus",
+   "ΙΧΘΥΣ"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Aberglaube und Symbole",
+  "frage": "Glaube, Liebe, Hoffnung: Welche der drei Tugenden symbolisiert der Anker?",
+  "antwort": "Hoffnung",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Aus welchem Land stammt die Paella?",
+  "antwort": "Spanien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißen die frittierten Kichererbsenbällchen aus dem Nahen Osten?",
+  "antwort": "Falafel",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt das orientalische Püree aus Kichererbsen und Sesampaste?",
+  "antwort": "Hummus",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Humus",
+   "Hommos"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt die osteuropäische Suppe aus Roter Bete?",
+  "antwort": "Borschtsch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Borscht"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt der griechische Dip aus Joghurt, Gurke und Knoblauch?",
+  "antwort": "Tsatsiki",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Tzatziki",
+   "Zaziki"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt die mexikanische Creme aus Avocado?",
+  "antwort": "Guacamole",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt die kalte Tomatensuppe aus Andalusien?",
+  "antwort": "Gazpacho",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt die berühmte Fischsuppe aus Marseille?",
+  "antwort": "Bouillabaisse",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt das schottische Nationalgericht aus Schafsinnereien, traditionell im Schafsmagen gegart?",
+  "antwort": "Haggis",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt der scharf fermentierte Kohl aus Korea?",
+  "antwort": "Kimchi",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kimchee"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gerichte aus aller Welt",
+  "frage": "Wie heißt das peruanische Gericht aus rohem Fisch, der in Limettensaft mariniert wird?",
+  "antwort": "Ceviche",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Cebiche",
+   "Seviche"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Für welche Stadt ist der Christstollen besonders berühmt?",
+  "antwort": "Dresden",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Für welche Stadt sind Lebkuchen besonders berühmt?",
+  "antwort": "Nürnberg",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Aus welcher Region Deutschlands stammen die Maultaschen?",
+  "antwort": "Schwaben",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Baden-Württemberg",
+   "Württemberg"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "In welcher Stadt erfand Herta Heuwer 1949 die Currywurst?",
+  "antwort": "Berlin",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Vor welcher Uhrzeit sollte man der Tradition nach eine Weißwurst essen?",
+  "antwort": "12 Uhr",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mittag",
+   "zwölf Uhr",
+   "12:00 Uhr",
+   "Mittagsläuten"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Wie viele Kräuter gehören in die Frankfurter Grüne Soße?",
+  "antwort": "7",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Wie heißt das norddeutsche Seemannsgericht aus Pökelfleisch, Kartoffeln und Roter Bete?",
+  "antwort": "Labskaus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Wie heißt das mit Marmelade gefüllte Hefegebäck, das außerhalb Berlins „Berliner“ heißt, in Berlin selbst?",
+  "antwort": "Pfannkuchen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Berliner Pfannkuchen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Was bekommt man in Köln, wenn man einen „Halven Hahn“ bestellt?",
+  "antwort": "Roggenbrötchen mit Käse",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Käsebrötchen",
+   "Roggenbrötchen mit Gouda",
+   "Käse-Brötchen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Woraus besteht die „Musik“ beim hessischen „Handkäs mit Musik“?",
+  "antwort": "Zwiebeln",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Zwiebelmarinade",
+   "Zwiebeln in Essig und Öl"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Deutsche Spezialitäten",
+  "frage": "Aus welcher Stadt stammt das Marzipangebäck „Bethmännchen“?",
+  "antwort": "Frankfurt am Main",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Frankfurt"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "In welchem Jahr wurde das bayerische Reinheitsgebot erlassen?",
+  "antwort": "1516",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Welche Pflanze gibt dem Bier seine Bitterkeit?",
+  "antwort": "Hopfen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Welches Bier wird in Köln getrunken?",
+  "antwort": "Kölsch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Wie nennt man ein Mischgetränk aus Bier und Zitronenlimonade in Süddeutschland?",
+  "antwort": "Radler",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Wie nennt man ein Mischgetränk aus Bier und Zitronenlimonade in Norddeutschland?",
+  "antwort": "Alster",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Alsterwasser"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Nach welcher tschechischen Stadt ist das Pils benannt?",
+  "antwort": "Pilsen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Plzeň",
+   "Plzen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Wie heißt der bekannte Schweizer Käse mit großen Löchern?",
+  "antwort": "Emmentaler",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Emmental"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Wie heißt der italienische Hartkäse aus der Region um Parma und Reggio Emilia?",
+  "antwort": "Parmigiano Reggiano",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Parmesan"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Wie heißt der griechische Salzlakenkäse aus Schafs- und Ziegenmilch?",
+  "antwort": "Feta",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fetakäse"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Wie heißt der französische Blauschimmelkäse aus Schafmilch, der in Höhlen reift?",
+  "antwort": "Roquefort",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Nach welcher französischen Region ist der Champagner benannt?",
+  "antwort": "Champagne",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Wie heißt das größte deutsche Weinanbaugebiet?",
+  "antwort": "Rheinhessen",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Käse, Wein und Bier",
+  "frage": "Aus welchen Rückständen der Weinherstellung wird Grappa gebrannt?",
+  "antwort": "Trester",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Traubentrester"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Welches teure Gewürz wird aus den Blütennarben eines Krokus gewonnen?",
+  "antwort": "Safran",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Welches Gewürz verleiht Currypulver seine gelbe Farbe?",
+  "antwort": "Kurkuma",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gelbwurz",
+   "Curcuma"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Welcher Teil der Pflanze wird als Zimt verwendet?",
+  "antwort": "Rinde",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Baumrinde"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Was sind Gewürznelken botanisch gesehen?",
+  "antwort": "Blütenknospen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Knospen",
+   "getrocknete Blütenknospen"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Wie heißt die japanische grüne Würzpaste, die oft zu Sushi gereicht wird?",
+  "antwort": "Wasabi",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Welches Kraut ist die Hauptzutat eines klassischen Pesto alla genovese?",
+  "antwort": "Basilikum",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Was misst die Scoville-Skala?",
+  "antwort": "Schärfe",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schärfe von Chilis"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Wie nennt man Nudeln, die noch Biss haben?",
+  "antwort": "al dente",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Wie nennt man es, wenn man ein Gericht mit Alkohol übergießt und anzündet?",
+  "antwort": "flambieren",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Wie nennt man das kurze Überbrühen von Gemüse in kochendem Wasser?",
+  "antwort": "blanchieren",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Wie heißt die weiße Grundsoße aus Mehlschwitze und Milch?",
+  "antwort": "Béchamelsoße",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Béchamel",
+   "Bechamel",
+   "Bechamelsauce",
+   "Béchamelsauce"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Gewürze und Küchenbegriffe",
+  "frage": "Wie heißt die fünfte Grundgeschmacksrichtung neben süß, sauer, salzig und bitter?",
+  "antwort": "Umami",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Herkunft von Lebensmitteln",
+  "frage": "Von welchem Kontinent stammt die Kartoffel ursprünglich?",
+  "antwort": "Südamerika",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Amerika"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Herkunft von Lebensmitteln",
+  "frage": "Aus welchem Land stammt der Kaffee ursprünglich?",
+  "antwort": "Äthiopien",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Herkunft von Lebensmitteln",
+  "frage": "Aus welchem Land stammt die Kiwi ursprünglich?",
+  "antwort": "China",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Herkunft von Lebensmitteln",
+  "frage": "Aus welcher Bohne wird Tofu hergestellt?",
+  "antwort": "Sojabohne",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Soja"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Herkunft von Lebensmitteln",
+  "frage": "Aus welcher Pflanze wird Tequila gebrannt?",
+  "antwort": "Agave",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Blaue Agave"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Herkunft von Lebensmitteln",
+  "frage": "Aus dem Rogen welches Fisches besteht echter Kaviar?",
+  "antwort": "Stör",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Herkunft von Lebensmitteln",
+  "frage": "Aus welcher Nuss bzw. welchem Steinfruchtkern wird Marzipan hauptsächlich hergestellt?",
+  "antwort": "Mandeln",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mandel"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Welche Spirituose ist die Basis eines Mojito?",
+  "antwort": "Rum",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "weißer Rum"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Welche Spirituose gehört in eine Caipirinha?",
+  "antwort": "Cachaça",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Cachaca"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Welche Spirituose ist die Basis einer Margarita?",
+  "antwort": "Tequila",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Welcher aromatisierte Wein kommt neben Gin in einen klassischen Martini?",
+  "antwort": "Wermut",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vermouth",
+   "Wermuth"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Welcher Saft ist die Hauptzutat einer Bloody Mary?",
+  "antwort": "Tomatensaft",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Welches Land beansprucht die Piña Colada als Nationalgetränk?",
+  "antwort": "Puerto Rico",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Welcher Schaumwein gehört in einen klassischen Aperol Spritz?",
+  "antwort": "Prosecco",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Welcher rote Bitterlikör gehört neben Gin und Wermut in einen Negroni?",
+  "antwort": "Campari",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Mit welchen Beeren wird Gin aromatisiert?",
+  "antwort": "Wacholderbeeren",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wacholder"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Wie heißt der japanische Reiswein?",
+  "antwort": "Sake",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Saké",
+   "Nihonshu"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Cocktails und Getränke",
+  "frage": "Mit dem Öl welcher Zitrusfrucht wird Earl-Grey-Tee aromatisiert?",
+  "antwort": "Bergamotte",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Wie viele Tage hat ein Schaltjahr?",
+  "antwort": "366",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "In welchem Monat liegt der Schalttag?",
+  "antwort": "Februar",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Durch welche Zahl muss eine Jahrhundert-Jahreszahl teilbar sein, damit das Jahr ein Schaltjahr ist?",
+  "antwort": "400",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Wie heißt der heute gebräuchliche Kalender, der 1582 eingeführt wurde?",
+  "antwort": "Gregorianischer Kalender",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "gregorianisch"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Welcher Papst führte 1582 die Kalenderreform ein?",
+  "antwort": "Gregor XIII.",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Gregor XIII",
+   "Gregor der Dreizehnte"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Nach welchem römischen Staatsmann ist der julianische Kalender benannt?",
+  "antwort": "Julius Caesar",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Caesar",
+   "Gaius Julius Caesar",
+   "Cäsar"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Nach welchem römischen Kaiser ist der Monat August benannt?",
+  "antwort": "Augustus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kaiser Augustus"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Um wie viele Tage liegt der julianische Kalender derzeit hinter dem gregorianischen zurück?",
+  "antwort": "13",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "dreizehn"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Welcher Wochentag ist nach dem germanischen Gott Donar benannt?",
+  "antwort": "Donnerstag",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Nach welcher germanischen Göttin ist der Freitag benannt?",
+  "antwort": "Frigg",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Frija",
+   "Frea",
+   "Freya",
+   "Freyja"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Wie wird der Samstag vor allem in Nord- und Ostdeutschland auch genannt?",
+  "antwort": "Sonnabend",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Mit welchem Jahr christlicher Zeitrechnung beginnt die islamische Zeitrechnung?",
+  "antwort": "622",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "622 n. Chr."
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Wie heißt die Auswanderung Mohammeds von Mekka nach Medina, mit der die islamische Zeitrechnung beginnt?",
+  "antwort": "Hidschra",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Hedschra",
+   "Hijra"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Wie viele Tiere umfasst der chinesische Tierkreis?",
+  "antwort": "12",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwölf"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Welches Tier des chinesischen Tierkreises stand für das Jahr 2024?",
+  "antwort": "Drache",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Drachen",
+   "Holz-Drache"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "alltag-religion-essen-quizabend",
+  "block": "Kalender und Zeitrechnung",
+  "frage": "Wie heißt der Fachbegriff für die Tag-und-Nacht-Gleiche?",
+  "antwort": "Äquinoktium",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Aequinoktium"
+  ]
+ }
+]

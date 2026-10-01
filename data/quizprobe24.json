@@ -1,0 +1,1614 @@
+[
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Wie lauten die ersten drei Nachkommastellen der Kreiszahl π?",
+  "antwort": "141",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "3,141"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "An welchem Datum wird jedes Jahr der internationale Pi-Tag gefeiert?",
+  "antwort": "14. März",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "14.3.",
+   "14.03.",
+   "3/14"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Mit welchem Buchstaben wird die Eulersche Zahl bezeichnet?",
+  "antwort": "e",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Wie lautet die Eulersche Zahl auf zwei Nachkommastellen gerundet?",
+  "antwort": "2,72",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "2.72"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Wie lautet der Wert des goldenen Schnitts auf drei Nachkommastellen gerundet?",
+  "antwort": "1,618",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "1.618"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Welche Zahl ist weder positiv noch negativ?",
+  "antwort": "0",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Null"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Wie viele Nullen hat eine Million?",
+  "antwort": "6",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Wie viele Nullen hat eine Milliarde?",
+  "antwort": "9",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "neun"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Wie heißt im deutschen Sprachgebrauch eine Eins mit zwölf Nullen?",
+  "antwort": "Billion",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Wie heißt die Zahl 10 hoch 100, nach der eine bekannte Suchmaschine benannt ist?",
+  "antwort": "Googol",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gogol"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Welche Zahl ist in „Per Anhalter durch die Galaxis“ die Antwort auf die Frage nach dem Leben, dem Universum und dem ganzen Rest?",
+  "antwort": "42",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zweiundvierzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Welches Ergebnis hat die Eulersche Identität e^(iπ) + 1?",
+  "antwort": "0",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Null"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlen und Konstanten",
+  "frage": "Nach welchem Mathematiker wurde π früher „Ludolphsche Zahl“ genannt?",
+  "antwort": "Ludolph van Ceulen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Ludolf van Ceulen",
+   "van Ceulen",
+   "Ludolph"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Welche ist die kleinste Primzahl?",
+  "antwort": "2",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwei"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Wie viele Primzahlen gibt es zwischen 1 und 10?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Welche Primzahl folgt direkt auf die 7?",
+  "antwort": "11",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "elf"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Welche ist die größte zweistellige Primzahl?",
+  "antwort": "97",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "siebenundneunzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Welche ist die kleinste vollkommene (perfekte) Zahl, die gleich der Summe ihrer echten Teiler ist?",
+  "antwort": "6",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Welche ist die zweitkleinste vollkommene Zahl?",
+  "antwort": "28",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "achtundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Welche Zahl folgt in der Fibonacci-Folge 1, 1, 2, 3, 5, 8, 13 als nächste?",
+  "antwort": "21",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "einundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Unter welchem Beinamen ist der mittelalterliche Mathematiker Leonardo von Pisa bekannt?",
+  "antwort": "Fibonacci",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Wie nennt man Zahlen wie 1, 4, 9, 16 und 25?",
+  "antwort": "Quadratzahlen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Quadratzahl"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Welche ist die kleinste Kubikzahl größer als 1?",
+  "antwort": "8",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Wie nennt man Paare von Primzahlen mit dem Abstand 2, etwa 11 und 13?",
+  "antwort": "Primzahlzwillinge",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Primzahlzwilling"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Nach welchem französischen Mönch sind Primzahlen der Form 2^n − 1 benannt?",
+  "antwort": "Marin Mersenne",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Mersenne"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Welche Zahl ist als Hardy-Ramanujan-Zahl oder „Taxicab-Zahl“ bekannt?",
+  "antwort": "1729",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Primzahlen und besondere Zahlen",
+  "frage": "Wie heißt das antike Verfahren zum Auffinden von Primzahlen, das nach einem griechischen Gelehrten benannt ist?",
+  "antwort": "Sieb des Eratosthenes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Eratosthenes"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Auf welchen Rechenmeister geht die Redewendung „nach Adam …“ zurück? Nennen Sie den Nachnamen.",
+  "antwort": "Ries",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Riese",
+   "Adam Ries",
+   "Adam Riese"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher Mathematiker, „Fürst der Mathematiker“ genannt, war auf dem 10-D-Mark-Schein abgebildet?",
+  "antwort": "Carl Friedrich Gauß",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gauß",
+   "Gauss"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher griechische Mathematiker verfasste das Werk „Die Elemente“?",
+  "antwort": "Euklid",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Euklid von Alexandria"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Nach welchem Griechen ist der Satz a² + b² = c² benannt?",
+  "antwort": "Pythagoras",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pythagoras von Samos"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher britische Mathematiker war maßgeblich an der Entschlüsselung der Enigma beteiligt?",
+  "antwort": "Alan Turing",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Turing"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher griechische Gelehrte soll in der Badewanne „Heureka!“ gerufen haben?",
+  "antwort": "Archimedes",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Archimedes von Syrakus"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welche deutsche Mathematikerin gilt als Begründerin der modernen Algebra und ist für das nach ihr benannte Theorem über Symmetrien und Erhaltungsgrößen bekannt?",
+  "antwort": "Emmy Noether",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Noether"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher Schweizer Mathematiker des 18. Jahrhunderts führte die Bezeichnung e ein und arbeitete trotz Erblindung weiter?",
+  "antwort": "Leonhard Euler",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Euler"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher Mathematiker schrieb an den Rand eines Buches, er habe einen wunderbaren Beweis, doch der Rand sei zu schmal?",
+  "antwort": "Pierre de Fermat",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fermat"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher britische Mathematiker bewies in den 1990er-Jahren den großen Fermatschen Satz?",
+  "antwort": "Andrew Wiles",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wiles"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher russische Mathematiker bewies die Poincaré-Vermutung und lehnte 2006 die Fields-Medaille ab?",
+  "antwort": "Grigori Perelman",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Perelman"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher deutsche Mathematiker stellte im Jahr 1900 in Paris seine berühmte Liste von 23 Problemen vor?",
+  "antwort": "David Hilbert",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Hilbert"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher Mathematiker begründete die Mengenlehre und zeigte, dass es verschieden große Unendlichkeiten gibt?",
+  "antwort": "Georg Cantor",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Cantor"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Mathematiker",
+  "frage": "Welcher österreichische Logiker veröffentlichte 1931 die Unvollständigkeitssätze?",
+  "antwort": "Kurt Gödel",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Gödel"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Probleme und Sätze",
+  "frage": "Wie heißt das unlösbare Problem, mit Zirkel und Lineal ein Quadrat zu konstruieren, das denselben Flächeninhalt wie ein gegebener Kreis hat?",
+  "antwort": "Quadratur des Kreises",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Probleme und Sätze",
+  "frage": "Wie heißt die Vermutung, dass jede gerade Zahl größer als 2 die Summe zweier Primzahlen ist?",
+  "antwort": "Goldbachsche Vermutung",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Goldbach-Vermutung",
+   "Goldbach"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Probleme und Sätze",
+  "frage": "Wie viele Farben reichen laut einem berühmten Satz immer aus, um jede Landkarte so einzufärben, dass benachbarte Länder verschiedene Farben haben?",
+  "antwort": "4",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Probleme und Sätze",
+  "frage": "Wie viele Brücken spielen im klassischen Königsberger Brückenproblem eine Rolle?",
+  "antwort": "7",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Probleme und Sätze",
+  "frage": "Wie viele Millennium-Probleme schrieb das Clay Mathematics Institute im Jahr 2000 aus?",
+  "antwort": "7",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Probleme und Sätze",
+  "frage": "Wie heißt die berühmte unbewiesene Vermutung über die Nullstellen der Zetafunktion?",
+  "antwort": "Riemannsche Vermutung",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Riemann-Vermutung",
+   "Riemannsche Hypothese"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Probleme und Sätze",
+  "frage": "Nach welchem US-Showmaster ist das Ziegenproblem im Englischen benannt?",
+  "antwort": "Monty Hall",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Monty-Hall-Problem"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Probleme und Sätze",
+  "frage": "Wie groß ist laut Satz des Thales jeder Winkel im Halbkreis?",
+  "antwort": "90 Grad",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "90°",
+   "rechter Winkel",
+   "90"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie viele Ecken hat ein Oktogon?",
+  "antwort": "8",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie nennt man ein Vieleck mit fünf Ecken?",
+  "antwort": "Fünfeck",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pentagon"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Welche Form haben die Zellen einer Bienenwabe?",
+  "antwort": "Sechseck",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hexagon",
+   "sechseckig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie groß ist die Winkelsumme in einem Dreieck?",
+  "antwort": "180 Grad",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "180°",
+   "180"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie groß ist die Winkelsumme in einem Viereck?",
+  "antwort": "360 Grad",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "360°",
+   "360"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie heißt ein Winkel von genau 90 Grad?",
+  "antwort": "rechter Winkel",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie heißt ein Winkel, der größer als 90 und kleiner als 180 Grad ist?",
+  "antwort": "stumpfer Winkel",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie heißt ein Dreieck mit drei gleich langen Seiten?",
+  "antwort": "gleichseitiges Dreieck",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "gleichseitig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie heißt die längste Seite eines rechtwinkligen Dreiecks, die dem rechten Winkel gegenüberliegt?",
+  "antwort": "Hypotenuse",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie heißt die Strecke vom Mittelpunkt eines Kreises zu seinem Rand?",
+  "antwort": "Radius",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Halbmesser"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie viele Flächen hat ein Würfel?",
+  "antwort": "6",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechs"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie viele Kanten hat ein Würfel?",
+  "antwort": "12",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zwölf"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie viele platonische Körper gibt es?",
+  "antwort": "5",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie heißt der platonische Körper, der aus vier gleichseitigen Dreiecken besteht?",
+  "antwort": "Tetraeder",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vierflächner"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie lautet die Formel für den Flächeninhalt eines Kreises mit Radius r?",
+  "antwort": "π·r²",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "πr²",
+   "pi r²",
+   "pi*r^2",
+   "π r hoch 2"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Welchen Wert hat nach dem Eulerschen Polyedersatz der Ausdruck Ecken minus Kanten plus Flächen bei einem konvexen Polyeder?",
+  "antwort": "2",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "zwei"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie heißt die nach einem Leipziger Mathematiker benannte Fläche mit nur einer Seite und einer Kante?",
+  "antwort": "Möbiusband",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Möbius-Band",
+   "Möbiusschleife",
+   "Möbiusstreifen"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Geometrie",
+  "frage": "Wie viele schwarze Fünfecke hat ein klassischer Fußball aus Fünf- und Sechsecken?",
+  "antwort": "12",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "zwölf"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Welchen Wert hat die römische Zahl X?",
+  "antwort": "10",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zehn"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Welcher Buchstabe steht bei römischen Zahlen für 50?",
+  "antwort": "L",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Welcher Buchstabe steht bei römischen Zahlen für 100?",
+  "antwort": "C",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Welcher Buchstabe steht bei römischen Zahlen für 1000?",
+  "antwort": "M",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Welcher Buchstabe steht bei römischen Zahlen für 500?",
+  "antwort": "D",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Wie schreibt man die Zahl 4 üblicherweise in römischen Zahlen?",
+  "antwort": "IV",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Wie schreibt man die Zahl 9 in römischen Zahlen?",
+  "antwort": "IX",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Welche Jahreszahl steht für MMXXVI?",
+  "antwort": "2026",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Für welche Zahl gab es im römischen Zahlensystem kein eigenes Zeichen?",
+  "antwort": "0",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Null"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Wie schreibt man die Jahreszahl 1999 in römischen Zahlen nach heutiger Standardschreibweise?",
+  "antwort": "MCMXCIX",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Welche Jahreszahl steht für MCMLXXXIX?",
+  "antwort": "1989",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Römische Zahlen",
+  "frage": "Welche ist die größte Zahl, die sich in Standardschreibweise mit den Zeichen I bis M ohne Zusatzzeichen darstellen lässt?",
+  "antwort": "3999",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "MMMCMXCIX"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Wie viele Stück sind ein Dutzend?",
+  "antwort": "12",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwölf"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Wie viele Stück sind ein Gros (zwölf Dutzend)?",
+  "antwort": "144",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "hundertvierundvierzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Wie viele Stück sind ein Schock?",
+  "antwort": "60",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "sechzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Für welchen Faktor steht der Vorsatz „Kilo“?",
+  "antwort": "1000",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "tausend",
+   "10³"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Für welchen Faktor steht der Vorsatz „Mega“?",
+  "antwort": "1 Million",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "1000000",
+   "1.000.000",
+   "10^6",
+   "Million"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Für welchen Faktor steht der Vorsatz „Giga“?",
+  "antwort": "1 Milliarde",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Milliarde",
+   "1000000000",
+   "10^9"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Welcher Vorsatz steht für ein Tausendstel?",
+  "antwort": "Milli",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "m"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Welcher Vorsatz steht für ein Hundertstel?",
+  "antwort": "Zenti",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "c"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Welcher Vorsatz steht für ein Millionstel?",
+  "antwort": "Mikro",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "µ"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Welcher Vorsatz steht für den Faktor 10 hoch 12?",
+  "antwort": "Tera",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "T"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Welcher SI-Vorsatz für 10 hoch 30 wurde 2022 eingeführt?",
+  "antwort": "Quetta",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Q"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Wie viele Bits hat ein Byte?",
+  "antwort": "8",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Maßeinheiten und Vorsätze",
+  "frage": "Wie viele Milliliter hat ein Liter?",
+  "antwort": "1000",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "tausend",
+   "1.000"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Welche Summe ergeben die Augenzahlen gegenüberliegender Seiten eines normalen Würfels?",
+  "antwort": "7",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Welche Summe ergeben alle Augenzahlen eines normalen Würfels zusammen?",
+  "antwort": "21",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "einundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie groß ist die Wahrscheinlichkeit, mit einem Würfel bei einem Wurf eine Sechs zu werfen?",
+  "antwort": "1/6",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "1:6",
+   "ein Sechstel",
+   "1 zu 6"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Welche Augensumme fällt beim Wurf mit zwei Würfeln am häufigsten?",
+  "antwort": "7",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie viele verschiedene Ergebnisse (mit Reihenfolge) gibt es beim Wurf mit zwei Würfeln?",
+  "antwort": "36",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sechsunddreißig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie groß ist die Wahrscheinlichkeit, bei zwei Münzwürfen zweimal Kopf zu werfen?",
+  "antwort": "1/4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "25 %",
+   "ein Viertel",
+   "0,25"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Aus wie vielen Zahlen werden beim deutschen Lotto sechs gezogen?",
+  "antwort": "49",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "neunundvierzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie viele Möglichkeiten gibt es, 6 aus 49 Zahlen zu tippen (ohne Superzahl)?",
+  "antwort": "13983816",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "13.983.816",
+   "13 983 816"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie viele Karten hat ein Skatblatt?",
+  "antwort": "32",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zweiunddreißig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie viele Karten hat ein französisches Blatt ohne Joker?",
+  "antwort": "52",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zweiundfünfzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie viele Farben hat ein französisches Kartenblatt?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Ab wie vielen Personen liegt die Wahrscheinlichkeit, dass zwei am selben Tag Geburtstag haben, über 50 Prozent?",
+  "antwort": "23",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "dreiundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie viele Zahlenfächer hat ein europäischer Roulettekessel einschließlich der Null?",
+  "antwort": "37",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "siebenunddreißig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Welche Summe ergeben alle Zahlen auf einem Roulettekessel zusammen?",
+  "antwort": "666",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Mit wie vielen Würfeln spielt man Kniffel?",
+  "antwort": "5",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Wahrscheinlichkeit und Spiele",
+  "frage": "Wie viele Felder hat ein Schachbrett?",
+  "antwort": "64",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vierundsechzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Wie heißt das Zahlensystem, das nur die Ziffern 0 und 1 verwendet?",
+  "antwort": "Binärsystem",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Dualsystem",
+   "Zweiersystem",
+   "binär"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Wie schreibt man die Dezimalzahl 5 im Binärsystem?",
+  "antwort": "101",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Welche Basis hat das Hexadezimalsystem?",
+  "antwort": "16",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechzehn"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Welche Basis hat das Dezimalsystem?",
+  "antwort": "10",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zehn"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Welchen Dezimalwert hat die Binärzahl 1010?",
+  "antwort": "10",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zehn"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Welcher Buchstabe steht im Hexadezimalsystem für den Wert 15?",
+  "antwort": "F",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Welchen Dezimalwert hat die Hexadezimalzahl FF?",
+  "antwort": "255",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Wie viele verschiedene Werte kann ein Byte darstellen?",
+  "antwort": "256",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Welche Basis hatte das Zahlensystem der Babylonier, auf das unsere Zeitmessung zurückgeht?",
+  "antwort": "60",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sechzig",
+   "Sexagesimalsystem"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Aus welchem Land stammen die Ziffern, die wir „arabische Ziffern“ nennen, ursprünglich?",
+  "antwort": "Indien",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Zahlensysteme",
+  "frage": "Welche Basis hatte das Zahlensystem der Maya?",
+  "antwort": "20",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "zwanzig",
+   "Vigesimalsystem"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viel ist 12 mal 12?",
+  "antwort": "144",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viel ist 7 mal 8?",
+  "antwort": "56",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viel sind 25 Prozent von 80?",
+  "antwort": "20",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwanzig"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viele Sekunden hat eine Stunde?",
+  "antwort": "3600",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "3.600"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viele Tage hat ein Schaltjahr?",
+  "antwort": "366",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viel ist die Hälfte von einem Viertel?",
+  "antwort": "1/8",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "ein Achtel",
+   "0,125"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Welche Summe ergeben alle Zahlen von 1 bis 100, wie sie der junge Gauß berechnet haben soll?",
+  "antwort": "5050",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "5.050"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viel ist 2 hoch 10?",
+  "antwort": "1024",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "1.024"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie lautet die Quadratwurzel aus 169?",
+  "antwort": "13",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "dreizehn"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viele Minuten hat ein Tag?",
+  "antwort": "1440",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "1.440"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viele Stunden hat eine Woche?",
+  "antwort": "168",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viel ist 5 Fakultät (5!)?",
+  "antwort": "120",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viel ist 7 mal 11 mal 13?",
+  "antwort": "1001",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "1.001"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Kopfrechnen",
+  "frage": "Wie viel ist 111.111.111 mal 111.111.111?",
+  "antwort": "12345678987654321",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "12.345.678.987.654.321"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt das Ergebnis einer Addition?",
+  "antwort": "Summe",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt das Ergebnis einer Subtraktion?",
+  "antwort": "Differenz",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt das Ergebnis einer Multiplikation?",
+  "antwort": "Produkt",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt das Ergebnis einer Division?",
+  "antwort": "Quotient",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wofür steht das Symbol der liegenden Acht (∞)?",
+  "antwort": "Unendlich",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Unendlichkeit"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt die Zahl oberhalb des Bruchstrichs?",
+  "antwort": "Zähler",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt die Zahl unterhalb des Bruchstrichs?",
+  "antwort": "Nenner",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt die hochgestellte Zahl in einer Potenz wie 2³?",
+  "antwort": "Exponent",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hochzahl"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt der Tausendstel-Anteil mit dem Zeichen ‰?",
+  "antwort": "Promille",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Welcher griechische Großbuchstabe dient als Summenzeichen?",
+  "antwort": "Sigma",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Σ"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt die Rechenoperation, die durch ein Ausrufezeichen hinter einer Zahl angezeigt wird?",
+  "antwort": "Fakultät",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißt der Wert, der in einer der Größe nach sortierten Zahlenreihe genau in der Mitte steht?",
+  "antwort": "Median",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zentralwert"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wofür steht die Abkürzung „q. e. d.“ am Ende eines Beweises?",
+  "antwort": "quod erat demonstrandum",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "was zu beweisen war"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie heißen Zahlen wie √2, die sich nicht als Bruch zweier ganzer Zahlen schreiben lassen?",
+  "antwort": "irrationale Zahlen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "irrational"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Was bezeichnet das Zeichen ∅ in der Mengenlehre?",
+  "antwort": "leere Menge",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Wie nennt man Zahlen wie π und e, die keine Nullstelle eines Polynoms mit ganzzahligen Koeffizienten sind?",
+  "antwort": "transzendente Zahlen",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "transzendent"
+  ]
+ },
+ {
+  "gebiet": "mathematik",
+  "katalog": "mathe-trivia-quizabend",
+  "block": "Symbole und Begriffe",
+  "frage": "Welche Zahl ist die Basis des natürlichen Logarithmus?",
+  "antwort": "e",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Eulersche Zahl"
+  ]
+ }
+]
