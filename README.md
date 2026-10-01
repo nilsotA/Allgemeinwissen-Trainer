@@ -4,9 +4,9 @@ Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, 
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät. Wer mehrere Geräte nutzt,
 kann ihn über ein privates Gist im eigenen GitHub-Konto abgleichen (siehe *Geräte abgleichen*).
 
-**4.545 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**4.698 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (775 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (785 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (467 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -43,7 +43,7 @@ amerikanisch, Redewendungen, ASAP bis RSVP).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (32 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (92 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (93 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
 MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (60 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), **Amerika** (67 – Bundesstaaten und ihre Hauptstädte, Konquistadoren, Tango,
@@ -4343,6 +4343,63 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Prüfsätze 25–27: Sprache, USA, Körper und Ernährung – 61/65/64 → 96/97/100 %
+
+Drei der Schwerpunkte, die bisher kaum gemessen waren: deutsche Grammatik und Englisch, die
+USA mit dem übrigen Amerika sowie Körper, Gesundheit und Ernährung. Die drei Prüfsätze haben
+Agenten ohne Blick in die Sammlung geschrieben, je 150 Fragen in zwölf Themenblöcken. Sie
+sind vor der ersten neuen Karte in einem eigenen Commit eingefroren.
+
+| Prüfsatz | vorher | jetzt |
+|---|---|---|
+| 25 Deutsch und Englisch: Satzglieder, Fälle, Rechtschreibung, Stilmittel, Redewendungen, False Friends | 92/150 (61 %) | 144/150 (96 %) |
+| 26 USA und Amerika: Geschichte, Politik, Geografie, Popkultur, Sport, Kanada, Mexiko, Südamerika | 97/150 (65 %) | 146/150 (97 %) |
+| 27 Körper, Gesundheit, Medizin und Ernährung | 96/150 (64 %) | 150/150 (100 %) |
+
+Dazu kamen **153 neue Karten**, 21 umformulierte und 8 angepasste Bestandskarten. Jedes der
+sechs Pakete ging durch Autor, Faktenprüfer und Gegenprüfer. Ein eigener Agent hat danach die
+Befunde selbst nachgeprüft und eingearbeitet. Die Prüfer fanden zusammen gut 110 Punkte. Die
+meisten waren falsche Optionen, die sich am Wortlaut ausschließen ließen:
+- In der Gallenblasen-Frage stand „Hohlorgan“, und alle drei Ablenker waren kompakte Organe.
+- In der Nashville-Frage stand „Stadt in Tennessee“, aber zwei Ablenker liegen in Texas und
+  Georgia.
+- Bei „In God We Trust“ verriet „vier Wörter lang“ die Antwort durch Abzählen.
+- Bei „gymnasium“ warnte die Frage vor dem falschen Freund, und alle drei Ablenker waren
+  Schulformen.
+
+Inhaltlich korrigiert wurde unter anderem:
+- Die Altäre zum Día de los Muertos schmücken Studentenblumen (Tagetes), keine Ringelblumen.
+  Das ist eine Fehlübersetzung von „marigold“, die auch in einer Bestandskarte stand.
+- „Ich habe geschwommen“ ist nicht süddeutsch. Der Duden lässt beide Hilfsverben zu.
+- Virchow prägte „Zoonose“ 1855 in Würzburg, nicht in Berlin.
+- „Trinity“ war der Name des ersten Atombombentests. Der Sprengkörper hieß „Gadget“.
+- COPD kommt nur in reichen Ländern meist vom Rauchen.
+- Beim Vektorimpfstoff bauen die Zellen das Virusprotein ebenfalls nach einer Bauanleitung.
+  Die mRNA-Frage nennt deshalb die Fetttröpfchen.
+
+Offen bleiben zehn Fragen. Sieben davon sind Umkehrpaare zu Bestandskarten, die sich
+gegenseitig verraten würden: Niagarafälle, Jazz, Stanley Cup, Ahornblatt, „Wer oder was?“,
+„Da liegt der Hund begraben“ und „first floor“. „Schwein haben“ ist ein Umkehrpaar, das die
+Messung nicht als solches erkennt. Dazu kommen zwei Fälle, die die Bewertung nicht
+unterscheiden kann: „Fluss“ gegen „Fluß“ (ß und ss gelten als gleich) und „dem Präsidenten“.
+Weil der Artikel wegfällt, gelten „den“, „des“ und „dem Präsidenten“ als dasselbe. Zur Probe
+lief die Karte auch mit dem Artikel im Satz und nur dem Hauptwort in der Lücke. Dann fand
+sich aber keine falsche Endung, die die Bewertung ablehnt („Präsidente“ 0,92, „Präsidents“
+0,83). Die Karte ist deshalb gestrichen.
+
+**Eine Bewertungslücke ist dabei geschlossen:** „Partizip“ galt als „Partizip 1“, „Formel“
+als „Formel 1“. Eine einzelne Eins fiel beim Vergleich weg, auch am Ende eines Namens, und
+das blanke Stichwort galt damit als Antwort auf genau die Unterscheidung, nach der die
+Karte fragt. Jetzt bleibt die Eins als letztes Wort hinter einem Namen stehen. Mit Punkt ist
+sie weiter eine Ordnungszahl: „Peter“ genügt für „Peter 1.“. Der Abgleich gegen den Bestand
+hat zwei Nebenschreibweisen ergänzt: „Sputnik“ für „Sputnik 1“ und „Konjunktiv 1“ für
+„Konjunktiv I“. Letzteres galt auch vorher schon nicht.
+
+Ein Arbeitsfehler gehört auch hierher: Meine Anweisung an die Autoren nannte
+`umformulieren.cjs` mit `--probe` als harmlosen Probelauf, das Skript kennt aber keinen
+Probelauf. Ein Autor hat damit kurz drei Datendateien verändert, das selbst bemerkt und
+zurückgenommen. `git status` war danach leer. Die Anweisung ist berichtigt.
 
 ### Aufräumen und drei neue Gebiete: Spiegelpaare, veraltete Fakten, Prüfsätze 22–24
 
