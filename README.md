@@ -1,7 +1,8 @@
 # Wissenswerk
 
 Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, ohne Konto –
-alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät.
+alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät. Wer mehrere Geräte nutzt,
+kann ihn über ein privates Gist im eigenen GitHub-Konto abgleichen (siehe *Geräte abgleichen*).
 
 **4.545 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
@@ -238,6 +239,94 @@ log das Ergebnis:
 Jeder der vier Fälle hat einen Test, der zwei echte Modulinstanzen gegeneinander fährt und
 gegen den alten Stand fehlschlägt.
 
+### Geräte abgleichen
+
+Wer auf iPhone, iPad und Mac lernt, will überall denselben Stand. Eine Sicherungsdatei hin
+und her zu tragen hilft dabei wenig, denn das Einlesen **ersetzt**: Was auf dem anderen Gerät
+inzwischen gelernt wurde, wäre weg. Der Abgleich führt deshalb zusammen, mit derselben Regel
+wie zwischen zwei Tabs. Auf einen eigenen Server verzichtet er.
+
+**Einrichten**, einmal je Gerät: Unter *Mehr → Geräte abgleichen* einen GitHub-Zugangsschlüssel
+einfügen. Der Knopf „Schlüssel anlegen“ öffnet GitHub mit vorausgefülltem Formular: nur das
+Recht `gist`, Ablauf „No expiration“, dann „Generate token“. Auf den anderen Geräten fügt man
+denselben Schlüssel ein. Bestehender Fortschritt wird dabei zusammengeführt, nicht überschrieben.
+
+**Wo der Stand liegt:** Beim ersten Verbinden legt die App ein *geheimes* Gist an. Geheim
+heißt bei GitHub „nicht gelistet“, nicht verschlüsselt: Wer die Adresse kennt, sieht den
+Lernstand, aber nichts darüber hinaus. Jedes Gerät hat darin eine eigene Datei
+`geraet-<kennung>.json` und schreibt **nur seine eigene**. Zwei Geräte, die gleichzeitig
+hochladen, können sich so nichts wegnehmen, und es gibt keinen Schreibkonflikt aufzulösen.
+Die anderen Dateien liest jedes Gerät und mischt sie ein. Weitere Geräte finden das Gist an
+seiner Beschreibung und brauchen nur den Schlüssel. Der Schlüssel liegt in einem eigenen
+Speichereintrag, nie im Lernstand: Eine weitergegebene Sicherungsdatei enthält ihn nicht, das
+Gist auch nicht.
+
+**Wann abgeglichen wird:** beim Start, beim Zurückkehren in die App und während der Benutzung
+jede Minute, sofern sich etwas geändert hat. Ohne Änderung ist es alle fünf Minuten, um
+fremde Stände zu sehen. Beim Verlassen der App wird nur hochgeladen. Während einer laufenden
+Einheit wird weder gemischt noch hochgeladen: Ein Tausch mitten in der Runde verschluckt
+Antworten, und ein halbes Megabyte je Minute kostet unterwegs Datenvolumen. Verloren geht
+dabei nichts, die Antworten liegen im Gerät und gehen nach der Einheit hinaus. Hochgeladen
+wird nur, wenn sich der Stand seit dem letzten Mal geändert hat, und zwar gepackt (gzip): Ein
+voller Stand mit 6.000 Karten und zwei Jahren Tagebuch sind gepackt unter 400 KB. Die
+Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inhalt über
+`raw_url`.
+
+**Gemischt wird nach den Regeln aus dem Abschnitt darüber:**
+- Tagesbeiträge tragen die Kennung ihres Tabs und werden summiert. Auf zwei Geräten
+  gelernt ergibt also die Summe, nicht das Maximum.
+- Bei einer Karte gewinnt der jüngere Stand, bei einer Markierung der jüngere Stempel. Eine
+  gelöschte Markierung kommt deshalb nicht zurück.
+- Die Gesamtzahlen werden aus den Tagen abgeleitet.
+- Einstellungen bleiben je Gerät, denn das Farbschema am Mac muss nicht das des iPhones sein.
+
+**Drei Fälle gibt es zwischen Tabs nicht:**
+- **Zurücksetzen oder Einlesen auf einem Gerät** gilt als ausdrückliche Entscheidung und
+  erreicht alle Geräte, über dieselbe Generationsnummer wie zwischen Tabs. Jedes Gerät legt
+  seinen bisherigen Stand vorher ins Netz unter „Gesicherten Stand zurückholen“. Die
+  Rückfragen beim Zurücksetzen und Einlesen sagen das, sobald der Abgleich an ist.
+- **Liegengebliebene Dateien.** Ein altes Handy meldet sich nie wieder, oder ein geleerter
+  Speicher bringt eine neue Gerätekennung. Die alte Datei bleibt dann im Gist liegen. Nach
+  einem Zurücksetzen trägt sie eine ältere Generation und wird übergangen, statt den
+  geleerten Stand wieder aufzufüllen.
+- **Erster Abgleich eines Geräts.** Die Generationen sind dann nicht vergleichbar: Das iPhone
+  hat vielleicht dreimal eine Sicherung eingelesen, das iPad nie. Nach der Regel oben verlöre
+  das iPad alles, was es bis dahin gelernt hat. Beim ersten Mal wird deshalb immer vereinigt,
+  und das Gerät übernimmt die Generation der Gruppe, nicht seine eigene. Sonst ersetzte es
+  beim nächsten Abgleich die Stände aller anderen.
+
+**Wenn etwas schiefgeht:**
+- Ohne Netz versucht die App es später von selbst wieder, mit wachsendem Abstand bis zu
+  einer Viertelstunde.
+- Bei einem ungültigen oder abgelaufenen Schlüssel ruht der Abgleich, statt GitHub im
+  Minutentakt mit Fehlversuchen zu beschäftigen. *Mehr* sagt dann, was los ist, und nimmt
+  einen neuen Schlüssel an.
+- Ein gelöschtes Gist legt die App neu an und lädt den Stand wieder hinein.
+- Richten sich zwei Geräte fast gleichzeitig ein, sieht das zweite das frische Gist
+  womöglich noch nicht und legt ein eigenes an. Einmal je App-Start prüft jedes Gerät, ob
+  es ein älteres gibt, und wechselt dorthin.
+- Kaputte oder fremde Dateien im Gist werden übergangen. Werte daraus laufen durch dieselbe
+  Säuberung wie eine eingelesene Sicherung.
+- Solange der Abgleich gelingt, entfällt die Erinnerung ans Sichern als Datei.
+
+**Geprüft** wird das zweifach:
+- `tests/sync.test.mjs` (22 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
+  eigenem Speicher, gegen ein nachgebautes Gist-Archiv mit den Antworten der echten API. Darin
+  stecken die Summe unabhängig gelernter Antworten, Zurücksetzen samt Netz, die
+  liegengebliebene Datei, verschiedene Generationen beim ersten Abgleich, 401 und Netzabbruch
+  mitten im Hochladen, das gelöschte und das doppelt angelegte Gist, gekürzte Dateien,
+  gepackt gegen ungepackt und drei Geräte, die durcheinander lernen und gleich enden.
+- Der Durchlauftest verbindet zwei echte Browserkontexte über die Oberfläche. Seine
+  GitHub-Attrappe lehnt wie die echte API jeden Kopf ab, den der CORS-Vorabcheck nicht
+  erlaubt, denn ein solcher Kopf ließe den Abgleich im echten Safari scheitern.
+
+Grenzen, bewusst in Kauf genommen:
+- Wer eine Antwort zurücknimmt, nachdem ein anderes Gerät den Stand mit dieser Antwort
+  schon abgeholt hat, bekommt sie von dort zurück. Das ist kaum möglich, weil während einer
+  Einheit nichts hinausgeht und „Zurücknehmen“ nur direkt nach der Antwort angeboten wird.
+- Die Uhrzeiten der Geräte entscheiden, welcher Kartenstand der jüngere ist. Eine um Stunden
+  falsch gehende Uhr kann deshalb einen älteren Stand gewinnen lassen.
+
 ### Was bewusst *nicht* drin ist
 
 - **Terminglättung.** Die Idee, Wiederholungen auf den am wenigsten belasteten Tag im
@@ -465,8 +554,8 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 200 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 335 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm test           # 222 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 352 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
 npm run widersprueche # Karten, die einander widersprechen – und die mit der Zeit altern
@@ -5453,6 +5542,7 @@ assets/js/store.js      Speicherung im Browser, Streak, Tagesstatistik
 assets/js/srs.js        Spaced-Repetition-Scheduler
 assets/js/session.js    Zusammenstellung der Lerneinheiten
 assets/js/quiz.js       Antwortoptionen, Vergleich freier Eingaben
+assets/js/sync.js       Abgleich zwischen Geräten über ein privates GitHub-Gist
 assets/js/app.js        Oberfläche und Ablauf
 data/                   Kartensammlung nach Kategorien
 scripts/                Icon-, Service-Worker- und Prüfwerkzeuge
@@ -5461,7 +5551,10 @@ tests/                  Einheitentests und Durchlauftest
 
 ## Daten
 
-Es gibt keinen Server und kein Konto. Der Fortschritt liegt im `localStorage` des Browsers
-und wird beim Verlassen der App sofort gesichert. Unter *Mehr → Daten* lässt er sich als
-Datei exportieren und auf einem anderen Gerät einlesen.
-Wichtig: Wenn du in Safari die Website-Daten löschst, ist der Fortschritt weg – gelegentlich sichern.
+Es gibt keinen eigenen Server und kein Konto bei der App. Der Fortschritt liegt im
+`localStorage` des Browsers und wird beim Verlassen der App sofort gesichert. Unter
+*Mehr → Daten* lässt er sich als Datei exportieren und auf einem anderen Gerät einlesen.
+Unter *Mehr → Geräte abgleichen* hält die App ihn auf allen Geräten gleich – über ein
+privates Gist im eigenen GitHub-Konto, siehe oben.
+Wichtig: Ohne Abgleich ist der Fortschritt weg, wenn du in Safari die Website-Daten löschst –
+gelegentlich sichern.

@@ -3301,6 +3301,145 @@ try {
     await kuctx.close();
   }
 
+  group('Geräte abgleichen');
+  /* Zwei Browserkontexte sind zwei Geraete: eigener Speicher, eigene Kennung.
+     GitHub ist nachgebaut - mit den CORS-Regeln der echten API. Ein Kopf, den
+     api.github.com im Vorabcheck nicht erlaubt, liesse den Abgleich im echten
+     Safari scheitern, also lehnt die Attrappe ihn genauso ab. */
+  {
+    const TOKEN = 'ghp_' + 'e2e'.repeat(12);
+    const ERLAUBTE_KOEPFE = ['authorization', 'content-type', 'if-match', 'if-modified-since', 'if-none-match',
+      'if-unmodified-since', 'accept-encoding', 'x-github-otp', 'x-requested-with', 'user-agent', 'x-github-api-version'];
+    const gists = new Map();
+    const abgelehnt = [];
+    const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'x-ratelimit-remaining' };
+    const github = async (route) => {
+      const req = route.request();
+      const u = new URL(req.url());
+      const methode = req.method();
+      if (methode === 'OPTIONS') {
+        const gewuenscht = (req.headers()['access-control-request-headers'] || '').split(',').map(x => x.trim().toLowerCase()).filter(Boolean);
+        const fremd = gewuenscht.filter(h => !ERLAUBTE_KOEPFE.includes(h));
+        if (fremd.length) abgelehnt.push(fremd.join(','));
+        return route.fulfill({ status: 204, headers: { ...cors, 'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE',
+          'Access-Control-Allow-Headers': ERLAUBTE_KOEPFE.join(', ') } });
+      }
+      const json = (status, body) => route.fulfill({ status, headers: { ...cors, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      if (req.headers()['authorization'] !== `Bearer ${TOKEN}`) return json(401, { message: 'Bad credentials' });
+      const teile = u.pathname.split('/').filter(Boolean);
+      const body = req.postData() ? JSON.parse(req.postData()) : null;
+      if (teile.length === 1 && methode === 'GET') return json(200, [...gists.values()].map(g => ({ id: g.id, description: g.description, created_at: g.created_at })));
+      if (teile.length === 1 && methode === 'POST') {
+        const id = 'e2e' + (gists.size + 1);
+        const files = {};
+        for (const [n, f] of Object.entries(body.files)) files[n] = f.content;
+        gists.set(id, { id, description: body.description, created_at: new Date().toISOString(), files });
+        return json(201, { id });
+      }
+      const g = gists.get(teile[1]);
+      if (!g) return json(404, { message: 'Not Found' });
+      if (methode === 'PATCH') { for (const [n, f] of Object.entries(body.files)) g.files[n] = f.content; return json(200, { id: g.id }); }
+      const files = {};
+      for (const [n, c] of Object.entries(g.files)) files[n] = { filename: n, content: c, truncated: false };
+      return json(200, { id: g.id, files });
+    };
+    const geraet = async (ua, absichtlich = false) => {
+      const c = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', ...(ua ? { userAgent: ua } : {}) });
+      await c.route('https://api.github.com/**', github);
+      const p = horche(await c.newPage(), absichtlich);
+      await p.goto(URL_BASE, { waitUntil: 'load' });
+      await p.waitForSelector('[data-go="daily"]', { timeout: 15000 });
+      return { c, p };
+    };
+    const antworte = async (p, n) => {
+      await p.click('[data-view="home"]');
+      await p.getByRole('button', { name: /Tagestraining|Extra-Runde/ }).click();
+      await p.waitForSelector('.sess-body');
+      for (let i = 0; i < n; i++) {
+        await p.waitForTimeout(FUSS_TAUB);
+        if (await p.locator('.opt').count()) await p.locator('.opt').first().click();
+        else if (await p.locator('[data-hab]').count()) await p.locator('[data-hab="1"]').click();
+        else await p.click('#reveal');
+        await p.waitForSelector('[data-g], #next');
+        await p.waitForTimeout(FUSS_TAUB);
+        if (await p.locator('[data-g="2"]').count()) await p.locator('[data-g="2"]').click();
+        else await p.click('#next');
+      }
+      await p.waitForTimeout(400);
+      await p.goto(URL_BASE, { waitUntil: 'load' });     // Einheit verlassen wie per Neustart
+      await p.waitForSelector('[data-go="daily"]', { timeout: 15000 });
+    };
+    const antworten = (p) => p.evaluate(k => JSON.parse(localStorage.getItem(k) || '{}').totalAnswers || 0, KEY);
+    const toastText = (p) => p.locator('.toast:not(.aktion)').last().innerText().catch(() => '');
+
+    const A = await geraet();
+    await antworte(A.p, 3);
+    const nachA = await antworten(A.p);
+    await A.p.click('[data-view="settings"]');
+    await A.p.fill('#syncTok', TOKEN);
+    await A.p.click('#syncAn');
+    await A.p.waitForSelector('#syncStatus', { timeout: 10000 });
+    check('Verbinden legt genau ein Gist an', gists.size === 1, `${gists.size} Gists`);
+    const dateien = () => Object.keys([...gists.values()][0]?.files || {}).filter(n => n.startsWith('geraet-'));
+    check('und laedt den Stand des ersten Geraets hoch', dateien().length === 1);
+    check('der Status sagt, dass noch kein anderes Geraet da ist', /kein anderes Gerät/.test(await A.p.locator('#syncStatus').innerText()));
+
+    const B = await geraet('Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15');
+    await antworte(B.p, 2);
+    const nachB = await antworten(B.p);
+    await B.p.click('[data-view="settings"]');
+    await B.p.fill('#syncTok', TOKEN);
+    await B.p.click('#syncAn');
+    await B.p.waitForSelector('#syncStatus', { timeout: 10000 });
+    check('das zweite Geraet findet dasselbe Gist', gists.size === 1 && dateien().length === 2, `${gists.size} Gists, ${dateien().length} Dateien`);
+    check('beim Verbinden wird zusammengefuehrt, nicht ueberschrieben', await antworten(B.p) === nachA + nachB,
+      `${await antworten(B.p)} statt ${nachA + nachB}`);
+    check('der Status nennt das andere Geraet', /iPhone/.test(await B.p.locator('#syncStatus').innerText()));
+
+    await A.p.click('#syncJetzt');
+    await A.p.waitForFunction(() => /Abgeglichen/.test([...document.querySelectorAll('.toast')].map(t => t.textContent).join(' ')), null, { timeout: 10000 });
+    check('das erste Geraet bekommt die Antworten des zweiten', await antworten(A.p) === nachA + nachB,
+      `${await antworten(A.p)} statt ${nachA + nachB}`);
+    check('und sagt, dass ein neuer Stand kam', /neuer Stand/.test(await toastText(A.p)), await toastText(A.p));
+    check('der Status nennt den Mac', /Mac/.test(await A.p.locator('#syncStatus').innerText()));
+
+    // Neu gestartete App gleicht von selbst ab.
+    await antworte(B.p, 1);
+    await B.p.waitForTimeout(1500);                       // Abgleich beim Start
+    await B.p.click('[data-view="settings"]');
+    await B.p.click('#syncJetzt');
+    await B.p.waitForTimeout(800);
+    await A.p.reload({ waitUntil: 'load' });
+    await A.p.waitForSelector('[data-go="daily"]', { timeout: 15000 });
+    await A.p.waitForFunction((soll) => (JSON.parse(localStorage.getItem('wissenswerk.v1') || '{}').totalAnswers || 0) >= soll,
+      nachA + nachB + 1, { timeout: 10000 }).catch(() => {});
+    check('nach einem Neustart holt die App den Stand von selbst', await antworten(A.p) === nachA + nachB + 1,
+      `${await antworten(A.p)} statt ${nachA + nachB + 1}`);
+
+    check('kein Kopf, den GitHub im Vorabcheck ablehnen wuerde', abgelehnt.length === 0, abgelehnt.join(' | '));
+    const inhalt = JSON.stringify([...gists.values()]);
+    check('der Schluessel landet nicht im Gist', !inhalt.includes(TOKEN));
+    check('der Schluessel steht nicht im Lernstand', !(await A.p.evaluate(k => localStorage.getItem(k), KEY)).includes(TOKEN));
+
+    const C = await geraet(undefined, true);        // die 401 beim falschen Schluessel ist gewollt
+    await C.p.click('[data-view="settings"]');
+    await C.p.fill('#syncTok', 'ghp_' + 'falsch'.repeat(6));
+    await C.p.click('#syncAn');
+    await C.p.waitForFunction(() => /ungültig/.test([...document.querySelectorAll('.toast')].map(t => t.textContent).join(' ')), null, { timeout: 10000 }).catch(() => {});
+    check('ein falscher Schluessel wird klar abgelehnt', /ungültig/.test(await toastText(C.p)), await toastText(C.p));
+    check('und nicht gespeichert', await C.p.locator('#syncStatus').count() === 0);
+
+    let frage = '';
+    B.p.once('dialog', (d) => { frage = d.message(); d.accept(); });
+    const vorTrennen = await antworten(B.p);
+    await B.p.click('#syncAus');
+    await B.p.waitForTimeout(300);
+    check('Trennen fragt nach und verspricht, dass der Stand bleibt', /Lernstand bleibt/.test(frage), frage);
+    check('nach dem Trennen ist der Abgleich aus, der Stand noch da',
+      await B.p.locator('#syncStatus').count() === 0 && await B.p.locator('#syncTok').count() === 1 && await antworten(B.p) === vorTrennen);
+    for (const g of [A, B, C]) await g.c.close();
+  }
+
   group('Layout');
   check('kein waagerechter Überlauf',
     (await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)) === 0);
@@ -3318,7 +3457,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 335;
+const MINDESTENS = 352;
 /* Die Zahl VOR dem eigenen Hochzaehlen nehmen: Sonst meldet der Wachposten
    „Nur 323 von mindestens 323 gelaufen" und zaehlt sich selbst zu den Laeufen -
    ein Satz, der sich widerspricht, ueber der einzigen Zeile, die sagt, dass

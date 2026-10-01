@@ -9,6 +9,7 @@ import { schedule, strength, preview, isLeech, nachDuellFehler, fresh as freshSt
 import { options, bewerte, normalize, shuffle } from './quiz.js';
 import { FASSUNG } from './fassung.js';
 import * as sess from './session.js';
+import * as sync from './sync.js';
 import { punkte, auswertung, rundenEintrag, schwaechstesFeld,
          FRIST_MS, BLITZ_MS, MAX_JE_FRAGE, PUNKTE_BLITZ, FRAGEN_JE_RUNDE } from './quizmodus.js';
 
@@ -856,6 +857,11 @@ function sicherungsHinweis() {
   const seit = store.tageSeitSicherung();
   if ((st.totalAnswers || 0) < 120) return '';          // vorher lohnt der Hinweis nicht
   if (seit !== null && seit < 30) return '';
+  /* Mit laufendem Abgleich liegt eine Kopie im Gist - dann ist die Erinnerung
+     nur laestig. Sie kommt zurueck, sobald der Abgleich einen Monat lang nicht
+     gelungen ist. */
+  const ab = sync.konfiguration();
+  if (ab && ab.zuletzt && Date.now() - ab.zuletzt < 30 * 86400000) return '';
   const text = seit === null
     ? 'Dein Fortschritt liegt nur in diesem Browser. Sichere ihn einmal als Datei – dann übersteht er auch ein neues Handy.'
     : `Die letzte Sicherung ist ${seit} Tage her. Ein geleerter Websitespeicher würde den Fortschritt mitnehmen.`;
@@ -1107,6 +1113,120 @@ function renderLookup() {
   waermeIndex();
 }
 
+/* ---- Geraete abgleichen (sync.js) ---- */
+function vorZeit(ms) {
+  if (!ms) return 'noch nie';
+  const min = Math.round((Date.now() - ms) / 60000);
+  if (min < 1) return 'gerade eben';
+  if (min < 60) return `vor ${min} Min.`;
+  if (min < 24 * 60) return `vor ${Math.round(min / 60)} Std.`;
+  return `am ${new Date(ms).toLocaleDateString('de-DE')}`;
+}
+
+function abgleichStatus(k) {
+  const geraete = (k.geraete || []).map(g => `${esc(g.name)} (${vorZeit(g.zeit)})`);
+  const liste = geraete.length
+    ? `Andere Geräte: ${geraete.join(', ')}.`
+    : 'Noch kein anderes Gerät verbunden – füge denselben Schlüssel dort unter „Mehr“ ein.';
+  if (k.fehler) {
+    return `<div class="hinweis" style="margin-top:0"><b>${k.pausiert ? 'Abgleich angehalten.' : 'Abgleich gerade nicht möglich.'}</b> ${esc(k.fehler)}.
+      ${k.pausiert ? 'Leg einen neuen Schlüssel an und füge ihn unten ein.' : 'Die App versucht es von selbst wieder.'}
+      Dein Lernstand auf diesem Gerät ist davon nicht betroffen.</div>
+      <p class="tiny" style="margin-top:9px">Zuletzt gelungen: ${vorZeit(k.zuletzt)}. ${liste}</p>`;
+  }
+  return `<p class="muted">✓ Abgleich aktiv · zuletzt ${vorZeit(k.zuletzt)}</p>
+    <p class="tiny" style="margin-top:6px">${liste}</p>`;
+}
+
+function abgleichKarte() {
+  const k = sync.konfiguration();
+  const eingabe = (platzhalter) => `
+      <input class="recall-in" id="syncTok" type="password" autocomplete="off" autocapitalize="off"
+        autocorrect="off" spellcheck="false" placeholder="${platzhalter}" aria-label="GitHub-Zugangsschlüssel" style="margin-top:12px">`;
+  if (!k) return `
+    <h2 class="sec">Geräte abgleichen</h2>
+    <div class="card">
+      <p class="muted">Hält deinen Lernstand auf iPhone, iPad und Mac gleich – über ein privates Gist in deinem GitHub-Konto. Einmal je Gerät einrichten, danach gleicht die App von selbst ab.</p>
+      <details style="margin-top:6px"><summary class="tiny" style="min-height:44px;display:flex;align-items:center;cursor:pointer">So bekommst du den Schlüssel</summary>
+        <ol class="tiny" style="padding-left:20px;margin:8px 0 0;line-height:1.6">
+          <li>Bei github.com anmelden – ein kostenloses Konto genügt.</li>
+          <li>Auf GitHub einen neuen Schlüssel anlegen. Das Recht „gist“ ist dort schon angehakt, mehr braucht es nicht.<br>
+            <a class="btn sm ghost" style="margin:6px 0" href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Wissenswerk" target="_blank" rel="noopener">Schlüssel anlegen</a></li>
+          <li>Bei „Expiration“ <b>No expiration</b> wählen und unten <b>Generate token</b> tippen.</li>
+          <li>Den Schlüssel (beginnt mit <b>ghp_</b>) kopieren und hier einfügen. Leg ihn in den Passwörtern oder einer Notiz ab – die anderen Geräte brauchen denselben.</li>
+        </ol>
+      </details>
+      ${eingabe('Zugangsschlüssel (ghp_…)')}
+      <div class="btn-stack" style="margin-top:10px"><button class="btn primary" id="syncAn">Verbinden</button></div>
+      <p class="tiny" style="margin-top:10px">Bestehender Fortschritt auf den Geräten wird beim Verbinden zusammengeführt, nicht überschrieben. Der Schlüssel bleibt auf diesem Gerät und steht in keiner Sicherungsdatei.</p>
+    </div>`;
+  return `
+    <h2 class="sec">Geräte abgleichen</h2>
+    <div class="card">
+      <div id="syncStatus">${abgleichStatus(k)}</div>
+      ${k.pausiert ? eingabe('Neuer Zugangsschlüssel (ghp_…)') : ''}
+      <div class="btn-stack" style="margin-top:11px">
+        ${k.pausiert ? '<button class="btn primary" id="syncAn">Neuen Schlüssel verwenden</button>' : ''}
+        <button class="btn" id="syncJetzt">Jetzt abgleichen</button>
+        <button class="btn" id="syncAus">Auf diesem Gerät trennen</button>
+      </div>
+    </div>`;
+}
+
+function zeigeAbgleichStatus() {
+  const k = sync.konfiguration();
+  const ziel = document.getElementById('syncStatus');
+  if (k && ziel) ziel.innerHTML = abgleichStatus(k);
+}
+
+/* Was ein Abgleich sichtbar veraendert hat, sagt die App - nach denselben
+   Regeln wie beim zweiten Tab: nicht waehrend einer Einheit neu zeichnen und
+   nicht ueber einen offenen Rueckblick hinweg. */
+function nachAbgleich(r) {
+  zeigeAbgleichStatus();
+  if (!r || !r.ok || !r.sichtbar || run) return;
+  if (!rueckblickOffen) render();
+  toast(r.uebernommen
+    ? 'Ein anderes Gerät hat den Stand ersetzt – hier übernommen'
+    : 'Auf einem anderen Gerät gelernt – Stand abgeglichen');
+}
+
+function bindeAbgleich() {
+  const an = document.getElementById('syncAn');
+  if (an) an.onclick = async () => {
+    const feld = document.getElementById('syncTok');
+    const wert = feld ? feld.value : '';
+    if (!wert.trim()) { feld?.focus(); return toast('Erst den Schlüssel einfügen'); }
+    an.disabled = true; an.textContent = 'Verbinde …';
+    const r = await sync.verbinden(wert);
+    if (!r.ok) {
+      an.disabled = false; an.textContent = 'Verbinden';
+      return toast(r.text || 'Verbinden fehlgeschlagen', 3500);
+    }
+    nachAbgleich({ ...r, sichtbar: false });
+    if (r.sichtbar && !run) render(); else if (view === 'settings') renderSettings();
+    toast(r.geraete
+      ? `Verbunden – mit ${r.geraete === 1 ? 'einem anderen Gerät' : `${r.geraete} anderen Geräten`} abgeglichen`
+      : 'Verbunden – füge denselben Schlüssel jetzt auf deinen anderen Geräten ein', 3500);
+  };
+  const jetzt = document.getElementById('syncJetzt');
+  if (jetzt) jetzt.onclick = async () => {
+    jetzt.disabled = true; jetzt.textContent = 'Gleiche ab …';
+    const r = await sync.abgleichen({ grund: 'hand' });
+    jetzt.disabled = false; jetzt.textContent = 'Jetzt abgleichen';
+    zeigeAbgleichStatus();
+    if (r.ok && r.sichtbar && !run) { if (view === 'settings') renderSettings(); }
+    toast(r.ok ? (r.sichtbar ? 'Abgeglichen – neuer Stand übernommen' : 'Abgeglichen – alles auf dem neuesten Stand') : (r.text || 'Abgleich fehlgeschlagen'), 3000);
+  };
+  const aus = document.getElementById('syncAus');
+  if (aus) aus.onclick = () => {
+    if (!confirm('Abgleich auf diesem Gerät beenden?\n\nDein Lernstand bleibt hier und auf den anderen Geräten erhalten. Wieder verbinden kannst du jederzeit mit demselben Schlüssel.')) return;
+    sync.trennen();
+    toast('Abgleich auf diesem Gerät beendet');
+    renderSettings();
+  };
+}
+
 function renderSettings() {
   const s = settings();
   /* Nur Kuerzel, die es wirklich gibt. Eine Sicherungsdatei kann 'sprache'
@@ -1220,6 +1340,8 @@ function renderSettings() {
         : `<p class="tiny" style="margin-top:11px">Wissenswerk meldet sich, sobald eine neue Fassung da ist – ausgetauscht wird erst, wenn du zustimmst.</p>`}
     </div>
 
+    ${abgleichKarte()}
+
     <h2 class="sec">Daten</h2>
     <div class="card">
       <div class="btn-stack">
@@ -1236,7 +1358,9 @@ function renderSettings() {
           return n ? `<button class="btn" id="undoImp">Gesicherten Stand zurückholen (${n.karten} Karten)</button>` : '';
         })()}
       </div>
-      <p class="tiny" style="margin-top:10px">Alles liegt nur auf diesem Gerät – kein Konto, kein Server. Löschst du in Safari die Website-Daten, ist der Fortschritt weg. Sichere ihn gelegentlich.</p>
+      <p class="tiny" style="margin-top:10px">${sync.konfiguration()
+        ? 'Der Abgleich hält eine Kopie in deinem Gist. Zurücksetzen und Einlesen gelten dabei für alle verbundenen Geräte.'
+        : 'Alles liegt nur auf diesem Gerät – kein Konto, kein Server. Löschst du in Safari die Website-Daten, ist der Fortschritt weg. Sichere ihn gelegentlich.'}</p>
     </div>
     <p class="tiny center" style="margin-top:18px">${CARDS.length} Karten · Wissenswerk</p>`;
 
@@ -1296,6 +1420,7 @@ function renderSettings() {
       const frage = `Diese Datei ersetzt deinen ganzen Fortschritt.\n\n`
         + `Aus der Datei:   ${a.karten} Karten, ${a.antworten} Antworten, zuletzt ${tag(a.letzterTag)}\n`
         + `Jetzt gespeichert: ${b.karten} Karten, ${b.antworten} Antworten, zuletzt ${tag(b.letzterTag)}\n\n`
+        + (sync.konfiguration() ? 'Der Abgleich übernimmt das auch auf deinen anderen Geräten.\n\n' : '')
         + `Wirklich ersetzen?`;
       if (!confirm(frage)) return toast('Nichts geändert');
       /* importJSON meldet jetzt, ob geschrieben wurde. Frueher stand bei vollem
@@ -1361,8 +1486,10 @@ function renderSettings() {
     w.postMessage('jetzt-uebernehmen');
     toast('Wird geladen …');
   });
+  bindeAbgleich();
   document.getElementById('rst').onclick = () => {
-    if (confirm('Wirklich den gesamten Lernfortschritt löschen?')) {
+    if (confirm('Wirklich den gesamten Lernfortschritt löschen?'
+      + (sync.konfiguration() ? '\n\nDer Abgleich löscht ihn damit auch auf deinen anderen Geräten. Der bisherige Stand bleibt auf jedem Gerät unter „Gesicherten Stand zurückholen“.' : ''))) {
       store.resetAll(); applyTheme(); toast('Zurückgesetzt'); show('home');
     }
   };
@@ -2220,6 +2347,7 @@ function askDuel(card) {
 function boot() {
   applyTheme();
   installFlush();
+  sync.starte({ nachAbgleich });
   document.getElementById('boot')?.remove();
   app.hidden = false;
   show('home');

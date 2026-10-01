@@ -939,3 +939,77 @@ export function sicherungKennzahlen() {
     return roh ? kennzahlen(JSON.parse(roh)) : null;
   } catch (e) { return null; }
 }
+
+/* ---- Abgleich zwischen Geraeten (sync.js holt die Staende, hier wird gemischt) ----
+
+   Jedes Geraet legt seinen ganzen Stand in einer EIGENEN Datei ab und liest die
+   der anderen. Niemand ueberschreibt also, was ein anderer geschrieben hat, und
+   zwei Geraete, die gleichzeitig hochladen, koennen sich nichts wegnehmen.
+   Gemischt wird mit derselben Regel wie zwischen zwei Tabs - sie ist dafuer
+   gebaut, dass beide Seiten unabhaengig gelernt haben: Tagesbeitraege tragen
+   die Kennung ihres Tabs und werden summiert, Karten nimmt der juengere Stand,
+   Markierungen der juengere Stempel.
+
+   Drei Dinge sind zwischen Geraeten anders als zwischen Tabs:
+
+   - Eine Datei kann ewig liegen bleiben (ein altes Handy, ein geleerter
+     Speicher mit neuer Geraetekennung). Nach einem Zuruecksetzen traegt sie eine
+     niedrigere Generation - sie wird dann uebergangen, statt den geleerten Stand
+     wieder aufzufuellen. Zwischen Tabs gibt es diesen Fall nicht, weil der alte
+     Tab beim naechsten Ereignis selbst uebernimmt.
+   - Beim ERSTEN Abgleich eines Geraets sind die Generationen nicht vergleichbar:
+     Das iPhone hat vielleicht dreimal eine Sicherung eingelesen (Generation 3),
+     das iPad nie (0). Nach der Regel oben verloere das iPad alles, was es bis
+     dahin gelernt hat. Beim ersten Mal wird deshalb immer vereinigt, und das
+     Geraet uebernimmt die Generation der Gruppe - nicht seine eigene, sonst
+     ersetzte es beim naechsten Abgleich die Staende aller anderen.
+   - Einstellungen bleiben je Geraet. Das Farbschema am Mac muss nicht das des
+     iPhones sein, und auch eine Uebernahme nach einem Zuruecksetzen am anderen
+     Geraet laesst sie stehen. */
+export function geraeteStaendeEinmischen(roheStaende, { erster = false } = {}) {
+  if (istBeschaeftigt()) return null;
+  holeFremdenStand();
+  const fremde = [];
+  for (const roh of roheStaende || []) {
+    if (!roh || typeof roh !== 'object' || Array.isArray(roh) || !roh.cards || typeof roh.cards !== 'object') continue;
+    try { fremde.push(saeubern(roh)); } catch (e) { /* unbrauchbar ist so gut wie nicht vorhanden */ }
+  }
+  const vorher = state;
+  const eigeneGen = Number(state.gen) || 0;
+  if (!fremde.length) return { uebernommen: false, sichtbar: false, gen: eigeneGen };
+  const hoechste = Math.max(...fremde.map(f => f.gen));
+  const aktuelle = fremde.filter(f => f.gen === hoechste);
+  const einstellungen = structuredClone(state.settings);
+  let uebernommen = false;
+  if (erster) {
+    state.gen = hoechste;
+  } else if (hoechste > eigeneGen) {
+    /* Ein anderes Geraet hat ausdruecklich ersetzt (zuruecksetzen, Sicherung
+       einlesen). Der bisherige Stand wandert vorher ins Netz unter „Mehr" -
+       dieselbe Regel wie beim Einlesen: Ein duennerer Stand ueberschreibt
+       dort keinen dickeren. */
+    sichereJetzigen();
+    const rev = state.rev;
+    state = aktuelle.shift();
+    state.rev = rev;
+    uebernommen = true;
+  } else if (hoechste < eigeneGen) {
+    return { uebernommen: false, sichtbar: false, gen: eigeneGen };
+  }
+  for (const f of aktuelle) state = zusammenfuehren(f, state);
+  state.settings = einstellungen;
+  flagUhrNachziehen(state);
+  nachErsatz();
+  const sichtbar = uebernommen
+    || state.totalAnswers !== vorher.totalAnswers
+    || state.duelAnswers !== vorher.duelAnswers
+    || state.streak !== vorher.streak
+    || Object.keys(state.cards).length !== Object.keys(vorher.cards).length
+    || zaehleMarkierungen(state) !== zaehleMarkierungen(vorher);
+  const geaendert = JSON.stringify({ ...state, rev: 0 }) !== JSON.stringify({ ...vorher, rev: 0 });
+  if (geaendert) save(true);
+  return { uebernommen, sichtbar, geaendert, gen: Number(state.gen) || 0 };
+}
+
+/** Ob gerade eine Einheit laeuft - der Abgleich mischt dann nicht. */
+export const beschaeftigt = () => istBeschaeftigt();
