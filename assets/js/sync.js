@@ -21,6 +21,12 @@ import * as store from './store.js';
 
 const KONF = 'wissenswerk.sync';
 const KENNUNG = 'wissenswerk.geraet';
+/* Welche Geraetedateien dieses Geraet schon einmal eingemischt hat - je Gist.
+   Eine unbekannte Datei wird vereinigt, eine bekannte folgt der
+   Generationsregel (siehe geraeteStaendeEinmischen). Liegt getrennt von der
+   Verbindung, damit ein neuer Schluessel nach einem Zuruecksetzen die alten
+   Staende nicht als „neu" wieder hereinholt. */
+const BEKANNT = 'wissenswerk.sync.bekannt';
 const API = 'https://api.github.com';
 export const BESCHREIBUNG = 'Wissenswerk – Lernstand-Abgleich (nicht von Hand ändern)';
 const DATEI = /^geraet-([a-z0-9]{4,32})\.json$/;
@@ -42,6 +48,10 @@ function schreib(k, v) {
 export const konfiguration = () => {
   const k = lies(KONF);
   return k && typeof k === 'object' && typeof k.token === 'string' && k.token ? k : null;
+};
+const bekannteDateien = (gist) => {
+  const b = lies(BEKANNT);
+  return b && b.gist === gist && Array.isArray(b.dateien) ? b.dateien.filter(x => typeof x === 'string') : [];
 };
 const merke = (aenderung) => {
   const k = konfiguration();
@@ -103,8 +113,11 @@ async function anfrage(token, pfad, { methode = 'GET', inhalt, wachHalten = fals
   }
   if (res.status === 401) throw new AbgleichFehler('schluessel', 'Der Zugangsschlüssel ist ungültig oder abgelaufen');
   if (res.status === 403 || res.status === 429) {
-    const rest = res.headers && res.headers.get && res.headers.get('x-ratelimit-remaining');
-    if (rest === '0' || res.status === 429) throw new AbgleichFehler('grenze', 'GitHub bremst gerade – später geht es weiter');
+    const kopf = (n) => (res.headers && res.headers.get ? res.headers.get(n) : null);
+    /* Auch die „sekundaere" Bremse antwortet mit 403 - erkennbar an retry-after.
+       Als Schluesselfehler gedeutet, hielte sie den Abgleich bis zum naechsten
+       Handgriff an. */
+    if (kopf('x-ratelimit-remaining') === '0' || kopf('retry-after') || res.status === 429) throw new AbgleichFehler('grenze', 'GitHub bremst gerade – später geht es weiter');
     throw new AbgleichFehler('schluessel', 'Der Zugangsschlüssel darf keine Gists schreiben (Recht „gist“ fehlt)');
   }
   if (res.status === 404) throw new AbgleichFehler('fehlt', 'Nicht gefunden');
@@ -161,6 +174,7 @@ async function dateiInhalt(token, datei) {
 
 /* ---- Abgleich ---- */
 let laeuft = null;
+let hochLaeuft = null;
 let gistGeprueft = false;
 let fehlversuche = 0;
 let naechsterVersuch = 0;
@@ -196,6 +210,13 @@ export async function standAus(huelle) {
   if (!huelle || typeof huelle !== 'object') return null;
   if (huelle.stand && typeof huelle.stand === 'object') return huelle.stand;
   if (huelle.gzip && typeof huelle.gzip === 'string') {
+    /* Kann dieser Browser nicht entpacken (Safari vor iOS 16.4), darf die Datei
+       nicht still als leer gelten: Das Geraet hielte sich sonst fuer das
+       einzige, und nach dem naechsten iOS-Update ersetzte die Gruppe seinen
+       Stand. Lieber ehrlich anhalten. */
+    if (typeof DecompressionStream === 'undefined') {
+      throw new AbgleichFehler('alt', 'Dieser Browser ist für den Abgleich zu alt (nötig ist iOS 16.4 oder neuer)');
+    }
     try { return JSON.parse(await entpacke(huelle.gzip)); } catch (e) { return null; }
   }
   return null;
@@ -227,7 +248,7 @@ async function hochladen(k, { wachHalten = false } = {}) {
    hoch. Ein zweiter Aufruf bekommt das Ergebnis des laufenden. */
 export function abgleichen(opts = {}) {
   if (laeuft) return laeuft;
-  laeuft = lauf(opts).finally(() => { laeuft = null; });
+  laeuft = (hochLaeuft || Promise.resolve()).then(() => lauf(opts)).finally(() => { laeuft = null; });
   return laeuft;
 }
 
@@ -269,19 +290,24 @@ async function lauf({ grund = 'hand' } = {}) {
       catch (e) { if (e instanceof AbgleichFehler) throw e; continue; }   // kaputte Datei: uebergehen
       const stand = await standAus(huelle);
       if (!stand) continue;
-      fremde.push(stand);
+      fremde.push({ name, stand });
       geraete.push({ name: String(huelle.name || 'Gerät').slice(0, 30), zeit: Number(huelle.zeit) || 0 });
     }
     const eigeneDa = !!(gist && gist.files && gist.files[eigen]);
     let ergebnis = null;
     if (!store.beschaeftigt()) {
-      ergebnis = store.geraeteStaendeEinmischen(fremde, { erster: !k.verbunden });
+      ergebnis = store.geraeteStaendeEinmischen(fremde, bekannteDateien(k.gist));
     }
-    if (ergebnis) k = merke({ verbunden: true });
+    if (ergebnis) {
+      schreib(BEKANNT, { gist: k.gist, dateien: ergebnis.bekannt });
+      k = merke({ verbunden: true });
+    }
     if (k.verbunden && (!eigeneDa || store.S().rev !== k.geschoben)) await hochladen(k);
     fehlversuche = 0; naechsterVersuch = 0;
     merke({ zuletzt: jetzt(), fehler: null, art: null, pausiert: false, geraete });
-    return { ok: true, ...(ergebnis || {}), geraete: geraete.length };
+    const antwort = { ok: true, ...(ergebnis || {}), geraete: geraete.length };
+    delete antwort.bekannt;
+    return antwort;
   } catch (e) {
     return melde(k, e);
   }
@@ -295,18 +321,23 @@ function melde(k, e) {
      Abstand bis hoechstens eine Viertelstunde. Ein ungueltiger Schluessel wird
      davon nicht besser - dann ruht der Abgleich, bis der Nutzer handelt. */
   naechsterVersuch = jetzt() + Math.min(15 * 60000, 15000 * 2 ** Math.min(fehlversuche - 1, 6));
-  merke({ fehler: text, art, pausiert: art === 'schluessel' });
+  merke({ fehler: text, art, pausiert: art === 'schluessel' || art === 'alt' });
   if (art !== 'netz' && art !== 'warten') console.warn('Abgleich fehlgeschlagen:', text);
   return { ok: false, art, text };
 }
 
 /** Nur hochladen - beim Verlassen der App, wenn keine Zeit fuer einen ganzen Abgleich bleibt. */
-export async function nurHochladen() {
+/* Beim Verlassen feuern visibilitychange und pagehide kurz nacheinander - ein
+   zweites Hochladen desselben Stands waere doppelte Arbeit und sprengte mit
+   keepalive das gemeinsame 64-KB-Kontingent. Deshalb auch hier nur einer zur
+   Zeit, und die Wartezeit nach einem Fehler gilt auch hier. */
+export function nurHochladen() {
   const k = konfiguration();
-  if (!k || !k.gist || !k.verbunden || k.pausiert || laeuft || ohneNetz()) return false;
-  if (store.S().rev === k.geschoben) return false;
-  try { await hochladen(k, { wachHalten: true }); return true; }
-  catch (e) { return false; }
+  if (!k || !k.gist || !k.verbunden || k.pausiert || laeuft || hochLaeuft || ohneNetz()) return Promise.resolve(false);
+  if (store.S().rev === k.geschoben || jetzt() < naechsterVersuch) return Promise.resolve(false);
+  hochLaeuft = hochladen(k, { wachHalten: true }).then(() => true, () => false)
+    .finally(() => { hochLaeuft = null; });
+  return hochLaeuft;
 }
 
 /** Mit einem Schluessel verbinden. Prueft ihn, findet oder legt das Gist an und gleicht ab. */

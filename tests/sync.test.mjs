@@ -464,3 +464,151 @@ test('zwei gleichzeitig angelegte Gists: alle wechseln ins aeltere', async () =>
   await A.abgleichen();
   assert.deepEqual(karten(A), ['a', 'b']);
 });
+
+/* ---- Befunde der Gegenpruefung: jeder Fall schlug gegen die erste Fassung fehl ---- */
+
+test('viele Kaltstarts an einem Tag: die Tageszahl bleibt die Summe und steigt nicht weiter', async () => {
+  // Jeder Kaltstart der Home-Bildschirm-App ist eine neue Tab-Kennung. Ueber
+  // dem Deckel von 64 landeten Beitraege doppelt im gemeinsamen Sammelblock.
+  const gh = github();
+  const G = [await geraet(gh), await geraet(gh), await geraet(gh)];
+  for (const g of G) await g.verbinden();
+  for (let i = 0; i < 22; i++) {
+    for (let j = 0; j < G.length; j++) { G[j] = await geraet(gh, G[j]); G[j].lerne(`s${j}-${i}`); }
+  }
+  for (let runde = 0; runde < 4; runde++) for (const g of G) await g.abgleichen();
+  for (const g of G) assert.equal(g.store.today().done, 66);
+  const vorher = gh.anfragen.length;
+  for (const g of G) await g.abgleichen();
+  assert.ok(!gh.anfragen.slice(vorher).some(a => a.startsWith('PATCH')), 'der Stand muss zur Ruhe kommen');
+});
+
+test('eine zurueckgenommene Antwort verschwindet auch auf dem anderen Geraet', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  A.lerne('k1');
+  await A.abgleichen(); await B.abgleichen();
+  assert.equal(B.store.today().done, 1);
+  A.tu((s) => {                                     // wie undoLast() in app.js
+    const st = s.S(), k = s.dayKey();
+    delete st.cards.k1; delete st.days[k];
+    s.beitragZurueck(k);
+    st.totalAnswers = 0; st.totalCorrect = 0;
+  });
+  await A.abgleichen(); await B.abgleichen();
+  assert.equal(B.store.today().done, 0, 'der leere Block mit hoeherer Fassung muss ankommen');
+  assert.equal(B.S().totalAnswers, 0);
+});
+
+test('Sicherung eingelesen, dann verbunden: der naechste Start ersetzt die anderen nicht', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  for (let i = 0; i < 5; i++) A.lerne('a' + i);
+  aktiv = A; const datei = A.store.exportJSON();
+  B.tu(s => s.importJSON(datei));                   // klassische Uebertragung: B hat Generation 1
+  await A.verbinden(); await B.verbinden();
+  const B2 = await geraet(gh, B);                   // naechster Start auf B
+  A.lerne('neuAufA'); await A.abgleichen();
+  B2.lerne('neuAufB'); await B2.abgleichen();
+  A.lerne('neuAufA2');
+  const r = await A.abgleichen();
+  assert.equal(r.uebernommen, false);
+  assert.ok(['neuAufA', 'neuAufA2', 'neuAufB'].every(k => karten(A).includes(k)), karten(A).join(','));
+});
+
+test('ein zweiter offener Tab bringt keine Generation zurueck, die die anderen ersetzt', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  for (let i = 0; i < 5; i++) A.lerne('a' + i);
+  await A.verbinden();
+  const B1 = await geraet(gh);
+  B1.tu(s => s.importJSON(JSON.stringify({ cards: { imp: { last: 5, seen: 1 } } })));
+  B1.lerne('b');
+  const B2 = await geraet(gh, B1);                  // zweiter Tab, gleicher Speicher
+  await B1.verbinden();
+  B2.lerne('inTab2');
+  A.lerne('neu1'); await A.abgleichen();
+  await B1.abgleichen();
+  A.lerne('neu2');
+  const r = await A.abgleichen();
+  assert.equal(r.uebernommen, false);
+  assert.ok(['neu1', 'neu2', 'imp', 'b'].every(k => karten(A).includes(k)), karten(A).join(','));
+});
+
+test('Wechsel ins aeltere Gist vereinigt, auch bei verschiedenen Generationen', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  A.tu(s => s.importJSON(JSON.stringify({ cards: { ausBackup: { last: 5, seen: 1 } } })));
+  A.lerne('a'); await A.verbinden();
+  const echt = gh.fetch;
+  B.sync.setzeNetz(async (url, opt = {}) => {
+    if (new URL(url).pathname === '/gists' && (opt.method || 'GET') === 'GET') return new Response('[]', { status: 200 });
+    return echt(url, opt);
+  });
+  for (let i = 0; i < 30; i++) B.lerne('b' + i);
+  await B.verbinden();
+  const B2 = await geraet(gh, B);
+  await B2.abgleichen();
+  assert.equal(karten(B2).length, 32, 'die 30 Karten von B muessen bleiben');
+  await A.abgleichen();
+  assert.equal(karten(A).length, 32);
+});
+
+test('ein Browser ohne Entpacken haelt ehrlich an, statt sich fuer allein zu halten', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  A.tu(s => s.resetAll());
+  A.lerne('a'); await A.verbinden();
+  const CS = globalThis.CompressionStream, DS = globalThis.DecompressionStream;
+  let r;
+  try {
+    globalThis.CompressionStream = undefined; globalThis.DecompressionStream = undefined;
+    B.lerne('b');
+    r = await B.verbinden();
+  } finally { globalThis.CompressionStream = CS; globalThis.DecompressionStream = DS; }
+  assert.equal(r.ok, false); assert.equal(r.art, 'alt');
+  aktiv = B; assert.equal(B.sync.konfiguration().verbunden, false, 'nichts hochladen, solange nicht gemischt ist');
+  B.lerne('b2');                                     // spaeter: iOS aktualisiert
+  assert.equal((await B.abgleichen()).ok, true);
+  await A.abgleichen();
+  assert.deepEqual(karten(A), ['a', 'b', 'b2']);
+});
+
+test('neuer Schluessel nach einem Zuruecksetzen holt die alten Staende nicht zurueck', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  A.lerne('alt1'); A.lerne('alt2'); await A.abgleichen(); await B.abgleichen();
+  gh.stoerung = { status: 401, mal: 1 }; await A.abgleichen();
+  A.tu(s => s.resetAll());
+  await A.verbinden();
+  assert.deepEqual(karten(A), [], 'das Zuruecksetzen muss gelten');
+  await B.abgleichen();
+  assert.deepEqual(karten(B), [], 'und auch das andere Geraet erreichen');
+  aktiv = A; A.sync.trennen();
+  await A.verbinden();
+  assert.deepEqual(karten(A), [], 'auch nach Trennen und Wiederverbinden');
+});
+
+test('die sekundaere Bremse von GitHub haelt den Abgleich nicht an', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  await A.verbinden();
+  gh.stoerung = { status: 403, mal: 1, headers: { 'retry-after': '60' } };
+  const r = await A.abgleichen();
+  assert.equal(r.art, 'grenze');
+  aktiv = A; assert.equal(A.sync.konfiguration().pausiert, false);
+});
+
+test('Verlassen der App laedt genau einmal hoch', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  await A.verbinden();
+  A.lerne('x');
+  aktiv = A;
+  const vorher = gh.anfragen.length;
+  const [a, b] = await Promise.all([A.sync.nurHochladen(), A.sync.nurHochladen()]);
+  assert.equal(a, true); assert.equal(b, false);
+  assert.equal(gh.anfragen.slice(vorher).filter(x => x.startsWith('PATCH')).length, 1);
+});

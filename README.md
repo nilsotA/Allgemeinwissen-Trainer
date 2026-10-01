@@ -289,11 +289,13 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
   Speicher bringt eine neue Gerätekennung. Die alte Datei bleibt dann im Gist liegen. Nach
   einem Zurücksetzen trägt sie eine ältere Generation und wird übergangen, statt den
   geleerten Stand wieder aufzufüllen.
-- **Erster Abgleich eines Geräts.** Die Generationen sind dann nicht vergleichbar: Das iPhone
-  hat vielleicht dreimal eine Sicherung eingelesen, das iPad nie. Nach der Regel oben verlöre
-  das iPad alles, was es bis dahin gelernt hat. Beim ersten Mal wird deshalb immer vereinigt,
-  und das Gerät übernimmt die Generation der Gruppe, nicht seine eigene. Sonst ersetzte es
-  beim nächsten Abgleich die Stände aller anderen.
+- **Erste Begegnung zweier Geräte.** Ihre Generationen sind dann nicht vergleichbar: Das
+  iPhone hat vielleicht dreimal eine Sicherung eingelesen, das iPad nie. Nach der Regel oben
+  verlöre das iPad alles, was es bis dahin gelernt hat. Eine Gerätedatei, die ein Gerät zum
+  ersten Mal sieht, wird deshalb immer vereinigt, und beide ziehen auf die höhere Generation
+  nach. Welche Dateien ein Gerät schon kennt, merkt es sich je Gist, getrennt von der
+  Verbindung: Ein neuer Schlüssel nach einem Zurücksetzen holt die alten Stände deshalb nicht
+  als „neu“ zurück. Die Generation sinkt dabei nie.
 
 **Wenn etwas schiefgeht:**
 - Ohne Netz versucht die App es später von selbst wieder, mit wachsendem Abstand bis zu
@@ -310,12 +312,27 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
 - Solange der Abgleich gelingt, entfällt die Erinnerung ans Sichern als Datei.
 
 **Geprüft** wird das zweifach:
-- `tests/sync.test.mjs` (22 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
+- `tests/sync.test.mjs` (31 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
   eigenem Speicher, gegen ein nachgebautes Gist-Archiv mit den Antworten der echten API. Darin
   stecken die Summe unabhängig gelernter Antworten, Zurücksetzen samt Netz, die
   liegengebliebene Datei, verschiedene Generationen beim ersten Abgleich, 401 und Netzabbruch
   mitten im Hochladen, das gelöschte und das doppelt angelegte Gist, gekürzte Dateien,
   gepackt gegen ungepackt und drei Geräte, die durcheinander lernen und gleich enden.
+- Ein unabhängiger Gegenprüfer hat die erste Fassung angegriffen und acht echte Fehler
+  gefunden. Jeder davon ist jetzt ein eigener Test, der gegen die erste Fassung fehlschlug:
+  - Über 64 Kaltstarts am Tag (alle Geräte zusammen) wuchs die Tageszahl bei jedem Abgleich
+    weiter, weil der Deckel aus der Sicherungsprüfung eigene Beiträge doppelt in einen
+    Sammelblock legte.
+  - Eine zurückgenommene Antwort blieb auf dem anderen Gerät stehen, weil der leere Block mit
+    höherer Fassung beim Säubern wegfiel.
+  - Drei Wege führten über die beim ersten Abgleich *gesenkte* Generation dazu, dass ein Gerät
+    später alle anderen ersetzte: eine eingelesene Sicherung, ein zweiter offener Tab und der
+    Wechsel ins ältere Gist.
+  - Ein neuer Schlüssel nach einem Zurücksetzen holte die alten Stände zurück.
+  - Safari vor iOS 16.4 hielt gepackte Dateien still für leer, statt anzuhalten.
+  - GitHubs zweite Bremse (403 mit `retry-after`) hielt den Abgleich bis zum nächsten
+    Handgriff an.
+  - Beim Verlassen der App wurde doppelt hochgeladen.
 - Der Durchlauftest verbindet zwei echte Browserkontexte über die Oberfläche. Seine
   GitHub-Attrappe lehnt wie die echte API jeden Kopf ab, den der CORS-Vorabcheck nicht
   erlaubt, denn ein solcher Kopf ließe den Abgleich im echten Safari scheitern.
@@ -554,7 +571,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 222 Einheitentests plus Inhaltsprüfung
+npm test           # 231 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 352 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt

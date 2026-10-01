@@ -725,7 +725,7 @@ function stimmig(z) {
   return z;
 }
 
-function saeubern(roh) {
+function saeubern(roh, { deckel = 64 } = {}) {
   const rein = structuredClone(DEFAULTS);
   if (roh.settings && typeof roh.settings === 'object') {
     const s = roh.settings;
@@ -778,7 +778,7 @@ function saeubern(roh) {
       let n = 0;
       for (const [wer, b] of Object.entries(d.je)) {
         if (typeof wer !== 'string' || wer.length > 24 || !b || typeof b !== 'object') continue;
-        const ziel = n < 64 ? (je[wer] = je[wer] || {}) : (je.rest = je.rest || {});
+        const ziel = n < deckel ? (je[wer] = je[wer] || {}) : (je.rest = je.rest || {});
         let etwas = false;
         for (const k of TAGESZAEHLER) {
           const v = zahl(b[k], 0, k === 'sec' ? 1e8 : 1e6, 0);
@@ -787,9 +787,13 @@ function saeubern(roh) {
         // Die Fassungsnummer wird nicht addiert: Sie zaehlt Schreibvorgaenge,
         // keine Antworten. Beim Zusammenlegen in „rest" gilt die hoechste.
         const fassung = zahl(b.n, 0, 1e9, 0);
-        if (fassung && etwas) ziel.n = Math.max(Number(ziel.n) || 0, fassung);
+        /* Ein Block ohne Zaehler, aber mit Fassungsnummer ist kein Muell: So sieht
+           der Beitrag eines Tabs aus, der seine einzige Antwort zurueckgenommen
+           hat. Fiele er weg, behielte ein anderes Geraet die alte Fassung mit der
+           Antwort fuer immer. */
+        if (fassung) ziel.n = Math.max(Number(ziel.n) || 0, fassung);
         stimmig(ziel);
-        if (etwas) n++; else if (n < 64) delete je[wer];
+        if (etwas || fassung) n++; else if (n < deckel) delete je[wer];
       }
       for (const wer of Object.keys(je)) if (!Object.keys(je[wer]).length) delete je[wer];
       if (Object.keys(je).length) { sauber.je = je; summiere(sauber); }
@@ -957,46 +961,72 @@ export function sicherungKennzahlen() {
      niedrigere Generation - sie wird dann uebergangen, statt den geleerten Stand
      wieder aufzufuellen. Zwischen Tabs gibt es diesen Fall nicht, weil der alte
      Tab beim naechsten Ereignis selbst uebernimmt.
-   - Beim ERSTEN Abgleich eines Geraets sind die Generationen nicht vergleichbar:
-     Das iPhone hat vielleicht dreimal eine Sicherung eingelesen (Generation 3),
-     das iPad nie (0). Nach der Regel oben verloere das iPad alles, was es bis
-     dahin gelernt hat. Beim ersten Mal wird deshalb immer vereinigt, und das
-     Geraet uebernimmt die Generation der Gruppe - nicht seine eigene, sonst
-     ersetzte es beim naechsten Abgleich die Staende aller anderen.
+   - Bei der ersten Begegnung zweier Geraete sind ihre Generationen nicht
+     vergleichbar: Das iPhone hat vielleicht dreimal eine Sicherung eingelesen
+     (Generation 3), das iPad nie (0). Nach der Regel oben verloere das iPad
+     alles, was es bis dahin gelernt hat. Eine Datei, die dieses Geraet zum
+     ersten Mal sieht, wird deshalb immer VEREINIGT, und beide ziehen auf die
+     hoehere Generation nach. „Zum ersten Mal" gilt je Datei, nicht je Geraet
+     (sync.js merkt sich die bekannten): Auch ein Geraet, das schon lange
+     dabei ist, vereinigt mit einem neu hinzukommenden. Und die Generation
+     sinkt dabei nie - eine gesenkte holte ein zweiter offener Tab mit seinem
+     alten Wert zurueck, und dieses Geraet ersetzte danach alle anderen.
    - Einstellungen bleiben je Geraet. Das Farbschema am Mac muss nicht das des
      iPhones sein, und auch eine Uebernahme nach einem Zuruecksetzen am anderen
      Geraet laesst sie stehen. */
-export function geraeteStaendeEinmischen(roheStaende, { erster = false } = {}) {
+export function geraeteStaendeEinmischen(eintraege, bekannt = []) {
   if (istBeschaeftigt()) return null;
   holeFremdenStand();
+  const kenne = new Set(bekannt);
   const fremde = [];
-  for (const roh of roheStaende || []) {
+  for (const { name, stand: roh } of eintraege || []) {
     if (!roh || typeof roh !== 'object' || Array.isArray(roh) || !roh.cards || typeof roh.cards !== 'object') continue;
-    try { fremde.push(saeubern(roh)); } catch (e) { /* unbrauchbar ist so gut wie nicht vorhanden */ }
+    /* Der Deckel von 64 Tab-Kennungen je Tag gilt fuer eingelesene Dateien. Hier
+       wuerde er schaden: Ein fremder Stand enthaelt auch die EIGENEN Kennungen,
+       und was ueber den Deckel geht, landete in einem gemeinsamen Sammelblock -
+       doppelt gezaehlt und zwischen den Geraeten im Wettstreit. Drei Geraete mit
+       je 22 Kaltstarts an einem Tag liessen die Tageszahl so bei jedem Abgleich
+       weiter steigen. */
+    try { fremde.push({ name, neu: !kenne.has(name), z: saeubern(roh, { deckel: 4096 }) }); }
+    catch (e) { /* unbrauchbar ist so gut wie nicht vorhanden */ }
   }
   const vorher = state;
+  const vorherText = JSON.stringify({ ...state, rev: 0 });
   const eigeneGen = Number(state.gen) || 0;
-  if (!fremde.length) return { uebernommen: false, sichtbar: false, gen: eigeneGen };
-  const hoechste = Math.max(...fremde.map(f => f.gen));
-  const aktuelle = fremde.filter(f => f.gen === hoechste);
+  const alleNamen = [...new Set([...kenne, ...fremde.map(f => f.name)])];
+  if (!fremde.length) return { uebernommen: false, sichtbar: false, geaendert: false, gen: eigeneGen, bekannt: alleNamen };
+  const hoechste = Math.max(...fremde.map(f => f.z.gen));
+  /* Eine noch nie gesehene Datei mit aelterer Generation als die juengste im
+     Gist stammt aus der Zeit vor einem Zuruecksetzen (ein altes Geraet, ein
+     geleerter Speicher) - ihr Inhalt steckt, soweit er gilt, schon in den
+     neueren Dateien. */
+  const neue = fremde.filter(f => f.neu && f.z.gen === hoechste);
   const einstellungen = structuredClone(state.settings);
-  let uebernommen = false;
-  if (erster) {
-    state.gen = hoechste;
-  } else if (hoechste > eigeneGen) {
-    /* Ein anderes Geraet hat ausdruecklich ersetzt (zuruecksetzen, Sicherung
-       einlesen). Der bisherige Stand wandert vorher ins Netz unter „Mehr" -
-       dieselbe Regel wie beim Einlesen: Ein duennerer Stand ueberschreibt
-       dort keinen dickeren. */
+  let uebernommen = false, basis = null;
+  /* Ein BEKANNTES Geraet mit hoeherer Generation hat ausdruecklich ersetzt -
+     es sei denn, die hoehere Generation kommt aus dem Beitritt eines neuen
+     Geraets, das im selben Gist liegt (dann hat das bekannte sie nur von dort
+     uebernommen, und es wird vereinigt). */
+  const hoeher = fremde.filter(f => !f.neu && f.z.gen > eigeneGen);
+  const G = hoeher.length ? Math.max(...hoeher.map(f => f.z.gen)) : -1;
+  if (G > eigeneGen && !neue.some(f => f.z.gen >= G)) {
     sichereJetzigen();
     const rev = state.rev;
-    state = aktuelle.shift();
+    basis = hoeher.find(f => f.z.gen === G);
+    state = basis.z;
     state.rev = rev;
     uebernommen = true;
-  } else if (hoechste < eigeneGen) {
-    return { uebernommen: false, sichtbar: false, gen: eigeneGen };
   }
-  for (const f of aktuelle) state = zusammenfuehren(f, state);
+  let ziel = Number(state.gen) || 0;
+  for (const f of neue) ziel = Math.max(ziel, f.z.gen);
+  for (const f of fremde) {
+    if (f === basis) continue;
+    if (f.neu ? !neue.includes(f) : f.z.gen !== ziel) continue;
+    // Gleichziehen, damit zusammenfuehren() vereinigt statt zu uebernehmen.
+    f.z.gen = Number(state.gen) || 0;
+    state = zusammenfuehren(f.z, state);
+  }
+  state.gen = ziel;                     // die Generation sinkt nie
   state.settings = einstellungen;
   flagUhrNachziehen(state);
   nachErsatz();
@@ -1006,9 +1036,9 @@ export function geraeteStaendeEinmischen(roheStaende, { erster = false } = {}) {
     || state.streak !== vorher.streak
     || Object.keys(state.cards).length !== Object.keys(vorher.cards).length
     || zaehleMarkierungen(state) !== zaehleMarkierungen(vorher);
-  const geaendert = JSON.stringify({ ...state, rev: 0 }) !== JSON.stringify({ ...vorher, rev: 0 });
+  const geaendert = JSON.stringify({ ...state, rev: 0 }) !== vorherText;
   if (geaendert) save(true);
-  return { uebernommen, sichtbar, geaendert, gen: Number(state.gen) || 0 };
+  return { uebernommen, sichtbar, geaendert, gen: ziel, bekannt: alleNamen };
 }
 
 /** Ob gerade eine Einheit laeuft - der Abgleich mischt dann nicht. */
