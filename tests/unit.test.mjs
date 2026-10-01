@@ -669,7 +669,7 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
     // Facebook heisst seit 2021 Meta – derselbe Konzern hat Instagram gekauft
     'pol-m0ojtz|pol-1cum8me',
     // „Mainz" ist eine Stadt, kein Fluss – als Antwort auf den Fluss durch Frankfurt abwegig
-    'geo-17q9w1x|geo-yt9vlc',
+    'geo-1wf9kzm|geo-yt9vlc',
     /* Die Bibliothek traegt den Namen der Stadt: Wer auf „Wie hiess die groesste
        Bibliothek der Antike?" nur „Alexandria" tippt, hat sie gewusst. Die
        Stadtkarte (Leuchtturm) fragt etwas anderes, ihre Antwort ist hier aber
@@ -684,7 +684,7 @@ test('die Antwort einer fremden Karte gilt nicht als richtig', () => {
        Antwort der Fachbegriffskarte –, hat recht. Ebenso ist „Prinzip der
        Gegenwirkung" die richtige Antwort auf die Weitsprungfrage, deren
        Loesung nur ein „Wegen des" davorsetzt. */
-    'nat-ogafiq|nat-i4smfh', 'spo-cfffd|spo-1ge2cqh',
+    'nat-yysntv|nat-i4smfh', 'spo-cfffd|spo-1ge2cqh',
     /* „Fenster" kommt aus dem Lateinischen; wer dort „Latein" tippt – die
        Antwort zweier Nachbarkarten –, hat recht. Die Nebenschreibweise
        „Latein" hat die Pruefung der Stichprobe ergaenzt. */
@@ -752,7 +752,7 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     // Die Kilokalorie ist die Waerme fuer 1 kg Wasser um 1 °C: 4,184 kJ ist dort richtig
     'nat-1sd6f76|all-mwkkwj',
     // Hefe bildet dasselbe Gas, nach dem die Chemiekarten fragen
-    'all-1mvx341|nat-rd1kgn', 'all-1mvx341|nat-tajmq2',
+    'all-1mvx341|nat-rd1kgn', 'all-1mvx341|nat-1i179nr',
     // Die Kurvenkarte im Sprint wendet die Zentripetalkraft der Physik an
     'spo-1f1gop7|nat-1kulgp4', 'nat-1kulgp4|spo-1f1gop7']);
   const durchgerutscht = [];
