@@ -1271,6 +1271,9 @@ test('Ein Datum darf mit „Am" beginnen, auch wenn die Loesung es nicht tut', (
   assert.equal(normalize('Am Main'), 'am main', '„am" faellt nur vor einer Zahl weg');
   // Vor einem Monat ist die Eins ein Tag und kein Artikel: „1. März" ist nicht „März".
   assert.ok(bewerte({ a: 'März' }, 'Am 1. März') < 0.8, '„Am 1. März" gilt faelschlich als „März"');
+  // Vor einem Zählwort ebenso: „1. Buch Mose" ist nicht „Mose" (der Prophet ist kein Buch).
+  assert.ok(bewerte({ a: 'Genesis', az: ['1. Buch Mose'] }, 'Mose') < 0.8, '„Mose" gilt faelschlich als „1. Buch Mose"');
+  assert.ok(bewerte({ a: 'Genesis', az: ['1. Buch Mose'] }, '1. Buch Mose') >= 0.8, '„1. Buch Mose" gilt nicht mehr');
 });
 
 test('Umlaute ohne Punkte gelten, wenn die Eingabe keinen Umlaut enthaelt', () => {

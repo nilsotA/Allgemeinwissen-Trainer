@@ -817,8 +817,11 @@ export function similarity(input, answer, frage) {
    ueberhaupt keine Zahl steht. Genau dann kann sie kein Zahlwert sein. Ohne
    diese Einschraenkung galt „e^π + i = 0" als Eulersche Identitaet und „Etwa
    5 Liter" als „Etwa 1,5 Liter" – dort ist die Eins die Vorkommastelle. */
-/* Vor einem Monat ist die Eins ein Tag: „Am 1. März" ist nicht „März". */
-const ohneEinzelneEins = (t) => woerter(t).filter((w, i, alle) => w !== '1' || MONATE.includes(alle[i + 1])).join(' ');
+/* Vor einem Monat ist die Eins ein Tag: „Am 1. März" ist nicht „März". Vor
+   einem Zählwort ist sie eine Ordnungszahl: „1. Buch Mose" ist nicht „Mose" –
+   sonst galt der Name des Propheten als Name des Buches. */
+const ZAEHLWORT = new Set(['buch', 'mose', 'korinther', 'klasse', 'liga', 'bundesliga', 'platz', 'weltkrieg', 'advent', 'staffel', 'satz', 'halbzeit', 'reihe', 'stock', 'etage']);
+const ohneEinzelneEins = (t) => woerter(t).filter((w, i, alle) => w !== '1' || MONATE.includes(alle[i + 1]) || ZAEHLWORT.has(alle[i + 1])).join(' ');
 
 /* Alle Woerter, die irgendeine Karte als Antwort BEHAUPTET. Wird einmal
    gebaut, wie mehrdeutigeNachnamen() weiter oben. */
