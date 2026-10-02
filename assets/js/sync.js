@@ -90,7 +90,7 @@ class AbgleichFehler extends Error {
   constructor(art, text) { super(text); this.art = art; }
 }
 
-async function anfrage(token, pfad, { methode = 'GET', inhalt, wachHalten = false } = {}) {
+async function anfrage(token, pfad, { methode = 'GET', inhalt, wachHalten = false, koepfe = {}, mitKopf = false } = {}) {
   let res;
   const body = inhalt ? JSON.stringify(inhalt) : undefined;
   try {
@@ -105,12 +105,16 @@ async function anfrage(token, pfad, { methode = 'GET', inhalt, wachHalten = fals
         Accept: 'application/vnd.github+json',
         'X-GitHub-Api-Version': '2022-11-28',
         ...(inhalt ? { 'Content-Type': 'application/json' } : {}),
+        ...koepfe,
       },
       body,
     });
   } catch (e) {
     throw new AbgleichFehler('netz', 'Keine Verbindung zu GitHub');
   }
+  /* 304: Seit dem mitgeschickten ETag hat sich nichts geaendert. GitHub rechnet
+     diese Antwort nicht auf die Anfragegrenze an, und sie hat keinen Inhalt. */
+  if (res.status === 304 && mitKopf) return { unveraendert: true };
   if (res.status === 401) throw new AbgleichFehler('schluessel', 'Der Zugangsschlüssel ist ungültig oder abgelaufen');
   if (res.status === 403 || res.status === 429) {
     const kopf = (n) => (res.headers && res.headers.get ? res.headers.get(n) : null);
@@ -122,7 +126,19 @@ async function anfrage(token, pfad, { methode = 'GET', inhalt, wachHalten = fals
   }
   if (res.status === 404) throw new AbgleichFehler('fehlt', 'Nicht gefunden');
   if (!res.ok) throw new AbgleichFehler('server', `GitHub antwortet mit ${res.status}`);
-  try { return await res.json(); } catch (e) { throw new AbgleichFehler('server', 'GitHub-Antwort unlesbar'); }
+  let daten;
+  try { daten = await res.json(); } catch (e) { throw new AbgleichFehler('server', 'GitHub-Antwort unlesbar'); }
+  if (!mitKopf) return daten;
+  const etag = res.headers && res.headers.get ? res.headers.get('etag') : null;
+  return { daten, etag };
+}
+
+/* Kurzer Fingerabdruck eines Dateiinhalts (FNV-1a), um zu erkennen, ob eine
+   fremde Geraetedatei seit dem letzten Einmischen dieselbe geblieben ist. */
+function fingerabdruck(text) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+  return (h >>> 0).toString(36) + ':' + text.length;
 }
 
 /* Das Gist wird an seiner Beschreibung erkannt, damit ein zweites Geraet nur
@@ -175,6 +191,13 @@ async function dateiInhalt(token, datei) {
 /* ---- Abgleich ---- */
 let laeuft = null;
 let hochLaeuft = null;
+/* Was zuletzt wirklich eingemischt wurde - je Gist. Der ETag spart den ganzen
+   Abruf (304), die Signatur das Auspacken und Mischen, wenn der Abruf nur
+   wegen des eigenen Hochladens neu war. Beides gilt erst, nachdem gemischt
+   wurde: Lief gerade eine Einheit, bleibt es beim alten Stand, und der naechste
+   Lauf holt alles. Nur im Arbeitsspeicher - nach einem Neustart wird einmal
+   vollstaendig gemischt, was ohnehin nichts kaputt machen kann. */
+let gemischt = { gist: null, etag: null, signatur: null };
 let gistGeprueft = false;
 let fehlversuche = 0;
 let naechsterVersuch = 0;
@@ -248,8 +271,21 @@ async function hochladen(k, { wachHalten = false } = {}) {
    hoch. Ein zweiter Aufruf bekommt das Ergebnis des laufenden. */
 export function abgleichen(opts = {}) {
   if (laeuft) return laeuft;
-  laeuft = (hochLaeuft || Promise.resolve()).then(() => lauf(opts)).finally(() => { laeuft = null; });
+  laeuft = (hochLaeuft || Promise.resolve()).then(() => mitSperre(() => lauf(opts))).finally(() => { laeuft = null; });
   return laeuft;
+}
+
+/* Zwei offene Tabs desselben Geraets (am Mac ganz normal) glichen beide ab und
+   luden beide dieselbe Geraetedatei hoch. Mit der Web-Locks-Sperre laeuft
+   geraeteweit nur ein Abgleich zur Zeit; ein zweiter Tab laesst seinen Lauf
+   aus, statt zu warten - sein Stand kommt ueber den gemeinsamen Speicher
+   ohnehin beim ersten an. Ohne Web Locks (aeltere Browser, die Tests) wie
+   bisher. */
+function mitSperre(fn) {
+  const locks = typeof navigator !== 'undefined' && navigator.locks;
+  if (!locks || typeof locks.request !== 'function') return fn();
+  return locks.request('wissenswerk-abgleich', { ifAvailable: true },
+    (sperre) => (sperre ? fn() : { ok: false, art: 'anderer-tab' }));
 }
 
 async function lauf({ grund = 'hand' } = {}) {
@@ -276,43 +312,68 @@ async function lauf({ grund = 'hand' } = {}) {
       k = merke({ gistGeprueftAm: jetzt() });
       if (aeltestes && aeltestes !== k.gist) k = merke({ gist: aeltestes, geschoben: null });
     }
-    let gist;
-    try { gist = await anfrage(k.token, `/gists/${k.gist}`); }
+    if (gemischt.gist !== k.gist) gemischt = { gist: k.gist, etag: null, signatur: null };
+    const holen = () => anfrage(k.token, `/gists/${k.gist}`, {
+      mitKopf: true,
+      koepfe: gemischt.etag && k.verbunden ? { 'If-None-Match': gemischt.etag } : {},
+    });
+    let antwort;
+    try { antwort = await holen(); }
     catch (e) {
       if (e.art !== 'fehlt') throw e;
       /* Das Gist ist weg (von Hand geloescht). Neu suchen oder anlegen; der
          Stand liegt ja auf den Geraeten und kommt mit dem naechsten Hochladen
          wieder hinein. */
       k = merke({ gist: await findeOderLegeAn(k.token), geschoben: null });
-      gist = await anfrage(k.token, `/gists/${k.gist}`);
+      gemischt = { gist: k.gist, etag: null, signatur: null };
+      antwort = await holen();
     }
     const eigen = `geraet-${geraeteKennung()}.json`;
-    const fremde = [], geraete = [];
-    for (const [name, datei] of Object.entries((gist && gist.files) || {})) {
-      if (!DATEI.test(name) || name === eigen || !datei) continue;
-      let huelle;
-      try { huelle = JSON.parse(await dateiInhalt(k.token, datei)); }
-      catch (e) { if (e instanceof AbgleichFehler) throw e; continue; }   // kaputte Datei: uebergehen
-      const stand = await standAus(huelle);
-      if (!stand) continue;
-      fremde.push({ name, stand });
-      geraete.push({ name: String(huelle.name || 'Gerät').slice(0, 30), zeit: Number(huelle.zeit) || 0 });
-    }
-    const eigeneDa = !!(gist && gist.files && gist.files[eigen]);
-    let ergebnis = null;
-    if (!store.beschaeftigt()) {
-      ergebnis = store.geraeteStaendeEinmischen(fremde, bekannteDateien(k.gist));
-    }
-    if (ergebnis) {
-      schreib(BEKANNT, { gist: k.gist, dateien: ergebnis.bekannt });
-      k = merke({ verbunden: true });
+    let ergebnis = null, eigeneDa = true, geraete = k.geraete || [];
+    if (antwort.unveraendert) {
+      ergebnis = { uebernommen: false, sichtbar: false, geaendert: false, unveraendert: true };
+    } else {
+      const gist = antwort.daten;
+      const roh = [];
+      for (const [name, datei] of Object.entries((gist && gist.files) || {})) {
+        if (!DATEI.test(name) || name === eigen || !datei) continue;
+        roh.push({ name, text: await dateiInhalt(k.token, datei) });
+      }
+      const signatur = roh.map(d => d.name + '=' + fingerabdruck(d.text)).sort().join('|');
+      eigeneDa = !!(gist && gist.files && gist.files[eigen]);
+      const fremde = [];
+      geraete = [];
+      for (const { name, text } of roh) {
+        let huelle;
+        try { huelle = JSON.parse(text); } catch (e) { continue; }   // kaputte Datei: uebergehen
+        if (!huelle || typeof huelle !== 'object') continue;
+        geraete.push({ name: String(huelle.name || 'Gerät').slice(0, 30), zeit: Number(huelle.zeit) || 0 });
+        /* Dieselben fremden Dateien wie beim letzten Einmischen: nichts
+           auspacken, nichts mischen. Das ist der Normalfall nach dem eigenen
+           Hochladen, das den ETag aendert, ohne dass ein anderes Geraet etwas
+           Neues gebracht hat. */
+        if (k.verbunden && signatur === gemischt.signatur) continue;
+        const stand = await standAus(huelle);
+        if (stand) fremde.push({ name, stand });
+      }
+      if (k.verbunden && signatur === gemischt.signatur) {
+        ergebnis = { uebernommen: false, sichtbar: false, geaendert: false, unveraendert: true };
+        gemischt.etag = antwort.etag || null;
+      } else if (!store.beschaeftigt()) {
+        ergebnis = store.geraeteStaendeEinmischen(fremde, bekannteDateien(k.gist));
+        if (ergebnis) gemischt = { gist: k.gist, etag: antwort.etag || null, signatur };
+      }
+      if (ergebnis && !ergebnis.unveraendert) {
+        schreib(BEKANNT, { gist: k.gist, dateien: ergebnis.bekannt });
+        k = merke({ verbunden: true });
+      }
     }
     if (k.verbunden && (!eigeneDa || store.standMarke() !== k.geschoben)) await hochladen(k);
     fehlversuche = 0; naechsterVersuch = 0;
     merke({ zuletzt: jetzt(), fehler: null, art: null, pausiert: false, geraete });
-    const antwort = { ok: true, ...(ergebnis || {}), geraete: geraete.length };
-    delete antwort.bekannt;
-    return antwort;
+    const meldung = { ok: true, ...(ergebnis || {}), geraete: geraete.length };
+    delete meldung.bekannt;
+    return meldung;
   } catch (e) {
     return melde(k, e);
   }
@@ -353,6 +414,7 @@ export async function verbinden(token) {
     const gist = await findeOderLegeAn(token);
     schreib(KONF, { token, gist, verbunden: false, geschoben: null, zuletzt: 0, fehler: null, verbundenAm: jetzt() });
     fehlversuche = 0; naechsterVersuch = 0; gistGeprueft = true;
+    gemischt = { gist: null, etag: null, signatur: null };
   } catch (e) {
     return { ok: false, art: e.art || 'server', text: e.message };
   }
@@ -362,12 +424,30 @@ export async function verbinden(token) {
 /** Auf diesem Geraet trennen. Der Lernstand bleibt, das Gist auch. */
 export function trennen() {
   try { localStorage.removeItem(KONF); } catch (e) { /* gesperrt */ }
+  gemischt = { gist: null, etag: null, signatur: null };
+}
+
+/* Gleich nach einer Lernrunde hochladen. Bisher wartete der Abgleich bis zum
+   naechsten Minutentakt - wer die Runde beendet und das Handy weglegt, war
+   dann auf das Hochladen beim Verlassen angewiesen, das iOS bei einem halben
+   Hundert Kilobyte nicht immer zu Ende laufen laesst. Kurz gewartet wird nur,
+   damit die gebuendelte Speicherung (250 ms) vorher ankommt. */
+let nachEinheitTimer = null;
+export function nachEinheit(fertig = () => {}) {
+  if (!konfiguration()) return;
+  clearTimeout(nachEinheitTimer);
+  nachEinheitTimer = setTimeout(async () => {
+    const k = konfiguration();
+    if (!k || store.beschaeftigt()) return;
+    fertig(await abgleichen({ grund: 'einheit' }));
+  }, 1200);
 }
 
 /* ---- Takt ----
    Beim Start und beim Zurueckkehren in die App wird abgeglichen, waehrend der
-   Benutzung jede Minute, sofern sich etwas geaendert hat (sonst alle fuenf
-   Minuten, um fremde Aenderungen zu sehen), und beim Verlassen nur
+   Benutzung jede Minute, sofern sich etwas geaendert hat (sonst alle zwei
+   Minuten, um fremde Aenderungen zu sehen - dank ETag meist nur eine leere
+   304-Antwort), nach jeder Lernrunde sofort, und beim Verlassen nur
    hochgeladen. iOS beendet eine Web-App im Hintergrund ohne Vorwarnung - der
    Minutentakt sorgt dafuer, dass dabei hoechstens eine Minute fehlt, und auch
    die holt das naechste Oeffnen nach. */
@@ -398,6 +478,6 @@ export function starte({ nachAbgleich = () => {} } = {}) {
     const k = konfiguration();
     if (!k) return;
     const geaendert = store.standMarke() !== k.geschoben;
-    if (geaendert || jetzt() - letzterLauf > 5 * 60000) los('takt');
+    if (geaendert || jetzt() - letzterLauf > 2 * 60000) los('takt');
   }, 60000);
 }

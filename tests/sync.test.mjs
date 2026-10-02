@@ -60,13 +60,18 @@ function github({ kuerzenAb = Infinity } = {}) {
     const gist = gists.get(teile[1]);
     if (!gist) return antwort(404, { message: 'Not Found' });
     if (methode === 'GET') {
+      // ETag wie bei GitHub: aendert sich mit jedem Inhalt, 304 bei If-None-Match.
+      let h = 0; const roh = JSON.stringify(gist.files);
+      for (let i = 0; i < roh.length; i++) h = (h * 31 + roh.charCodeAt(i)) | 0;
+      const etag = `W/"${(h >>> 0).toString(16)}"`;
+      if ((opt.headers || {})['If-None-Match'] === etag) { g.anfragen.push('304'); return new Response(null, { status: 304 }); }
       const files = {};
       for (const [n, c] of Object.entries(gist.files)) {
         const zuLang = c.length > g.kuerzenAb;
         files[n] = { filename: n, content: zuLang ? c.slice(0, g.kuerzenAb) : c, truncated: zuLang,
                      raw_url: `https://gist.githubusercontent.com/${gist.id}/${n}` };
       }
-      return antwort(200, { id: gist.id, files });
+      return antwort(200, { id: gist.id, files }, { ETag: etag });
     }
     if (methode === 'PATCH') {
       for (const [n, f] of Object.entries(body.files)) {
@@ -642,4 +647,135 @@ test('die Gist-Liste wird nicht bei jedem Start abgefragt', async () => {
   const B2 = await geraet(gh, A); B2.sync.setzeUhr(() => jetzt + 60000);
   await B2.abgleichen();
   assert.equal(listen(), nachErstemStart, 'am selben Tag kein zweites Mal');
+});
+
+
+/* ---- Optimierungen: ETag, Signatur, Einstellungen, nach der Runde, Tab-Sperre ---- */
+
+test('nichts Neues im Gist: der Abruf endet mit 304, ohne Download und ohne Hochladen', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  A.lerne('a'); await A.verbinden(); B.lerne('b'); await B.verbinden();
+  await A.abgleichen();                 // A mischt B ein und laedt hoch
+  await A.abgleichen();                 // eigenes Hochladen hat den ETag geaendert: einmal voll, dann gemerkt
+  const vorher = gh.anfragen.length;
+  const r = await A.abgleichen();
+  const neu = gh.anfragen.slice(vorher);
+  assert.equal(r.ok, true);
+  assert.deepEqual(neu, ['GET /gists/g1', '304'], neu.join(', '));
+});
+
+test('nach dem eigenen Hochladen wird nichts neu eingemischt, was schon da war', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  B.lerne('b'); await B.verbinden(); await A.verbinden();
+  A.lerne('a2');
+  const r1 = await A.abgleichen();      // laedt hoch
+  assert.equal(r1.ok, true);
+  const r2 = await A.abgleichen();      // voller Abruf wegen eigenem Upload, Datei von B unveraendert
+  assert.equal(r2.unveraendert, true, JSON.stringify(r2));
+  B.lerne('b2'); await B.abgleichen();
+  const r3 = await A.abgleichen();      // jetzt hat B etwas Neues gebracht
+  assert.ok(!r3.unveraendert);
+  assert.ok(karten(A).includes('b2'));
+});
+
+test('nach einem 304 kommt eine spaetere fremde Aenderung trotzdem an', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden(); await A.abgleichen(); await A.abgleichen(); await A.abgleichen();
+  assert.equal(gh.anfragen.at(-1), '304');
+  B.lerne('spaet'); await B.abgleichen();
+  await A.abgleichen();
+  assert.ok(karten(A).includes('spaet'));
+});
+
+test('ETag gilt erst nach dem Einmischen: lief eine Einheit, wird beim naechsten Mal voll geholt', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden(); await A.abgleichen(); await A.abgleichen();
+  B.lerne('waehrend'); await B.abgleichen();
+  A.busy = true; await A.abgleichen(); A.busy = false;
+  assert.ok(!karten(A).includes('waehrend'));
+  await A.abgleichen();
+  assert.ok(karten(A).includes('waehrend'), 'der verpasste Stand muss beim naechsten Lauf kommen');
+});
+
+test('Lerneinstellungen wandern mit, Farbschema und Ton nicht', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  A.tu(s => { s.setSetting('newPerDay', 25); s.setSetting('focus', ['spo', 'mat']); s.setSetting('theme', 'dark'); s.setSetting('sound', false); });
+  B.tu(s => s.setSetting('theme', 'light'));
+  await A.abgleichen();
+  const r = await B.abgleichen();
+  assert.equal(r.einstellungen, true);
+  assert.equal(r.sichtbar, true);
+  assert.equal(B.S().settings.newPerDay, 25);
+  assert.deepEqual(B.S().settings.focus, ['spo', 'mat']);
+  assert.equal(B.S().settings.theme, 'light', 'das Farbschema bleibt je Geraet');
+  assert.equal(B.S().settings.sound, true, 'der Ton bleibt je Geraet');
+});
+
+test('bei Einstellungen gewinnt die zuletzt gemachte Aenderung, auf beiden Seiten', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  A.tu(s => s.setSetting('newPerDay', 8));
+  await new Promise(r => setTimeout(r, 5));
+  B.tu(s => s.setSetting('newPerDay', 20));
+  await A.abgleichen(); await B.abgleichen(); await A.abgleichen();
+  assert.equal(A.S().settings.newPerDay, 20);
+  assert.equal(B.S().settings.newPerDay, 20);
+});
+
+test('ein frisches Geraet uebernimmt die Lerneinstellungen der Gruppe', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  A.tu(s => s.setSetting('cats', ['spo', 'mat', 'geo'])); await A.verbinden();
+  await B.verbinden();
+  assert.deepEqual(B.S().settings.cats, ['spo', 'mat', 'geo']);
+});
+
+test('zwei Tabs: der andere Tab schreibt eine neuere Einstellung nicht zurueck', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  A.tu(s => s.setSetting('newPerDay', 12));
+  const A2 = await geraet(gh, A);       // zweiter Tab, gleicher Speicher, eigener Arbeitsstand
+  A.tu(s => s.setSetting('newPerDay', 30));
+  A2.lerne('im zweiten Tab');           // speichert und mischt dabei den abgelegten Stand ein
+  assert.equal(A2.S().settings.newPerDay, 30);
+  assert.equal(JSON.parse(A.local.getItem(KEY)).settings.newPerDay, 30);
+});
+
+test('nach einer Lernrunde wird gleich hochgeladen, nicht erst im Minutentakt', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  A.lerne('frisch');
+  aktiv = A;
+  let fertig = null;
+  A.sync.nachEinheit((r) => { fertig = r; });
+  await new Promise(r => setTimeout(r, 1600));
+  assert.equal(fertig && fertig.ok, true);
+  await B.abgleichen();
+  assert.ok(karten(B).includes('frisch'));
+});
+
+test('ein zweiter Tab laesst seinen Lauf aus, solange der erste abgleicht', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  await A.verbinden();
+  aktiv = A;
+  const vorher = Object.getOwnPropertyDescriptor(navigator, 'locks');
+  Object.defineProperty(navigator, 'locks', { configurable: true, value: { request: (n, o, fn) => Promise.resolve(fn(null)) } });
+  try {
+    const r = await A.sync.abgleichen();
+    assert.equal(r.art, 'anderer-tab');
+    assert.equal(A.sync.konfiguration().fehler, null, 'kein Fehler, nur ausgelassen');
+  } finally {
+    if (vorher) Object.defineProperty(navigator, 'locks', vorher); else delete navigator.locks;
+  }
+  const frei = await A.abgleichen();
+  assert.equal(frei.ok, true);
 });

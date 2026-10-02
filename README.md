@@ -261,9 +261,22 @@ seiner Beschreibung und brauchen nur den Schlüssel. Der Schlüssel liegt in ein
 Speichereintrag, nie im Lernstand: Eine weitergegebene Sicherungsdatei enthält ihn nicht, das
 Gist auch nicht.
 
-**Wann abgeglichen wird:** beim Start, beim Zurückkehren in die App und während der Benutzung
-jede Minute, sofern sich etwas geändert hat. Ohne Änderung ist es alle fünf Minuten, um
-fremde Stände zu sehen. Beim Verlassen der App wird nur hochgeladen. Während einer laufenden
+**Wann abgeglichen wird:** beim Start, beim Zurückkehren in die App, **gleich nach jeder
+Lernrunde** (auch einer abgebrochenen) und während der Benutzung jede Minute, sofern sich etwas
+geändert hat. Ohne Änderung ist es alle zwei Minuten, um fremde Stände zu sehen. Beim
+Verlassen der App wird nur hochgeladen. Das Hochladen nach der Runde ist neu: Vorher wartete
+der Abgleich bis zum nächsten Minutentakt. Wer die Runde beendete und das Handy weglegte, war
+dann auf das Hochladen beim Verlassen angewiesen. Das läuft ohne `keepalive` (über 64 KB), und
+iOS lässt es nicht immer zu Ende laufen.
+
+**Was ein Abgleich kostet:** Meist fast nichts. Die App schickt den ETag des zuletzt
+eingemischten Gist-Stands mit (`If-None-Match`). Hat kein anderes Gerät etwas geändert,
+antwortet GitHub mit einer leeren 304, ohne Download, und rechnet sie nicht auf die
+Anfragegrenze an. Nach dem eigenen Hochladen hat sich der ETag zwar geändert, die fremden
+Dateien aber nicht. Ein Fingerabdruck je Datei erkennt das, und es wird nichts ausgepackt oder
+gemischt. Beides gilt erst, *nachdem* gemischt wurde: Lief gerade eine Einheit, holt der
+nächste Lauf alles. Am Mac mit zwei offenen Tabs gleicht über eine Web-Locks-Sperre nur einer
+zur Zeit ab, der andere lässt seinen Lauf aus. Während einer laufenden
 Einheit wird weder gemischt noch hochgeladen: Ein Tausch mitten in der Runde verschluckt
 Antworten, und ein halbes Megabyte je Minute kostet unterwegs Datenvolumen. Verloren geht
 dabei nichts, die Antworten liegen im Gerät und gehen nach der Einheit hinaus. Hochgeladen
@@ -278,7 +291,13 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
 - Bei einer Karte gewinnt der jüngere Stand, bei einer Markierung der jüngere Stempel. Eine
   gelöschte Markierung kommt deshalb nicht zurück.
 - Die Gesamtzahlen werden aus den Tagen abgeleitet.
-- Einstellungen bleiben je Gerät, denn das Farbschema am Mac muss nicht das des iPhones sein.
+- **Lerneinstellungen** wandern mit: Tagespensum, Wiederholungsdeckel, Abfrage-Art,
+  Reihenfolge, aktive Themen, Schwerpunkt, „neue Karten trotz Rückstand“ und Lehrerwissen
+  im Quiz. Jede Änderung trägt einen Zeitstempel, und die zuletzt gemachte gewinnt. Farbschema
+  und Ton bleiben je Gerät: Am Mac im Hellen, auf dem iPhone abends dunkel ist kein
+  Widerspruch. Derselbe Zeitstempel behebt eine alte Lücke zwischen zwei Tabs. Bisher blieben
+  dort immer die Einstellungen des eigenen Tabs. Stellte der andere Tab das Tagespensum um,
+  schrieb dieser es beim nächsten Speichern still zurück.
 
 **Drei Fälle gibt es zwischen Tabs nicht:**
 - **Zurücksetzen oder Einlesen auf einem Gerät** gilt als ausdrückliche Entscheidung und
@@ -316,10 +335,16 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
 - Die Gist-Liste fragt jedes Gerät am ersten Tag nach dem Verbinden bei jedem Start ab,
   danach nur einmal am Tag. Bei vielen Gists kostet sie bis zu zehn Anfragen, und den
   Doppelfall gibt es nur bei der Einrichtung.
-- Solange der Abgleich gelingt, entfällt die Erinnerung ans Sichern als Datei.
+- Solange der Abgleich gelingt, entfällt die Erinnerung ans Sichern als Datei. Hängt er, sagt
+  es die Startseite: sofort bei einem ungültigen oder abgelaufenen Schlüssel, nach zwei Tagen
+  bei jedem anderen anhaltenden Fehler. Sonst lernte man weiter, und auf den anderen Geräten
+  käme still nichts mehr an.
+- Ein weiteres Gerät einzurichten geht ohne Abtippen: „Schlüssel für weiteres Gerät kopieren“
+  legt ihn in die Zwischenablage. Mit Apples geteilter Zwischenablage liegt er Sekunden später
+  auf dem iPhone, wo „Schlüssel aus der Zwischenablage einfügen“ ihn ins Feld setzt.
 
 **Geprüft** wird das zweifach:
-- `tests/sync.test.mjs` (33 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
+- `tests/sync.test.mjs` (43 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
   eigenem Speicher, gegen ein nachgebautes Gist-Archiv mit den Antworten der echten API. Darin
   stecken die Summe unabhängig gelernter Antworten, Zurücksetzen samt Netz, die
   liegengebliebene Datei, verschiedene Generationen beim ersten Abgleich, 401 und Netzabbruch
@@ -342,7 +367,11 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
   - Beim Verlassen der App wurde doppelt hochgeladen.
 - Der Durchlauftest verbindet zwei echte Browserkontexte über die Oberfläche. Seine
   GitHub-Attrappe lehnt wie die echte API jeden Kopf ab, den der CORS-Vorabcheck nicht
-  erlaubt, denn ein solcher Kopf ließe den Abgleich im echten Safari scheitern.
+  erlaubt, denn ein solcher Kopf ließe den Abgleich im echten Safari scheitern. Sie
+  antwortet auch mit ETag und 304 und gibt den ETag nur frei, wenn er wie bei GitHub in
+  `Access-Control-Expose-Headers` steht. Geprüft wird damit auch, dass der Browser die 304
+  trotz `cache: 'no-store'` an die App durchreicht. Ein am iPhone umgestelltes Tagespensum
+  muss am Mac im Auswahlfeld stehen.
 
 Grenzen, bewusst in Kauf genommen:
 - Wer eine Antwort zurücknimmt, nachdem ein anderes Gerät den Stand mit dieser Antwort
@@ -578,8 +607,8 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 233 Einheitentests plus Inhaltsprüfung
-npm run test:e2e   # 352 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
+npm test           # 243 Einheitentests plus Inhaltsprüfung
+npm run test:e2e   # 354 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt
 npm run widersprueche # Karten, die einander widersprechen – und die mit der Zeit altern

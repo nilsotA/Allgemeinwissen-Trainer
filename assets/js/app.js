@@ -85,6 +85,7 @@ function paintChrome() {
 }
 function show(v) {
   view = v;
+  if (run) sync.nachEinheit(nachAbgleich);   // Runde abgebrochen: das Gelernte trotzdem gleich hochladen
   run = null;
   rueckblickOffen = false;
   onKey = null;
@@ -429,8 +430,10 @@ function renderHome() {
     <div class="bar" style="margin:10px 0 7px"><i style="width:${((o.seen / o.total) * 100).toFixed(1)}%"></i></div>
     <p class="tiny">${o.seen} angefangen · ${o.mature} gefestigt · ${o.total - o.seen} noch unberührt</p>
   </div>
+  ${abgleichHinweis()}
   ${sicherungsHinweis()}`;
 
+  document.getElementById('abgleichPruefen')?.addEventListener('click', () => show('settings'));
   const sich = document.getElementById('sichernJetzt');
   if (sich) sich.onclick = async () => { if (await sichern()) render(); };
 
@@ -1157,8 +1160,11 @@ function abgleichKarte() {
         </ol>
       </details>
       ${eingabe('Zugangsschlüssel (ghp_…)')}
-      <div class="btn-stack" style="margin-top:10px"><button class="btn primary" id="syncAn">Verbinden</button></div>
-      <p class="tiny" style="margin-top:10px">Bestehender Fortschritt auf den Geräten wird beim Verbinden zusammengeführt, nicht überschrieben. Der Schlüssel bleibt auf diesem Gerät und steht in keiner Sicherungsdatei.</p>
+      <div class="btn-stack" style="margin-top:10px">
+        ${einfuegenKnopf()}
+        <button class="btn primary" id="syncAn">Verbinden</button>
+      </div>
+      <p class="tiny" style="margin-top:10px">Bestehender Fortschritt auf den Geräten wird beim Verbinden zusammengeführt, nicht überschrieben. Abgeglichen werden Lernstand und Lerneinstellungen (Pensum, Themen, Schwerpunkt, Abfrage-Art); Farbschema und Ton bleiben je Gerät. Der Schlüssel bleibt auf diesem Gerät und steht in keiner Sicherungsdatei.</p>
     </div>`;
   return `
     <h2 class="sec">Geräte abgleichen</h2>
@@ -1166,11 +1172,24 @@ function abgleichKarte() {
       <div id="syncStatus">${abgleichStatus(k)}</div>
       ${k.pausiert ? eingabe('Neuer Zugangsschlüssel (ghp_…)') : ''}
       <div class="btn-stack" style="margin-top:11px">
-        ${k.pausiert ? '<button class="btn primary" id="syncAn">Neuen Schlüssel verwenden</button>' : ''}
+        ${k.pausiert ? einfuegenKnopf() + '<button class="btn primary" id="syncAn">Neuen Schlüssel verwenden</button>' : ''}
         <button class="btn" id="syncJetzt">Jetzt abgleichen</button>
+        ${k.pausiert ? '' : '<button class="btn" id="syncKopie">Schlüssel für weiteres Gerät kopieren</button>'}
         <button class="btn" id="syncAus">Auf diesem Gerät trennen</button>
       </div>
+      <p class="tiny" style="margin-top:10px">Abgeglichen werden Lernstand und Lerneinstellungen – beim Öffnen, nach jeder Runde und beim Verlassen der App. Farbschema und Ton bleiben je Gerät.</p>
     </div>`;
+}
+
+/* Den Schluessel auf dem iPhone abzutippen ist muehsam - 40 Zeichen ohne
+   Sinn. Ein verbundenes Geraet kopiert ihn deshalb in die Zwischenablage; mit
+   Apples geteilter Zwischenablage (Mac, iPad, iPhone mit derselben Apple-ID)
+   liegt er Sekunden spaeter auf dem anderen Geraet, wo „Einfügen“ ihn ins Feld
+   setzt. Geht das Lesen der Zwischenablage nicht (Firefox, verweigert), bleibt
+   das gewohnte lange Tippen ins Feld. */
+const zwischenablageLesbar = () => !!(navigator.clipboard && navigator.clipboard.readText);
+function einfuegenKnopf() {
+  return zwischenablageLesbar() ? '<button class="btn" id="syncEinfuegen">Schlüssel aus der Zwischenablage einfügen</button>' : '';
 }
 
 function zeigeAbgleichStatus() {
@@ -1188,10 +1207,50 @@ function nachAbgleich(r) {
   if (!rueckblickOffen) render();
   toast(r.uebernommen
     ? 'Ein anderes Gerät hat den Stand ersetzt – hier übernommen'
-    : 'Auf einem anderen Gerät gelernt – Stand abgeglichen');
+    : r.einstellungen
+      ? 'Auf einem anderen Gerät gelernt oder umgestellt – Stand abgeglichen'
+      : 'Auf einem anderen Gerät gelernt – Stand abgeglichen');
+}
+
+/* Haengt der Abgleich, merkt man das sonst nicht: Die App lernt ganz normal
+   weiter, nur kommt auf den anderen Geraeten nichts mehr an. Ein abgelaufener
+   Schluessel haelt ihn sofort an, ein anhaltender anderer Fehler nach zwei
+   Tagen - dann sagt es die Startseite. */
+function abgleichHinweis() {
+  const k = sync.konfiguration();
+  if (!k || !k.fehler) return '';
+  const seit = k.zuletzt || k.verbundenAm || 0;
+  if (!k.pausiert && Date.now() - seit < 2 * 86400000) return '';
+  return `<div class="hinweis" style="margin-top:12px">
+    <b>Geräteabgleich ${k.pausiert ? 'angehalten' : 'gestört'}.</b> ${esc(k.fehler)}. Hier gelernte Antworten
+    kommen auf den anderen Geräten gerade nicht an – verloren geht nichts.
+    <button class="btn sm ghost" id="abgleichPruefen" style="margin-top:9px">Unter „Mehr“ ansehen</button>
+  </div>`;
 }
 
 function bindeAbgleich() {
+  document.getElementById('syncEinfuegen')?.addEventListener('click', async () => {
+    const feld = document.getElementById('syncTok');
+    try {
+      const text = (await navigator.clipboard.readText() || '').trim();
+      if (!/^[A-Za-z0-9_]{20,255}$/.test(text)) return toast('In der Zwischenablage liegt kein GitHub-Schlüssel');
+      if (feld) feld.value = text;
+      toast('Schlüssel eingefügt – jetzt „Verbinden“ tippen');
+    } catch (e) {
+      feld?.focus();
+      toast('Zwischenablage nicht lesbar – lang ins Feld tippen und „Einfügen“ wählen', 3500);
+    }
+  });
+  document.getElementById('syncKopie')?.addEventListener('click', async () => {
+    const k = sync.konfiguration();
+    if (!k) return;
+    try {
+      await navigator.clipboard.writeText(k.token);
+      toast('Schlüssel kopiert – auf dem anderen Gerät unter „Mehr → Geräte abgleichen“ einfügen', 4000);
+    } catch (e) {
+      toast('Kopieren nicht möglich – der Schlüssel steht in deinen GitHub-Einstellungen bzw. deiner Notiz', 4000);
+    }
+  });
   const an = document.getElementById('syncAn');
   if (an) an.onclick = async () => {
     const feld = document.getElementById('syncTok');
@@ -1646,6 +1705,7 @@ function endRun() {
   bindeNachlegen();
   run = null;
   rueckblickOffen = true;
+  sync.nachEinheit(nachAbgleich);
   holeUpdateNach();
   paintChrome();
 }

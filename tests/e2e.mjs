@@ -3312,7 +3312,8 @@ try {
       'if-unmodified-since', 'accept-encoding', 'x-github-otp', 'x-requested-with', 'user-agent', 'x-github-api-version'];
     const gists = new Map();
     const abgelehnt = [];
-    const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'x-ratelimit-remaining' };
+    const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': 'ETag, x-ratelimit-remaining' };
+    let nichtGeaendert = 0;
     const github = async (route) => {
       const req = route.request();
       const u = new URL(req.url());
@@ -3339,9 +3340,15 @@ try {
       const g = gists.get(teile[1]);
       if (!g) return json(404, { message: 'Not Found' });
       if (methode === 'PATCH') { for (const [n, f] of Object.entries(body.files)) g.files[n] = f.content; return json(200, { id: g.id }); }
+      /* ETag und 304 wie bei GitHub. Der Browser muss die 304 trotz
+         cache: 'no-store' an die App durchreichen - genau das prueft der Test. */
+      let h = 0; const roh = JSON.stringify(g.files);
+      for (let i = 0; i < roh.length; i++) h = (h * 31 + roh.charCodeAt(i)) | 0;
+      const etag = `W/"${(h >>> 0).toString(16)}"`;
+      if (req.headers()['if-none-match'] === etag) { nichtGeaendert++; return route.fulfill({ status: 304, headers: { ...cors, ETag: etag } }); }
       const files = {};
       for (const [n, c] of Object.entries(g.files)) files[n] = { filename: n, content: c, truncated: false };
-      return json(200, { id: g.id, files });
+      return route.fulfill({ status: 200, headers: { ...cors, 'Content-Type': 'application/json', ETag: etag }, body: JSON.stringify({ id: g.id, files }) });
     };
     const geraet = async (ua, absichtlich = false) => {
       const c = await browser.newContext({ ...devices['iPhone 13'], locale: 'de-DE', ...(ua ? { userAgent: ua } : {}) });
@@ -3416,6 +3423,24 @@ try {
     check('nach einem Neustart holt die App den Stand von selbst', await antworten(A.p) === nachA + nachB + 1,
       `${await antworten(A.p)} statt ${nachA + nachB + 1}`);
 
+    // Lerneinstellungen wandern mit: Tagespensum am iPhone umstellen, am Mac abgleichen.
+    await A.p.click('[data-view="settings"]');
+    await A.p.selectOption('#npd', '25');
+    await A.p.click('#syncJetzt');
+    await A.p.waitForTimeout(800);
+    await B.p.click('[data-view="settings"]');
+    await B.p.click('#syncJetzt');
+    await B.p.waitForFunction(() => document.getElementById('npd')?.value === '25', null, { timeout: 8000 }).catch(() => {});
+    check('ein umgestelltes Tagespensum kommt auf dem anderen Geraet an',
+      await B.p.locator('#npd').inputValue() === '25', await B.p.locator('#npd').inputValue());
+
+    // Ohne neue fremde Staende genuegt eine leere 304-Antwort.
+    const vor304 = nichtGeaendert;
+    for (let i = 0; i < 2; i++) { await B.p.click('#syncJetzt'); await B.p.waitForTimeout(600); }
+    check('ohne Neues antwortet GitHub mit 304, und die App kommt damit zurecht',
+      nichtGeaendert > vor304 && /aktiv/.test(await B.p.locator('#syncStatus').innerText()),
+      `${nichtGeaendert - vor304} × 304`);
+
     check('kein Kopf, den GitHub im Vorabcheck ablehnen wuerde', abgelehnt.length === 0, abgelehnt.join(' | '));
     const inhalt = JSON.stringify([...gists.values()]);
     check('der Schluessel landet nicht im Gist', !inhalt.includes(TOKEN));
@@ -3457,7 +3482,7 @@ try {
    ausfallen – ein umbenannter Waehler, ein frueh abgebrochener Abschnitt –,
    ohne dass irgendetwas rot wird: passed sinkt einfach. Die Zahl steht auch im
    README und wird dort geprueft; hier ist sie die Untergrenze. */
-const MINDESTENS = 352;
+const MINDESTENS = 354;
 /* Die Zahl VOR dem eigenen Hochzaehlen nehmen: Sonst meldet der Wachposten
    „Nur 323 von mindestens 323 gelaufen" und zaehlt sich selbst zu den Laeufen -
    ein Satz, der sich widerspricht, ueber der einzigen Zeile, die sagt, dass

@@ -109,6 +109,7 @@ const DEFAULTS = {
     cats: null,           // null = alle Kategorien aktiv, sonst Array von IDs
     focus: null           // Schwerpunktthemen: bekommen doppelt so viele neue Karten
   },
+  settingsZeit: 0,        // wann zuletzt eine geraeteuebergreifende Einstellung geaendert wurde
   cards: {},              // id -> { ef, iv, due, reps, lapses, seen, ok, last }
   flags: {},              // id -> Zeitstempel (positiv = markiert, negativ = Grabstein)
   days: {},               // 'YYYY-MM-DD' -> { done, correct, newC, min }
@@ -404,7 +405,17 @@ function zusammenfuehren(fremd, eigen) {
     if (Array.isArray(fremd.factTage)) z.factTage = fremd.factTage.slice(-8);
   }
   z.rev = groesser(z.rev, fremd.rev);
-  return z;                                  // Einstellungen bleiben die dieses Tabs
+  /* Lerneinstellungen tragen einen Zeitstempel: Die zuletzt geaenderte gilt.
+     Vorher blieben immer die dieses Tabs - stellte der andere Tab das
+     Tagespensum um, schrieb dieser es beim naechsten Speichern still zurueck,
+     und mit dem Geraeteabgleich wanderte der alte Wert auch auf die anderen
+     Geraete. Farbschema und Ton bleiben die dieses Tabs. */
+  if ((Number(fremd.settingsZeit) || 0) > (Number(z.settingsZeit) || 0) && fremd.settings && typeof fremd.settings === 'object') {
+    const sauber = saeubern({ cards: {}, settings: fremd.settings }).settings;
+    for (const k of GERAETEUEBERGREIFEND) z.settings[k] = sauber[k];
+    z.settingsZeit = Number(fremd.settingsZeit) || 0;
+  }
+  return z;
 }
 
 /* Den abgelegten Stand einholen, ohne zu schreiben. Wer den Zustand veraendern
@@ -502,8 +513,21 @@ export function save(now = false) {
 export const S = () => state;
 export const settings = () => state.settings;
 
+/* Welche Einstellungen der Abgleich zwischen Geraeten mitnimmt: alles, was
+   bestimmt, WAS gelernt wird. Wer am Mac den Schwerpunkt auf Sport legt, will
+   ihn auf dem iPhone nicht ein zweites Mal setzen - und das Tagespensum wird
+   ohnehin ueber alle Geraete zusammengezaehlt. Farbschema und Ton bleiben je
+   Geraet: Am Mac im Hellen, auf dem iPhone abends dunkel ist kein Widerspruch. */
+export const GERAETEUEBERGREIFEND = ['newPerDay', 'maxReviews', 'recallMode', 'level', 'trotzdemNeu',
+  'quizLehrerwissen', 'cats', 'focus'];
+
 export function setSetting(key, val) {
   state.settings[key] = val;
+  /* Streng steigend, damit zwei Aenderungen in derselben Millisekunde und eine
+     nachgestellte Geraeteuhr die Reihenfolge nicht umdrehen. */
+  if (GERAETEUEBERGREIFEND.includes(key)) {
+    state.settingsZeit = Math.max(Date.now(), (Number(state.settingsZeit) || 0) + 1);
+  }
   save(true);           // Einstellungen sofort sichern, nicht erst nach der Sammelpause
 }
 
@@ -753,6 +777,7 @@ function saeubern(roh, { deckel = 64 } = {}) {
     rein.settings.focus = Array.isArray(s.focus) ? s.focus.filter(x => typeof x === 'string').slice(0, 50) : null;
   }
   rein.lastExport = zahl(roh.lastExport, 0, 1e6, 0);
+  rein.settingsZeit = zahl(roh.settingsZeit, 0, 1e15, 0);
   for (const [id, c] of Object.entries(roh.cards || {})) {
     if (typeof id !== 'string' || !c || typeof c !== 'object') continue;
     rein.cards[id] = {
@@ -1014,6 +1039,7 @@ export function geraeteStaendeEinmischen(eintraege, bekannt = []) {
      neueren Dateien. */
   const neue = fremde.filter(f => f.neu && f.z.gen === hoechste);
   const einstellungen = structuredClone(state.settings);
+  const einstellungenZeit = Number(state.settingsZeit) || 0;
   let uebernommen = false, basis = null;
   /* Ein BEKANNTES Geraet mit hoeherer Generation hat ausdruecklich ersetzt -
      es sei denn, die hoehere Generation kommt aus dem Beitritt eines neuen
@@ -1039,10 +1065,23 @@ export function geraeteStaendeEinmischen(eintraege, bekannt = []) {
     state = zusammenfuehren(f.z, state);
   }
   state.gen = ziel;                     // die Generation sinkt nie
+  /* Einstellungen: die zuletzt geaenderte gewinnt, ueber alle Geraete - aber
+     nur die geraeteuebergreifenden (siehe GERAETEUEBERGREIFEND). */
   state.settings = einstellungen;
+  state.settingsZeit = einstellungenZeit;
+  let einstellungenGeaendert = false;
+  const neueste = fremde.reduce((m, f) => (f.z.settingsZeit > (m ? m.z.settingsZeit : einstellungenZeit) ? f : m), null);
+  if (neueste) {
+    for (const k of GERAETEUEBERGREIFEND) {
+      const wert = structuredClone(neueste.z.settings[k]);
+      if (JSON.stringify(wert) !== JSON.stringify(state.settings[k])) einstellungenGeaendert = true;
+      state.settings[k] = wert;
+    }
+    state.settingsZeit = neueste.z.settingsZeit;
+  }
   flagUhrNachziehen(state);
   nachErsatz();
-  const sichtbar = uebernommen
+  const sichtbar = uebernommen || einstellungenGeaendert
     || state.totalAnswers !== vorher.totalAnswers
     || state.duelAnswers !== vorher.duelAnswers
     || state.streak !== vorher.streak
@@ -1050,7 +1089,7 @@ export function geraeteStaendeEinmischen(eintraege, bekannt = []) {
     || zaehleMarkierungen(state) !== zaehleMarkierungen(vorher);
   const geaendert = JSON.stringify({ ...state, rev: 0 }) !== vorherText;
   if (geaendert) save(true);
-  return { uebernommen, sichtbar, geaendert, gen: ziel, bekannt: alleNamen };
+  return { uebernommen, sichtbar, geaendert, einstellungen: einstellungenGeaendert, gen: ziel, bekannt: alleNamen };
 }
 
 /** Ob gerade eine Einheit laeuft - der Abgleich mischt dann nicht. */
