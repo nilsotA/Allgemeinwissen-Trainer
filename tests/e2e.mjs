@@ -1938,11 +1938,16 @@ try {
         JSON.parse((await import('/assets/js/store.js')).exportJSON()));
 
       /* rev und gen sind Buchhaltung des Zusammenfuehrens und muessen sich
-         aendern - alles andere muss Zeichen fuer Zeichen zurueckkommen. */
+         aendern - alles andere muss Zeichen fuer Zeichen zurueckkommen. Die
+         Stempel der Lerneinstellungen (settingsZeit, settingsZeiten) werden beim
+         Einlesen bewusst frisch vergeben: Ein Einlesen ist fuer sie dieselbe
+         ausdrueckliche Entscheidung wie fuer die Karten, sonst holte ein
+         anderes Geraet die alten Einstellungen zurueck. Die WERTE der
+         Einstellungen muessen aber zurueckkommen - die stehen unter settings. */
       const vgl = (a, b, weg = '') => {
         const aus = [];
         for (const k of new Set([...Object.keys(a || {}), ...Object.keys(b || {})])) {
-          if (!weg && (k === 'rev' || k === 'gen')) continue;
+          if (!weg && (k === 'rev' || k === 'gen' || k === 'settingsZeit' || k === 'settingsZeiten')) continue;
           const x = a[k], y = b[k];
           if (x && y && typeof x === 'object' && typeof y === 'object') aus.push(...vgl(x, y, weg + k + '.'));
           else if (JSON.stringify(x) !== JSON.stringify(y)) aus.push(`${weg}${k}: ${JSON.stringify(x)} -> ${JSON.stringify(y)}`);
