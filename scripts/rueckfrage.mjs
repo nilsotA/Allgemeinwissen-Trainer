@@ -46,17 +46,40 @@ const ABKUERZUNGSFRAGE = /\bAbk(ü|ue)rzung\b|\bwofür steht\b/i;
    Karten zurueckwies. Der Bericht muss das selbst merken, nicht das Tor danach. */
 const ZUSATZ = /\s+(von|vom|einer|eines|eine|einen|im|in|beim|bei|des|der|die|das|zweier|zum|zur)\s+.*$/;
 const GENITIV = /^\S+s\s+/;
-const schonGefragt = (begriff, istAntwort) => {
-  const fassungen = new Set([begriff, begriff.replace(ZUSATZ, ''), begriff.replace(GENITIV, '')]);
-  for (const f of fassungen) if (f.length >= 4 && istAntwort.has(kern(f))) return true;
+/* Was die Frage um den Begriff herum noch sagt, ist nicht Teil des Begriffs:
+   „Begriff „Binge-Watching"", „Integral anschaulich", „Sinfonie ueblicherweise",
+   „Bruttoinlandsprodukt (BIP)". Und die Antwortseite beugt anders: „Enzyme"
+   fuer „Enzym", „Genfer Konventionen" fuer „Genfer Konvention", „Das lyrische
+   Ich" fuer „lyrisches Ich". Beim Nachschreiben der Rueckfragen stellten sich
+   24 von 48 gemeldeten Luecken als laengst gefragt heraus – die Haelfte des
+   Berichts war Arbeit fuer nichts. Deshalb werden Vorspann und Nachspann
+   abgestreift und Woerter auf einen groben Stamm gekuerzt, bevor verglichen
+   wird. */
+const VORSPANN = /^(der |die |das |die sieben |sieben |drei |vier |fuenf |fünf |sechs |acht |neun |zehn |zwei )?(begriff|begriffe|fachbegriff|wort|ausdruck|bezeichnung)?\s*/i;
+const NACHSPANN = /\s+(anschaulich|ueblicherweise|üblicherweise|chemisch|physikalisch|biologisch|rechtlich|juristisch|mathematisch|grammatisch|sportlich|medizinisch|wirtschaftlich|politisch|allgemein|genau|konkret|woertlich|wörtlich|urspruenglich|ursprünglich|eigentlich|vereinfacht|kurz|etwa|ungefaehr|ungefähr|dabei|hier|heute|grob|gesehen|gesagt|betrachtet|in deutschland|in der eu|in europa)$/i;
+const KLAMMER = /\s*\([^)]*\)\s*/g;
+/* Grober Stamm, zweimal gekuerzt: „Konventionen" und „Konvention" treffen
+   sich bei „konventio", „lyrisches" und „lyrische" bei „lyrisch". */
+const stammWort = (w) => { for (let i = 0; i < 2 && w.length > 4; i++) w = w.replace(/(en|es|er|em|e|n|s)$/, ''); return w; };
+const stamm = (t) => kern(t).split(' ').map(stammWort).join(' ');
+const sortiert = (t) => stamm(t).split(' ').sort().join(' ');
+const schonGefragt = (begriff, istAntwort, istAntwortStamm, istAntwortSortiert) => {
+  const roh = begriff.replace(KLAMMER, ' ').replace(/[„“"]/g, '').trim();
+  let ohneRand = roh.replace(VORSPANN, '').trim();
+  for (let vorher = null; vorher !== ohneRand;) { vorher = ohneRand; ohneRand = ohneRand.replace(NACHSPANN, '').trim(); }
+  const fassungen = new Set([begriff, roh, ohneRand, ohneRand.replace(ZUSATZ, ''), ohneRand.replace(GENITIV, '')]);
+  for (const f of fassungen) {
+    // Abkuerzungen duerfen kurz sein („PNF", „BIP"), Woerter nicht.
+    if (f.length < (/^[A-ZÄÖÜ0-9-]+$/.test(f) ? 3 : 4)) continue;
+    if (istAntwort.has(kern(f)) || istAntwortStamm.has(stamm(f)) || istAntwortSortiert.has(sortiert(f))) return true;
+  }
   return false;
 };
 
 export function rueckfragen(karten) {
-  const istAntwort = new Set();
+  const istAntwort = new Set(), istAntwortStamm = new Set(), istAntwortSortiert = new Set();
   for (const c of karten) {
-    istAntwort.add(kern(c.a));
-    for (const a of c.az || []) istAntwort.add(kern(a));
+    for (const a of [c.a, ...(c.az || [])]) { istAntwort.add(kern(a)); istAntwortStamm.add(stamm(a)); istAntwortSortiert.add(sortiert(a)); }
   }
   const raus = [];
   for (const c of karten) {
@@ -71,7 +94,7 @@ export function rueckfragen(karten) {
        laeuft die Karte schon in die gesuchte Richtung – „Was ist Kochsalz
        chemisch?" mit der Antwort „Natriumchlorid" verlangt bereits den Begriff. */
     if (c.a.split(/\s+/).length < 3) continue;
-    if (schonGefragt(begriff, istAntwort)) continue;
+    if (schonGefragt(begriff, istAntwort, istAntwortStamm, istAntwortSortiert)) continue;
     raus.push({ id: c.id, cat: c.cat, sub: c.sub, d: c.d, begriff, a: c.a });
   }
   return raus.sort((x, y) => x.cat.localeCompare(y.cat) || x.sub.localeCompare(y.sub, 'de')
@@ -95,6 +118,14 @@ const PROBE = [
      nicht abstreift, haelt das fuer eine vierte, ungefragte Sache. */
   { id: 'probe-4', cat: 'xxx', sub: 'Probe', d: 1,
     q: 'Was ist ein Schnarrgeflecht des Menschen?', a: 'Ein erfundenes Gewebe ohne jede Funktion', az: [], w: [] },
+  /* Vorspann, Nachspann und Beugung: Alle drei fragen nach dem Schnarrgeflecht,
+     das probe-3 schon auf der Antwortposition hat. */
+  { id: 'probe-5', cat: 'xxx', sub: 'Probe', d: 1,
+    q: 'Was bedeutet der Begriff „Schnarrgeflecht“?', a: 'Ein erfundenes Gewebe, das nichts tut', az: [], w: [] },
+  { id: 'probe-6', cat: 'xxx', sub: 'Probe', d: 1,
+    q: 'Was ist ein Schnarrgeflecht anschaulich?', a: 'Ein erfundenes Gewebe, das nichts leistet', az: [], w: [] },
+  { id: 'probe-7', cat: 'xxx', sub: 'Probe', d: 1,
+    q: 'Was sind Schnarrgeflechte?', a: 'Erfundene Gewebe ohne jede Funktion', az: [], w: [] },
 ];
 
 function selbstprobe() {
@@ -103,6 +134,9 @@ function selbstprobe() {
   if (!gefunden.has('probe-1')) fehler.push('die erfundene Karte ohne Rueckfrage steht nicht im Bericht');
   if (gefunden.has('probe-2')) fehler.push('die erfundene Karte MIT Rueckfrage steht faelschlich im Bericht');
   if (gefunden.has('probe-4')) fehler.push('der Zusatz im Begriff macht aus einer gefragten Sache eine ungefragte');
+  if (gefunden.has('probe-5')) fehler.push('„der Begriff X" gilt als anderer Begriff als X');
+  if (gefunden.has('probe-6')) fehler.push('„X anschaulich" gilt als anderer Begriff als X');
+  if (gefunden.has('probe-7')) fehler.push('der Plural gilt als anderer Begriff als der Singular');
   return fehler;
 }
 
