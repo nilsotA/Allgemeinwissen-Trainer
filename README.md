@@ -293,17 +293,21 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
 - Die Gesamtzahlen werden aus den Tagen abgeleitet.
 - **Lerneinstellungen** wandern mit: Tagespensum, Wiederholungsdeckel, Abfrage-Art,
   Reihenfolge, aktive Themen, Schwerpunkt, „neue Karten trotz Rückstand“ und Lehrerwissen
-  im Quiz. Jede Änderung trägt einen Zeitstempel, und die zuletzt gemachte gewinnt. Farbschema
-  und Ton bleiben je Gerät: Am Mac im Hellen, auf dem iPhone abends dunkel ist kein
-  Widerspruch. Derselbe Zeitstempel behebt eine alte Lücke zwischen zwei Tabs. Bisher blieben
-  dort immer die Einstellungen des eigenen Tabs. Stellte der andere Tab das Tagespensum um,
-  schrieb dieser es beim nächsten Speichern still zurück.
+  im Quiz. Jede Einstellung trägt ihren eigenen Zeitstempel, und je Einstellung gewinnt die
+  zuletzt gemachte Änderung: Wer unterwegs die Themen umstellt, während am Mac das Pensum
+  geändert wird, behält beides. Farbschema und Ton bleiben je Gerät: Am Mac im Hellen, auf
+  dem iPhone abends dunkel ist kein Widerspruch. Dieselben Zeitstempel beheben eine alte Lücke
+  zwischen zwei Tabs. Bisher blieben dort immer die Einstellungen des eigenen Tabs. Stellte
+  der andere Tab das Tagespensum um, schrieb dieser es beim nächsten Speichern still zurück.
 
 **Drei Fälle gibt es zwischen Tabs nicht:**
 - **Zurücksetzen oder Einlesen auf einem Gerät** gilt als ausdrückliche Entscheidung und
-  erreicht alle Geräte, über dieselbe Generationsnummer wie zwischen Tabs. Jedes Gerät legt
-  seinen bisherigen Stand vorher ins Netz unter „Gesicherten Stand zurückholen“. Die
-  Rückfragen beim Zurücksetzen und Einlesen sagen das, sobald der Abgleich an ist.
+  erreicht alle Geräte, über dieselbe Generationsnummer wie zwischen Tabs. Das gilt auch für
+  die Lerneinstellungen: Sie bekommen beim Ersetzen einen frischen Zeitstempel, die
+  Standardwerte nach dem Zurücksetzen und die Einstellungen der Sicherung kommen also
+  ebenfalls auf allen Geräten an. Jedes Gerät legt seinen bisherigen Stand vorher ins Netz
+  unter „Gesicherten Stand zurückholen“. Die Rückfragen beim Zurücksetzen und Einlesen sagen
+  das, sobald der Abgleich an ist.
 - **Liegengebliebene Dateien.** Ein altes Handy meldet sich nie wieder, oder ein geleerter
   Speicher bringt eine neue Gerätekennung. Die alte Datei bleibt dann im Gist liegen. Nach
   einem Zurücksetzen trägt sie eine ältere Generation und wird übergangen, statt den
@@ -344,7 +348,7 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
   auf dem iPhone, wo „Schlüssel aus der Zwischenablage einfügen“ ihn ins Feld setzt.
 
 **Geprüft** wird das zweifach:
-- `tests/sync.test.mjs` (43 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
+- `tests/sync.test.mjs` (52 Tests) fährt zwei oder drei Geräte gegeneinander, jedes mit
   eigenem Speicher, gegen ein nachgebautes Gist-Archiv mit den Antworten der echten API. Darin
   stecken die Summe unabhängig gelernter Antworten, Zurücksetzen samt Netz, die
   liegengebliebene Datei, verschiedene Generationen beim ersten Abgleich, 401 und Netzabbruch
@@ -365,6 +369,38 @@ Gist-API kürzt Dateien erst ab 1 MB, und auch dann liest die App den vollen Inh
   - GitHubs zweite Bremse (403 mit `retry-after`) hielt den Abgleich bis zum nächsten
     Handgriff an.
   - Beim Verlassen der App wurde doppelt hochgeladen.
+- Die zweite Fassung (Hochladen nach der Runde, ETag, Lerneinstellungen) ging durch drei
+  Gegenprüfer mit verschiedenen Blickwinkeln: Datenverlust, Netz und Browser, Oberfläche.
+  Jeden ihrer acht Befunde haben ein Widerleger und ein Nachsteller getrennt geprüft; alle
+  acht hielten stand und sind behoben, sieben davon mit einem Test, der gegen die zweite
+  Fassung fehlschlug:
+  - Nach einer Übernahme (das andere Gerät hatte zurückgesetzt oder eingelesen) kamen
+    dessen neuere Lerneinstellungen nie an, weil der Zustand mit der Basisdatei dasselbe
+    Objekt war und das Zurückschreiben der eigenen Einstellungen auch ihren Stempel
+    überschrieb. Die Stempel werden jetzt vor dem Mischen eingefroren.
+  - Zurücksetzen und Einlesen stempelten die Lerneinstellungen nicht. Das andere Gerät
+    holte die alten zurück, und die Einstellungen einer eingelesenen Sicherung
+    verschwanden still.
+  - Ein Stempel für den ganzen Block ließ die frühere von zwei Änderungen verschiedener
+    Einstellungen verlieren. Daher jetzt der Stempel je Einstellung, und `setSetting` holt
+    vorher den abgelegten Stand des anderen Tabs ein.
+  - Direkt nach der Runde fiel das Hochladen beim Verlassen aus, solange der Lauf nach der
+    Runde noch beim Abruf war. Ein laufender Abgleich hält es nicht mehr auf, und sein
+    eigenes Hochladen geht nach einer Runde mit `keepalive` hinaus.
+  - Verwarf der Browser die Web-Locks-Anfrage, warf der Abgleich statt ein Ergebnis zu
+    liefern. Jetzt läuft er dann ohne Sperre.
+  - Der Hinweis auf der Startseite klebte, nachdem der Abgleich wieder gelang. Er hängt
+    jetzt am Ergebnis jedes Laufs, und nur der Hinweisblock wird getauscht.
+  - „Jetzt abgleichen“ meldete einen Fehlschlag, wenn nur ein anderer Tab die Sperre hielt.
+  - Nach einem gelungenen Handgriff aus dem Zustand „angehalten“ blieb das Schlüsselfeld
+    stehen. Die Karte merkt sich ihre Lage und wird bei Abweichung neu gezeichnet.
+  Dazu ein Nachtrag aus dem Netz-Blickwinkel: Liegengebliebene Dateien älterer Generation
+  zählten bei den Einstellungen noch mit; sie werden jetzt wie beim Kartenstand übergangen.
+  Derselbe Prüfer hat mit echten GitHub-Antworten belegt, dass `ETag` und `Retry-After` in
+  `Access-Control-Expose-Headers` stehen, auch auf der 304, dass die 304 nicht auf die
+  Anfragegrenze zählt und dass der schwache ETag der 200 in `If-None-Match` die 304 ergibt.
+  Nicht belegbar blieb, ob Safari eine 304 bei `cache: 'no-store'` an das Skript durchreicht
+  und ob WebKit eine Web-Lock freigibt, wenn der haltende Tab eingefroren wird.
 - Der Durchlauftest verbindet zwei echte Browserkontexte über die Oberfläche. Seine
   GitHub-Attrappe lehnt wie die echte API jeden Kopf ab, den der CORS-Vorabcheck nicht
   erlaubt, denn ein solcher Kopf ließe den Abgleich im echten Safari scheitern. Sie
@@ -607,7 +643,7 @@ Zwei Wege, den veröffentlichten Stand mit dem Repository zu vergleichen:
 
 ```bash
 npm run dev        # lokaler Server auf http://localhost:8080
-npm test           # 243 Einheitentests plus Inhaltsprüfung
+npm test           # 252 Einheitentests plus Inhaltsprüfung
 npm run test:e2e   # 354 Durchlaufprüfungen im iPhone-Viewport (braucht Playwright)
 npm run test:offline # 31 Prüfungen am Service Worker: Offline-Start, Update, Fassungsanzeige
 npm run wege       # welche Funktionen der App kein Browserlauf betritt

@@ -109,7 +109,8 @@ const DEFAULTS = {
     cats: null,           // null = alle Kategorien aktiv, sonst Array von IDs
     focus: null           // Schwerpunktthemen: bekommen doppelt so viele neue Karten
   },
-  settingsZeit: 0,        // wann zuletzt eine geraeteuebergreifende Einstellung geaendert wurde
+  settingsZeit: 0,        // die juengste der settingsZeiten - aeltere Fassungen lesen nur diese Zahl
+  settingsZeiten: {},     // je geraeteuebergreifender Einstellung: wann sie zuletzt geaendert wurde
   cards: {},              // id -> { ef, iv, due, reps, lapses, seen, ok, last }
   flags: {},              // id -> Zeitstempel (positiv = markiert, negativ = Grabstein)
   days: {},               // 'YYYY-MM-DD' -> { done, correct, newC, min }
@@ -405,15 +406,20 @@ function zusammenfuehren(fremd, eigen) {
     if (Array.isArray(fremd.factTage)) z.factTage = fremd.factTage.slice(-8);
   }
   z.rev = groesser(z.rev, fremd.rev);
-  /* Lerneinstellungen tragen einen Zeitstempel: Die zuletzt geaenderte gilt.
-     Vorher blieben immer die dieses Tabs - stellte der andere Tab das
-     Tagespensum um, schrieb dieser es beim naechsten Speichern still zurueck,
-     und mit dem Geraeteabgleich wanderte der alte Wert auch auf die anderen
-     Geraete. Farbschema und Ton bleiben die dieses Tabs. */
-  if ((Number(fremd.settingsZeit) || 0) > (Number(z.settingsZeit) || 0) && fremd.settings && typeof fremd.settings === 'object') {
-    const sauber = saeubern({ cards: {}, settings: fremd.settings }).settings;
-    for (const k of GERAETEUEBERGREIFEND) z.settings[k] = sauber[k];
-    z.settingsZeit = Number(fremd.settingsZeit) || 0;
+  /* Lerneinstellungen tragen je Einstellung einen Zeitstempel: Die zuletzt
+     geaenderte gilt. Vorher blieben immer die dieses Tabs - stellte der andere
+     Tab das Tagespensum um, schrieb dieser es beim naechsten Speichern still
+     zurueck, und mit dem Geraeteabgleich wanderte der alte Wert auch auf die
+     anderen Geraete. Farbschema und Ton bleiben die dieses Tabs. */
+  if (fremd.settings && typeof fremd.settings === 'object') {
+    let sauber = null;
+    for (const k of GERAETEUEBERGREIFEND) {
+      const t = einstellungsStempel(fremd, k);
+      if (t <= einstellungsStempel(z, k)) continue;
+      if (!sauber) sauber = saeubern({ cards: {}, settings: fremd.settings }).settings;
+      z.settings[k] = sauber[k];
+      setzeEinstellungsStempel(z, k, t);
+    }
   }
   return z;
 }
@@ -521,13 +527,36 @@ export const settings = () => state.settings;
 export const GERAETEUEBERGREIFEND = ['newPerDay', 'maxReviews', 'recallMode', 'level', 'trotzdemNeu',
   'quizLehrerwissen', 'cats', 'focus'];
 
+/* Je Einstellung ein eigener Stempel, nicht einer fuer den ganzen Block: Mit
+   EINEM Stempel ersetzte der juengere Block den aelteren vollstaendig - wer am
+   iPhone unterwegs die Themen umstellte, waehrend am Mac das Pensum geaendert
+   wurde, verlor die Themenwahl auf beiden Seiten, obwohl der Mac sie nie
+   angefasst hatte. settingsZeit bleibt als juengster Stempel daneben stehen,
+   weil Staende und Gist-Dateien aelterer Fassungen nur diese Zahl kennen; fuer
+   sie gilt der Blockstempel dann fuer jede Einstellung. */
+function einstellungsStempel(z, k) {
+  const o = z && z.settingsZeiten;
+  const t = o && typeof o === 'object' ? Number(o[k]) : NaN;
+  return Number.isFinite(t) && t >= 0 ? t : (Number(z && z.settingsZeit) || 0);
+}
+function setzeEinstellungsStempel(z, k, t) {
+  if (!z.settingsZeiten || typeof z.settingsZeiten !== 'object') z.settingsZeiten = {};
+  z.settingsZeiten[k] = t;
+  z.settingsZeit = Math.max(Number(z.settingsZeit) || 0, t);
+}
+
 export function setSetting(key, val) {
-  state.settings[key] = val;
-  /* Streng steigend, damit zwei Aenderungen in derselben Millisekunde und eine
-     nachgestellte Geraeteuhr die Reihenfolge nicht umdrehen. */
   if (GERAETEUEBERGREIFEND.includes(key)) {
-    state.settingsZeit = Math.max(Date.now(), (Number(state.settingsZeit) || 0) + 1);
+    /* Erst den abgelegten Stand einholen, wie aendereKarte: Waehrend einer
+       Runde verwirft dieser Tab die Meldungen des anderen - eine dort gerade
+       umgestellte Einstellung wuerde sonst mit dem eigenen, frischer
+       gestempelten Stand zurueckgeschrieben. */
+    holeFremdenStand();
+    /* Streng steigend, damit zwei Aenderungen in derselben Millisekunde und eine
+       nachgestellte Geraeteuhr die Reihenfolge nicht umdrehen. */
+    setzeEinstellungsStempel(state, key, Math.max(Date.now(), einstellungsStempel(state, key) + 1));
   }
+  state.settings[key] = val;
   save(true);           // Einstellungen sofort sichern, nicht erst nach der Sammelpause
 }
 
@@ -678,14 +707,24 @@ let nachErsatz = () => {};
 export const setNachErsatz = (fn) => { nachErsatz = fn; };
 
 function ersetzeZustand(neu) {
-  let gespeichert = 0;
-  try { gespeichert = Number(JSON.parse(localStorage.getItem(KEY) || '{}').rev) || 0; }
+  let gespeichert = {};
+  try { gespeichert = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }
   catch (e) { /* unlesbar ist so gut wie nicht vorhanden */ }
-  neu.rev = Math.max(Number(state.rev) || 0, gespeichert) + 1;
-  let gespeicherteGen = 0;
-  try { gespeicherteGen = Number(JSON.parse(localStorage.getItem(KEY) || '{}').gen) || 0; }
-  catch (e) { /* unlesbar ist so gut wie nicht vorhanden */ }
-  neu.gen = Math.max(Number(state.gen) || 0, gespeicherteGen) + 1;
+  neu.rev = Math.max(Number(state.rev) || 0, Number(gespeichert.rev) || 0) + 1;
+  neu.gen = Math.max(Number(state.gen) || 0, Number(gespeichert.gen) || 0) + 1;
+  /* Auch die Lerneinstellungen bekommen einen frischen Stempel: Ein Ersetzen
+     ist fuer sie dieselbe ausdrueckliche Entscheidung wie fuer die Karten.
+     Ohne ihn trugen die Standardwerte nach dem Zuruecksetzen den Stempel 0 und
+     eine eingelesene Sicherung ihren alten (oder keinen) - beim naechsten
+     Abgleich gewann jeder aeltere Stempel des anderen Geraets, holte die
+     Einstellungen von vor dem Zuruecksetzen zurueck und liess die der
+     Sicherung still verschwinden. Der abgelegte Stand zaehlt mit, falls der
+     andere Tab mit vorgestellter Uhr gestempelt hat. */
+  let t = Date.now();
+  for (const z of [state, neu, gespeichert]) {
+    for (const k of GERAETEUEBERGREIFEND) t = Math.max(t, einstellungsStempel(z, k) + 1);
+  }
+  for (const k of GERAETEUEBERGREIFEND) setzeEinstellungsStempel(neu, k, t);
   state = neu;
   nachErsatz();
   return save(true);
@@ -778,6 +817,10 @@ function saeubern(roh, { deckel = 64 } = {}) {
   }
   rein.lastExport = zahl(roh.lastExport, 0, 1e6, 0);
   rein.settingsZeit = zahl(roh.settingsZeit, 0, 1e15, 0);
+  /* Je Einstellung ein Stempel; eine Datei aelterer Fassung traegt nur den
+     Blockstempel, der dann fuer jede Einstellung gilt. */
+  const zeiten = roh.settingsZeiten && typeof roh.settingsZeiten === 'object' ? roh.settingsZeiten : {};
+  for (const k of GERAETEUEBERGREIFEND) rein.settingsZeiten[k] = zahl(zeiten[k], 0, 1e15, rein.settingsZeit);
   for (const [id, c] of Object.entries(roh.cards || {})) {
     if (typeof id !== 'string' || !c || typeof c !== 'object') continue;
     rein.cards[id] = {
@@ -1008,9 +1051,11 @@ export function sicherungKennzahlen() {
      dabei ist, vereinigt mit einem neu hinzukommenden. Und die Generation
      sinkt dabei nie - eine gesenkte holte ein zweiter offener Tab mit seinem
      alten Wert zurueck, und dieses Geraet ersetzte danach alle anderen.
-   - Einstellungen bleiben je Geraet. Das Farbschema am Mac muss nicht das des
-     iPhones sein, und auch eine Uebernahme nach einem Zuruecksetzen am anderen
-     Geraet laesst sie stehen. */
+   - Lerneinstellungen (GERAETEUEBERGREIFEND) wandern mit: je Einstellung
+     gewinnt der juengste Stempel ueber alle Geraete, auch nach einer Uebernahme
+     - ein Zuruecksetzen oder Einlesen stempelt sie frisch (ersetzeZustand) und
+     ersetzt sie damit ebenfalls ueberall. Farbschema und Ton bleiben je Geraet:
+     Das Farbschema am Mac muss nicht das des iPhones sein. */
 export function geraeteStaendeEinmischen(eintraege, bekannt = []) {
   if (istBeschaeftigt()) return null;
   holeFremdenStand();
@@ -1038,8 +1083,17 @@ export function geraeteStaendeEinmischen(eintraege, bekannt = []) {
      geleerter Speicher) - ihr Inhalt steckt, soweit er gilt, schon in den
      neueren Dateien. */
   const neue = fremde.filter(f => f.neu && f.z.gen === hoechste);
+  /* Die Lerneinstellungen beider Seiten samt Stempeln JETZT festhalten. Bei
+     einer Uebernahme ist state gleich dieselbe Datei wie die Basis - das
+     Zuruecksetzen auf die eigenen Einstellungen weiter unten schrieb damit
+     auch die Basis um, und die Auswahl sah nie den Stempel des ersetzenden
+     Geraets: Wer nach dem Einlesen einer Sicherung das Pensum umstellte, sah es
+     auf den anderen Geraeten nie ankommen. */
+  const stempelVon = (z) => Object.fromEntries(GERAETEUEBERGREIFEND.map(k => [k, einstellungsStempel(z, k)]));
   const einstellungen = structuredClone(state.settings);
   const einstellungenZeit = Number(state.settingsZeit) || 0;
+  const einstellungenZeiten = stempelVon(state);
+  const fremdeEinstellungen = fremde.map(f => ({ f, settings: structuredClone(f.z.settings), zeiten: stempelVon(f.z) }));
   let uebernommen = false, basis = null;
   /* Ein BEKANNTES Geraet mit hoeherer Generation hat ausdruecklich ersetzt -
      es sei denn, die hoehere Generation kommt aus dem Beitritt eines neuen
@@ -1065,19 +1119,31 @@ export function geraeteStaendeEinmischen(eintraege, bekannt = []) {
     state = zusammenfuehren(f.z, state);
   }
   state.gen = ziel;                     // die Generation sinkt nie
-  /* Einstellungen: die zuletzt geaenderte gewinnt, ueber alle Geraete - aber
-     nur die geraeteuebergreifenden (siehe GERAETEUEBERGREIFEND). */
+  /* Einstellungen: je Einstellung gewinnt die zuletzt geaenderte, ueber alle
+     Geraete - aber nur die geraeteuebergreifenden (siehe GERAETEUEBERGREIFEND).
+     Ausgangspunkt sind die eigenen, nicht die der Basis: Die juengsten Stempel
+     holen sich dann von selbst, was gilt. */
   state.settings = einstellungen;
   state.settingsZeit = einstellungenZeit;
+  state.settingsZeiten = einstellungenZeiten;
   let einstellungenGeaendert = false;
-  const neueste = fremde.reduce((m, f) => (f.z.settingsZeit > (m ? m.z.settingsZeit : einstellungenZeit) ? f : m), null);
-  if (neueste) {
-    for (const k of GERAETEUEBERGREIFEND) {
-      const wert = structuredClone(neueste.z.settings[k]);
-      if (JSON.stringify(wert) !== JSON.stringify(state.settings[k])) einstellungenGeaendert = true;
-      state.settings[k] = wert;
+  /* Nur Dateien, die auch beim Kartenstand zaehlen: Eine liegengebliebene
+     Datei aelterer Generation (altes Handy, geleerter Speicher) wird oben
+     uebergangen - ihre Einstellungen duerfen nicht ueber eine vorgestellte Uhr
+     doch noch gewinnen und nach einem Zuruecksetzen das alte Pensum
+     zurueckholen. */
+  const zaehlt = (f) => (f.neu ? neue.includes(f) : f.z.gen === ziel);
+  for (const k of GERAETEUEBERGREIFEND) {
+    let neueste = null;
+    for (const f of fremdeEinstellungen) {
+      if (!zaehlt(f.f)) continue;
+      if (f.zeiten[k] > (neueste ? neueste.zeiten[k] : einstellungenZeiten[k])) neueste = f;
     }
-    state.settingsZeit = neueste.z.settingsZeit;
+    if (!neueste) continue;
+    const wert = structuredClone(neueste.settings[k]);
+    if (JSON.stringify(wert) !== JSON.stringify(state.settings[k])) einstellungenGeaendert = true;
+    state.settings[k] = wert;
+    setzeEinstellungsStempel(state, k, neueste.zeiten[k]);
   }
   flagUhrNachziehen(state);
   nachErsatz();

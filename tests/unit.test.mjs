@@ -743,6 +743,7 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     'kul-1c8z0ib|nat-2d7jz7', 'mat-1kuzbbl|pol-fy4snm', 'pol-fy4snm|mat-1kuzbbl',
     // Ebenso abwegig: Rinde für Jochen Rindt, Schwaben für die Schwalbe
     'spo-cpnvan|all-ossyot', 'spo-jjs2iu|all-rg6jsz',
+    'spo-1oe2w2h|pol-1ttmnd8', 'pol-1ttmnd8|spo-1oe2w2h',   // Streif / Streik
     // Ebenso abwegig: Hagel für Hagen von Tronje
     'spr-nvq5zl|all-114pxho',
     // Kohlendioxid und Kohlenstoffdioxid sind dasselbe Gas – die Hefe bildet es

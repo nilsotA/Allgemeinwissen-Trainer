@@ -284,8 +284,20 @@ export function abgleichen(opts = {}) {
 function mitSperre(fn) {
   const locks = typeof navigator !== 'undefined' && navigator.locks;
   if (!locks || typeof locks.request !== 'function') return fn();
-  return locks.request('wissenswerk-abgleich', { ifAvailable: true },
-    (sperre) => (sperre ? fn() : { ok: false, art: 'anderer-tab' }));
+  /* Verwirft der Sperrenmanager selbst (opake Origin, nicht mehr aktives
+     Dokument, gesperrte Websitedaten), ohne Sperre laufen wie in Browsern
+     ohne Web Locks - lauf() wirft nie, und seine Aufrufer fangen nichts.
+     Nur wenn der Rueckruf noch nicht betreten war: Eine Verwerfung aus ihm
+     selbst darf lauf() nicht ein zweites Mal starten. */
+  let betreten = false;
+  let p;
+  try {
+    p = locks.request('wissenswerk-abgleich', { ifAvailable: true }, (sperre) => {
+      betreten = true;
+      return sperre ? fn() : { ok: false, art: 'anderer-tab', text: 'Ein anderer Tab gleicht gerade ab – der Stand kommt gleich von selbst an' };
+    });
+  } catch (e) { return fn(); }
+  return Promise.resolve(p).catch((e) => (betreten ? Promise.reject(e) : fn()));
 }
 
 async function lauf({ grund = 'hand' } = {}) {
@@ -368,7 +380,22 @@ async function lauf({ grund = 'hand' } = {}) {
         k = merke({ verbunden: true });
       }
     }
-    if (k.verbunden && (!eigeneDa || store.standMarke() !== k.geschoben)) await hochladen(k);
+    if (k.verbunden && (!eigeneDa || store.standMarke() !== k.geschoben)) {
+      /* Hat das Verlassen der App waehrend des Abrufs schon hochgeladen
+         (nurHochladen), erst darauf warten und neu nachsehen - sonst ginge
+         derselbe Stand zweimal hinaus. Das eigene Hochladen laeuft unter
+         derselben Marke, damit umgekehrt nurHochladen es nicht verdoppelt;
+         so ist weiterhin hoechstens ein Hochladen in Flug. */
+      if (hochLaeuft) await hochLaeuft;
+      k = konfiguration() || k;   // geschoben kann sich waehrend des Abrufs geaendert haben
+      if (!eigeneDa || store.standMarke() !== k.geschoben) {
+        /* Nach einer Runde mit keepalive: Genau dann legt man das Handy weg
+           oder schliesst den Tab, und ein gewoehnlicher PATCH wuerde mit der
+           Seite abgebrochen. */
+        hochLaeuft = hochladen(k, { wachHalten: grund === 'einheit' }).finally(() => { hochLaeuft = null; });
+        await hochLaeuft;
+      }
+    }
     fehlversuche = 0; naechsterVersuch = 0;
     merke({ zuletzt: jetzt(), fehler: null, art: null, pausiert: false, geraete });
     const meldung = { ok: true, ...(ergebnis || {}), geraete: geraete.length };
@@ -396,10 +423,14 @@ function melde(k, e) {
 /* Beim Verlassen feuern visibilitychange und pagehide kurz nacheinander - ein
    zweites Hochladen desselben Stands waere doppelte Arbeit und sprengte mit
    keepalive das gemeinsame 64-KB-Kontingent. Deshalb auch hier nur einer zur
-   Zeit, und die Wartezeit nach einem Fehler gilt auch hier. */
+   Zeit, und die Wartezeit nach einem Fehler gilt auch hier. Ein LAUFENDER
+   Abgleich haelt das Hochladen dagegen nicht auf: Nach jeder Runde laeuft
+   einer (nachEinheit), also genau dann, wenn man die App verlaesst - solange
+   er noch beim Abruf ist, ginge sonst nichts hinaus, und sein eigener PATCH
+   stuerbe mit der Seite. Ist er selbst schon beim Hochladen, steht hochLaeuft. */
 export function nurHochladen() {
   const k = konfiguration();
-  if (!k || !k.gist || !k.verbunden || k.pausiert || laeuft || hochLaeuft || ohneNetz()) return Promise.resolve(false);
+  if (!k || !k.gist || !k.verbunden || k.pausiert || hochLaeuft || ohneNetz()) return Promise.resolve(false);
   if (store.standMarke() === k.geschoben || jetzt() < naechsterVersuch) return Promise.resolve(false);
   hochLaeuft = hochladen(k, { wachHalten: true }).then(() => true, () => false)
     .finally(() => { hochLaeuft = null; });

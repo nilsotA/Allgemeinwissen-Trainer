@@ -430,10 +430,10 @@ function renderHome() {
     <div class="bar" style="margin:10px 0 7px"><i style="width:${((o.seen / o.total) * 100).toFixed(1)}%"></i></div>
     <p class="tiny">${o.seen} angefangen · ${o.mature} gefestigt · ${o.total - o.seen} noch unberührt</p>
   </div>
-  ${abgleichHinweis()}
+  <div id="abgleichHinweisZiel">${(gezeichneterHinweis = abgleichHinweis())}</div>
   ${sicherungsHinweis()}`;
 
-  document.getElementById('abgleichPruefen')?.addEventListener('click', () => show('settings'));
+  bindeAbgleichPruefen();
   const sich = document.getElementById('sichernJetzt');
   if (sich) sich.onclick = async () => { if (await sichern()) render(); };
 
@@ -1146,9 +1146,10 @@ function abgleichKarte() {
   const eingabe = (platzhalter) => `
       <input class="recall-in" id="syncTok" type="password" autocomplete="off" autocapitalize="off"
         autocorrect="off" spellcheck="false" placeholder="${platzhalter}" aria-label="GitHub-Zugangsschlüssel" style="margin-top:12px">`;
+  /* data-lage sagt, wie die Karte gebaut ist (siehe zeigeAbgleichStatus). */
   if (!k) return `
     <h2 class="sec">Geräte abgleichen</h2>
-    <div class="card">
+    <div class="card" id="syncKarte" data-lage="aus">
       <p class="muted">Hält deinen Lernstand auf iPhone, iPad und Mac gleich – über ein privates Gist in deinem GitHub-Konto. Einmal je Gerät einrichten, danach gleicht die App von selbst ab.</p>
       <details style="margin-top:6px"><summary class="tiny" style="min-height:44px;display:flex;align-items:center;cursor:pointer">So bekommst du den Schlüssel</summary>
         <ol class="tiny" style="padding-left:20px;margin:8px 0 0;line-height:1.6">
@@ -1168,7 +1169,7 @@ function abgleichKarte() {
     </div>`;
   return `
     <h2 class="sec">Geräte abgleichen</h2>
-    <div class="card">
+    <div class="card" id="syncKarte" data-lage="${k.pausiert ? 'pausiert' : 'aktiv'}">
       <div id="syncStatus">${abgleichStatus(k)}</div>
       ${k.pausiert ? eingabe('Neuer Zugangsschlüssel (ghp_…)') : ''}
       <div class="btn-stack" style="margin-top:11px">
@@ -1194,6 +1195,20 @@ function einfuegenKnopf() {
 
 function zeigeAbgleichStatus() {
   const k = sync.konfiguration();
+  const karte = document.getElementById('syncKarte');
+  if (!karte) return;
+  /* Die Karte ist je nach Lage anders gebaut: angehalten mit Feld und Knopf
+     fuer einen neuen Schluessel, aktiv mit dem Kopieren-Knopf. Passt die
+     gezeichnete Lage nicht mehr, muss die Seite neu - sonst stand nach einem
+     gelungenen Handgriff „Abgleich aktiv" ueber dem Feld „Neuer
+     Zugangsschluessel", bis die Ansicht gewechselt wurde (und umgekehrt nach
+     einem Schluesselfehler im Takt „Leg einen neuen Schluessel an" ueber einer
+     Karte ohne Feld). */
+  const lage = !k ? 'aus' : k.pausiert ? 'pausiert' : 'aktiv';
+  if (karte.dataset.lage !== lage) {
+    if (view === 'settings' && !run) renderSettings();
+    return;
+  }
   const ziel = document.getElementById('syncStatus');
   if (k && ziel) ziel.innerHTML = abgleichStatus(k);
 }
@@ -1203,7 +1218,9 @@ function zeigeAbgleichStatus() {
    nicht ueber einen offenen Rueckblick hinweg. */
 function nachAbgleich(r) {
   zeigeAbgleichStatus();
-  if (!r || !r.ok || !r.sichtbar || run) return;
+  if (run) return;
+  abgleichHinweisNachziehen();
+  if (!r || !r.ok || !r.sichtbar) return;
   if (!rueckblickOffen) render();
   toast(r.uebernommen
     ? 'Ein anderes Gerät hat den Stand ersetzt – hier übernommen'
@@ -1226,6 +1243,27 @@ function abgleichHinweis() {
     kommen auf den anderen Geräten gerade nicht an – verloren geht nichts.
     <button class="btn sm ghost" id="abgleichPruefen" style="margin-top:9px">Unter „Mehr“ ansehen</button>
   </div>`;
+}
+
+/* Der Hinweis auf der Startseite haengt am Ergebnis des Abgleichs, nicht an
+   einem Ansichtswechsel: Gelingt der Abgleich wieder (meist stumm, 304), blieb
+   „Geraeteabgleich gestoert" sonst stehen, waehrend „Mehr" schon „Abgleich
+   aktiv" sagte - und ein Schluesselfehler beim Start-Lauf zeigte sich erst
+   beim naechsten Zeichnen. Nur der Hinweisblock wird getauscht, nicht die
+   ganze Startseite: Die wuerfelte den Tagesplan neu und schloesse ein gerade
+   aufgedecktes „Wissen des Tages". */
+let gezeichneterHinweis = '';
+function bindeAbgleichPruefen() {
+  document.getElementById('abgleichPruefen')?.addEventListener('click', () => show('settings'));
+}
+function abgleichHinweisNachziehen() {
+  const ziel = document.getElementById('abgleichHinweisZiel');
+  if (!ziel || view !== 'home') return;
+  const neu = abgleichHinweis();
+  if (neu === gezeichneterHinweis) return;
+  gezeichneterHinweis = neu;
+  ziel.innerHTML = neu;
+  bindeAbgleichPruefen();
 }
 
 function bindeAbgleich() {
@@ -1258,24 +1296,35 @@ function bindeAbgleich() {
     if (!wert.trim()) { feld?.focus(); return toast('Erst den Schlüssel einfügen'); }
     an.disabled = true; an.textContent = 'Verbinde …';
     const r = await sync.verbinden(wert);
-    if (!r.ok) {
+    /* Haelt ein anderer Tab gerade die Sperre, steht die Verbindung trotzdem
+       schon - nur der erste Lauf fiel aus, der Takt holt ihn nach. Als
+       Fehlschlag gemeldet bliebe der Knopf „Verbinden" ueber einer
+       verbundenen Karte stehen. */
+    if (!r.ok && r.art !== 'anderer-tab') {
       an.disabled = false; an.textContent = 'Verbinden';
       return toast(r.text || 'Verbinden fehlgeschlagen', 3500);
     }
-    nachAbgleich({ ...r, sichtbar: false });
-    if (r.sichtbar && !run) render(); else if (view === 'settings') renderSettings();
-    toast(r.geraete
-      ? `Verbunden – mit ${r.geraete === 1 ? 'einem anderen Gerät' : `${r.geraete} anderen Geräten`} abgeglichen`
-      : 'Verbunden – füge denselben Schlüssel jetzt auf deinen anderen Geräten ein', 3500);
+    /* nachAbgleich zeichnet die Einstellungen neu, weil die Karte nun anders
+       gebaut ist (zeigeAbgleichStatus); bei sichtbarem Stand die ganze Ansicht. */
+    if (r.sichtbar && !run) render(); else nachAbgleich({ ...r, sichtbar: false });
+    toast(r.art === 'anderer-tab'
+      ? 'Verbunden – der erste Abgleich kommt gleich von selbst'
+      : r.geraete
+        ? `Verbunden – mit ${r.geraete === 1 ? 'einem anderen Gerät' : `${r.geraete} anderen Geräten`} abgeglichen`
+        : 'Verbunden – füge denselben Schlüssel jetzt auf deinen anderen Geräten ein', 3500);
   };
   const jetzt = document.getElementById('syncJetzt');
   if (jetzt) jetzt.onclick = async () => {
     jetzt.disabled = true; jetzt.textContent = 'Gleiche ab …';
     const r = await sync.abgleichen({ grund: 'hand' });
     jetzt.disabled = false; jetzt.textContent = 'Jetzt abgleichen';
-    zeigeAbgleichStatus();
-    if (r.ok && r.sichtbar && !run) { if (view === 'settings') renderSettings(); }
-    toast(r.ok ? (r.sichtbar ? 'Abgeglichen – neuer Stand übernommen' : 'Abgeglichen – alles auf dem neuesten Stand') : (r.text || 'Abgleich fehlgeschlagen'), 3000);
+    if (r.ok && r.sichtbar && !run && view === 'settings') renderSettings(); else zeigeAbgleichStatus();
+    /* Ein anderer Tab mit der Sperre ist kein Fehlschlag - der Status daneben
+       sagt zu Recht „aktiv", und der Stand kommt ueber den gemeinsamen
+       Speicher ohnehin an. */
+    toast(r.ok ? (r.sichtbar ? 'Abgeglichen – neuer Stand übernommen' : 'Abgeglichen – alles auf dem neuesten Stand')
+      : r.art === 'anderer-tab' ? r.text
+        : (r.text || 'Abgleich fehlgeschlagen'), 3000);
   };
   const aus = document.getElementById('syncAus');
   if (aus) aus.onclick = () => {

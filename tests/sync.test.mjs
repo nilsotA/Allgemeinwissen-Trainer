@@ -167,20 +167,24 @@ test('Zuruecksetzen auf einem Geraet erreicht das andere – mit Netz darunter',
   const gh = github();
   const A = await geraet(gh), B = await geraet(gh);
   await A.verbinden(); await B.verbinden();
+  A.tu(s => s.setSetting('cats', ['spo']));
   A.lerne('x1'); A.lerne('x2');
   await A.abgleichen(); await B.abgleichen();
   assert.deepEqual(karten(B), ['x1', 'x2']);
+  assert.deepEqual(B.S().settings.cats, ['spo']);
   A.tu(s => s.resetAll());
   await A.abgleichen();
   const r = await B.abgleichen();
   assert.equal(r.uebernommen, true);
   assert.deepEqual(karten(B), [], 'B muss den geleerten Stand uebernehmen');
   assert.equal(B.S().totalAnswers, 0);
+  assert.equal(B.S().settings.cats, null, 'auch die Lerneinstellungen sind zurueckgesetzt');
   aktiv = B;
   assert.equal(B.store.sicherungKennzahlen()?.karten, 2, 'der alte Stand muss auf B im Netz liegen');
-  // Und A bekommt den alten Stand von B nicht zurueck.
+  // Und A bekommt den alten Stand von B nicht zurueck - auch nicht die Themenwahl.
   await A.abgleichen();
   assert.deepEqual(karten(A), []);
+  assert.equal(A.S().settings.cats, null, 'die Themenwahl von vor dem Zuruecksetzen darf nicht zurueckkommen');
 });
 
 test('eine liegengebliebene Datei holt den geleerten Stand nicht zurueck', async () => {
@@ -773,9 +777,189 @@ test('ein zweiter Tab laesst seinen Lauf aus, solange der erste abgleicht', asyn
     const r = await A.sync.abgleichen();
     assert.equal(r.art, 'anderer-tab');
     assert.equal(A.sync.konfiguration().fehler, null, 'kein Fehler, nur ausgelassen');
+    assert.match(r.text || '', /anderer Tab/, 'die Oberflaeche braucht einen Text, der kein Fehlschlag ist');
   } finally {
     if (vorher) Object.defineProperty(navigator, 'locks', vorher); else delete navigator.locks;
   }
   const frei = await A.abgleichen();
   assert.equal(frei.ok, true);
+});
+
+test('verweigert der Browser die Sperre, laeuft der Abgleich ohne sie statt zu werfen', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  await A.verbinden();
+  A.lerne('ohne Sperre');
+  aktiv = A;
+  const vorher = Object.getOwnPropertyDescriptor(navigator, 'locks');
+  Object.defineProperty(navigator, 'locks', { configurable: true,
+    value: { request: () => Promise.reject(new DOMException('opaque origin', 'SecurityError')) } });
+  try {
+    const r = await A.sync.abgleichen({ grund: 'start' });
+    assert.equal(r.ok, true, 'ein Ergebnis, keine Verwerfung');
+    assert.equal(A.sync.konfiguration().fehler, null);
+    assert.equal(A.sync.konfiguration().geschoben, A.store.standMarke(), 'der Lauf ist ganz durchgelaufen');
+  } finally {
+    if (vorher) Object.defineProperty(navigator, 'locks', vorher); else delete navigator.locks;
+  }
+});
+
+/* ---- Lerneinstellungen: Uebernahme, Ersetzen, je Einstellung ---- */
+
+test('nach einer Uebernahme kommen die neueren Einstellungen des ersetzenden Geraets an', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  B.tu(s => s.setSetting('newPerDay', 15));
+  await A.verbinden(); await B.verbinden(); await A.abgleichen();
+  assert.equal(A.S().settings.newPerDay, 15);
+  // A liest eine Sicherung ein (Generation steigt) und stellt danach das Pensum um.
+  A.tu(s => s.importJSON(s.exportJSON()));
+  await new Promise(r => setTimeout(r, 5));
+  A.tu(s => s.setSetting('newPerDay', 25));
+  await A.abgleichen();
+  const r = await B.abgleichen();
+  assert.equal(r.uebernommen, true);
+  assert.equal(r.einstellungen, true);
+  assert.equal(B.S().settings.newPerDay, 25, 'B muss das nach dem Einlesen gesetzte Pensum uebernehmen');
+  assert.equal(B.S().settingsZeit, A.S().settingsZeit);
+  // Ruhe: nichts pendelt zurueck, nichts wird hochgeladen.
+  const vorher = gh.anfragen.length;
+  await A.abgleichen(); await B.abgleichen(); await A.abgleichen();
+  assert.equal(A.S().settings.newPerDay, 25);
+  assert.equal(B.S().settings.newPerDay, 25);
+  assert.ok(!gh.anfragen.slice(vorher).some(a => a.startsWith('PATCH')), 'unnoetig hochgeladen');
+});
+
+test('eine eingelesene Sicherung ersetzt auch die Lerneinstellungen auf allen Geraeten', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  B.tu(s => s.setSetting('newPerDay', 40));
+  await B.abgleichen(); await A.abgleichen();
+  assert.equal(A.S().settings.newPerDay, 40);
+  // Eine Sicherung ohne Zeitstempel, wie Fassungen vor dem Abgleich sie schrieben.
+  const sicherung = JSON.stringify({ version: 1, settings: { newPerDay: 7, cats: ['geo'] },
+    cards: { alt1: { ef: 2.5, iv: 3, due: 5, reps: 2, lapses: 0, seen: 4, ok: 3, last: 111 } } });
+  A.tu(s => s.importJSON(sicherung));
+  assert.equal(A.S().settings.newPerDay, 7);
+  await A.abgleichen();
+  const r = await B.abgleichen();
+  await A.abgleichen();
+  assert.equal(r.uebernommen, true);
+  for (const g of [A, B]) {
+    assert.equal(g.S().settings.newPerDay, 7, 'die Einstellungen der Sicherung muessen ankommen und bleiben');
+    assert.deepEqual(g.S().settings.cats, ['geo']);
+    assert.deepEqual(karten(g), ['alt1']);
+  }
+});
+
+test('der zurueckgeholte Stand bringt seine Lerneinstellungen auf alle Geraete', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  A.tu(s => s.setSetting('newPerDay', 25));
+  A.lerne('vorher');
+  A.tu(s => s.resetAll());              // legt den Stand mit Pensum 25 ins Netz
+  await A.abgleichen(); await B.abgleichen();
+  await new Promise(r => setTimeout(r, 5));
+  B.tu(s => s.setSetting('newPerDay', 33));
+  await B.abgleichen(); await A.abgleichen();
+  assert.equal(A.S().settings.newPerDay, 33);
+  A.tu(s => s.sicherungZurueck());
+  assert.equal(A.S().settings.newPerDay, 25);
+  await A.abgleichen(); await B.abgleichen(); await A.abgleichen();
+  assert.equal(B.S().settings.newPerDay, 25, 'das Zurueckholen gilt auch fuer die Einstellungen');
+  assert.equal(A.S().settings.newPerDay, 25, 'und wird nicht vom anderen Geraet rueckgaengig gemacht');
+  assert.deepEqual(karten(B), ['vorher']);
+});
+
+test('zwei verschiedene Einstellungen auf zwei Geraeten bleiben beide erhalten', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden(); await A.abgleichen();
+  A.tu(s => s.setSetting('cats', ['spo', 'geo']));   // unterwegs, noch nicht hochgeladen
+  await new Promise(r => setTimeout(r, 5));
+  B.tu(s => s.setSetting('newPerDay', 20));
+  await A.abgleichen(); await B.abgleichen(); await A.abgleichen();
+  for (const g of [A, B]) {
+    assert.deepEqual(g.S().settings.cats, ['spo', 'geo'], 'die Themenwahl von A darf nicht verschwinden');
+    assert.equal(g.S().settings.newPerDay, 20, 'das Pensum von B auch nicht');
+  }
+});
+
+test('zwei Tabs: verschiedene Einstellungen in beiden Tabs bleiben beide erhalten', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  A.tu(s => s.setSetting('newPerDay', 12));
+  const A2 = await geraet(gh, A);       // zweiter Tab, gleicher Speicher, eigener Arbeitsstand
+  A.tu(s => s.setSetting('newPerDay', 30));
+  A2.tu(s => s.setSetting('maxReviews', 50));   // ohne die Umstellung des ersten gesehen zu haben
+  assert.equal(A2.S().settings.newPerDay, 30, 'die Umstellung des ersten Tabs darf nicht verloren gehen');
+  assert.equal(A2.S().settings.maxReviews, 50);
+  const abgelegt = JSON.parse(A.local.getItem(KEY)).settings;
+  assert.equal(abgelegt.newPerDay, 30);
+  assert.equal(abgelegt.maxReviews, 50);
+});
+
+test('eine Geraetedatei aelterer Fassung mit nur einem Blockstempel wird verstanden', async () => {
+  const gh = github();
+  const A = await geraet(gh);
+  await A.verbinden();
+  gh.gists.get('g1').files['geraet-altefassung.json'] = JSON.stringify({ format: 1, geraet: 'altefassung', name: 'Alt', zeit: Date.now(),
+    stand: { version: 1, settings: { newPerDay: 50, cats: ['bio'] }, settingsZeit: Date.now() + 1000, cards: {} } });
+  const r = await A.abgleichen();
+  assert.equal(r.ok, true, r.text);
+  assert.equal(A.S().settings.newPerDay, 50);
+  assert.deepEqual(A.S().settings.cats, ['bio']);
+});
+
+test('Verlassen der App waehrend des Laufs nach der Runde: der Stand geht trotzdem hinaus', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh);
+  await A.verbinden(); await B.verbinden(); await A.abgleichen();
+  A.lerne('runde');
+  aktiv = A;
+  const echt = gh.fetch;
+  let frei; const haengt = new Promise(r => { frei = r; });
+  const patches = [];
+  A.sync.setzeNetz(async (url, opt = {}) => {
+    const methode = opt.method || 'GET';
+    if (methode === 'GET' && /\/gists\/g1$/.test(url)) await haengt;   // der Abruf haengt im Mobilfunk
+    if (methode === 'PATCH') patches.push(!!opt.keepalive);
+    return echt(url, opt);
+  });
+  const lauf = A.sync.abgleichen({ grund: 'einheit' });
+  await new Promise(r => setTimeout(r, 10));
+  const hoch = await A.sync.nurHochladen();           // visibilitychange: hidden
+  assert.equal(hoch, true, 'das Hochladen beim Verlassen darf nicht am laufenden Abgleich scheitern');
+  assert.deepEqual(patches, [true], 'und es geht mit keepalive hinaus');
+  frei();
+  const r = await lauf;
+  assert.equal(r.ok, true, r.text);
+  assert.equal(patches.length, 1, 'der Lauf laedt denselben Stand nicht noch einmal hoch');
+  assert.equal(A.sync.konfiguration().geschoben, A.store.standMarke());
+  await B.abgleichen();
+  assert.ok(karten(B).includes('runde'));
+  // Ohne Verlassen: Der Lauf nach einer Runde laedt selbst mit keepalive hoch, der Takt nicht.
+  A.lerne('noch eine');
+  await A.sync.abgleichen({ grund: 'einheit' });
+  assert.deepEqual(patches, [true, true]);
+  A.lerne('dritte');
+  await A.sync.abgleichen({ grund: 'takt' });
+  assert.deepEqual(patches, [true, true, false]);
+});
+
+test('eine liegengebliebene Datei mit vorgestellter Uhr holt nach dem Zuruecksetzen keine Einstellungen zurueck', async () => {
+  const gh = github();
+  const A = await geraet(gh), B = await geraet(gh), Alt = await geraet(gh);
+  await A.verbinden(); await B.verbinden();
+  // Das alte Geraet stellt mit einer Uhr, die weit vorgeht, das Pensum um - und meldet sich nie wieder.
+  Alt.tu(s => { s.setSetting('newPerDay', 30); s.S().settingsZeiten.newPerDay += 10 * 86400000; s.S().settingsZeit += 10 * 86400000; });
+  await Alt.verbinden();
+  await A.abgleichen();
+  assert.equal(A.S().settings.newPerDay, 30, 'solange es zaehlt, gilt sein Pensum');
+  A.tu(s => s.resetAll());                      // Generation steigt, die alte Datei zaehlt nicht mehr
+  await A.abgleichen(); await B.abgleichen(); await A.abgleichen();
+  assert.equal(A.S().settings.newPerDay, 12, 'der Standardwert nach dem Zuruecksetzen muss stehen bleiben');
+  assert.equal(B.S().settings.newPerDay, 12);
 });
