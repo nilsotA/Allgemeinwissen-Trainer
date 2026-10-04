@@ -1,0 +1,3152 @@
+[
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Wie heißt die Hauptstadt Australiens?",
+  "antwort": "Canberra",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Welcher Kontinent ist flächenmäßig der größte?",
+  "antwort": "Asien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Welches Land hat seit 2023 die meisten Einwohner der Welt?",
+  "antwort": "Indien",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Wie heißt der höchste Berg der Erde?",
+  "antwort": "Mount Everest",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Everest"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Welcher Ozean ist der größte der Erde?",
+  "antwort": "Pazifik",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pazifischer Ozean",
+   "Stiller Ozean"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Wie heißt die größte Insel der Welt?",
+  "antwort": "Grönland",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Welcher Fluss ist der längste Europas?",
+  "antwort": "Wolga",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Wie heißt die Hauptstadt Kanadas?",
+  "antwort": "Ottawa",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Welche Meerenge trennt bei Istanbul Europa von Asien?",
+  "antwort": "Bosporus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Welcher Fluss ist der längste Asiens?",
+  "antwort": "Jangtse",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Jangtsekiang",
+   "Yangtze",
+   "Chang Jiang"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Wie heißt die Hauptstadt Kasachstans?",
+  "antwort": "Astana",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "In welcher Stadt steht der Burj Khalifa, das höchste Gebäude der Welt?",
+  "antwort": "Dubai",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Welt und Europa",
+  "frage": "Wie viele Mitgliedstaaten hat die Europäische Union (Stand 2026)?",
+  "antwort": "27",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "siebenundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Wie viele Bundesländer hat Deutschland?",
+  "antwort": "16",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechzehn"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Wie heißt der höchste Berg Deutschlands?",
+  "antwort": "Zugspitze",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Wie heißt die Landeshauptstadt von Nordrhein-Westfalen?",
+  "antwort": "Düsseldorf",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Welcher Fluss hat den längsten Lauf auf deutschem Gebiet?",
+  "antwort": "Rhein",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Wie heißt der größte See, der vollständig in Deutschland liegt?",
+  "antwort": "Müritz",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Welches Bundesland ist flächenmäßig das größte?",
+  "antwort": "Bayern",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Wie heißt die Landeshauptstadt von Thüringen?",
+  "antwort": "Erfurt",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "An welchem Fluss liegt Dresden?",
+  "antwort": "Elbe",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Welches ist das höchste Bauwerk Deutschlands?",
+  "antwort": "Berliner Fernsehturm",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fernsehturm Berlin",
+   "Fernsehturm am Alexanderplatz"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Welche Kirche hat den höchsten Kirchturm Deutschlands?",
+  "antwort": "Ulmer Münster",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Münster Ulm",
+   "Ulm"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Welcher bayerische König ließ Schloss Neuschwanstein erbauen?",
+  "antwort": "Ludwig II.",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Ludwig der Zweite",
+   "König Ludwig II. von Bayern",
+   "Ludwig 2"
+  ]
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Wie heißt der höchste Berg des Harzes?",
+  "antwort": "Brocken",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "generalprobe-28a",
+  "block": "Deutschland (Länder, Städte, Flüsse, Bauwerke)",
+  "frage": "Welche Stadt gilt als älteste Stadt Deutschlands?",
+  "antwort": "Trier",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "In welchem Jahr wurde Rom der Sage nach gegründet?",
+  "antwort": "753 v. Chr.",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "753 vor Christus",
+   "753"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "Welcher römische Feldherr und Staatsmann wurde 44 v. Chr. ermordet?",
+  "antwort": "Julius Caesar",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Cäsar",
+   "Caesar",
+   "Gaius Julius Caesar"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "Welcher Vulkan verschüttete im Jahr 79 n. Chr. die Stadt Pompeji?",
+  "antwort": "Vesuv",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "Welcher karthagische Feldherr überquerte mit Kriegselefanten die Alpen?",
+  "antwort": "Hannibal",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "In welchem Jahr wurde Karl der Große in Rom zum Kaiser gekrönt?",
+  "antwort": "800",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "800 n. Chr."
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "Wo besiegten die Germanen unter Arminius im Jahr 9 n. Chr. die Römer (Varusschlacht)?",
+  "antwort": "Teutoburger Wald",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "im Teutoburger Wald",
+   "Kalkriese"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "In welcher Stadt steht der Dom, in dem Karl der Große begraben liegt?",
+  "antwort": "Aachen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "Welcher deutsche König unternahm 1077 den Gang nach Canossa?",
+  "antwort": "Heinrich IV.",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Heinrich der Vierte",
+   "Heinrich 4"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "Wie hieß der erste römische Kaiser?",
+  "antwort": "Augustus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Oktavian",
+   "Octavian",
+   "Kaiser Augustus"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "Wie heißt die Urkunde von 1356, die die Wahl des deutschen Königs durch sieben Kurfürsten regelte?",
+  "antwort": "Goldene Bulle",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "Welche Stadt war im Mittelalter das Haupt der Hanse?",
+  "antwort": "Lübeck",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Antike und Mittelalter",
+  "frage": "In welchem Jahr eroberten die Osmanen Konstantinopel?",
+  "antwort": "1453",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "In welchem Jahr veröffentlichte Martin Luther seine 95 Thesen?",
+  "antwort": "1517",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "Von wann bis wann dauerte der Dreißigjährige Krieg?",
+  "antwort": "1618–1648",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "1618 bis 1648",
+   "1618-1648"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "Mit dem Sturm auf welches Gebäude begann 1789 die Französische Revolution?",
+  "antwort": "Bastille",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "In welcher Schlacht wurde Napoleon 1815 endgültig besiegt?",
+  "antwort": "Waterloo",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schlacht bei Waterloo"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "In welchem Jahr wurde das Deutsche Kaiserreich gegründet?",
+  "antwort": "1871",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "Wer war der erste Reichskanzler des Deutschen Kaiserreichs?",
+  "antwort": "Otto von Bismarck",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bismarck"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "Welcher Vertrag von 1555 erlaubte den Reichsfürsten, die Konfession ihrer Untertanen zu bestimmen?",
+  "antwort": "Augsburger Religionsfrieden",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Augsburger Religionsfriede"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "Das Attentat auf welchen Thronfolger in Sarajevo löste 1914 den Ersten Weltkrieg aus?",
+  "antwort": "Franz Ferdinand",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Erzherzog Franz Ferdinand"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "Mit dem Überfall auf welches Land begann am 1. September 1939 der Zweite Weltkrieg?",
+  "antwort": "Polen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "An welchem Tag landeten die Alliierten 1944 in der Normandie (D-Day)?",
+  "antwort": "6. Juni 1944",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "6. Juni",
+   "06.06.1944"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "Wer verübte am 20. Juli 1944 das Attentat auf Hitler?",
+  "antwort": "Claus Schenk Graf von Stauffenberg",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Stauffenberg",
+   "Claus von Stauffenberg"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "Wie hieß die Widerstandsgruppe um die Geschwister Sophie und Hans Scholl?",
+  "antwort": "Weiße Rose",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Die Weiße Rose"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Neuzeit und Weltkriege",
+  "frage": "In welchem Jahr fand die Wannseekonferenz statt?",
+  "antwort": "1942",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "An welchem Tag fiel die Berliner Mauer?",
+  "antwort": "9. November 1989",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "9.11.1989",
+   "09.11.1989"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?",
+  "antwort": "Konrad Adenauer",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Adenauer"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "Wer sagte 1961 den Satz „Niemand hat die Absicht, eine Mauer zu errichten“?",
+  "antwort": "Walter Ulbricht",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Ulbricht"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "An welchem Datum trat das Grundgesetz in Kraft?",
+  "antwort": "23. Mai 1949",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "23.5.1949",
+   "23.05.1949"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "Wer war die erste Bundeskanzlerin Deutschlands?",
+  "antwort": "Angela Merkel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Merkel"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "In welcher Stadt fiel Willy Brandt 1970 vor dem Ghetto-Denkmal auf die Knie?",
+  "antwort": "Warschau",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "Wie hieß die Versorgung West-Berlins aus der Luft 1948/49?",
+  "antwort": "Berliner Luftbrücke",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Luftbrücke"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "Welcher Bundeskanzler wird als „Kanzler der Einheit“ bezeichnet?",
+  "antwort": "Helmut Kohl",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kohl"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "Wie hieß die Terrorgruppe, die 1977 im „Deutschen Herbst“ Hanns Martin Schleyer entführte?",
+  "antwort": "RAF",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Rote Armee Fraktion"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "In welcher Stadt fanden 1989 die Montagsdemonstrationen statt, die zum Ende der DDR beitrugen?",
+  "antwort": "Leipzig",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "Wer ist seit Mai 2025 Bundeskanzler Deutschlands (Stand 2026)?",
+  "antwort": "Friedrich Merz",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Merz"
+  ]
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "generalprobe-28a",
+  "block": "Deutsche Geschichte nach 1945 und Gegenwart",
+  "frage": "Welcher Wirtschaftsminister gilt als „Vater des Wirtschaftswunders“?",
+  "antwort": "Ludwig Erhard",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Erhard"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Wie viele Planeten hat unser Sonnensystem?",
+  "antwort": "8",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Welcher Planet ist der größte unseres Sonnensystems?",
+  "antwort": "Jupiter",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Wer betrat 1969 als erster Mensch den Mond?",
+  "antwort": "Neil Armstrong",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Armstrong"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Wie lautet Einsteins berühmte Formel zur Äquivalenz von Masse und Energie?",
+  "antwort": "E = mc²",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "E=mc2",
+   "E = m c hoch 2"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Wie hoch ist die Lichtgeschwindigkeit im Vakuum, gerundet in Kilometern pro Sekunde?",
+  "antwort": "300.000 km/s",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "ca. 300000 km/s",
+   "299.792 km/s"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "In welcher Einheit wird die elektrische Spannung gemessen?",
+  "antwort": "Volt",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Welcher Planet wird als „Roter Planet“ bezeichnet?",
+  "antwort": "Mars",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Wer flog 1961 als erster Mensch ins Weltall?",
+  "antwort": "Juri Gagarin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gagarin",
+   "Yuri Gagarin"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Bei wie viel Grad Celsius liegt der absolute Nullpunkt?",
+  "antwort": "−273,15 °C",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "-273,15",
+   "-273 Grad",
+   "minus 273,15 Grad Celsius"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Wie heißt die Galaxie, in der sich unser Sonnensystem befindet?",
+  "antwort": "Milchstraße",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Wie heißt die physikalische Einheit der Kraft?",
+  "antwort": "Newton",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Welcher deutsche Chemiker entdeckte 1938 die Kernspaltung?",
+  "antwort": "Otto Hahn",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Hahn"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Physik und Astronomie",
+  "frage": "Wie heißt der sonnennächste Stern außerhalb unseres Sonnensystems?",
+  "antwort": "Proxima Centauri",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Alpha Centauri"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Wie lautet die chemische Formel von Wasser?",
+  "antwort": "H2O",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "H₂O"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Wie lautet das chemische Symbol für Gold?",
+  "antwort": "Au",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Welches Element hat im Periodensystem die Ordnungszahl 1?",
+  "antwort": "Wasserstoff",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "H"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Wie viele Chromosomen hat eine menschliche Körperzelle?",
+  "antwort": "46",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sechsundvierzig",
+   "23 Paare"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Welches Gas macht rund 78 Prozent der Luft aus?",
+  "antwort": "Stickstoff",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "N2"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Welches Metall ist bei Raumtemperatur flüssig?",
+  "antwort": "Quecksilber",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Hg"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Welches Element hat das chemische Symbol Sn?",
+  "antwort": "Zinn",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Wer begründete mit dem Werk „Über die Entstehung der Arten“ (1859) die Evolutionstheorie?",
+  "antwort": "Charles Darwin",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Darwin"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Wie heißen die „Kraftwerke der Zelle“?",
+  "antwort": "Mitochondrien",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mitochondrium"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Welches ist das größte Organ des Menschen?",
+  "antwort": "Haut",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "die Haut"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Wer entdeckte 1928 das Penicillin?",
+  "antwort": "Alexander Fleming",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fleming"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Aus welchen zwei Metallen besteht Bronze?",
+  "antwort": "Kupfer und Zinn",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zinn und Kupfer"
+  ]
+ },
+ {
+  "gebiet": "naturwissenschaft",
+  "katalog": "generalprobe-28a",
+  "block": "Chemie und Biologie",
+  "frage": "Wie viele Elemente enthält das Periodensystem derzeit?",
+  "antwort": "118",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Wer erfand um 1450 den Buchdruck mit beweglichen Lettern?",
+  "antwort": "Johannes Gutenberg",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gutenberg"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Wer meldete 1886 das erste Automobil mit Verbrennungsmotor zum Patent an?",
+  "antwort": "Carl Benz",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Karl Benz",
+   "Benz"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Welcher deutsche Flugpionier führte ab 1891 die ersten erfolgreichen Gleitflüge durch?",
+  "antwort": "Otto Lilienthal",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Lilienthal"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Wer erfand 1989 das World Wide Web?",
+  "antwort": "Tim Berners-Lee",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Berners-Lee"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Wer baute 1941 mit der Z3 den ersten funktionsfähigen programmierbaren Computer?",
+  "antwort": "Konrad Zuse",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Zuse"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "In welchem Jahr stellte Apple das erste iPhone vor?",
+  "antwort": "2007",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Wer erfand das Dynamit?",
+  "antwort": "Alfred Nobel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Nobel"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Welche Brüder absolvierten 1903 den ersten Motorflug?",
+  "antwort": "Gebrüder Wright",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Brüder Wright",
+   "Wright",
+   "Orville und Wilbur Wright"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Welche deutsche Forschungseinrichtung entwickelte das Audioformat MP3?",
+  "antwort": "Fraunhofer-Institut",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fraunhofer",
+   "Fraunhofer-Gesellschaft"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Zwischen welchen beiden Städten fuhr 1835 die erste Eisenbahn Deutschlands?",
+  "antwort": "Nürnberg und Fürth",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Nürnberg–Fürth",
+   "Fürth und Nürnberg"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Unter welchem Pseudonym wurde 2008/2009 die Kryptowährung Bitcoin veröffentlicht?",
+  "antwort": "Satoshi Nakamoto",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Nakamoto"
+  ]
+ },
+ {
+  "gebiet": "technik",
+  "katalog": "generalprobe-28a",
+  "block": "Technik, Erfindungen, Digitales",
+  "frage": "Nach welchem deutschen Ingenieur ist der Dieselmotor benannt?",
+  "antwort": "Rudolf Diesel",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Diesel"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Wie oft wurde die deutsche Männer-Nationalmannschaft Fußball-Weltmeister?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "viermal",
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Wer erzielte 1996 das Golden Goal im EM-Finale für Deutschland?",
+  "antwort": "Oliver Bierhoff",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Bierhoff"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Wer schoss das Siegtor im WM-Finale 2014 gegen Argentinien?",
+  "antwort": "Mario Götze",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Götze"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Welche drei Länder richteten die Fußball-WM 2026 gemeinsam aus?",
+  "antwort": "USA, Kanada und Mexiko",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "USA, Mexiko, Kanada",
+   "Vereinigte Staaten, Kanada, Mexiko"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Wer ist mit 150 Länderspielen deutscher Rekordnationalspieler?",
+  "antwort": "Lothar Matthäus",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Matthäus"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Welches Land wurde 2024 in Deutschland Fußball-Europameister?",
+  "antwort": "Spanien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Gegen welches Land gewann Deutschland 1954 das WM-Finale („Wunder von Bern“)?",
+  "antwort": "Ungarn",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Wie viele Ringe hat das olympische Symbol?",
+  "antwort": "5",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "In welcher Stadt fanden die Olympischen Sommerspiele 2024 statt?",
+  "antwort": "Paris",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Wer gilt als Begründer der modernen Olympischen Spiele?",
+  "antwort": "Pierre de Coubertin",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Coubertin",
+   "Baron Pierre de Coubertin"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "In welcher Stadt fanden 1896 die ersten Olympischen Spiele der Neuzeit statt?",
+  "antwort": "Athen",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Welche Stadt richtet die Olympischen Sommerspiele 2028 aus?",
+  "antwort": "Los Angeles",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "LA"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Fußball und Olympia",
+  "frage": "Wie lautet das olympische Motto (lateinisch)?",
+  "antwort": "Citius, altius, fortius",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Schneller, höher, stärker",
+   "Citius, altius, fortius – communiter"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Wer hält mit 9,58 Sekunden den Weltrekord über 100 Meter der Männer?",
+  "antwort": "Usain Bolt",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bolt"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Wie lang ist die Marathondistanz?",
+  "antwort": "42,195 km",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "42,195 Kilometer",
+   "42 km"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Wie viele Spieler stehen beim Handball pro Mannschaft auf dem Feld?",
+  "antwort": "7",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "sieben",
+   "6 plus Torwart"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Welche deutsche Tennisspielerin gewann 1988 den Golden Slam?",
+  "antwort": "Steffi Graf",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Graf"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Wie oft wurde Michael Schumacher Formel-1-Weltmeister?",
+  "antwort": "7",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "siebenmal",
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Welcher Kenianer lief 2019 in Wien als erster Mensch einen Marathon unter zwei Stunden?",
+  "antwort": "Eliud Kipchoge",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Kipchoge"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Welche Farbe hat das Trikot des Gesamtführenden bei der Tour de France?",
+  "antwort": "Gelb",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "gelbes Trikot",
+   "Maillot jaune"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Wie alt war Boris Becker bei seinem ersten Wimbledon-Sieg 1985?",
+  "antwort": "17",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "siebzehn"
+  ]
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Welche Punktzahl ist beim Darts mit drei Pfeilen maximal möglich?",
+  "antwort": "180",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Welche Wintersportart kombiniert Skilanglauf und Schießen?",
+  "antwort": "Biathlon",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Welches Land wurde 2023 Basketball-Weltmeister?",
+  "antwort": "Deutschland",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sport",
+  "katalog": "generalprobe-28a",
+  "block": "Andere Sportarten und Rekorde",
+  "frage": "Wie heißt die berühmte Abfahrtsstrecke von Kitzbühel?",
+  "antwort": "Streif",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "die Streif"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Wie hoch ist der reguläre Mehrwertsteuersatz in Deutschland?",
+  "antwort": "19 %",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "19 Prozent",
+   "19"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Welche Notrufnummer gilt europaweit für Feuerwehr und Rettungsdienst?",
+  "antwort": "112",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Wie hoch ist das Pfand auf eine Einweg-Plastikflasche in Deutschland?",
+  "antwort": "25 Cent",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "0,25 Euro",
+   "25 ct"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Wie viele Unternehmen sind im deutschen Leitindex DAX gelistet?",
+  "antwort": "40",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "vierzig"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "In welcher Stadt hat die Europäische Zentralbank ihren Sitz?",
+  "antwort": "Frankfurt am Main",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Frankfurt"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Wie viele Zeichen hat eine deutsche IBAN?",
+  "antwort": "22",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "zweiundzwanzig"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Welche Farbe hat der 50-Euro-Schein?",
+  "antwort": "Orange",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "orangefarben"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Wie hoch ist der gesetzliche Mindestlohn in Deutschland seit dem 1. Januar 2026 (brutto pro Stunde)?",
+  "antwort": "13,90 Euro",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "13,90 €",
+   "13,90"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Wofür steht die Abkürzung IBAN?",
+  "antwort": "International Bank Account Number",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Internationale Bankkontonummer"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "In welchem Jahr wurde der Euro als Bargeld eingeführt?",
+  "antwort": "2002",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Welcher Euro-Schein wird seit 2019 nicht mehr ausgegeben?",
+  "antwort": "500-Euro-Schein",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "500 Euro",
+   "der 500er"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Alltag, Verbraucher, Geld",
+  "frage": "Wie viele verschiedene Euro-Münzen gibt es?",
+  "antwort": "8",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Aus welchem Jahr stammt das bayerische Reinheitsgebot für Bier?",
+  "antwort": "1516",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "In welcher Stadt erfand Herta Heuwer 1949 die Currywurst?",
+  "antwort": "Berlin",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Aus welchem Land stammt das Gericht Gulasch?",
+  "antwort": "Ungarn",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Welche norddeutsche Stadt ist berühmt für ihr Marzipan?",
+  "antwort": "Lübeck",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Aus welcher französischen Region muss ein Schaumwein stammen, um Champagner heißen zu dürfen?",
+  "antwort": "Champagne",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Aus wie vielen Kräutern besteht die Frankfurter Grüne Soße traditionell?",
+  "antwort": "7",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "sieben"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Aus welcher Pflanze wird Tequila hergestellt?",
+  "antwort": "Agave",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Blaue Agave"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Aus welchem Fisch wird echter Kaviar gewonnen?",
+  "antwort": "Stör",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Wie heißt das obergärige Bier aus Köln?",
+  "antwort": "Kölsch",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Der Mangel an welchem Vitamin verursacht Skorbut?",
+  "antwort": "Vitamin C",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "C",
+   "Ascorbinsäure"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Von welchem Kontinent stammt die Kartoffel ursprünglich?",
+  "antwort": "Südamerika",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Amerika",
+   "Anden"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "generalprobe-28a",
+  "block": "Essen und Trinken",
+  "frage": "Wie heißt der fünfte Geschmackssinn neben süß, sauer, salzig und bitter?",
+  "antwort": "Umami",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Wer führte Regie bei „Titanic“ (1997)?",
+  "antwort": "James Cameron",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Cameron"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Welcher Schauspieler spielt Captain Jack Sparrow in „Fluch der Karibik“?",
+  "antwort": "Johnny Depp",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Depp"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Wie heißt die Zauberschule in „Harry Potter“?",
+  "antwort": "Hogwarts",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Welcher südkoreanische Film gewann 2020 als erster nicht-englischsprachiger Film den Oscar für den besten Film?",
+  "antwort": "Parasite",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Parasit"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "In welcher Serie spielt Bryan Cranston den Chemielehrer Walter White?",
+  "antwort": "Breaking Bad",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Welche deutsche Netflix-Serie spielt in der fiktiven Kleinstadt Winden?",
+  "antwort": "Dark",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Welcher Schauspieler spielte den Terminator?",
+  "antwort": "Arnold Schwarzenegger",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schwarzenegger"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Wer führte Regie bei „Pulp Fiction“ und „Kill Bill“?",
+  "antwort": "Quentin Tarantino",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Tarantino"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Welche Serie basiert auf George R. R. Martins Romanreihe „Das Lied von Eis und Feuer“?",
+  "antwort": "Game of Thrones",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "GoT"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Wie heißt der Hamburger „Tatort“-Kommissar, den Til Schweiger spielte?",
+  "antwort": "Nick Tschiller",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Tschiller"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Welcher Komponist schrieb die Filmmusik zu „Star Wars“, „Indiana Jones“ und „Jurassic Park“?",
+  "antwort": "John Williams",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Williams"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Welcher deutsche Film gewann 2007 den Oscar als bester fremdsprachiger Film?",
+  "antwort": "Das Leben der Anderen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Leben der Anderen"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Film und Serien",
+  "frage": "Wer führte Regie beim Stummfilmklassiker „Metropolis“ (1927)?",
+  "antwort": "Fritz Lang",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Lang"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Wer komponierte die 9. Sinfonie mit der „Ode an die Freude“?",
+  "antwort": "Ludwig van Beethoven",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Beethoven"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Aus welcher englischen Stadt stammen die Beatles?",
+  "antwort": "Liverpool",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Wie heißt das Album von Michael Jackson, das als meistverkauftes Album aller Zeiten gilt?",
+  "antwort": "Thriller",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Welche schwedische Band gewann 1974 den Eurovision Song Contest mit „Waterloo“?",
+  "antwort": "ABBA",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Wie viele Tasten hat ein Standard-Klavier?",
+  "antwort": "88",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "achtundachtzig"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Wer komponierte die Oper „Die Zauberflöte“?",
+  "antwort": "Wolfgang Amadeus Mozart",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mozart"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Welche US-Sängerin ging 2023 bis 2024 mit der „Eras Tour“ auf Welttournee?",
+  "antwort": "Taylor Swift",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Swift"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Welche deutsche Rockband sang „Wind of Change“?",
+  "antwort": "Scorpions",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "The Scorpions"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Welche Dur-Tonart hat keine Vorzeichen?",
+  "antwort": "C-Dur",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "C Dur"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Welcher deutsche Rapper heißt bürgerlich Anis Mohamed Youssef Ferchichi?",
+  "antwort": "Bushido",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Wer komponierte die Violinkonzerte „Die vier Jahreszeiten“?",
+  "antwort": "Antonio Vivaldi",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vivaldi"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Welcher Sänger aus Puerto Rico hatte 2017 mit „Despacito“ einen Welthit?",
+  "antwort": "Luis Fonsi",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Fonsi"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Musik",
+  "frage": "Welche britische Band veröffentlichte 1973 das Album „The Dark Side of the Moon“?",
+  "antwort": "Pink Floyd",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wer schrieb die Tragödie „Faust“?",
+  "antwort": "Johann Wolfgang von Goethe",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Goethe"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wer schrieb die Erzählung „Die Verwandlung“?",
+  "antwort": "Franz Kafka",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Kafka"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "In welcher Stadt lebt Donald Duck?",
+  "antwort": "Entenhausen",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Duckburg"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wer schrieb „Romeo und Julia“?",
+  "antwort": "William Shakespeare",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Shakespeare"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Welcher Autor erfand den Detektiv Sherlock Holmes?",
+  "antwort": "Arthur Conan Doyle",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Conan Doyle",
+   "Doyle"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Welcher Zeichner schuf gemeinsam mit René Goscinny die Comicfigur Asterix?",
+  "antwort": "Albert Uderzo",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Uderzo"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wer schrieb den Roman „Der Vorleser“?",
+  "antwort": "Bernhard Schlink",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Schlink"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wer schrieb den Jugendroman „Tschick“?",
+  "antwort": "Wolfgang Herrndorf",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Herrndorf"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wer schrieb den Roman „1984“?",
+  "antwort": "George Orwell",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Orwell"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Welcher deutsche Autor von „Die Blechtrommel“ erhielt 1999 den Literaturnobelpreis?",
+  "antwort": "Günter Grass",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Grass"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wie heißt Batman mit bürgerlichem Namen?",
+  "antwort": "Bruce Wayne",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Wayne"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wer schrieb die Dramen „Die Räuber“ und „Wilhelm Tell“?",
+  "antwort": "Friedrich Schiller",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Schiller"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Literatur und Comics",
+  "frage": "Wer schrieb den Roman „Der Zauberberg“?",
+  "antwort": "Thomas Mann",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Mann"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Wer malte die „Mona Lisa“?",
+  "antwort": "Leonardo da Vinci",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Leonardo",
+   "da Vinci"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Wer malte „Die Sternennacht“?",
+  "antwort": "Vincent van Gogh",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "van Gogh"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Welcher Künstler schuf 1937 das Antikriegsbild „Guernica“?",
+  "antwort": "Pablo Picasso",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Picasso"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Wer malte „Der Schrei“?",
+  "antwort": "Edvard Munch",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Munch"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Welche Kunst- und Designschule gründete Walter Gropius 1919 in Weimar?",
+  "antwort": "Bauhaus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Welcher Architekt entwarf die Sagrada Família in Barcelona?",
+  "antwort": "Antoni Gaudí",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Gaudí",
+   "Gaudi"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Welches Architekturbüro entwarf die Elbphilharmonie in Hamburg?",
+  "antwort": "Herzog & de Meuron",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Herzog und de Meuron",
+   "Herzog de Meuron"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Welcher Baustil mit Spitzbögen und Strebewerk prägt den Kölner Dom?",
+  "antwort": "Gotik",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "gotisch"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Wer schuf die Marmorstatue „David“ in Florenz?",
+  "antwort": "Michelangelo",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Michelangelo Buonarroti"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Welcher Pop-Art-Künstler ist für Siebdrucke von Marilyn Monroe und Campbell’s-Suppendosen bekannt?",
+  "antwort": "Andy Warhol",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Warhol"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Wer malte „Der Wanderer über dem Nebelmeer“?",
+  "antwort": "Caspar David Friedrich",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "C. D. Friedrich",
+   "Friedrich"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "generalprobe-28b",
+  "block": "Kunst und Architektur",
+  "frage": "Welcher Architekt entwarf das Guggenheim-Museum in New York?",
+  "antwort": "Frank Lloyd Wright",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Wright"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "Wie viele Stimmen hat der Bundesrat insgesamt?",
+  "antwort": "69",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "neunundsechzig"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "Womit beginnt Artikel 1 des Grundgesetzes?",
+  "antwort": "Die Würde des Menschen ist unantastbar",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Würde des Menschen ist unantastbar",
+   "Menschenwürde"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "In welcher Stadt hat das Bundesverfassungsgericht seinen Sitz?",
+  "antwort": "Karlsruhe",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "Wie heißt das Verfassungsorgan, durch das die Bundesländer an der Gesetzgebung des Bundes mitwirken?",
+  "antwort": "Bundesrat",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "Wie hoch ist die Sperrklausel bei der Bundestagswahl?",
+  "antwort": "5 Prozent",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "5 %",
+   "fünf Prozent",
+   "Fünf-Prozent-Hürde"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "Wer ist Präsidentin der Europäischen Kommission (Stand 2026)?",
+  "antwort": "Ursula von der Leyen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "von der Leyen"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "In welcher Stadt finden die Plenarsitzungen des Europäischen Parlaments statt (offizieller Sitz)?",
+  "antwort": "Straßburg",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Strasbourg"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "Mit welchem Vertrag von 1992 wurde die Europäische Union gegründet?",
+  "antwort": "Vertrag von Maastricht",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Maastricht",
+   "Maastricht-Vertrag"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Deutschland und EU",
+  "frage": "In welchem Artikel des Grundgesetzes ist die Meinungsfreiheit verankert?",
+  "antwort": "Artikel 5",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Art. 5",
+   "5"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "In welcher Stadt befindet sich der Hauptsitz der Vereinten Nationen?",
+  "antwort": "New York",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "New York City"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wie viele ständige Mitglieder hat der UN-Sicherheitsrat?",
+  "antwort": "5",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "fünf"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wie heißt die Währung Japans?",
+  "antwort": "Yen",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wer ist Generalsekretär der Vereinten Nationen (Stand Oktober 2026)?",
+  "antwort": "António Guterres",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Guterres",
+   "Antonio Guterres"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wie viele Bundesstaaten haben die USA?",
+  "antwort": "50",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "fünfzig"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wie heißt das oberste deutsche Gericht für Zivil- und Strafsachen?",
+  "antwort": "Bundesgerichtshof",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "BGH"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wie heißt das deutsche Gesetzbuch, das u. a. Kaufverträge, Mietrecht und Erbrecht regelt?",
+  "antwort": "Bürgerliches Gesetzbuch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "BGB"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Ab welchem Alter ist man in Deutschland volljährig?",
+  "antwort": "18",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "achtzehn"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wofür steht die Abkürzung NATO?",
+  "antwort": "North Atlantic Treaty Organization",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Nordatlantikpakt",
+   "Nordatlantikvertrags-Organisation"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Welche Organisation mit Sitz in Wien koordiniert die Ölförderung wichtiger Förderländer?",
+  "antwort": "OPEC",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Welcher schottische Ökonom schrieb 1776 „Der Wohlstand der Nationen“?",
+  "antwort": "Adam Smith",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Smith"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wie heißt der wichtigste deutsche Aktienindex?",
+  "antwort": "DAX",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Deutscher Aktienindex"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Politik Welt, Wirtschaft, Recht",
+  "frage": "Wer ist Staatsoberhaupt des Vereinigten Königreichs (Stand 2026)?",
+  "antwort": "Charles III.",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "König Charles",
+   "Charles",
+   "King Charles"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Wie heißt die heilige Schrift des Islam?",
+  "antwort": "Koran",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Quran"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Welcher griechische Gott herrscht über die Unterwelt?",
+  "antwort": "Hades",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Wer schrieb 1651 das staatsphilosophische Werk „Leviathan“?",
+  "antwort": "Thomas Hobbes",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Hobbes"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Von welchem Philosophen stammt der Satz „Ich denke, also bin ich“?",
+  "antwort": "René Descartes",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Descartes"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Wie viele Gebote erhielt Mose laut Bibel am Berg Sinai?",
+  "antwort": "10",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zehn"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Wie heißt der Donnergott der nordischen Mythologie?",
+  "antwort": "Thor",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Donar"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Welcher Philosoph aus Königsberg schrieb die „Kritik der reinen Vernunft“?",
+  "antwort": "Immanuel Kant",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Kant"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Wie heißt der Begründer des Buddhismus?",
+  "antwort": "Siddhartha Gautama",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Buddha",
+   "Gautama",
+   "Siddhartha"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Welche Religion hat die Veden als heilige Schriften?",
+  "antwort": "Hinduismus",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Wer schrieb „Also sprach Zarathustra“?",
+  "antwort": "Friedrich Nietzsche",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Nietzsche"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Wer schlug 1517 seine 95 Thesen an die Tür der Schlosskirche zu Wittenberg?",
+  "antwort": "Martin Luther",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Luther"
+  ]
+ },
+ {
+  "gebiet": "gesellschaft",
+  "katalog": "generalprobe-28b",
+  "block": "Religion, Mythologie, Philosophie",
+  "frage": "Welcher griechische Held war nur an der Ferse verwundbar?",
+  "antwort": "Achilles",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Achill",
+   "Achilleus"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Wie viele Fälle (Kasus) hat die deutsche Sprache?",
+  "antwort": "4",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Wie nennt man ein Wort mit gegenteiliger Bedeutung (Gegenteil von Synonym)?",
+  "antwort": "Antonym",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Wie nennt man ein Wort, das vorwärts und rückwärts gleich gelesen wird, z. B. „Rentner“?",
+  "antwort": "Palindrom",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Was bedeutet das Fremdwort „ambivalent“?",
+  "antwort": "zwiespältig",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "zweideutig",
+   "widersprüchlich",
+   "doppelwertig"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Wie lautet der Superlativ von „gut“?",
+  "antwort": "am besten",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "beste",
+   "besten"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Wie lautet die Mehrzahl von „Visum“?",
+  "antwort": "Visa",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Visen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Welches deutsche Wort für eine Vorschuleinrichtung wurde unverändert ins Englische übernommen?",
+  "antwort": "Kindergarten",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Wie nennt man einen Satz, der alle Buchstaben des Alphabets enthält?",
+  "antwort": "Pangramm",
+  "schwierigkeit": "schwer",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Was bedeutet das englische Wort „ubiquitous“?",
+  "antwort": "allgegenwärtig",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "überall vorhanden"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Was bedeutet „Déjà-vu“ wörtlich übersetzt?",
+  "antwort": "schon gesehen",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "bereits gesehen"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Wie heißt die Stilfigur der starken Übertreibung („Ich warte schon eine Ewigkeit“)?",
+  "antwort": "Hyperbel",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Welches Wort wurde von der Gesellschaft für deutsche Sprache zum Wort des Jahres 2025 gewählt?",
+  "antwort": "KI-Ära",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "KI Ära"
+  ]
+ },
+ {
+  "gebiet": "sprache",
+  "katalog": "generalprobe-28b",
+  "block": "Sprache und Wörter",
+  "frage": "Was bedeutet das lateinische „Carpe diem“?",
+  "antwort": "Nutze den Tag",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pflücke den Tag",
+   "Genieße den Tag"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie viel ist 7 mal 8?",
+  "antwort": "56",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "sechsundfünfzig"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie groß ist die Winkelsumme in einem Dreieck?",
+  "antwort": "180 Grad",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "180",
+   "180°"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Welche ist die kleinste Primzahl?",
+  "antwort": "2",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwei"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie lautet die Kreiszahl Pi auf zwei Nachkommastellen?",
+  "antwort": "3,14",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "3.14"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Was ist die Quadratwurzel aus 144?",
+  "antwort": "12",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zwölf"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie heißt der Satz a² + b² = c² für rechtwinklige Dreiecke?",
+  "antwort": "Satz des Pythagoras",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Pythagoras"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie heißt die Zahl 10 hoch 9 im deutschen Sprachraum?",
+  "antwort": "Milliarde",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "eine Milliarde"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Welchen Wert hat die römische Zahl M?",
+  "antwort": "1000",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "tausend"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie viel ist 2 hoch 10?",
+  "antwort": "1024",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie heißt das Ergebnis einer Division?",
+  "antwort": "Quotient",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie viele Ecken hat ein Dodekaeder?",
+  "antwort": "20",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "zwanzig"
+  ]
+ },
+ {
+  "gebiet": "mathe",
+  "katalog": "generalprobe-28b",
+  "block": "Zahlen und Mathe-Trivia",
+  "frage": "Wie heißt die Zahlenfolge 1, 1, 2, 3, 5, 8, 13, …?",
+  "antwort": "Fibonacci-Folge",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Fibonacci",
+   "Fibonacci-Zahlen"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Welches ist das größte lebende Landsäugetier?",
+  "antwort": "Afrikanischer Elefant",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Elefant"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Wie viele Beine hat eine Spinne?",
+  "antwort": "8",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "acht"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Welches ist das schnellste Landtier der Welt?",
+  "antwort": "Gepard",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Welches Säugetier kann aktiv fliegen?",
+  "antwort": "Fledermaus",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Fledermäuse"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Wie lange dauert die Tragzeit eines Elefanten ungefähr (in Monaten)?",
+  "antwort": "22",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "etwa 22 Monate",
+   "21 bis 22"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Welcher ist der größte Vogel der Welt?",
+  "antwort": "Strauß",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Vogel Strauß",
+   "Afrikanischer Strauß"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Wie viele Herzen hat ein Oktopus?",
+  "antwort": "3",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "drei"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Welches Tier ist das Wappentier Deutschlands?",
+  "antwort": "Adler",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bundesadler"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Welches eierlegende Säugetier mit Entenschnabel lebt in Australien?",
+  "antwort": "Schnabeltier",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Welches ist das größte Tier, das je auf der Erde gelebt hat?",
+  "antwort": "Blauwal",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Wie nennt man die Wissenschaft von den Vögeln?",
+  "antwort": "Ornithologie",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Vogelkunde"
+  ]
+ },
+ {
+  "gebiet": "tiere",
+  "katalog": "generalprobe-28b",
+  "block": "Tiere und Natur",
+  "frage": "Wie viele Mägen (Magenabteile) hat eine Kuh?",
+  "antwort": "4",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "vier"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Welches japanische Unternehmen entwickelt die „Super Mario“-Spiele?",
+  "antwort": "Nintendo",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Wie heißt das Klötzchen-Spiel von Mojang, das Microsoft 2014 kaufte?",
+  "antwort": "Minecraft",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "In welchem Jahr wurde Facebook gegründet?",
+  "antwort": "2004",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Wer gilt als Schöpfer von Super Mario und The Legend of Zelda?",
+  "antwort": "Shigeru Miyamoto",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Miyamoto"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Wie heißt der Held der „The Legend of Zelda“-Spiele?",
+  "antwort": "Link",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Welche Firma entwickelt die „Grand Theft Auto“-Spiele?",
+  "antwort": "Rockstar Games",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Rockstar",
+   "Rockstar North"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Welches Spiel von Epic Games ist für seinen Battle-Royale-Modus bekannt?",
+  "antwort": "Fortnite",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Welcher Unternehmer kaufte 2022 Twitter und benannte es in X um?",
+  "antwort": "Elon Musk",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Musk"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Wie heißt der chinesische Mutterkonzern von TikTok?",
+  "antwort": "ByteDance",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Welcher blaue Igel ist das Maskottchen von Sega?",
+  "antwort": "Sonic",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Sonic the Hedgehog"
+  ]
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Welche südkoreanische Serie über ein tödliches Spiel wurde 2021 zum Netflix-Hit?",
+  "antwort": "Squid Game",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "unterhaltung",
+  "katalog": "generalprobe-28b",
+  "block": "Videospiele, Internet, Popkultur 2000–2026",
+  "frage": "Wie heißt der KI-Chatbot, den OpenAI im November 2022 veröffentlichte?",
+  "antwort": "ChatGPT",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Wer ist Bundeskanzler der Bundesrepublik Deutschland (Stand 2026)?",
+  "antwort": "Friedrich Merz",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Merz"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Welches Land wurde 2026 Fußball-Weltmeister?",
+  "antwort": "Spanien",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Welches Land gewann den Eurovision Song Contest 2026 in Wien?",
+  "antwort": "Bulgarien",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Dara",
+   "Bulgaria"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Welcher Film gewann 2026 den Oscar als bester Film?",
+  "antwort": "One Battle After Another",
+  "schwierigkeit": "mittel",
+  "alternativen": []
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Wer erhielt 2025 den Nobelpreis für Literatur?",
+  "antwort": "László Krasznahorkai",
+  "schwierigkeit": "schwer",
+  "alternativen": [
+   "Krasznahorkai",
+   "Laszlo Krasznahorkai"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Welchen Papstnamen nahm Robert Francis Prevost nach seiner Wahl im Mai 2025 an?",
+  "antwort": "Leo XIV.",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Leo XIV",
+   "Leo der Vierzehnte",
+   "Leo"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "In welchem Land fanden die Olympischen Winterspiele 2026 statt?",
+  "antwort": "Italien",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Mailand und Cortina",
+   "Mailand-Cortina"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Wer ist Vizekanzler und Bundesfinanzminister (Stand 2026)?",
+  "antwort": "Lars Klingbeil",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Klingbeil"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Welcher Verein wurde 2026 Deutscher Fußballmeister?",
+  "antwort": "FC Bayern München",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Bayern München",
+   "Bayern",
+   "FC Bayern"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Wer ist Präsidentin des Deutschen Bundestages (Stand 2026)?",
+  "antwort": "Julia Klöckner",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Klöckner"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Welcher Verein gewann die Champions League 2026?",
+  "antwort": "Paris Saint-Germain",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "PSG",
+   "Paris"
+  ]
+ },
+ {
+  "gebiet": "aktuell",
+  "katalog": "generalprobe-28b",
+  "block": "Aktuelles 2023–2026",
+  "frage": "Wer ist Bundesaußenminister (Stand 2026)?",
+  "antwort": "Johann Wadephul",
+  "schwierigkeit": "mittel",
+  "alternativen": [
+   "Wadephul"
+  ]
+ }
+]
