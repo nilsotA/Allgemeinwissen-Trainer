@@ -4,9 +4,9 @@ Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, 
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät. Wer mehrere Geräte nutzt,
 kann ihn über ein privates Gist im eigenen GitHub-Konto abgleichen (siehe *Geräte abgleichen*).
 
-**4.717 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**4.740 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
-Schwerpunkte liegen auf **Sport** (786 Karten: Trainingslehre, Anatomie, Bewegungslehre,
+Schwerpunkte liegen auf **Sport** (787 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (471 Karten: Grundlagen,
 Schulmathematik, Analysis, Lineare Algebra, Stochastik, Mathedidaktik, Mathematikgeschichte).
 In beiden Fächern gibt es ein eigenes Teilgebiet **Verfahren erkennen**, das nicht nach einem
@@ -52,7 +52,7 @@ und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont,
 Nutella) und ein Dutzend Karten zu Popmusik und ESC im Teilgebiet **Musik** (Lena, Nicole,
 Freddie Mercury, Falco).
 
-Ein eigenes Teilgebiet **Geld im Alltag** (56 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
+Ein eigenes Teilgebiet **Geld im Alltag** (59 Karten) deckt ab, was mit Anfang zwanzig anfängt zu
 zählen und in keinem Lehrplan steht: Dispozins und Effektivzins, Mietkaution und
 Kündigungsfrist, Probezeit und Urlaubsanspruch, welche Versicherung Pflicht ist und welche man
 trotzdem braucht. Dazu die Fristen, die man einmal falsch verstreichen lässt und dann nicht
@@ -4408,6 +4408,39 @@ Bodybuilding“. Der Lernstand bleibt über den Vorgänger erhalten. Danach beka
 eine eigene Karte. Bei Faraday fragt sie nach dem ersten Elektromotor und den Feldlinien,
 nicht nach der Induktion – sonst hätte die neue Karte ihrerseits die Induktionskarte
 verraten. Satz 8 steht damit bei **82 %**, Satz 9 bei **95 %**.
+
+### Generalprobe (Prüfsatz 28) und Rückfragen – 91 → 99 %
+
+**Generalprobe.** Zwei Agenten haben ohne Blick in die Sammlung 300 Fragen geschrieben, wie
+sie bei „Gefragt – Gejagt“, „Wer wird Millionär?“, im Kneipenquiz und im Allgemeinwissenstest
+einer Lehramtsprüfung vorkommen. Die Fragen gehen quer durch alle Gebiete, dazu ein Block
+Aktuelles 2023–2026. Nach dem Entfernen von vier Dubletten blieben 296. Ausgangsmessung vor
+der ersten neuen Karte: **269 von 296 (91 %)**, jetzt **294 von 296 (99 %)**. Dazu kamen 23
+neue Karten, drei umformulierte und drei angepasste Bestandskarten, alle über Autor,
+Fakten- und Gegenprüfer und Einarbeiter. Zwei Fälle wurden über Bestandskarten gelöst:
+- „Weiße Rose“ war gefragt und scheiterte nur an der Beugung („Zur Weißen Rose“).
+- Die Olympia-Karte trug „2028 in Los Angeles“ als Doppelantwort und fragt jetzt nach der
+  Stadt.
+
+Die Prüfer haben unter anderem korrigiert:
+- Das Ulmer Münster ist seit Februar 2026 nicht mehr die höchste Kirche der Welt; das
+  vollständige Kreuz der Sagrada Família steht bei 172,5 m.
+- Der 500-Euro-Schein wurde 2016 von der EZB aus der Europa-Serie gestrichen, ausgegeben wurde
+  er bis 2019.
+
+Zeitkritisches (von der Leyen, Guterres bis Jahresende 2026, Wadephul, Mindestlohn 13,90 Euro,
+WM 2026, Olympia 2028) steht nur mit Quelle und „Stand …“ da. Offen bleiben zwei Umkehrpaare:
+das Jahr der Wannseekonferenz und Hinduismus/Veden.
+
+**Rückfragen.** `scripts/rueckfrage.mjs` listete 48 Begriffe, die der Bestand nur erklärt
+(„Was ist …?“), nach denen aber keine Karte fragt. 24 davon waren Fehlalarme: Die Rückfrage
+gab es längst, das Werkzeug erkannte sie nur wegen Artikel, Plural, Vorspann („der Begriff …“)
+oder Nachspann („… anschaulich“) nicht. Es streift das jetzt ab, vergleicht grobe Stämme und
+hat drei neue Selbstproben; es meldet noch 12. Zu 19 Begriffen gibt es nun die Rückfrage, als
+Beispiel oder Situation formuliert, damit sie die Erklärungskarte nicht verrät. Beispiele:
+Demokratie über direkt oder repräsentativ statt über „Volk“, PNF über Herkunft und Zweck,
+damit sie nicht auf PIR passt. Fünf bleiben bewusst offen (Formeln, Umkehrpaare,
+Mehrdeutiges).
 
 ### Prüfsätze 25–27: Sprache, USA, Körper und Ernährung – 61/65/64 → 96/97/100 %
 
