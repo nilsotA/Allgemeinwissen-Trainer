@@ -744,6 +744,8 @@ test('die Antwort einer Karte aus einem fremden Teilgebiet gilt nicht als richti
     // Ebenso abwegig: Rinde für Jochen Rindt, Schwaben für die Schwalbe
     'spo-cpnvan|all-ossyot', 'spo-jjs2iu|all-rg6jsz',
     'spo-1oe2w2h|pol-1ttmnd8', 'pol-1ttmnd8|spo-1oe2w2h',   // Streif / Streik
+    // Ebenso abwegig: der Songtitel „Satellite“ für den Mond als Satelliten, die Bierblume für Werner Blum
+    'nat-120lh9g|kul-jwxhvr', 'mat-1yo2op1|all-1cexriy',
     // Ebenso abwegig: Hagel für Hagen von Tronje
     'spr-nvq5zl|all-114pxho',
     // Kohlendioxid und Kohlenstoffdioxid sind dasselbe Gas – die Hefe bildet es

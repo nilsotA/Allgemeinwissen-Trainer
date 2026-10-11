@@ -4,7 +4,7 @@ Ein Allgemeinwissen-Trainer als Web-App fürs iPhone. Statisch, offline-fähig, 
 alles läuft im Browser, der Lernfortschritt bleibt auf dem Gerät. Wer mehrere Geräte nutzt,
 kann ihn über ein privates Gist im eigenen GitHub-Konto abgleichen (siehe *Geräte abgleichen*).
 
-**4.740 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
+**4.762 Karten** in neun Themen, aufgebaut in drei Stufen: Basis (Schulwissen Klasse 5–8),
 Solide (gute Allgemeinbildung), Profi (das, was Quizduelle entscheidet).
 Schwerpunkte liegen auf **Sport** (787 Karten: Trainingslehre, Anatomie, Bewegungslehre,
 Sportmedizin, Sportdidaktik, Sportpsychologie, Sprint, Fußball, Krafttraining) und **Mathematik** (471 Karten: Grundlagen,
@@ -43,9 +43,9 @@ amerikanisch, Redewendungen, ASAP bis RSVP).
 
 Für Quizspiele sind drei Standardkategorien eigens besetzt, die vorher fast leer waren:
 **Mythologie** (32 Karten – von Zeus bis Yggdrasil, samt der Redewendungen wie Achillesferse
-und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (94 – Reinheitsgebot,
+und Sisyphusarbeit, die daraus entstanden), **Essen & Trinken** (97 – Reinheitsgebot,
 Currywurst, warum Schärfe kein Geschmack ist) und **Erfindungen** (28 – Penicillin, Dynamit, Kaffeefilter, Dübel,
-MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (60 Quiz-Klassiker vom
+MP3 aus Erlangen, der fränkische Jeans-Erfinder). Dazu **Tiere** (66 Quiz-Klassiker vom
 Wanderfalken bis zum blauen Krakenblut), **Amerika** (67 – Bundesstaaten und ihre Hauptstädte, Konquistadoren, Tango,
 Route 66, Ellis Island, Thanksgiving, Kap Hoorn), Markenherkünfte im Teilgebiet **Wirtschaft** (Adidas
 und Puma aus Herzogenaurach, Haribo = Hans Riegel Bonn, Aldi = Albrecht-Diskont, Lego, IKEA,
@@ -5737,3 +5737,19 @@ Unter *Mehr → Geräte abgleichen* hält die App ihn auf allen Geräten gleich 
 privates Gist im eigenen GitHub-Konto, siehe oben.
 Wichtig: Ohne Abgleich ist der Fortschritt weg, wenn du in Safari die Website-Daten löschst –
 gelegentlich sichern.
+
+### Eigene Quizfragen (Prüfsatz 29) – 9 → 23 von 24
+
+Die eigene Sammlung aus Kneipenquizzen (23 Fragen, die Maultier/Maulesel-Frage als zwei
+gezählt) liegt als `data/quizprobe29.json` vor. Vorher deckte der Bestand **9 von 24**; Kurkuma,
+Schaltjahr, Sublimation und Marie Curie standen schon da. Dazu kamen 22 Karten, geprüft von
+einem Fakten- und einem Gegenprüfer. Die Prüfer haben unter anderem korrigiert:
+- Der Siebenschläfer schläft oft länger als sieben Monate.
+- Zela liegt im Norden der heutigen Türkei, nicht im Nordosten.
+- Die Merkhilfe „der Maulesel ähnelt der Mutter“ stimmt nicht.
+- „Grau“ gilt bei Rot + Grün im Malkasten jetzt auch, passend zur Bestandskarte über
+  Komplementärfarben.
+
+Offen bleibt bewusst „Wie viele Beine hat ein Tausendfüßer mindestens?“: Die Quellen nennen
+je nach Gruppe 8 bis 13 Beinpaare, eine eindeutige Quizantwort gibt es nicht. Stattdessen
+fragen zwei Karten nach den zwei Beinpaaren je Segment und nach dem Rekord von 1.306 Beinen.
