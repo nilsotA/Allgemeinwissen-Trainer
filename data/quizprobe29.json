@@ -1,0 +1,238 @@
+[
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie viele Kilometer misst eine Meile (Landmeile)?",
+  "antwort": "1,61 km",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "1,609"
+  ]
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Welche Pflanze liefert Pfeffer?",
+  "antwort": "Pfefferstrauch",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Echter Pfeffer",
+   "Piper nigrum",
+   "Pfefferpflanze"
+  ]
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Welches Tier hält in Mitteleuropa den längsten Winterschlaf?",
+  "antwort": "Siebenschläfer",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Ergänze das Sprichwort: Hochmut kommt vor dem …",
+  "antwort": "Fall",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Welche Farbe entsteht, wenn man rote und grüne Malfarbe mischt?",
+  "antwort": "Braun",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie viel Prozent Fruchtanteil muss ein Orangennektar mindestens haben?",
+  "antwort": "50 %",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "50 Prozent"
+  ]
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Welches Gewürz macht Currypulver gelb?",
+  "antwort": "Kurkuma",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Gelbwurz"
+  ]
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie heißt das Eichhörnchen aus SpongeBob mit vollem Namen?",
+  "antwort": "Sandy Cheeks",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Welcher ist der zweitgrößte Kontinent?",
+  "antwort": "Afrika",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "kultur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie viele Pokémon gab es in der ersten Generation?",
+  "antwort": "151",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie viele Beine hat ein Tausendfüßer mindestens?",
+  "antwort": "?",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geografie",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie viele Staaten gibt es in Afrika?",
+  "antwort": "54",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie heißt die Lehre von der Erde (Aufbau und Gestein)?",
+  "antwort": "Geologie",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "alltag",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie nennt man die Schaumkrone auf dem Bier?",
+  "antwort": "Blume",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie viele Tage hat ein Schaltjahr?",
+  "antwort": "366",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie nennt man die Angst vor Spinnen?",
+  "antwort": "Arachnophobie",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "geschichte",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wer sagte: „Ich kam, sah und siegte“?",
+  "antwort": "Julius Caesar",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Caesar",
+   "Cäsar"
+  ]
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie viele Beine hat ein Hummer?",
+  "antwort": "10",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "zehn"
+  ]
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie heißt die Kreuzung aus Eselhengst und Pferdestute?",
+  "antwort": "Maultier",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie heißt die Kreuzung aus Pferdehengst und Eselstute?",
+  "antwort": "Maulesel",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Ist der Mond ein Planet, ein Stern oder keins von beiden?",
+  "antwort": "Satellit",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "natürlicher Satellit",
+   "Trabant"
+  ]
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wofür steht das E in E = mc²?",
+  "antwort": "Energie",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wer erhielt Nobelpreise in zwei verschiedenen Naturwissenschaften?",
+  "antwort": "Marie Curie",
+  "schwierigkeit": "leicht",
+  "alternativen": [
+   "Curie"
+  ]
+ },
+ {
+  "gebiet": "natur",
+  "katalog": "nutzer-29",
+  "block": "Nutzerliste",
+  "frage": "Wie heißt der direkte Übergang vom festen in den gasförmigen Zustand?",
+  "antwort": "Sublimation",
+  "schwierigkeit": "leicht",
+  "alternativen": []
+ }
+]
